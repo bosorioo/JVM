@@ -8,6 +8,15 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# CodeBlocks Files
+*.cbp
+*.layout
+*.depend
+
+# Binary Files
+*.o
+*.exe
+
 # Windows Installer files
 *.cab
 *.msi
