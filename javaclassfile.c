@@ -83,20 +83,23 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         return;
     }
 
-    jcf->constantPool = (cp_info*)malloc(sizeof(cp_info) * jcf->constantPoolCount);
-
-    if (!jcf->constantPool)
+    if (jcf->constantPoolCount > 1)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
-        return;
-    }
+        jcf->constantPool = (cp_info*)malloc(sizeof(cp_info) * (jcf->constantPoolCount - 1));
 
-    for (u32 = 0; u32 < jcf->constantPoolCount - 1; u32++)
-    {
-        if (!readConstantPoolEntry(jcf, jcf->constantPool + u32))
+        if (!jcf->constantPool)
+        {
+            jcf->status = MEMORY_ALLOCATION_FAILED;
             return;
+        }
 
-        jcf->currentConstantPoolEntryIndex++;
+        for (u32 = 0; u32 < jcf->constantPoolCount - 1; u32++)
+        {
+            if (!readConstantPoolEntry(jcf, jcf->constantPool + u32))
+                return;
+
+            jcf->currentConstantPoolEntryIndex++;
+        }
     }
 
     // TODO: check if all class_index points to valid UTF-8 class names
@@ -306,14 +309,12 @@ void freeClassFile(JavaClassFile* jcf)
 
     if (jcf->methods)
     {
-        //free(jcf->methods);
-        //jcf->methods = NULL;
+        // TODO: proper free of methods
     }
 
     if (jcf->attributes)
     {
-        //free(jcf->attributes);
-        //jcf->attributes = NULL;
+        // TODO: proper free of attributes
     }
 }
 
@@ -354,7 +355,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
 
 void printGeneralInfo(JavaClassFile* jcf)
 {
-    printf("File status: %s (status code %d).\n", decodeJavaClassFileStatus(jcf->status), jcf->status);
+    printf("File status: %d, %s.\n", jcf->status, decodeJavaClassFileStatus(jcf->status));
     printf("Number of bytes read: %d\n", jcf->totalBytesRead);
     printf("Java Class Version: %u.%u\n", jcf->majorVersion, jcf->minorVersion);
     printf("Constant pool count: %u, constants successfully read: %u\n", jcf->constantPoolCount, jcf->currentConstantPoolEntryIndex);
