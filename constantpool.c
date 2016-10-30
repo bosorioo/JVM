@@ -117,6 +117,8 @@ static inline char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
                 return 0;
             }
 
+            jcf->totalBytesRead++;
+
             if (byte == 0 || (byte >= 0xF0))
             {
                 jcf->status = INVALID_UTF8_BYTES;
@@ -124,12 +126,11 @@ static inline char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
             }
 
             *bytes++ = (uint8_t)byte;
-            jcf->totalBytesRead++;
         }
     }
     else
     {
-        entry->Utf8.bytes = 0;
+        entry->Utf8.bytes = NULL;
     }
 
     return 1;
