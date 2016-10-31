@@ -11,7 +11,7 @@ int main()
 
     openClassFile(&jcf, path);
     printGeneralInfo(&jcf);
-    freeClassFile(&jcf);
+    closeClassFile(&jcf);
 
     return 0;
 }
