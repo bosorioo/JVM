@@ -276,7 +276,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
 
 }
 
-void freeClassFile(JavaClassFile* jcf)
+void closeClassFile(JavaClassFile* jcf)
 {
     if (!jcf)
         return;
@@ -293,6 +293,7 @@ void freeClassFile(JavaClassFile* jcf)
     {
         free(jcf->interfaces);
         jcf->interfaces = NULL;
+        jcf->interfaceCount = 0;
     }
 
     if (jcf->constantPool)
@@ -305,16 +306,25 @@ void freeClassFile(JavaClassFile* jcf)
 
         free(jcf->constantPool);
         jcf->constantPool = NULL;
+        jcf->constantPoolCount = 0;
     }
 
     if (jcf->methods)
     {
-        // TODO: proper free of methods
+        for (i = 0; i < jcf->methodCount; i++)
+            freeMethodAttributes(jcf->methods + i);
+
+        free(jcf->methods);
+        jcf->constantPoolCount = 0;
     }
 
     if (jcf->attributes)
     {
-        // TODO: proper free of attributes
+        for (i = 0; i < jcf->attributeCount; i++)
+            freeAttributeInfo(jcf->attributes + i);
+
+        free(jcf->attributes);
+        jcf->attributeCount = 0;
     }
 }
 
@@ -323,10 +333,10 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
     switch (status)
     {
         case STATUS_OK: return "File is ok";
-        case FILE_COULDNT_BE_OPENED: return "File couldn't be opened";
+        case FILE_COULDNT_BE_OPENED: return "Class file couldn't be opened";
         case INVALID_SIGNATURE: return "Signature (0xCAFEBABE) mismatch";
-        case CLASS_FILE_NAME_INVALID: return "File name is invalid";
-        case CLASS_FILE_NAME_TOO_LONG: return "File name is too long";
+        case CLASS_FILE_NAME_INVALID: return "Class file name is invalid";
+        case CLASS_FILE_NAME_TOO_LONG: return "Class file name is too long";
         case MEMORY_ALLOCATION_FAILED: return "Not enough memory";
         case INVALID_CONSTANT_POOL_COUNT: return "Constant pool count should be at least 1";
         case UNEXPECTED_EOF: return "End of file found too soon";

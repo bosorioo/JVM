@@ -84,10 +84,9 @@ typedef struct JavaClassFile {
 } JavaClassFile;
 
 void openClassFile(JavaClassFile* jcf, const char* path);
-void freeClassFile(JavaClassFile* jcf);
+void closeClassFile(JavaClassFile* jcf);
 const char* decodeJavaClassFileStatus(enum JavaClassStatus);
 
 void printGeneralInfo(JavaClassFile* jcf);
-
 
 #endif // JAVACLASSFILE_H
