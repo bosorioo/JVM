@@ -63,3 +63,19 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
 
     return 1;
 }
+
+void freeMethodAttributes(method_info* entry)
+{
+    uint32_t i;
+
+    if (entry->attributes)
+    {
+        for (i = 0; i < entry->attributes_count; i++)
+            freeAttributeInfo(entry->attributes + i);
+
+        free(entry->attributes);
+
+        entry->attributes_count = 0;
+        entry->attributes = NULL;
+    }
+}

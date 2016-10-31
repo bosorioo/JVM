@@ -16,5 +16,6 @@ typedef struct method_info {
 } method_info;
 
 char readMethod(JavaClassFile* jcf, method_info* entry);
+void freeMethodAttributes(method_info* entry);
 
 #endif // METHODS_H
