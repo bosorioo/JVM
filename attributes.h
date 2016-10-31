@@ -13,5 +13,6 @@ typedef struct attribute_info {
 } attribute_info;
 
 char readAttribute(JavaClassFile* jcf, attribute_info* entry);
+void freeAttributeInfo(attribute_info* entry);
 
 #endif // ATTRIBUTES_H

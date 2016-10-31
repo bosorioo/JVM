@@ -47,3 +47,12 @@ char readAttribute(JavaClassFile* jcf, attribute_info* entry)
 
     return 1;
 }
+
+void freeAttributeInfo(attribute_info* entry)
+{
+    if (entry->info)
+    {
+        free(entry->info);
+        entry->info = NULL;
+    }
+}
