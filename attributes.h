@@ -6,11 +6,11 @@ typedef struct attribute_info attribute_info;
 #include <stdint.h>
 #include "javaclassfile.h"
 
-typedef struct attribute_info {
+struct attribute_info {
     uint16_t name_index;
     uint32_t length;
     uint8_t* info;
-} attribute_info;
+};
 
 char readAttribute(JavaClassFile* jcf, attribute_info* entry);
 void freeAttributeInfo(attribute_info* entry);
