@@ -15,13 +15,19 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
         return 0;
     }
 
-    // TODO: check access flags validity
+    if (entry->access_flags & ACC_INVALID_METHOD_FLAG_MASK)
+    {
+        jcf->status = USE_OF_RESERVED_METHOD_ACCESS_FLAGS;
+        return 0;
+    }
+
+    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
 
     if (entry->name_index == 0 ||
         entry->name_index >= jcf->constantPoolCount ||
         jcf->constantPool[entry->name_index - 1].tag != CONSTANT_Utf8)
     {
-        jcf->status = INVALID_FIELD_NAME_INDEX;
+        jcf->status = INVALID_NAME_INDEX;
         return 0;
     }
 
