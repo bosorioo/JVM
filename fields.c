@@ -1,5 +1,6 @@
 #include "fields.h"
 #include "readfunctions.h"
+#include "validity.h"
 #include <stdlib.h>
 
 char readField(JavaClassFile* jcf, field_info* entry)
@@ -19,13 +20,11 @@ char readField(JavaClassFile* jcf, field_info* entry)
 
     if (entry->name_index == 0 ||
         entry->name_index >= jcf->constantPoolCount ||
-        jcf->constantPool[entry->name_index - 1].tag != CONSTANT_Utf8)
+        !isValidNameIndex(jcf, entry->name_index, 0))
     {
-        jcf->status = INVALID_FIELD_NAME_INDEX;
+        jcf->status = INVALID_NAME_INDEX;
         return 0;
     }
-
-    // TODO: check if name_index points to a valid Java identifier
 
     if (entry->descriptor_index == 0 ||
         entry->descriptor_index >= jcf->constantPoolCount ||
