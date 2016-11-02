@@ -1,8 +1,10 @@
 #include <stdlib.h>
+#include <math.h>
 #include "readfunctions.h"
 #include "constantpool.h"
+#include "utf8.h"
 
-static inline char readConstantPool_Class(JavaClassFile* jcf, cp_info* entry)
+char readConstantPool_Class(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Class.name_index))
     {
@@ -27,7 +29,7 @@ static inline char readConstantPool_Class(JavaClassFile* jcf, cp_info* entry)
     return 1;
 }
 
-static inline char readConstantPool_Fieldref(JavaClassFile* jcf, cp_info* entry)
+char readConstantPool_Fieldref(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Fieldref.class_index))
     {
@@ -55,10 +57,15 @@ static inline char readConstantPool_Fieldref(JavaClassFile* jcf, cp_info* entry)
         return 0;
     }
 
+    // Class index and name_and_type index aren't verified because they could
+    // point to a constant pool entry that hasn't been added yet.
+    // That verification has to be done later, after all the constant have
+    // been read.
+
     return 1;
 }
 
-static inline char readConstantPool_Integer(JavaClassFile* jcf, cp_info* entry)
+char readConstantPool_Integer(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu4(jcf, &entry->Integer.value))
     {
@@ -69,7 +76,7 @@ static inline char readConstantPool_Integer(JavaClassFile* jcf, cp_info* entry)
     return 1;
 }
 
-static inline char readConstantPool_Long(JavaClassFile* jcf, cp_info* entry)
+char readConstantPool_Long(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu4(jcf, &entry->Long.high))
     {
@@ -86,7 +93,7 @@ static inline char readConstantPool_Long(JavaClassFile* jcf, cp_info* entry)
     return 1;
 }
 
-static inline char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
+char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Utf8.length))
     {
@@ -181,4 +188,76 @@ char readConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
     }
 
     return 0;
+}
+
+const char* decodeTag(uint8_t tag)
+{
+    switch(tag)
+    {
+        case CONSTANT_Class: return "Class";
+        case CONSTANT_Double: return "Double";
+        case CONSTANT_Fieldref: return "Fieldref";
+        case CONSTANT_Float: return "Float";
+        case CONSTANT_Integer: return "Integer";
+        case CONSTANT_InterfaceMethodref: return "InterfaceMethodref";
+        case CONSTANT_Long: return "Long";
+        case CONSTANT_Methodref: return "Methodref";
+        case CONSTANT_NameAndType: return "NameAndType";
+        case CONSTANT_String: return "String";
+        case CONSTANT_Utf8: return "Utf8";
+        default:
+            break;
+    }
+
+    return "Unknown Tag";
+}
+
+void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
+{
+    char buffer[48];
+    uint16_t u16;
+
+    switch(entry->tag)
+    {
+
+        case CONSTANT_Utf8:
+
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
+            printf("\tLength: %u\n\tCharacters: %s", entry->Utf8.length, buffer);
+            break;
+
+        case CONSTANT_Class:
+
+            u16 = entry->Class.name_index;
+            entry = jcf->constantPool + entry->Class.name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
+            printf("\tname_index: cp index #%u\n\tCharacters: %s", u16, buffer);
+            break;
+
+
+        // TODO: finish printing constant pool
+
+        default:
+            break;
+    }
+
+    printf("\n\n");
+}
+
+void printConstantPool(JavaClassFile* jcf)
+{
+    uint16_t u16;
+    cp_info* cp;
+
+    if (jcf->constantPoolCount > 1)
+    {
+        printf("\n---- Constant Pool ----\n\n");
+
+        for (u16 = 0; u16 < jcf->constantPoolCount - 1; u16++)
+        {
+            cp = jcf->constantPool + u16;
+            printf("%*c#%u: %s (tag = %u)\n", 5 - (int)log10(u16 + 1), ' ', u16 + 1, decodeTag(cp->tag), cp->tag);
+            printConstantPoolEntry(jcf, cp);
+        }
+    }
 }
