@@ -1,31 +1,9 @@
 #include "readfunctions.h"
 #include "javaclassfile.h"
 #include "constantpool.h"
+#include "utf8.h"
+#include "validity.h"
 #include <stdlib.h>
-
-void getFileName(const char* path, int32_t* outBegin, int32_t* outFinish)
-{
-    if (!path || !outBegin || !outFinish)
-        return;
-
-    *outBegin = *outFinish = 0;
-    int32_t i ;
-
-    for (i = 0; path[i] != '\0'; i++)
-    {
-        if (path[i] == '/' || path[i] == '\\')
-            *outBegin = i + 1;
-    }
-
-    for (*outFinish = *outBegin; path[*outFinish] != '\0'; (*outFinish)++)
-    {
-        if (path[*outFinish] == '.')
-        {
-            (*outFinish)--;
-            break;
-        }
-    }
-}
 
 void openClassFile(JavaClassFile* jcf, const char* path)
 {
@@ -93,17 +71,17 @@ void openClassFile(JavaClassFile* jcf, const char* path)
             return;
         }
 
-        for (u32 = 0; u32 < jcf->constantPoolCount - 1; u32++)
+        for (u16 = 0; u16 < jcf->constantPoolCount - 1; u16++)
         {
-            if (!readConstantPoolEntry(jcf, jcf->constantPool + u32))
+            if (!readConstantPoolEntry(jcf, jcf->constantPool + u16))
                 return;
 
             jcf->currentConstantPoolEntryIndex++;
         }
-    }
 
-    // TODO: check if all class_index points to valid UTF-8 class names
-    // TODO: check if all descriptor_index points to valid descriptors etc.
+        if (!checkConstantPoolValidity(jcf))
+            return;
+    }
 
     if (!readu2(jcf, &jcf->accessFlags) ||
         !readu2(jcf, &jcf->thisClass) ||
@@ -115,7 +93,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
 
     if (jcf->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
     {
-        jcf->status = USE_OF_RESERVED_ACCESS_FLAGS;
+        jcf->status = USE_OF_RESERVED_CLASS_ACCESS_FLAGS;
         return;
     }
 
@@ -137,27 +115,11 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         return;
     }
 
-    int32_t fileNameBegin, fileNameEnd, fileNameLength;
-    char fileName[256];
-
-    getFileName(path, &fileNameBegin, &fileNameEnd);
-    fileNameLength = fileNameEnd - fileNameBegin + 2;
-
-    if (fileNameLength <= 1)
+    if (!checkClassName(jcf, path))
     {
-        jcf->status = CLASS_FILE_NAME_INVALID;
+        jcf->status = INVALID_CLASS_NAME;
         return;
     }
-
-    if (fileNameLength > sizeof(fileName))
-    {
-        jcf->status = CLASS_FILE_NAME_TOO_LONG;
-        return;
-    }
-
-    snprintf(fileName, sizeof(fileName) > fileNameLength ? fileNameLength : sizeof(fileName), "%s", path + fileNameBegin);
-
-    // TODO: assert that jcf->thisClass and file name are the same
 
     if (!readu2(jcf, &jcf->interfaceCount))
     {
@@ -272,7 +234,14 @@ void openClassFile(JavaClassFile* jcf, const char* path)
     }
 
     if (fgetc(jcf->file) != EOF)
+    {
         jcf->status = FILE_CONTAINS_UNEXPECTED_DATA;
+    }
+    else
+    {
+        fclose(jcf->file);
+        jcf->file = NULL;
+    }
 
 }
 
@@ -281,7 +250,7 @@ void closeClassFile(JavaClassFile* jcf)
     if (!jcf)
         return;
 
-    uint32_t i;
+    uint16_t i;
 
     if (jcf->file)
     {
@@ -335,8 +304,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case STATUS_OK: return "File is ok";
         case FILE_COULDNT_BE_OPENED: return "Class file couldn't be opened";
         case INVALID_SIGNATURE: return "Signature (0xCAFEBABE) mismatch";
-        case CLASS_FILE_NAME_INVALID: return "Class file name is invalid";
-        case CLASS_FILE_NAME_TOO_LONG: return "Class file name is too long";
+        case INVALID_CLASS_NAME: return "Class name and .class file name don't match";
         case MEMORY_ALLOCATION_FAILED: return "Not enough memory";
         case INVALID_CONSTANT_POOL_COUNT: return "Constant pool count should be at least 1";
         case UNEXPECTED_EOF: return "End of file found too soon";
@@ -348,12 +316,16 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case INVALID_CONSTANT_POOL_INDEX: return "Invalid index for constant pool entry";
         case UNKNOWN_CONSTANT_POOL_TAG: return "Unknown constant pool entry tag";
         case INVALID_ACCESS_FLAGS: return "Invalid combination of class access flags";
-        case USE_OF_RESERVED_ACCESS_FLAGS: return "Class access flags contains bits that should be zero";
+        case USE_OF_RESERVED_CLASS_ACCESS_FLAGS: return "Class access flags contains bits that should be zero";
+        case USE_OF_RESERVED_METHOD_ACCESS_FLAGS: return "Method access flags contains bits that should be zero";
         case INVALID_THIS_CLASS_INDEX: return "\"This Class\" field doesn't point to valid class index";
         case INVALID_SUPER_CLASS_INDEX: return "\"Super class\" field doesn't point to valid class index";
         case INVALID_INTERFACE_INDEX: return "Interface index doesn't point to a valid class index";
-        case INVALID_FIELD_NAME_INDEX: return "Field has a name index that doesn't point to a valid UTF-8 index";
-        case INVALID_FIELD_DESCRIPTOR_INDEX: return "Field has a descriptor index that doesn't point to a valid UTF-8 index";
+        case INVALID_FIELD_DESCRIPTOR_INDEX: return "descriptor_index doesn't point to a valid field descriptor";
+        case INVALID_NAME_INDEX: return "name_index doesn't point to a valid UTF-8 stream";
+        case INVALID_STRING_INDEX: return "string_index doesn't point to a valid UTF-8 stream";
+        case INVALID_CLASS_INDEX: return "class_index doesn't point to a valid class";
+        case INVALID_JAVA_IDENTIFIER: return "UTF-8 stream isn't a valid Java identifier";
         case FILE_CONTAINS_UNEXPECTED_DATA: return "Class file contains more data than expected, which wasn't processed";
 
         default:
@@ -363,14 +335,97 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
     return "Unknown status";
 }
 
-void printGeneralInfo(JavaClassFile* jcf)
+void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len)
+{
+    uint32_t bytes = 0;
+    const char* comma = ", ";
+    const char* empty = "";
+
+    #define decodeflag(flag, name) if (flags & flag) { \
+        bytes = snprintf(buffer, buffer_len, "%s%s", bytes ? comma : empty, name); \
+        buffer += bytes; \
+        buffer_len -= bytes; }
+
+    decodeflag(ACC_ABSTRACT, "abstract")
+    decodeflag(ACC_INTERFACE, "interface")
+    decodeflag(ACC_TRANSIENT, "transient")
+    decodeflag(ACC_VOLATILE, "volatile")
+    decodeflag(ACC_SUPER, "super")
+    decodeflag(ACC_FINAL, "final")
+    decodeflag(ACC_STATIC, "static")
+    decodeflag(ACC_PUBLIC, "public")
+    decodeflag(ACC_PRIVATE, "private")
+    decodeflag(ACC_PROTECTED, "protected")
+
+    #undef decodeflag
+}
+
+void printGeneralFileInfo(JavaClassFile* jcf)
 {
     printf("File status: %d, %s.\n", jcf->status, decodeJavaClassFileStatus(jcf->status));
     printf("Number of bytes read: %d\n", jcf->totalBytesRead);
-    printf("Java Class Version: %u.%u\n", jcf->majorVersion, jcf->minorVersion);
+    printf("Version: %u.%u\n", jcf->majorVersion, jcf->minorVersion);
     printf("Constant pool count: %u, constants successfully read: %u\n", jcf->constantPoolCount, jcf->currentConstantPoolEntryIndex);
     printf("Interface count: %u, interfaces successfully read: %u\n", jcf->interfaceCount, jcf->currentInterfaceEntryIndex);
     printf("Fields count: %u, fields successfully read: %u\n", jcf->fieldCount, jcf->currentFieldEntryIndex);
     printf("Methods count: %u, methods successfully read: %u\n", jcf->methodCount, jcf->currentMethodEntryIndex);
     printf("Attributes count: %u, attributes successfully read: %u\n", jcf->attributeCount, jcf->currentAttributeEntryIndex);
+}
+
+void printClassInfo(JavaClassFile* jcf)
+{
+    char buffer[256];
+    cp_info* cp;
+
+    printf("---- General Information ----\n\n");
+
+    printf("Version:\t\t%u.%u (Major.minor)\n", jcf->majorVersion, jcf->minorVersion);
+    printf("Constant pool count:\t%u\n", jcf->constantPoolCount);
+
+    decodeAccessFlags(jcf->accessFlags, buffer, sizeof(buffer));
+    printf("Access flags:\t\t0x%.4X [%s]\n", jcf->accessFlags, buffer);
+
+    cp = jcf->constantPool + jcf->thisClass - 1;
+    cp = jcf->constantPool + cp->Class.name_index - 1;
+    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+    printf("This class:\t\tcp index #%u <%s>\n", jcf->thisClass, buffer);
+
+    cp = jcf->constantPool + jcf->superClass - 1;
+    cp = jcf->constantPool + cp->Class.name_index - 1;
+    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+    printf("Super class:\t\tcp index #%u <%s>\n", jcf->superClass, buffer);
+
+    printf("Interfaces count:\t%u\n", jcf->interfaceCount);
+    printf("Fields count:\t\t%u\n", jcf->fieldCount);
+    printf("Methods count:\t\t%u\n", jcf->methodCount);
+    printf("Attributes count:\t%u\n", jcf->attributeCount);
+
+    printConstantPool(jcf);
+
+    if (jcf->interfaceCount > 0)
+    {
+        printf("\n---- Interfaces ----\n\n");
+        // TODO: print interfaces
+    }
+
+    if (jcf->fieldCount > 0)
+    {
+        printf("\n---- Fields ----\n\n");
+        // TODO: print fields
+        // TODO: move field printing code to fields.c
+    }
+
+    if (jcf->methodCount > 0)
+    {
+        printf("\n---- Methods ----\n\n");
+        // TODO: print methods
+        // TODO: move method printing code to methods.c
+    }
+
+    if (jcf->attributeCount > 0)
+    {
+        printf("\n---- Attributes ----\n\n");
+        // TODO: print attributes
+        // TODO: move attribute printing code to attributes.c
+    }
 }
