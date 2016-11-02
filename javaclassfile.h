@@ -12,27 +12,35 @@ typedef struct JavaClassFile JavaClassFile;
 
 enum ClassAccessFlags {
 
-    ACC_PUBLIC      = 0x0001, // Class and Field
-    ACC_PRIVATE     = 0x0002, // Field only
-    ACC_PROTECTED   = 0x0004, // Field only
-    ACC_STATIC      = 0x0008, // Field only
-    ACC_FINAL       = 0x0010, // Class and Field
-    ACC_SUPER       = 0x0020, // Class only
-    ACC_VOLATILE    = 0x0040, // Field only
-    ACC_TRANSIENT   = 0x0080, // Field only
-    ACC_INTERFACE   = 0x0200, // Class only
-    ACC_ABSTRACT    = 0x0400, // Class only
+    ACC_PUBLIC          = 0x0001, // Class, Field, Method
+    ACC_PRIVATE         = 0x0002, // Field, Method
+    ACC_PROTECTED       = 0x0004, // Field, Method
+    ACC_STATIC          = 0x0008, // Field, Method
+    ACC_FINAL           = 0x0010, // Class, Field, Method
+    ACC_SUPER           = 0x0020, // Class
+    ACC_SYNCHRONIZED    = 0x0020, // Method
+    ACC_VOLATILE        = 0x0040, // Field
+    ACC_TRANSIENT       = 0x0080, // Field
+    ACC_NATIVE          = 0x0100, // Method
+    ACC_INTERFACE       = 0x0200, // Class
+    ACC_ABSTRACT        = 0x0400, // Class, Method
+    ACC_STRICT          = 0x0800, // Method
 
     ACC_INVALID_CLASS_FLAG_MASK = ~(ACC_PUBLIC | ACC_FINAL | ACC_SUPER | ACC_INTERFACE | ACC_ABSTRACT),
-    ACC_INVALID_FIELD_FLAG_MASK = ~(ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL | ACC_VOLATILE | ACC_TRANSIENT)
+
+    ACC_INVALID_FIELD_FLAG_MASK = ~(ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL |
+                                    ACC_VOLATILE | ACC_TRANSIENT),
+
+    ACC_INVALID_METHOD_FLAG_MASK = ~(ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL |
+                                     ACC_SYNCHRONIZED | ACC_NATIVE | ACC_ABSTRACT | ACC_STRICT)
+
 };
 
 enum JavaClassStatus {
     STATUS_OK,
     FILE_COULDNT_BE_OPENED,
     INVALID_SIGNATURE,
-    CLASS_FILE_NAME_INVALID,
-    CLASS_FILE_NAME_TOO_LONG,
+    INVALID_CLASS_NAME,
     MEMORY_ALLOCATION_FAILED,
     INVALID_CONSTANT_POOL_COUNT,
     UNEXPECTED_EOF,
@@ -44,16 +52,20 @@ enum JavaClassStatus {
     INVALID_CONSTANT_POOL_INDEX,
     UNKNOWN_CONSTANT_POOL_TAG,
     INVALID_ACCESS_FLAGS,
-    USE_OF_RESERVED_ACCESS_FLAGS,
+    USE_OF_RESERVED_CLASS_ACCESS_FLAGS,
+    USE_OF_RESERVED_METHOD_ACCESS_FLAGS,
     INVALID_THIS_CLASS_INDEX,
     INVALID_SUPER_CLASS_INDEX,
     INVALID_INTERFACE_INDEX,
-    INVALID_FIELD_NAME_INDEX,
     INVALID_FIELD_DESCRIPTOR_INDEX,
+    INVALID_NAME_INDEX,
+    INVALID_STRING_INDEX,
+    INVALID_CLASS_INDEX,
+    INVALID_JAVA_IDENTIFIER,
     FILE_CONTAINS_UNEXPECTED_DATA
 };
 
-typedef struct JavaClassFile {
+struct JavaClassFile {
     FILE* file;
     enum JavaClassStatus status;
     uint16_t minorVersion, majorVersion;
@@ -81,12 +93,14 @@ typedef struct JavaClassFile {
     uint16_t currentMethodEntryIndex;
     uint16_t currentAttributeEntryIndex;
 
-} JavaClassFile;
+};
 
 void openClassFile(JavaClassFile* jcf, const char* path);
 void closeClassFile(JavaClassFile* jcf);
 const char* decodeJavaClassFileStatus(enum JavaClassStatus);
+void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len);
 
-void printGeneralInfo(JavaClassFile* jcf);
+void printGeneralFileInfo(JavaClassFile* jcf);
+void printClassInfo(JavaClassFile* jcf);
 
 #endif // JAVACLASSFILE_H
