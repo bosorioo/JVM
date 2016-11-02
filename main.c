@@ -10,7 +10,12 @@ int main()
     JavaClassFile jcf;
 
     openClassFile(&jcf, path);
-    printGeneralInfo(&jcf);
+
+    if (jcf.status == STATUS_OK)
+        printClassInfo(&jcf);
+    else
+        printGeneralFileInfo(&jcf);
+
     closeClassFile(&jcf);
 
     return 0;
