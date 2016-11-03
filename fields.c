@@ -16,7 +16,13 @@ char readField(JavaClassFile* jcf, field_info* entry)
         return 0;
     }
 
-    // TODO: check access flags validity
+    if (entry->access_flags & ACC_INVALID_FIELD_FLAG_MASK)
+    {
+        jcf->status = USE_OF_RESERVED_FIELD_ACCESS_FLAGS;
+        return 0;
+    }
+
+    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
 
     if (entry->name_index == 0 ||
         entry->name_index >= jcf->constantPoolCount ||

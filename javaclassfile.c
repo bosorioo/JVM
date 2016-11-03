@@ -316,8 +316,11 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case INVALID_CONSTANT_POOL_INDEX: return "Invalid index for constant pool entry";
         case UNKNOWN_CONSTANT_POOL_TAG: return "Unknown constant pool entry tag";
         case INVALID_ACCESS_FLAGS: return "Invalid combination of class access flags";
+
         case USE_OF_RESERVED_CLASS_ACCESS_FLAGS: return "Class access flags contains bits that should be zero";
         case USE_OF_RESERVED_METHOD_ACCESS_FLAGS: return "Method access flags contains bits that should be zero";
+        case USE_OF_RESERVED_FIELD_ACCESS_FLAGS: return "Field access flags contains bits that should be zero";
+
         case INVALID_THIS_CLASS_INDEX: return "\"This Class\" field doesn't point to valid class index";
         case INVALID_SUPER_CLASS_INDEX: return "\"Super class\" field doesn't point to valid class index";
         case INVALID_INTERFACE_INDEX: return "Interface index doesn't point to a valid class index";
