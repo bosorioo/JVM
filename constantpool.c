@@ -215,7 +215,7 @@ const char* decodeTag(uint8_t tag)
 void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 {
     char buffer[48];
-    uint16_t u16;
+    cp_info* cpi;
 
     switch(entry->tag)
     {
@@ -228,10 +228,20 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 
         case CONSTANT_Class:
 
-            u16 = entry->Class.name_index;
-            entry = jcf->constantPool + entry->Class.name_index - 1;
-            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
-            printf("\tname_index: cp index #%u\n\tCharacters: %s", u16, buffer);
+            cpi = jcf->constantPool + entry->Class.name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+            printf("\tname_index: cp index #%u <%s>", entry->Class.name_index, buffer);
+            break;
+
+        case CONSTANT_NameAndType:
+
+            cpi = jcf->constantPool + entry->NameAndType.name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+            printf("\tname_index: cp index #%u <%s>\n", entry->NameAndType.name_index, buffer);
+
+            cpi = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+            printf("\tdescriptor_index: cp index #%u <%s>", entry->NameAndType.descriptor_index, buffer);
             break;
 
 
