@@ -1,4 +1,5 @@
 #include "readfunctions.h"
+#include "utf8.h"
 
 uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
 {
@@ -46,4 +47,50 @@ uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
         *out = u2;
 
     return i == 2;
+}
+
+int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len)
+{
+    int32_t totalBytesRead = 0;
+    uint32_t utf8_char;
+    uint8_t used_bytes;
+
+    do
+    {
+        used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+        if (used_bytes == 0)
+            return 0;
+
+        utf8_bytes += used_bytes;
+        utf8_len -= used_bytes;
+        totalBytesRead += used_bytes;
+
+    } while (utf8_char == '[');
+
+    switch (utf8_char)
+    {
+        case 'B': case 'C': case 'D': case 'F': case 'I': case 'J': case 'S': case 'Z': break;
+        case 'L':
+        {
+            do
+            {
+                used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+                if (used_bytes == 0)
+                    return 0;
+
+                utf8_bytes += used_bytes;
+                utf8_len -= used_bytes;
+                totalBytesRead += used_bytes;
+            } while (utf8_char != ';');
+
+            break;
+        }
+
+        default:
+            return 0;
+    }
+
+    return totalBytesRead;
 }
