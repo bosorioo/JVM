@@ -115,9 +115,9 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         return;
     }
 
-    if (!checkClassName(jcf, path))
+    if (!checkClassNameFileNameMatch(jcf, path))
     {
-        jcf->status = INVALID_CLASS_NAME;
+        jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
         return;
     }
 
@@ -304,7 +304,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case STATUS_OK: return "File is ok";
         case FILE_COULDNT_BE_OPENED: return "Class file couldn't be opened";
         case INVALID_SIGNATURE: return "Signature (0xCAFEBABE) mismatch";
-        case INVALID_CLASS_NAME: return "Class name and .class file name don't match";
+        case CLASS_NAME_FILE_NAME_MISMATCH: return "Class name and .class file name don't match";
         case MEMORY_ALLOCATION_FAILED: return "Not enough memory";
         case INVALID_CONSTANT_POOL_COUNT: return "Constant pool count should be at least 1";
         case UNEXPECTED_EOF: return "End of file found too soon";
