@@ -2,9 +2,10 @@
 #include "constantpool.h"
 #include "utf8.h"
 #include "ctype.h"
+#include "readfunctions.h"
 #include "locale.h"
 
-char checkClassName(JavaClassFile* jcf, const char* classFilePath)
+char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
     char result;
@@ -113,7 +114,14 @@ char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t acceptSla
 char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
 {
     cp_info* entry = jcf->constantPool + class_index - 1;
-    return entry->tag == CONSTANT_Class && isValidNameIndex(jcf, entry->Class.name_index, 1);
+
+    if (entry->tag != CONSTANT_Class || !isValidNameIndex(jcf, entry->Class.name_index, 1))
+    {
+        jcf->status = INVALID_CLASS_INDEX;
+        return 0;
+    }
+
+    return 1;
 }
 
 char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
@@ -121,10 +129,32 @@ char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index
     cp_info* entry = jcf->constantPool + name_and_type_index - 1;
 
     if (entry->tag != CONSTANT_NameAndType || !isValidNameIndex(jcf, entry->NameAndType.name_index, 0))
+    {
+        jcf->status = INVALID_NAME_INDEX;
         return 0;
+    }
 
+    entry = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
 
-    // TODO: check that the descriptor is a valid Field Descriptor
+    if (entry->tag != CONSTANT_Utf8 || entry->Utf8.length == 0)
+    {
+        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        return 0;
+    }
+
+    int32_t field_descriptor_length = readFieldDescriptor(entry->Utf8.bytes, entry->Utf8.length);
+
+    if (entry->Utf8.length != field_descriptor_length)
+    {
+        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        return 0;
+    }
+
+    if (*entry->Utf8.bytes == 'L' && !isValidJavaIdentifier(entry->Utf8.bytes + 1, entry->Utf8.length - 2, 1))
+    {
+        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        return 0;
+    }
 
     return 1;
 }
@@ -163,16 +193,10 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
             case CONSTANT_Fieldref:
 
                 if (!checkClassIndex(jcf, entry->Fieldref.class_index))
-                {
-                    jcf->status = INVALID_CLASS_INDEX;
                     return 0;
-                }
 
                 if (!checkFieldNameAndTypeIndex(jcf, entry->Fieldref.name_and_type_index))
-                {
-                    jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
                     return 0;
-                }
 
                 break;
 
