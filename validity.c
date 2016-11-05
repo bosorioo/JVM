@@ -5,6 +5,52 @@
 #include "readfunctions.h"
 #include "locale.h"
 
+char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
+{
+    if (accessFlags & ACC_INVALID_METHOD_FLAG_MASK)
+    {
+        jcf->status = USE_OF_RESERVED_METHOD_ACCESS_FLAGS;
+        return 0;
+    }
+
+    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
+
+    return 1;
+}
+
+char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
+{
+    if (jcf->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
+    {
+        jcf->status = USE_OF_RESERVED_CLASS_ACCESS_FLAGS;
+        return 0;
+    }
+
+    if ((jcf->accessFlags & ACC_ABSTRACT) || (jcf->accessFlags & ACC_INTERFACE))
+    {
+        if ((jcf->accessFlags & ACC_ABSTRACT & ACC_INTERFACE) != (ACC_INTERFACE | ACC_ABSTRACT) ||
+            (jcf->accessFlags & (ACC_FINAL | ACC_SUPER)))
+        {
+            jcf->status = INVALID_ACCESS_FLAGS;
+            return 0;
+        }
+    }
+
+    if (!jcf->thisClass || jcf->constantPool[jcf->thisClass - 1].tag != CONSTANT_Class)
+    {
+        jcf->status = INVALID_THIS_CLASS_INDEX;
+        return 0;
+    }
+
+    if (jcf->superClass && jcf->constantPool[jcf->superClass - 1].tag != CONSTANT_Class)
+    {
+        jcf->status = INVALID_SUPER_CLASS_INDEX;
+        return 0;
+    }
+
+    return 1;
+}
+
 char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
@@ -36,7 +82,10 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
         bytes_used = nextUTF8Character(utf8_class_name, utf8_len, &utf8_char);
 
         if (bytes_used == 0)
+        {
+            jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
             return 0;
+        }
 
         utf8_class_name += bytes_used;
         utf8_len -= bytes_used;
@@ -55,16 +104,25 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
         }
     }
 
+    if (result)
+        result = i == (end - begin);
+
+    if (result == 0)
+        jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
+
     return result;
 }
 
-char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t acceptSlashes)
+char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
 {
     uint32_t utf8_char;
     uint8_t used_bytes;
     uint8_t firstChar = 1;
     char isValid = 1;
     char* previousLocale = setlocale(LC_CTYPE, "");
+
+    if (*utf8_bytes == '[')
+        return readFieldDescriptor(utf8_bytes, utf8_len, 1) == utf8_len;
 
     while (utf8_len > 0)
     {
@@ -78,7 +136,7 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t accept
 
         if (isalpha(utf8_char) || utf8_char == '_' || utf8_char == '$' ||
             (isdigit(utf8_char) && !firstChar) ||
-            (utf8_char == '/' && acceptSlashes))
+            (utf8_char == '/' && !firstChar && isClassIdentifier))
         {
             firstChar = utf8_char == '/';
             utf8_len -= used_bytes;
@@ -101,23 +159,24 @@ char isValidUTF8Index(JavaClassFile* jcf, uint16_t index)
     return (jcf->constantPool + index - 1)->tag == CONSTANT_Utf8;
 }
 
-char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t acceptSlashes)
+char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t isClassIdentifier)
 {
     cp_info* entry = jcf->constantPool + name_index - 1;
-    return entry->tag == CONSTANT_Utf8 && isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, acceptSlashes);
+    return entry->tag == CONSTANT_Utf8 && isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, isClassIdentifier);
 }
 
-char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t acceptSlashes)
+char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index)
 {
     cp_info* entry = jcf->constantPool + name_index - 1;
 
     if (entry->tag != CONSTANT_Utf8)
         return 0;
 
-    if (cmp_UTF8_Ascii(entry->Utf8.bytes, entry->Utf8.length, (uint8_t*)"<init>", 6))
+    if (cmp_UTF8_Ascii(entry->Utf8.bytes, entry->Utf8.length, (uint8_t*)"<init>", 6) ||
+        cmp_UTF8_Ascii(entry->Utf8.bytes, entry->Utf8.length, (uint8_t*)"<clinit>", 8))
         return 1;
 
-    return isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, acceptSlashes);
+    return isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, 0);
 }
 
 char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
@@ -151,15 +210,7 @@ char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index
         return 0;
     }
 
-    int32_t field_descriptor_length = readFieldDescriptor(entry->Utf8.bytes, entry->Utf8.length);
-
-    if (entry->Utf8.length != field_descriptor_length)
-    {
-        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
-        return 0;
-    }
-
-    if (*entry->Utf8.bytes == 'L' && !isValidJavaIdentifier(entry->Utf8.bytes + 1, entry->Utf8.length - 2, 1))
+    if (entry->Utf8.length != readFieldDescriptor(entry->Utf8.bytes, entry->Utf8.length, 1))
     {
         jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
@@ -172,7 +223,7 @@ char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_inde
 {
     cp_info* entry = jcf->constantPool + name_and_type_index - 1;
 
-    if (entry->tag != CONSTANT_NameAndType || !isValidMethodNameIndex(jcf, entry->NameAndType.name_index, 0))
+    if (entry->tag != CONSTANT_NameAndType || !isValidMethodNameIndex(jcf, entry->NameAndType.name_index))
     {
         jcf->status = INVALID_NAME_INDEX;
         return 0;
@@ -186,70 +237,9 @@ char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_inde
         return 0;
     }
 
-    uint32_t utf8_char;
-    uint8_t used_bytes;
-    uint8_t* utf8_bytes = entry->Utf8.bytes;
-    int32_t utf8_len = entry->Utf8.length;
-
-    used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
-
-    if (used_bytes == 0 || utf8_char != '(')
+    if (entry->Utf8.length != readMethodDescriptor(entry->Utf8.bytes, entry->Utf8.length, 1))
     {
         jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
-        return 0;
-    }
-
-    utf8_bytes += used_bytes;
-    utf8_len -= used_bytes;
-
-    int32_t field_descriptor_length;
-
-    do
-    {
-        field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len);
-
-        if (field_descriptor_length == 0)
-        {
-            used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
-
-            if (used_bytes == 0 || utf8_char != ')')
-            {
-                jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
-                return 0;
-            }
-
-            utf8_bytes += used_bytes;
-            utf8_len -= used_bytes;
-
-            break;
-        }
-
-        if (*utf8_bytes == 'L' && !isValidJavaIdentifier(utf8_bytes + 1, field_descriptor_length - 2, 1))
-        {
-            jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
-            return 0;
-        }
-
-        utf8_bytes += field_descriptor_length;
-        utf8_len -= field_descriptor_length;
-
-    } while (1);
-
-    field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len);
-
-    if (field_descriptor_length == 0)
-    {
-        used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
-
-        if (used_bytes == 0 || utf8_char != 'V')
-        {
-            jcf->status  = INVALID_METHOD_DESCRIPTOR_INDEX;
-            return 0;
-        }
-    }
-    else if (field_descriptor_length != utf8_len)
-    {
-        jcf->status  = INVALID_METHOD_DESCRIPTOR_INDEX;
         return 0;
     }
 
