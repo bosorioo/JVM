@@ -1,5 +1,6 @@
 #include "methods.h"
 #include "readfunctions.h"
+#include "validity.h"
 #include <stdlib.h>
 
 char readMethod(JavaClassFile* jcf, method_info* entry)
@@ -15,34 +16,27 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
         return 0;
     }
 
-    if (entry->access_flags & ACC_INVALID_METHOD_FLAG_MASK)
-    {
-        jcf->status = USE_OF_RESERVED_METHOD_ACCESS_FLAGS;
+    if (!checkMethodAccessFlags(jcf, entry->access_flags))
         return 0;
-    }
-
-    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
 
     if (entry->name_index == 0 ||
         entry->name_index >= jcf->constantPoolCount ||
-        jcf->constantPool[entry->name_index - 1].tag != CONSTANT_Utf8)
+        !isValidMethodNameIndex(jcf, entry->name_index))
     {
         jcf->status = INVALID_NAME_INDEX;
         return 0;
     }
 
-    // TODO: check if name_index points to a valid Java identifier
-    // or if it points to a <init> or <cinit>
+    cp_info* cpi = jcf->constantPool + entry->descriptor_index - 1;
 
     if (entry->descriptor_index == 0 ||
         entry->descriptor_index >= jcf->constantPoolCount ||
-        jcf->constantPool[entry->descriptor_index - 1].tag != CONSTANT_Utf8)
+        cpi->tag != CONSTANT_Utf8 ||
+        !readMethodDescriptor(cpi->Utf8.bytes, cpi->Utf8.length, 1))
     {
         jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
     }
-
-    // TODO: check if descriptor_index points to a valid field descriptor
 
     if (entry->attributes_count > 0)
     {
@@ -56,7 +50,7 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
 
         uint16_t i;
 
-        jcf->currentAttributeEntryIndex = 0;
+        jcf->currentAttributeEntryIndex = -1;
 
         for (i = 0; i < entry->attributes_count; i++)
         {
@@ -74,7 +68,7 @@ void freeMethodAttributes(method_info* entry)
 {
     uint32_t i;
 
-    if (entry->attributes)
+    if (entry->attributes != NULL)
     {
         for (i = 0; i < entry->attributes_count; i++)
             freeAttributeInfo(entry->attributes + i);
