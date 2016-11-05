@@ -1,5 +1,6 @@
 #include "readfunctions.h"
 #include "utf8.h"
+#include "validity.h"
 #include <math.h>
 
 uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
@@ -50,7 +51,7 @@ uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
     return i == 2;
 }
 
-int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len)
+int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)
 {
     int32_t totalBytesRead = 0;
     uint32_t utf8_char;
@@ -74,6 +75,9 @@ int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len)
         case 'B': case 'C': case 'D': case 'F': case 'I': case 'J': case 'S': case 'Z': break;
         case 'L':
         {
+            uint8_t* identifierBegin = utf8_bytes;
+            int32_t identifierLength = 0;
+
             do
             {
                 used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
@@ -84,7 +88,12 @@ int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len)
                 utf8_bytes += used_bytes;
                 utf8_len -= used_bytes;
                 totalBytesRead += used_bytes;
+                identifierLength += used_bytes;
+
             } while (utf8_char != ';');
+
+            if (checkValidClassIdentifier && !isValidJavaIdentifier(identifierBegin, identifierLength - 1, 1))
+                return 0;
 
             break;
         }
@@ -94,6 +103,68 @@ int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len)
     }
 
     return totalBytesRead;
+}
+
+int32_t readMethodDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)
+{
+    int32_t bytesProcessed = 0;
+    uint32_t utf8_char;
+    uint8_t used_bytes;
+
+    used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+    if (used_bytes == 0 || utf8_char != '(')
+        return 0;
+
+    utf8_bytes += used_bytes;
+    utf8_len -= used_bytes;
+    bytesProcessed += used_bytes;
+
+    int32_t field_descriptor_length;
+
+    do
+    {
+        field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len, checkValidClassIdentifier);
+
+        if (field_descriptor_length == 0)
+        {
+            used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+            if (used_bytes == 0 || utf8_char != ')')
+                return 0;
+
+            utf8_bytes += used_bytes;
+            utf8_len -= used_bytes;
+            bytesProcessed += used_bytes;
+
+            break;
+        }
+
+        utf8_bytes += field_descriptor_length;
+        utf8_len -= field_descriptor_length;
+        bytesProcessed += field_descriptor_length;
+
+    } while (1);
+
+    field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len, 1);
+
+    if (field_descriptor_length == 0)
+    {
+        used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+        if (used_bytes == 0 || utf8_char != 'V')
+            return 0;
+
+        utf8_len -= used_bytes;
+        bytesProcessed += used_bytes;
+    }
+    else
+    {
+        utf8_len -= field_descriptor_length;
+        bytesProcessed += field_descriptor_length;
+    }
+
+    return utf8_len == 0 ? bytesProcessed : 0;
 }
 
 float readConstantPoolFloat(cp_info* entry)
