@@ -325,9 +325,11 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case INVALID_SUPER_CLASS_INDEX: return "\"Super class\" field doesn't point to valid class index";
         case INVALID_INTERFACE_INDEX: return "Interface index doesn't point to a valid class index";
         case INVALID_FIELD_DESCRIPTOR_INDEX: return "descriptor_index doesn't point to a valid field descriptor";
+        case INVALID_METHOD_DESCRIPTOR_INDEX: return "descriptor_index doesn't point to a valid method descriptor";
         case INVALID_NAME_INDEX: return "name_index doesn't point to a valid UTF-8 stream";
         case INVALID_STRING_INDEX: return "string_index doesn't point to a valid UTF-8 stream";
         case INVALID_CLASS_INDEX: return "class_index doesn't point to a valid class";
+        case INVALID_NAME_AND_TYPE_INDEX: return "name_index or descriptor_index doesn't point to a valid UTF-8 stream";
         case INVALID_JAVA_IDENTIFIER: return "UTF-8 stream isn't a valid Java identifier";
         case FILE_CONTAINS_UNEXPECTED_DATA: return "Class file contains more data than expected, which wasn't processed";
 

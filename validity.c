@@ -80,11 +80,7 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t accept
             (isdigit(utf8_char) && !firstChar) ||
             (utf8_char == '/' && acceptSlashes))
         {
-            if (utf8_char == '/')
-                firstChar = 1;
-            else
-                firstChar = 0;
-
+            firstChar = utf8_char == '/';
             utf8_len -= used_bytes;
             utf8_bytes += used_bytes;
         }
@@ -109,6 +105,19 @@ char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t acceptSla
 {
     cp_info* entry = jcf->constantPool + name_index - 1;
     return entry->tag == CONSTANT_Utf8 && isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, acceptSlashes);
+}
+
+char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t acceptSlashes)
+{
+    cp_info* entry = jcf->constantPool + name_index - 1;
+
+    if (entry->tag != CONSTANT_Utf8)
+        return 0;
+
+    if (cmp_UTF8_Ascii(entry->Utf8.bytes, entry->Utf8.length, (uint8_t*)"<init>", 6))
+        return 1;
+
+    return isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, acceptSlashes);
 }
 
 char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
@@ -159,6 +168,94 @@ char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index
     return 1;
 }
 
+char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
+{
+    cp_info* entry = jcf->constantPool + name_and_type_index - 1;
+
+    if (entry->tag != CONSTANT_NameAndType || !isValidMethodNameIndex(jcf, entry->NameAndType.name_index, 0))
+    {
+        jcf->status = INVALID_NAME_INDEX;
+        return 0;
+    }
+
+    entry = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
+
+    if (entry->tag != CONSTANT_Utf8 || entry->Utf8.length == 0)
+    {
+        jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+        return 0;
+    }
+
+    uint32_t utf8_char;
+    uint8_t used_bytes;
+    uint8_t* utf8_bytes = entry->Utf8.bytes;
+    int32_t utf8_len = entry->Utf8.length;
+
+    used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+    if (used_bytes == 0 || utf8_char != '(')
+    {
+        jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+        return 0;
+    }
+
+    utf8_bytes += used_bytes;
+    utf8_len -= used_bytes;
+
+    int32_t field_descriptor_length;
+
+    do
+    {
+        field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len);
+
+        if (field_descriptor_length == 0)
+        {
+            used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+            if (used_bytes == 0 || utf8_char != ')')
+            {
+                jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+                return 0;
+            }
+
+            utf8_bytes += used_bytes;
+            utf8_len -= used_bytes;
+
+            break;
+        }
+
+        if (*utf8_bytes == 'L' && !isValidJavaIdentifier(utf8_bytes + 1, field_descriptor_length - 2, 1))
+        {
+            jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+            return 0;
+        }
+
+        utf8_bytes += field_descriptor_length;
+        utf8_len -= field_descriptor_length;
+
+    } while (1);
+
+    field_descriptor_length = readFieldDescriptor(utf8_bytes, utf8_len);
+
+    if (field_descriptor_length == 0)
+    {
+        used_bytes = nextUTF8Character(utf8_bytes, utf8_len, &utf8_char);
+
+        if (used_bytes == 0 || utf8_char != 'V')
+        {
+            jcf->status  = INVALID_METHOD_DESCRIPTOR_INDEX;
+            return 0;
+        }
+    }
+    else if (field_descriptor_length != utf8_len)
+    {
+        jcf->status  = INVALID_METHOD_DESCRIPTOR_INDEX;
+        return 0;
+    }
+
+    return 1;
+}
+
 char checkConstantPoolValidity(JavaClassFile* jcf)
 {
     uint16_t i;
@@ -190,6 +287,17 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
 
                 break;
 
+            case CONSTANT_Methodref:
+            case CONSTANT_InterfaceMethodref:
+
+                if (!checkClassIndex(jcf, entry->Methodref.class_index))
+                    return 0;
+
+                if (!checkMethodNameAndTypeIndex(jcf, entry->Methodref.name_and_type_index))
+                    return 0;
+
+                break;
+
             case CONSTANT_Fieldref:
 
                 if (!checkClassIndex(jcf, entry->Fieldref.class_index))
@@ -200,7 +308,25 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
 
                 break;
 
-            // TODO: complete with other cases
+            case CONSTANT_NameAndType:
+
+                if (!isValidUTF8Index(jcf, entry->NameAndType.name_index) ||
+                    !isValidUTF8Index(jcf, entry->NameAndType.descriptor_index))
+                {
+                    jcf->status = INVALID_NAME_AND_TYPE_INDEX;
+                    return 0;
+                }
+
+                break;
+
+            case CONSTANT_Double:
+            case CONSTANT_Float:
+            case CONSTANT_Integer:
+            case CONSTANT_Long:
+            case CONSTANT_Utf8:
+                // There's nothing to check for these constant types, since they
+                // don't have pointers to other constant pool entries.
+                break;
 
             default:
                 // Will never happen, since this kind of error would be detected
