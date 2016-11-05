@@ -1,0 +1,345 @@
+---- General Information ----
+
+Version:		52.0 (Major.minor)
+Constant pool count:	83
+Access flags:		0x0021 [super, public]
+This class:		cp index #32 <sketch/Sketch>
+Super class:		cp index #33 <java/lang/Object>
+Interfaces count:	2
+Fields count:		4
+Methods count:		5
+Attributes count:	2
+
+---- Constant Pool ----
+
+     #1: Methodref (tag = 10)
+
+
+     #2: Fieldref (tag = 9)
+
+
+     #3: Class (tag = 7)
+	name_index: cp index #61 <[D>
+
+     #4: Double (tag = 6)
+	High Bytes:   0x405EDD2F
+	Low  Bytes:   0x1A9FBE77
+	Double Value: 1.234560e+002
+
+     #6: Double (tag = 6)
+	High Bytes:   0xC0847291
+	Low  Bytes:   0x6872B021
+	Double Value: -6.543210e+002
+
+     #8: Double (tag = 6)
+	High Bytes:   0x41CD6F34
+	Low  Bytes:   0x588FCD6F
+	Double Value: 9.876543e+008
+
+    #10: Class (tag = 7)
+	name_index: cp index #62 <java/lang/Double>
+
+    #11: Double (tag = 6)
+	High Bytes:   0x7FEFFFFF
+	Low  Bytes:   0xFFFFFFFF
+	Double Value: 1.797693e+308
+
+    #13: Double (tag = 6)
+	High Bytes:   0x00000000
+	Low  Bytes:   0x00000001
+	Double Value: 4.940656e-324
+
+    #15: Double (tag = 6)
+	High Bytes:   0x00100000
+	Low  Bytes:   0x00000000
+	Double Value: 2.225074e-308
+
+    #17: Double (tag = 6)
+	High Bytes:   0x7FF80000
+	Low  Bytes:   0x00000000
+	Double Value: nan
+
+    #19: Double (tag = 6)
+	High Bytes:   0x7FF00000
+	Low  Bytes:   0x00000000
+	Double Value: inf
+
+    #21: Double (tag = 6)
+	High Bytes:   0xFFF00000
+	Low  Bytes:   0x00000000
+	Double Value: -inf
+
+    #23: Fieldref (tag = 9)
+
+
+    #24: Fieldref (tag = 9)
+
+
+    #25: Methodref (tag = 10)
+
+
+    #26: String (tag = 8)
+	string_index: cp index #68 <Hello world!>
+	String Length: 12
+
+    #27: Methodref (tag = 10)
+
+
+    #28: Fieldref (tag = 9)
+
+
+    #29: Long (tag = 5)
+	High Bytes: 0x0000003E
+	Low  Bytes: 0xF1CDB4BA
+	Long Value: 270344762554
+
+    #31: Fieldref (tag = 9)
+
+
+    #32: Class (tag = 7)
+	name_index: cp index #72 <sketch/Sketch>
+
+    #33: Class (tag = 7)
+	name_index: cp index #73 <java/lang/Object>
+
+    #34: Class (tag = 7)
+	name_index: cp index #74 <java/util/EventListener>
+
+    #35: Class (tag = 7)
+	name_index: cp index #75 <java/util/RandomAccess>
+
+    #36: Class (tag = 7)
+	name_index: cp index #76 <sketch/Sketch$Test>
+
+    #37: Utf8 (tag = 1)
+	Byte Count: 4
+	Length: 4
+	ASCII Characters: Test
+
+    #38: Utf8 (tag = 1)
+	Byte Count: 12
+	Length: 12
+	ASCII Characters: InnerClasses
+
+    #39: Utf8 (tag = 1)
+	Byte Count: 6
+	Length: 6
+	ASCII Characters: values
+
+    #40: Utf8 (tag = 1)
+	Byte Count: 2
+	Length: 2
+	ASCII Characters: [I
+
+    #41: Utf8 (tag = 1)
+	Byte Count: 10
+	Length: 10
+	ASCII Characters: long_value
+
+    #42: Utf8 (tag = 1)
+	Byte Count: 1
+	Length: 1
+	ASCII Characters: J
+
+    #43: Utf8 (tag = 1)
+	Byte Count: 17
+	Length: 17
+	ASCII Characters: long_value_static
+
+    #44: Utf8 (tag = 1)
+	Byte Count: 6
+	Length: 6
+	ASCII Characters: matrix
+
+    #45: Utf8 (tag = 1)
+	Byte Count: 3
+	Length: 3
+	ASCII Characters: [[D
+
+    #46: Utf8 (tag = 1)
+	Byte Count: 6
+	Length: 6
+	ASCII Characters: <init>
+
+    #47: Utf8 (tag = 1)
+	Byte Count: 3
+	Length: 3
+	ASCII Characters: ()V
+
+    #48: Utf8 (tag = 1)
+	Byte Count: 4
+	Length: 4
+	ASCII Characters: Code
+
+    #49: Utf8 (tag = 1)
+	Byte Count: 15
+	Length: 15
+	ASCII Characters: LineNumberTable
+
+    #50: Utf8 (tag = 1)
+	Byte Count: 5
+	Length: 5
+	ASCII Characters: print
+
+    #51: Utf8 (tag = 1)
+	Byte Count: 4
+	Length: 4
+	ASCII Characters: (I)V
+
+    #52: Utf8 (tag = 1)
+	Byte Count: 3
+	Length: 3
+	ASCII Characters: add
+
+    #53: Utf8 (tag = 1)
+	Byte Count: 5
+	Length: 5
+	ASCII Characters: (IF)J
+
+    #54: Utf8 (tag = 1)
+	Byte Count: 4
+	Length: 4
+	ASCII Characters: main
+
+    #55: Utf8 (tag = 1)
+	Byte Count: 22
+	Length: 22
+	ASCII Characters: ([Ljava/lang/String;)V
+
+    #56: Utf8 (tag = 1)
+	Byte Count: 8
+	Length: 8
+	ASCII Characters: <clinit>
+
+    #57: Utf8 (tag = 1)
+	Byte Count: 10
+	Length: 10
+	ASCII Characters: SourceFile
+
+    #58: Utf8 (tag = 1)
+	Byte Count: 11
+	Length: 11
+	ASCII Characters: Sketch.java
+
+    #59: NameAndType (tag = 12)
+	name_index: cp index #46 <<init>>
+	descriptor_index: cp index #47 <()V>
+
+    #60: NameAndType (tag = 12)
+	name_index: cp index #41 <long_value>
+	descriptor_index: cp index #42 <J>
+
+    #61: Utf8 (tag = 1)
+	Byte Count: 2
+	Length: 2
+	ASCII Characters: [D
+
+    #62: Utf8 (tag = 1)
+	Byte Count: 16
+	Length: 16
+	ASCII Characters: java/lang/Double
+
+    #63: NameAndType (tag = 12)
+	name_index: cp index #44 <matrix>
+	descriptor_index: cp index #45 <[[D>
+
+    #64: Class (tag = 7)
+	name_index: cp index #77 <java/lang/System>
+
+    #65: NameAndType (tag = 12)
+	name_index: cp index #78 <out>
+	descriptor_index: cp index #79 <Ljava/io/PrintStream;>
+
+    #66: Class (tag = 7)
+	name_index: cp index #80 <java/io/PrintStream>
+
+    #67: NameAndType (tag = 12)
+	name_index: cp index #81 <println>
+	descriptor_index: cp index #51 <(I)V>
+
+    #68: Utf8 (tag = 1)
+	Byte Count: 12
+	Length: 12
+	ASCII Characters: Hello world!
+
+    #69: NameAndType (tag = 12)
+	name_index: cp index #81 <println>
+	descriptor_index: cp index #82 <(Ljava/lang/String;)V>
+
+    #70: NameAndType (tag = 12)
+	name_index: cp index #39 <values>
+	descriptor_index: cp index #40 <[I>
+
+    #71: NameAndType (tag = 12)
+	name_index: cp index #43 <long_value_static>
+	descriptor_index: cp index #42 <J>
+
+    #72: Utf8 (tag = 1)
+	Byte Count: 13
+	Length: 13
+	ASCII Characters: sketch/Sketch
+
+    #73: Utf8 (tag = 1)
+	Byte Count: 16
+	Length: 16
+	ASCII Characters: java/lang/Object
+
+    #74: Utf8 (tag = 1)
+	Byte Count: 23
+	Length: 23
+	ASCII Characters: java/util/EventListener
+
+    #75: Utf8 (tag = 1)
+	Byte Count: 22
+	Length: 22
+	ASCII Characters: java/util/RandomAccess
+
+    #76: Utf8 (tag = 1)
+	Byte Count: 18
+	Length: 18
+	ASCII Characters: sketch/Sketch$Test
+
+    #77: Utf8 (tag = 1)
+	Byte Count: 16
+	Length: 16
+	ASCII Characters: java/lang/System
+
+    #78: Utf8 (tag = 1)
+	Byte Count: 3
+	Length: 3
+	ASCII Characters: out
+
+    #79: Utf8 (tag = 1)
+	Byte Count: 21
+	Length: 21
+	ASCII Characters: Ljava/io/PrintStream;
+
+    #80: Utf8 (tag = 1)
+	Byte Count: 19
+	Length: 19
+	ASCII Characters: java/io/PrintStream
+
+    #81: Utf8 (tag = 1)
+	Byte Count: 7
+	Length: 7
+	ASCII Characters: println
+
+    #82: Utf8 (tag = 1)
+	Byte Count: 21
+	Length: 21
+	ASCII Characters: (Ljava/lang/String;)V
+
+
+---- Interfaces ----
+
+	Interface #1: cp index #34 <java/util/EventListener>
+	Interface #2: cp index #35 <java/util/RandomAccess>
+
+---- Fields ----
+
+
+---- Methods ----
+
+
+---- Attributes ----
+
