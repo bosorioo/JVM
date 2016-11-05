@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 #include "readfunctions.h"
 #include "constantpool.h"
 #include "utf8.h"
@@ -258,6 +259,12 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
         case CONSTANT_Integer:
             printf("\tBytes: 0x%08X\n", entry->Integer.value);
             printf("\tValue: %d", (int32_t)entry->Integer.value);
+            break;
+
+        case CONSTANT_Long:
+            printf("\tHigh Bytes: 0x%08X\n", entry->Long.high);
+            printf("\tLow  Bytes: 0x%08X\n", entry->Long.low);
+            printf("\tLong Value: %" PRId64, ((int64_t)entry->Long.high << 32) | entry->Long.low);
             break;
 
         case CONSTANT_Float:
