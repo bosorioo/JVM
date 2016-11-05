@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "readfunctions.h"
 #include "constantpool.h"
 #include "utf8.h"
@@ -215,6 +216,7 @@ const char* decodeTag(uint8_t tag)
 void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 {
     char buffer[48];
+    uint32_t u32;
     cp_info* cpi;
 
     switch(entry->tag)
@@ -222,8 +224,17 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 
         case CONSTANT_Utf8:
 
-            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
-            printf("\tLength: %u\n\tCharacters: %s", entry->Utf8.length, buffer);
+            u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
+            printf("\tByte Count: %u\n", entry->Utf8.length);
+            printf("\tLength: %u\n", u32);
+            printf("\tASCII Characters: %s", buffer);
+            break;
+
+        case CONSTANT_String:
+            cpi = jcf->constantPool + entry->String.string_index - 1;
+            u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+            printf("\tstring_index: cp index #%u <%s>\n", entry->String.string_index, buffer);
+            printf("\tString Length: %u", u32);
             break;
 
         case CONSTANT_Class:
@@ -242,6 +253,22 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
             cpi = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
             printf("\tdescriptor_index: cp index #%u <%s>", entry->NameAndType.descriptor_index, buffer);
+            break;
+
+        case CONSTANT_Integer:
+            printf("\tBytes: 0x%08X\n", entry->Integer.value);
+            printf("\tValue: %d", (int32_t)entry->Integer.value);
+            break;
+
+        case CONSTANT_Float:
+            printf("\tBytes: 0x%08X\n", entry->Float.bytes);
+            printf("\tValue: %f", readConstantPoolFloat(entry));
+            break;
+
+        case CONSTANT_Double:
+            printf("\tHigh Bytes:   0x%08X\n", entry->Double.high);
+            printf("\tLow  Bytes:   0x%08X\n", entry->Double.low);
+            printf("\tDouble Value: %f", readConstantPoolDouble(entry));
             break;
 
 
