@@ -269,13 +269,13 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 
         case CONSTANT_Float:
             printf("\tBytes: 0x%08X\n", entry->Float.bytes);
-            printf("\tValue: %f", readConstantPoolFloat(entry));
+            printf("\tValue: %e", readConstantPoolFloat(entry));
             break;
 
         case CONSTANT_Double:
             printf("\tHigh Bytes:   0x%08X\n", entry->Double.high);
             printf("\tLow  Bytes:   0x%08X\n", entry->Double.low);
-            printf("\tDouble Value: %f", readConstantPoolDouble(entry));
+            printf("\tDouble Value: %e", readConstantPoolDouble(entry));
             break;
 
 
@@ -302,6 +302,9 @@ void printConstantPool(JavaClassFile* jcf)
             cp = jcf->constantPool + u16;
             printf("%*c#%u: %s (tag = %u)\n", 5 - (int)log10(u16 + 1), ' ', u16 + 1, decodeTag(cp->tag), cp->tag);
             printConstantPoolEntry(jcf, cp);
+
+            if (cp->tag == CONSTANT_Double || cp->tag == CONSTANT_Long)
+                u16++;
         }
     }
 }
