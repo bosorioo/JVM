@@ -346,23 +346,23 @@ void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len)
     const char* comma = ", ";
     const char* empty = "";
 
-    #define decodeflag(flag, name) if (flags & flag) { \
+    #define DECODE_FLAG(flag, name) if (flags & flag) { \
         bytes = snprintf(buffer, buffer_len, "%s%s", bytes ? comma : empty, name); \
         buffer += bytes; \
         buffer_len -= bytes; }
 
-    decodeflag(ACC_ABSTRACT, "abstract")
-    decodeflag(ACC_INTERFACE, "interface")
-    decodeflag(ACC_TRANSIENT, "transient")
-    decodeflag(ACC_VOLATILE, "volatile")
-    decodeflag(ACC_SUPER, "super")
-    decodeflag(ACC_FINAL, "final")
-    decodeflag(ACC_STATIC, "static")
-    decodeflag(ACC_PUBLIC, "public")
-    decodeflag(ACC_PRIVATE, "private")
-    decodeflag(ACC_PROTECTED, "protected")
+    DECODE_FLAG(ACC_ABSTRACT, "abstract")
+    DECODE_FLAG(ACC_INTERFACE, "interface")
+    DECODE_FLAG(ACC_TRANSIENT, "transient")
+    DECODE_FLAG(ACC_VOLATILE, "volatile")
+    DECODE_FLAG(ACC_SUPER, "super")
+    DECODE_FLAG(ACC_FINAL, "final")
+    DECODE_FLAG(ACC_STATIC, "static")
+    DECODE_FLAG(ACC_PUBLIC, "public")
+    DECODE_FLAG(ACC_PRIVATE, "private")
+    DECODE_FLAG(ACC_PROTECTED, "protected")
 
-    #undef decodeflag
+    #undef DECODE_FLAG
 }
 
 void printGeneralFileInfo(JavaClassFile* jcf)
