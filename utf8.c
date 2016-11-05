@@ -70,8 +70,9 @@ char cmp_UTF8_Ascii(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t* ascii_bytes,
     return ascii_len == utf8_len;
 }
 
-void UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, uint8_t* utf8_bytes, int32_t utf8_len)
+uint32_t UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, uint8_t* utf8_bytes, int32_t utf8_len)
 {
+    uint32_t charactersWritten = 0;
     uint32_t utf8_char;
     uint8_t bytes_used;
 
@@ -86,8 +87,29 @@ void UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, uint8_t* utf8_bytes,
         buffer_len--;
         utf8_bytes += bytes_used;
         utf8_len -= bytes_used;
+        charactersWritten++;
     }
 
     if (buffer_len > 0)
         *out_buffer = '\0';
+
+    return charactersWritten;
+}
+
+uint32_t UTF8StringLength(uint8_t* utf8_bytes, int32_t utf8_len)
+{
+    uint32_t length = 0;
+    uint8_t bytes_used;
+
+    while (utf8_len > 0)
+    {
+        bytes_used = nextUTF8Character(utf8_bytes, utf8_len, 0);
+
+        if (bytes_used == 0)
+            break;
+
+        length++;
+    }
+
+    return length;
 }
