@@ -32,15 +32,16 @@ char readField(JavaClassFile* jcf, field_info* entry)
         return 0;
     }
 
+    cp_info* cpi = jcf->constantPool + entry->descriptor_index - 1;
+
     if (entry->descriptor_index == 0 ||
         entry->descriptor_index >= jcf->constantPoolCount ||
-        jcf->constantPool[entry->descriptor_index - 1].tag != CONSTANT_Utf8)
+        cpi->tag != CONSTANT_Utf8 ||
+        cpi->Utf8.length != readFieldDescriptor(cpi->Utf8.bytes, cpi->Utf8.length, 1))
     {
         jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
     }
-
-    // TODO: check if descriptor_index points to a valid field descriptor
 
     if (entry->attributes_count > 0)
     {
