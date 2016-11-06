@@ -1,9 +1,9 @@
 #include "validity.h"
 #include "constantpool.h"
 #include "utf8.h"
-#include "ctype.h"
 #include "readfunctions.h"
-#include "locale.h"
+#include <locale.h>
+#include <ctype.h>
 
 char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
 {
