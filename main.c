@@ -3,13 +3,17 @@
 #include <stdint.h>
 #include "javaclassfile.h"
 
-int main()
+int main(int argc, char* args[])
 {
-    const char* path = "C:/Users/Bruno/Documents/NetBeansProjects/Sketch/src/sketch/Sketch.class";
+    if (argc <= 1)
+    {
+        printf("First parameter should be the path to a .class file.\n");
+        return 0;
+    }
 
     JavaClassFile jcf;
 
-    openClassFile(&jcf, path);
+    openClassFile(&jcf, args[1]);
 
     if (jcf.status == STATUS_OK)
         printClassFileInfo(&jcf);
