@@ -32,7 +32,7 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
     if (entry->descriptor_index == 0 ||
         entry->descriptor_index >= jcf->constantPoolCount ||
         cpi->tag != CONSTANT_Utf8 ||
-        !readMethodDescriptor(cpi->Utf8.bytes, cpi->Utf8.length, 1))
+        cpi->Utf8.length != readMethodDescriptor(cpi->Utf8.bytes, cpi->Utf8.length, 1))
     {
         jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
