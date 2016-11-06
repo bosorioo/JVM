@@ -10,7 +10,13 @@ typedef struct JavaClassFile JavaClassFile;
 #include "fields.h"
 #include "methods.h"
 
-enum ClassAccessFlags {
+enum AccessFlagsType {
+    ACCT_CLASS,
+    ACCT_FIELD,
+    ACCT_METHOD
+};
+
+enum AccessFlags {
 
     ACC_PUBLIC          = 0x0001, // Class, Field, Method
     ACC_PRIVATE         = 0x0002, // Field, Method
@@ -93,20 +99,21 @@ struct JavaClassFile {
     uint32_t totalBytesRead;
     uint8_t lastTagRead;
 
-    uint16_t currentConstantPoolEntryIndex;
-    uint16_t currentInterfaceEntryIndex;
-    uint16_t currentFieldEntryIndex;
-    uint16_t currentMethodEntryIndex;
-    uint16_t currentAttributeEntryIndex;
+    int32_t currentConstantPoolEntryIndex;
+    int32_t constantPoolEntriesRead;
+    int32_t currentInterfaceEntryIndex;
+    int32_t currentFieldEntryIndex;
+    int32_t currentMethodEntryIndex;
+    int32_t currentAttributeEntryIndex;
 
 };
 
 void openClassFile(JavaClassFile* jcf, const char* path);
 void closeClassFile(JavaClassFile* jcf);
 const char* decodeJavaClassFileStatus(enum JavaClassStatus);
-void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len);
+void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype);
 
-void printGeneralFileInfo(JavaClassFile* jcf);
-void printClassInfo(JavaClassFile* jcf);
+void printClassFileDebugInfo(JavaClassFile* jcf);
+void printClassFileInfo(JavaClassFile* jcf);
 
 #endif // JAVACLASSFILE_H

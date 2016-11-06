@@ -12,9 +12,9 @@ int main()
     openClassFile(&jcf, path);
 
     if (jcf.status == STATUS_OK)
-        printClassInfo(&jcf);
+        printClassFileInfo(&jcf);
     else
-        printGeneralFileInfo(&jcf);
+        printClassFileDebugInfo(&jcf);
 
     closeClassFile(&jcf);
 

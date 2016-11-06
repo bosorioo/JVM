@@ -54,7 +54,7 @@ char readField(JavaClassFile* jcf, field_info* entry)
 
         uint16_t i;
 
-        jcf->currentAttributeEntryIndex = 0;
+        jcf->currentAttributeEntryIndex = -1;
 
         for (i = 0; i < entry->attributes_count; i++)
         {

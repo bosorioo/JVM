@@ -27,11 +27,12 @@ void openClassFile(JavaClassFile* jcf, const char* path)
 
     jcf->lastTagRead = 0;
     jcf->totalBytesRead = 0;
-    jcf->currentConstantPoolEntryIndex = 0;
-    jcf->currentInterfaceEntryIndex = 0;
-    jcf->currentFieldEntryIndex = 0;
-    jcf->currentMethodEntryIndex = 0;
-    jcf->currentAttributeEntryIndex = 0;
+    jcf->constantPoolEntriesRead = 0;
+    jcf->currentConstantPoolEntryIndex = -1;
+    jcf->currentInterfaceEntryIndex = -1;
+    jcf->currentFieldEntryIndex = -1;
+    jcf->currentMethodEntryIndex = -1;
+    jcf->currentAttributeEntryIndex = -1;
 
     if (!jcf->file)
     {
@@ -76,7 +77,15 @@ void openClassFile(JavaClassFile* jcf, const char* path)
             if (!readConstantPoolEntry(jcf, jcf->constantPool + u16))
                 return;
 
+            if (jcf->constantPool[u16].tag == CONSTANT_Double ||
+                jcf->constantPool[u16].tag == CONSTANT_Long)
+            {
+                u16++;
+                jcf->currentConstantPoolEntryIndex++;
+            }
+
             jcf->currentConstantPoolEntryIndex++;
+            jcf->constantPoolEntriesRead++;
         }
 
         if (!checkConstantPoolValidity(jcf))
@@ -91,35 +100,8 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         return;
     }
 
-    if (jcf->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
-    {
-        jcf->status = USE_OF_RESERVED_CLASS_ACCESS_FLAGS;
+    if (!checkClassIndexAndAccessFlags(jcf) || !checkClassNameFileNameMatch(jcf, path))
         return;
-    }
-
-    if ((jcf->accessFlags & (ACC_ABSTRACT | ACC_INTERFACE)) && (jcf->accessFlags & ACC_FINAL))
-    {
-        jcf->status = INVALID_ACCESS_FLAGS;
-        return;
-    }
-
-    if (!jcf->thisClass || jcf->constantPool[jcf->thisClass - 1].tag != CONSTANT_Class)
-    {
-        jcf->status = INVALID_THIS_CLASS_INDEX;
-        return;
-    }
-
-    if (jcf->superClass && jcf->constantPool[jcf->superClass - 1].tag != CONSTANT_Class)
-    {
-        jcf->status = INVALID_SUPER_CLASS_INDEX;
-        return;
-    }
-
-    if (!checkClassNameFileNameMatch(jcf, path))
-    {
-        jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
-        return;
-    }
 
     if (!readu2(jcf, &jcf->interfaceCount))
     {
@@ -222,7 +204,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
             return;
         }
 
-        jcf->currentAttributeEntryIndex = 0;
+        jcf->currentAttributeEntryIndex = -1;
 
         for (u32 = 0; u32 < jcf->attributeCount; u32++)
         {
@@ -242,7 +224,6 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         fclose(jcf->file);
         jcf->file = NULL;
     }
-
 }
 
 void closeClassFile(JavaClassFile* jcf)
@@ -250,7 +231,7 @@ void closeClassFile(JavaClassFile* jcf)
     if (!jcf)
         return;
 
-    uint16_t i;
+    uint16_t i, j;
 
     if (jcf->file)
     {
@@ -280,7 +261,16 @@ void closeClassFile(JavaClassFile* jcf)
 
     if (jcf->methods)
     {
-        for (i = 0; i < jcf->methodCount; i++)
+        // We have to check if the status is OK, because if it is not OK,
+        // only a few method_info would have been correctly initialized.
+        // If a "free" attempt was made on an attribute that wasn't initialized,
+        // the program would crash.
+        if (jcf->status != STATUS_OK)
+            j = jcf->currentMethodEntryIndex + 1;
+        else
+            j = jcf->methodCount;
+
+        for (i = 0; i < j; i++)
             freeMethodAttributes(jcf->methods + i);
 
         free(jcf->methods);
@@ -301,37 +291,37 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
 {
     switch (status)
     {
-        case STATUS_OK: return "File is ok";
-        case FILE_COULDNT_BE_OPENED: return "Class file couldn't be opened";
-        case INVALID_SIGNATURE: return "Signature (0xCAFEBABE) mismatch";
-        case CLASS_NAME_FILE_NAME_MISMATCH: return "Class name and .class file name don't match";
-        case MEMORY_ALLOCATION_FAILED: return "Not enough memory";
-        case INVALID_CONSTANT_POOL_COUNT: return "Constant pool count should be at least 1";
-        case UNEXPECTED_EOF: return "End of file found too soon";
-        case UNEXPECTED_EOF_READING_CONSTANT_POOL: return "Unexpected end of file while reading constant pool";
-        case UNEXPECTED_EOF_READING_UTF8: return "Unexpected end of file while reading UTF-8 stream";
-        case UNEXPECTED_EOF_READING_INTERFACES: return "Unexpected end of file while reading interfaces' index";
-        case UNEXPECTED_EOF_READING_ATTRIBUTE_INFO: return "Unexpected end of file while reading attribute information";
-        case INVALID_UTF8_BYTES: return "Invalid UTF-8 encoding";
-        case INVALID_CONSTANT_POOL_INDEX: return "Invalid index for constant pool entry";
-        case UNKNOWN_CONSTANT_POOL_TAG: return "Unknown constant pool entry tag";
-        case INVALID_ACCESS_FLAGS: return "Invalid combination of class access flags";
+        case STATUS_OK: return "file is ok";
+        case FILE_COULDNT_BE_OPENED: return "class file couldn't be opened";
+        case INVALID_SIGNATURE: return "signature (0xCAFEBABE) mismatch";
+        case CLASS_NAME_FILE_NAME_MISMATCH: return "class name and .class file name don't match";
+        case MEMORY_ALLOCATION_FAILED: return "not enough memory";
+        case INVALID_CONSTANT_POOL_COUNT: return "constant pool count should be at least 1";
+        case UNEXPECTED_EOF: return "end of file found too soon";
+        case UNEXPECTED_EOF_READING_CONSTANT_POOL: return "unexpected end of file while reading constant pool";
+        case UNEXPECTED_EOF_READING_UTF8: return "unexpected end of file while reading UTF-8 stream";
+        case UNEXPECTED_EOF_READING_INTERFACES: return "unexpected end of file while reading interfaces' index";
+        case UNEXPECTED_EOF_READING_ATTRIBUTE_INFO: return "unexpected end of file while reading attribute information";
+        case INVALID_UTF8_BYTES: return "invalid UTF-8 encoding";
+        case INVALID_CONSTANT_POOL_INDEX: return "invalid index for constant pool entry";
+        case UNKNOWN_CONSTANT_POOL_TAG: return "unknown constant pool entry tag";
+        case INVALID_ACCESS_FLAGS: return "invalid combination of class access flags";
 
-        case USE_OF_RESERVED_CLASS_ACCESS_FLAGS: return "Class access flags contains bits that should be zero";
-        case USE_OF_RESERVED_METHOD_ACCESS_FLAGS: return "Method access flags contains bits that should be zero";
-        case USE_OF_RESERVED_FIELD_ACCESS_FLAGS: return "Field access flags contains bits that should be zero";
+        case USE_OF_RESERVED_CLASS_ACCESS_FLAGS: return "class access flags contains bits that should be zero";
+        case USE_OF_RESERVED_METHOD_ACCESS_FLAGS: return "method access flags contains bits that should be zero";
+        case USE_OF_RESERVED_FIELD_ACCESS_FLAGS: return "field access flags contains bits that should be zero";
 
-        case INVALID_THIS_CLASS_INDEX: return "\"This Class\" field doesn't point to valid class index";
-        case INVALID_SUPER_CLASS_INDEX: return "\"Super class\" field doesn't point to valid class index";
-        case INVALID_INTERFACE_INDEX: return "Interface index doesn't point to a valid class index";
-        case INVALID_FIELD_DESCRIPTOR_INDEX: return "descriptor_index doesn't point to a valid field descriptor";
-        case INVALID_METHOD_DESCRIPTOR_INDEX: return "descriptor_index doesn't point to a valid method descriptor";
-        case INVALID_NAME_INDEX: return "name_index doesn't point to a valid UTF-8 stream";
+        case INVALID_THIS_CLASS_INDEX: return "\"this Class\" field doesn't point to valid class index";
+        case INVALID_SUPER_CLASS_INDEX: return "\"super class\" field doesn't point to valid class index";
+        case INVALID_INTERFACE_INDEX: return "interface index doesn't point to a valid class index";
+        case INVALID_FIELD_DESCRIPTOR_INDEX: return "field descriptor isn't valid";
+        case INVALID_METHOD_DESCRIPTOR_INDEX: return "method descriptor isn't valid";
+        case INVALID_NAME_INDEX: return "name_index doesn't point to a valid name";
         case INVALID_STRING_INDEX: return "string_index doesn't point to a valid UTF-8 stream";
-        case INVALID_CLASS_INDEX: return "class_index doesn't point to a valid class";
-        case INVALID_NAME_AND_TYPE_INDEX: return "name_index or descriptor_index doesn't point to a valid UTF-8 stream";
+        case INVALID_CLASS_INDEX: return "class_index doesn't point to a valid class name";
+        case INVALID_NAME_AND_TYPE_INDEX: return "(NameAndType) name_index or descriptor_index doesn't point to a valid UTF-8 stream";
         case INVALID_JAVA_IDENTIFIER: return "UTF-8 stream isn't a valid Java identifier";
-        case FILE_CONTAINS_UNEXPECTED_DATA: return "Class file contains more data than expected, which wasn't processed";
+        case FILE_CONTAINS_UNEXPECTED_DATA: return "class file contains more data than expected, which wasn't processed";
 
         default:
             break;
@@ -340,9 +330,10 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
     return "Unknown status";
 }
 
-void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len)
+void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype)
 {
     uint32_t bytes = 0;
+    char* buffer_ptr = buffer;
     const char* comma = ", ";
     const char* empty = "";
 
@@ -351,43 +342,98 @@ void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len)
         buffer += bytes; \
         buffer_len -= bytes; }
 
-    DECODE_FLAG(ACC_ABSTRACT, "abstract")
-    DECODE_FLAG(ACC_INTERFACE, "interface")
-    DECODE_FLAG(ACC_TRANSIENT, "transient")
-    DECODE_FLAG(ACC_VOLATILE, "volatile")
-    DECODE_FLAG(ACC_SUPER, "super")
+    if (acctype == ACCT_CLASS)
+    {
+        DECODE_FLAG(ACC_INTERFACE, "interface")
+        DECODE_FLAG(ACC_SUPER, "super")
+    }
+
+    if (acctype == ACCT_METHOD)
+    {
+        DECODE_FLAG(ACC_SYNCHRONIZED, "synchronized")
+        DECODE_FLAG(ACC_NATIVE, "native")
+        DECODE_FLAG(ACC_STRICT, "strict")
+    }
+
+    if (acctype == ACCT_CLASS || acctype == ACCT_METHOD)
+    {
+        DECODE_FLAG(ACC_ABSTRACT, "abstract")
+    }
+
+    if (acctype == ACCT_FIELD)
+    {
+        DECODE_FLAG(ACC_TRANSIENT, "transient")
+        DECODE_FLAG(ACC_VOLATILE, "volatile")
+    }
+
     DECODE_FLAG(ACC_FINAL, "final")
-    DECODE_FLAG(ACC_STATIC, "static")
+
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD)
+    {
+        DECODE_FLAG(ACC_STATIC, "static")
+    }
+
     DECODE_FLAG(ACC_PUBLIC, "public")
-    DECODE_FLAG(ACC_PRIVATE, "private")
-    DECODE_FLAG(ACC_PROTECTED, "protected")
+
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD)
+    {
+        DECODE_FLAG(ACC_PRIVATE, "private")
+        DECODE_FLAG(ACC_PROTECTED, "protected")
+    }
+
+    // If no flags were written
+    if (buffer == buffer_ptr)
+        snprintf(buffer, buffer_len, "no flags");
 
     #undef DECODE_FLAG
 }
 
-void printGeneralFileInfo(JavaClassFile* jcf)
+void printClassFileDebugInfo(JavaClassFile* jcf)
 {
-    printf("File status: %d, %s.\n", jcf->status, decodeJavaClassFileStatus(jcf->status));
+    if (jcf->currentConstantPoolEntryIndex + 2 != jcf->constantPoolCount)
+    {
+        printf("Failed to read constant pool entry at index #%d\n", jcf->currentConstantPoolEntryIndex + 1);
+        printf("Constant pool count: %u, constants successfully read: %d\n", jcf->constantPoolCount, jcf->constantPoolEntriesRead);
+    }
+    else if (jcf->currentInterfaceEntryIndex + 1 != jcf->interfaceCount)
+    {
+        printf("Failed to read interface at index #%d\n", jcf->currentInterfaceEntryIndex + 1);
+        printf("Interface count: %u, interfaces successfully read: %d\n", jcf->interfaceCount, 1 + jcf->currentInterfaceEntryIndex);
+    }
+    else if (jcf->currentFieldEntryIndex + 1 != jcf->fieldCount)
+    {
+        printf("Failed to read field at index #%d\n", jcf->currentFieldEntryIndex + 1);
+        printf("Last attribute index read: %d\n", jcf->currentAttributeEntryIndex);
+        printf("Fields count: %u, fields successfully read: %d\n", jcf->fieldCount, 1 + jcf->currentFieldEntryIndex);
+    }
+    else if (jcf->currentMethodEntryIndex + 1 != jcf->methodCount)
+    {
+        printf("Failed to read method at index #%d\n", jcf->currentMethodEntryIndex + 1);
+        printf("Last attribute index read: %d\n", jcf->currentAttributeEntryIndex);
+        printf("Methods count: %u, methods successfully read: %d\n", jcf->methodCount, 1 + jcf->currentMethodEntryIndex);
+    }
+    else if (jcf->currentAttributeEntryIndex + 1 != jcf->attributeCount)
+    {
+        printf("Failed to read attribute at index #%d\n", jcf->currentAttributeEntryIndex + 1);
+        printf("Attributes count: %u, attributes successfully read: %d\n", jcf->attributeCount, 1 + jcf->currentAttributeEntryIndex);
+    }
+
+    printf("File status code: %d\nStatus description: %s.\n", jcf->status, decodeJavaClassFileStatus(jcf->status));
     printf("Number of bytes read: %d\n", jcf->totalBytesRead);
-    printf("Version: %u.%u\n", jcf->majorVersion, jcf->minorVersion);
-    printf("Constant pool count: %u, constants successfully read: %u\n", jcf->constantPoolCount, jcf->currentConstantPoolEntryIndex);
-    printf("Interface count: %u, interfaces successfully read: %u\n", jcf->interfaceCount, jcf->currentInterfaceEntryIndex);
-    printf("Fields count: %u, fields successfully read: %u\n", jcf->fieldCount, jcf->currentFieldEntryIndex);
-    printf("Methods count: %u, methods successfully read: %u\n", jcf->methodCount, jcf->currentMethodEntryIndex);
-    printf("Attributes count: %u, attributes successfully read: %u\n", jcf->attributeCount, jcf->currentAttributeEntryIndex);
 }
 
-void printClassInfo(JavaClassFile* jcf)
+void printClassFileInfo(JavaClassFile* jcf)
 {
     char buffer[256];
     cp_info* cp;
+    uint16_t u16;
 
     printf("---- General Information ----\n\n");
 
     printf("Version:\t\t%u.%u (Major.minor)\n", jcf->majorVersion, jcf->minorVersion);
     printf("Constant pool count:\t%u\n", jcf->constantPoolCount);
 
-    decodeAccessFlags(jcf->accessFlags, buffer, sizeof(buffer));
+    decodeAccessFlags(jcf->accessFlags, buffer, sizeof(buffer), ACCT_CLASS);
     printf("Access flags:\t\t0x%.4X [%s]\n", jcf->accessFlags, buffer);
 
     cp = jcf->constantPool + jcf->thisClass - 1;
@@ -410,7 +456,14 @@ void printClassInfo(JavaClassFile* jcf)
     if (jcf->interfaceCount > 0)
     {
         printf("\n---- Interfaces ----\n\n");
-        // TODO: print interfaces
+
+        for (u16 = 0; u16 < jcf->interfaceCount; u16++)
+        {
+            cp = jcf->constantPool + *(jcf->interfaces + u16) - 1;
+            cp = jcf->constantPool + cp->Class.name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+            printf("\tInterface #%u: cp index #%u <%s>\n", u16 + 1, *(jcf->interfaces + u16), buffer);
+        }
     }
 
     if (jcf->fieldCount > 0)
