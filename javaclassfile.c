@@ -305,7 +305,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case INVALID_UTF8_BYTES: return "invalid UTF-8 encoding";
         case INVALID_CONSTANT_POOL_INDEX: return "invalid index for constant pool entry";
         case UNKNOWN_CONSTANT_POOL_TAG: return "unknown constant pool entry tag";
-        case INVALID_ACCESS_FLAGS: return "invalid combination of class access flags";
+        case INVALID_ACCESS_FLAGS: return "invalid combination of access flags";
 
         case USE_OF_RESERVED_CLASS_ACCESS_FLAGS: return "class access flags contains bits that should be zero";
         case USE_OF_RESERVED_METHOD_ACCESS_FLAGS: return "method access flags contains bits that should be zero";
@@ -327,7 +327,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
             break;
     }
 
-    return "Unknown status";
+    return "unknown status";
 }
 
 void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype)
