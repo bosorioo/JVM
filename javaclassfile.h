@@ -78,8 +78,11 @@ enum JavaClassStatus {
 };
 
 struct JavaClassFile {
+    // General
     FILE* file;
     enum JavaClassStatus status;
+
+    // Java
     uint16_t minorVersion, majorVersion;
     uint16_t constantPoolCount;
     cp_info* constantPool;
@@ -98,13 +101,13 @@ struct JavaClassFile {
     // Debug info
     uint32_t totalBytesRead;
     uint8_t lastTagRead;
-
     int32_t currentConstantPoolEntryIndex;
     int32_t constantPoolEntriesRead;
     int32_t currentInterfaceEntryIndex;
     int32_t currentFieldEntryIndex;
     int32_t currentMethodEntryIndex;
     int32_t currentAttributeEntryIndex;
+    int32_t currentValidityEntryIndex;
 
 };
 

@@ -33,6 +33,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
     jcf->currentFieldEntryIndex = -1;
     jcf->currentMethodEntryIndex = -1;
     jcf->currentAttributeEntryIndex = -1;
+    jcf->currentValidityEntryIndex = -1;
 
     if (!jcf->file)
     {
@@ -394,6 +395,10 @@ void printClassFileDebugInfo(JavaClassFile* jcf)
     {
         printf("Failed to read constant pool entry at index #%d\n", jcf->currentConstantPoolEntryIndex + 1);
         printf("Constant pool count: %u, constants successfully read: %d\n", jcf->constantPoolCount, jcf->constantPoolEntriesRead);
+    }
+    else if (jcf->currentValidityEntryIndex != -1)
+    {
+        printf("Failed to check constant pool validity. Entry at index #%d is not valid.\n", jcf->currentValidityEntryIndex + 1);
     }
     else if (jcf->currentInterfaceEntryIndex + 1 != jcf->interfaceCount)
     {

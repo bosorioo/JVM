@@ -3,6 +3,7 @@
 #include "utf8.h"
 #include "readfunctions.h"
 #include <locale.h>
+#include <wctype.h>
 #include <ctype.h>
 
 char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
@@ -123,7 +124,7 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
     uint8_t used_bytes;
     uint8_t firstChar = 1;
     char isValid = 1;
-    char* previousLocale = setlocale(LC_CTYPE, "");
+    char* previousLocale = setlocale(LC_CTYPE, "pt_BR.UTF-8");
 
     if (*utf8_bytes == '[')
         return readFieldDescriptor(utf8_bytes, utf8_len, 1) == utf8_len;
@@ -139,7 +140,7 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
         }
 
         if (isalpha(utf8_char) || utf8_char == '_' || utf8_char == '$' ||
-            (isdigit(utf8_char) && !firstChar) ||
+            (isdigit(utf8_char) && !firstChar) || iswalpha(utf8_char) ||
             (utf8_char == '/' && !firstChar && isClassIdentifier))
         {
             firstChar = utf8_char == '/';
@@ -256,7 +257,7 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
 
     for (i = 0; i < jcf->constantPoolCount - 1; i++)
     {
-        jcf->currentConstantPoolEntryIndex = i;
+        jcf->currentValidityEntryIndex = i;
         cp_info* entry = jcf->constantPool + i;
 
         switch(entry->tag)
@@ -314,9 +315,13 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
                 break;
 
             case CONSTANT_Double:
+            case CONSTANT_Long:
+                // Doubles and long take two entries in the constant pool
+                i++;
+                break;
+
             case CONSTANT_Float:
             case CONSTANT_Integer:
-            case CONSTANT_Long:
             case CONSTANT_Utf8:
                 // There's nothing to check for these constant types, since they
                 // don't have pointers to other constant pool entries.
@@ -328,6 +333,8 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
                 break;
         }
     }
+
+    jcf->currentValidityEntryIndex = -1;
 
     return 1;
 }
