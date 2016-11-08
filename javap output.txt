@@ -1,96 +1,100 @@
 Classfile /C:/Users/Bruno/Documents/NetBeansProjects/Sketch/src/sketch/Sketch.class
-  Last modified Nov 6, 2016; size 1337 bytes
-  MD5 checksum 85fcc23aee837e34aee155f47cdaebc6
+  Last modified Nov 8, 2016; size 1382 bytes
+  MD5 checksum 4b519ce0b655dd03bd569c53dfeda317
   Compiled from "Sketch.java"
 public class sketch.Sketch implements java.util.EventListener,java.util.RandomAccess
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
 Constant pool:
-   #1 = Methodref          #38.#70        // java/lang/Object."<init>":()V
-   #2 = Long               5910974510923776l
-   #4 = Fieldref           #37.#71        // sketch/Sketch.long_member:J
-   #5 = Class              #72            // "[[I"
-   #6 = Class              #45            // "[I"
-   #7 = Fieldref           #37.#73        // sketch/Sketch.matrix3d:[[[I
-   #8 = Class              #74            // "[D"
-   #9 = Double             123.456d
-  #11 = Double             -654.321d
-  #13 = Double             9.876543211234568E8d
-  #15 = Class              #75            // java/lang/Double
-  #16 = Double             1.7976931348623157E308d
-  #18 = Double             4.9E-324d
-  #20 = Double             2.2250738585072014E-308d
-  #22 = Double             NaNd
-  #24 = Double             Infinityd
-  #26 = Double             -Infinityd
-  #28 = Fieldref           #37.#76        // sketch/Sketch.matrix2d:[[D
-  #29 = Fieldref           #77.#78        // java/lang/System.out:Ljava/io/PrintStream;
-  #30 = Methodref          #79.#80        // java/io/PrintStream.println:(I)V
-  #31 = String             #81            // Hello world!
-  #32 = Methodref          #79.#82        // java/io/PrintStream.println:(Ljava/lang/String;)V
-  #33 = Fieldref           #37.#83        // sketch/Sketch.values:[I
-  #34 = Long               98765432123456789l
-  #36 = Fieldref           #37.#84        // sketch/Sketch.long_static_value:J
-  #37 = Class              #85            // sketch/Sketch
-  #38 = Class              #86            // java/lang/Object
-  #39 = Class              #87            // java/util/EventListener
-  #40 = Class              #88            // java/util/RandomAccess
-  #41 = Class              #89            // sketch/Sketch$Test
-  #42 = Utf8               Test
-  #43 = Utf8               InnerClasses
-  #44 = Utf8               values
-  #45 = Utf8               [I
-  #46 = Utf8               float_member
-  #47 = Utf8               F
-  #48 = Utf8               long_member
-  #49 = Utf8               J
-  #50 = Utf8               long_static_value
-  #51 = Utf8               str
-  #52 = Utf8               Ljava/lang/String;
-  #53 = Utf8               matrix3d
-  #54 = Utf8               [[[I
-  #55 = Utf8               matrix2d
-  #56 = Utf8               [[D
-  #57 = Utf8               <init>
-  #58 = Utf8               ()V
-  #59 = Utf8               Code
-  #60 = Utf8               LineNumberTable
-  #61 = Utf8               print
-  #62 = Utf8               (I)V
-  #63 = Utf8               add
-  #64 = Utf8               (IF)J
-  #65 = Utf8               main
-  #66 = Utf8               ([Ljava/lang/String;)V
-  #67 = Utf8               <clinit>
-  #68 = Utf8               SourceFile
-  #69 = Utf8               Sketch.java
-  #70 = NameAndType        #57:#58        // "<init>":()V
-  #71 = NameAndType        #48:#49        // long_member:J
-  #72 = Utf8               [[I
-  #73 = NameAndType        #53:#54        // matrix3d:[[[I
-  #74 = Utf8               [D
-  #75 = Utf8               java/lang/Double
-  #76 = NameAndType        #55:#56        // matrix2d:[[D
-  #77 = Class              #90            // java/lang/System
-  #78 = NameAndType        #91:#92        // out:Ljava/io/PrintStream;
-  #79 = Class              #93            // java/io/PrintStream
-  #80 = NameAndType        #94:#62        // println:(I)V
-  #81 = Utf8               Hello world!
-  #82 = NameAndType        #94:#95        // println:(Ljava/lang/String;)V
-  #83 = NameAndType        #44:#45        // values:[I
-  #84 = NameAndType        #50:#49        // long_static_value:J
-  #85 = Utf8               sketch/Sketch
-  #86 = Utf8               java/lang/Object
-  #87 = Utf8               java/util/EventListener
-  #88 = Utf8               java/util/RandomAccess
-  #89 = Utf8               sketch/Sketch$Test
-  #90 = Utf8               java/lang/System
-  #91 = Utf8               out
-  #92 = Utf8               Ljava/io/PrintStream;
-  #93 = Utf8               java/io/PrintStream
-  #94 = Utf8               println
-  #95 = Utf8               (Ljava/lang/String;)V
+    #1 = Methodref          #40.#72       // java/lang/Object."<init>":()V
+    #2 = Long               5910974510923776l
+    #4 = Fieldref           #39.#73       // sketch/Sketch.long_member:J
+    #5 = String             #74           // ????ƒ
+    #6 = Fieldref           #39.#75       // sketch/Sketch.????ƒé:Ljava/lang/String;
+    #7 = Class              #76           // "[[I"
+    #8 = Class              #47           // "[I"
+    #9 = Fieldref           #39.#77       // sketch/Sketch.matrix3d:[[[I
+   #10 = Class              #78           // "[D"
+   #11 = Double             123.456d
+   #13 = Double             -654.321d
+   #15 = Double             9.876543211234568E8d
+   #17 = Class              #79           // java/lang/Double
+   #18 = Double             1.7976931348623157E308d
+   #20 = Double             4.9E-324d
+   #22 = Double             2.2250738585072014E-308d
+   #24 = Double             NaNd
+   #26 = Double             Infinityd
+   #28 = Double             -Infinityd
+   #30 = Fieldref           #39.#80       // sketch/Sketch.matrix2d:[[D
+   #31 = Fieldref           #81.#82       // java/lang/System.out:Ljava/io/PrintStream;
+   #32 = Methodref          #83.#84       // java/io/PrintStream.println:(I)V
+   #33 = String             #85           // Hello world!
+   #34 = Methodref          #83.#86       // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #35 = Fieldref           #39.#87       // sketch/Sketch.values:[I
+   #36 = Long               98765432123456789l
+   #38 = Fieldref           #39.#88       // sketch/Sketch.long_static_value:J
+   #39 = Class              #89           // sketch/Sketch
+   #40 = Class              #90           // java/lang/Object
+   #41 = Class              #91           // java/util/EventListener
+   #42 = Class              #92           // java/util/RandomAccess
+   #43 = Class              #93           // sketch/Sketch$Test
+   #44 = Utf8               Test
+   #45 = Utf8               InnerClasses
+   #46 = Utf8               values
+   #47 = Utf8               [I
+   #48 = Utf8               float_member
+   #49 = Utf8               F
+   #50 = Utf8               long_member
+   #51 = Utf8               J
+   #52 = Utf8               long_static_value
+   #53 = Utf8               ????ƒé
+   #54 = Utf8               Ljava/lang/String;
+   #55 = Utf8               matrix3d
+   #56 = Utf8               [[[I
+   #57 = Utf8               matrix2d
+   #58 = Utf8               [[D
+   #59 = Utf8               <init>
+   #60 = Utf8               ()V
+   #61 = Utf8               Code
+   #62 = Utf8               LineNumberTable
+   #63 = Utf8               print
+   #64 = Utf8               (I)V
+   #65 = Utf8               add
+   #66 = Utf8               (IF)J
+   #67 = Utf8               main
+   #68 = Utf8               ([Ljava/lang/String;)V
+   #69 = Utf8               <clinit>
+   #70 = Utf8               SourceFile
+   #71 = Utf8               Sketch.java
+   #72 = NameAndType        #59:#60       // "<init>":()V
+   #73 = NameAndType        #50:#51       // long_member:J
+   #74 = Utf8               ????ƒ
+   #75 = NameAndType        #53:#54       // ????ƒé:Ljava/lang/String;
+   #76 = Utf8               [[I
+   #77 = NameAndType        #55:#56       // matrix3d:[[[I
+   #78 = Utf8               [D
+   #79 = Utf8               java/lang/Double
+   #80 = NameAndType        #57:#58       // matrix2d:[[D
+   #81 = Class              #94           // java/lang/System
+   #82 = NameAndType        #95:#96       // out:Ljava/io/PrintStream;
+   #83 = Class              #97           // java/io/PrintStream
+   #84 = NameAndType        #98:#64       // println:(I)V
+   #85 = Utf8               Hello world!
+   #86 = NameAndType        #98:#99       // println:(Ljava/lang/String;)V
+   #87 = NameAndType        #46:#47       // values:[I
+   #88 = NameAndType        #52:#51       // long_static_value:J
+   #89 = Utf8               sketch/Sketch
+   #90 = Utf8               java/lang/Object
+   #91 = Utf8               java/util/EventListener
+   #92 = Utf8               java/util/RandomAccess
+   #93 = Utf8               sketch/Sketch$Test
+   #94 = Utf8               java/lang/System
+   #95 = Utf8               out
+   #96 = Utf8               Ljava/io/PrintStream;
+   #97 = Utf8               java/io/PrintStream
+   #98 = Utf8               println
+   #99 = Utf8               (Ljava/lang/String;)V
 {
   public float float_member;
     descriptor: F
@@ -119,142 +123,146 @@ Constant pool:
          5: ldc2_w        #2                  // long 5910974510923776l
          8: putfield      #4                  // Field long_member:J
         11: aload_0
-        12: iconst_2
-        13: anewarray     #5                  // class "[[I"
-        16: dup
-        17: iconst_0
+        12: ldc           #5                  // String ????ƒ
+        14: putfield      #6                  // Field ????ƒé:Ljava/lang/String;
+        17: aload_0
         18: iconst_2
-        19: anewarray     #6                  // class "[I"
+        19: anewarray     #7                  // class "[[I"
         22: dup
         23: iconst_0
         24: iconst_2
-        25: newarray       int
-        27: dup
-        28: iconst_0
-        29: iconst_1
-        30: iastore
-        31: dup
-        32: iconst_1
-        33: iconst_2
-        34: iastore
-        35: aastore
-        36: dup
-        37: iconst_1
-        38: iconst_2
-        39: newarray       int
-        41: dup
-        42: iconst_0
-        43: iconst_3
-        44: iastore
-        45: dup
-        46: iconst_1
-        47: iconst_4
-        48: iastore
-        49: aastore
-        50: aastore
+        25: anewarray     #8                  // class "[I"
+        28: dup
+        29: iconst_0
+        30: iconst_2
+        31: newarray       int
+        33: dup
+        34: iconst_0
+        35: iconst_1
+        36: iastore
+        37: dup
+        38: iconst_1
+        39: iconst_2
+        40: iastore
+        41: aastore
+        42: dup
+        43: iconst_1
+        44: iconst_2
+        45: newarray       int
+        47: dup
+        48: iconst_0
+        49: iconst_3
+        50: iastore
         51: dup
         52: iconst_1
-        53: iconst_2
-        54: anewarray     #6                  // class "[I"
+        53: iconst_4
+        54: iastore
+        55: aastore
+        56: aastore
         57: dup
-        58: iconst_0
+        58: iconst_1
         59: iconst_2
-        60: newarray       int
-        62: dup
-        63: iconst_0
-        64: iconst_5
-        65: iastore
-        66: dup
-        67: iconst_1
-        68: bipush        6
-        70: iastore
-        71: aastore
+        60: anewarray     #8                  // class "[I"
+        63: dup
+        64: iconst_0
+        65: iconst_2
+        66: newarray       int
+        68: dup
+        69: iconst_0
+        70: iconst_5
+        71: iastore
         72: dup
         73: iconst_1
-        74: iconst_2
-        75: newarray       int
-        77: dup
-        78: iconst_0
-        79: bipush        7
-        81: iastore
-        82: dup
-        83: iconst_1
-        84: bipush        8
-        86: iastore
-        87: aastore
-        88: aastore
-        89: putfield      #7                  // Field matrix3d:[[[I
-        92: aload_0
-        93: iconst_3
-        94: anewarray     #8                  // class "[D"
-        97: dup
-        98: iconst_0
+        74: bipush        6
+        76: iastore
+        77: aastore
+        78: dup
+        79: iconst_1
+        80: iconst_2
+        81: newarray       int
+        83: dup
+        84: iconst_0
+        85: bipush        7
+        87: iastore
+        88: dup
+        89: iconst_1
+        90: bipush        8
+        92: iastore
+        93: aastore
+        94: aastore
+        95: putfield      #9                  // Field matrix3d:[[[I
+        98: aload_0
         99: iconst_3
-       100: newarray       double
-       102: dup
-       103: iconst_0
-       104: ldc2_w        #9                  // double 123.456d
-       107: dastore
+       100: anewarray     #10                 // class "[D"
+       103: dup
+       104: iconst_0
+       105: iconst_3
+       106: newarray       double
        108: dup
-       109: iconst_1
-       110: ldc2_w        #11                 // double -654.321d
+       109: iconst_0
+       110: ldc2_w        #11                 // double 123.456d
        113: dastore
        114: dup
-       115: iconst_2
-       116: ldc2_w        #13                 // double 9.876543211234568E8d
+       115: iconst_1
+       116: ldc2_w        #13                 // double -654.321d
        119: dastore
-       120: aastore
-       121: dup
-       122: iconst_1
-       123: iconst_3
-       124: newarray       double
-       126: dup
-       127: iconst_0
-       128: ldc2_w        #16                 // double 1.7976931348623157E308d
-       131: dastore
+       120: dup
+       121: iconst_2
+       122: ldc2_w        #15                 // double 9.876543211234568E8d
+       125: dastore
+       126: aastore
+       127: dup
+       128: iconst_1
+       129: iconst_3
+       130: newarray       double
        132: dup
-       133: iconst_1
-       134: ldc2_w        #18                 // double 4.9E-324d
+       133: iconst_0
+       134: ldc2_w        #18                 // double 1.7976931348623157E308d
        137: dastore
        138: dup
-       139: iconst_2
-       140: ldc2_w        #20                 // double 2.2250738585072014E-308d
+       139: iconst_1
+       140: ldc2_w        #20                 // double 4.9E-324d
        143: dastore
-       144: aastore
-       145: dup
-       146: iconst_2
-       147: iconst_3
-       148: newarray       double
-       150: dup
-       151: iconst_0
-       152: ldc2_w        #22                 // double NaNd
-       155: dastore
+       144: dup
+       145: iconst_2
+       146: ldc2_w        #22                 // double 2.2250738585072014E-308d
+       149: dastore
+       150: aastore
+       151: dup
+       152: iconst_2
+       153: iconst_3
+       154: newarray       double
        156: dup
-       157: iconst_1
-       158: ldc2_w        #24                 // double Infinityd
+       157: iconst_0
+       158: ldc2_w        #24                 // double NaNd
        161: dastore
        162: dup
-       163: iconst_2
-       164: ldc2_w        #26                 // double -Infinityd
+       163: iconst_1
+       164: ldc2_w        #26                 // double Infinityd
        167: dastore
-       168: aastore
-       169: putfield      #28                 // Field matrix2d:[[D
-       172: return
+       168: dup
+       169: iconst_2
+       170: ldc2_w        #28                 // double -Infinityd
+       173: dastore
+       174: aastore
+       175: putfield      #30                 // Field matrix2d:[[D
+       178: return
       LineNumberTable:
         line 5: 0
         line 10: 4
-        line 15: 11
-        line 22: 92
-        line 28: 172
+        line 13: 11
+        line 15: 17
+        line 22: 98
+        line 28: 178
 
   public void print(int);
     descriptor: (I)V
     flags: ACC_PUBLIC
     Code:
       stack=2, locals=2, args_size=2
-         0: getstatic     #29                 // Field java/lang/System.out:Ljava/io/PrintStream;
+         0: getstatic     #31                 // Field java/lang/System.out:Ljava/io/PrintStream;
          3: iload_1
-         4: invokevirtual #30                 // Method java/io/PrintStream.println:(I)V
+         4: invokevirtual #32                 // Method java/io/PrintStream.println:(I)V
          7: return
       LineNumberTable:
         line 33: 0
@@ -282,9 +290,9 @@ Constant pool:
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=2, locals=1, args_size=1
-         0: getstatic     #29                 // Field java/lang/System.out:Ljava/io/PrintStream;
-         3: ldc           #31                 // String Hello world!
-         5: invokevirtual #32                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         0: getstatic     #31                 // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: ldc           #33                 // String Hello world!
+         5: invokevirtual #34                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
          8: return
       LineNumberTable:
         line 42: 0
@@ -317,9 +325,9 @@ Constant pool:
         20: iconst_4
         21: iconst_5
         22: iastore
-        23: putstatic     #33                 // Field values:[I
-        26: ldc2_w        #34                 // long 98765432123456789l
-        29: putstatic     #36                 // Field long_static_value:J
+        23: putstatic     #35                 // Field values:[I
+        26: ldc2_w        #36                 // long 98765432123456789l
+        29: putstatic     #38                 // Field long_static_value:J
         32: return
       LineNumberTable:
         line 7: 0
@@ -327,4 +335,4 @@ Constant pool:
 }
 SourceFile: "Sketch.java"
 InnerClasses:
-     static #42= #41 of #37; //Test=class sketch/Sketch$Test of class sketch/Sketch
+     static #44= #43 of #39; //Test=class sketch/Sketch$Test of class sketch/Sketch

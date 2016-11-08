@@ -10,7 +10,7 @@ public class Sketch implements EventListener, RandomAccess {
 	public long long_member = 5910974510923776L;
 	public static long long_static_value = 98765432123456789L;
 
-	private String str;
+	private String πφμβƒé = "πφμβƒ";
 
 	private int [][][] matrix3d = {
 		{{1, 2},
