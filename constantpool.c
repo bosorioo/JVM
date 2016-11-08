@@ -228,7 +228,8 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
             u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
             printf("\tByte Count: %u\n", entry->Utf8.length);
             printf("\tLength: %u\n", u32);
-            printf("\tASCII Characters: %s", buffer);
+            printf("\tASCII Characters: %s\n", buffer);
+            printf("\tUTF-8 Characters: %.*s", (int)entry->Utf8.length, entry->Utf8.bytes);
             break;
 
         case CONSTANT_String:
