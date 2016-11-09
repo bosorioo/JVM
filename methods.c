@@ -55,7 +55,13 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
         for (i = 0; i < entry->attributes_count; i++)
         {
             if (!readAttribute(jcf, entry->attributes + i))
+            {
+                // Only "i" attributes have been successfully read, so to avoid
+                // releasing uninitialized attributes (which could lead to a crash)
+                // we set the attributes count to the correct amount
+                entry->attributes_count = i;
                 return 0;
+            }
 
             jcf->currentAttributeEntryIndex++;
         }

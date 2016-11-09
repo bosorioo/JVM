@@ -28,6 +28,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
     jcf->lastTagRead = 0;
     jcf->totalBytesRead = 0;
     jcf->constantPoolEntriesRead = 0;
+    jcf->attributeEntriesRead = 0;
     jcf->currentConstantPoolEntryIndex = -1;
     jcf->currentInterfaceEntryIndex = -1;
     jcf->currentFieldEntryIndex = -1;
@@ -212,6 +213,7 @@ void openClassFile(JavaClassFile* jcf, const char* path)
             if (!readAttribute(jcf, jcf->attributes +  u32))
                 return;
 
+            jcf->attributeEntriesRead++;
             jcf->currentAttributeEntryIndex++;
         }
     }
@@ -267,7 +269,7 @@ void closeClassFile(JavaClassFile* jcf)
         // If a "free" attempt was made on an attribute that wasn't initialized,
         // the program would crash.
         if (jcf->status != STATUS_OK)
-            j = jcf->currentMethodEntryIndex + 1;
+            j = jcf->currentMethodEntryIndex + 2;
         else
             j = jcf->methodCount;
 
@@ -278,9 +280,23 @@ void closeClassFile(JavaClassFile* jcf)
         jcf->constantPoolCount = 0;
     }
 
+    if (jcf->fields)
+    {
+        if (jcf->status != STATUS_OK)
+            j = jcf->currentFieldEntryIndex + 2;
+        else
+            j = jcf->fieldCount;
+
+        for (i = 0; i < j; i++)
+            freeFieldAttributes(jcf->fields + i);
+
+        free(jcf->fields);
+        jcf->fieldCount = 0;
+    }
+
     if (jcf->attributes)
     {
-        for (i = 0; i < jcf->attributeCount; i++)
+        for (i = 0; i < jcf->attributeEntriesRead; i++)
             freeAttributeInfo(jcf->attributes + i);
 
         free(jcf->attributes);

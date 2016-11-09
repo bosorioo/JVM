@@ -107,6 +107,7 @@ struct JavaClassFile {
     int32_t currentFieldEntryIndex;
     int32_t currentMethodEntryIndex;
     int32_t currentAttributeEntryIndex;
+    int32_t attributeEntriesRead;
     int32_t currentValidityEntryIndex;
 
 };
