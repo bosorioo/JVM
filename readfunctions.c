@@ -3,6 +3,9 @@
 #include "validity.h"
 #include <math.h>
 
+// Reads a four-byte long unsigned integer from the JavaClassFile
+// that has already been opened. The result is written in the
+// pointer "*out", if not NULL.
 uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
 {
     int byte;
@@ -27,6 +30,9 @@ uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
     return i == 4;
 }
 
+// Reads a two-byte long unsigned integer from the JavaClassFile
+// that has already been opened. The result is written in the
+// pointer "*out", if not NULL.
 uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
 {
     int byte;
@@ -51,6 +57,16 @@ uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
     return i == 2;
 }
 
+// This function tries to read a field descriptor from the UTF-8 stream.
+// It will only read valid field descriptor characters. The return value is
+// 0 if the reading fails. It could fail due to the string being empty or the
+// string containing invalid field descriptor characters. Also, if the parameter
+// "checkValidClassIdentifier" is non-zero, the function will check whether
+// classes' field descriptor (L<class name>;) are a valid class identifier.
+// If the function succeeds, then the return value is the number of bytes read.
+// Number of bytes read could differ from number of characters read, as classes
+// could have UTF-8 identifiers that require more than one byte in the representation
+// of some character. This function stops once it sucessfully reads one field descriptor.
 int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)
 {
     int32_t totalBytesRead = 0;
@@ -105,6 +121,16 @@ int32_t readFieldDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkVal
     return totalBytesRead;
 }
 
+// This function tries to read a method descriptor from the UTF-8 stream.
+// It will only read valid method descriptor characters. The return value is
+// 0 if the reading fails. It could fail due to the string being empty or the
+// string containing invalid method descriptor characters or incorrect syntax.
+// Also, if the parameter "checkValidClassIdentifier" is non-zero, the function
+// will check whether classes' field descriptor (L<class name>;) are valid class a
+// identifier. If the function succeeds, then the return value is the number of bytes read.
+// Number of bytes read could differ from number of characters read, as classes
+// could have UTF-8 identifiers that require more than one byte in the representation
+// of some character. This function stops once it sucessfully reads one method descriptor.
 int32_t readMethodDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)
 {
     int32_t bytesProcessed = 0;
@@ -167,6 +193,8 @@ int32_t readMethodDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkVa
     return utf8_len == 0 ? bytesProcessed : 0;
 }
 
+// Translates a constant pool entry (that should be pointing to a CONSTANT_Float)
+// to the corresponding float value.
 float readConstantPoolFloat(cp_info* entry)
 {
     if (entry->Float.bytes == 0x7F800000UL)
@@ -190,6 +218,8 @@ float readConstantPoolFloat(cp_info* entry)
     return s * (float)ldexp((double)m, e - 150);
 }
 
+// Translates a constant pool entry (that should be pointing to a CONSTANT_Double)
+// to the corresponding double value.
 double readConstantPoolDouble(cp_info* entry)
 {
     uint64_t bytes = entry->Double.high;
