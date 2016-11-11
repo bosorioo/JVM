@@ -494,12 +494,7 @@ void printClassFileInfo(JavaClassFile* jcf)
         // TODO: move field printing code to fields.c
     }
 
-    if (jcf->methodCount > 0)
-    {
-        printf("\n---- Methods ----\n\n");
-        // TODO: print methods
-        // TODO: move method printing code to methods.c
-    }
+    printMethods(jcf);
 
     if (jcf->attributeCount > 0)
     {

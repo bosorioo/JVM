@@ -85,3 +85,25 @@ void freeMethodAttributes(method_info* entry)
         entry->attributes = NULL;
     }
 }
+
+void printMethods(JavaClassFile* jcf)
+{
+
+    uint16_t u16;
+    method_info* cp;
+
+    if (jcf->methodCount > 0)
+    {
+        printf("\n---- Methods ----\n\n");
+
+        for (u16 = 0; u16 < jcf->methodCount; u16++)
+        {
+            cp = jcf->methods + u16;
+            printf("\tMétodo #%u: cp name index %u\n", u16 + 1, cp->name_index);
+            printf("\t\tDescriptor: %u\n", cp->descriptor_index);
+            
+        }
+    }
+}
+
+
