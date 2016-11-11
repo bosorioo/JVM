@@ -6,6 +6,10 @@
 #include <wctype.h>
 #include <ctype.h>
 
+// Checks whether the "accessFlags" parameter has a valid combination
+// of method flags. In case of issues, jcf->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jcf, and the
+// return value is 1.
 char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
 {
     if (accessFlags & ACC_INVALID_METHOD_FLAG_MASK)
@@ -14,11 +18,41 @@ char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
         return 0;
     }
 
-    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
+    // If the method is ABSTRACT, it must not be FINAL, NATIVE, PRIVATE, STATIC, STRICT nor SYNCHRONIZED
+    if ((accessFlags & ACC_ABSTRACT) &&
+        (accessFlags & (ACC_FINAL | ACC_NATIVE | ACC_PRIVATE | ACC_STATIC | ACC_STRICT | ACC_SYNCHRONIZED)))
+    {
+        jcf->status = INVALID_ACCESS_FLAGS;
+        return 0;
+    }
+
+    uint8_t accessModifierCount = 0;
+
+    if (accessFlags & ACC_PUBLIC)
+        accessModifierCount++;
+
+    if (accessFlags & ACC_PRIVATE)
+        accessModifierCount++;
+
+    if (accessFlags & ACC_PROTECTED)
+        accessModifierCount++;
+
+    // A method can't be more than one of those: PUBLIC, PRIVATE, PROTECTED
+    if (accessModifierCount > 1)
+    {
+        jcf->status = INVALID_ACCESS_FLAGS;
+        return 0;
+    }
 
     return 1;
 }
 
+// Checks whether the "accessFlags" from the class file is a valid
+// combination of class flags. It also checks if "thisClass" and
+// "superClass" points to valid class indexes.
+// In case of issues, jcf->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jcf, and the
+// return value is 1. This function also
 char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
 {
     if (jcf->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
@@ -41,13 +75,20 @@ char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
         }
     }
 
-    if (!jcf->thisClass || jcf->constantPool[jcf->thisClass - 1].tag != CONSTANT_Class)
+    // "thisClass" must not be 0, can't point out of CP bounds and must
+    // point to a class index.
+    if (!jcf->thisClass || jcf->thisClass >= jcf->constantPoolCount ||
+        jcf->constantPool[jcf->thisClass - 1].tag != CONSTANT_Class)
     {
         jcf->status = INVALID_THIS_CLASS_INDEX;
         return 0;
     }
 
-    if (jcf->superClass && jcf->constantPool[jcf->superClass - 1].tag != CONSTANT_Class)
+    // "superClass" can't be out of CP bounds.
+    // It can be zero, but if it''s not, then it must point to a
+    // class index.
+    if (jcf->superClass >= jcf->constantPoolCount ||
+        (jcf->superClass && jcf->constantPool[jcf->superClass - 1].tag != CONSTANT_Class))
     {
         jcf->status = INVALID_SUPER_CLASS_INDEX;
         return 0;
@@ -56,11 +97,21 @@ char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
     return 1;
 }
 
+// Checks whether the name of the class pointed by "thisClass" is the same name
+// as the class file. This function doesn't check package and folders. It
+// basically gets the name of file, for instance: "C:/mypath/File.class" will be
+// understood as "File". The name of the class could be something like: "package/MyClass",
+// the package will be ignored and function will understand the class name as "MyClass".
+// The function then proceeds to compare "MyClass" and "File". If there is a mismatch,
+// jcf->status is modified and the function returns 0. Otherwise, it is left unchanged
+// and the return value is 1.
 char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
     char result;
 
+    // This is to get the indexes of the last '/' (to ignore folders)
+    // and the first '.' (to separe the .class suffix, in case it exists).
     for (i = 0; classFilePath[i] != '\0'; i++)
     {
         if (classFilePath[i] == '/')
@@ -103,7 +154,7 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
         else
         {
             if (result)
-                result = (utf8_char <= 255) && (i < end) && ((char)utf8_char == classFilePath[begin + i]);
+                result = (utf8_char <= 127) && (i < end) && ((char)utf8_char == classFilePath[begin + i]);
 
             i++;
         }
@@ -118,6 +169,12 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
     return result;
 }
 
+// Checks whether the UTF-8 stream is a valid Java Identifier. A java identifer (class name,
+// variable name, etc) must start with underscore, dollar sign or letter, and could finish
+// with numbers, letters, dollar sign or underscore. In case the parameter "isClassIdentifier"
+// is set to anything but zero, then this function will also accept slashes (/), as classes
+// have their full path separated by slashes. The function returns 1 if it the string is indeed
+// a valid Java Identifier, otherwise zero.
 char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
 {
     uint32_t utf8_char;
@@ -159,17 +216,29 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
     return isValid;
 }
 
+// Returns 1 if the index points to a UTF-8 constant, 0 otherwise.
 char isValidUTF8Index(JavaClassFile* jcf, uint16_t index)
 {
     return (jcf->constantPool + index - 1)->tag == CONSTANT_Utf8;
 }
 
+// Returns 1 if "name_index" points to a valid UTF-8 and is a valid
+// java identifier. The parameter "isClassIdentifier", if set to zero,
+// will not accept slashes (/) as valid identifier characters. If
+// "isClassIdentifier" is different than zero, then classes with slashes
+// in its name like "java/io/Stream" will be accepted as valid names.
+// Returns 0 otherwise.
 char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t isClassIdentifier)
 {
     cp_info* entry = jcf->constantPool + name_index - 1;
     return entry->tag == CONSTANT_Utf8 && isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, isClassIdentifier);
 }
 
+// Returns 1 if the name index points to a valid UTF-8 and is a valid
+// java  identifier. The difference between this function and "isValidNameIndex"
+// is that this function accepts "<init>" and "<clinit>" as valid names for methods,
+// whereas "isValidNameIndex" (consenquently "isValidJavaIdentifier") function wouldn't
+// accept those names as valid. Returns zero otherwise.
 char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index)
 {
     cp_info* entry = jcf->constantPool + name_index - 1;
@@ -184,6 +253,10 @@ char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index)
     return isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, 0);
 }
 
+// Checks whether the index points to a valid class and whether that
+// class name is valid. In case the check fails, jcf->status is changed and
+// the function returns 0. If everything is successful, the function returns 1
+// while leaving jcf unchanged.
 char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
 {
     cp_info* entry = jcf->constantPool + class_index - 1;
@@ -197,6 +270,11 @@ char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
     return 1;
 }
 
+// Checks whether name_and_type_index points to a valid CONSTANT_NameAndType,
+// checking if the name and the descriptor are valid. The descriptor must be
+// a valid field descriptor.
+// In case of failure, the function changes jcf->status and returns 0.
+// Otherwise, jcf is left unchanged, and the function returns 1.
 char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
 {
     cp_info* entry = jcf->constantPool + name_and_type_index - 1;
@@ -224,6 +302,11 @@ char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index
     return 1;
 }
 
+// Checks whether name_and_type_index points to a valid CONSTANT_NameAndType,
+// checking if the name and the descriptor are valid. The descriptor must be
+// a valid method descriptor.
+// In case of failure, the function changes jcf->status and returns 0.
+// Otherwise, jcf is left unchanged, and the function returns 1.
 char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
 {
     cp_info* entry = jcf->constantPool + name_and_type_index - 1;
@@ -251,6 +334,10 @@ char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_inde
     return 1;
 }
 
+
+// Iterates over the constant pool looking for inconsistencies in it.
+// If no error is encountered, the function returns 1. In case of failures,
+// the function will set jcf->status accordingly and will return 0.
 char checkConstantPoolValidity(JavaClassFile* jcf)
 {
     uint16_t i;

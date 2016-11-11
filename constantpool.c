@@ -6,6 +6,10 @@
 #include "constantpool.h"
 #include "utf8.h"
 
+// Reads a cp_info of type CONSTANT_Class from the file
+// Data read is written to pointer *entry.
+// CONSTANT_Class has the same structure as CONSTANT_String,
+// so this function could be used to read that too.
 char readConstantPool_Class(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Class.name_index))
@@ -27,10 +31,18 @@ char readConstantPool_Class(JavaClassFile* jcf, cp_info* entry)
     // memory that would be accessed isn't written yet.
     // That verification has to be done later, after all the constant have
     // been read.
+    // Also, this function can be used to read a CONSTANT_Class or a
+    // CONSTANT_String, so there is no way to know which one is being
+    // read.
 
     return 1;
 }
 
+// Reads a cp_info of type CONSTANT_Fieldref from the file
+// Data read is written to pointer *entry
+// CONSTANT_Fieldref has the same internal structure as CONSTANT_Methodref
+// CONSTANT_InterfaceMethodref and CONSTANT_NameAndType, so this function
+// can be also used to read those.
 char readConstantPool_Fieldref(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Fieldref.class_index))
@@ -59,14 +71,22 @@ char readConstantPool_Fieldref(JavaClassFile* jcf, cp_info* entry)
         return 0;
     }
 
-    // Class index and name_and_type index aren't verified because they could
+    // Class index isn't verified because they could
     // point to a constant pool entry that hasn't been added yet.
     // That verification has to be done later, after all the constant have
     // been read.
+    // Also, this function could be used to read a CONSTANT_NameAndType,
+    // CONSTANT_Methodref, CONSTANT_InterfaceMethodref or CONSTANT_Fieldref.
+    // Therefore, there is no way to know which one is being read, so no
+    // checks should be made here besides constant pool index boundary.
 
     return 1;
 }
 
+// Reads a cp_info of type CONSTANT_Integer from the file
+// Data read is written to pointer *entry.
+// CONSTANT_Integer has the same structure as CONSTANT_Float,
+// so this function could be used to read that too.
 char readConstantPool_Integer(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu4(jcf, &entry->Integer.value))
@@ -78,6 +98,10 @@ char readConstantPool_Integer(JavaClassFile* jcf, cp_info* entry)
     return 1;
 }
 
+// Reads a cp_info of type CONSTANT_Long from the file
+// Data read is written to pointer *entry.
+// CONSTANT_Long has the same structure as CONSTANT_Double,
+// so this function could be used to read that too.
 char readConstantPool_Long(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu4(jcf, &entry->Long.high))
@@ -95,6 +119,8 @@ char readConstantPool_Long(JavaClassFile* jcf, cp_info* entry)
     return 1;
 }
 
+// Reads a cp_info of type CONSTANT_Utf8 from the file
+// Data read is written to pointer *entry.
 char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
 {
     if (!readu2(jcf, &entry->Utf8.length))
@@ -128,6 +154,7 @@ char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
 
             jcf->totalBytesRead++;
 
+            // UTF-8 byte values can't be null and must not be in the range [0xF0, 0xFF].
             if (byte == 0 || (byte >= 0xF0))
             {
                 jcf->status = INVALID_UTF8_BYTES;
@@ -147,6 +174,7 @@ char readConstantPool_Utf8(JavaClassFile* jcf, cp_info* entry)
 
 char readConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 {
+    // Gets the entry tag
     int byte = fgetc(jcf->file);
 
     if (byte == EOF)
@@ -214,6 +242,10 @@ const char* decodeTag(uint8_t tag)
     return "Unknown Tag";
 }
 
+// Print one single constant from the constant pool.
+// *jcf must already be loaded, no checks are made.
+// *entry is the pointer to the constant that will be
+// printed.
 void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 {
     char buffer[48];
@@ -313,6 +345,8 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
     printf("\n\n");
 }
 
+// Function to print all the constants from the constant pool
+// of the class file. *jcf must already be loaded.
 void printConstantPool(JavaClassFile* jcf)
 {
     uint16_t u16;

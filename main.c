@@ -21,16 +21,17 @@ int main(int argc, char* args[])
     if (argc >= 3 && strcmp(args[2], "utf8bom"))
         printf("%c%c%c", 0xEF, 0xBB, 0xBF);
 
+    // Open .class file given as parameter
     JavaClassFile jcf;
-
     openClassFile(&jcf, args[1]);
 
+    // If everything went fine, print its content
     if (jcf.status == STATUS_OK)
         printClassFileInfo(&jcf);
+    // Otherwise, show what went wrong
     else
         printClassFileDebugInfo(&jcf);
 
     closeClassFile(&jcf);
-
     return 0;
 }
