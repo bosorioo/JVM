@@ -367,8 +367,19 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
 
     if (acctype == ACCT_CLASS)
     {
-        DECODE_FLAG(ACC_INTERFACE, "interface")
         DECODE_FLAG(ACC_SUPER, "super")
+    }
+
+    if (acctype == ACCT_CLASS || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
+    {
+        DECODE_FLAG(ACC_ABSTRACT, "abstract")
+    }
+
+    DECODE_FLAG(ACC_FINAL, "final")
+
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
+    {
+        DECODE_FLAG(ACC_STATIC, "static")
     }
 
     if (acctype == ACCT_METHOD)
@@ -378,30 +389,23 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
         DECODE_FLAG(ACC_STRICT, "strict")
     }
 
-    if (acctype == ACCT_CLASS || acctype == ACCT_METHOD)
-    {
-        DECODE_FLAG(ACC_ABSTRACT, "abstract")
-    }
-
     if (acctype == ACCT_FIELD)
     {
         DECODE_FLAG(ACC_TRANSIENT, "transient")
         DECODE_FLAG(ACC_VOLATILE, "volatile")
     }
 
-    DECODE_FLAG(ACC_FINAL, "final")
-
-    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD)
-    {
-        DECODE_FLAG(ACC_STATIC, "static")
-    }
-
     DECODE_FLAG(ACC_PUBLIC, "public")
 
-    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD)
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
     {
         DECODE_FLAG(ACC_PRIVATE, "private")
         DECODE_FLAG(ACC_PROTECTED, "protected")
+    }
+
+    if (acctype == ACCT_CLASS || acctype == ACCT_INNERCLASS)
+    {
+        DECODE_FLAG(ACC_INTERFACE, "interface")
     }
 
     // If no flags were written

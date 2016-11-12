@@ -454,25 +454,30 @@ Attributes count:	2
 
 ---- Methods ----
 
+
 	Method #1:
-		name_index:       cp index #61
-		descriptor_index: cp index #62
+		 name_index:        cp index #61 - <init>
+		 descriptor_index:  cp index #62 - ()V
+
 
 	Method #2:
-		name_index:       cp index #65
-		descriptor_index: cp index #66
+		 name_index:        cp index #65 - print
+		 descriptor_index:  cp index #66 - (I)V
+
 
 	Method #3:
-		name_index:       cp index #67
-		descriptor_index: cp index #68
+		 name_index:        cp index #67 - add
+		 descriptor_index:  cp index #68 - (IF)J
+
 
 	Method #4:
-		name_index:       cp index #69
-		descriptor_index: cp index #70
+		 name_index:        cp index #69 - main
+		 descriptor_index:  cp index #70 - ([Ljava/lang/String;)V
+
 
 	Method #5:
-		name_index:       cp index #71
-		descriptor_index: cp index #62
+		 name_index:        cp index #71 - <clinit>
+		 descriptor_index:  cp index #62 - ()V
 
 ---- Attributes ----
 
