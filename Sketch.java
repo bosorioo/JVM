@@ -28,6 +28,10 @@ public class Sketch implements EventListener, RandomAccess {
 	interface Test {
 		public void method1(int[] a);
 	}
+	
+	interface AnotherInterface {
+		
+	}
 
 	public void print(int i) {
 		System.out.println(i);
