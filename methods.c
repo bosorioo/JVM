@@ -1,6 +1,7 @@
 #include "methods.h"
 #include "readfunctions.h"
 #include "validity.h"
+#include "utf8.h"
 #include <stdlib.h>
 
 char readMethod(JavaClassFile* jcf, method_info* entry)
@@ -90,7 +91,9 @@ void printMethods(JavaClassFile* jcf)
 {
 
     uint16_t u16;
-    method_info* cp;
+    char buffer[48];
+    cp_info* cp;
+    method_info* mi;
 
     if (jcf->methodCount > 0)
     {
@@ -98,12 +101,20 @@ void printMethods(JavaClassFile* jcf)
 
         for (u16 = 0; u16 < jcf->methodCount; u16++)
         {
-            cp = jcf->methods + u16;
-            printf("\n\tMethod #%u:\n", u16 + 1);
-            printf("\t\tname_index:       cp index #%u\n", cp->name_index);
-            printf("\t\tdescriptor_index: cp index #%u\n", cp->descriptor_index);
+        
+            mi = jcf->methods + u16;
+
+            cp = jcf->constantPool + mi->name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+
+            printf("\n\n\tMethod #%u:\n", u16 + 1);
+            printf("\t\t name_index:        cp index #%u - %s\n", mi->name_index, buffer);
+
+            cp = jcf->constantPool + mi->descriptor_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+            printf("\t\t descriptor_index:  cp index #%u - %s\n", mi->descriptor_index, buffer);    
+
         }
     }
 }
-
 
