@@ -1,6 +1,7 @@
 #include "fields.h"
 #include "readfunctions.h"
 #include "validity.h"
+#include "utf8.h"
 #include <stdlib.h>
 
 char readField(JavaClassFile* jcf, field_info* entry)
@@ -89,4 +90,45 @@ void freeFieldAttributes(field_info* entry)
         entry->attributes_count = 0;
         entry->attributes = NULL;
     }
+}
+
+void printAllFields(JavaClassFile* jcf)
+{
+    if (jcf->fieldCount == 0)
+        return;
+
+    char buffer[48];
+    uint16_t u16;
+    field_info* fi;
+    cp_info* cpi;
+
+    printf("\n---- Fields ----");
+
+    for (u16 = 0; u16 < jcf->fieldCount; u16++)
+    {
+        fi = jcf->fields + u16;
+
+        printf("\n\n\tField #%u:\n", u16 + 1);
+
+        cpi = jcf->constantPool + fi->name_index - 1;
+        UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+        printf("\t\tname_index:       cp index #%u <%s>\n", fi->name_index, buffer);
+
+        cpi = jcf->constantPool + fi->descriptor_index - 1;
+        UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+        printf("\t\tdescriptor_index: cp index #%u <%s>\n", fi->descriptor_index, buffer);
+
+        decodeAccessFlags(fi->access_flags, buffer, sizeof(buffer), ACCT_FIELD);
+        printf("\t\taccess_flags:     0x%.4X [%s]\n", fi->access_flags, buffer);
+
+        printf("\t\tattributes_count: %u", fi->attributes_count);
+
+        if (fi->attributes_count > 0)
+        {
+            // TODO: print fields attributes
+        }
+
+    }
+
+    printf("\n");
 }

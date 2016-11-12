@@ -218,12 +218,6 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         }
     }
 
-    // TODO: perform validity check for attributes, for example:
-    // make sure ConstantValue has length of two and those two bytes make a valid index
-    // make sure SourceFile has a length of two and those two bytes make a valid pointer to a utf8
-    // make sure all indexes of InnerClasses are valid indexes
-    // and so on...
-
     if (fgetc(jcf->file) != EOF)
     {
         jcf->status = FILE_CONTAINS_UNEXPECTED_DATA;
@@ -371,11 +365,6 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
         buffer += bytes; \
         buffer_len -= bytes; }
 
-    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
-    {
-        DECODE_FLAG(ACC_STATIC, "static")
-    }
-
     if (acctype == ACCT_CLASS)
     {
         DECODE_FLAG(ACC_SUPER, "super")
@@ -385,8 +374,6 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     {
         DECODE_FLAG(ACC_ABSTRACT, "abstract")
     }
-
-    DECODE_FLAG(ACC_FINAL, "final")
 
     if (acctype == ACCT_METHOD)
     {
@@ -408,6 +395,13 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
         DECODE_FLAG(ACC_PRIVATE, "private")
         DECODE_FLAG(ACC_PROTECTED, "protected")
     }
+
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
+    {
+        DECODE_FLAG(ACC_STATIC, "static")
+    }
+
+    DECODE_FLAG(ACC_FINAL, "final")
 
     if (acctype == ACCT_CLASS || acctype == ACCT_INNERCLASS)
     {
@@ -507,13 +501,7 @@ void printClassFileInfo(JavaClassFile* jcf)
         }
     }
 
-    if (jcf->fieldCount > 0)
-    {
-        printf("\n---- Fields ----\n\n");
-        // TODO: print fields
-        // TODO: move field printing code to fields.c
-    }
-
+    printAllFields(jcf);
     printMethods(jcf);
     printAllAttributes(jcf);
 }

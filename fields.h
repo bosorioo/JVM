@@ -17,5 +17,5 @@ struct field_info {
 
 char readField(JavaClassFile* jcf, field_info* entry);
 void freeFieldAttributes(field_info* entry);
-
+void printAllFields(JavaClassFile* jcf);
 #endif // FIELDS_H
