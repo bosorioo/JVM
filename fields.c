@@ -98,9 +98,10 @@ void printAllFields(JavaClassFile* jcf)
         return;
 
     char buffer[48];
-    uint16_t u16;
+    uint16_t u16, att_index;
     field_info* fi;
     cp_info* cpi;
+    attribute_info* atti;
 
     printf("\n---- Fields ----");
 
@@ -125,7 +126,15 @@ void printAllFields(JavaClassFile* jcf)
 
         if (fi->attributes_count > 0)
         {
-            // TODO: print fields attributes
+            for (att_index = 0; att_index < fi->attributes_count; att_index++)
+            {
+                atti = fi->attributes + att_index;
+                cpi = jcf->constantPool + atti->name_index - 1;
+                UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+
+                printf("\n\n\t\tAttribute #%u - %s:\n", att_index + 1, buffer);
+                printAttribute(jcf, fi->attributes + att_index, 3);
+            }
         }
 
     }
