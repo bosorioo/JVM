@@ -218,6 +218,12 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         }
     }
 
+    // TODO: perform validity check for attributes, for example:
+    // make sure ConstantValue has length of two and those two bytes make a valid index
+    // make sure SourceFile has a length of two and those two bytes make a valid pointer to a utf8
+    // make sure all indexes of InnerClasses are valid indexes
+    // and so on...
+
     if (fgetc(jcf->file) != EOF)
     {
         jcf->status = FILE_CONTAINS_UNEXPECTED_DATA;
@@ -347,7 +353,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
     return "unknown status";
 }
 
-void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype)
 {
     uint32_t bytes = 0;
     char* buffer_ptr = buffer;
@@ -495,11 +501,5 @@ void printClassFileInfo(JavaClassFile* jcf)
     }
 
     printMethods(jcf);
-
-    if (jcf->attributeCount > 0)
-    {
-        printf("\n---- Attributes ----\n\n");
-        // TODO: print attributes
-        // TODO: move attribute printing code to attributes.c
-    }
+    printAllAttributes(jcf);
 }

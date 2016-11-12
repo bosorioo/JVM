@@ -115,7 +115,7 @@ struct JavaClassFile {
 void openClassFile(JavaClassFile* jcf, const char* path);
 void closeClassFile(JavaClassFile* jcf);
 const char* decodeJavaClassFileStatus(enum JavaClassStatus);
-void decodeAccessFlags(uint32_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype);
+void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype);
 
 void printClassFileDebugInfo(JavaClassFile* jcf);
 void printClassFileInfo(JavaClassFile* jcf);
