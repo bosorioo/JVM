@@ -271,10 +271,10 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
             u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
             printf("\t\tstring_index: cp index #%u\n", entry->String.string_index);
             printf("\t\tString Length: %u\n", u32);
-            printf("\t\tASCII: %s\n", buffer);
+            printf("\t\tASCII: %s", buffer);
 
             if (u32 != cpi->Utf8.length)
-                printf("\t\tUTF-8: %.*s", cpi->Utf8.bytes, cpi->Utf8.bytes);
+                printf("\n\t\tUTF-8: %.*s", cpi->Utf8.bytes, cpi->Utf8.bytes);
 
             break;
 
