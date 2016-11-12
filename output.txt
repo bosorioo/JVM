@@ -127,7 +127,6 @@ Attributes count:	2
 		String Length: 12
 		ASCII: Hello world!
 
-
 	#34: Methodref (tag = 10)
 		class_index: cp index #88 <java/io/PrintStream>
 		name_and_type_index: cp index #91

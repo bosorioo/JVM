@@ -23,7 +23,8 @@ char readField(JavaClassFile* jcf, field_info* entry)
         return 0;
     }
 
-    // TODO: check access flags validity, example: can't be PRIVATE and PUBLIC
+    if (!checkFieldAccessFlags(jcf, entry->access_flags))
+        return 0;
 
     if (entry->name_index == 0 ||
         entry->name_index >= jcf->constantPoolCount ||

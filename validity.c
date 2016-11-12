@@ -47,6 +47,57 @@ char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
     return 1;
 }
 
+// Checks whether the "accessFlags" parameter has a valid combination
+// of field flags. In case of issues, jcf->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jcf, and the
+// return value is 1.
+char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
+{
+    if (accessFlags & ACC_INVALID_FIELD_FLAG_MASK)
+    {
+        jcf->status = USE_OF_RESERVED_FIELD_ACCESS_FLAGS;
+        return 0;
+    }
+
+    // The field can't be both ABSTRACT and FINAL
+    if ((accessFlags & ACC_ABSTRACT) && (accessFlags & ACC_FINAL))
+    {
+        jcf->status = INVALID_ACCESS_FLAGS;
+        return 0;
+    }
+
+    uint16_t interfaceRequiredBitMask = ACC_PUBLIC | ACC_STATIC | ACC_FINAL;
+
+    // If the class is an interface, then the bits PUBLIC, STATIC and FINAL must
+    // be set to 1 for all fields.
+    if ((jcf->accessFlags & ACC_INTERFACE) &&
+        ((jcf->accessFlags & interfaceRequiredBitMask) != interfaceRequiredBitMask))
+    {
+        jcf->status = INVALID_ACCESS_FLAGS;
+        return 0;
+    }
+
+    uint8_t accessModifierCount = 0;
+
+    if (accessFlags & ACC_PUBLIC)
+        accessModifierCount++;
+
+    if (accessFlags & ACC_PRIVATE)
+        accessModifierCount++;
+
+    if (accessFlags & ACC_PROTECTED)
+        accessModifierCount++;
+
+    // A field can't be more than one of those: PUBLIC, PRIVATE, PROTECTED
+    if (accessModifierCount > 1)
+    {
+        jcf->status = INVALID_ACCESS_FLAGS;
+        return 0;
+    }
+
+    return 1;
+}
+
 // Checks whether the "accessFlags" from the class file is a valid
 // combination of class flags. It also checks if "thisClass" and
 // "superClass" points to valid class indexes.

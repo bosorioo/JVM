@@ -4,6 +4,7 @@
 #include "javaclassfile.h"
 
 char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t acessFlags);
+char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t acessFlags);
 char checkClassIndexAndAccessFlags(JavaClassFile* jcf);
 char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath);
 char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier);
