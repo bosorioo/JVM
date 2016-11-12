@@ -48,6 +48,7 @@ enum AccessFlags {
 
 enum JavaClassStatus {
     STATUS_OK,
+    UNSUPPORTED_VERSION,
     FILE_COULDNT_BE_OPENED,
     INVALID_SIGNATURE,
     CLASS_NAME_FILE_NAME_MISMATCH,

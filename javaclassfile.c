@@ -56,7 +56,11 @@ void openClassFile(JavaClassFile* jcf, const char* path)
         return;
     }
 
-    // TODO: assert version
+    if (jcf->majorVersion < 45 || jcf->majorVersion > 52)
+    {
+        jcf->status = UNSUPPORTED_VERSION;
+        return;
+    }
 
     if (jcf->constantPoolCount == 0)
     {
@@ -309,6 +313,7 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
     switch (status)
     {
         case STATUS_OK: return "file is ok";
+        case UNSUPPORTED_VERSION: return "class file version isn't supported";
         case FILE_COULDNT_BE_OPENED: return "class file couldn't be opened";
         case INVALID_SIGNATURE: return "signature (0xCAFEBABE) mismatch";
         case CLASS_NAME_FILE_NAME_MISMATCH: return "class name and .class file name don't match";
@@ -465,8 +470,12 @@ void printClassFileInfo(JavaClassFile* jcf)
 
     printf("---- General Information ----\n\n");
 
-    printf("Version:\t\t%u.%u (Major.minor)\n", jcf->majorVersion, jcf->minorVersion);
-    printf("Constant pool count:\t%u\n", jcf->constantPoolCount);
+    printf("Version:\t\t%u.%u (Major.minor)", jcf->majorVersion, jcf->minorVersion);
+
+    if (jcf->majorVersion >= 45 && jcf->majorVersion <= 52)
+        printf(" [jdk version 1.%d]", jcf->majorVersion - 44);
+
+    printf("\nConstant pool count:\t%u\n", jcf->constantPoolCount);
 
     decodeAccessFlags(jcf->accessFlags, buffer, sizeof(buffer), ACCT_CLASS);
     printf("Access flags:\t\t0x%.4X [%s]\n", jcf->accessFlags, buffer);
