@@ -7,6 +7,7 @@
 char readMethod(JavaClassFile* jcf, method_info* entry)
 {
     entry->attributes = NULL;
+    jcf->currentAttributeEntryIndex = -2;
 
     if (!readu2(jcf, &entry->access_flags) ||
         !readu2(jcf, &entry->name_index) ||
@@ -101,7 +102,7 @@ void printMethods(JavaClassFile* jcf)
 
         for (u16 = 0; u16 < jcf->methodCount; u16++)
         {
-        
+
             mi = jcf->methods + u16;
 
             cp = jcf->constantPool + mi->name_index - 1;
@@ -112,7 +113,7 @@ void printMethods(JavaClassFile* jcf)
 
             cp = jcf->constantPool + mi->descriptor_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
-            printf("\t\t descriptor_index:  cp index #%u - %s\n", mi->descriptor_index, buffer);    
+            printf("\t\t descriptor_index:  cp index #%u - %s\n", mi->descriptor_index, buffer);
 
         }
     }

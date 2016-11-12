@@ -344,6 +344,12 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case INVALID_CLASS_INDEX: return "class_index doesn't point to a valid class name";
         case INVALID_NAME_AND_TYPE_INDEX: return "(NameAndType) name_index or descriptor_index doesn't point to a valid UTF-8 stream";
         case INVALID_JAVA_IDENTIFIER: return "UTF-8 stream isn't a valid Java identifier";
+
+        case ATTRIBUTE_LENGTH_MISMATCH: return "Attribute length is different than expected";
+        case ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX: return "constantvalue_index isn't a valid constant value index";
+        case ATTRIBUTE_INVALID_SOURCEFILE_INDEX: return "sourcefile_index isn't a valid source file index";
+        case ATTRIBUTE_INVALID_INNERCLASS_INDEXES: return "InnerClass has at least one invalid index";
+
         case FILE_CONTAINS_UNEXPECTED_DATA: return "class file contains more data than expected, which wasn't processed";
 
         default:
@@ -365,6 +371,11 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
         buffer += bytes; \
         buffer_len -= bytes; }
 
+    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
+    {
+        DECODE_FLAG(ACC_STATIC, "static")
+    }
+
     if (acctype == ACCT_CLASS)
     {
         DECODE_FLAG(ACC_SUPER, "super")
@@ -376,11 +387,6 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     }
 
     DECODE_FLAG(ACC_FINAL, "final")
-
-    if (acctype == ACCT_FIELD || acctype == ACCT_METHOD || acctype == ACCT_INNERCLASS)
-    {
-        DECODE_FLAG(ACC_STATIC, "static")
-    }
 
     if (acctype == ACCT_METHOD)
     {
@@ -440,10 +446,14 @@ void printClassFileDebugInfo(JavaClassFile* jcf)
     else if (jcf->currentMethodEntryIndex + 1 != jcf->methodCount)
     {
         printf("Failed to read method at index #%d\n", jcf->currentMethodEntryIndex + 1);
-        printf("Last attribute index read: %d\n", jcf->currentAttributeEntryIndex);
+
+        if (jcf->currentAttributeEntryIndex > -2)
+        {
+            printf("Couldn't read attribute at index: %d\n", jcf->currentAttributeEntryIndex + 1);
+        }
         printf("Methods count: %u, methods successfully read: %d\n", jcf->methodCount, 1 + jcf->currentMethodEntryIndex);
     }
-    else if (jcf->currentAttributeEntryIndex + 1 != jcf->attributeCount)
+    else if (jcf->attributeEntriesRead != jcf->attributeCount)
     {
         printf("Failed to read attribute at index #%d\n", jcf->currentAttributeEntryIndex + 1);
         printf("Attributes count: %u, attributes successfully read: %d\n", jcf->attributeCount, jcf->attributeEntriesRead);
