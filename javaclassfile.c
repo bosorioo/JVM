@@ -436,7 +436,7 @@ void printClassFileDebugInfo(JavaClassFile* jcf)
     else if (jcf->currentAttributeEntryIndex + 1 != jcf->attributeCount)
     {
         printf("Failed to read attribute at index #%d\n", jcf->currentAttributeEntryIndex + 1);
-        printf("Attributes count: %u, attributes successfully read: %d\n", jcf->attributeCount, 1 + jcf->currentAttributeEntryIndex);
+        printf("Attributes count: %u, attributes successfully read: %d\n", jcf->attributeCount, jcf->attributeEntriesRead);
     }
 
     printf("File status code: %d\nStatus description: %s.\n", jcf->status, decodeJavaClassFileStatus(jcf->status));
