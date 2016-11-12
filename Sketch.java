@@ -6,7 +6,9 @@ public class Sketch implements EventListener, RandomAccess {
 
 	private static final int[] values = {1, 2, 3, 4, 5};
 
+	@Deprecated
 	public float float_member;
+	
 	public long long_member = 5910974510923776L;
 	public static long long_static_value = 98765432123456789L;
 
