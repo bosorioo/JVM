@@ -491,10 +491,10 @@ Attributes count:	2
 			inner_class_info_index:   cp index #43 <sketch/Sketch$AnotherInterface>
 			outer_class_info_index:   cp index #39 <sketch/Sketch>
 			inner_name_index:         cp index #44 <AnotherInterface>
-			inner_class_access_flags: 0x0608 [interface, abstract]
+			inner_class_access_flags: 0x0608 [static, abstract, interface]
 
 		Inner Class #2:
 			inner_class_info_index:   cp index #46 <sketch/Sketch$Test>
 			outer_class_info_index:   cp index #39 <sketch/Sketch>
 			inner_name_index:         cp index #47 <Test>
-			inner_class_access_flags: 0x0608 [interface, abstract]
+			inner_class_access_flags: 0x0608 [static, abstract, interface]
