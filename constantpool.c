@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 #include "readfunctions.h"
@@ -258,20 +257,25 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
         case CONSTANT_Utf8:
 
             u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), entry->Utf8.bytes, entry->Utf8.length);
-            printf("\tByte Count: %u\n", entry->Utf8.length);
-            printf("\tLength: %u\n", u32);
-            printf("\tASCII Characters: %s", buffer);
+            printf("\t\tByte Count: %u\n", entry->Utf8.length);
+            printf("\t\tLength: %u\n", u32);
+            printf("\t\tASCII Characters: %s", buffer);
 
             if (u32 != entry->Utf8.length)
-                printf("\n\tUTF-8 Characters: %.*s", (int)entry->Utf8.length, entry->Utf8.bytes);
+                printf("\n\t\tUTF-8 Characters: %.*s", (int)entry->Utf8.length, entry->Utf8.bytes);
 
             break;
 
         case CONSTANT_String:
             cpi = jcf->constantPool + entry->String.string_index - 1;
             u32 = UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tstring_index: cp index #%u <%s>\n", entry->String.string_index, buffer);
-            printf("\tString Length: %u", u32);
+            printf("\t\tstring_index: cp index #%u\n", entry->String.string_index);
+            printf("\t\tString Length: %u\n", u32);
+            printf("\t\tASCII: %s\n", buffer);
+
+            if (u32 != cpi->Utf8.length)
+                printf("\t\tUTF-8: %.*s", cpi->Utf8.bytes, cpi->Utf8.bytes);
+
             break;
 
         case CONSTANT_Fieldref:
@@ -281,20 +285,20 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
             cpi = jcf->constantPool + entry->Fieldref.class_index - 1;
             cpi = jcf->constantPool + cpi->Class.name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tclass_index: cp index #%u <%s>\n", entry->Fieldref.class_index, buffer);
-            printf("\tname_and_type_index: cp index #%u\n", entry->Fieldref.name_and_type_index);
+            printf("\t\tclass_index: cp index #%u <%s>\n", entry->Fieldref.class_index, buffer);
+            printf("\t\tname_and_type_index: cp index #%u\n", entry->Fieldref.name_and_type_index);
 
             cpi = jcf->constantPool + entry->Fieldref.name_and_type_index - 1;
             u32 = cpi->NameAndType.name_index;
             cpi = jcf->constantPool + u32 - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tname_and_type.name_index: cp index #%u <%s>\n", u32, buffer);
+            printf("\t\tname_and_type.name_index: cp index #%u <%s>\n", u32, buffer);
 
             cpi = jcf->constantPool + entry->Fieldref.name_and_type_index - 1;
             u32 = cpi->NameAndType.descriptor_index;
             cpi = jcf->constantPool + u32 - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tname_and_type.descriptor_index: cp index #%u <%s>", u32, buffer);
+            printf("\t\tname_and_type.descriptor_index: cp index #%u <%s>", u32, buffer);
 
             break;
 
@@ -302,47 +306,47 @@ void printConstantPoolEntry(JavaClassFile* jcf, cp_info* entry)
 
             cpi = jcf->constantPool + entry->Class.name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tname_index: cp index #%u <%s>", entry->Class.name_index, buffer);
+            printf("\t\tname_index: cp index #%u <%s>", entry->Class.name_index, buffer);
             break;
 
         case CONSTANT_NameAndType:
 
             cpi = jcf->constantPool + entry->NameAndType.name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tname_index: cp index #%u <%s>\n", entry->NameAndType.name_index, buffer);
+            printf("\t\tname_index: cp index #%u <%s>\n", entry->NameAndType.name_index, buffer);
 
             cpi = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\tdescriptor_index: cp index #%u <%s>", entry->NameAndType.descriptor_index, buffer);
+            printf("\t\tdescriptor_index: cp index #%u <%s>", entry->NameAndType.descriptor_index, buffer);
             break;
 
         case CONSTANT_Integer:
-            printf("\tBytes: 0x%08X\n", entry->Integer.value);
-            printf("\tValue: %d", (int32_t)entry->Integer.value);
+            printf("\t\tBytes: 0x%08X\n", entry->Integer.value);
+            printf("\t\tValue: %d", (int32_t)entry->Integer.value);
             break;
 
         case CONSTANT_Long:
-            printf("\tHigh Bytes: 0x%08X\n", entry->Long.high);
-            printf("\tLow  Bytes: 0x%08X\n", entry->Long.low);
-            printf("\tLong Value: %" PRId64, ((int64_t)entry->Long.high << 32) | entry->Long.low);
+            printf("\t\tHigh Bytes: 0x%08X\n", entry->Long.high);
+            printf("\t\tLow  Bytes: 0x%08X\n", entry->Long.low);
+            printf("\t\tLong Value: %" PRId64, ((int64_t)entry->Long.high << 32) | entry->Long.low);
             break;
 
         case CONSTANT_Float:
-            printf("\tBytes: 0x%08X\n", entry->Float.bytes);
-            printf("\tValue: %e", readConstantPoolFloat(entry));
+            printf("\t\tBytes: 0x%08X\n", entry->Float.bytes);
+            printf("\t\tValue: %e", readConstantPoolFloat(entry));
             break;
 
         case CONSTANT_Double:
-            printf("\tHigh Bytes:   0x%08X\n", entry->Double.high);
-            printf("\tLow  Bytes:   0x%08X\n", entry->Double.low);
-            printf("\tDouble Value: %e", readConstantPoolDouble(entry));
+            printf("\t\tHigh Bytes:   0x%08X\n", entry->Double.high);
+            printf("\t\tLow  Bytes:   0x%08X\n", entry->Double.low);
+            printf("\t\tDouble Value: %e", readConstantPoolDouble(entry));
             break;
 
         default:
             break;
     }
 
-    printf("\n\n");
+    printf("\n");
 }
 
 // Function to print all the constants from the constant pool
@@ -354,12 +358,12 @@ void printConstantPool(JavaClassFile* jcf)
 
     if (jcf->constantPoolCount > 1)
     {
-        printf("\n---- Constant Pool ----\n\n");
+        printf("\n---- Constant Pool ----\n");
 
         for (u16 = 0; u16 < jcf->constantPoolCount - 1; u16++)
         {
             cp = jcf->constantPool + u16;
-            printf("%*c#%u: %s (tag = %u)\n", 5 - (int)log10(u16 + 1), ' ', u16 + 1, decodeTag(cp->tag), cp->tag);
+            printf("\n\t#%u: %s (tag = %u)\n", u16 + 1, decodeTag(cp->tag), cp->tag);
             printConstantPoolEntry(jcf, cp);
 
             if (cp->tag == CONSTANT_Double || cp->tag == CONSTANT_Long)
