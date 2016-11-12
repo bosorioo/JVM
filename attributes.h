@@ -19,7 +19,8 @@ enum AttributeType {
     ATTR_SourceFile,
     ATTR_InnerClasses,
     ATTR_Code,
-    ATTR_LineNumberTable
+    ATTR_LineNumberTable,
+    ATTR_Deprecated
 };
 
 typedef struct {
@@ -51,6 +52,24 @@ typedef struct {
     uint16_t line_number_table_length;
     LineNumberTableEntry* line_number_table;
 } att_LineNumberTable_info;
+
+typedef struct {
+    uint16_t start_pc;
+    uint16_t end_pc;
+    uint16_t handler_pc;
+    uint16_t catch_type;
+} ExceptionTableEntry;
+
+typedef struct {
+    uint16_t max_stack;
+    uint16_t max_locals;
+    uint32_t code_length;
+    uint8_t* code;
+    uint16_t exception_table_length;
+    ExceptionTableEntry* exception_table;
+    uint16_t attributes_count;
+    attribute_info* attributes;
+} att_Code_info;
 
 char readAttribute(JavaClassFile* jcf, attribute_info* entry);
 void freeAttributeInfo(attribute_info* entry);

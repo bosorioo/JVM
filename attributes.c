@@ -14,6 +14,7 @@ DECLARE_ATTR_FUNCS(InnerClasses)
 DECLARE_ATTR_FUNCS(LineNumberTable)
 DECLARE_ATTR_FUNCS(ConstantValue)
 DECLARE_ATTR_FUNCS(Code)
+DECLARE_ATTR_FUNCS(Deprecated)
 
 char readAttribute(JavaClassFile* jcf, attribute_info* entry)
 {
@@ -38,22 +39,21 @@ char readAttribute(JavaClassFile* jcf, attribute_info* entry)
         return 0;
     }
 
-    #define CMP_ATT(name) cmp_UTF8_Ascii(cp->Utf8.bytes, cp->Utf8.length, (uint8_t*)#name, sizeof(#name) - 1) \
-        && (entry->attributeType = ATTR_##name)
+    #define IF_ATTR_CHECK(name) \
+        if (cmp_UTF8_Ascii(cp->Utf8.bytes, cp->Utf8.length, (uint8_t*)#name, sizeof(#name) - 1)) { \
+            entry->attributeType = ATTR_##name; \
+            result = readAttribute##name(jcf, entry); \
+        }
 
     uint32_t totalBytesRead = jcf->totalBytesRead;
     char result;
 
-    if (CMP_ATT(ConstantValue))
-        result = readAttributeConstantValue(jcf, entry);
-    else if (CMP_ATT(SourceFile))
-        result =  readAttributeSourceFile(jcf, entry);
-    else if (CMP_ATT(InnerClasses))
-        result =  readAttributeInnerClasses(jcf, entry);
-    else if (CMP_ATT(LineNumberTable))
-        result =  readAttributeLineNumberTable(jcf, entry);
-    else if (CMP_ATT(Code))
-        result =  readAttributeCode(jcf, entry);
+    IF_ATTR_CHECK(ConstantValue)
+    else IF_ATTR_CHECK(SourceFile)
+    else IF_ATTR_CHECK(InnerClasses)
+    else IF_ATTR_CHECK(Code)
+    else IF_ATTR_CHECK(LineNumberTable)
+    else IF_ATTR_CHECK(Deprecated)
     else
     {
         uint32_t u32;
@@ -79,7 +79,7 @@ char readAttribute(JavaClassFile* jcf, attribute_info* entry)
         return 0;
     }
 
-    #undef CMP_ATT
+    #undef ATTR_CHECK
     return result;
 }
 
@@ -89,14 +89,25 @@ void ident(int level)
         printf("\t");
 }
 
+uint8_t readAttributeDeprecated(JavaClassFile* jcf, attribute_info* entry)
+{
+    entry->info = NULL;
+    return 1;
+}
+
+void printAttributeDeprecated(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+{
+    ident(identationLevel);
+    printf("This element is marked as deprecated and should no longer be used.");
+}
+
+void freeAttributeDeprecated(attribute_info* entry)
+{
+
+}
+
 uint8_t readAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry)
 {
-    if (entry->length != 2)
-    {
-        jcf->status = ATTRIBUTE_LENGTH_MISMATCH;
-        return 0;
-    }
-
     att_ConstantValue_info* info = (att_ConstantValue_info*)malloc(sizeof(att_ConstantValue_info));
     entry->info = (void*)info;
 
@@ -163,6 +174,7 @@ void printAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry, int 
         case CONSTANT_String:
             cp = jcf->constantPool + cp->String.string_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+            printf("%s", buffer);
             break;
 
         default:
@@ -183,12 +195,6 @@ void freeAttributeConstantValue(attribute_info* entry)
 
 uint8_t readAttributeSourceFile(JavaClassFile* jcf, attribute_info* entry)
 {
-    if (entry->length != 2)
-    {
-        jcf->status = ATTRIBUTE_LENGTH_MISMATCH;
-        return 0;
-    }
-
     att_SourceFile_info* info = (att_SourceFile_info*)malloc(sizeof(att_SourceFile_info));
     entry->info = (void*)info;
 
@@ -251,12 +257,6 @@ uint8_t readAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry)
     if (!readu2(jcf, &info->number_of_classes))
     {
         jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
-        return 0;
-    }
-
-    if (entry->length != (info->number_of_classes * sizeof(InnerClassInfo) + 2))
-    {
-        jcf->status = ATTRIBUTE_LENGTH_MISMATCH;
         return 0;
     }
 
@@ -395,12 +395,6 @@ uint8_t readAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry)
         return 0;
     }
 
-    if (entry->length != (info->line_number_table_length * sizeof(LineNumberTableEntry) + 2))
-    {
-        jcf->status = ATTRIBUTE_LENGTH_MISMATCH;
-        return 0;
-    }
-
     info->line_number_table = (LineNumberTableEntry*)malloc(info->line_number_table_length * sizeof(LineNumberTableEntry));
 
     if (!info->line_number_table)
@@ -464,13 +458,101 @@ void freeAttributeLineNumberTable(attribute_info* entry)
 
 uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 {
-    uint32_t length = entry->length;
+    att_Code_info* info = (att_Code_info*)malloc(sizeof(att_Code_info));
+    entry->info = (void*)info;
+    uint32_t u32;
 
-    while (length-- > 0)
+    if (!info)
     {
-        fgetc(jcf->file);
-        jcf->totalBytesRead++;
+        jcf->status = MEMORY_ALLOCATION_FAILED;
+        return 0;
     }
+
+    info->code = NULL;
+    info->exception_table = NULL;
+
+    if (!readu2(jcf, &info->max_stack) ||
+        !readu2(jcf, &info->max_locals) ||
+        !readu4(jcf, &info->code_length))
+    {
+        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        return 0;
+    }
+
+    info->code = (uint8_t*)malloc(info->code_length);
+
+    if (!info->code)
+    {
+        jcf->status = MEMORY_ALLOCATION_FAILED;
+        return 0;
+    }
+
+    for (u32 = 0; u32 < info->code_length; u32++)
+    {
+        int byte = fgetc(jcf->file);
+
+        if (byte == EOF)
+        {
+            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            return 0;
+        }
+
+        jcf->totalBytesRead++;
+        *(info->code + u32) = (uint8_t)byte;
+    }
+
+    if (!readu2(jcf, &info->exception_table_length))
+    {
+        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        return 0;
+    }
+
+    info->exception_table = (ExceptionTableEntry*)malloc(info->exception_table_length * sizeof(ExceptionTableEntry));
+
+    if (!info->exception_table)
+    {
+        jcf->status = MEMORY_ALLOCATION_FAILED;
+        return 0;
+    }
+
+    ExceptionTableEntry* except = info->exception_table;
+
+    for (u32 = 0; u32 < info->exception_table_length; u32++)
+    {
+        if (!readu2(jcf, &except->start_pc) ||
+            !readu2(jcf, &except->end_pc) ||
+            !readu2(jcf, &except->handler_pc) ||
+            !readu2(jcf, &except->catch_type))
+        {
+            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            return 0;
+        }
+
+        // TODO: check if start_pc, end_pc and handler_pc are valid program counters inside
+        // the code. Also check if catch_type is a pointer to a valid class with Throwable as
+        // parent, or if it is NULL (finally block).
+    }
+
+    if (!readu2(jcf, &info->attributes_count))
+    {
+        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        return 0;
+    }
+
+    info->attributes = (attribute_info*)malloc(info->attributes_count * sizeof(attribute_info));
+
+    if (!info->attributes)
+    {
+        jcf->status = MEMORY_ALLOCATION_FAILED;
+        return 0;
+    }
+
+    for (u32 = 0; u32 < info->attributes_count; u32++)
+    {
+        if (!readAttribute(jcf, info->attributes + u32))
+            return 0;
+    }
+
     return 1;
 }
 
@@ -478,13 +560,22 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 {
     ident(identationLevel);
     printf("Not yet implemented.");
+    // TODO: implement Code print, using mnemonics for the instructions
 }
 
 void freeAttributeCode(attribute_info* entry)
 {
-    if (entry->info)
+    att_Code_info* info = (att_Code_info*)entry->info;
+
+    if (info)
     {
-        free(entry->info);
+        if (info->code)
+            free(info->code);
+
+        if (info->exception_table)
+            free(info->exception_table);
+
+        free(info);
         entry->info = NULL;
     }
 }
@@ -495,11 +586,12 @@ void freeAttributeInfo(attribute_info* entry)
 
     switch (entry->attributeType)
     {
-        //ATTR_CASE(Code)
+        ATTR_CASE(Code)
         ATTR_CASE(LineNumberTable)
-        //ATTR_CASE(SourceFile)
-        //ATTR_CASE(InnerClasses)
-        //ATTR_CASE(ConstantValue)
+        ATTR_CASE(SourceFile)
+        ATTR_CASE(InnerClasses)
+        ATTR_CASE(ConstantValue)
+        ATTR_CASE(Deprecated)
         default:
             break;
     }
@@ -518,6 +610,7 @@ void printAttribute(JavaClassFile* jcf, attribute_info* entry, int identationLev
         ATTR_CASE(InnerClasses)
         ATTR_CASE(SourceFile)
         ATTR_CASE(LineNumberTable)
+        ATTR_CASE(Deprecated)
         default:
             break;
     }
@@ -546,7 +639,7 @@ void printAllAttributes(JavaClassFile* jcf)
         cp = jcf->constantPool + atti->name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
 
-        printf("\n\n\tAttribute #%u - %s\n", u16 + 1, buffer);
+        printf("\n\n\tAttribute #%u - %s:\n", u16 + 1, buffer);
         printAttribute(jcf, atti, 2);
     }
 }
