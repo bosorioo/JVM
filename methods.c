@@ -94,14 +94,14 @@ void printMethods(JavaClassFile* jcf)
 
     if (jcf->methodCount > 0)
     {
-        printf("\n---- Methods ----\n\n");
+        printf("\n---- Methods ----\n");
 
         for (u16 = 0; u16 < jcf->methodCount; u16++)
         {
             cp = jcf->methods + u16;
-            printf("\tMétodo #%u: cp name index %u\n", u16 + 1, cp->name_index);
-            printf("\t\tDescriptor: %u\n", cp->descriptor_index);
-            
+            printf("\n\tMethod #%u:\n", u16 + 1);
+            printf("\t\tname_index:       cp index #%u\n", cp->name_index);
+            printf("\t\tdescriptor_index: cp index #%u\n", cp->descriptor_index);
         }
     }
 }

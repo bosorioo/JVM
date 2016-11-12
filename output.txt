@@ -454,16 +454,25 @@ Attributes count:	2
 
 ---- Methods ----
 
-	Método #1: cp name index 61
-		Descriptor: 62
-	Método #2: cp name index 65
-		Descriptor: 66
-	Método #3: cp name index 67
-		Descriptor: 68
-	Método #4: cp name index 69
-		Descriptor: 70
-	Método #5: cp name index 71
-		Descriptor: 62
+	Method #1:
+		name_index:       cp index #61
+		descriptor_index: cp index #62
+
+	Method #2:
+		name_index:       cp index #65
+		descriptor_index: cp index #66
+
+	Method #3:
+		name_index:       cp index #67
+		descriptor_index: cp index #68
+
+	Method #4:
+		name_index:       cp index #69
+		descriptor_index: cp index #70
+
+	Method #5:
+		name_index:       cp index #71
+		descriptor_index: cp index #62
 
 ---- Attributes ----
 
