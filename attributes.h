@@ -14,5 +14,7 @@ struct attribute_info {
 
 char readAttribute(JavaClassFile* jcf, attribute_info* entry);
 void freeAttributeInfo(attribute_info* entry);
+void printAttribute(JavaClassFile* jcf, attribute_info* entry, int identationLevel);
+void printAllAttributes(JavaClassFile* jcf);
 
 #endif // ATTRIBUTES_H
