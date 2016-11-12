@@ -13,6 +13,7 @@ public class Sketch implements EventListener, RandomAccess {
 	public static long long_static_value = 98765432123456789L;
 
 	private String πφμβƒé = "πφμβƒ";
+	protected final boolean bool_member = true;
 
 	private int [][][] matrix3d = {
 		{{1, 2},

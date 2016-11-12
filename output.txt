@@ -1,22 +1,22 @@
 ---- General Information ----
 
 Version:		52.0 (Major.minor) [jdk version 1.8]
-Constant pool count:	106
+Constant pool count:	112
 Access flags:		0x0021 [super, public]
-This class:		cp index #39 <sketch/Sketch>
-Super class:		cp index #40 <java/lang/Object>
+This class:		cp index #40 <sketch/Sketch>
+Super class:		cp index #41 <java/lang/Object>
 Interfaces count:	2
-Fields count:		7
+Fields count:		8
 Methods count:		5
 Attributes count:	2
 
 ---- Constant Pool ----
 
 	#1: Methodref (tag = 10)
-		class_index: cp index #40 <java/lang/Object>
-		name_and_type_index: cp index #77
-		name_and_type.name_index: cp index #64 <<init>>
-		name_and_type.descriptor_index: cp index #65 <()V>
+		class_index: cp index #41 <java/lang/Object>
+		name_and_type_index: cp index #82
+		name_and_type.name_index: cp index #69 <<init>>
+		name_and_type.descriptor_index: cp index #70 <()V>
 
 	#2: Long (tag = 5)
 		High Bytes: 0x00150000
@@ -24,459 +24,488 @@ Attributes count:	2
 		Long Value: 5910974510923776
 
 	#4: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #78
-		name_and_type.name_index: cp index #55 <long_member>
-		name_and_type.descriptor_index: cp index #56 <J>
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #83
+		name_and_type.name_index: cp index #56 <long_member>
+		name_and_type.descriptor_index: cp index #57 <J>
 
 	#5: String (tag = 8)
-		string_index: cp index #79
+		string_index: cp index #84
 		String Length: 5
 		ASCII: ?????
 		UTF-8: πφμβƒ
 
 	#6: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #80
-		name_and_type.name_index: cp index #58 <??????>
-		name_and_type.descriptor_index: cp index #59 <Ljava/lang/String;>
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #85
+		name_and_type.name_index: cp index #59 <??????>
+		name_and_type.descriptor_index: cp index #60 <Ljava/lang/String;>
 
-	#7: Class (tag = 7)
-		name_index: cp index #81 <[[I>
+	#7: Fieldref (tag = 9)
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #86
+		name_and_type.name_index: cp index #61 <bool_member>
+		name_and_type.descriptor_index: cp index #62 <Z>
 
 	#8: Class (tag = 7)
-		name_index: cp index #49 <[I>
+		name_index: cp index #87 <[[I>
 
-	#9: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #82
-		name_and_type.name_index: cp index #60 <matrix3d>
-		name_and_type.descriptor_index: cp index #61 <[[[I>
+	#9: Class (tag = 7)
+		name_index: cp index #50 <[I>
 
-	#10: Class (tag = 7)
-		name_index: cp index #83 <[D>
+	#10: Fieldref (tag = 9)
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #88
+		name_and_type.name_index: cp index #65 <matrix3d>
+		name_and_type.descriptor_index: cp index #66 <[[[I>
 
-	#11: Double (tag = 6)
+	#11: Class (tag = 7)
+		name_index: cp index #89 <[D>
+
+	#12: Double (tag = 6)
 		High Bytes:   0x405EDD2F
 		Low  Bytes:   0x1A9FBE77
 		Double Value: 1.234560e+002
 
-	#13: Double (tag = 6)
+	#14: Double (tag = 6)
 		High Bytes:   0xC0847291
 		Low  Bytes:   0x6872B021
 		Double Value: -6.543210e+002
 
-	#15: Double (tag = 6)
+	#16: Double (tag = 6)
 		High Bytes:   0x41CD6F34
 		Low  Bytes:   0x588FCD6F
 		Double Value: 9.876543e+008
 
-	#17: Class (tag = 7)
-		name_index: cp index #84 <java/lang/Double>
+	#18: Class (tag = 7)
+		name_index: cp index #90 <java/lang/Double>
 
-	#18: Double (tag = 6)
+	#19: Double (tag = 6)
 		High Bytes:   0x7FEFFFFF
 		Low  Bytes:   0xFFFFFFFF
 		Double Value: 1.797693e+308
 
-	#20: Double (tag = 6)
+	#21: Double (tag = 6)
 		High Bytes:   0x00000000
 		Low  Bytes:   0x00000001
 		Double Value: 4.940656e-324
 
-	#22: Double (tag = 6)
+	#23: Double (tag = 6)
 		High Bytes:   0x00100000
 		Low  Bytes:   0x00000000
 		Double Value: 2.225074e-308
 
-	#24: Double (tag = 6)
+	#25: Double (tag = 6)
 		High Bytes:   0x7FF80000
 		Low  Bytes:   0x00000000
 		Double Value: nan
 
-	#26: Double (tag = 6)
+	#27: Double (tag = 6)
 		High Bytes:   0x7FF00000
 		Low  Bytes:   0x00000000
 		Double Value: inf
 
-	#28: Double (tag = 6)
+	#29: Double (tag = 6)
 		High Bytes:   0xFFF00000
 		Low  Bytes:   0x00000000
 		Double Value: -inf
 
-	#30: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #85
-		name_and_type.name_index: cp index #62 <matrix2d>
-		name_and_type.descriptor_index: cp index #63 <[[D>
-
 	#31: Fieldref (tag = 9)
-		class_index: cp index #86 <java/lang/System>
-		name_and_type_index: cp index #87
-		name_and_type.name_index: cp index #101 <out>
-		name_and_type.descriptor_index: cp index #102 <Ljava/io/PrintStream;>
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #91
+		name_and_type.name_index: cp index #67 <matrix2d>
+		name_and_type.descriptor_index: cp index #68 <[[D>
 
-	#32: Methodref (tag = 10)
-		class_index: cp index #88 <java/io/PrintStream>
-		name_and_type_index: cp index #89
-		name_and_type.name_index: cp index #104 <println>
-		name_and_type.descriptor_index: cp index #69 <(I)V>
+	#32: Fieldref (tag = 9)
+		class_index: cp index #92 <java/lang/System>
+		name_and_type_index: cp index #93
+		name_and_type.name_index: cp index #107 <out>
+		name_and_type.descriptor_index: cp index #108 <Ljava/io/PrintStream;>
 
-	#33: String (tag = 8)
-		string_index: cp index #90
+	#33: Methodref (tag = 10)
+		class_index: cp index #94 <java/io/PrintStream>
+		name_and_type_index: cp index #95
+		name_and_type.name_index: cp index #110 <println>
+		name_and_type.descriptor_index: cp index #74 <(I)V>
+
+	#34: String (tag = 8)
+		string_index: cp index #96
 		String Length: 12
 		ASCII: Hello world!
 
-	#34: Methodref (tag = 10)
-		class_index: cp index #88 <java/io/PrintStream>
-		name_and_type_index: cp index #91
-		name_and_type.name_index: cp index #104 <println>
-		name_and_type.descriptor_index: cp index #105 <(Ljava/lang/String;)V>
+	#35: Methodref (tag = 10)
+		class_index: cp index #94 <java/io/PrintStream>
+		name_and_type_index: cp index #97
+		name_and_type.name_index: cp index #110 <println>
+		name_and_type.descriptor_index: cp index #111 <(Ljava/lang/String;)V>
 
-	#35: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #92
-		name_and_type.name_index: cp index #48 <values>
-		name_and_type.descriptor_index: cp index #49 <[I>
+	#36: Fieldref (tag = 9)
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #98
+		name_and_type.name_index: cp index #49 <values>
+		name_and_type.descriptor_index: cp index #50 <[I>
 
-	#36: Long (tag = 5)
+	#37: Long (tag = 5)
 		High Bytes: 0x015EE2A3
 		Low  Bytes: 0x21CE7D15
 		Long Value: 98765432123456789
 
-	#38: Fieldref (tag = 9)
-		class_index: cp index #39 <sketch/Sketch>
-		name_and_type_index: cp index #93
-		name_and_type.name_index: cp index #57 <long_static_value>
-		name_and_type.descriptor_index: cp index #56 <J>
-
-	#39: Class (tag = 7)
-		name_index: cp index #94 <sketch/Sketch>
+	#39: Fieldref (tag = 9)
+		class_index: cp index #40 <sketch/Sketch>
+		name_and_type_index: cp index #99
+		name_and_type.name_index: cp index #58 <long_static_value>
+		name_and_type.descriptor_index: cp index #57 <J>
 
 	#40: Class (tag = 7)
-		name_index: cp index #95 <java/lang/Object>
+		name_index: cp index #100 <sketch/Sketch>
 
 	#41: Class (tag = 7)
-		name_index: cp index #96 <java/util/EventListener>
+		name_index: cp index #101 <java/lang/Object>
 
 	#42: Class (tag = 7)
-		name_index: cp index #97 <java/util/RandomAccess>
+		name_index: cp index #102 <java/util/EventListener>
 
 	#43: Class (tag = 7)
-		name_index: cp index #98 <sketch/Sketch$AnotherInterface>
+		name_index: cp index #103 <java/util/RandomAccess>
 
-	#44: Utf8 (tag = 1)
+	#44: Class (tag = 7)
+		name_index: cp index #104 <sketch/Sketch$AnotherInterface>
+
+	#45: Utf8 (tag = 1)
 		Byte Count: 16
 		Length: 16
 		ASCII Characters: AnotherInterface
 
-	#45: Utf8 (tag = 1)
+	#46: Utf8 (tag = 1)
 		Byte Count: 12
 		Length: 12
 		ASCII Characters: InnerClasses
 
-	#46: Class (tag = 7)
-		name_index: cp index #99 <sketch/Sketch$Test>
+	#47: Class (tag = 7)
+		name_index: cp index #105 <sketch/Sketch$Test>
 
-	#47: Utf8 (tag = 1)
+	#48: Utf8 (tag = 1)
 		Byte Count: 4
 		Length: 4
 		ASCII Characters: Test
 
-	#48: Utf8 (tag = 1)
+	#49: Utf8 (tag = 1)
 		Byte Count: 6
 		Length: 6
 		ASCII Characters: values
 
-	#49: Utf8 (tag = 1)
+	#50: Utf8 (tag = 1)
 		Byte Count: 2
 		Length: 2
 		ASCII Characters: [I
 
-	#50: Utf8 (tag = 1)
+	#51: Utf8 (tag = 1)
 		Byte Count: 12
 		Length: 12
 		ASCII Characters: float_member
 
-	#51: Utf8 (tag = 1)
+	#52: Utf8 (tag = 1)
 		Byte Count: 1
 		Length: 1
 		ASCII Characters: F
 
-	#52: Utf8 (tag = 1)
+	#53: Utf8 (tag = 1)
 		Byte Count: 10
 		Length: 10
 		ASCII Characters: Deprecated
 
-	#53: Utf8 (tag = 1)
+	#54: Utf8 (tag = 1)
 		Byte Count: 25
 		Length: 25
 		ASCII Characters: RuntimeVisibleAnnotations
 
-	#54: Utf8 (tag = 1)
+	#55: Utf8 (tag = 1)
 		Byte Count: 22
 		Length: 22
 		ASCII Characters: Ljava/lang/Deprecated;
 
-	#55: Utf8 (tag = 1)
+	#56: Utf8 (tag = 1)
 		Byte Count: 11
 		Length: 11
 		ASCII Characters: long_member
 
-	#56: Utf8 (tag = 1)
+	#57: Utf8 (tag = 1)
 		Byte Count: 1
 		Length: 1
 		ASCII Characters: J
 
-	#57: Utf8 (tag = 1)
+	#58: Utf8 (tag = 1)
 		Byte Count: 17
 		Length: 17
 		ASCII Characters: long_static_value
 
-	#58: Utf8 (tag = 1)
+	#59: Utf8 (tag = 1)
 		Byte Count: 12
 		Length: 6
 		ASCII Characters: ??????
 		UTF-8 Characters: πφμβƒé
 
-	#59: Utf8 (tag = 1)
+	#60: Utf8 (tag = 1)
 		Byte Count: 18
 		Length: 18
 		ASCII Characters: Ljava/lang/String;
 
-	#60: Utf8 (tag = 1)
+	#61: Utf8 (tag = 1)
+		Byte Count: 11
+		Length: 11
+		ASCII Characters: bool_member
+
+	#62: Utf8 (tag = 1)
+		Byte Count: 1
+		Length: 1
+		ASCII Characters: Z
+
+	#63: Utf8 (tag = 1)
+		Byte Count: 13
+		Length: 13
+		ASCII Characters: ConstantValue
+
+	#64: Integer (tag = 3)
+		Bytes: 0x00000001
+		Value: 1
+
+	#65: Utf8 (tag = 1)
 		Byte Count: 8
 		Length: 8
 		ASCII Characters: matrix3d
 
-	#61: Utf8 (tag = 1)
+	#66: Utf8 (tag = 1)
 		Byte Count: 4
 		Length: 4
 		ASCII Characters: [[[I
 
-	#62: Utf8 (tag = 1)
+	#67: Utf8 (tag = 1)
 		Byte Count: 8
 		Length: 8
 		ASCII Characters: matrix2d
 
-	#63: Utf8 (tag = 1)
+	#68: Utf8 (tag = 1)
 		Byte Count: 3
 		Length: 3
 		ASCII Characters: [[D
 
-	#64: Utf8 (tag = 1)
+	#69: Utf8 (tag = 1)
 		Byte Count: 6
 		Length: 6
 		ASCII Characters: <init>
 
-	#65: Utf8 (tag = 1)
+	#70: Utf8 (tag = 1)
 		Byte Count: 3
 		Length: 3
 		ASCII Characters: ()V
 
-	#66: Utf8 (tag = 1)
+	#71: Utf8 (tag = 1)
 		Byte Count: 4
 		Length: 4
 		ASCII Characters: Code
 
-	#67: Utf8 (tag = 1)
+	#72: Utf8 (tag = 1)
 		Byte Count: 15
 		Length: 15
 		ASCII Characters: LineNumberTable
 
-	#68: Utf8 (tag = 1)
+	#73: Utf8 (tag = 1)
 		Byte Count: 5
 		Length: 5
 		ASCII Characters: print
 
-	#69: Utf8 (tag = 1)
+	#74: Utf8 (tag = 1)
 		Byte Count: 4
 		Length: 4
 		ASCII Characters: (I)V
 
-	#70: Utf8 (tag = 1)
+	#75: Utf8 (tag = 1)
 		Byte Count: 3
 		Length: 3
 		ASCII Characters: add
 
-	#71: Utf8 (tag = 1)
+	#76: Utf8 (tag = 1)
 		Byte Count: 5
 		Length: 5
 		ASCII Characters: (IF)J
 
-	#72: Utf8 (tag = 1)
+	#77: Utf8 (tag = 1)
 		Byte Count: 4
 		Length: 4
 		ASCII Characters: main
 
-	#73: Utf8 (tag = 1)
+	#78: Utf8 (tag = 1)
 		Byte Count: 22
 		Length: 22
 		ASCII Characters: ([Ljava/lang/String;)V
 
-	#74: Utf8 (tag = 1)
+	#79: Utf8 (tag = 1)
 		Byte Count: 8
 		Length: 8
 		ASCII Characters: <clinit>
 
-	#75: Utf8 (tag = 1)
+	#80: Utf8 (tag = 1)
 		Byte Count: 10
 		Length: 10
 		ASCII Characters: SourceFile
 
-	#76: Utf8 (tag = 1)
+	#81: Utf8 (tag = 1)
 		Byte Count: 11
 		Length: 11
 		ASCII Characters: Sketch.java
 
-	#77: NameAndType (tag = 12)
-		name_index: cp index #64 <<init>>
-		descriptor_index: cp index #65 <()V>
+	#82: NameAndType (tag = 12)
+		name_index: cp index #69 <<init>>
+		descriptor_index: cp index #70 <()V>
 
-	#78: NameAndType (tag = 12)
-		name_index: cp index #55 <long_member>
-		descriptor_index: cp index #56 <J>
+	#83: NameAndType (tag = 12)
+		name_index: cp index #56 <long_member>
+		descriptor_index: cp index #57 <J>
 
-	#79: Utf8 (tag = 1)
+	#84: Utf8 (tag = 1)
 		Byte Count: 10
 		Length: 5
 		ASCII Characters: ?????
 		UTF-8 Characters: πφμβƒ
 
-	#80: NameAndType (tag = 12)
-		name_index: cp index #58 <??????>
-		descriptor_index: cp index #59 <Ljava/lang/String;>
+	#85: NameAndType (tag = 12)
+		name_index: cp index #59 <??????>
+		descriptor_index: cp index #60 <Ljava/lang/String;>
 
-	#81: Utf8 (tag = 1)
+	#86: NameAndType (tag = 12)
+		name_index: cp index #61 <bool_member>
+		descriptor_index: cp index #62 <Z>
+
+	#87: Utf8 (tag = 1)
 		Byte Count: 3
 		Length: 3
 		ASCII Characters: [[I
 
-	#82: NameAndType (tag = 12)
-		name_index: cp index #60 <matrix3d>
-		descriptor_index: cp index #61 <[[[I>
+	#88: NameAndType (tag = 12)
+		name_index: cp index #65 <matrix3d>
+		descriptor_index: cp index #66 <[[[I>
 
-	#83: Utf8 (tag = 1)
+	#89: Utf8 (tag = 1)
 		Byte Count: 2
 		Length: 2
 		ASCII Characters: [D
 
-	#84: Utf8 (tag = 1)
+	#90: Utf8 (tag = 1)
 		Byte Count: 16
 		Length: 16
 		ASCII Characters: java/lang/Double
 
-	#85: NameAndType (tag = 12)
-		name_index: cp index #62 <matrix2d>
-		descriptor_index: cp index #63 <[[D>
+	#91: NameAndType (tag = 12)
+		name_index: cp index #67 <matrix2d>
+		descriptor_index: cp index #68 <[[D>
 
-	#86: Class (tag = 7)
-		name_index: cp index #100 <java/lang/System>
+	#92: Class (tag = 7)
+		name_index: cp index #106 <java/lang/System>
 
-	#87: NameAndType (tag = 12)
-		name_index: cp index #101 <out>
-		descriptor_index: cp index #102 <Ljava/io/PrintStream;>
+	#93: NameAndType (tag = 12)
+		name_index: cp index #107 <out>
+		descriptor_index: cp index #108 <Ljava/io/PrintStream;>
 
-	#88: Class (tag = 7)
-		name_index: cp index #103 <java/io/PrintStream>
+	#94: Class (tag = 7)
+		name_index: cp index #109 <java/io/PrintStream>
 
-	#89: NameAndType (tag = 12)
-		name_index: cp index #104 <println>
-		descriptor_index: cp index #69 <(I)V>
+	#95: NameAndType (tag = 12)
+		name_index: cp index #110 <println>
+		descriptor_index: cp index #74 <(I)V>
 
-	#90: Utf8 (tag = 1)
+	#96: Utf8 (tag = 1)
 		Byte Count: 12
 		Length: 12
 		ASCII Characters: Hello world!
 
-	#91: NameAndType (tag = 12)
-		name_index: cp index #104 <println>
-		descriptor_index: cp index #105 <(Ljava/lang/String;)V>
+	#97: NameAndType (tag = 12)
+		name_index: cp index #110 <println>
+		descriptor_index: cp index #111 <(Ljava/lang/String;)V>
 
-	#92: NameAndType (tag = 12)
-		name_index: cp index #48 <values>
-		descriptor_index: cp index #49 <[I>
+	#98: NameAndType (tag = 12)
+		name_index: cp index #49 <values>
+		descriptor_index: cp index #50 <[I>
 
-	#93: NameAndType (tag = 12)
-		name_index: cp index #57 <long_static_value>
-		descriptor_index: cp index #56 <J>
+	#99: NameAndType (tag = 12)
+		name_index: cp index #58 <long_static_value>
+		descriptor_index: cp index #57 <J>
 
-	#94: Utf8 (tag = 1)
+	#100: Utf8 (tag = 1)
 		Byte Count: 13
 		Length: 13
 		ASCII Characters: sketch/Sketch
 
-	#95: Utf8 (tag = 1)
+	#101: Utf8 (tag = 1)
 		Byte Count: 16
 		Length: 16
 		ASCII Characters: java/lang/Object
 
-	#96: Utf8 (tag = 1)
+	#102: Utf8 (tag = 1)
 		Byte Count: 23
 		Length: 23
 		ASCII Characters: java/util/EventListener
 
-	#97: Utf8 (tag = 1)
+	#103: Utf8 (tag = 1)
 		Byte Count: 22
 		Length: 22
 		ASCII Characters: java/util/RandomAccess
 
-	#98: Utf8 (tag = 1)
+	#104: Utf8 (tag = 1)
 		Byte Count: 30
 		Length: 30
 		ASCII Characters: sketch/Sketch$AnotherInterface
 
-	#99: Utf8 (tag = 1)
+	#105: Utf8 (tag = 1)
 		Byte Count: 18
 		Length: 18
 		ASCII Characters: sketch/Sketch$Test
 
-	#100: Utf8 (tag = 1)
+	#106: Utf8 (tag = 1)
 		Byte Count: 16
 		Length: 16
 		ASCII Characters: java/lang/System
 
-	#101: Utf8 (tag = 1)
+	#107: Utf8 (tag = 1)
 		Byte Count: 3
 		Length: 3
 		ASCII Characters: out
 
-	#102: Utf8 (tag = 1)
+	#108: Utf8 (tag = 1)
 		Byte Count: 21
 		Length: 21
 		ASCII Characters: Ljava/io/PrintStream;
 
-	#103: Utf8 (tag = 1)
+	#109: Utf8 (tag = 1)
 		Byte Count: 19
 		Length: 19
 		ASCII Characters: java/io/PrintStream
 
-	#104: Utf8 (tag = 1)
+	#110: Utf8 (tag = 1)
 		Byte Count: 7
 		Length: 7
 		ASCII Characters: println
 
-	#105: Utf8 (tag = 1)
+	#111: Utf8 (tag = 1)
 		Byte Count: 21
 		Length: 21
 		ASCII Characters: (Ljava/lang/String;)V
 
 ---- Interfaces ----
 
-	Interface #1: cp index #41 <java/util/EventListener>
-	Interface #2: cp index #42 <java/util/RandomAccess>
+	Interface #1: cp index #42 <java/util/EventListener>
+	Interface #2: cp index #43 <java/util/RandomAccess>
 
 ---- Fields ----
 
 	Field #1:
-		name_index:       cp index #48 <values>
-		descriptor_index: cp index #49 <[I>
+		name_index:       cp index #49 <values>
+		descriptor_index: cp index #50 <[I>
 		access_flags:     0x001A [private, static, final]
 		attributes_count: 0
 
 	Field #2:
-		name_index:       cp index #50 <float_member>
-		descriptor_index: cp index #51 <F>
+		name_index:       cp index #51 <float_member>
+		descriptor_index: cp index #52 <F>
 		access_flags:     0x0001 [public]
 		attributes_count: 2
 
@@ -487,32 +516,41 @@ Attributes count:	2
 			Attribute not implemented and ignored.
 
 	Field #3:
-		name_index:       cp index #55 <long_member>
-		descriptor_index: cp index #56 <J>
+		name_index:       cp index #56 <long_member>
+		descriptor_index: cp index #57 <J>
 		access_flags:     0x0001 [public]
 		attributes_count: 0
 
 	Field #4:
-		name_index:       cp index #57 <long_static_value>
-		descriptor_index: cp index #56 <J>
+		name_index:       cp index #58 <long_static_value>
+		descriptor_index: cp index #57 <J>
 		access_flags:     0x0009 [public, static]
 		attributes_count: 0
 
 	Field #5:
-		name_index:       cp index #58 <??????>
-		descriptor_index: cp index #59 <Ljava/lang/String;>
+		name_index:       cp index #59 <??????>
+		descriptor_index: cp index #60 <Ljava/lang/String;>
 		access_flags:     0x0002 [private]
 		attributes_count: 0
 
 	Field #6:
-		name_index:       cp index #60 <matrix3d>
-		descriptor_index: cp index #61 <[[[I>
+		name_index:       cp index #61 <bool_member>
+		descriptor_index: cp index #62 <Z>
+		access_flags:     0x0014 [protected, final]
+		attributes_count: 1
+
+		Attribute #1 - ConstantValue:
+			constantvalue_index: #64 <1>
+
+	Field #7:
+		name_index:       cp index #65 <matrix3d>
+		descriptor_index: cp index #66 <[[[I>
 		access_flags:     0x0002 [private]
 		attributes_count: 0
 
-	Field #7:
-		name_index:       cp index #62 <matrix2d>
-		descriptor_index: cp index #63 <[[D>
+	Field #8:
+		name_index:       cp index #67 <matrix2d>
+		descriptor_index: cp index #68 <[[D>
 		access_flags:     0x0001 [public]
 		attributes_count: 0
 
@@ -520,45 +558,45 @@ Attributes count:	2
 
 
 	Method #1:
-		 name_index:        cp index #64 - <init>
-		 descriptor_index:  cp index #65 - ()V
+		 name_index:        cp index #69 - <init>
+		 descriptor_index:  cp index #70 - ()V
 
 
 	Method #2:
-		 name_index:        cp index #68 - print
-		 descriptor_index:  cp index #69 - (I)V
+		 name_index:        cp index #73 - print
+		 descriptor_index:  cp index #74 - (I)V
 
 
 	Method #3:
-		 name_index:        cp index #70 - add
-		 descriptor_index:  cp index #71 - (IF)J
+		 name_index:        cp index #75 - add
+		 descriptor_index:  cp index #76 - (IF)J
 
 
 	Method #4:
-		 name_index:        cp index #72 - main
-		 descriptor_index:  cp index #73 - ([Ljava/lang/String;)V
+		 name_index:        cp index #77 - main
+		 descriptor_index:  cp index #78 - ([Ljava/lang/String;)V
 
 
 	Method #5:
-		 name_index:        cp index #74 - <clinit>
-		 descriptor_index:  cp index #65 - ()V
+		 name_index:        cp index #79 - <clinit>
+		 descriptor_index:  cp index #70 - ()V
 
 ---- Attributes ----
 
 	Attribute #1 - SourceFile:
-		sourcefile_index: #76 <Sketch.java>
+		sourcefile_index: #81 <Sketch.java>
 
 	Attribute #2 - InnerClasses:
 		number_of_classes: 2
 
 		Inner Class #1:
-			inner_class_info_index:   cp index #43 <sketch/Sketch$AnotherInterface>
-			outer_class_info_index:   cp index #39 <sketch/Sketch>
-			inner_name_index:         cp index #44 <AnotherInterface>
+			inner_class_info_index:   cp index #44 <sketch/Sketch$AnotherInterface>
+			outer_class_info_index:   cp index #40 <sketch/Sketch>
+			inner_name_index:         cp index #45 <AnotherInterface>
 			inner_class_access_flags: 0x0608 [abstract, static, interface]
 
 		Inner Class #2:
-			inner_class_info_index:   cp index #46 <sketch/Sketch$Test>
-			outer_class_info_index:   cp index #39 <sketch/Sketch>
-			inner_name_index:         cp index #47 <Test>
+			inner_class_info_index:   cp index #47 <sketch/Sketch$Test>
+			outer_class_info_index:   cp index #40 <sketch/Sketch>
+			inner_name_index:         cp index #48 <Test>
 			inner_class_access_flags: 0x0608 [abstract, static, interface]
