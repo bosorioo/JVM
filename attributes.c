@@ -581,7 +581,7 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
     char buffer[48];
     uint8_t opcode;
-    uint16_t u16;
+    uint32_t u32;
     cp_info* cpi;
 
     for (code_offset = 0; code_offset < info->code_length; code_offset++)
@@ -595,10 +595,10 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
         #define OPCODE_INTERVAL(begin, end) (opcode >= opcode_##begin && opcode <= opcode_##end)
 
         // These are all the opcodes that have no parameters
-        if (OPCODE_INTERVAL(nop, aconst_null) || OPCODE_INTERVAL(iconst_0, dconst_1) ||
-            OPCODE_INTERVAL(iload_0, saload) || OPCODE_INTERVAL(istore_0, lxor) ||
-            OPCODE_INTERVAL(i2l, lcmp) || OPCODE_INTERVAL(ireturn, return) ||
-            OPCODE_INTERVAL(arraylength, athrow) || OPCODE_INTERVAL(monitorenter, monitorexit))
+        if (OPCODE_INTERVAL(nop, dconst_1) || OPCODE_INTERVAL(iload_0, saload) ||
+            OPCODE_INTERVAL(istore_0, lxor) || OPCODE_INTERVAL(i2l, dcmpg) ||
+            OPCODE_INTERVAL(ireturn, return) || OPCODE_INTERVAL(arraylength, athrow) ||
+            OPCODE_INTERVAL(monitorenter, monitorexit))
         {
             continue;
         }
@@ -609,31 +609,45 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
         switch (opcode)
         {
-            case opcode_iload: case opcode_fload: case opcode_dload:
-            case opcode_lload: case opcode_aload: case opcode_istore:
-            case opcode_lstore: case opcode_fstore: case opcode_dstore:
-            case opcode_astore: case opcode_ret:
-                printf("\t%u", NEXTBYTE);
+            case opcode_iload:
+            case opcode_fload:
+            case opcode_dload:
+            case opcode_lload:
+            case opcode_aload:
+            case opcode_istore:
+            case opcode_lstore:
+            case opcode_fstore:
+            case opcode_dstore:
+            case opcode_astore:
+            case opcode_ret:
+
+                printf("\t\t%u", NEXTBYTE);
                 break;
 
             case opcode_newarray:
-                u16 = NEXTBYTE;
-                printf("\t%u (array of %s)", u16, decodeOpcodeNewarrayType(u16));
+
+                u32 = NEXTBYTE;
+                printf("\t%u (array of %s)", u32, decodeOpcodeNewarrayType((uint8_t)u32));
                 break;
 
             case opcode_bipush:
-                printf("\t%d", (int8_t)NEXTBYTE);
+
+                printf("\t\t%d", (int8_t)NEXTBYTE);
                 break;
 
-            case opcode_getfield: case opcode_getstatic: case opcode_putfield:
-            case opcode_putstatic: case opcode_invokevirtual: case opcode_invokespecial:
+            case opcode_getfield:
+            case opcode_getstatic:
+            case opcode_putfield:
+            case opcode_putstatic:
+            case opcode_invokevirtual:
+            case opcode_invokespecial:
             case opcode_invokestatic:
 
-                u16 = NEXTBYTE;
-                u16 = (u16 << 8) | NEXTBYTE;
+                u32 = NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\tcp index #%u ", u16);
-                cpi = jcf->constantPool + u16 - 1;
+                printf("\tcp index #%u ", u32);
+                cpi = jcf->constantPool + u32 - 1;
 
                 // Invokes require a Methodref a parameter, whereas getfield, getstatic,
                 // putfield and putstatic require a Fieldref.
@@ -646,14 +660,14 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("(%s %s.", opcode < opcode_invokevirtual ? "Field" : "Method", buffer);
 
-                    cpi = jcf->constantPool + u16 - 1;
+                    cpi = jcf->constantPool + u32 - 1;
                     cpi = jcf->constantPool + cpi->Fieldref.name_and_type_index - 1;
-                    u16 = cpi->NameAndType.descriptor_index;
+                    u32 = cpi->NameAndType.descriptor_index;
                     cpi = jcf->constantPool + cpi->NameAndType.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s, descriptor: ", buffer);
 
-                    cpi = jcf->constantPool + u16 - 1;
+                    cpi = jcf->constantPool + u32 - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s)", buffer);
                 }
@@ -664,39 +678,151 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
                 break;
 
+            case opcode_invokedynamic:
+
+                u32 = NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
+
+                printf("\tcp index #%u - CONSTANT_InvokeDynamic not implemented -", u32, NEXTBYTE);
+
+                u32 = NEXTBYTE;
+
+                if (u32 != 0)
+                {
+                    printf("\n");
+                    ident(identationLevel);
+                    printf("%u\t- expected a zero byte in this offset due to invokeinterface, found 0x%.2X instead -", code_offset, u32);
+                }
+
+                u32 = NEXTBYTE;
+
+                if (u32 != 0)
+                {
+                    printf("\n");
+                    ident(identationLevel);
+                    printf("%u\t- expected a zero byte in this offset due to invokeinterface, found 0x%.2X instead -", code_offset, u32);
+                }
+
+                break;
+
+            case opcode_invokeinterface:
+
+                u32 = NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
+
+                printf("\tcp index #%u, count: %u ", u32, NEXTBYTE);
+
+                cpi = jcf->constantPool + u32 - 1;
+
+                if (cpi->tag == CONSTANT_InterfaceMethodref)
+                {
+                    cpi = jcf->constantPool + cpi->InterfaceMethodref.class_index - 1;
+                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("(InterfaceMethod %s.", buffer);
+
+                    cpi = jcf->constantPool + u32 - 1;
+                    cpi = jcf->constantPool + cpi->InterfaceMethodref.name_and_type_index - 1;
+                    u32 = cpi->NameAndType.descriptor_index;
+                    cpi = jcf->constantPool + cpi->NameAndType.name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("%s, descriptor: ", buffer);
+
+                    cpi = jcf->constantPool + u32 - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("%s)", buffer);
+                }
+                else
+                {
+                    printf("(%s, invalid - not a InterfaceMethod)", decodeTag(cpi->tag));
+                }
+
+                u32 = NEXTBYTE;
+
+                if (u32 != 0)
+                {
+                    printf("\n");
+                    ident(identationLevel);
+                    printf("%u\t- expected a zero byte in this offset due to invokeinterface, found 0x%.2X instead -", code_offset, u32);
+                }
+
+                break;
+
+            case opcode_ifeq:
+            case opcode_ifne:
+            case opcode_iflt:
+            case opcode_ifge:
+            case opcode_ifgt:
+            case opcode_ifle:
+            case opcode_goto:
+            case opcode_jsr:
             case opcode_sipush:
-            case opcode_goto: case opcode_jsr:
-                u16 = (uint16_t)NEXTBYTE << 8;
-                printf("\t\t%d", (int16_t)u16 | NEXTBYTE);
+            case opcode_ifnull:
+
+                printf("\t");
+
+                // No break here, since the parameter handling of the above opcodes
+                // is the same as the opcodes below. The difference is the need
+                // of another '\t' to keep the printing neat.
+
+            case opcode_if_icmpeq:
+            case opcode_if_icmpne:
+            case opcode_if_icmplt:
+            case opcode_if_icmpge:
+            case opcode_if_icmpgt:
+            case opcode_if_icmple:
+            case opcode_if_acmpeq:
+            case opcode_if_acmpne:
+            case opcode_ifnonnull:
+
+                u32 = (uint16_t)NEXTBYTE << 8;
+                printf("\t\t%d", (int16_t)u32 | NEXTBYTE);
+                break;
+
+            case opcode_goto_w:
+            case opcode_jsr_w:
+
+                u32 = NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
+                printf("\t\t%d", (int32_t)u32);
                 break;
 
             case opcode_iinc:
+
                 printf("\t\t%u,", NEXTBYTE);
                 printf(" %d", (int8_t)NEXTBYTE);
                 break;
 
             case opcode_new:
             case opcode_anewarray:
+            case opcode_checkcast:
+            case opcode_instanceof:
+            case opcode_multianewarray:
 
-                u16 = NEXTBYTE;
-                u16 = (u16 << 8) | NEXTBYTE;
+                u32 = NEXTBYTE;
+                u32 = (u32 << 8) | NEXTBYTE;
 
                 if (opcode == opcode_new)
                     printf("\t");
 
-                printf("\tcp index #%u ", u16);
+                printf("\tcp index #%u", u32);
 
-                cpi = jcf->constantPool + u16 - 1;
+                if (opcode == opcode_multianewarray)
+                    printf(", dimension %u", NEXTBYTE);
+
+                cpi = jcf->constantPool + u32 - 1;
 
                 if (cpi->tag == CONSTANT_Class)
                 {
                     cpi = jcf->constantPool + cpi->Class.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-                    printf("(class: %s)", buffer);
+                    printf(" (class: %s)", buffer);
                 }
                 else
                 {
-                    printf("(%s, invalid - not a class)", decodeTag(cpi->tag), buffer);
+                    printf(" (%s, invalid - not a class)", decodeTag(cpi->tag), buffer);
                 }
 
                 break;
@@ -705,14 +831,14 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
             case opcode_ldc_w:
             case opcode_ldc2_w:
 
-                u16 = NEXTBYTE;
+                u32 = NEXTBYTE;
 
                 if (opcode == opcode_ldc_w || opcode == opcode_ldc2_w)
-                    u16 = (u16 << 8) | NEXTBYTE;
+                    u32 = (u32 << 8) | NEXTBYTE;
 
                 printf("\t\tcp index #%u");
 
-                cpi = jcf->constantPool + u16 - 1;
+                cpi = jcf->constantPool + u32 - 1;
 
                 if (opcode == opcode_ldc2_w)
                 {
@@ -753,7 +879,61 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
                 break;
 
-                // TODO: finish all instructions parameters
+            case opcode_wide:
+
+                opcode = NEXTBYTE;
+
+                switch (opcode)
+                {
+                    case opcode_iload:
+                    case opcode_fload:
+                    case opcode_dload:
+                    case opcode_lload:
+                    case opcode_aload:
+                    case opcode_istore:
+                    case opcode_lstore:
+                    case opcode_fstore:
+                    case opcode_dstore:
+                    case opcode_astore:
+                    case opcode_ret:
+
+                        u32 = NEXTBYTE;
+                        u32 = (u32 << 8) | NEXTBYTE;
+
+                        printf(" %s\t%u", getOpcodeMnemonic(opcode), u32);
+
+                        break;
+
+                    case opcode_iinc:
+
+                        u32 = NEXTBYTE;
+                        u32 = (u32 << 8) | NEXTBYTE;
+
+                        printf(" iinc\t%u,", u32);
+
+                        u32 = NEXTBYTE;
+                        u32 = (u32 << 8) | NEXTBYTE;
+
+                        printf(" %d", (int16_t)u32);
+
+                        break;
+
+                    default:
+                        printf(" %s (invalid following instruction, can't continue)", getOpcodeMnemonic(opcode));
+                        code_offset = info->code_length;
+                        break;
+                }
+
+                break;
+
+            case opcode_tableswitch:
+                // TODO
+                break;
+
+            case opcode_lookupswitch:
+                // TODO
+                break;
+
 
             default:
                 printf("\n");
@@ -766,20 +946,47 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
     }
 
     printf("\n");
-
     identationLevel--;
+
+    if (info->exception_table_length > 0)
+    {
+        printf("\n");
+        ident(identationLevel);
+        printf("Exception Table:\n");
+        ident(identationLevel);
+        printf("Index\tstart_pc\tend_pc\thandler_pc\tcatch_type");
+
+        ExceptionTableEntry* except = info->exception_table;
+
+        for (u32 = 0; u32 < info->exception_table_length; u32++)
+        {
+            printf("\n");
+            ident(identationLevel);
+            printf("%u\t%u\t\t%u\t%u\t\t%u", u32 + 1, except->start_pc, except->end_pc, except->handler_pc, except->catch_type);
+
+            if (except->catch_type > 0)
+            {
+                cpi = jcf->constantPool + except->catch_type - 1;
+                cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                printf(" <%s>", buffer);
+            }
+        }
+
+        printf("\n");
+    }
 
     if (info->attributes_count > 0)
     {
-        for (u16 = 0; u16 < info->attributes_count; u16++)
+        for (u32 = 0; u32 < info->attributes_count; u32++)
         {
-            attribute_info* atti = info->attributes + u16;
+            attribute_info* atti = info->attributes + u32;
             cpi = jcf->constantPool + atti->name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
             printf("\n");
             ident(identationLevel);
-            printf("Code Attribute #%u - %s:\n", u16 + 1, buffer);
+            printf("Code Attribute #%u - %s:\n", u32 + 1, buffer);
             printAttribute(jcf, atti, identationLevel + 1);
         }
     }
@@ -863,6 +1070,7 @@ void printAttributeExceptions(JavaClassFile* jcf, attribute_info* entry, int ide
     char buffer[48];
     cp_info* cpi;
 
+    printf("\n");
     ident(identationLevel);
     printf("number_of_exceptions: %u", info->number_of_exceptions);
 
