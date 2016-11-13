@@ -990,9 +990,6 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
             printAttribute(jcf, atti, identationLevel + 1);
         }
     }
-
-    // TODO: print code attributes
-    // TODO: print exception table
 }
 
 void freeAttributeCode(attribute_info* entry)
