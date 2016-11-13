@@ -1,6 +1,7 @@
 package sketch;
 
 import java.util.*;
+import javafx.geometry.Point2D;
 
 public class Sketch implements EventListener, RandomAccess {
 
@@ -29,18 +30,28 @@ public class Sketch implements EventListener, RandomAccess {
 	};
 
 	interface Test {
-		public void method1(int[] a);
+		public int method1(int[] a);
 	}
 	
 	interface AnotherInterface {
-		
+		public void interfaceMethod();
+	}
+	
+	class NestedClass implements Test {
+		public int method1(int[] a) {
+			return a.length;
+		}
 	}
 
-	public void print(int i) {
-		System.out.println(i);
+	public void mymethod(int i, long n) {
+		int[] a = new int[2];
+		NestedClass nc = new NestedClass();
+		// To force invokeinterface instruction
+		a[0] = ((Test)nc).method1(a);
+		n += long_static_value;
 	}
 
-	public long add_10(int a, float b) {
+	public long add_10(int a, float b) throws Error {
 		a += 5;
 		long result = (long)a + (long)b;
 		result += 5;
@@ -48,7 +59,20 @@ public class Sketch implements EventListener, RandomAccess {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		Object obj = (Object)"ola";
+		
+		if (obj instanceof String) {
+			System.out.println((String)obj);
+		}
+		
+		String[][] stringMatrix = new String[2][2];
+		
+		int num1, num2;
+		try { 
+			num1 = 0;
+			num2 = 62 / num1;
+		} catch (ArithmeticException e) { 
+		}
 	}
 
 }
