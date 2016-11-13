@@ -91,10 +91,11 @@ void freeMethodAttributes(method_info* entry)
 void printMethods(JavaClassFile* jcf)
 {
 
-    uint16_t u16;
+    uint16_t u16, att_index;
     char buffer[48];
-    cp_info* cp;
+    cp_info* cpi;
     method_info* mi;
+    attribute_info* atti;
 
     if (jcf->methodCount > 0)
     {
@@ -102,18 +103,35 @@ void printMethods(JavaClassFile* jcf)
 
         for (u16 = 0; u16 < jcf->methodCount; u16++)
         {
-
             mi = jcf->methods + u16;
 
-            cp = jcf->constantPool + mi->name_index - 1;
-            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
+            cpi = jcf->constantPool + mi->name_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
-            printf("\n\n\tMethod #%u:\n", u16 + 1);
-            printf("\t\t name_index:        cp index #%u - %s\n", mi->name_index, buffer);
+            printf("\n\tMethod #%u:\n\n", u16 + 1);
+            printf("\t\tname_index:        cp index #%u <%s>\n", mi->name_index, buffer);
 
-            cp = jcf->constantPool + mi->descriptor_index - 1;
-            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
-            printf("\t\t descriptor_index:  cp index #%u - %s\n", mi->descriptor_index, buffer);
+            cpi = jcf->constantPool + mi->descriptor_index - 1;
+            UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+            printf("\t\tdescriptor_index:  cp index #%u <%s>\n", mi->descriptor_index, buffer);
+
+            decodeAccessFlags(mi->access_flags, buffer, sizeof(buffer), ACCT_METHOD);
+            printf("\t\taccess_flags:      0x%.4X [%s]\n", mi->access_flags, buffer);
+
+            printf("\t\tattribute_count:   %u\n", mi->attributes_count);
+
+            if (mi->attributes_count > 0)
+            {
+                for (att_index = 0; att_index < mi->attributes_count; att_index++)
+                {
+                    atti = mi->attributes + att_index;
+                    cpi = jcf->constantPool + atti->name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+
+                    printf("\n\t\tMethod Attribute #%u - %s:\n", att_index + 1, buffer);
+                    printAttribute(jcf, atti, 3);
+                }
+            }
 
         }
     }
