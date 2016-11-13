@@ -776,7 +776,9 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
             case opcode_ifnonnull:
 
                 u32 = (uint16_t)NEXTBYTE << 8;
-                printf("\t\t%d", (int16_t)u32 | NEXTBYTE);
+                u32 |= NEXTBYTE;
+
+                printf("\tpc + %d = address %d", (int16_t)u32, (int16_t)u32 + code_offset - 2);
                 break;
 
             case opcode_goto_w:
@@ -927,12 +929,120 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 break;
 
             case opcode_tableswitch:
-                // TODO
+            {
+                uint32_t base_address = code_offset;
+
+                while ((code_offset + 1) % 4)
+                    u32 = NEXTBYTE;
+
+                int32_t defaultValue = NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+
+                int32_t lowValue = NEXTBYTE;
+                lowValue = (lowValue << 8) | NEXTBYTE;
+                lowValue = (lowValue << 8) | NEXTBYTE;
+                lowValue = (lowValue << 8) | NEXTBYTE;
+
+                int32_t highValue = NEXTBYTE;
+                highValue = (highValue << 8) | NEXTBYTE;
+                highValue = (highValue << 8) | NEXTBYTE;
+                highValue = (highValue << 8) | NEXTBYTE;
+
+                if (lowValue > highValue)
+                {
+                    printf("\tinvalid operands - lowValue (%d) is greater than highValue (%d)\n", lowValue, highValue);
+                    ident(identationLevel);
+                    printf("- can't continue -");
+                    code_offset = info->code_length;
+                    break;
+                }
+                else
+                {
+                    printf("\tlow = %d, high = %d", lowValue, highValue);
+                }
+
+                int32_t offset;
+
+                for (u32 = 0; u32 < highValue - lowValue + 1; u32++)
+                {
+                    printf("\n");
+                    ident(identationLevel);
+                    printf("%u\t", code_offset);
+
+                    offset = NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+
+                    printf("  case %d: pc + %d = address %d", lowValue + u32, offset, offset + base_address);
+                }
+
+                printf("\n");
+                ident(identationLevel);
+                printf("-\t  default: pc + %d = address %d", defaultValue, defaultValue + base_address);
+
                 break;
+            }
 
             case opcode_lookupswitch:
-                // TODO
+            {
+                uint32_t base_address = code_offset;
+
+                while ((code_offset + 1) % 4)
+                    u32 = NEXTBYTE;
+
+                int32_t defaultValue = NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+                defaultValue = (defaultValue << 8) | NEXTBYTE;
+
+                int32_t npairs = NEXTBYTE;
+                npairs = (npairs << 8) | NEXTBYTE;
+                npairs = (npairs << 8) | NEXTBYTE;
+                npairs = (npairs << 8) | NEXTBYTE;
+
+                if (npairs < 0)
+                {
+                    printf("\tinvalid operand - npairs (%d) should be greater than or equal to 0\n", npairs);
+                    ident(identationLevel);
+                    printf("- can't continue -");
+                    code_offset = info->code_length;
+                    break;
+                }
+                else
+                {
+                    printf("\tnpairs = %d", npairs);
+                }
+
+                int32_t match, offset;
+
+                while (npairs-- > 0)
+                {
+                    printf("\n");
+                    ident(identationLevel);
+                    printf("%u\t", code_offset);
+
+                    match = NEXTBYTE;
+                    match = (match << 8) | NEXTBYTE;
+                    match = (match << 8) | NEXTBYTE;
+                    match = (match << 8) | NEXTBYTE;
+
+                    offset = NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+                    offset = (offset << 8) | NEXTBYTE;
+
+                    printf("  case %d: pc + %d = address %d", match, offset, offset + base_address);
+                }
+
+                printf("\n");
+                ident(identationLevel);
+                printf("-\t  default: pc + %d = address %d", defaultValue, defaultValue + base_address);
+
                 break;
+            }
 
 
             default:
