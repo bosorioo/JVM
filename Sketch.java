@@ -40,8 +40,10 @@ public class Sketch implements EventListener, RandomAccess {
 		System.out.println(i);
 	}
 
-	public long add(int a, float b) {
+	public long add_10(int a, float b) {
+		a += 5;
 		long result = (long)a + (long)b;
+		result += 5;
 		return result;
 	}
 

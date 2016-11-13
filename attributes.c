@@ -613,12 +613,10 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
             case opcode_lload: case opcode_aload: case opcode_istore:
             case opcode_lstore: case opcode_fstore: case opcode_dstore:
             case opcode_astore: case opcode_ret:
-
                 printf("\t%u", NEXTBYTE);
                 break;
 
             case opcode_newarray:
-
                 u16 = NEXTBYTE;
                 printf("\t%u (array of %s)", u16, decodeOpcodeNewarrayType(u16));
                 break;
@@ -627,9 +625,73 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 printf("\t%d", (int8_t)NEXTBYTE);
                 break;
 
+            case opcode_getfield: case opcode_getstatic: case opcode_putfield:
+            case opcode_putstatic: case opcode_invokevirtual: case opcode_invokespecial:
+            case opcode_invokestatic:
+
+                u16 = NEXTBYTE;
+                u16 = (u16 << 8) | NEXTBYTE;
+
+                printf("\tcp index #%u ", u16);
+                cpi = jcf->constantPool + u16 - 1;
+
+                if ((opcode <  opcode_invokevirtual && cpi->tag == CONSTANT_Fieldref) ||
+                    (opcode >= opcode_invokevirtual && cpi->tag == CONSTANT_Methodref))
+                {
+                    cpi = jcf->constantPool + cpi->Fieldref.class_index - 1;
+                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("(%s %s.", opcode < opcode_invokevirtual ? "Field" : "Method", buffer);
+
+                    cpi = jcf->constantPool + u16 - 1;
+                    cpi = jcf->constantPool + cpi->Fieldref.name_and_type_index - 1;
+                    u16 = cpi->NameAndType.descriptor_index;
+                    cpi = jcf->constantPool + cpi->NameAndType.name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("%s, descriptor: ", buffer);
+
+                    cpi = jcf->constantPool + u16 - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("%s)", buffer);
+                }
+                else
+                {
+                    printf("(%s, invalid - not a Fieldref)");
+                }
+
+                break;
+
             case opcode_sipush:
+            case opcode_goto: case opcode_jsr:
                 u16 = (uint16_t)NEXTBYTE << 8;
-                printf("\t%d", (int16_t)u16 | NEXTBYTE);
+                printf("\t\t%d", (int16_t)u16 | NEXTBYTE);
+                break;
+
+            case opcode_iinc:
+                printf("\t\t%u,", NEXTBYTE);
+                printf(" %d", (int8_t)NEXTBYTE);
+                break;
+
+            case opcode_new:
+
+                u16 = NEXTBYTE;
+                u16 = (u16 << 8) | NEXTBYTE;
+
+                printf("\t\tcp index #%u ", u16);
+
+                cpi = jcf->constantPool + u16 - 1;
+
+                if (cpi->tag == CONSTANT_Class)
+                {
+                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                    printf("(class: %s)", buffer);
+                }
+                else
+                {
+                    printf("(%s, invalid - not a class)", decodeTag(cpi->tag), buffer);
+                }
+
                 break;
 
             case opcode_ldc:
@@ -638,21 +700,21 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
                 u16 = NEXTBYTE;
 
-                if (opcode == opcode_ldc_w)
+                if (opcode == opcode_ldc_w || opcode == opcode_ldc2_w)
                     u16 = (u16 << 8) | NEXTBYTE;
 
-                printf("\t#%u");
+                printf("\t\tcp index #%u");
 
                 cpi = jcf->constantPool + u16 - 1;
 
                 if (opcode == opcode_ldc2_w)
                 {
                     if (cpi->tag == CONSTANT_Long)
-                        printf("\tlong:    %" PRId64, ((int64_t)cpi->Long.high << 32) | cpi->Long.low);
+                        printf(" (long: %" PRId64 ")", ((int64_t)cpi->Long.high << 32) | cpi->Long.low);
                     else if (cpi->tag == CONSTANT_Double)
-                        printf("\tdouble:  %e", readConstantPoolDouble(cpi));
+                        printf(" (double: %e)", readConstantPoolDouble(cpi));
                     else
-                        printf("\t%s (invalid)", decodeTag(cpi->tag));
+                        printf(" (%s, invalid)", decodeOpcodeNewarrayType(cpi->tag));
                 }
                 else
                 {
@@ -660,19 +722,25 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                     {
                         cpi = jcf->constantPool + cpi->Class.name_index - 1;
                         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-                        printf("\tstring:  <%s>", buffer);
+                        printf(" (class: %s)", buffer);
+                    }
+                    else if (cpi->tag == CONSTANT_String)
+                    {
+                        cpi = jcf->constantPool + cpi->String.string_index - 1;
+                        UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
+                        printf(" (string: %s)", buffer);
                     }
                     else if (cpi->tag == CONSTANT_Integer)
                     {
-                        printf("\tinteger: %d", (int32_t)cpi->Integer.value);
+                        printf(" (integer: %d)", (int32_t)cpi->Integer.value);
                     }
                     else if (cpi->tag == CONSTANT_Float)
                     {
-                        printf("\tfloat:   %e", readConstantPoolFloat(cpi));
+                        printf(" (float: %e)", readConstantPoolFloat(cpi));
                     }
                     else
                     {
-                        printf("\t%s (invalid)", decodeTag(cpi->tag));
+                        printf(" (%s, invalid)", decodeTag(cpi->tag));
                     }
                 }
 

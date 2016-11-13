@@ -1,119 +1,120 @@
 Classfile /C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/Sketch.class
-  Last modified Nov 13, 2016; size 1603 bytes
-  MD5 checksum fa7b2e56867b59a83a850b716d189ca9
+  Last modified Nov 13, 2016; size 1632 bytes
+  MD5 checksum 0a9a53433d46a99272e80316c15a16e5
   Compiled from "Sketch.java"
 public class sketch.Sketch implements java.util.EventListener,java.util.RandomAccess
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
 Constant pool:
-    #1 = Methodref          #41.#82       // java/lang/Object."<init>":()V
+    #1 = Methodref          #43.#84       // java/lang/Object."<init>":()V
     #2 = Long               5910974510923776l
-    #4 = Fieldref           #40.#83       // sketch/Sketch.long_member:J
-    #5 = String             #84           // ????ƒ
-    #6 = Fieldref           #40.#85       // sketch/Sketch.????ƒé:Ljava/lang/String;
-    #7 = Fieldref           #40.#86       // sketch/Sketch.bool_member:Z
-    #8 = Class              #87           // "[[I"
-    #9 = Class              #50           // "[I"
-   #10 = Fieldref           #40.#88       // sketch/Sketch.matrix3d:[[[I
-   #11 = Class              #89           // "[D"
+    #4 = Fieldref           #42.#85       // sketch/Sketch.long_member:J
+    #5 = String             #86           // ????ƒ
+    #6 = Fieldref           #42.#87       // sketch/Sketch.????ƒé:Ljava/lang/String;
+    #7 = Fieldref           #42.#88       // sketch/Sketch.bool_member:Z
+    #8 = Class              #89           // "[[I"
+    #9 = Class              #52           // "[I"
+   #10 = Fieldref           #42.#90       // sketch/Sketch.matrix3d:[[[I
+   #11 = Class              #91           // "[D"
    #12 = Double             123.456d
    #14 = Double             -654.321d
    #16 = Double             9.876543211234568E8d
-   #18 = Class              #90           // java/lang/Double
+   #18 = Class              #92           // java/lang/Double
    #19 = Double             1.7976931348623157E308d
    #21 = Double             4.9E-324d
    #23 = Double             2.2250738585072014E-308d
    #25 = Double             NaNd
    #27 = Double             Infinityd
    #29 = Double             -Infinityd
-   #31 = Fieldref           #40.#91       // sketch/Sketch.matrix2d:[[D
-   #32 = Fieldref           #92.#93       // java/lang/System.out:Ljava/io/PrintStream;
-   #33 = Methodref          #94.#95       // java/io/PrintStream.println:(I)V
-   #34 = String             #96           // Hello world!
-   #35 = Methodref          #94.#97       // java/io/PrintStream.println:(Ljava/lang/String;)V
-   #36 = Fieldref           #40.#98       // sketch/Sketch.values:[I
-   #37 = Long               98765432123456789l
-   #39 = Fieldref           #40.#99       // sketch/Sketch.long_static_value:J
-   #40 = Class              #100          // sketch/Sketch
-   #41 = Class              #101          // java/lang/Object
-   #42 = Class              #102          // java/util/EventListener
-   #43 = Class              #103          // java/util/RandomAccess
-   #44 = Class              #104          // sketch/Sketch$AnotherInterface
-   #45 = Utf8               AnotherInterface
-   #46 = Utf8               InnerClasses
-   #47 = Class              #105          // sketch/Sketch$Test
-   #48 = Utf8               Test
-   #49 = Utf8               values
-   #50 = Utf8               [I
-   #51 = Utf8               float_member
-   #52 = Utf8               F
-   #53 = Utf8               Deprecated
-   #54 = Utf8               RuntimeVisibleAnnotations
-   #55 = Utf8               Ljava/lang/Deprecated;
-   #56 = Utf8               long_member
-   #57 = Utf8               J
-   #58 = Utf8               long_static_value
-   #59 = Utf8               ????ƒé
-   #60 = Utf8               Ljava/lang/String;
-   #61 = Utf8               bool_member
-   #62 = Utf8               Z
-   #63 = Utf8               ConstantValue
-   #64 = Integer            1
-   #65 = Utf8               matrix3d
-   #66 = Utf8               [[[I
-   #67 = Utf8               matrix2d
-   #68 = Utf8               [[D
-   #69 = Utf8               <init>
-   #70 = Utf8               ()V
-   #71 = Utf8               Code
-   #72 = Utf8               LineNumberTable
-   #73 = Utf8               print
-   #74 = Utf8               (I)V
-   #75 = Utf8               add
-   #76 = Utf8               (IF)J
-   #77 = Utf8               main
-   #78 = Utf8               ([Ljava/lang/String;)V
-   #79 = Utf8               <clinit>
-   #80 = Utf8               SourceFile
-   #81 = Utf8               Sketch.java
-   #82 = NameAndType        #69:#70       // "<init>":()V
-   #83 = NameAndType        #56:#57       // long_member:J
-   #84 = Utf8               ????ƒ
-   #85 = NameAndType        #59:#60       // ????ƒé:Ljava/lang/String;
-   #86 = NameAndType        #61:#62       // bool_member:Z
-   #87 = Utf8               [[I
-   #88 = NameAndType        #65:#66       // matrix3d:[[[I
-   #89 = Utf8               [D
-   #90 = Utf8               java/lang/Double
-   #91 = NameAndType        #67:#68       // matrix2d:[[D
-   #92 = Class              #106          // java/lang/System
-   #93 = NameAndType        #107:#108     // out:Ljava/io/PrintStream;
-   #94 = Class              #109          // java/io/PrintStream
-   #95 = NameAndType        #110:#74      // println:(I)V
-   #96 = Utf8               Hello world!
-   #97 = NameAndType        #110:#111     // println:(Ljava/lang/String;)V
-   #98 = NameAndType        #49:#50       // values:[I
-   #99 = NameAndType        #58:#57       // long_static_value:J
-  #100 = Utf8               sketch/Sketch
-  #101 = Utf8               java/lang/Object
-  #102 = Utf8               java/util/EventListener
-  #103 = Utf8               java/util/RandomAccess
-  #104 = Utf8               sketch/Sketch$AnotherInterface
-  #105 = Utf8               sketch/Sketch$Test
-  #106 = Utf8               java/lang/System
-  #107 = Utf8               out
-  #108 = Utf8               Ljava/io/PrintStream;
-  #109 = Utf8               java/io/PrintStream
-  #110 = Utf8               println
-  #111 = Utf8               (Ljava/lang/String;)V
+   #31 = Fieldref           #42.#93       // sketch/Sketch.matrix2d:[[D
+   #32 = Fieldref           #94.#95       // java/lang/System.out:Ljava/io/PrintStream;
+   #33 = Methodref          #96.#97       // java/io/PrintStream.println:(I)V
+   #34 = Long               5l
+   #36 = String             #98           // Hello world!
+   #37 = Methodref          #96.#99       // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #38 = Fieldref           #42.#100      // sketch/Sketch.values:[I
+   #39 = Long               98765432123456789l
+   #41 = Fieldref           #42.#101      // sketch/Sketch.long_static_value:J
+   #42 = Class              #102          // sketch/Sketch
+   #43 = Class              #103          // java/lang/Object
+   #44 = Class              #104          // java/util/EventListener
+   #45 = Class              #105          // java/util/RandomAccess
+   #46 = Class              #106          // sketch/Sketch$AnotherInterface
+   #47 = Utf8               AnotherInterface
+   #48 = Utf8               InnerClasses
+   #49 = Class              #107          // sketch/Sketch$Test
+   #50 = Utf8               Test
+   #51 = Utf8               values
+   #52 = Utf8               [I
+   #53 = Utf8               float_member
+   #54 = Utf8               F
+   #55 = Utf8               Deprecated
+   #56 = Utf8               RuntimeVisibleAnnotations
+   #57 = Utf8               Ljava/lang/Deprecated;
+   #58 = Utf8               long_member
+   #59 = Utf8               J
+   #60 = Utf8               long_static_value
+   #61 = Utf8               ????ƒé
+   #62 = Utf8               Ljava/lang/String;
+   #63 = Utf8               bool_member
+   #64 = Utf8               Z
+   #65 = Utf8               ConstantValue
+   #66 = Integer            1
+   #67 = Utf8               matrix3d
+   #68 = Utf8               [[[I
+   #69 = Utf8               matrix2d
+   #70 = Utf8               [[D
+   #71 = Utf8               <init>
+   #72 = Utf8               ()V
+   #73 = Utf8               Code
+   #74 = Utf8               LineNumberTable
+   #75 = Utf8               print
+   #76 = Utf8               (I)V
+   #77 = Utf8               add_10
+   #78 = Utf8               (IF)J
+   #79 = Utf8               main
+   #80 = Utf8               ([Ljava/lang/String;)V
+   #81 = Utf8               <clinit>
+   #82 = Utf8               SourceFile
+   #83 = Utf8               Sketch.java
+   #84 = NameAndType        #71:#72       // "<init>":()V
+   #85 = NameAndType        #58:#59       // long_member:J
+   #86 = Utf8               ????ƒ
+   #87 = NameAndType        #61:#62       // ????ƒé:Ljava/lang/String;
+   #88 = NameAndType        #63:#64       // bool_member:Z
+   #89 = Utf8               [[I
+   #90 = NameAndType        #67:#68       // matrix3d:[[[I
+   #91 = Utf8               [D
+   #92 = Utf8               java/lang/Double
+   #93 = NameAndType        #69:#70       // matrix2d:[[D
+   #94 = Class              #108          // java/lang/System
+   #95 = NameAndType        #109:#110     // out:Ljava/io/PrintStream;
+   #96 = Class              #111          // java/io/PrintStream
+   #97 = NameAndType        #112:#76      // println:(I)V
+   #98 = Utf8               Hello world!
+   #99 = NameAndType        #112:#113     // println:(Ljava/lang/String;)V
+  #100 = NameAndType        #51:#52       // values:[I
+  #101 = NameAndType        #60:#59       // long_static_value:J
+  #102 = Utf8               sketch/Sketch
+  #103 = Utf8               java/lang/Object
+  #104 = Utf8               java/util/EventListener
+  #105 = Utf8               java/util/RandomAccess
+  #106 = Utf8               sketch/Sketch$AnotherInterface
+  #107 = Utf8               sketch/Sketch$Test
+  #108 = Utf8               java/lang/System
+  #109 = Utf8               out
+  #110 = Utf8               Ljava/io/PrintStream;
+  #111 = Utf8               java/io/PrintStream
+  #112 = Utf8               println
+  #113 = Utf8               (Ljava/lang/String;)V
 {
   public float float_member;
     descriptor: F
     flags: ACC_PUBLIC
     Deprecated: true
     RuntimeVisibleAnnotations:
-      0: #55()
+      0: #57()
 
   public long long_member;
     descriptor: J
@@ -292,22 +293,29 @@ Constant pool:
         line 40: 0
         line 41: 7
 
-  public long add(int, float);
+  public long add_10(int, float);
     descriptor: (IF)J
     flags: ACC_PUBLIC
     Code:
       stack=4, locals=5, args_size=3
-         0: iload_1
-         1: i2l
-         2: fload_2
-         3: f2l
-         4: ladd
-         5: lstore_3
-         6: lload_3
-         7: lreturn
+         0: iinc          1, 5
+         3: iload_1
+         4: i2l
+         5: fload_2
+         6: f2l
+         7: ladd
+         8: lstore_3
+         9: lload_3
+        10: ldc2_w        #34                 // long 5l
+        13: ladd
+        14: lstore_3
+        15: lload_3
+        16: lreturn
       LineNumberTable:
         line 44: 0
-        line 45: 6
+        line 45: 3
+        line 46: 9
+        line 47: 15
 
   public static void main(java.lang.String[]);
     descriptor: ([Ljava/lang/String;)V
@@ -315,12 +323,12 @@ Constant pool:
     Code:
       stack=2, locals=1, args_size=1
          0: getstatic     #32                 // Field java/lang/System.out:Ljava/io/PrintStream;
-         3: ldc           #34                 // String Hello world!
-         5: invokevirtual #35                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         3: ldc           #36                 // String Hello world!
+         5: invokevirtual #37                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
          8: return
       LineNumberTable:
-        line 49: 0
-        line 50: 8
+        line 51: 0
+        line 52: 8
 
   static {};
     descriptor: ()V
@@ -349,9 +357,9 @@ Constant pool:
         20: iconst_4
         21: iconst_5
         22: iastore
-        23: putstatic     #36                 // Field values:[I
-        26: ldc2_w        #37                 // long 98765432123456789l
-        29: putstatic     #39                 // Field long_static_value:J
+        23: putstatic     #38                 // Field values:[I
+        26: ldc2_w        #39                 // long 98765432123456789l
+        29: putstatic     #41                 // Field long_static_value:J
         32: return
       LineNumberTable:
         line 7: 0
@@ -359,5 +367,5 @@ Constant pool:
 }
 SourceFile: "Sketch.java"
 InnerClasses:
-     static #45= #44 of #40; //AnotherInterface=class sketch/Sketch$AnotherInterface of class sketch/Sketch
-     static #48= #47 of #40; //Test=class sketch/Sketch$Test of class sketch/Sketch
+     static #47= #46 of #42; //AnotherInterface=class sketch/Sketch$AnotherInterface of class sketch/Sketch
+     static #50= #49 of #42; //Test=class sketch/Sketch$Test of class sketch/Sketch
