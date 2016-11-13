@@ -603,8 +603,126 @@ Attributes count:	2
 				19	putfield	cp index #7 (Field sketch/Sketch.bool_member, descriptor: Z)
 				22	aload_0
 				23	iconst_2
-				24	anewarray
-				- last instruction was not recognized, can't continue -
+				24	anewarray	cp index #8 (class: [[I)
+				27	dup
+				28	iconst_0
+				29	iconst_2
+				30	anewarray	cp index #9 (class: [I)
+				33	dup
+				34	iconst_0
+				35	iconst_2
+				36	newarray	10 (array of int)
+				38	dup
+				39	iconst_0
+				40	iconst_1
+				41	iastore
+				42	dup
+				43	iconst_1
+				44	iconst_2
+				45	iastore
+				46	aastore
+				47	dup
+				48	iconst_1
+				49	iconst_2
+				50	newarray	10 (array of int)
+				52	dup
+				53	iconst_0
+				54	iconst_3
+				55	iastore
+				56	dup
+				57	iconst_1
+				58	iconst_4
+				59	iastore
+				60	aastore
+				61	aastore
+				62	dup
+				63	iconst_1
+				64	iconst_2
+				65	anewarray	cp index #9 (class: [I)
+				68	dup
+				69	iconst_0
+				70	iconst_2
+				71	newarray	10 (array of int)
+				73	dup
+				74	iconst_0
+				75	iconst_5
+				76	iastore
+				77	dup
+				78	iconst_1
+				79	bipush	6
+				81	iastore
+				82	aastore
+				83	dup
+				84	iconst_1
+				85	iconst_2
+				86	newarray	10 (array of int)
+				88	dup
+				89	iconst_0
+				90	bipush	7
+				92	iastore
+				93	dup
+				94	iconst_1
+				95	bipush	8
+				97	iastore
+				98	aastore
+				99	aastore
+				100	putfield	cp index #10 (Field sketch/Sketch.matrix3d, descriptor: [[[I)
+				103	aload_0
+				104	iconst_3
+				105	anewarray	cp index #11 (class: [D)
+				108	dup
+				109	iconst_0
+				110	iconst_3
+				111	newarray	7 (array of double)
+				113	dup
+				114	iconst_0
+				115	ldc2_w		cp index #115 (double: 1.234560e+002)
+				118	dastore
+				119	dup
+				120	iconst_1
+				121	ldc2_w		cp index #121 (double: -6.543210e+002)
+				124	dastore
+				125	dup
+				126	iconst_2
+				127	ldc2_w		cp index #127 (double: 9.876543e+008)
+				130	dastore
+				131	aastore
+				132	dup
+				133	iconst_1
+				134	iconst_3
+				135	newarray	7 (array of double)
+				137	dup
+				138	iconst_0
+				139	ldc2_w		cp index #139 (double: 1.797693e+308)
+				142	dastore
+				143	dup
+				144	iconst_1
+				145	ldc2_w		cp index #145 (double: 4.940656e-324)
+				148	dastore
+				149	dup
+				150	iconst_2
+				151	ldc2_w		cp index #151 (double: 2.225074e-308)
+				154	dastore
+				155	aastore
+				156	dup
+				157	iconst_2
+				158	iconst_3
+				159	newarray	7 (array of double)
+				161	dup
+				162	iconst_0
+				163	ldc2_w		cp index #163 (double: nan)
+				166	dastore
+				167	dup
+				168	iconst_1
+				169	ldc2_w		cp index #169 (double: inf)
+				172	dastore
+				173	dup
+				174	iconst_2
+				175	ldc2_w		cp index #175 (double: -inf)
+				178	dastore
+				179	aastore
+				180	putfield	cp index #31 (Field sketch/Sketch.matrix2d, descriptor: [[D)
+				183	return
 
 			Code Attribute #1 - LineNumberTable:
 
