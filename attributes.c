@@ -635,6 +635,9 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 printf("\tcp index #%u ", u16);
                 cpi = jcf->constantPool + u16 - 1;
 
+                // Invokes require a Methodref a parameter, whereas getfield, getstatic,
+                // putfield and putstatic require a Fieldref.
+
                 if ((opcode <  opcode_invokevirtual && cpi->tag == CONSTANT_Fieldref) ||
                     (opcode >= opcode_invokevirtual && cpi->tag == CONSTANT_Methodref))
                 {
@@ -656,7 +659,7 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 }
                 else
                 {
-                    printf("(%s, invalid - not a Fieldref)");
+                    printf("(%s, invalid - not a %s)", decodeTag(cpi->tag), opcode < opcode_invokevirtual ? "Field" : "Method");
                 }
 
                 break;
@@ -673,11 +676,15 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 break;
 
             case opcode_new:
+            case opcode_anewarray:
 
                 u16 = NEXTBYTE;
                 u16 = (u16 << 8) | NEXTBYTE;
 
-                printf("\t\tcp index #%u ", u16);
+                if (opcode == opcode_new)
+                    printf("\t");
+
+                printf("\tcp index #%u ", u16);
 
                 cpi = jcf->constantPool + u16 - 1;
 
