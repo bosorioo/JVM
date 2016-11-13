@@ -110,7 +110,7 @@ void printAllFields(JavaClassFile* jcf)
     {
         fi = jcf->fields + u16;
 
-        printf("\n\n\tField #%u:\n", u16 + 1);
+        printf("\n\n\tField #%u:\n\n", u16 + 1);
 
         cpi = jcf->constantPool + fi->name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
@@ -123,7 +123,7 @@ void printAllFields(JavaClassFile* jcf)
         decodeAccessFlags(fi->access_flags, buffer, sizeof(buffer), ACCT_FIELD);
         printf("\t\taccess_flags:     0x%.4X [%s]\n", fi->access_flags, buffer);
 
-        printf("\t\tattributes_count: %u", fi->attributes_count);
+        printf("\t\tattributes_count: %u\n", fi->attributes_count);
 
         if (fi->attributes_count > 0)
         {
@@ -133,8 +133,8 @@ void printAllFields(JavaClassFile* jcf)
                 cpi = jcf->constantPool + atti->name_index - 1;
                 UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
-                printf("\n\n\t\tAttribute #%u - %s:\n", att_index + 1, buffer);
-                printAttribute(jcf, fi->attributes + att_index, 3);
+                printf("\n\t\tField Attribute #%u - %s:\n", att_index + 1, buffer);
+                printAttribute(jcf, atti, 3);
             }
         }
 
