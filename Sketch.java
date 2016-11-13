@@ -5,16 +5,11 @@ import javafx.geometry.Point2D;
 
 public class Sketch implements EventListener, RandomAccess {
 
-	private static final int[] values = {1, 2, 3, 4, 5};
-
+	private static final int[] array_member = {1, 2, 3};
 	@Deprecated
-	public float float_member;
-	
-	public long long_member = 5910974510923776L;
-	public static long long_static_value = 98765432123456789L;
-
-	private String πφμβƒé = "πφμβƒ";
-	protected final boolean bool_member = true;
+	public float deprecated_member;
+	public static long static_long_member = 98765432123456789L;
+	private String πφμβƒé;
 
 	private int [][][] matrix3d = {
 		{{1, 2},
@@ -33,10 +28,6 @@ public class Sketch implements EventListener, RandomAccess {
 		public int method1(int[] a);
 	}
 	
-	interface AnotherInterface {
-		public void interfaceMethod();
-	}
-	
 	class NestedClass implements Test {
 		public int method1(int[] a) {
 			return a.length;
@@ -48,14 +39,28 @@ public class Sketch implements EventListener, RandomAccess {
 		NestedClass nc = new NestedClass();
 		// To force invokeinterface instruction
 		a[0] = ((Test)nc).method1(a);
-		n += long_static_value;
+		n += static_long_member;
 	}
 
-	public long add_10(int a, float b) throws Error {
-		a += 5;
-		long result = (long)a + (long)b;
-		result += 5;
-		return result;
+	public long arith(int a, float b, byte c) throws Error {
+
+		switch (a) {
+			case 10: b += 20; break;
+			case 30: b -= 20; break;
+			default:
+				break;
+		}
+		
+		switch (c) {
+			case 2: a += b; break;
+			case 3: a -= b; break;
+			case 4: a *= b; break;
+			case 5: a /= b; break;
+			default:
+				throw new Error();
+		}
+		
+		return (long)a;
 	}
 
 	public static void main(String[] args) {
