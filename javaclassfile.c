@@ -348,6 +348,8 @@ const char* decodeJavaClassFileStatus(enum JavaClassStatus status)
         case ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX: return "constantvalue_index isn't a valid constant value index";
         case ATTRIBUTE_INVALID_SOURCEFILE_INDEX: return "sourcefile_index isn't a valid source file index";
         case ATTRIBUTE_INVALID_INNERCLASS_INDEXES: return "InnerClass has at least one invalid index";
+        case ATTRIBUTE_INVALID_EXCEPTIONS_CLASS_INDEX: return "Exceptions has an index that doesn't point to a valid class";
+        case ATTRIBUTE_INVALID_CODE_LENGTH: return "Attribute code must have a length greater than 0 and less than 65536 bytes";
 
         case FILE_CONTAINS_UNEXPECTED_DATA: return "class file contains more data than expected, which wasn't processed";
 
@@ -499,7 +501,7 @@ void printClassFileInfo(JavaClassFile* jcf)
 
     if (jcf->interfaceCount > 0)
     {
-        printf("\n---- Interfaces ----\n\n");
+        printf("\n---- Interfaces implemented by the class ----\n\n");
 
         for (u16 = 0; u16 < jcf->interfaceCount; u16++)
         {
