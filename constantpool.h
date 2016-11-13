@@ -81,6 +81,7 @@ enum ConstantPoolTag {
     CONSTANT_Utf8 = 1
 };
 
+const char* decodeTag(uint8_t tag);
 char readConstantPoolEntry(JavaClassFile* jcf, cp_info* entry);
 void printConstantPool(JavaClassFile* jcf);
 
