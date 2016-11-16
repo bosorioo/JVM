@@ -838,7 +838,7 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 if (opcode == opcode_ldc_w || opcode == opcode_ldc2_w)
                     u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\t\tcp index #%u");
+                printf("\t\tcp index #%u", u32);
 
                 cpi = jcf->constantPool + u32 - 1;
 

@@ -663,15 +663,15 @@ Attributes count:	2
 				93	newarray	7 (array of double)
 				95	dup
 				96	iconst_0
-				97	ldc2_w		cp index #97 (double: 1.234560e+002)
+				97	ldc2_w		cp index #6 (double: 1.234560e+002)
 				100	dastore
 				101	dup
 				102	iconst_1
-				103	ldc2_w		cp index #103 (double: -6.543210e+002)
+				103	ldc2_w		cp index #8 (double: -6.543210e+002)
 				106	dastore
 				107	dup
 				108	iconst_2
-				109	ldc2_w		cp index #109 (double: 9.876543e+008)
+				109	ldc2_w		cp index #10 (double: 9.876543e+008)
 				112	dastore
 				113	aastore
 				114	dup
@@ -680,15 +680,15 @@ Attributes count:	2
 				117	newarray	7 (array of double)
 				119	dup
 				120	iconst_0
-				121	ldc2_w		cp index #121 (double: 1.797693e+308)
+				121	ldc2_w		cp index #13 (double: 1.797693e+308)
 				124	dastore
 				125	dup
 				126	iconst_1
-				127	ldc2_w		cp index #127 (double: 4.940656e-324)
+				127	ldc2_w		cp index #15 (double: 4.940656e-324)
 				130	dastore
 				131	dup
 				132	iconst_2
-				133	ldc2_w		cp index #133 (double: 2.225074e-308)
+				133	ldc2_w		cp index #17 (double: 2.225074e-308)
 				136	dastore
 				137	aastore
 				138	dup
@@ -697,15 +697,15 @@ Attributes count:	2
 				141	newarray	7 (array of double)
 				143	dup
 				144	iconst_0
-				145	ldc2_w		cp index #145 (double: nan)
+				145	ldc2_w		cp index #19 (double: nan)
 				148	dastore
 				149	dup
 				150	iconst_1
-				151	ldc2_w		cp index #151 (double: inf)
+				151	ldc2_w		cp index #21 (double: inf)
 				154	dastore
 				155	dup
 				156	iconst_2
-				157	ldc2_w		cp index #157 (double: -inf)
+				157	ldc2_w		cp index #23 (double: -inf)
 				160	dastore
 				161	aastore
 				162	putfield	cp index #25 (Field sketch/Sketch.matrix2d, descriptor: [[D)
@@ -786,12 +786,12 @@ Attributes count:	2
 				19	  case 30: pc + 35 = address 36
 				-	  default: pc + 43 = address 44
 				28	fload_2
-				29	ldc		cp index #29 (float: 2.000000e+001)
+				29	ldc		cp index #30 (float: 2.000000e+001)
 				31	fadd
 				32	fstore_2
 				33	goto		pc + 11 = address 44
 				36	fload_2
-				37	ldc		cp index #37 (float: 2.000000e+001)
+				37	ldc		cp index #30 (float: 2.000000e+001)
 				39	fsub
 				40	fstore_2
 				41	goto		pc + 3 = address 44
@@ -878,7 +878,7 @@ Attributes count:	2
 			exception_table_length: 1, attribute_count: 2
 
 			Code:	Offset	Mnemonic	Parameters
-				0	ldc		cp index #0 (string: ola)
+				0	ldc		cp index #33 (string: ola)
 				2	astore_1
 				3	aload_1
 				4	instanceof	cp index #34 (class: java/lang/String)
@@ -952,7 +952,7 @@ Attributes count:	2
 				13	iconst_3
 				14	iastore
 				15	putstatic	cp index #39 (Field sketch/Sketch.array_member, descriptor: [I)
-				18	ldc2_w		cp index #18 (long: 98765432123456789)
+				18	ldc2_w		cp index #40 (long: 98765432123456789)
 				21	putstatic	cp index #29 (Field sketch/Sketch.static_long_member, descriptor: J)
 				24	return
 
