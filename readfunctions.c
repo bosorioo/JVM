@@ -3,10 +3,10 @@
 #include "validity.h"
 #include <math.h>
 
-// Reads a four-byte long unsigned integer from the JavaClassFile
+// Reads a four-byte long unsigned integer from the JavaClass
 // that has already been opened. The result is written in the
 // pointer "*out", if not NULL.
-uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
+uint8_t readu4(JavaClass* jc, uint32_t* out)
 {
     int byte;
     uint32_t u4 = 0;
@@ -14,14 +14,14 @@ uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
 
     for (i = 0; i < 4; i++)
     {
-        byte = fgetc(jcf->file);
+        byte = fgetc(jc->file);
 
         if (byte == EOF)
             break;
 
         u4 <<= 8;
         u4 |= byte;
-        jcf->totalBytesRead++;
+        jc->totalBytesRead++;
     }
 
     if (out)
@@ -30,10 +30,10 @@ uint8_t readu4(JavaClassFile* jcf, uint32_t* out)
     return i == 4;
 }
 
-// Reads a two-byte long unsigned integer from the JavaClassFile
+// Reads a two-byte long unsigned integer from the JavaClass
 // that has already been opened. The result is written in the
 // pointer "*out", if not NULL.
-uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
+uint8_t readu2(JavaClass* jc, uint16_t* out)
 {
     int byte;
     uint16_t u2 = 0;
@@ -41,14 +41,14 @@ uint8_t readu2(JavaClassFile* jcf, uint16_t* out)
 
     for (i = 0; i < 2; i++)
     {
-        byte = fgetc(jcf->file);
+        byte = fgetc(jc->file);
 
         if (byte == EOF)
             break;
 
         u2 <<= 8;
         u2 |= byte;
-        jcf->totalBytesRead++;
+        jc->totalBytesRead++;
     }
 
     if (out)

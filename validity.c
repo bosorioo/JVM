@@ -7,14 +7,14 @@
 #include <ctype.h>
 
 // Checks whether the "accessFlags" parameter has a valid combination
-// of method flags. In case of issues, jcf->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jcf, and the
+// of method flags. In case of issues, jc->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jc, and the
 // return value is 1.
-char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
+char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
 {
     if (accessFlags & ACC_INVALID_METHOD_FLAG_MASK)
     {
-        jcf->status = USE_OF_RESERVED_METHOD_ACCESS_FLAGS;
+        jc->status = USE_OF_RESERVED_METHOD_ACCESS_FLAGS;
         return 0;
     }
 
@@ -22,7 +22,7 @@ char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
     if ((accessFlags & ACC_ABSTRACT) &&
         (accessFlags & (ACC_FINAL | ACC_NATIVE | ACC_PRIVATE | ACC_STATIC | ACC_STRICT | ACC_SYNCHRONIZED)))
     {
-        jcf->status = INVALID_ACCESS_FLAGS;
+        jc->status = INVALID_ACCESS_FLAGS;
         return 0;
     }
 
@@ -40,7 +40,7 @@ char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
     // A method can't be more than one of those: PUBLIC, PRIVATE, PROTECTED
     if (accessModifierCount > 1)
     {
-        jcf->status = INVALID_ACCESS_FLAGS;
+        jc->status = INVALID_ACCESS_FLAGS;
         return 0;
     }
 
@@ -48,21 +48,21 @@ char checkMethodAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
 }
 
 // Checks whether the "accessFlags" parameter has a valid combination
-// of field flags. In case of issues, jcf->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jcf, and the
+// of field flags. In case of issues, jc->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jc, and the
 // return value is 1.
-char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
+char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
 {
     if (accessFlags & ACC_INVALID_FIELD_FLAG_MASK)
     {
-        jcf->status = USE_OF_RESERVED_FIELD_ACCESS_FLAGS;
+        jc->status = USE_OF_RESERVED_FIELD_ACCESS_FLAGS;
         return 0;
     }
 
     // The field can't be both ABSTRACT and FINAL
     if ((accessFlags & ACC_ABSTRACT) && (accessFlags & ACC_FINAL))
     {
-        jcf->status = INVALID_ACCESS_FLAGS;
+        jc->status = INVALID_ACCESS_FLAGS;
         return 0;
     }
 
@@ -70,10 +70,10 @@ char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
 
     // If the class is an interface, then the bits PUBLIC, STATIC and FINAL must
     // be set to 1 for all fields.
-    if ((jcf->accessFlags & ACC_INTERFACE) &&
-        ((jcf->accessFlags & interfaceRequiredBitMask) != interfaceRequiredBitMask))
+    if ((jc->accessFlags & ACC_INTERFACE) &&
+        ((jc->accessFlags & interfaceRequiredBitMask) != interfaceRequiredBitMask))
     {
-        jcf->status = INVALID_ACCESS_FLAGS;
+        jc->status = INVALID_ACCESS_FLAGS;
         return 0;
     }
 
@@ -91,7 +91,7 @@ char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
     // A field can't be more than one of those: PUBLIC, PRIVATE, PROTECTED
     if (accessModifierCount > 1)
     {
-        jcf->status = INVALID_ACCESS_FLAGS;
+        jc->status = INVALID_ACCESS_FLAGS;
         return 0;
     }
 
@@ -101,47 +101,47 @@ char checkFieldAccessFlags(JavaClassFile* jcf, uint16_t accessFlags)
 // Checks whether the "accessFlags" from the class file is a valid
 // combination of class flags. It also checks if "thisClass" and
 // "superClass" points to valid class indexes.
-// In case of issues, jcf->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jcf, and the
+// In case of issues, jc->status is changed, and the
+// function returns 0. Otherwise, nothing is changed with jc, and the
 // return value is 1. This function also
-char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
+char checkClassIndexAndAccessFlags(JavaClass* jc)
 {
-    if (jcf->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
+    if (jc->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
     {
-        jcf->status = USE_OF_RESERVED_CLASS_ACCESS_FLAGS;
+        jc->status = USE_OF_RESERVED_CLASS_ACCESS_FLAGS;
         return 0;
     }
 
     // If the class is abstract, then it must be an interface.
     // If the class is an interface, then it must be abstract.
     // Abstract/interface must have the ACC_FINAL and ACC_SUPER bits set to 0.
-    if ((jcf->accessFlags & ACC_ABSTRACT) || (jcf->accessFlags & ACC_INTERFACE))
+    if ((jc->accessFlags & ACC_ABSTRACT) || (jc->accessFlags & ACC_INTERFACE))
     {
-        if ((jcf->accessFlags & ACC_ABSTRACT) == 0 ||
-            (jcf->accessFlags & ACC_INTERFACE) == 0 ||
-            (jcf->accessFlags & (ACC_FINAL | ACC_SUPER)))
+        if ((jc->accessFlags & ACC_ABSTRACT) == 0 ||
+            (jc->accessFlags & ACC_INTERFACE) == 0 ||
+            (jc->accessFlags & (ACC_FINAL | ACC_SUPER)))
         {
-            jcf->status = INVALID_ACCESS_FLAGS;
+            jc->status = INVALID_ACCESS_FLAGS;
             return 0;
         }
     }
 
     // "thisClass" must not be 0, can't point out of CP bounds and must
     // point to a class index.
-    if (!jcf->thisClass || jcf->thisClass >= jcf->constantPoolCount ||
-        jcf->constantPool[jcf->thisClass - 1].tag != CONSTANT_Class)
+    if (!jc->thisClass || jc->thisClass >= jc->constantPoolCount ||
+        jc->constantPool[jc->thisClass - 1].tag != CONSTANT_Class)
     {
-        jcf->status = INVALID_THIS_CLASS_INDEX;
+        jc->status = INVALID_THIS_CLASS_INDEX;
         return 0;
     }
 
     // "superClass" can't be out of CP bounds.
     // It can be zero, but if it''s not, then it must point to a
     // class index.
-    if (jcf->superClass >= jcf->constantPoolCount ||
-        (jcf->superClass && jcf->constantPool[jcf->superClass - 1].tag != CONSTANT_Class))
+    if (jc->superClass >= jc->constantPoolCount ||
+        (jc->superClass && jc->constantPool[jc->superClass - 1].tag != CONSTANT_Class))
     {
-        jcf->status = INVALID_SUPER_CLASS_INDEX;
+        jc->status = INVALID_SUPER_CLASS_INDEX;
         return 0;
     }
 
@@ -154,9 +154,9 @@ char checkClassIndexAndAccessFlags(JavaClassFile* jcf)
 // understood as "File". The name of the class could be something like: "package/MyClass",
 // the package will be ignored and function will understand the class name as "MyClass".
 // The function then proceeds to compare "MyClass" and "File". If there is a mismatch,
-// jcf->status is modified and the function returns 0. Otherwise, it is left unchanged
+// jc->status is modified and the function returns 0. Otherwise, it is left unchanged
 // and the return value is 1.
-char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
+char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
     char result;
@@ -175,8 +175,8 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
     i = 0;
     result = 1;
 
-    cp_info* entry = jcf->constantPool + jcf->thisClass - 1;
-    entry = jcf->constantPool + entry->Class.name_index - 1;
+    cp_info* entry = jc->constantPool + jc->thisClass - 1;
+    entry = jc->constantPool + entry->Class.name_index - 1;
 
     uint8_t* utf8_class_name = entry->Utf8.bytes;
     int32_t utf8_len = entry->Utf8.length;
@@ -190,7 +190,7 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
 
         if (bytes_used == 0)
         {
-            jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
+            jc->status = CLASS_NAME_FILE_NAME_MISMATCH;
             return 0;
         }
 
@@ -215,7 +215,7 @@ char checkClassNameFileNameMatch(JavaClassFile* jcf, const char* classFilePath)
         result = i == (end - begin);
 
     if (result == 0)
-        jcf->status = CLASS_NAME_FILE_NAME_MISMATCH;
+        jc->status = CLASS_NAME_FILE_NAME_MISMATCH;
 
     return result;
 }
@@ -268,9 +268,9 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
 }
 
 // Returns 1 if the index points to a UTF-8 constant, 0 otherwise.
-char isValidUTF8Index(JavaClassFile* jcf, uint16_t index)
+char isValidUTF8Index(JavaClass* jc, uint16_t index)
 {
-    return (jcf->constantPool + index - 1)->tag == CONSTANT_Utf8;
+    return (jc->constantPool + index - 1)->tag == CONSTANT_Utf8;
 }
 
 // Returns 1 if "name_index" points to a valid UTF-8 and is a valid
@@ -279,9 +279,9 @@ char isValidUTF8Index(JavaClassFile* jcf, uint16_t index)
 // "isClassIdentifier" is different than zero, then classes with slashes
 // in its name like "java/io/Stream" will be accepted as valid names.
 // Returns 0 otherwise.
-char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t isClassIdentifier)
+char isValidNameIndex(JavaClass* jc, uint16_t name_index, uint8_t isClassIdentifier)
 {
-    cp_info* entry = jcf->constantPool + name_index - 1;
+    cp_info* entry = jc->constantPool + name_index - 1;
     return entry->tag == CONSTANT_Utf8 && isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, isClassIdentifier);
 }
 
@@ -290,9 +290,9 @@ char isValidNameIndex(JavaClassFile* jcf, uint16_t name_index, uint8_t isClassId
 // is that this function accepts "<init>" and "<clinit>" as valid names for methods,
 // whereas "isValidNameIndex" (consenquently "isValidJavaIdentifier") function wouldn't
 // accept those names as valid. Returns zero otherwise.
-char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index)
+char isValidMethodNameIndex(JavaClass* jc, uint16_t name_index)
 {
-    cp_info* entry = jcf->constantPool + name_index - 1;
+    cp_info* entry = jc->constantPool + name_index - 1;
 
     if (entry->tag != CONSTANT_Utf8)
         return 0;
@@ -305,16 +305,16 @@ char isValidMethodNameIndex(JavaClassFile* jcf, uint16_t name_index)
 }
 
 // Checks whether the index points to a valid class and whether that
-// class name is valid. In case the check fails, jcf->status is changed and
+// class name is valid. In case the check fails, jc->status is changed and
 // the function returns 0. If everything is successful, the function returns 1
-// while leaving jcf unchanged.
-char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
+// while leaving jc unchanged.
+char checkClassIndex(JavaClass* jc, uint16_t class_index)
 {
-    cp_info* entry = jcf->constantPool + class_index - 1;
+    cp_info* entry = jc->constantPool + class_index - 1;
 
-    if (entry->tag != CONSTANT_Class || !isValidNameIndex(jcf, entry->Class.name_index, 1))
+    if (entry->tag != CONSTANT_Class || !isValidNameIndex(jc, entry->Class.name_index, 1))
     {
-        jcf->status = INVALID_CLASS_INDEX;
+        jc->status = INVALID_CLASS_INDEX;
         return 0;
     }
 
@@ -324,29 +324,29 @@ char checkClassIndex(JavaClassFile* jcf, uint16_t class_index)
 // Checks whether name_and_type_index points to a valid CONSTANT_NameAndType,
 // checking if the name and the descriptor are valid. The descriptor must be
 // a valid field descriptor.
-// In case of failure, the function changes jcf->status and returns 0.
-// Otherwise, jcf is left unchanged, and the function returns 1.
-char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
+// In case of failure, the function changes jc->status and returns 0.
+// Otherwise, jc is left unchanged, and the function returns 1.
+char checkFieldNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 {
-    cp_info* entry = jcf->constantPool + name_and_type_index - 1;
+    cp_info* entry = jc->constantPool + name_and_type_index - 1;
 
-    if (entry->tag != CONSTANT_NameAndType || !isValidNameIndex(jcf, entry->NameAndType.name_index, 0))
+    if (entry->tag != CONSTANT_NameAndType || !isValidNameIndex(jc, entry->NameAndType.name_index, 0))
     {
-        jcf->status = INVALID_NAME_INDEX;
+        jc->status = INVALID_NAME_INDEX;
         return 0;
     }
 
-    entry = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
+    entry = jc->constantPool + entry->NameAndType.descriptor_index - 1;
 
     if (entry->tag != CONSTANT_Utf8 || entry->Utf8.length == 0)
     {
-        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        jc->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
     }
 
     if (entry->Utf8.length != readFieldDescriptor(entry->Utf8.bytes, entry->Utf8.length, 1))
     {
-        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        jc->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
     }
 
@@ -356,29 +356,29 @@ char checkFieldNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index
 // Checks whether name_and_type_index points to a valid CONSTANT_NameAndType,
 // checking if the name and the descriptor are valid. The descriptor must be
 // a valid method descriptor.
-// In case of failure, the function changes jcf->status and returns 0.
-// Otherwise, jcf is left unchanged, and the function returns 1.
-char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_index)
+// In case of failure, the function changes jc->status and returns 0.
+// Otherwise, jc is left unchanged, and the function returns 1.
+char checkMethodNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 {
-    cp_info* entry = jcf->constantPool + name_and_type_index - 1;
+    cp_info* entry = jc->constantPool + name_and_type_index - 1;
 
-    if (entry->tag != CONSTANT_NameAndType || !isValidMethodNameIndex(jcf, entry->NameAndType.name_index))
+    if (entry->tag != CONSTANT_NameAndType || !isValidMethodNameIndex(jc, entry->NameAndType.name_index))
     {
-        jcf->status = INVALID_NAME_INDEX;
+        jc->status = INVALID_NAME_INDEX;
         return 0;
     }
 
-    entry = jcf->constantPool + entry->NameAndType.descriptor_index - 1;
+    entry = jc->constantPool + entry->NameAndType.descriptor_index - 1;
 
     if (entry->tag != CONSTANT_Utf8 || entry->Utf8.length == 0)
     {
-        jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+        jc->status = INVALID_METHOD_DESCRIPTOR_INDEX;
         return 0;
     }
 
     if (entry->Utf8.length != readMethodDescriptor(entry->Utf8.bytes, entry->Utf8.length, 1))
     {
-        jcf->status = INVALID_METHOD_DESCRIPTOR_INDEX;
+        jc->status = INVALID_METHOD_DESCRIPTOR_INDEX;
         return 0;
     }
 
@@ -388,23 +388,23 @@ char checkMethodNameAndTypeIndex(JavaClassFile* jcf, uint16_t name_and_type_inde
 
 // Iterates over the constant pool looking for inconsistencies in it.
 // If no error is encountered, the function returns 1. In case of failures,
-// the function will set jcf->status accordingly and will return 0.
-char checkConstantPoolValidity(JavaClassFile* jcf)
+// the function will set jc->status accordingly and will return 0.
+char checkConstantPoolValidity(JavaClass* jc)
 {
     uint16_t i;
 
-    for (i = 0; i < jcf->constantPoolCount - 1; i++)
+    for (i = 0; i < jc->constantPoolCount - 1; i++)
     {
-        jcf->currentValidityEntryIndex = i;
-        cp_info* entry = jcf->constantPool + i;
+        jc->currentValidityEntryIndex = i;
+        cp_info* entry = jc->constantPool + i;
 
         switch(entry->tag)
         {
             case CONSTANT_Class:
 
-                if (!isValidNameIndex(jcf, entry->Class.name_index, 1))
+                if (!isValidNameIndex(jc, entry->Class.name_index, 1))
                 {
-                    jcf->status = INVALID_NAME_INDEX;
+                    jc->status = INVALID_NAME_INDEX;
                     return 0;
                 }
 
@@ -412,9 +412,9 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
 
             case CONSTANT_String:
 
-                if (!isValidUTF8Index(jcf, entry->String.string_index))
+                if (!isValidUTF8Index(jc, entry->String.string_index))
                 {
-                    jcf->status = INVALID_STRING_INDEX;
+                    jc->status = INVALID_STRING_INDEX;
                     return 0;
                 }
 
@@ -423,30 +423,30 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
             case CONSTANT_Methodref:
             case CONSTANT_InterfaceMethodref:
 
-                if (!checkClassIndex(jcf, entry->Methodref.class_index))
+                if (!checkClassIndex(jc, entry->Methodref.class_index))
                     return 0;
 
-                if (!checkMethodNameAndTypeIndex(jcf, entry->Methodref.name_and_type_index))
+                if (!checkMethodNameAndTypeIndex(jc, entry->Methodref.name_and_type_index))
                     return 0;
 
                 break;
 
             case CONSTANT_Fieldref:
 
-                if (!checkClassIndex(jcf, entry->Fieldref.class_index))
+                if (!checkClassIndex(jc, entry->Fieldref.class_index))
                     return 0;
 
-                if (!checkFieldNameAndTypeIndex(jcf, entry->Fieldref.name_and_type_index))
+                if (!checkFieldNameAndTypeIndex(jc, entry->Fieldref.name_and_type_index))
                     return 0;
 
                 break;
 
             case CONSTANT_NameAndType:
 
-                if (!isValidUTF8Index(jcf, entry->NameAndType.name_index) ||
-                    !isValidUTF8Index(jcf, entry->NameAndType.descriptor_index))
+                if (!isValidUTF8Index(jc, entry->NameAndType.name_index) ||
+                    !isValidUTF8Index(jc, entry->NameAndType.descriptor_index))
                 {
-                    jcf->status = INVALID_NAME_AND_TYPE_INDEX;
+                    jc->status = INVALID_NAME_AND_TYPE_INDEX;
                     return 0;
                 }
 
@@ -472,7 +472,7 @@ char checkConstantPoolValidity(JavaClassFile* jcf)
         }
     }
 
-    jcf->currentValidityEntryIndex = -1;
+    jc->currentValidityEntryIndex = -1;
 
     return 1;
 }

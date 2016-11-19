@@ -18,7 +18,7 @@
 // mean that the length is not sufficient, that the UTF-8
 // encoding is wrong or the stream has a four-byte character,
 // which isn't supported by this program.
-uint8_t nextUTF8Character(uint8_t* utf8_bytes, int32_t utf8_len, uint32_t* outCharacter)
+uint8_t nextUTF8Character(const uint8_t* utf8_bytes, int32_t utf8_len, uint32_t* outCharacter)
 {
     if (utf8_len <= 0)
         return 0;
@@ -64,7 +64,7 @@ uint8_t nextUTF8Character(uint8_t* utf8_bytes, int32_t utf8_len, uint32_t* outCh
 // "*ascii_bytes" is the string and ascii_len is the number of characters
 // in that string. Note that it doesn't matter if the string is null terminated
 // or not.
-char cmp_UTF8_Ascii(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t* ascii_bytes, int32_t ascii_len)
+char cmp_UTF8_Ascii(const uint8_t* utf8_bytes, int32_t utf8_len, const uint8_t* ascii_bytes, int32_t ascii_len)
 {
     uint32_t utf8_char;
     uint8_t bytes_used;
@@ -88,7 +88,7 @@ char cmp_UTF8_Ascii(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t* ascii_bytes,
 // Function that translates a UTF-8 stream to ASCII, storing the result
 // in the output buffer pointed by "*out_buffer". At most "buffer_len"
 // characters will be written to the buffer, NULL character included.
-uint32_t UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, uint8_t* utf8_bytes, int32_t utf8_len)
+uint32_t UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, const uint8_t* utf8_bytes, int32_t utf8_len)
 {
     uint32_t charactersWritten = 0;
     uint32_t utf8_char;
@@ -115,7 +115,7 @@ uint32_t UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, uint8_t* utf8_by
 }
 
 // Returns the number of characters a UTF-8 string has.
-uint32_t UTF8StringLength(uint8_t* utf8_bytes, int32_t utf8_len)
+uint32_t UTF8StringLength(const uint8_t* utf8_bytes, int32_t utf8_len)
 {
     uint32_t length = 0;
     uint8_t bytes_used;

@@ -2,41 +2,42 @@
 #include "readfunctions.h"
 #include "validity.h"
 #include "utf8.h"
+#include "string.h"
 #include <stdlib.h>
 
-char readMethod(JavaClassFile* jcf, method_info* entry)
+char readMethod(JavaClass* jc, method_info* entry)
 {
     entry->attributes = NULL;
-    jcf->currentAttributeEntryIndex = -2;
+    jc->currentAttributeEntryIndex = -2;
 
-    if (!readu2(jcf, &entry->access_flags) ||
-        !readu2(jcf, &entry->name_index) ||
-        !readu2(jcf, &entry->descriptor_index) ||
-        !readu2(jcf, &entry->attributes_count))
+    if (!readu2(jc, &entry->access_flags) ||
+        !readu2(jc, &entry->name_index) ||
+        !readu2(jc, &entry->descriptor_index) ||
+        !readu2(jc, &entry->attributes_count))
     {
-        jcf->status = UNEXPECTED_EOF;
+        jc->status = UNEXPECTED_EOF;
         return 0;
     }
 
-    if (!checkMethodAccessFlags(jcf, entry->access_flags))
+    if (!checkMethodAccessFlags(jc, entry->access_flags))
         return 0;
 
     if (entry->name_index == 0 ||
-        entry->name_index >= jcf->constantPoolCount ||
-        !isValidMethodNameIndex(jcf, entry->name_index))
+        entry->name_index >= jc->constantPoolCount ||
+        !isValidMethodNameIndex(jc, entry->name_index))
     {
-        jcf->status = INVALID_NAME_INDEX;
+        jc->status = INVALID_NAME_INDEX;
         return 0;
     }
 
-    cp_info* cpi = jcf->constantPool + entry->descriptor_index - 1;
+    cp_info* cpi = jc->constantPool + entry->descriptor_index - 1;
 
     if (entry->descriptor_index == 0 ||
-        entry->descriptor_index >= jcf->constantPoolCount ||
+        entry->descriptor_index >= jc->constantPoolCount ||
         cpi->tag != CONSTANT_Utf8 ||
         cpi->Utf8.length != readMethodDescriptor(cpi->Utf8.bytes, cpi->Utf8.length, 1))
     {
-        jcf->status = INVALID_FIELD_DESCRIPTOR_INDEX;
+        jc->status = INVALID_FIELD_DESCRIPTOR_INDEX;
         return 0;
     }
 
@@ -46,17 +47,17 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
 
         if (!entry->attributes)
         {
-            jcf->status = MEMORY_ALLOCATION_FAILED;
+            jc->status = MEMORY_ALLOCATION_FAILED;
             return 0;
         }
 
         uint16_t i;
 
-        jcf->currentAttributeEntryIndex = -1;
+        jc->currentAttributeEntryIndex = -1;
 
         for (i = 0; i < entry->attributes_count; i++)
         {
-            if (!readAttribute(jcf, entry->attributes + i))
+            if (!readAttribute(jc, entry->attributes + i))
             {
                 // Only "i" attributes have been successfully read, so to avoid
                 // releasing uninitialized attributes (which could lead to a crash)
@@ -65,7 +66,7 @@ char readMethod(JavaClassFile* jcf, method_info* entry)
                 return 0;
             }
 
-            jcf->currentAttributeEntryIndex++;
+            jc->currentAttributeEntryIndex++;
         }
     }
 
@@ -88,7 +89,7 @@ void freeMethodAttributes(method_info* entry)
     }
 }
 
-void printMethods(JavaClassFile* jcf)
+void printMethods(JavaClass* jc)
 {
 
     uint16_t u16, att_index;
@@ -97,21 +98,21 @@ void printMethods(JavaClassFile* jcf)
     method_info* mi;
     attribute_info* atti;
 
-    if (jcf->methodCount > 0)
+    if (jc->methodCount > 0)
     {
         printf("\n---- Methods ----\n");
 
-        for (u16 = 0; u16 < jcf->methodCount; u16++)
+        for (u16 = 0; u16 < jc->methodCount; u16++)
         {
-            mi = jcf->methods + u16;
+            mi = jc->methods + u16;
 
-            cpi = jcf->constantPool + mi->name_index - 1;
+            cpi = jc->constantPool + mi->name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
             printf("\n\tMethod #%u:\n\n", u16 + 1);
             printf("\t\tname_index:        cp index #%u <%s>\n", mi->name_index, buffer);
 
-            cpi = jcf->constantPool + mi->descriptor_index - 1;
+            cpi = jc->constantPool + mi->descriptor_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
             printf("\t\tdescriptor_index:  cp index #%u <%s>\n", mi->descriptor_index, buffer);
 
@@ -125,11 +126,11 @@ void printMethods(JavaClassFile* jcf)
                 for (att_index = 0; att_index < mi->attributes_count; att_index++)
                 {
                     atti = mi->attributes + att_index;
-                    cpi = jcf->constantPool + atti->name_index - 1;
+                    cpi = jc->constantPool + atti->name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
                     printf("\n\t\tMethod Attribute #%u - %s:\n", att_index + 1, buffer);
-                    printAttribute(jcf, atti, 3);
+                    printAttribute(jc, atti, 3);
                 }
             }
 
@@ -137,3 +138,22 @@ void printMethods(JavaClassFile* jcf)
     }
 }
 
+method_info* getMethodByName(JavaClass* jc, const char* methodName)
+{
+    method_info* method = jc->methods;
+    cp_info* cpi;
+    uint16_t index = jc->methodCount;
+    int32_t searchStringLength = strlen(methodName) - 1;
+
+    while (index-- > 0)
+    {
+        cpi = jc->constantPool + method->name_index - 1;
+
+        if (cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, (const uint8_t*)methodName, searchStringLength))
+            return method;
+
+        method++;
+    }
+
+    return NULL;
+}

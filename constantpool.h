@@ -4,7 +4,7 @@
 typedef struct cp_info cp_info;
 
 #include <stdint.h>
-#include "javaclassfile.h"
+#include "javaclass.h"
 
 struct cp_info {
 
@@ -82,7 +82,7 @@ enum ConstantPoolTag {
 };
 
 const char* decodeTag(uint8_t tag);
-char readConstantPoolEntry(JavaClassFile* jcf, cp_info* entry);
-void printConstantPool(JavaClassFile* jcf);
+char readConstantPoolEntry(JavaClass* jc, cp_info* entry);
+void printConstantPool(JavaClass* jc);
 
 #endif // CONSTANTPOOL_H

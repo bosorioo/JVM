@@ -4,7 +4,7 @@
 typedef struct method_info method_info;
 
 #include <stdint.h>
-#include "javaclassfile.h"
+#include "javaclass.h"
 #include "attributes.h"
 
 struct method_info {
@@ -15,8 +15,10 @@ struct method_info {
     attribute_info* attributes;
 };
 
-char readMethod(JavaClassFile* jcf, method_info* entry);
+char readMethod(JavaClass* jc, method_info* entry);
 void freeMethodAttributes(method_info* entry);
-void printMethods(JavaClassFile* jcf);
+void printMethods(JavaClass* jc);
+
+method_info* getMethodByName(JavaClass* jc, const char* methodName);
 
 #endif // METHODS_H

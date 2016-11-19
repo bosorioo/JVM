@@ -1,7 +1,7 @@
 #ifndef JAVACLASSFILE_H
 #define JAVACLASSFILE_H
 
-typedef struct JavaClassFile JavaClassFile;
+typedef struct JavaClass JavaClass;
 
 #include <stdio.h>
 #include <stdint.h>
@@ -90,7 +90,7 @@ enum JavaClassStatus {
     FILE_CONTAINS_UNEXPECTED_DATA
 };
 
-struct JavaClassFile {
+struct JavaClass {
     // General
     FILE* file;
     enum JavaClassStatus status;
@@ -125,12 +125,12 @@ struct JavaClassFile {
 
 };
 
-void openClassFile(JavaClassFile* jcf, const char* path);
-void closeClassFile(JavaClassFile* jcf);
-const char* decodeJavaClassFileStatus(enum JavaClassStatus);
+void openClassFile(JavaClass* jc, const char* path);
+void closeClassFile(JavaClass* jc);
+const char* decodeJavaClassStatus(enum JavaClassStatus);
 void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype);
 
-void printClassFileDebugInfo(JavaClassFile* jcf);
-void printClassFileInfo(JavaClassFile* jcf);
+void printClassFileDebugInfo(JavaClass* jc);
+void printClassFileInfo(JavaClass* jc);
 
 #endif // JAVACLASSFILE_H

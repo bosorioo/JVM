@@ -6,8 +6,8 @@
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 
 #define DECLARE_ATTR_FUNCS(attr) \
-    uint8_t readAttribute##attr(JavaClassFile* jcf, attribute_info* entry); \
-    void printAttribute##attr(JavaClassFile* jcf, attribute_info* entry, int identationLevel); \
+    uint8_t readAttribute##attr(JavaClass* jc, attribute_info* entry); \
+    void printAttribute##attr(JavaClass* jc, attribute_info* entry, int identationLevel); \
     void freeAttribute##attr(attribute_info* entry);
 
 DECLARE_ATTR_FUNCS(SourceFile)
@@ -18,36 +18,36 @@ DECLARE_ATTR_FUNCS(Code)
 DECLARE_ATTR_FUNCS(Deprecated)
 DECLARE_ATTR_FUNCS(Exceptions)
 
-char readAttribute(JavaClassFile* jcf, attribute_info* entry)
+char readAttribute(JavaClass* jc, attribute_info* entry)
 {
     entry->info = NULL;
 
-    if (!readu2(jcf, &entry->name_index) ||
-        !readu4(jcf, &entry->length))
+    if (!readu2(jc, &entry->name_index) ||
+        !readu4(jc, &entry->length))
     {
-        jcf->status = UNEXPECTED_EOF;
+        jc->status = UNEXPECTED_EOF;
         return 0;
     }
 
     // Checks if name_index points to a valid name index in
     // the constant pool
-    cp_info* cp = jcf->constantPool + entry->name_index - 1;
+    cp_info* cp = jc->constantPool + entry->name_index - 1;
 
     if (entry->name_index == 0 ||
-        entry->name_index >= jcf->constantPoolCount ||
+        entry->name_index >= jc->constantPoolCount ||
         cp->tag != CONSTANT_Utf8)
     {
-        jcf->status = INVALID_NAME_INDEX;
+        jc->status = INVALID_NAME_INDEX;
         return 0;
     }
 
     #define IF_ATTR_CHECK(name) \
         if (cmp_UTF8_Ascii(cp->Utf8.bytes, cp->Utf8.length, (uint8_t*)#name, sizeof(#name) - 1)) { \
             entry->attributeType = ATTR_##name; \
-            result = readAttribute##name(jcf, entry); \
+            result = readAttribute##name(jc, entry); \
         }
 
-    uint32_t totalBytesRead = jcf->totalBytesRead;
+    uint32_t totalBytesRead = jc->totalBytesRead;
     char result;
 
     IF_ATTR_CHECK(ConstantValue)
@@ -63,22 +63,22 @@ char readAttribute(JavaClassFile* jcf, attribute_info* entry)
 
         for (u32 = 0; u32 < entry->length; u32++)
         {
-            if (fgetc(jcf->file) == EOF)
+            if (fgetc(jc->file) == EOF)
             {
-                jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+                jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
                 return 0;
             }
 
-            jcf->totalBytesRead++;
+            jc->totalBytesRead++;
         }
 
         result = 1;
         entry->attributeType = ATTR_Unknown;
     }
 
-    if (jcf->totalBytesRead - totalBytesRead != entry->length)
+    if (jc->totalBytesRead - totalBytesRead != entry->length)
     {
-        jcf->status = ATTRIBUTE_LENGTH_MISMATCH;
+        jc->status = ATTRIBUTE_LENGTH_MISMATCH;
         return 0;
     }
 
@@ -92,13 +92,13 @@ void ident(int level)
         printf("\t");
 }
 
-uint8_t readAttributeDeprecated(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeDeprecated(JavaClass* jc, attribute_info* entry)
 {
     entry->info = NULL;
     return 1;
 }
 
-void printAttributeDeprecated(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeDeprecated(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     ident(identationLevel);
     printf("This element is marked as deprecated and should no longer be used.");
@@ -109,49 +109,49 @@ void freeAttributeDeprecated(attribute_info* entry)
 
 }
 
-uint8_t readAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeConstantValue(JavaClass* jc, attribute_info* entry)
 {
     att_ConstantValue_info* info = (att_ConstantValue_info*)malloc(sizeof(att_ConstantValue_info));
     entry->info = (void*)info;
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
-    if (!readu2(jcf, &info->constantvalue_index))
+    if (!readu2(jc, &info->constantvalue_index))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
     if (info->constantvalue_index == 0 ||
-        info->constantvalue_index >= jcf->constantPoolCount)
+        info->constantvalue_index >= jc->constantPoolCount)
     {
-        jcf->status = ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX;
+        jc->status = ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX;
         return 0;
     }
 
-    cp_info* cp = jcf->constantPool + info->constantvalue_index - 1;
+    cp_info* cp = jc->constantPool + info->constantvalue_index - 1;
 
     if (cp->tag != CONSTANT_String && cp->tag != CONSTANT_Float &&
         cp->tag != CONSTANT_Double && cp->tag != CONSTANT_Long &&
         cp->tag != CONSTANT_Integer)
     {
-        jcf->status = ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX;
+        jc->status = ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX;
         return 0;
     }
 
     return 1;
 }
 
-void printAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeConstantValue(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     char buffer[48];
 
     att_ConstantValue_info* info = (att_ConstantValue_info*)entry->info;
-    cp_info* cp = jcf->constantPool + info->constantvalue_index - 1;
+    cp_info* cp = jc->constantPool + info->constantvalue_index - 1;
 
     ident(identationLevel);
     printf("constantvalue_index: #%u <", info->constantvalue_index);
@@ -163,7 +163,7 @@ void printAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry, int 
             break;
 
         case CONSTANT_Long:
-            printf("%" PRId64, ((int64_t)cp->Long.high << 32) | cp->Long.low);
+            printf("%" PRId64"", ((int64_t)cp->Long.high << 32) | cp->Long.low);
             break;
 
         case CONSTANT_Float:
@@ -175,7 +175,7 @@ void printAttributeConstantValue(JavaClassFile* jcf, attribute_info* entry, int 
             break;
 
         case CONSTANT_String:
-            cp = jcf->constantPool + cp->String.string_index - 1;
+            cp = jc->constantPool + cp->String.string_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
             printf("%s", buffer);
             break;
@@ -196,39 +196,39 @@ void freeAttributeConstantValue(attribute_info* entry)
     entry->info = NULL;
 }
 
-uint8_t readAttributeSourceFile(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeSourceFile(JavaClass* jc, attribute_info* entry)
 {
     att_SourceFile_info* info = (att_SourceFile_info*)malloc(sizeof(att_SourceFile_info));
     entry->info = (void*)info;
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
-    if (!readu2(jcf, &info->sourcefile_index))
+    if (!readu2(jc, &info->sourcefile_index))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
     if (info->sourcefile_index == 0 ||
-        info->sourcefile_index >= jcf->constantPoolCount ||
-        jcf->constantPool[info->sourcefile_index - 1].tag != CONSTANT_Utf8)
+        info->sourcefile_index >= jc->constantPoolCount ||
+        jc->constantPool[info->sourcefile_index - 1].tag != CONSTANT_Utf8)
     {
-        jcf->status = ATTRIBUTE_INVALID_SOURCEFILE_INDEX;
+        jc->status = ATTRIBUTE_INVALID_SOURCEFILE_INDEX;
         return 0;
     }
 
     return 1;
 }
 
-void printAttributeSourceFile(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeSourceFile(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     char buffer[48];
     att_SourceFile_info* info = (att_SourceFile_info*)entry->info;
-    cp_info* cp = jcf->constantPool + info->sourcefile_index - 1;
+    cp_info* cp = jc->constantPool + info->sourcefile_index - 1;
 
     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
 
@@ -244,22 +244,22 @@ void freeAttributeSourceFile(attribute_info* entry)
     entry->info = NULL;
 }
 
-uint8_t readAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeInnerClasses(JavaClass* jc, attribute_info* entry)
 {
     att_InnerClasses_info* info = (att_InnerClasses_info*)malloc(sizeof(att_InnerClasses_info));
     entry->info = (void*)info;
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     info->inner_classes = NULL;
 
-    if (!readu2(jcf, &info->number_of_classes))
+    if (!readu2(jc, &info->number_of_classes))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
@@ -267,7 +267,7 @@ uint8_t readAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->inner_classes)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
@@ -276,25 +276,25 @@ uint8_t readAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry)
 
     for (u16 = 0; u16 < info->number_of_classes; u16++, icf++)
     {
-        if (!readu2(jcf, &icf->inner_class_index) ||
-            !readu2(jcf, &icf->outer_class_index) ||
-            !readu2(jcf, &icf->inner_class_name_index) ||
-            !readu2(jcf, &icf->inner_class_access_flags))
+        if (!readu2(jc, &icf->inner_class_index) ||
+            !readu2(jc, &icf->outer_class_index) ||
+            !readu2(jc, &icf->inner_class_name_index) ||
+            !readu2(jc, &icf->inner_class_access_flags))
         {
-            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
             return 0;
         }
 
         if (icf->inner_class_index == 0 ||
-            icf->inner_class_index >= jcf->constantPoolCount ||
-            jcf->constantPool[icf->inner_class_index - 1].tag != CONSTANT_Class ||
-            icf->outer_class_index >= jcf->constantPoolCount ||
-            (icf->outer_class_index > 0 && jcf->constantPool[icf->outer_class_index - 1].tag != CONSTANT_Class) ||
+            icf->inner_class_index >= jc->constantPoolCount ||
+            jc->constantPool[icf->inner_class_index - 1].tag != CONSTANT_Class ||
+            icf->outer_class_index >= jc->constantPoolCount ||
+            (icf->outer_class_index > 0 && jc->constantPool[icf->outer_class_index - 1].tag != CONSTANT_Class) ||
             icf->inner_class_name_index == 0 ||
-            icf->inner_class_name_index >= jcf->constantPoolCount ||
-            jcf->constantPool[icf->inner_class_name_index - 1].tag != CONSTANT_Utf8)
+            icf->inner_class_name_index >= jc->constantPoolCount ||
+            jc->constantPool[icf->inner_class_name_index - 1].tag != CONSTANT_Utf8)
         {
-            jcf->status = ATTRIBUTE_INVALID_INNERCLASS_INDEXES;
+            jc->status = ATTRIBUTE_INVALID_INNERCLASS_INDEXES;
             return 0;
         }
     }
@@ -302,7 +302,7 @@ uint8_t readAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry)
     return 1;
 }
 
-void printAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeInnerClasses(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     att_InnerClasses_info* info = (att_InnerClasses_info*)entry->info;
     cp_info* cp;
@@ -320,8 +320,8 @@ void printAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry, int i
         printf("Inner Class #%u:\n\n", index + 1);
 
         // inner_class_index
-        cp = jcf->constantPool + innerclass->inner_class_index - 1;
-        cp = jcf->constantPool + cp->Class.name_index - 1;
+        cp = jc->constantPool + innerclass->inner_class_index - 1;
+        cp = jc->constantPool + cp->Class.name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
         ident(identationLevel + 1);
         printf("inner_class_info_index:   cp index #%u <%s>\n", innerclass->inner_class_index, buffer);
@@ -336,8 +336,8 @@ void printAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry, int i
         }
         else
         {
-            cp = jcf->constantPool + innerclass->outer_class_index - 1;
-            cp = jcf->constantPool + cp->Class.name_index - 1;
+            cp = jc->constantPool + innerclass->outer_class_index - 1;
+            cp = jc->constantPool + cp->Class.name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
             printf("<%s>\n", buffer);
         }
@@ -352,7 +352,7 @@ void printAttributeInnerClasses(JavaClassFile* jcf, attribute_info* entry, int i
         }
         else
         {
-            cp = jcf->constantPool + innerclass->inner_class_name_index - 1;
+            cp = jc->constantPool + innerclass->inner_class_name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
             printf("<%s>\n", buffer);
         }
@@ -379,22 +379,22 @@ void freeAttributeInnerClasses(attribute_info* entry)
     entry->info = NULL;
 }
 
-uint8_t readAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeLineNumberTable(JavaClass* jc, attribute_info* entry)
 {
     att_LineNumberTable_info* info = (att_LineNumberTable_info*)malloc(sizeof(att_LineNumberTable_info));
     entry->info = (void*)info;
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     info->line_number_table = NULL;
 
-    if (!readu2(jcf, &info->line_number_table_length))
+    if (!readu2(jc, &info->line_number_table_length))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
@@ -402,7 +402,7 @@ uint8_t readAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->line_number_table)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
@@ -411,10 +411,10 @@ uint8_t readAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry)
 
     for (u16 = 0; u16 < info->line_number_table_length; u16++, lnte++)
     {
-        if (!readu2(jcf, &lnte->start_pc) ||
-            !readu2(jcf, &lnte->line_number))
+        if (!readu2(jc, &lnte->start_pc) ||
+            !readu2(jc, &lnte->line_number))
         {
-            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
             return 0;
         }
     }
@@ -422,7 +422,7 @@ uint8_t readAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry)
     return 1;
 }
 
-void printAttributeLineNumberTable(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeLineNumberTable(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     att_LineNumberTable_info* info = (att_LineNumberTable_info*)entry->info;
     LineNumberTableEntry* lnte = info->line_number_table;
@@ -456,7 +456,7 @@ void freeAttributeLineNumberTable(attribute_info* entry)
     }
 }
 
-uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeCode(JavaClass* jc, attribute_info* entry)
 {
     att_Code_info* info = (att_Code_info*)malloc(sizeof(att_Code_info));
     entry->info = (void*)info;
@@ -464,24 +464,24 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     info->code = NULL;
     info->exception_table = NULL;
 
-    if (!readu2(jcf, &info->max_stack) ||
-        !readu2(jcf, &info->max_locals) ||
-        !readu4(jcf, &info->code_length))
+    if (!readu2(jc, &info->max_stack) ||
+        !readu2(jc, &info->max_locals) ||
+        !readu4(jc, &info->code_length))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
     if (info->code_length == 0 || info->code_length >= 65536)
     {
-        jcf->status = ATTRIBUTE_INVALID_CODE_LENGTH;
+        jc->status = ATTRIBUTE_INVALID_CODE_LENGTH;
         return 0;
     }
 
@@ -489,29 +489,29 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->code)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     for (u32 = 0; u32 < info->code_length; u32++)
     {
-        int byte = fgetc(jcf->file);
+        int byte = fgetc(jc->file);
 
         if (byte == EOF)
         {
-            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
             return 0;
         }
 
-        jcf->totalBytesRead++;
+        jc->totalBytesRead++;
         *(info->code + u32) = (uint8_t)byte;
     }
 
     // TODO: check if all instructions are valid and have correct parameters.
 
-    if (!readu2(jcf, &info->exception_table_length))
+    if (!readu2(jc, &info->exception_table_length))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
@@ -519,7 +519,7 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->exception_table)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
@@ -527,12 +527,12 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 
     for (u32 = 0; u32 < info->exception_table_length; u32++)
     {
-        if (!readu2(jcf, &except->start_pc) ||
-            !readu2(jcf, &except->end_pc) ||
-            !readu2(jcf, &except->handler_pc) ||
-            !readu2(jcf, &except->catch_type))
+        if (!readu2(jc, &except->start_pc) ||
+            !readu2(jc, &except->end_pc) ||
+            !readu2(jc, &except->handler_pc) ||
+            !readu2(jc, &except->catch_type))
         {
-            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
             return 0;
         }
 
@@ -541,9 +541,9 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
         // parent, or if it is NULL (finally block).
     }
 
-    if (!readu2(jcf, &info->attributes_count))
+    if (!readu2(jc, &info->attributes_count))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
@@ -551,20 +551,20 @@ uint8_t readAttributeCode(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->attributes)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     for (u32 = 0; u32 < info->attributes_count; u32++)
     {
-        if (!readAttribute(jcf, info->attributes + u32))
+        if (!readAttribute(jc, info->attributes + u32))
             return 0;
     }
 
     return 1;
 }
 
-void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     att_Code_info* info = (att_Code_info*)entry->info;
     uint32_t code_offset;
@@ -647,7 +647,7 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 u32 = (u32 << 8) | NEXTBYTE;
 
                 printf("\tcp index #%u ", u32);
-                cpi = jcf->constantPool + u32 - 1;
+                cpi = jc->constantPool + u32 - 1;
 
                 // Invokes require a Methodref a parameter, whereas getfield, getstatic,
                 // putfield and putstatic require a Fieldref.
@@ -655,19 +655,19 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 if ((opcode <  opcode_invokevirtual && cpi->tag == CONSTANT_Fieldref) ||
                     (opcode >= opcode_invokevirtual && cpi->tag == CONSTANT_Methodref))
                 {
-                    cpi = jcf->constantPool + cpi->Fieldref.class_index - 1;
-                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    cpi = jc->constantPool + cpi->Fieldref.class_index - 1;
+                    cpi = jc->constantPool + cpi->Class.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("(%s %s.", opcode < opcode_invokevirtual ? "Field" : "Method", buffer);
 
-                    cpi = jcf->constantPool + u32 - 1;
-                    cpi = jcf->constantPool + cpi->Fieldref.name_and_type_index - 1;
+                    cpi = jc->constantPool + u32 - 1;
+                    cpi = jc->constantPool + cpi->Fieldref.name_and_type_index - 1;
                     u32 = cpi->NameAndType.descriptor_index;
-                    cpi = jcf->constantPool + cpi->NameAndType.name_index - 1;
+                    cpi = jc->constantPool + cpi->NameAndType.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s, descriptor: ", buffer);
 
-                    cpi = jcf->constantPool + u32 - 1;
+                    cpi = jc->constantPool + u32 - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s)", buffer);
                 }
@@ -712,23 +712,23 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
                 printf("\tcp index #%u, count: %u ", u32, NEXTBYTE);
 
-                cpi = jcf->constantPool + u32 - 1;
+                cpi = jc->constantPool + u32 - 1;
 
                 if (cpi->tag == CONSTANT_InterfaceMethodref)
                 {
-                    cpi = jcf->constantPool + cpi->InterfaceMethodref.class_index - 1;
-                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    cpi = jc->constantPool + cpi->InterfaceMethodref.class_index - 1;
+                    cpi = jc->constantPool + cpi->Class.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("(InterfaceMethod %s.", buffer);
 
-                    cpi = jcf->constantPool + u32 - 1;
-                    cpi = jcf->constantPool + cpi->InterfaceMethodref.name_and_type_index - 1;
+                    cpi = jc->constantPool + u32 - 1;
+                    cpi = jc->constantPool + cpi->InterfaceMethodref.name_and_type_index - 1;
                     u32 = cpi->NameAndType.descriptor_index;
-                    cpi = jcf->constantPool + cpi->NameAndType.name_index - 1;
+                    cpi = jc->constantPool + cpi->NameAndType.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s, descriptor: ", buffer);
 
-                    cpi = jcf->constantPool + u32 - 1;
+                    cpi = jc->constantPool + u32 - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf("%s)", buffer);
                 }
@@ -814,11 +814,11 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 if (opcode == opcode_multianewarray)
                     printf(", dimension %u", NEXTBYTE);
 
-                cpi = jcf->constantPool + u32 - 1;
+                cpi = jc->constantPool + u32 - 1;
 
                 if (cpi->tag == CONSTANT_Class)
                 {
-                    cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                    cpi = jc->constantPool + cpi->Class.name_index - 1;
                     UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                     printf(" (class: %s)", buffer);
                 }
@@ -840,12 +840,12 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
                 printf("\t\tcp index #%u", u32);
 
-                cpi = jcf->constantPool + u32 - 1;
+                cpi = jc->constantPool + u32 - 1;
 
                 if (opcode == opcode_ldc2_w)
                 {
                     if (cpi->tag == CONSTANT_Long)
-                        printf(" (long: %" PRId64 ")", ((int64_t)cpi->Long.high << 32) | cpi->Long.low);
+                        printf(" (long: %" PRId64")", ((int64_t)cpi->Long.high << 32) | cpi->Long.low);
                     else if (cpi->tag == CONSTANT_Double)
                         printf(" (double: %e)", readConstantPoolDouble(cpi));
                     else
@@ -855,13 +855,13 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
                 {
                     if (cpi->tag == CONSTANT_Class)
                     {
-                        cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                        cpi = jc->constantPool + cpi->Class.name_index - 1;
                         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                         printf(" (class: %s)", buffer);
                     }
                     else if (cpi->tag == CONSTANT_String)
                     {
-                        cpi = jcf->constantPool + cpi->String.string_index - 1;
+                        cpi = jc->constantPool + cpi->String.string_index - 1;
                         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                         printf(" (string: %s)", buffer);
                     }
@@ -1076,8 +1076,8 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
 
             if (except->catch_type > 0)
             {
-                cpi = jcf->constantPool + except->catch_type - 1;
-                cpi = jcf->constantPool + cpi->Class.name_index - 1;
+                cpi = jc->constantPool + except->catch_type - 1;
+                cpi = jc->constantPool + cpi->Class.name_index - 1;
                 UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                 printf(" <%s>", buffer);
             }
@@ -1091,13 +1091,13 @@ void printAttributeCode(JavaClassFile* jcf, attribute_info* entry, int identatio
         for (u32 = 0; u32 < info->attributes_count; u32++)
         {
             attribute_info* atti = info->attributes + u32;
-            cpi = jcf->constantPool + atti->name_index - 1;
+            cpi = jc->constantPool + atti->name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
             printf("\n");
             ident(identationLevel);
             printf("Code Attribute #%u - %s:\n", u32 + 1, buffer);
-            printAttribute(jcf, atti, identationLevel + 1);
+            printAttribute(jc, atti, identationLevel + 1);
         }
     }
 }
@@ -1119,22 +1119,22 @@ void freeAttributeCode(attribute_info* entry)
     }
 }
 
-uint8_t readAttributeExceptions(JavaClassFile* jcf, attribute_info* entry)
+uint8_t readAttributeExceptions(JavaClass* jc, attribute_info* entry)
 {
     att_Exceptions_info* info = (att_Exceptions_info*)malloc(sizeof(att_Exceptions_info));
     entry->info = (void*)info;
 
     if (!info)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
     info->exception_index_table = NULL;
 
-    if (!readu2(jcf, &info->number_of_exceptions))
+    if (!readu2(jc, &info->number_of_exceptions))
     {
-        jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
         return 0;
     }
 
@@ -1142,7 +1142,7 @@ uint8_t readAttributeExceptions(JavaClassFile* jcf, attribute_info* entry)
 
     if (!info->exception_index_table)
     {
-        jcf->status = MEMORY_ALLOCATION_FAILED;
+        jc->status = MEMORY_ALLOCATION_FAILED;
         return 0;
     }
 
@@ -1151,17 +1151,17 @@ uint8_t readAttributeExceptions(JavaClassFile* jcf, attribute_info* entry)
 
     for (u16 = 0; u16 < info->number_of_exceptions; u16++, exception_index++)
     {
-        if (!readu2(jcf, exception_index))
+        if (!readu2(jc, exception_index))
         {
-            jcf->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
             return 0;
         }
 
         if (*exception_index == 0 ||
-            *exception_index >= jcf->constantPoolCount ||
-            jcf->constantPool[*exception_index - 1].tag != CONSTANT_Class)
+            *exception_index >= jc->constantPoolCount ||
+            jc->constantPool[*exception_index - 1].tag != CONSTANT_Class)
         {
-            jcf->status = ATTRIBUTE_INVALID_EXCEPTIONS_CLASS_INDEX;
+            jc->status = ATTRIBUTE_INVALID_EXCEPTIONS_CLASS_INDEX;
             return 0;
         }
     }
@@ -1169,7 +1169,7 @@ uint8_t readAttributeExceptions(JavaClassFile* jcf, attribute_info* entry)
     return 1;
 }
 
-void printAttributeExceptions(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttributeExceptions(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
     att_Exceptions_info* info = (att_Exceptions_info*)entry->info;
     uint16_t* exception_index = info->exception_index_table;
@@ -1183,8 +1183,8 @@ void printAttributeExceptions(JavaClassFile* jcf, attribute_info* entry, int ide
 
     for (index = 0; index < info->number_of_exceptions; index++, exception_index++)
     {
-        cpi = jcf->constantPool + *exception_index - 1;
-        cpi = jcf->constantPool + cpi->Class.name_index - 1;
+        cpi = jc->constantPool + *exception_index - 1;
+        cpi = jc->constantPool + cpi->Class.name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
         printf("\n\n");
@@ -1227,9 +1227,9 @@ void freeAttributeInfo(attribute_info* entry)
     #undef ATTR_CASE
 }
 
-void printAttribute(JavaClassFile* jcf, attribute_info* entry, int identationLevel)
+void printAttribute(JavaClass* jc, attribute_info* entry, int identationLevel)
 {
-    #define ATTR_CASE(attr) case ATTR_##attr: printAttribute##attr(jcf, entry, identationLevel); break;
+    #define ATTR_CASE(attr) case ATTR_##attr: printAttribute##attr(jc, entry, identationLevel); break;
 
     switch (entry->attributeType)
     {
@@ -1251,9 +1251,9 @@ void printAttribute(JavaClassFile* jcf, attribute_info* entry, int identationLev
     #undef ATTR_CASE
 }
 
-void printAllAttributes(JavaClassFile* jcf)
+void printAllAttributes(JavaClass* jc)
 {
-    if (jcf->attributeCount == 0)
+    if (jc->attributeCount == 0)
         return;
 
     uint16_t u16;
@@ -1263,13 +1263,13 @@ void printAllAttributes(JavaClassFile* jcf)
 
     printf("\n---- Class Attributes ----");
 
-    for (u16 = 0; u16 < jcf->attributeCount; u16++)
+    for (u16 = 0; u16 < jc->attributeCount; u16++)
     {
-        atti = jcf->attributes + u16;
-        cp = jcf->constantPool + atti->name_index - 1;
+        atti = jc->attributes + u16;
+        cp = jc->constantPool + atti->name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
 
         printf("\n\n\tAttribute #%u - %s:\n\n", u16 + 1, buffer);
-        printAttribute(jcf, atti, 2);
+        printAttribute(jc, atti, 2);
     }
 }

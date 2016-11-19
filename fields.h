@@ -4,7 +4,7 @@
 typedef struct field_info field_info;
 
 #include <stdint.h>
-#include "javaclassfile.h"
+#include "javaclass.h"
 #include "attributes.h"
 
 struct field_info {
@@ -15,7 +15,7 @@ struct field_info {
     attribute_info* attributes;
 };
 
-char readField(JavaClassFile* jcf, field_info* entry);
+char readField(JavaClass* jc, field_info* entry);
 void freeFieldAttributes(field_info* entry);
-void printAllFields(JavaClassFile* jcf);
+void printAllFields(JavaClass* jc);
 #endif // FIELDS_H

@@ -4,7 +4,7 @@
 typedef struct attribute_info attribute_info;
 
 #include <stdint.h>
-#include "javaclassfile.h"
+#include "javaclass.h"
 
 struct attribute_info {
     uint16_t name_index;
@@ -77,9 +77,9 @@ typedef struct {
     uint16_t* exception_index_table;
 } att_Exceptions_info;
 
-char readAttribute(JavaClassFile* jcf, attribute_info* entry);
+char readAttribute(JavaClass* jc, attribute_info* entry);
 void freeAttributeInfo(attribute_info* entry);
-void printAttribute(JavaClassFile* jcf, attribute_info* entry, int identationLevel);
-void printAllAttributes(JavaClassFile* jcf);
+void printAttribute(JavaClass* jc, attribute_info* entry, int identationLevel);
+void printAllAttributes(JavaClass* jc);
 
 #endif // ATTRIBUTES_H
