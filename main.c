@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "javaclass.h"
-#include "methodarea.h"
+#include "jvm.h"
 
 int main(int argc, char* args[])
 {
@@ -57,9 +57,9 @@ int main(int argc, char* args[])
 
     if (executeClassMain)
     {
-        method_area ma;
-        initMethodArea(&ma);
-        addClassToMethodArea(&ma, &jc);
+        JavaVirtualMachine jvm;
+
+        initJVM(&jvm, &jc);
     }
 
 
