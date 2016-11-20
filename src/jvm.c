@@ -42,7 +42,7 @@ void executeJVM(JavaVirtualMachine* jvm)
     }
 
     JavaClass* jc = jvm->classes->jc;
-    method_info* method = getMethodByName(jc, "<clinit>");
+    method_info* method = getMethodMatching(jc, "<clinit>", "()V", ACC_STATIC);
 
     if (method)
     {
@@ -50,7 +50,7 @@ void executeJVM(JavaVirtualMachine* jvm)
             return;
     }
 
-    method = getMethodByName(jc, "main");
+    method = getMethodMatching(jc, "main", "([Ljava/lang/String;)V", ACC_STATIC);
 
     if (!method || !runMethod(jvm, jc, method))
         return;

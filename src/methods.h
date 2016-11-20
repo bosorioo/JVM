@@ -19,6 +19,6 @@ char readMethod(JavaClass* jc, method_info* entry);
 void freeMethodAttributes(method_info* entry);
 void printMethods(JavaClass* jc);
 
-method_info* getMethodByName(JavaClass* jc, const char* methodName);
+method_info* getMethodMatching(JavaClass* jc, const char* name, const char* descriptor, uint16_t flag_mask);
 
 #endif // METHODS_H
