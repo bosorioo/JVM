@@ -110,11 +110,11 @@ void printMethods(JavaClass* jc)
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
 
             printf("\n\tMethod #%u:\n\n", u16 + 1);
-            printf("\t\tname_index:        cp index #%u <%s>\n", mi->name_index, buffer);
+            printf("\t\tname_index:        #%u <%s>\n", mi->name_index, buffer);
 
             cpi = jc->constantPool + mi->descriptor_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-            printf("\t\tdescriptor_index:  cp index #%u <%s>\n", mi->descriptor_index, buffer);
+            printf("\t\tdescriptor_index:  #%u <%s>\n", mi->descriptor_index, buffer);
 
             decodeAccessFlags(mi->access_flags, buffer, sizeof(buffer), ACCT_METHOD);
             printf("\t\taccess_flags:      0x%.4X [%s]\n", mi->access_flags, buffer);
@@ -143,7 +143,7 @@ method_info* getMethodByName(JavaClass* jc, const char* methodName)
     method_info* method = jc->methods;
     cp_info* cpi;
     uint16_t index = jc->methodCount;
-    int32_t searchStringLength = strlen(methodName) - 1;
+    int32_t searchStringLength = strlen(methodName);
 
     while (index-- > 0)
     {

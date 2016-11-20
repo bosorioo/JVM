@@ -114,11 +114,11 @@ void printAllFields(JavaClass* jc)
 
         cpi = jc->constantPool + fi->name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-        printf("\t\tname_index:       cp index #%u <%s>\n", fi->name_index, buffer);
+        printf("\t\tname_index:       #%u <%s>\n", fi->name_index, buffer);
 
         cpi = jc->constantPool + fi->descriptor_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
-        printf("\t\tdescriptor_index: cp index #%u <%s>\n", fi->descriptor_index, buffer);
+        printf("\t\tdescriptor_index: #%u <%s>\n", fi->descriptor_index, buffer);
 
         decodeAccessFlags(fi->access_flags, buffer, sizeof(buffer), ACCT_FIELD);
         printf("\t\taccess_flags:     0x%.4X [%s]\n", fi->access_flags, buffer);

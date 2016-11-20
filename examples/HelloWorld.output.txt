@@ -1,0 +1,265 @@
+﻿---- General Information ----
+
+Version:		52.0 (Major.minor) [jdk version 1.8]
+Constant pool count:	34
+Access flags:		0x0021 [super, public]
+This class:		cp index #6 <HelloWorld>
+Super class:		cp index #7 <java/lang/Object>
+Interfaces count:	0
+Fields count:		1
+Methods count:		3
+Attributes count:	1
+
+---- Constant Pool ----
+
+	#1: Methodref (tag = 10)
+		class_index: #7 <java/lang/Object>
+		name_and_type_index: #19
+		name_and_type.name_index: #10 <<init>>
+		name_and_type.descriptor_index: #11 <()V>
+
+	#2: Fieldref (tag = 9)
+		class_index: #20 <java/lang/System>
+		name_and_type_index: #21
+		name_and_type.name_index: #29 <out>
+		name_and_type.descriptor_index: #30 <Ljava/io/PrintStream;>
+
+	#3: Fieldref (tag = 9)
+		class_index: #6 <HelloWorld>
+		name_and_type_index: #22
+		name_and_type.name_index: #8 <str>
+		name_and_type.descriptor_index: #9 <Ljava/lang/String;>
+
+	#4: Methodref (tag = 10)
+		class_index: #23 <java/io/PrintStream>
+		name_and_type_index: #24
+		name_and_type.name_index: #32 <println>
+		name_and_type.descriptor_index: #33 <(Ljava/lang/String;)V>
+
+	#5: String (tag = 8)
+		string_index: #25
+		String Length: 12
+		ASCII: Hello World!
+
+	#6: Class (tag = 7)
+		name_index: #26 <HelloWorld>
+
+	#7: Class (tag = 7)
+		name_index: #27 <java/lang/Object>
+
+	#8: Utf8 (tag = 1)
+		Byte Count: 3
+		Length: 3
+		ASCII Characters: str
+
+	#9: Utf8 (tag = 1)
+		Byte Count: 18
+		Length: 18
+		ASCII Characters: Ljava/lang/String;
+
+	#10: Utf8 (tag = 1)
+		Byte Count: 6
+		Length: 6
+		ASCII Characters: <init>
+
+	#11: Utf8 (tag = 1)
+		Byte Count: 3
+		Length: 3
+		ASCII Characters: ()V
+
+	#12: Utf8 (tag = 1)
+		Byte Count: 4
+		Length: 4
+		ASCII Characters: Code
+
+	#13: Utf8 (tag = 1)
+		Byte Count: 15
+		Length: 15
+		ASCII Characters: LineNumberTable
+
+	#14: Utf8 (tag = 1)
+		Byte Count: 4
+		Length: 4
+		ASCII Characters: main
+
+	#15: Utf8 (tag = 1)
+		Byte Count: 22
+		Length: 22
+		ASCII Characters: ([Ljava/lang/String;)V
+
+	#16: Utf8 (tag = 1)
+		Byte Count: 8
+		Length: 8
+		ASCII Characters: <clinit>
+
+	#17: Utf8 (tag = 1)
+		Byte Count: 10
+		Length: 10
+		ASCII Characters: SourceFile
+
+	#18: Utf8 (tag = 1)
+		Byte Count: 15
+		Length: 15
+		ASCII Characters: HelloWorld.java
+
+	#19: NameAndType (tag = 12)
+		name_index: #10 <<init>>
+		descriptor_index: #11 <()V>
+
+	#20: Class (tag = 7)
+		name_index: #28 <java/lang/System>
+
+	#21: NameAndType (tag = 12)
+		name_index: #29 <out>
+		descriptor_index: #30 <Ljava/io/PrintStream;>
+
+	#22: NameAndType (tag = 12)
+		name_index: #8 <str>
+		descriptor_index: #9 <Ljava/lang/String;>
+
+	#23: Class (tag = 7)
+		name_index: #31 <java/io/PrintStream>
+
+	#24: NameAndType (tag = 12)
+		name_index: #32 <println>
+		descriptor_index: #33 <(Ljava/lang/String;)V>
+
+	#25: Utf8 (tag = 1)
+		Byte Count: 12
+		Length: 12
+		ASCII Characters: Hello World!
+
+	#26: Utf8 (tag = 1)
+		Byte Count: 10
+		Length: 10
+		ASCII Characters: HelloWorld
+
+	#27: Utf8 (tag = 1)
+		Byte Count: 16
+		Length: 16
+		ASCII Characters: java/lang/Object
+
+	#28: Utf8 (tag = 1)
+		Byte Count: 16
+		Length: 16
+		ASCII Characters: java/lang/System
+
+	#29: Utf8 (tag = 1)
+		Byte Count: 3
+		Length: 3
+		ASCII Characters: out
+
+	#30: Utf8 (tag = 1)
+		Byte Count: 21
+		Length: 21
+		ASCII Characters: Ljava/io/PrintStream;
+
+	#31: Utf8 (tag = 1)
+		Byte Count: 19
+		Length: 19
+		ASCII Characters: java/io/PrintStream
+
+	#32: Utf8 (tag = 1)
+		Byte Count: 7
+		Length: 7
+		ASCII Characters: println
+
+	#33: Utf8 (tag = 1)
+		Byte Count: 21
+		Length: 21
+		ASCII Characters: (Ljava/lang/String;)V
+
+---- Fields ----
+
+	Field #1:
+
+		name_index:       #8 <str>
+		descriptor_index: #9 <Ljava/lang/String;>
+		access_flags:     0x000A [private, static]
+		attributes_count: 0
+
+
+---- Methods ----
+
+	Method #1:
+
+		name_index:        #10 <<init>>
+		descriptor_index:  #11 <()V>
+		access_flags:      0x0001 [public]
+		attribute_count:   1
+
+		Method Attribute #1 - Code:
+
+			max_stack: 1, max_locals: 1, code_length: 5
+			exception_table_length: 0, attribute_count: 1
+
+			Code:	Offset	Mnemonic	Parameters
+				0	aload_0
+				1	invokespecial	#1 (Method java/lang/Object.<init>, descriptor: ()V)
+				4	return
+
+			Code Attribute #1 - LineNumberTable:
+
+				line_number_table_length: 1
+
+				Table:	Index	line_number	start_pc
+					1	1		0
+
+
+	Method #2:
+
+		name_index:        #14 <main>
+		descriptor_index:  #15 <([Ljava/lang/String;)V>
+		access_flags:      0x0009 [public, static]
+		attribute_count:   1
+
+		Method Attribute #1 - Code:
+
+			max_stack: 2, max_locals: 1, code_length: 10
+			exception_table_length: 0, attribute_count: 1
+
+			Code:	Offset	Mnemonic	Parameters
+				0	getstatic	#2 (Field java/lang/System.out, descriptor: Ljava/io/PrintStream;)
+				3	getstatic	#3 (Field HelloWorld.str, descriptor: Ljava/lang/String;)
+				6	invokevirtual	#4 (Method java/io/PrintStream.println, descriptor: (Ljava/lang/String;)V)
+				9	return
+
+			Code Attribute #1 - LineNumberTable:
+
+				line_number_table_length: 2
+
+				Table:	Index	line_number	start_pc
+					1	6		0
+					2	7		9
+
+
+	Method #3:
+
+		name_index:        #16 <<clinit>>
+		descriptor_index:  #11 <()V>
+		access_flags:      0x0008 [static]
+		attribute_count:   1
+
+		Method Attribute #1 - Code:
+
+			max_stack: 1, max_locals: 0, code_length: 6
+			exception_table_length: 0, attribute_count: 1
+
+			Code:	Offset	Mnemonic	Parameters
+				0	ldc		#5 (string: Hello World!)
+				2	putstatic	#3 (Field HelloWorld.str, descriptor: Ljava/lang/String;)
+				5	return
+
+			Code Attribute #1 - LineNumberTable:
+
+				line_number_table_length: 1
+
+				Table:	Index	line_number	start_pc
+					1	3		0
+
+
+---- Class Attributes ----
+
+	Attribute #1 - SourceFile:
+
+		sourcefile_index: #18 <HelloWorld.java>

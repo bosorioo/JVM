@@ -43,4 +43,6 @@ void freeOperandStack(OperandStack** os)
         node = node->next;
         free(tmp);
     }
+
+    *os = NULL;
 }

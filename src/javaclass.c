@@ -20,7 +20,7 @@ void openClassFile(JavaClass* jc, const char* path)
     jc->fields = NULL;
     jc->methods = NULL;
     jc->attributes = NULL;
-    jc->status = STATUS_OK;
+    jc->status = CLASS_STATUS_OK;
 
     jc->thisClass = jc->superClass = jc->accessFlags = 0;
     jc->attributeCount = jc->fieldCount = jc->methodCount = jc->constantPoolCount = jc->interfaceCount = 0;
@@ -38,13 +38,13 @@ void openClassFile(JavaClass* jc, const char* path)
 
     if (!jc->file)
     {
-        jc->status = FILE_COULDNT_BE_OPENED;
+        jc->status = CLASS_STATUS_FILE_COULDNT_BE_OPENED;
         return;
     }
 
     if (!readu4(jc, &u32) || u32 != 0xCAFEBABE)
     {
-        jc->status = INVALID_SIGNATURE;
+        jc->status = CLASS_STATUS_INVALID_SIGNATURE;
         return;
     }
 
@@ -58,7 +58,7 @@ void openClassFile(JavaClass* jc, const char* path)
 
     if (jc->majorVersion < 45 || jc->majorVersion > 52)
     {
-        jc->status = UNSUPPORTED_VERSION;
+        jc->status = CLASS_STATUS_UNSUPPORTED_VERSION;
         return;
     }
 
@@ -272,7 +272,7 @@ void closeClassFile(JavaClass* jc)
         // only a few method_info would have been correctly initialized.
         // If a "free" attempt was made on an attribute that wasn't initialized,
         // the program would crash.
-        if (jc->status != STATUS_OK)
+        if (jc->status != CLASS_STATUS_OK)
             j = jc->currentMethodEntryIndex + 2;
         else
             j = jc->methodCount;
@@ -286,7 +286,7 @@ void closeClassFile(JavaClass* jc)
 
     if (jc->fields)
     {
-        if (jc->status != STATUS_OK)
+        if (jc->status != CLASS_STATUS_OK)
             j = jc->currentFieldEntryIndex + 2;
         else
             j = jc->fieldCount;
@@ -312,10 +312,10 @@ const char* decodeJavaClassStatus(enum JavaClassStatus status)
 {
     switch (status)
     {
-        case STATUS_OK: return "file is ok";
-        case UNSUPPORTED_VERSION: return "class file version isn't supported";
-        case FILE_COULDNT_BE_OPENED: return "class file couldn't be opened";
-        case INVALID_SIGNATURE: return "signature (0xCAFEBABE) mismatch";
+        case CLASS_STATUS_OK: return "file is ok";
+        case CLASS_STATUS_UNSUPPORTED_VERSION: return "class file version isn't supported";
+        case CLASS_STATUS_FILE_COULDNT_BE_OPENED: return "class file couldn't be opened";
+        case CLASS_STATUS_INVALID_SIGNATURE: return "signature (0xCAFEBABE) mismatch";
         case CLASS_NAME_FILE_NAME_MISMATCH: return "class name and .class file name don't match";
         case MEMORY_ALLOCATION_FAILED: return "not enough memory";
         case INVALID_CONSTANT_POOL_COUNT: return "constant pool count should be at least 1";
@@ -508,7 +508,7 @@ void printClassFileInfo(JavaClass* jc)
             cp = jc->constantPool + *(jc->interfaces + u16) - 1;
             cp = jc->constantPool + cp->Class.name_index - 1;
             UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
-            printf("\tInterface #%u: cp index #%u <%s>\n", u16 + 1, *(jc->interfaces + u16), buffer);
+            printf("\tInterface #%u: #%u <%s>\n", u16 + 1, *(jc->interfaces + u16), buffer);
         }
     }
 

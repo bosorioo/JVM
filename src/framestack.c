@@ -7,7 +7,8 @@ Frame* newFrame(JavaClass* jc, method_info* method)
 
     if (frame)
     {
-        att_Code_info* code = (att_Code_info*)getAttributeByType(method->attributes, method->attributes_count, ATTR_Code);
+        attribute_info* codeAttribute = getAttributeByType(method->attributes, method->attributes_count, ATTR_Code);
+        att_Code_info* code = (att_Code_info*)codeAttribute->info;
 
         frame->operands = NULL;
         frame->jc = jc;
@@ -65,3 +66,17 @@ uint8_t popFrame(FrameStack** fs, Frame* outPtr)
     return node != NULL;
 }
 
+void freeFrameStack(FrameStack** fs)
+{
+    FrameStack* node = *fs;
+    FrameStack* tmp;
+
+    while (node)
+    {
+        tmp = node;
+        node = node->next;
+        freeFrame(tmp->frame);
+    }
+
+    *fs = NULL;
+}

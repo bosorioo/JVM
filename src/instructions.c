@@ -179,8 +179,11 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_lconst_0, instfunc_lconst_1, instfunc_fconst_0,
         instfunc_fconst_1, instfunc_fconst_2, instfunc_dconst_0,
         instfunc_dconst_1, instfunc_bipush, instfunc_sipush,
-        instfunc_ldc,
+        instfunc_ldc
     };
+
+    if (opcode > 18)
+        return NULL;
 
     // TODO: fill instructions that aren't currently implemented
     // with NULL so the code will properly work

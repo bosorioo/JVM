@@ -165,7 +165,7 @@ char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
     // and the first '.' (to separe the .class suffix, in case it exists).
     for (i = 0; classFilePath[i] != '\0'; i++)
     {
-        if (classFilePath[i] == '/')
+        if (classFilePath[i] == '/' || classFilePath[i] == '\\')
             begin = i + 1;
         else if (classFilePath[i] == '.')
             break;

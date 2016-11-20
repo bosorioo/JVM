@@ -28,5 +28,6 @@ Frame* newFrame(JavaClass* jc, method_info* method);
 void freeFrame(Frame* frame);
 uint8_t pushFrame(FrameStack** fs, Frame* frame);
 uint8_t popFrame(FrameStack** fs, Frame* outPtr);
+void freeFrameStack(FrameStack** fs);
 
 #endif // FRAMESTACK_H
