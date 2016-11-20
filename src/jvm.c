@@ -52,7 +52,13 @@ void executeJVM(JavaVirtualMachine* jvm)
 
     method = getMethodMatching(jc, "main", "([Ljava/lang/String;)V", ACC_STATIC);
 
-    if (!method || !runMethod(jvm, jc, method))
+    if (!method)
+    {
+        jvm->status = JVM_STATUS_MAIN_METHOD_NOT_FOUND;
+        return;
+    }
+
+    if (!runMethod(jvm, jc, method))
         return;
 }
 
