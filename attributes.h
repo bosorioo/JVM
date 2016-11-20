@@ -81,5 +81,6 @@ char readAttribute(JavaClass* jc, attribute_info* entry);
 void freeAttributeInfo(attribute_info* entry);
 void printAttribute(JavaClass* jc, attribute_info* entry, int identationLevel);
 void printAllAttributes(JavaClass* jc);
+attribute_info* getAttributeByType(attribute_info* attributes, uint16_t attributes_length, enum AttributeType type);
 
 #endif // ATTRIBUTES_H

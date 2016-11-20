@@ -1273,3 +1273,16 @@ void printAllAttributes(JavaClass* jc)
         printAttribute(jc, atti, 2);
     }
 }
+
+attribute_info* getAttributeByType(attribute_info* attributes, uint16_t attributes_length, enum AttributeType type)
+{
+    while (attributes_length-- > 0)
+    {
+        if (attributes->attributeType == type)
+            return attributes;
+
+        attributes++;
+    }
+
+    return NULL;
+}
