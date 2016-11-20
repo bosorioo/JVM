@@ -1079,6 +1079,109 @@ uint8_t instfunc_iinc(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+uint8_t instfunc_i2l(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t value;
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    value = temp;
+
+    if (!pushOperand(&frame->operands, (int32_t)(value >> 32), OP_LONG) ||
+        !pushOperand(&frame->operands, (int32_t)(value & 0xFFFFFFFFll), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_i2f(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        float f;
+        int32_t i;
+    } value;
+
+    popOperand(&frame->operands, &value.i, NULL);
+    value.f = (float)value.i;
+
+    if (!pushOperand(&frame->operands, value.i, OP_FLOAT))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_i2d(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } value;
+
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+    value.d = (double)temp;
+
+    if (!pushOperand(&frame->operands, (int32_t)(value.i >> 32), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, (int32_t)(value.i & 0xFFFFFFFFll), OP_DOUBLE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_l2i(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+    popOperand(&frame->operands, NULL, NULL);
+
+    if (!pushOperand(&frame->operands, temp, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_l2f(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t lval;
+
+    union {
+        float f;
+        int32_t i;
+    } temp;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    lval = temp.i;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    lval = (lval << 32) | temp.i;
+    temp.f = (float)lval;
+
+    if (!pushOperand(&frame->operands, temp.i, OP_FLOAT))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
     const InstructionFunction opcodeFunctions[255] = {
@@ -1126,10 +1229,12 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_lshr, instfunc_iushr, instfunc_lushr,
         instfunc_iand, instfunc_land, instfunc_ior,
         instfunc_lor, instfunc_ixor, instfunc_lxor,
-        instfunc_iinc,
+        instfunc_iinc, instfunc_i2l, instfunc_i2f,
+        instfunc_i2d, instfunc_l2i, instfunc_l2f,
+
     };
 
-    if (opcode > 132)
+    if (opcode > 137)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented
