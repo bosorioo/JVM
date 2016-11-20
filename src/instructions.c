@@ -765,7 +765,7 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_iadd, instfunc_ladd
     };
 
-    if (opcode > 92)
+    if (opcode > 97)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented
