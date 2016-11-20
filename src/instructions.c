@@ -395,7 +395,7 @@ uint8_t instfunc_saload(JavaVirtualMachine* jvm, Frame* frame)
     uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
     { \
         int32_t operand; \
-        popOperand(&frame->operands, &operand); \
+        popOperand(&frame->operands, &operand, NULL); \
         *(frame->localVariables + NEXT_BYTE) = operand; \
         return 1; \
     }
@@ -406,8 +406,8 @@ uint8_t instfunc_saload(JavaVirtualMachine* jvm, Frame* frame)
         uint8_t index = NEXT_BYTE; \
         int32_t highoperand; \
         int32_t lowoperand; \
-        popOperand(&frame->operands, &lowoperand); \
-        popOperand(&frame->operands, &highoperand); \
+        popOperand(&frame->operands, &lowoperand, NULL); \
+        popOperand(&frame->operands, &highoperand, NULL); \
         *(frame->localVariables + index) = highoperand; \
         *(frame->localVariables + index + 1) = lowoperand; \
         return 1; \
@@ -423,7 +423,7 @@ DECLR_STORE_CAT_1_FAMILY(astore)
     uint8_t instfunc_##instructionprefix##_##N(JavaVirtualMachine* jvm, Frame* frame) \
     { \
         int32_t operand; \
-        popOperand(&frame->operands, &operand); \
+        popOperand(&frame->operands, &operand, NULL); \
         *(frame->localVariables + N) = operand; \
         return 1; \
     }
@@ -433,8 +433,8 @@ DECLR_STORE_CAT_1_FAMILY(astore)
     { \
         int32_t highoperand; \
         int32_t lowoperand; \
-        popOperand(&frame->operands, &lowoperand); \
-        popOperand(&frame->operands, &highoperand); \
+        popOperand(&frame->operands, &lowoperand, NULL); \
+        popOperand(&frame->operands, &highoperand, NULL); \
         *(frame->localVariables + N) = highoperand; \
         *(frame->localVariables + N + 1) = lowoperand; \
         return 1; \
@@ -515,14 +515,14 @@ uint8_t instfunc_sastore(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_pop(JavaVirtualMachine* jvm, Frame* frame)
 {
-    popOperand(&frame->operands, NULL);
+    popOperand(&frame->operands, NULL, NULL);
     return 1;
 }
 
 uint8_t instfunc_pop2(JavaVirtualMachine* jvm, Frame* frame)
 {
-    popOperand(&frame->operands, NULL);
-    popOperand(&frame->operands, NULL);
+    popOperand(&frame->operands, NULL, NULL);
+    popOperand(&frame->operands, NULL, NULL);
     return 1;
 }
 
@@ -576,7 +576,7 @@ uint8_t instfunc_dup_x2(JavaVirtualMachine* jvm, Frame* frame)
 {
     // Suppose our stack is: A -> B -> C -> ...
     // We want to duplicate A (top node), but moving it down 3 slots
-    // The stack should look like: A -> B -> C-> A -> ...
+    // The stack should look like: A -> B -> C -> A -> ...
 
 
     // We duplicate the top operand, so the stack will be: A -> A -> B -> C -> ...
@@ -609,6 +609,116 @@ uint8_t instfunc_dup2(JavaVirtualMachine* jvm, Frame* frame)
 
     if (!pushOperand(&frame->operands, node2->value, node2->type) ||
         !pushOperand(&frame->operands, node1->value, node1->type))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_dup2_x1(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t operand1, operand2, operand3;
+    OperandType type1, type2, type3;
+
+    // Pop the operand and then push them again.
+    // This method is easier to implement, but it is
+    // less efficient, since there is the need to free
+    // and malloc memory again.
+    popOperand(&frame->operands, &operand1, &type1);
+    popOperand(&frame->operands, &operand2, &type2);
+    popOperand(&frame->operands, &operand3, &type3);
+
+    if (!pushOperand(&frame->operands, operand2, type2) ||
+        !pushOperand(&frame->operands, operand1, type1) ||
+        !pushOperand(&frame->operands, operand3, type3) ||
+        !pushOperand(&frame->operands, operand2, type2) ||
+        !pushOperand(&frame->operands, operand1, type1))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_dup2_x2(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t operand1, operand2, operand3, operand4;
+    OperandType type1, type2, type3, type4;
+
+    // Pop the operand and then push them again.
+    // This method is easier to implement, but it is
+    // less efficient, since there is the need to free
+    // and malloc memory again.
+    popOperand(&frame->operands, &operand1, &type1);
+    popOperand(&frame->operands, &operand2, &type2);
+    popOperand(&frame->operands, &operand3, &type3);
+    popOperand(&frame->operands, &operand4, &type4);
+
+    if (!pushOperand(&frame->operands, operand2, type2) ||
+        !pushOperand(&frame->operands, operand1, type1) ||
+        !pushOperand(&frame->operands, operand4, type4) ||
+        !pushOperand(&frame->operands, operand3, type3) ||
+        !pushOperand(&frame->operands, operand2, type2) ||
+        !pushOperand(&frame->operands, operand1, type1))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_swap(JavaVirtualMachine* jvm, Frame* frame)
+{
+    OperandStack* node1 = frame->operands;
+    OperandStack* node2 = node1->next;
+
+    frame->operands = node2;
+    node1->next = node2->next;
+    node2->next = node1;
+    return 1;
+}
+
+uint8_t instfunc_iadd(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t a, b;
+
+    popOperand(&frame->operands, &a, NULL);
+    popOperand(&frame->operands, &b, NULL);
+
+    if (!pushOperand(&frame->operands, a + b, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_ladd(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t a, b;
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    a = high;
+    a = a << 32 | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    b = high;
+    b = b << 32 | low;
+
+    a += b;
+
+    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
+        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFULL), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -650,8 +760,9 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_fastore, instfunc_dastore, instfunc_aastore,
         instfunc_bastore, instfunc_castore, instfunc_sastore,
         instfunc_pop, instfunc_pop2, instfunc_dup,
-        instfunc_dup_x1, instfunc_dup_x2, instfunc_dup2
-
+        instfunc_dup_x1, instfunc_dup_x2, instfunc_dup2,
+        instfunc_dup2_x1, instfunc_dup2_x2, instfunc_swap,
+        instfunc_iadd, instfunc_ladd
     };
 
     if (opcode > 92)

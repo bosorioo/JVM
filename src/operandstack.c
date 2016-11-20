@@ -16,7 +16,7 @@ uint8_t pushOperand(OperandStack** os, int32_t value, enum OperandType type)
     return node != NULL;
 }
 
-uint8_t popOperand(OperandStack** os, int32_t* outPtr)
+uint8_t popOperand(OperandStack** os, int32_t* outPtr, enum OperandType* outType)
 {
     OperandStack* node = *os;
 
@@ -24,6 +24,9 @@ uint8_t popOperand(OperandStack** os, int32_t* outPtr)
     {
         if (outPtr)
             *outPtr = node->value;
+
+        if (outType)
+            *outType = node->type;
 
         *os = node->next;
         free(node);
