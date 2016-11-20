@@ -76,6 +76,7 @@ void freeFrameStack(FrameStack** fs)
         tmp = node;
         node = node->next;
         freeFrame(tmp->frame);
+        free(tmp);
     }
 
     *fs = NULL;
