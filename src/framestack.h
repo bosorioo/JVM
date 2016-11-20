@@ -11,6 +11,9 @@ struct Frame
 {
     JavaClass* jc;
 
+    // Use strict floating points?
+    uint8_t fp_strict;
+
     uint32_t pc, code_length;
     uint8_t* code;
 
