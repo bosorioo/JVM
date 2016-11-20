@@ -324,11 +324,11 @@ void printAttributeInnerClasses(JavaClass* jc, attribute_info* entry, int identa
         cp = jc->constantPool + cp->Class.name_index - 1;
         UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cp->Utf8.bytes, cp->Utf8.length);
         ident(identationLevel + 1);
-        printf("inner_class_info_index:   cp index #%u <%s>\n", innerclass->inner_class_index, buffer);
+        printf("inner_class_info_index:   #%u <%s>\n", innerclass->inner_class_index, buffer);
 
         // outer_class_index
         ident(identationLevel + 1);
-        printf("outer_class_info_index:   cp index #%u ", innerclass->outer_class_index);
+        printf("outer_class_info_index:   #%u ", innerclass->outer_class_index);
 
         if (innerclass->outer_class_index == 0)
         {
@@ -344,7 +344,7 @@ void printAttributeInnerClasses(JavaClass* jc, attribute_info* entry, int identa
 
         // inner_class_name_index
         ident(identationLevel + 1);
-        printf("inner_name_index:         cp index #%u ", innerclass->inner_class_name_index);
+        printf("inner_name_index:         #%u ", innerclass->inner_class_name_index);
 
         if (innerclass->inner_class_name_index == 0)
         {
@@ -646,7 +646,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 u32 = NEXTBYTE;
                 u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\tcp index #%u ", u32);
+                printf("\t#%u ", u32);
                 cpi = jc->constantPool + u32 - 1;
 
                 // Invokes require a Methodref a parameter, whereas getfield, getstatic,
@@ -683,7 +683,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 u32 = NEXTBYTE;
                 u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\tcp index #%u - CONSTANT_InvokeDynamic not implemented -", u32, NEXTBYTE);
+                printf("\t#%u - CONSTANT_InvokeDynamic not implemented -", u32, NEXTBYTE);
 
                 u32 = NEXTBYTE;
 
@@ -710,7 +710,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 u32 = NEXTBYTE;
                 u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\tcp index #%u, count: %u ", u32, NEXTBYTE);
+                printf("\t#%u, count: %u ", u32, NEXTBYTE);
 
                 cpi = jc->constantPool + u32 - 1;
 
@@ -809,7 +809,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 if (opcode == opcode_new)
                     printf("\t");
 
-                printf("\tcp index #%u", u32);
+                printf("\t#%u", u32);
 
                 if (opcode == opcode_multianewarray)
                     printf(", dimension %u", NEXTBYTE);
@@ -838,7 +838,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 if (opcode == opcode_ldc_w || opcode == opcode_ldc2_w)
                     u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\t\tcp index #%u", u32);
+                printf("\t\t#%u", u32);
 
                 cpi = jc->constantPool + u32 - 1;
 
@@ -1189,7 +1189,7 @@ void printAttributeExceptions(JavaClass* jc, attribute_info* entry, int identati
 
         printf("\n\n");
         ident(identationLevel + 1);
-        printf("Exception #%u: cp index #%u <%s>\n", index + 1, *exception_index, buffer);
+        printf("Exception #%u: #%u <%s>\n", index + 1, *exception_index, buffer);
     }
 }
 
