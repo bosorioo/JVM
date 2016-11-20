@@ -1,0 +1,41 @@
+\hypertarget{structJavaVirtualMachine}{}\section{Referência à estrutura Java\+Virtual\+Machine}
+\label{structJavaVirtualMachine}\index{Java\+Virtual\+Machine@{Java\+Virtual\+Machine}}
+
+
+{\ttfamily \#include $<$jvm.\+h$>$}
+
+
+
+Diagrama de colaboração para Java\+Virtual\+Machine\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structJavaVirtualMachine__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Campos de Dados}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{structJavaVirtualMachine_ae8571f20c0db273c88a5ce2d52d51a04}{status}
+\item 
+\hyperlink{structFrameStack}{Frame\+Stack} $\ast$ \hyperlink{structJavaVirtualMachine_a6a0d723bb649fabc57742221b01b3617}{frames}
+\item 
+\hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$ \hyperlink{structJavaVirtualMachine_a36266aec8ba9d25b4d9f67509967dd4c}{classes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos campos e atributos}
+\index{Java\+Virtual\+Machine@{Java\+Virtual\+Machine}!classes@{classes}}
+\index{classes@{classes}!Java\+Virtual\+Machine@{Java\+Virtual\+Machine}}
+\subsubsection[{\texorpdfstring{classes}{classes}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Loaded\+Classes}$\ast$ Java\+Virtual\+Machine\+::classes}\hypertarget{structJavaVirtualMachine_a36266aec8ba9d25b4d9f67509967dd4c}{}\label{structJavaVirtualMachine_a36266aec8ba9d25b4d9f67509967dd4c}
+\index{Java\+Virtual\+Machine@{Java\+Virtual\+Machine}!frames@{frames}}
+\index{frames@{frames}!Java\+Virtual\+Machine@{Java\+Virtual\+Machine}}
+\subsubsection[{\texorpdfstring{frames}{frames}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Frame\+Stack}$\ast$ Java\+Virtual\+Machine\+::frames}\hypertarget{structJavaVirtualMachine_a6a0d723bb649fabc57742221b01b3617}{}\label{structJavaVirtualMachine_a6a0d723bb649fabc57742221b01b3617}
+\index{Java\+Virtual\+Machine@{Java\+Virtual\+Machine}!status@{status}}
+\index{status@{status}!Java\+Virtual\+Machine@{Java\+Virtual\+Machine}}
+\subsubsection[{\texorpdfstring{status}{status}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Java\+Virtual\+Machine\+::status}\hypertarget{structJavaVirtualMachine_ae8571f20c0db273c88a5ce2d52d51a04}{}\label{structJavaVirtualMachine_ae8571f20c0db273c88a5ce2d52d51a04}
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{jvm_8h}{jvm.\+h}\end{DoxyCompactItemize}

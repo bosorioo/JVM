@@ -1,0 +1,22 @@
+<map id="src/javaclass.h" name="src/javaclass.h">
+<area shape="rect" id="node2" href="$attributes_8h.html" title="src/attributes.h" alt="" coords="428,80,537,107"/>
+<area shape="rect" id="node4" href="$fields_8h.html" title="src/fields.h" alt="" coords="498,155,585,181"/>
+<area shape="rect" id="node6" href="$methods_8h.html" title="src/methods.h" alt="" coords="609,155,714,181"/>
+<area shape="rect" id="node10" href="$jvm_8h.html" title="src/jvm.h" alt="" coords="85,229,161,256"/>
+<area shape="rect" id="node14" href="$main_8c.html" title="src/main.c" alt="" coords="5,304,88,331"/>
+<area shape="rect" id="node15" href="$constantpool_8h.html" title="src/constantpool.h" alt="" coords="910,80,1039,107"/>
+<area shape="rect" id="node16" href="$readfunctions_8h.html" title="src/readfunctions.h" alt="" coords="739,155,872,181"/>
+<area shape="rect" id="node18" href="$javaclass_8c.html" title="src/javaclass.c" alt="" coords="1186,229,1297,256"/>
+<area shape="rect" id="node21" href="$validity_8h.html" title="src/validity.h" alt="" coords="896,155,992,181"/>
+<area shape="rect" id="node3" href="$attributes_8c.html" title="src/attributes.c" alt="" coords="380,229,489,256"/>
+<area shape="rect" id="node8" href="$framestack_8h.html" title="src/framestack.h" alt="" coords="233,155,353,181"/>
+<area shape="rect" id="node5" href="$fields_8c.html" title="src/fields.c" alt="" coords="514,229,601,256"/>
+<area shape="rect" id="node7" href="$methods_8c.html" title="src/methods.c" alt="" coords="625,229,730,256"/>
+<area shape="rect" id="node9" href="$framestack_8c.html" title="src/framestack.c" alt="" coords="185,229,305,256"/>
+<area shape="rect" id="node11" href="$instructions_8h.html" title="src/instructions.h" alt="" coords="175,304,297,331"/>
+<area shape="rect" id="node13" href="$jvm_8c.html" title="src/jvm.c" alt="" coords="87,379,163,405"/>
+<area shape="rect" id="node12" href="$instructions_8c.html" title="src/instructions.c" alt="" coords="188,379,311,405"/>
+<area shape="rect" id="node17" href="$constantpool_8c.html" title="src/constantpool.c" alt="" coords="1033,229,1162,256"/>
+<area shape="rect" id="node20" href="$validity_8c.html" title="src/validity.c" alt="" coords="912,229,1008,256"/>
+<area shape="rect" id="node19" href="$readfunctions_8c.html" title="src/readfunctions.c" alt="" coords="755,229,888,256"/>
+</map>

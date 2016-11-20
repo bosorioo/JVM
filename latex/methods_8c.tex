@@ -1,0 +1,149 @@
+\hypertarget{methods_8c}{}\section{Referência ao ficheiro src/methods.c}
+\label{methods_8c}\index{src/methods.\+c@{src/methods.\+c}}
+{\ttfamily \#include \char`\"{}methods.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}readfunctions.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}validity.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utf8.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Diagrama de dependências de inclusão para methods.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9}{read\+Method} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{methods_8c_a50e4408e126b27fef952d2e1fc1b044e}{free\+Method\+Attributes} (\hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{methods_8c_a88c1302886452c2888da76abd261ccc8}{print\+Methods} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+\hyperlink{structmethod__info}{method\+\_\+info} $\ast$ \hyperlink{methods_8c_a2e2a55de7c8ab8b17cf8315c3a6a509f}{get\+Method\+Matching} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, const char $\ast$name, const char $\ast$descriptor, uint16\+\_\+t flag\+\_\+mask)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\index{methods.\+c@{methods.\+c}!free\+Method\+Attributes@{free\+Method\+Attributes}}
+\index{free\+Method\+Attributes@{free\+Method\+Attributes}!methods.\+c@{methods.\+c}}
+\subsubsection[{\texorpdfstring{free\+Method\+Attributes(method\+\_\+info $\ast$entry)}{freeMethodAttributes(method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Method\+Attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8c_a50e4408e126b27fef952d2e1fc1b044e}{}\label{methods_8c_a50e4408e126b27fef952d2e1fc1b044e}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{methods_8c_a50e4408e126b27fef952d2e1fc1b044e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a50e4408e126b27fef952d2e1fc1b044e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+c@{methods.\+c}!get\+Method\+Matching@{get\+Method\+Matching}}
+\index{get\+Method\+Matching@{get\+Method\+Matching}!methods.\+c@{methods.\+c}}
+\subsubsection[{\texorpdfstring{get\+Method\+Matching(\+Java\+Class $\ast$jc, const char $\ast$name, const char $\ast$descriptor, uint16\+\_\+t flag\+\_\+mask)}{getMethodMatching(JavaClass *jc, const char *name, const char *descriptor, uint16_t flag_mask)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\+\_\+info}$\ast$ get\+Method\+Matching (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{const char $\ast$}]{name, }
+\item[{const char $\ast$}]{descriptor, }
+\item[{uint16\+\_\+t}]{flag\+\_\+mask}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8c_a2e2a55de7c8ab8b17cf8315c3a6a509f}{}\label{methods_8c_a2e2a55de7c8ab8b17cf8315c3a6a509f}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a2e2a55de7c8ab8b17cf8315c3a6a509f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a2e2a55de7c8ab8b17cf8315c3a6a509f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+c@{methods.\+c}!print\+Methods@{print\+Methods}}
+\index{print\+Methods@{print\+Methods}!methods.\+c@{methods.\+c}}
+\subsubsection[{\texorpdfstring{print\+Methods(\+Java\+Class $\ast$jc)}{printMethods(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Methods (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8c_a88c1302886452c2888da76abd261ccc8}{}\label{methods_8c_a88c1302886452c2888da76abd261ccc8}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a88c1302886452c2888da76abd261ccc8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a88c1302886452c2888da76abd261ccc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+c@{methods.\+c}!read\+Method@{read\+Method}}
+\index{read\+Method@{read\+Method}!methods.\+c@{methods.\+c}}
+\subsubsection[{\texorpdfstring{read\+Method(\+Java\+Class $\ast$jc, method\+\_\+info $\ast$entry)}{readMethod(JavaClass *jc, method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}char read\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9}{}\label{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9_icgraph}
+\end{center}
+\end{figure}
+
+

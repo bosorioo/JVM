@@ -1,0 +1,12 @@
+<map id="readu4" name="readu4">
+<area shape="rect" id="node2" href="$attributes_8h.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="153,107,249,133"/>
+<area shape="rect" id="node3" href="$attributes_8c.html#af3a1b04442990e1699afc5b2592c4c93" title="readAttributeCode" alt="" coords="351,5,478,32"/>
+<area shape="rect" id="node5" href="$javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="541,157,647,184"/>
+<area shape="rect" id="node9" href="$constantpool_8c.html#a73f94285fc7c4790ca2900b6fc78b0f3" title="readConstantPool_Integer" alt="" coords="115,259,288,285"/>
+<area shape="rect" id="node11" href="$constantpool_8c.html#a1f4a6c4da0269e609a18f2d8174a2c39" title="readConstantPool_Long" alt="" coords="121,309,282,336"/>
+<area shape="rect" id="node4" href="$fields_8h.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="readField" alt="" coords="377,56,452,83"/>
+<area shape="rect" id="node8" href="$methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="readMethod" alt="" coords="369,157,460,184"/>
+<area shape="rect" id="node6" href="$jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="695,132,793,159"/>
+<area shape="rect" id="node7" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="841,157,892,184"/>
+<area shape="rect" id="node10" href="$constantpool_8h.html#a62504539fde83f5183d20f262d4b1943" title="readConstantPoolEntry" alt="" coords="336,259,493,285"/>
+</map>

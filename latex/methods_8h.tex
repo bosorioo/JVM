@@ -1,0 +1,169 @@
+\hypertarget{methods_8h}{}\section{Referência ao ficheiro src/methods.h}
+\label{methods_8h}\index{src/methods.\+h@{src/methods.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}javaclass.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}attributes.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para methods.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmethod__info}{method\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmethod__info}{method\+\_\+info} \hyperlink{methods_8h_a8bb5945393748ebec11db13dc8993aa4}{method\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}{read\+Method} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}{free\+Method\+Attributes} (\hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{methods_8h_a88c1302886452c2888da76abd261ccc8}{print\+Methods} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+\hyperlink{structmethod__info}{method\+\_\+info} $\ast$ \hyperlink{methods_8h_a2e2a55de7c8ab8b17cf8315c3a6a509f}{get\+Method\+Matching} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, const char $\ast$name, const char $\ast$descriptor, uint16\+\_\+t flag\+\_\+mask)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos tipos}
+\index{methods.\+h@{methods.\+h}!method\+\_\+info@{method\+\_\+info}}
+\index{method\+\_\+info@{method\+\_\+info}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{method\+\_\+info}{method_info}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\+\_\+info} {\bf method\+\_\+info}}\hypertarget{methods_8h_a8bb5945393748ebec11db13dc8993aa4}{}\label{methods_8h_a8bb5945393748ebec11db13dc8993aa4}
+
+
+\subsection{Documentação das funções}
+\index{methods.\+h@{methods.\+h}!free\+Method\+Attributes@{free\+Method\+Attributes}}
+\index{free\+Method\+Attributes@{free\+Method\+Attributes}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{free\+Method\+Attributes(method\+\_\+info $\ast$entry)}{freeMethodAttributes(method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Method\+Attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}{}\label{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{methods_8h_a50e4408e126b27fef952d2e1fc1b044e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a50e4408e126b27fef952d2e1fc1b044e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!get\+Method\+Matching@{get\+Method\+Matching}}
+\index{get\+Method\+Matching@{get\+Method\+Matching}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{get\+Method\+Matching(\+Java\+Class $\ast$jc, const char $\ast$name, const char $\ast$descriptor, uint16\+\_\+t flag\+\_\+mask)}{getMethodMatching(JavaClass *jc, const char *name, const char *descriptor, uint16_t flag_mask)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\+\_\+info}$\ast$ get\+Method\+Matching (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{const char $\ast$}]{name, }
+\item[{const char $\ast$}]{descriptor, }
+\item[{uint16\+\_\+t}]{flag\+\_\+mask}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a2e2a55de7c8ab8b17cf8315c3a6a509f}{}\label{methods_8h_a2e2a55de7c8ab8b17cf8315c3a6a509f}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a2e2a55de7c8ab8b17cf8315c3a6a509f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a2e2a55de7c8ab8b17cf8315c3a6a509f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!print\+Methods@{print\+Methods}}
+\index{print\+Methods@{print\+Methods}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{print\+Methods(\+Java\+Class $\ast$jc)}{printMethods(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Methods (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a88c1302886452c2888da76abd261ccc8}{}\label{methods_8h_a88c1302886452c2888da76abd261ccc8}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a88c1302886452c2888da76abd261ccc8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a88c1302886452c2888da76abd261ccc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!read\+Method@{read\+Method}}
+\index{read\+Method@{read\+Method}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{read\+Method(\+Java\+Class $\ast$jc, method\+\_\+info $\ast$entry)}{readMethod(JavaClass *jc, method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}char read\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}{}\label{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - Java Virtual Machine: Referência ao ficheiro src/jvm.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - Java Virtual Machine
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Estruturas de Dados</a> &#124;
+<a href="#typedef-members">Definições de tipos</a> &#124;
+<a href="#enum-members">Enumerações</a> &#124;
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro jvm.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="javaclass_8h_source.html">javaclass.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="framestack_8h_source.html">framestack.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Diagrama de dependências de inclusão para jvm.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h__incl.png" border="0" usemap="#src_2jvm_8h" alt=""/></div>
+<map name="src_2jvm_8h" id="src_2jvm_8h">
+<area shape="rect" id="node3" href="javaclass_8h.html" title="javaclass.h" alt="" coords="283,80,371,107"/>
+<area shape="rect" id="node9" href="framestack_8h.html" title="framestack.h" alt="" coords="565,155,663,181"/>
+<area shape="rect" id="node5" href="constantpool_8h.html" title="constantpool.h" alt="" coords="165,155,271,181"/>
+<area shape="rect" id="node6" href="attributes_8h.html" title="attributes.h" alt="" coords="440,229,527,256"/>
+<area shape="rect" id="node7" href="fields_8h.html" title="fields.h" alt="" coords="295,155,359,181"/>
+<area shape="rect" id="node8" href="methods_8h.html" title="methods.h" alt="" coords="383,155,466,181"/>
+<area shape="rect" id="node10" href="operandstack_8h.html" title="operandstack.h" alt="" coords="555,229,665,256"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h__dep__incl.png" border="0" usemap="#src_2jvm_8hdep" alt=""/></div>
+<map name="src_2jvm_8hdep" id="src_2jvm_8hdep">
+<area shape="rect" id="node2" href="instructions_8h.html" title="src/instructions.h" alt="" coords="31,80,153,107"/>
+<area shape="rect" id="node4" href="jvm_8c.html" title="src/jvm.c" alt="" coords="153,155,229,181"/>
+<area shape="rect" id="node5" href="main_8c.html" title="src/main.c" alt="" coords="228,80,311,107"/>
+<area shape="rect" id="node3" href="instructions_8c.html" title="src/instructions.c" alt="" coords="5,155,128,181"/>
+</map>
+</div>
+</div>
+<p><a href="jvm_8h_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLoadedClasses.html">LoadedClasses</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definições de tipos</h2></td></tr>
+<tr class="memitem:a9b56103335f7475ad6bdd51a5cf53f39"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#a9b56103335f7475ad6bdd51a5cf53f39">JavaVirtualMachine</a></td></tr>
+<tr class="separator:a9b56103335f7475ad6bdd51a5cf53f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5b0df9e77c6d296e1522c57b7ec4dde"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structLoadedClasses.html">LoadedClasses</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#ab5b0df9e77c6d296e1522c57b7ec4dde">LoadedClasses</a></td></tr>
+<tr class="separator:ab5b0df9e77c6d296e1522c57b7ec4dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerações</h2></td></tr>
+<tr class="memitem:a484d02331081db971c49ba36a1109967"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967">JVMStatus</a> { <br />
+&#160;&#160;<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967adbdce9e4742eea01de565e42f934fd81">JVM_STATUS_OK</a>, 
+<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967a561e2abde79cecdb23fc63331c85d38b">JVM_STATUS_NO_CLASS_LOADED</a>, 
+<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967af4836e7d97c08c2e3015f4254cdac840">JVM_STATUS_CLASS_RESOLUTION_FAILED</a>, 
+<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967ae1200b3eaa745cee1d35fc29da251550">JVM_STATUS_UNKNOWN_INSTRUCTION</a>, 
+<br />
+&#160;&#160;<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967ae3ed7dd1aec587922a5379f0370e18c9">JVM_STATUS_ABORTED</a>, 
+<a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967a005e0862fb18129abd7a2fe2be5bd932">JVM_STATUS_OUT_OF_MEMORY</a>
+<br />
+ }</td></tr>
+<tr class="separator:a484d02331081db971c49ba36a1109967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aca189885e78ec25ece5d7f70e83022a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#aca189885e78ec25ece5d7f70e83022a1">initJVM</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm)</td></tr>
+<tr class="separator:aca189885e78ec25ece5d7f70e83022a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65269d70951aacfe829c89c078dad67a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#a65269d70951aacfe829c89c078dad67a">deinitJVM</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm)</td></tr>
+<tr class="separator:a65269d70951aacfe829c89c078dad67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb51e68e5a79ca25d5a5134ffb6ddd68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68">executeJVM</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm)</td></tr>
+<tr class="separator:acb51e68e5a79ca25d5a5134ffb6ddd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb3f9abad1cb2b8d28068d6e453f42a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a">resolveClass</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len)</td></tr>
+<tr class="separator:abbb3f9abad1cb2b8d28068d6e453f42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb0d8ba358754edbeb13d25de07a07f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#abcb0d8ba358754edbeb13d25de07a07f">runMethod</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm, <a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structmethod__info.html">method_info</a> *method)</td></tr>
+<tr class="separator:abcb0d8ba358754edbeb13d25de07a07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec4266c56e242e0b507d7d1b4d63c31"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#acec4266c56e242e0b507d7d1b4d63c31">addClassToLoadedClasses</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm, <a class="el" href="structJavaClass.html">JavaClass</a> *jc)</td></tr>
+<tr class="separator:acec4266c56e242e0b507d7d1b4d63c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4cb01bb8ccaa15560e70d43c741a396"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jvm_8h.html#ab4cb01bb8ccaa15560e70d43c741a396">isClassLoaded</a> (<a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)</td></tr>
+<tr class="separator:ab4cb01bb8ccaa15560e70d43c741a396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação dos tipos</h2>
+<a class="anchor" id="a9b56103335f7475ad6bdd51a5cf53f39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> <a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab5b0df9e77c6d296e1522c57b7ec4dde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structLoadedClasses.html">LoadedClasses</a>  <a class="el" href="structLoadedClasses.html">LoadedClasses</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentação dos valores da enumeração</h2>
+<a class="anchor" id="a484d02331081db971c49ba36a1109967"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="jvm_8h.html#a484d02331081db971c49ba36a1109967">JVMStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Valores de enumerações</th></tr><tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967adbdce9e4742eea01de565e42f934fd81"></a>JVM_STATUS_OK&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967a561e2abde79cecdb23fc63331c85d38b"></a>JVM_STATUS_NO_CLASS_LOADED&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967af4836e7d97c08c2e3015f4254cdac840"></a>JVM_STATUS_CLASS_RESOLUTION_FAILED&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967ae1200b3eaa745cee1d35fc29da251550"></a>JVM_STATUS_UNKNOWN_INSTRUCTION&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967ae3ed7dd1aec587922a5379f0370e18c9"></a>JVM_STATUS_ABORTED&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a484d02331081db971c49ba36a1109967a005e0862fb18129abd7a2fe2be5bd932"></a>JVM_STATUS_OUT_OF_MEMORY&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a class="anchor" id="acec4266c56e242e0b507d7d1b4d63c31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t addClassToLoadedClasses </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_acec4266c56e242e0b507d7d1b4d63c31_icgraph.png" border="0" usemap="#jvm_8h_acec4266c56e242e0b507d7d1b4d63c31_icgraph" alt=""/></div>
+<map name="jvm_8h_acec4266c56e242e0b507d7d1b4d63c31_icgraph" id="jvm_8h_acec4266c56e242e0b507d7d1b4d63c31_icgraph">
+<area shape="rect" id="node2" href="jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="236,29,335,56"/>
+<area shape="rect" id="node3" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="383,29,433,56"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a65269d70951aacfe829c89c078dad67a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deinitJVM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_a65269d70951aacfe829c89c078dad67a_cgraph.png" border="0" usemap="#jvm_8h_a65269d70951aacfe829c89c078dad67a_cgraph" alt=""/></div>
+<map name="jvm_8h_a65269d70951aacfe829c89c078dad67a_cgraph" id="jvm_8h_a65269d70951aacfe829c89c078dad67a_cgraph">
+<area shape="rect" id="node2" href="framestack_8c.html#a6debf06c308367fb8e44acfdb0d27ea8" title="freeFrameStack" alt="" coords="133,19,248,45"/>
+<area shape="rect" id="node5" href="javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="closeClassFile" alt="" coords="137,95,245,121"/>
+<area shape="rect" id="node3" href="framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="327,5,408,32"/>
+<area shape="rect" id="node4" href="operandstack_8c.html#a0e5f73651cf63f65cd5c30437070e5dd" title="freeOperandStack" alt="" coords="487,5,613,32"/>
+<area shape="rect" id="node6" href="methods_8c.html#a50e4408e126b27fef952d2e1fc1b044e" title="freeMethodAttributes" alt="" coords="296,56,439,83"/>
+<area shape="rect" id="node7" href="attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="493,107,607,133"/>
+<area shape="rect" id="node8" href="fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="freeFieldAttributes" alt="" coords="303,157,431,184"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_a65269d70951aacfe829c89c078dad67a_icgraph.png" border="0" usemap="#jvm_8h_a65269d70951aacfe829c89c078dad67a_icgraph" alt=""/></div>
+<map name="jvm_8h_a65269d70951aacfe829c89c078dad67a_icgraph" id="jvm_8h_a65269d70951aacfe829c89c078dad67a_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="133,5,184,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acb51e68e5a79ca25d5a5134ffb6ddd68"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void executeJVM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_cgraph.png" border="0" usemap="#jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_cgraph" alt=""/></div>
+<map name="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_cgraph" id="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_cgraph">
+<area shape="rect" id="node2" href="methods_8c.html#a2e2a55de7c8ab8b17cf8315c3a6a509f" title="getMethodMatching" alt="" coords="148,65,284,92"/>
+<area shape="rect" id="node5" href="jvm_8c.html#abcb0d8ba358754edbeb13d25de07a07f" title="runMethod" alt="" coords="175,171,257,197"/>
+<area shape="rect" id="node3" href="utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="cmp_UTF8_Ascii" alt="" coords="344,9,467,36"/>
+<area shape="rect" id="node4" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="527,5,664,32"/>
+<area shape="rect" id="node6" href="framestack_8c.html#a38bb1bda9e43d71c8472936c0ee14d72" title="newFrame" alt="" coords="364,63,447,89"/>
+<area shape="rect" id="node8" href="framestack_8c.html#a173f487de2e018f4d63d576edccb4c3d" title="pushFrame" alt="" coords="362,120,449,147"/>
+<area shape="rect" id="node9" href="instructions_8c.html#a036f840d5a734d71a7807c8d4fc203c6" title="fetchOpcodeFunction" alt="" coords="332,171,479,197"/>
+<area shape="rect" id="node16" href="opcodes_8c.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="getOpcodeMnemonic" alt="" coords="333,221,478,248"/>
+<area shape="rect" id="node17" href="framestack_8c.html#ab279becc7f4fe166543e43d12e45ef56" title="popFrame" alt="" coords="365,272,445,299"/>
+<area shape="rect" id="node18" href="framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="365,335,446,361"/>
+<area shape="rect" id="node7" href="attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5" title="getAttributeByType" alt="" coords="528,56,663,83"/>
+<area shape="rect" id="node10" href="instructions_8c.html#a66a6ac26513b757e08d88b0ed26213a2" title="instfunc_nop" alt="" coords="547,107,643,133"/>
+<area shape="rect" id="node11" href="instructions_8c.html#a39b87c11ed1110abbd8f8abe499f2ca8" title="instfunc_aconstnull" alt="" coords="528,157,663,184"/>
+<area shape="rect" id="node13" href="instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="539,208,652,235"/>
+<area shape="rect" id="node14" href="instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="539,259,652,285"/>
+<area shape="rect" id="node15" href="instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="549,309,641,336"/>
+<area shape="rect" id="node12" href="operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="712,233,811,260"/>
+<area shape="rect" id="node19" href="operandstack_8c.html#a0e5f73651cf63f65cd5c30437070e5dd" title="freeOperandStack" alt="" coords="532,360,659,387"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_icgraph.png" border="0" usemap="#jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_icgraph" alt=""/></div>
+<map name="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_icgraph" id="jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="148,5,199,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aca189885e78ec25ece5d7f70e83022a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initJVM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_aca189885e78ec25ece5d7f70e83022a1_icgraph.png" border="0" usemap="#jvm_8h_aca189885e78ec25ece5d7f70e83022a1_icgraph" alt=""/></div>
+<map name="jvm_8h_aca189885e78ec25ece5d7f70e83022a1_icgraph" id="jvm_8h_aca189885e78ec25ece5d7f70e83022a1_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="120,5,171,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4cb01bb8ccaa15560e70d43c741a396"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t isClassLoaded </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>utf8_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>utf8_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396_cgraph.png" border="0" usemap="#jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396_cgraph" alt=""/></div>
+<map name="jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396_cgraph" id="jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396_cgraph">
+<area shape="rect" id="node2" href="utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="cmp_UTF8_Ascii" alt="" coords="161,5,284,32"/>
+<area shape="rect" id="node3" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="332,5,469,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abbb3f9abad1cb2b8d28068d6e453f42a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t resolveClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>className_utf8_bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>utf8_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_cgraph.png" border="0" usemap="#jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_cgraph" alt=""/></div>
+<map name="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_cgraph" id="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_cgraph">
+<area shape="rect" id="node2" href="utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="cmp_UTF8_Ascii" alt="" coords="1267,1101,1390,1128"/>
+<area shape="rect" id="node4" href="javaclass_8c.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="337,696,443,723"/>
+<area shape="rect" id="node30" href="javaclass_8c.html#a38efa2c89d8bc742293cdc1c6e0f3250" title="decodeJavaClassStatus" alt="" coords="308,1039,472,1065"/>
+<area shape="rect" id="node31" href="jvm_8c.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="152,1101,251,1128"/>
+<area shape="rect" id="node32" href="jvm_8c.html#acec4266c56e242e0b507d7d1b4d63c31" title="addClassToLoadedClasses" alt="" coords="299,1152,481,1179"/>
+<area shape="rect" id="node33" href="javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="closeClassFile" alt="" coords="336,1253,444,1280"/>
+<area shape="rect" id="node3" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="1719,961,1856,988"/>
+<area shape="rect" id="node5" href="readfunctions_8c.html#abc3319bf1d68a0dcd80fdda3f6744f97" title="readu4" alt="" coords="1089,63,1151,89"/>
+<area shape="rect" id="node6" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="1089,291,1151,317"/>
+<area shape="rect" id="node7" href="constantpool_8c.html#a62504539fde83f5183d20f262d4b1943" title="readConstantPoolEntry" alt="" coords="546,215,703,241"/>
+<area shape="rect" id="node13" href="validity_8c.html#aa0977a766bc0cd47a49ca0e00e706310" title="checkConstantPoolValidity" alt="" coords="535,696,714,723"/>
+<area shape="rect" id="node23" href="validity_8c.html#a3f8d1665f8c40afb0bf126a9ca693b00" title="checkClassIndexAndAccess\lFlags" alt="" coords="529,798,720,839"/>
+<area shape="rect" id="node24" href="validity_8c.html#af6d2b7c857a46255df3afb4283c5e5bb" title="checkClassNameFileNameMatch" alt="" coords="1452,1031,1671,1057"/>
+<area shape="rect" id="node25" href="fields_8c.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="readField" alt="" coords="587,468,662,495"/>
+<area shape="rect" id="node27" href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="829,341,925,368"/>
+<area shape="rect" id="node28" href="methods_8c.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="readMethod" alt="" coords="579,747,670,773"/>
+<area shape="rect" id="node8" href="constantpool_8c.html#afea5409b47477cdbdb590472022c45f9" title="readConstantPool_Class" alt="" coords="794,291,961,317"/>
+<area shape="rect" id="node9" href="constantpool_8c.html#a730bf0dfa0b00508ed8ed3b6119853c3" title="readConstantPool_Utf8" alt="" coords="798,189,957,216"/>
+<area shape="rect" id="node10" href="constantpool_8c.html#ab3d1d9a9bdb1b7162d341ce9c8fd8784" title="readConstantPool_Fieldref" alt="" coords="789,240,965,267"/>
+<area shape="rect" id="node11" href="constantpool_8c.html#a73f94285fc7c4790ca2900b6fc78b0f3" title="readConstantPool_Integer" alt="" coords="791,88,964,115"/>
+<area shape="rect" id="node12" href="constantpool_8c.html#a1f4a6c4da0269e609a18f2d8174a2c39" title="readConstantPool_Long" alt="" coords="797,37,958,64"/>
+<area shape="rect" id="node14" href="validity_8c.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="isValidNameIndex" alt="" coords="1056,645,1184,672"/>
+<area shape="rect" id="node17" href="validity_8c.html#a121c42f0653a58fca056cb4397390af6" title="isValidUTF8Index" alt="" coords="814,696,941,723"/>
+<area shape="rect" id="node18" href="validity_8c.html#a81d937b31b6bd9f76e8b3d82a6cfd87f" title="checkClassIndex" alt="" coords="816,595,939,621"/>
+<area shape="rect" id="node19" href="validity_8c.html#a4d63a85c447a20a08c12168e73468438" title="checkMethodNameAndTypeIndex" alt="" coords="768,848,987,875"/>
+<area shape="rect" id="node22" href="validity_8c.html#ad4ad6d4744a849eb777477793ccf2675" title="checkFieldNameAndTypeIndex" alt="" coords="775,797,979,824"/>
+<area shape="rect" id="node15" href="validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="isValidJavaIdentifier" alt="" coords="1259,860,1398,887"/>
+<area shape="rect" id="node16" href="readfunctions_8c.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="1494,860,1629,887"/>
+<area shape="rect" id="node20" href="validity_8c.html#a778bd378bf5e58d2b5dc40601734b813" title="isValidMethodNameIndex" alt="" coords="1035,899,1205,925"/>
+<area shape="rect" id="node21" href="readfunctions_8c.html#a4f647535c3f4f744463ddffb93a1ad68" title="readMethodDescriptor" alt="" coords="1253,936,1404,963"/>
+<area shape="rect" id="node26" href="validity_8c.html#ae92343db487c57fae11501fad146897a" title="checkFieldAccessFlags" alt="" coords="797,544,958,571"/>
+<area shape="rect" id="node29" href="validity_8c.html#a60bc1663d4cc614ea2d0709d9e57d20d" title="checkMethodAccessFlags" alt="" coords="789,1000,965,1027"/>
+<area shape="rect" id="node34" href="methods_8c.html#a50e4408e126b27fef952d2e1fc1b044e" title="freeMethodAttributes" alt="" coords="553,1253,696,1280"/>
+<area shape="rect" id="node35" href="attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="820,1304,935,1331"/>
+<area shape="rect" id="node36" href="fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="freeFieldAttributes" alt="" coords="561,1355,689,1381"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_icgraph.png" border="0" usemap="#jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_icgraph" alt=""/></div>
+<map name="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_icgraph" id="jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="152,29,203,56"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abcb0d8ba358754edbeb13d25de07a07f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t runMethod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaVirtualMachine.html">JavaVirtualMachine</a> *&#160;</td>
+          <td class="paramname"><em>jvm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmethod__info.html">method_info</a> *&#160;</td>
+          <td class="paramname"><em>method</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_cgraph.png" border="0" usemap="#jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_cgraph" alt=""/></div>
+<map name="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_cgraph" id="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_cgraph">
+<area shape="rect" id="node2" href="framestack_8c.html#a38bb1bda9e43d71c8472936c0ee14d72" title="newFrame" alt="" coords="168,31,251,57"/>
+<area shape="rect" id="node4" href="framestack_8c.html#a173f487de2e018f4d63d576edccb4c3d" title="pushFrame" alt="" coords="166,107,253,133"/>
+<area shape="rect" id="node5" href="instructions_8c.html#a036f840d5a734d71a7807c8d4fc203c6" title="fetchOpcodeFunction" alt="" coords="136,157,283,184"/>
+<area shape="rect" id="node12" href="opcodes_8c.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="getOpcodeMnemonic" alt="" coords="137,208,282,235"/>
+<area shape="rect" id="node13" href="framestack_8c.html#ab279becc7f4fe166543e43d12e45ef56" title="popFrame" alt="" coords="169,259,249,285"/>
+<area shape="rect" id="node14" href="framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="169,309,250,336"/>
+<area shape="rect" id="node3" href="attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5" title="getAttributeByType" alt="" coords="331,5,465,32"/>
+<area shape="rect" id="node6" href="instructions_8c.html#a66a6ac26513b757e08d88b0ed26213a2" title="instfunc_nop" alt="" coords="350,56,446,83"/>
+<area shape="rect" id="node7" href="instructions_8c.html#a39b87c11ed1110abbd8f8abe499f2ca8" title="instfunc_aconstnull" alt="" coords="331,107,465,133"/>
+<area shape="rect" id="node9" href="instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="341,157,455,184"/>
+<area shape="rect" id="node10" href="instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="341,208,455,235"/>
+<area shape="rect" id="node11" href="instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="352,259,444,285"/>
+<area shape="rect" id="node8" href="operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="513,183,612,209"/>
+<area shape="rect" id="node15" href="operandstack_8c.html#a0e5f73651cf63f65cd5c30437070e5dd" title="freeOperandStack" alt="" coords="335,309,461,336"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_icgraph.png" border="0" usemap="#jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_icgraph" alt=""/></div>
+<map name="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_icgraph" id="jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_icgraph">
+<area shape="rect" id="node2" href="jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="136,5,231,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="279,5,329,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

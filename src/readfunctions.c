@@ -6,6 +6,12 @@
 // Reads a four-byte long unsigned integer from the JavaClass
 // that has already been opened. The result is written in the
 // pointer "*out", if not NULL.
+/**
+* Funcao que le um inteiro sem sinal de 4 bytes da JavaClass ja aberta.
+* @param JavaClass* jc 
+* @param uint32_t *out 
+* @return uint8_t escrito em *out se nao for NULL
+*/
 uint8_t readu4(JavaClass* jc, uint32_t* out)
 {
     int byte;

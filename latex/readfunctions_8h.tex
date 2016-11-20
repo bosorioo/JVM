@@ -1,0 +1,184 @@
+\hypertarget{readfunctions_8h}{}\section{Referência ao ficheiro src/readfunctions.h}
+\label{readfunctions_8h}\index{src/readfunctions.\+h@{src/readfunctions.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}javaclass.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}constantpool.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para readfunctions.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{readfunctions_8h_a102d7158b65626e3002c9665fddbb874}{readu4} (struct \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, uint32\+\_\+t $\ast$out)
+\item 
+uint8\+\_\+t \hyperlink{readfunctions_8h_ac361664a5daa1d90860f61ebe6d5f938}{readu2} (struct \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, uint16\+\_\+t $\ast$out)
+\item 
+int32\+\_\+t \hyperlink{readfunctions_8h_a08f0cfff6472d6f452771f609e65c221}{read\+Field\+Descriptor} (uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, char check\+Valid\+Class\+Identifier)
+\item 
+int32\+\_\+t \hyperlink{readfunctions_8h_a4f647535c3f4f744463ddffb93a1ad68}{read\+Method\+Descriptor} (uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, char check\+Valid\+Class\+Identifier)
+\item 
+float \hyperlink{readfunctions_8h_a32ec03a10ab8f1b50b70175e6d9d988d}{read\+Constant\+Pool\+Float} (\hyperlink{structcp__info}{cp\+\_\+info} $\ast$entry)
+\item 
+double \hyperlink{readfunctions_8h_a977e482ef56ed2bf2180445398e02402}{read\+Constant\+Pool\+Double} (\hyperlink{structcp__info}{cp\+\_\+info} $\ast$entry)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\index{readfunctions.\+h@{readfunctions.\+h}!read\+Constant\+Pool\+Double@{read\+Constant\+Pool\+Double}}
+\index{read\+Constant\+Pool\+Double@{read\+Constant\+Pool\+Double}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{read\+Constant\+Pool\+Double(cp\+\_\+info $\ast$entry)}{readConstantPoolDouble(cp_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}double read\+Constant\+Pool\+Double (
+\begin{DoxyParamCaption}
+\item[{{\bf cp\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_a977e482ef56ed2bf2180445398e02402}{}\label{readfunctions_8h_a977e482ef56ed2bf2180445398e02402}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a977e482ef56ed2bf2180445398e02402_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{readfunctions.\+h@{readfunctions.\+h}!read\+Constant\+Pool\+Float@{read\+Constant\+Pool\+Float}}
+\index{read\+Constant\+Pool\+Float@{read\+Constant\+Pool\+Float}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{read\+Constant\+Pool\+Float(cp\+\_\+info $\ast$entry)}{readConstantPoolFloat(cp_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}float read\+Constant\+Pool\+Float (
+\begin{DoxyParamCaption}
+\item[{{\bf cp\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_a32ec03a10ab8f1b50b70175e6d9d988d}{}\label{readfunctions_8h_a32ec03a10ab8f1b50b70175e6d9d988d}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a32ec03a10ab8f1b50b70175e6d9d988d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{readfunctions.\+h@{readfunctions.\+h}!read\+Field\+Descriptor@{read\+Field\+Descriptor}}
+\index{read\+Field\+Descriptor@{read\+Field\+Descriptor}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{read\+Field\+Descriptor(uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, char check\+Valid\+Class\+Identifier)}{readFieldDescriptor(uint8_t *utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)}}]{\setlength{\rightskip}{0pt plus 5cm}int32\+\_\+t read\+Field\+Descriptor (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{char}]{check\+Valid\+Class\+Identifier}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_a08f0cfff6472d6f452771f609e65c221}{}\label{readfunctions_8h_a08f0cfff6472d6f452771f609e65c221}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a08f0cfff6472d6f452771f609e65c221_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a08f0cfff6472d6f452771f609e65c221_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{readfunctions.\+h@{readfunctions.\+h}!read\+Method\+Descriptor@{read\+Method\+Descriptor}}
+\index{read\+Method\+Descriptor@{read\+Method\+Descriptor}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{read\+Method\+Descriptor(uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, char check\+Valid\+Class\+Identifier)}{readMethodDescriptor(uint8_t *utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)}}]{\setlength{\rightskip}{0pt plus 5cm}int32\+\_\+t read\+Method\+Descriptor (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{char}]{check\+Valid\+Class\+Identifier}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_a4f647535c3f4f744463ddffb93a1ad68}{}\label{readfunctions_8h_a4f647535c3f4f744463ddffb93a1ad68}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a4f647535c3f4f744463ddffb93a1ad68_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a4f647535c3f4f744463ddffb93a1ad68_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{readfunctions.\+h@{readfunctions.\+h}!readu2@{readu2}}
+\index{readu2@{readu2}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{readu2(struct Java\+Class $\ast$jc, uint16\+\_\+t $\ast$out)}{readu2(struct JavaClass *jc, uint16_t *out)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t readu2 (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Java\+Class} $\ast$}]{jc, }
+\item[{uint16\+\_\+t $\ast$}]{out}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_ac361664a5daa1d90860f61ebe6d5f938}{}\label{readfunctions_8h_ac361664a5daa1d90860f61ebe6d5f938}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_ac361664a5daa1d90860f61ebe6d5f938_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{readfunctions.\+h@{readfunctions.\+h}!readu4@{readu4}}
+\index{readu4@{readu4}!readfunctions.\+h@{readfunctions.\+h}}
+\subsubsection[{\texorpdfstring{readu4(struct Java\+Class $\ast$jc, uint32\+\_\+t $\ast$out)}{readu4(struct JavaClass *jc, uint32_t *out)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t readu4 (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{uint32\+\_\+t $\ast$}]{out}
+\end{DoxyParamCaption}
+)}\hypertarget{readfunctions_8h_a102d7158b65626e3002c9665fddbb874}{}\label{readfunctions_8h_a102d7158b65626e3002c9665fddbb874}
+Funcao que le um inteiro sem sinal de 4 bytes da \hyperlink{structJavaClass}{Java\+Class} ja aberta. 
+\begin{DoxyParams}{Parâmetros}
+{\em Java\+Class$\ast$} & jc \\
+\hline
+{\em uint32\+\_\+t} & $\ast$out \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+uint8\+\_\+t escrito em $\ast$out se nao for N\+U\+LL 
+\end{DoxyReturn}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readfunctions_8h_a102d7158b65626e3002c9665fddbb874_icgraph}
+\end{center}
+\end{figure}
+
+

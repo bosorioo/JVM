@@ -1,0 +1,137 @@
+\hypertarget{operandstack_8h}{}\section{Referência ao ficheiro src/operandstack.h}
+\label{operandstack_8h}\index{src/operandstack.\+h@{src/operandstack.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Diagrama de dependências de inclusão para operandstack.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{operandstack_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{operandstack_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structOperandStack}{Operand\+Stack}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structOperandStack}{Operand\+Stack} \hyperlink{operandstack_8h_a346a5006b3ffde66941ce40c277fbf86}{Operand\+Stack}
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4}{Operand\+Type} \{ \\*
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa5087579d71722be9d06816518da2bc2}{O\+P\+\_\+\+I\+N\+T\+E\+G\+ER}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4ae0ed5f5c231ae95ba186cf99792ed418}{O\+P\+\_\+\+F\+L\+O\+AT}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2069b5f7fac5141a8c24357fde7fe026}{O\+P\+\_\+\+L\+O\+NG}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa36f2949170ca1e708196ca721980275}{O\+P\+\_\+\+D\+O\+U\+B\+LE}, 
+\\*
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a3a429eddbb7f929a66970a68efc450a0}{O\+P\+\_\+\+N\+U\+LL}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a9b17614c3cbe8009a3c077100f055abe}{O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a17497e3d994fffd3a208ac823a372311}{O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF}, 
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2468854051f36c9ba8b3f16d254ed202}{O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF}, 
+\\*
+\hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a95be567f99bd14f9aa78f062e9dd3daa}{O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{operandstack_8h_a303eeaf9017d19267a875dd251fa2857}{push\+Operand} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os, int32\+\_\+t value, enum \hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4}{Operand\+Type} type)
+\item 
+uint8\+\_\+t \hyperlink{operandstack_8h_aff4533fc27a86d5c5d6d16c455d1ee95}{pop\+Operand} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os, int32\+\_\+t $\ast$out\+Ptr)
+\item 
+void \hyperlink{operandstack_8h_a0e5f73651cf63f65cd5c30437070e5dd}{free\+Operand\+Stack} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos tipos}
+\index{operandstack.\+h@{operandstack.\+h}!Operand\+Stack@{Operand\+Stack}}
+\index{Operand\+Stack@{Operand\+Stack}!operandstack.\+h@{operandstack.\+h}}
+\subsubsection[{\texorpdfstring{Operand\+Stack}{OperandStack}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Operand\+Stack} {\bf Operand\+Stack}}\hypertarget{operandstack_8h_a346a5006b3ffde66941ce40c277fbf86}{}\label{operandstack_8h_a346a5006b3ffde66941ce40c277fbf86}
+
+
+\subsection{Documentação dos valores da enumeração}
+\index{operandstack.\+h@{operandstack.\+h}!Operand\+Type@{Operand\+Type}}
+\index{Operand\+Type@{Operand\+Type}!operandstack.\+h@{operandstack.\+h}}
+\subsubsection[{\texorpdfstring{Operand\+Type}{OperandType}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Operand\+Type}}\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4}
+\begin{Desc}
+\item[Valores de enumerações]\par
+\begin{description}
+\index{O\+P\+\_\+\+I\+N\+T\+E\+G\+ER@{O\+P\+\_\+\+I\+N\+T\+E\+G\+ER}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+I\+N\+T\+E\+G\+ER@{O\+P\+\_\+\+I\+N\+T\+E\+G\+ER}}\item[{\em 
+O\+P\+\_\+\+I\+N\+T\+E\+G\+ER\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa5087579d71722be9d06816518da2bc2}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa5087579d71722be9d06816518da2bc2}
+}]\index{O\+P\+\_\+\+F\+L\+O\+AT@{O\+P\+\_\+\+F\+L\+O\+AT}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+F\+L\+O\+AT@{O\+P\+\_\+\+F\+L\+O\+AT}}\item[{\em 
+O\+P\+\_\+\+F\+L\+O\+AT\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4ae0ed5f5c231ae95ba186cf99792ed418}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4ae0ed5f5c231ae95ba186cf99792ed418}
+}]\index{O\+P\+\_\+\+L\+O\+NG@{O\+P\+\_\+\+L\+O\+NG}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+L\+O\+NG@{O\+P\+\_\+\+L\+O\+NG}}\item[{\em 
+O\+P\+\_\+\+L\+O\+NG\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2069b5f7fac5141a8c24357fde7fe026}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2069b5f7fac5141a8c24357fde7fe026}
+}]\index{O\+P\+\_\+\+D\+O\+U\+B\+LE@{O\+P\+\_\+\+D\+O\+U\+B\+LE}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+D\+O\+U\+B\+LE@{O\+P\+\_\+\+D\+O\+U\+B\+LE}}\item[{\em 
+O\+P\+\_\+\+D\+O\+U\+B\+LE\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa36f2949170ca1e708196ca721980275}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4aa36f2949170ca1e708196ca721980275}
+}]\index{O\+P\+\_\+\+N\+U\+LL@{O\+P\+\_\+\+N\+U\+LL}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+N\+U\+LL@{O\+P\+\_\+\+N\+U\+LL}}\item[{\em 
+O\+P\+\_\+\+N\+U\+LL\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a3a429eddbb7f929a66970a68efc450a0}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a3a429eddbb7f929a66970a68efc450a0}
+}]\index{O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF@{O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF@{O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF}}\item[{\em 
+O\+P\+\_\+\+A\+R\+R\+A\+Y\+R\+EF\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a9b17614c3cbe8009a3c077100f055abe}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a9b17614c3cbe8009a3c077100f055abe}
+}]\index{O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF@{O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF@{O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF}}\item[{\em 
+O\+P\+\_\+\+S\+T\+R\+I\+N\+G\+R\+EF\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a17497e3d994fffd3a208ac823a372311}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a17497e3d994fffd3a208ac823a372311}
+}]\index{O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF@{O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF@{O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF}}\item[{\em 
+O\+P\+\_\+\+C\+L\+A\+S\+S\+R\+EF\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2468854051f36c9ba8b3f16d254ed202}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a2468854051f36c9ba8b3f16d254ed202}
+}]\index{O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF@{O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF}!operandstack.\+h@{operandstack.\+h}}\index{operandstack.\+h@{operandstack.\+h}!O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF@{O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF}}\item[{\em 
+O\+P\+\_\+\+M\+E\+T\+H\+O\+D\+R\+EF\hypertarget{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a95be567f99bd14f9aa78f062e9dd3daa}{}\label{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4a95be567f99bd14f9aa78f062e9dd3daa}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Documentação das funções}
+\index{operandstack.\+h@{operandstack.\+h}!free\+Operand\+Stack@{free\+Operand\+Stack}}
+\index{free\+Operand\+Stack@{free\+Operand\+Stack}!operandstack.\+h@{operandstack.\+h}}
+\subsubsection[{\texorpdfstring{free\+Operand\+Stack(\+Operand\+Stack $\ast$$\ast$os)}{freeOperandStack(OperandStack **os)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Operand\+Stack (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8h_a0e5f73651cf63f65cd5c30437070e5dd}{}\label{operandstack_8h_a0e5f73651cf63f65cd5c30437070e5dd}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{operandstack_8h_a0e5f73651cf63f65cd5c30437070e5dd_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{operandstack.\+h@{operandstack.\+h}!pop\+Operand@{pop\+Operand}}
+\index{pop\+Operand@{pop\+Operand}!operandstack.\+h@{operandstack.\+h}}
+\subsubsection[{\texorpdfstring{pop\+Operand(\+Operand\+Stack $\ast$$\ast$os, int32\+\_\+t $\ast$out\+Ptr)}{popOperand(OperandStack **os, int32_t *outPtr)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t pop\+Operand (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os, }
+\item[{int32\+\_\+t $\ast$}]{out\+Ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8h_aff4533fc27a86d5c5d6d16c455d1ee95}{}\label{operandstack_8h_aff4533fc27a86d5c5d6d16c455d1ee95}
+\index{operandstack.\+h@{operandstack.\+h}!push\+Operand@{push\+Operand}}
+\index{push\+Operand@{push\+Operand}!operandstack.\+h@{operandstack.\+h}}
+\subsubsection[{\texorpdfstring{push\+Operand(\+Operand\+Stack $\ast$$\ast$os, int32\+\_\+t value, enum Operand\+Type type)}{pushOperand(OperandStack **os, int32_t value, enum OperandType type)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t push\+Operand (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os, }
+\item[{int32\+\_\+t}]{value, }
+\item[{enum {\bf Operand\+Type}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8h_a303eeaf9017d19267a875dd251fa2857}{}\label{operandstack_8h_a303eeaf9017d19267a875dd251fa2857}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{operandstack_8h_a303eeaf9017d19267a875dd251fa2857_icgraph}
+\end{center}
+\end{figure}
+
+

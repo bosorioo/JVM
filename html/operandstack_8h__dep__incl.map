@@ -1,0 +1,10 @@
+<map id="src/operandstack.h" name="src/operandstack.h">
+<area shape="rect" id="node2" href="$framestack_8h.html" title="src/framestack.h" alt="" coords="103,80,223,107"/>
+<area shape="rect" id="node9" href="$operandstack_8c.html" title="src/operandstack.c" alt="" coords="247,80,380,107"/>
+<area shape="rect" id="node3" href="$framestack_8c.html" title="src/framestack.c" alt="" coords="5,155,125,181"/>
+<area shape="rect" id="node4" href="$jvm_8h.html" title="src/jvm.h" alt="" coords="206,155,282,181"/>
+<area shape="rect" id="node5" href="$instructions_8h.html" title="src/instructions.h" alt="" coords="91,229,213,256"/>
+<area shape="rect" id="node7" href="$jvm_8c.html" title="src/jvm.c" alt="" coords="213,304,289,331"/>
+<area shape="rect" id="node8" href="$main_8c.html" title="src/main.c" alt="" coords="288,229,371,256"/>
+<area shape="rect" id="node6" href="$instructions_8c.html" title="src/instructions.c" alt="" coords="65,304,188,331"/>
+</map>

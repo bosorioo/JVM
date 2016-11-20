@@ -1,0 +1,175 @@
+\hypertarget{constantpool_8h}{}\section{Referência ao ficheiro src/constantpool.h}
+\label{constantpool_8h}\index{src/constantpool.\+h@{src/constantpool.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}javaclass.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para constantpool.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcp__info}{cp\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structcp__info}{cp\+\_\+info} \hyperlink{constantpool_8h_ac152ca02fa3b57b8d90f0ae0b30f099a}{cp\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3}{Constant\+Pool\+Tag} \{ \\*
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a0c47012a59af298b394855447822a7e3}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class} = 7, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a6f435c620d73f5e9366149665dc8ec6e}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref} = 9, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a74af7140e84140c938fbf89e0c33eea8}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref} = 10, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a49962b9b17bc2ab27647a398b8083828}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref} = 11, 
+\\*
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a2c4493d41b4f7ff5cf9f2846e1bb92e0}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String} = 8, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a211cf9d5f5f1416862052d4671ad440f}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer} = 3, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3aaef0ceec2622d1d49b45fbe54e406f21}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float} = 4, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a1d98ddfe1f9abb18cf43bc2c1b74bdd5}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long} = 5, 
+\\*
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a728b77a24433c54f6c8a0f613e50a2c5}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double} = 6, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a80805f21212baf2079b2ab767e2ab061}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type} = 12, 
+\hyperlink{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a4100a823f09e364338e42951035432ed}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8} = 1
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{constantpool_8h_a80f31089353a0ed2d861401c2c741701}{decode\+Tag} (uint8\+\_\+t tag)
+\item 
+char \hyperlink{constantpool_8h_a62504539fde83f5183d20f262d4b1943}{read\+Constant\+Pool\+Entry} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structcp__info}{cp\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{constantpool_8h_ab7d27eb8d4164ae1a1fd11664ba4d1ef}{print\+Constant\+Pool} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos tipos}
+\index{constantpool.\+h@{constantpool.\+h}!cp\+\_\+info@{cp\+\_\+info}}
+\index{cp\+\_\+info@{cp\+\_\+info}!constantpool.\+h@{constantpool.\+h}}
+\subsubsection[{\texorpdfstring{cp\+\_\+info}{cp_info}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf cp\+\_\+info} {\bf cp\+\_\+info}}\hypertarget{constantpool_8h_ac152ca02fa3b57b8d90f0ae0b30f099a}{}\label{constantpool_8h_ac152ca02fa3b57b8d90f0ae0b30f099a}
+
+
+\subsection{Documentação dos valores da enumeração}
+\index{constantpool.\+h@{constantpool.\+h}!Constant\+Pool\+Tag@{Constant\+Pool\+Tag}}
+\index{Constant\+Pool\+Tag@{Constant\+Pool\+Tag}!constantpool.\+h@{constantpool.\+h}}
+\subsubsection[{\texorpdfstring{Constant\+Pool\+Tag}{ConstantPoolTag}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Constant\+Pool\+Tag}}\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3}
+\begin{Desc}
+\item[Valores de enumerações]\par
+\begin{description}
+\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a0c47012a59af298b394855447822a7e3}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a0c47012a59af298b394855447822a7e3}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a6f435c620d73f5e9366149665dc8ec6e}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a6f435c620d73f5e9366149665dc8ec6e}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a74af7140e84140c938fbf89e0c33eea8}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a74af7140e84140c938fbf89e0c33eea8}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a49962b9b17bc2ab27647a398b8083828}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a49962b9b17bc2ab27647a398b8083828}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a2c4493d41b4f7ff5cf9f2846e1bb92e0}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a2c4493d41b4f7ff5cf9f2846e1bb92e0}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a211cf9d5f5f1416862052d4671ad440f}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a211cf9d5f5f1416862052d4671ad440f}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3aaef0ceec2622d1d49b45fbe54e406f21}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3aaef0ceec2622d1d49b45fbe54e406f21}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a1d98ddfe1f9abb18cf43bc2c1b74bdd5}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a1d98ddfe1f9abb18cf43bc2c1b74bdd5}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a728b77a24433c54f6c8a0f613e50a2c5}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a728b77a24433c54f6c8a0f613e50a2c5}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a80805f21212baf2079b2ab767e2ab061}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a80805f21212baf2079b2ab767e2ab061}
+}]\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8}!constantpool.\+h@{constantpool.\+h}}\index{constantpool.\+h@{constantpool.\+h}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8}}\item[{\em 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\hypertarget{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a4100a823f09e364338e42951035432ed}{}\label{constantpool_8h_a4a3344c6a9649978cbcf29955d4de3c3a4100a823f09e364338e42951035432ed}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Documentação das funções}
+\index{constantpool.\+h@{constantpool.\+h}!decode\+Tag@{decode\+Tag}}
+\index{decode\+Tag@{decode\+Tag}!constantpool.\+h@{constantpool.\+h}}
+\subsubsection[{\texorpdfstring{decode\+Tag(uint8\+\_\+t tag)}{decodeTag(uint8_t tag)}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ decode\+Tag (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{tag}
+\end{DoxyParamCaption}
+)}\hypertarget{constantpool_8h_a80f31089353a0ed2d861401c2c741701}{}\label{constantpool_8h_a80f31089353a0ed2d861401c2c741701}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h_a80f31089353a0ed2d861401c2c741701_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{constantpool.\+h@{constantpool.\+h}!print\+Constant\+Pool@{print\+Constant\+Pool}}
+\index{print\+Constant\+Pool@{print\+Constant\+Pool}!constantpool.\+h@{constantpool.\+h}}
+\subsubsection[{\texorpdfstring{print\+Constant\+Pool(\+Java\+Class $\ast$jc)}{printConstantPool(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Constant\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{constantpool_8h_ab7d27eb8d4164ae1a1fd11664ba4d1ef}{}\label{constantpool_8h_ab7d27eb8d4164ae1a1fd11664ba4d1ef}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h_ab7d27eb8d4164ae1a1fd11664ba4d1ef_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h_ab7d27eb8d4164ae1a1fd11664ba4d1ef_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{constantpool.\+h@{constantpool.\+h}!read\+Constant\+Pool\+Entry@{read\+Constant\+Pool\+Entry}}
+\index{read\+Constant\+Pool\+Entry@{read\+Constant\+Pool\+Entry}!constantpool.\+h@{constantpool.\+h}}
+\subsubsection[{\texorpdfstring{read\+Constant\+Pool\+Entry(\+Java\+Class $\ast$jc, cp\+\_\+info $\ast$entry)}{readConstantPoolEntry(JavaClass *jc, cp_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}char read\+Constant\+Pool\+Entry (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf cp\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{constantpool_8h_a62504539fde83f5183d20f262d4b1943}{}\label{constantpool_8h_a62504539fde83f5183d20f262d4b1943}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h_a62504539fde83f5183d20f262d4b1943_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constantpool_8h_a62504539fde83f5183d20f262d4b1943_icgraph}
+\end{center}
+\end{figure}
+
+

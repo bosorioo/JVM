@@ -1,0 +1,69 @@
+\hypertarget{operandstack_8c}{}\section{Referência ao ficheiro src/operandstack.c}
+\label{operandstack_8c}\index{src/operandstack.\+c@{src/operandstack.\+c}}
+{\ttfamily \#include \char`\"{}operandstack.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Diagrama de dependências de inclusão para operandstack.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{operandstack_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{operandstack_8c_a303eeaf9017d19267a875dd251fa2857}{push\+Operand} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os, int32\+\_\+t value, enum \hyperlink{operandstack_8h_aa4b9b8291a90b1a586c468110fb346a4}{Operand\+Type} type)
+\item 
+uint8\+\_\+t \hyperlink{operandstack_8c_aff4533fc27a86d5c5d6d16c455d1ee95}{pop\+Operand} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os, int32\+\_\+t $\ast$out\+Ptr)
+\item 
+void \hyperlink{operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd}{free\+Operand\+Stack} (\hyperlink{structOperandStack}{Operand\+Stack} $\ast$$\ast$os)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\index{operandstack.\+c@{operandstack.\+c}!free\+Operand\+Stack@{free\+Operand\+Stack}}
+\index{free\+Operand\+Stack@{free\+Operand\+Stack}!operandstack.\+c@{operandstack.\+c}}
+\subsubsection[{\texorpdfstring{free\+Operand\+Stack(\+Operand\+Stack $\ast$$\ast$os)}{freeOperandStack(OperandStack **os)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Operand\+Stack (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd}{}\label{operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{operandstack.\+c@{operandstack.\+c}!pop\+Operand@{pop\+Operand}}
+\index{pop\+Operand@{pop\+Operand}!operandstack.\+c@{operandstack.\+c}}
+\subsubsection[{\texorpdfstring{pop\+Operand(\+Operand\+Stack $\ast$$\ast$os, int32\+\_\+t $\ast$out\+Ptr)}{popOperand(OperandStack **os, int32_t *outPtr)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t pop\+Operand (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os, }
+\item[{int32\+\_\+t $\ast$}]{out\+Ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8c_aff4533fc27a86d5c5d6d16c455d1ee95}{}\label{operandstack_8c_aff4533fc27a86d5c5d6d16c455d1ee95}
+\index{operandstack.\+c@{operandstack.\+c}!push\+Operand@{push\+Operand}}
+\index{push\+Operand@{push\+Operand}!operandstack.\+c@{operandstack.\+c}}
+\subsubsection[{\texorpdfstring{push\+Operand(\+Operand\+Stack $\ast$$\ast$os, int32\+\_\+t value, enum Operand\+Type type)}{pushOperand(OperandStack **os, int32_t value, enum OperandType type)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t push\+Operand (
+\begin{DoxyParamCaption}
+\item[{{\bf Operand\+Stack} $\ast$$\ast$}]{os, }
+\item[{int32\+\_\+t}]{value, }
+\item[{enum {\bf Operand\+Type}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{operandstack_8c_a303eeaf9017d19267a875dd251fa2857}{}\label{operandstack_8c_a303eeaf9017d19267a875dd251fa2857}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{operandstack_8c_a303eeaf9017d19267a875dd251fa2857_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,11 @@
+<map id="src/instructions.c" name="src/instructions.c">
+<area shape="rect" id="node2" href="$instructions_8h.html" title="instructions.h" alt="" coords="139,80,239,107"/>
+<area shape="rect" id="node5" href="$jvm_8h.html" title="jvm.h" alt="" coords="245,155,299,181"/>
+<area shape="rect" id="node12" href="$framestack_8h.html" title="framestack.h" alt="" coords="589,229,688,256"/>
+<area shape="rect" id="node6" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="373,229,461,256"/>
+<area shape="rect" id="node8" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="195,304,301,331"/>
+<area shape="rect" id="node9" href="$attributes_8h.html" title="attributes.h" alt="" coords="537,379,623,405"/>
+<area shape="rect" id="node10" href="$fields_8h.html" title="fields.h" alt="" coords="483,304,547,331"/>
+<area shape="rect" id="node11" href="$methods_8h.html" title="methods.h" alt="" coords="376,304,459,331"/>
+<area shape="rect" id="node13" href="$operandstack_8h.html" title="operandstack.h" alt="" coords="693,379,803,405"/>
+</map>

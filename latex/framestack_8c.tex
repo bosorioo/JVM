@@ -1,0 +1,153 @@
+\hypertarget{framestack_8c}{}\section{Referência ao ficheiro src/framestack.c}
+\label{framestack_8c}\index{src/framestack.\+c@{src/framestack.\+c}}
+{\ttfamily \#include \char`\"{}framestack.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Diagrama de dependências de inclusão para framestack.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structFrame}{Frame} $\ast$ \hyperlink{framestack_8c_a38bb1bda9e43d71c8472936c0ee14d72}{new\+Frame} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$method)
+\item 
+void \hyperlink{framestack_8c_ac6d7106961bbc47fa0f024aae9ab12f2}{free\+Frame} (\hyperlink{structFrame}{Frame} $\ast$frame)
+\item 
+uint8\+\_\+t \hyperlink{framestack_8c_a173f487de2e018f4d63d576edccb4c3d}{push\+Frame} (\hyperlink{structFrameStack}{Frame\+Stack} $\ast$$\ast$fs, \hyperlink{structFrame}{Frame} $\ast$frame)
+\item 
+uint8\+\_\+t \hyperlink{framestack_8c_ab279becc7f4fe166543e43d12e45ef56}{pop\+Frame} (\hyperlink{structFrameStack}{Frame\+Stack} $\ast$$\ast$fs, \hyperlink{structFrame}{Frame} $\ast$out\+Ptr)
+\item 
+void \hyperlink{framestack_8c_a6debf06c308367fb8e44acfdb0d27ea8}{free\+Frame\+Stack} (\hyperlink{structFrameStack}{Frame\+Stack} $\ast$$\ast$fs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\index{framestack.\+c@{framestack.\+c}!free\+Frame@{free\+Frame}}
+\index{free\+Frame@{free\+Frame}!framestack.\+c@{framestack.\+c}}
+\subsubsection[{\texorpdfstring{free\+Frame(\+Frame $\ast$frame)}{freeFrame(Frame *frame)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf Frame} $\ast$}]{frame}
+\end{DoxyParamCaption}
+)}\hypertarget{framestack_8c_ac6d7106961bbc47fa0f024aae9ab12f2}{}\label{framestack_8c_ac6d7106961bbc47fa0f024aae9ab12f2}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{framestack_8c_ac6d7106961bbc47fa0f024aae9ab12f2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c_ac6d7106961bbc47fa0f024aae9ab12f2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{framestack.\+c@{framestack.\+c}!free\+Frame\+Stack@{free\+Frame\+Stack}}
+\index{free\+Frame\+Stack@{free\+Frame\+Stack}!framestack.\+c@{framestack.\+c}}
+\subsubsection[{\texorpdfstring{free\+Frame\+Stack(\+Frame\+Stack $\ast$$\ast$fs)}{freeFrameStack(FrameStack **fs)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Frame\+Stack (
+\begin{DoxyParamCaption}
+\item[{{\bf Frame\+Stack} $\ast$$\ast$}]{fs}
+\end{DoxyParamCaption}
+)}\hypertarget{framestack_8c_a6debf06c308367fb8e44acfdb0d27ea8}{}\label{framestack_8c_a6debf06c308367fb8e44acfdb0d27ea8}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c_a6debf06c308367fb8e44acfdb0d27ea8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{framestack_8c_a6debf06c308367fb8e44acfdb0d27ea8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{framestack.\+c@{framestack.\+c}!new\+Frame@{new\+Frame}}
+\index{new\+Frame@{new\+Frame}!framestack.\+c@{framestack.\+c}}
+\subsubsection[{\texorpdfstring{new\+Frame(\+Java\+Class $\ast$jc, method\+\_\+info $\ast$method)}{newFrame(JavaClass *jc, method_info *method)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Frame}$\ast$ new\+Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{method}
+\end{DoxyParamCaption}
+)}\hypertarget{framestack_8c_a38bb1bda9e43d71c8472936c0ee14d72}{}\label{framestack_8c_a38bb1bda9e43d71c8472936c0ee14d72}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{framestack_8c_a38bb1bda9e43d71c8472936c0ee14d72_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c_a38bb1bda9e43d71c8472936c0ee14d72_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{framestack.\+c@{framestack.\+c}!pop\+Frame@{pop\+Frame}}
+\index{pop\+Frame@{pop\+Frame}!framestack.\+c@{framestack.\+c}}
+\subsubsection[{\texorpdfstring{pop\+Frame(\+Frame\+Stack $\ast$$\ast$fs, Frame $\ast$out\+Ptr)}{popFrame(FrameStack **fs, Frame *outPtr)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t pop\+Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf Frame\+Stack} $\ast$$\ast$}]{fs, }
+\item[{{\bf Frame} $\ast$}]{out\+Ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{framestack_8c_ab279becc7f4fe166543e43d12e45ef56}{}\label{framestack_8c_ab279becc7f4fe166543e43d12e45ef56}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c_ab279becc7f4fe166543e43d12e45ef56_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{framestack.\+c@{framestack.\+c}!push\+Frame@{push\+Frame}}
+\index{push\+Frame@{push\+Frame}!framestack.\+c@{framestack.\+c}}
+\subsubsection[{\texorpdfstring{push\+Frame(\+Frame\+Stack $\ast$$\ast$fs, Frame $\ast$frame)}{pushFrame(FrameStack **fs, Frame *frame)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t push\+Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf Frame\+Stack} $\ast$$\ast$}]{fs, }
+\item[{{\bf Frame} $\ast$}]{frame}
+\end{DoxyParamCaption}
+)}\hypertarget{framestack_8c_a173f487de2e018f4d63d576edccb4c3d}{}\label{framestack_8c_a173f487de2e018f4d63d576edccb4c3d}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framestack_8c_a173f487de2e018f4d63d576edccb4c3d_icgraph}
+\end{center}
+\end{figure}
+
+

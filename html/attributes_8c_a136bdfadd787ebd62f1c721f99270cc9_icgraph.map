@@ -1,0 +1,8 @@
+<map id="freeAttributeInfo" name="freeAttributeInfo">
+<area shape="rect" id="node2" href="$fields_8h.html#aeaafced8bc17d76aa18f38a005e01f99" title="freeFieldAttributes" alt="" coords="175,5,303,32"/>
+<area shape="rect" id="node3" href="$javaclass_8h.html#afc621448c86d015f1f284e3e0bc3f276" title="closeClassFile" alt="" coords="359,56,467,83"/>
+<area shape="rect" id="node7" href="$methods_8h.html#a50e4408e126b27fef952d2e1fc1b044e" title="freeMethodAttributes" alt="" coords="168,107,311,133"/>
+<area shape="rect" id="node4" href="$jvm_8h.html#a65269d70951aacfe829c89c078dad67a" title="deinitJVM" alt="" coords="524,5,604,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="661,56,712,83"/>
+<area shape="rect" id="node6" href="$jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="515,131,613,157"/>
+</map>

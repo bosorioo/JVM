@@ -1,0 +1,12 @@
+<map id="cmp_UTF8_Ascii" name="cmp_UTF8_Ascii">
+<area shape="rect" id="node2" href="$jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="1041,93,1140,120"/>
+<area shape="rect" id="node4" href="$jvm_8h.html#ab4cb01bb8ccaa15560e70d43c741a396" title="isClassLoaded" alt="" coords="207,43,315,69"/>
+<area shape="rect" id="node5" href="$methods_8h.html#a2e2a55de7c8ab8b17cf8315c3a6a509f" title="getMethodMatching" alt="" coords="436,5,572,32"/>
+<area shape="rect" id="node7" href="$validity_8h.html#a778bd378bf5e58d2b5dc40601734b813" title="isValidMethodNameIndex" alt="" coords="176,144,347,171"/>
+<area shape="rect" id="node3" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1188,93,1239,120"/>
+<area shape="rect" id="node6" href="$jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="703,9,798,36"/>
+<area shape="rect" id="node8" href="$methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="readMethod" alt="" coords="705,144,796,171"/>
+<area shape="rect" id="node10" href="$validity_8c.html#a4d63a85c447a20a08c12168e73468438" title="checkMethodNameAndTypeIndex" alt="" coords="395,195,613,221"/>
+<area shape="rect" id="node9" href="$javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="888,144,993,171"/>
+<area shape="rect" id="node11" href="$validity_8h.html#aa0977a766bc0cd47a49ca0e00e706310" title="checkConstantPoolValidity" alt="" coords="661,195,840,221"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="freeOperandStack" name="freeOperandStack">
+<area shape="rect" id="node2" href="$framestack_8h.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="180,31,261,57"/>
+<area shape="rect" id="node3" href="$framestack_8h.html#a6debf06c308367fb8e44acfdb0d27ea8" title="freeFrameStack" alt="" coords="309,5,424,32"/>
+<area shape="rect" id="node6" href="$jvm_8h.html#abcb0d8ba358754edbeb13d25de07a07f" title="runMethod" alt="" coords="325,56,408,83"/>
+<area shape="rect" id="node4" href="$jvm_8h.html#a65269d70951aacfe829c89c078dad67a" title="deinitJVM" alt="" coords="479,5,559,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="615,31,665,57"/>
+<area shape="rect" id="node7" href="$jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="472,56,567,83"/>
+</map>

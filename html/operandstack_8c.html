@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - Java Virtual Machine: Referência ao ficheiro src/operandstack.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - Java Virtual Machine
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro operandstack.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="operandstack_8h_source.html">operandstack.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Diagrama de dependências de inclusão para operandstack.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="operandstack_8c__incl.png" border="0" usemap="#src_2operandstack_8c" alt=""/></div>
+<map name="src_2operandstack_8c" id="src_2operandstack_8c">
+<area shape="rect" id="node2" href="operandstack_8h.html" title="operandstack.h" alt="" coords="5,80,116,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a303eeaf9017d19267a875dd251fa2857"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857">pushOperand</a> (<a class="el" href="structOperandStack.html">OperandStack</a> **os, int32_t value, enum <a class="el" href="operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4">OperandType</a> type)</td></tr>
+<tr class="separator:a303eeaf9017d19267a875dd251fa2857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff4533fc27a86d5c5d6d16c455d1ee95"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operandstack_8c.html#aff4533fc27a86d5c5d6d16c455d1ee95">popOperand</a> (<a class="el" href="structOperandStack.html">OperandStack</a> **os, int32_t *outPtr)</td></tr>
+<tr class="separator:aff4533fc27a86d5c5d6d16c455d1ee95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5f73651cf63f65cd5c30437070e5dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operandstack_8c.html#a0e5f73651cf63f65cd5c30437070e5dd">freeOperandStack</a> (<a class="el" href="structOperandStack.html">OperandStack</a> **os)</td></tr>
+<tr class="separator:a0e5f73651cf63f65cd5c30437070e5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação das funções</h2>
+<a class="anchor" id="a0e5f73651cf63f65cd5c30437070e5dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeOperandStack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structOperandStack.html">OperandStack</a> **&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd_icgraph.png" border="0" usemap="#operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd_icgraph" alt=""/></div>
+<map name="operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd_icgraph" id="operandstack_8c_a0e5f73651cf63f65cd5c30437070e5dd_icgraph">
+<area shape="rect" id="node2" href="framestack_8h.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="180,31,261,57"/>
+<area shape="rect" id="node3" href="framestack_8h.html#a6debf06c308367fb8e44acfdb0d27ea8" title="freeFrameStack" alt="" coords="309,5,424,32"/>
+<area shape="rect" id="node6" href="jvm_8h.html#abcb0d8ba358754edbeb13d25de07a07f" title="runMethod" alt="" coords="325,56,408,83"/>
+<area shape="rect" id="node4" href="jvm_8h.html#a65269d70951aacfe829c89c078dad67a" title="deinitJVM" alt="" coords="479,5,559,32"/>
+<area shape="rect" id="node5" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="615,31,665,57"/>
+<area shape="rect" id="node7" href="jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="472,56,567,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aff4533fc27a86d5c5d6d16c455d1ee95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t popOperand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structOperandStack.html">OperandStack</a> **&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>outPtr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a303eeaf9017d19267a875dd251fa2857"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t pushOperand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structOperandStack.html">OperandStack</a> **&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4">OperandType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="operandstack_8c_a303eeaf9017d19267a875dd251fa2857_icgraph.png" border="0" usemap="#operandstack_8c_a303eeaf9017d19267a875dd251fa2857_icgraph" alt=""/></div>
+<map name="operandstack_8c_a303eeaf9017d19267a875dd251fa2857_icgraph" id="operandstack_8c_a303eeaf9017d19267a875dd251fa2857_icgraph">
+<area shape="rect" id="node2" href="instructions_8c.html#a39b87c11ed1110abbd8f8abe499f2ca8" title="instfunc_aconstnull" alt="" coords="152,5,287,32"/>
+<area shape="rect" id="node7" href="instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="163,56,276,83"/>
+<area shape="rect" id="node8" href="instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="163,107,276,133"/>
+<area shape="rect" id="node9" href="instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="173,157,265,184"/>
+<area shape="rect" id="node3" href="instructions_8h.html#a036f840d5a734d71a7807c8d4fc203c6" title="fetchOpcodeFunction" alt="" coords="335,81,481,108"/>
+<area shape="rect" id="node4" href="jvm_8h.html#abcb0d8ba358754edbeb13d25de07a07f" title="runMethod" alt="" coords="529,81,612,108"/>
+<area shape="rect" id="node5" href="jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="660,81,755,108"/>
+<area shape="rect" id="node6" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="803,81,853,108"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

@@ -1,0 +1,134 @@
+\hypertarget{utf8_8h}{}\section{Referência ao ficheiro src/utf8.h}
+\label{utf8_8h}\index{src/utf8.\+h@{src/utf8.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Diagrama de dependências de inclusão para utf8.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{utf8_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{utf8_8h_aa27c74e3b232110e625a4286efbc6102}{next\+U\+T\+F8\+Character} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)
+\item 
+char \hyperlink{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)
+\item 
+uint32\+\_\+t \hyperlink{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}{U\+T\+F8\+\_\+to\+\_\+\+Ascii} (uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\item 
+uint32\+\_\+t \hyperlink{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{U\+T\+F8\+String\+Length} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação das funções}
+\index{utf8.\+h@{utf8.\+h}!cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}}
+\index{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)}{cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{ascii\+\_\+bytes, }
+\item[{int32\+\_\+t}]{ascii\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}{}\label{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}}
+\index{next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{next\+U\+T\+F8\+Character(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)}{nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t next\+U\+T\+F8\+Character (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{uint32\+\_\+t $\ast$}]{out\+Character}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_aa27c74e3b232110e625a4286efbc6102}{}\label{utf8_8h_aa27c74e3b232110e625a4286efbc6102}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_aa27c74e3b232110e625a4286efbc6102_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}}
+\index{U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+\_\+to\+\_\+\+Ascii(uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+\_\+to\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{out\+\_\+buffer, }
+\item[{int32\+\_\+t}]{buffer\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}{}\label{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}}
+\index{U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+String\+Length(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+String\+Length (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{}\label{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2_cgraph}
+\end{center}
+\end{figure}
+
+

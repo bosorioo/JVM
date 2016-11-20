@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - Java Virtual Machine: Código-Fonte de src/readfunctions.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - Java Virtual Machine
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">readfunctions.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="readfunctions_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FILEPARSER_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FILEPARSER_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="javaclass_8h.html">javaclass.h</a>&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constantpool_8h.html">constantpool.h</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;uint8_t <a class="code" href="readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874">readu4</a>(<span class="keyword">struct</span> <a class="code" href="structJavaClass.html">JavaClass</a>* jc, uint32_t* out);</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;uint8_t <a class="code" href="readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938">readu2</a>(<span class="keyword">struct</span> <a class="code" href="structJavaClass.html">JavaClass</a>* jc, uint16_t* out);</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;int32_t <a class="code" href="readfunctions_8h.html#a08f0cfff6472d6f452771f609e65c221">readFieldDescriptor</a>(uint8_t* utf8_bytes, int32_t utf8_len, <span class="keywordtype">char</span> checkValidClassIdentifier);</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;int32_t <a class="code" href="readfunctions_8h.html#a4f647535c3f4f744463ddffb93a1ad68">readMethodDescriptor</a>(uint8_t* utf8_bytes, int32_t utf8_len, <span class="keywordtype">char</span> checkValidClassIdentifier);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">float</span> <a class="code" href="readfunctions_8h.html#a32ec03a10ab8f1b50b70175e6d9d988d">readConstantPoolFloat</a>(<a class="code" href="structcp__info.html">cp_info</a>* entry);</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">double</span> <a class="code" href="readfunctions_8h.html#a977e482ef56ed2bf2180445398e02402">readConstantPoolDouble</a>(<a class="code" href="structcp__info.html">cp_info</a>* entry);</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif // FILEPARSER_H</span></div><div class="ttc" id="structJavaClass_html"><div class="ttname"><a href="structJavaClass.html">JavaClass</a></div><div class="ttdef"><b>Definition:</b> javaclass.h:93</div></div>
+<div class="ttc" id="javaclass_8h_html"><div class="ttname"><a href="javaclass_8h.html">javaclass.h</a></div></div>
+<div class="ttc" id="readfunctions_8h_html_a08f0cfff6472d6f452771f609e65c221"><div class="ttname"><a href="readfunctions_8h.html#a08f0cfff6472d6f452771f609e65c221">readFieldDescriptor</a></div><div class="ttdeci">int32_t readFieldDescriptor(uint8_t *utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:76</div></div>
+<div class="ttc" id="structcp__info_html"><div class="ttname"><a href="structcp__info.html">cp_info</a></div><div class="ttdef"><b>Definition:</b> constantpool.h:9</div></div>
+<div class="ttc" id="constantpool_8h_html"><div class="ttname"><a href="constantpool_8h.html">constantpool.h</a></div></div>
+<div class="ttc" id="readfunctions_8h_html_a4f647535c3f4f744463ddffb93a1ad68"><div class="ttname"><a href="readfunctions_8h.html#a4f647535c3f4f744463ddffb93a1ad68">readMethodDescriptor</a></div><div class="ttdeci">int32_t readMethodDescriptor(uint8_t *utf8_bytes, int32_t utf8_len, char checkValidClassIdentifier)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:140</div></div>
+<div class="ttc" id="readfunctions_8h_html_a32ec03a10ab8f1b50b70175e6d9d988d"><div class="ttname"><a href="readfunctions_8h.html#a32ec03a10ab8f1b50b70175e6d9d988d">readConstantPoolFloat</a></div><div class="ttdeci">float readConstantPoolFloat(cp_info *entry)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:204</div></div>
+<div class="ttc" id="readfunctions_8h_html_a977e482ef56ed2bf2180445398e02402"><div class="ttname"><a href="readfunctions_8h.html#a977e482ef56ed2bf2180445398e02402">readConstantPoolDouble</a></div><div class="ttdeci">double readConstantPoolDouble(cp_info *entry)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:229</div></div>
+<div class="ttc" id="readfunctions_8h_html_ac361664a5daa1d90860f61ebe6d5f938"><div class="ttname"><a href="readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938">readu2</a></div><div class="ttdeci">uint8_t readu2(struct JavaClass *jc, uint16_t *out)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:42</div></div>
+<div class="ttc" id="readfunctions_8h_html_a102d7158b65626e3002c9665fddbb874"><div class="ttname"><a href="readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874">readu4</a></div><div class="ttdeci">uint8_t readu4(struct JavaClass *jc, uint32_t *out)</div><div class="ttdef"><b>Definition:</b> readfunctions.c:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<map id="readFieldDescriptor" name="readFieldDescriptor">
+<area shape="rect" id="node2" href="$fields_8h.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="readField" alt="" coords="665,5,740,32"/>
+<area shape="rect" id="node6" href="$readfunctions_8h.html#a4f647535c3f4f744463ddffb93a1ad68" title="readMethodDescriptor" alt="" coords="385,233,535,260"/>
+<area shape="rect" id="node10" href="$validity_8h.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="isValidJavaIdentifier" alt="" coords="188,107,327,133"/>
+<area shape="rect" id="node13" href="$validity_8c.html#ad4ad6d4744a849eb777477793ccf2675" title="checkFieldNameAndTypeIndex" alt="" coords="601,56,805,83"/>
+<area shape="rect" id="node3" href="$javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="1087,132,1192,159"/>
+<area shape="rect" id="node4" href="$jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="1240,169,1339,196"/>
+<area shape="rect" id="node5" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1387,132,1437,159"/>
+<area shape="rect" id="node7" href="$methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="readMethod" alt="" coords="657,259,748,285"/>
+<area shape="rect" id="node8" href="$validity_8c.html#a4d63a85c447a20a08c12168e73468438" title="checkMethodNameAndTypeIndex" alt="" coords="593,208,812,235"/>
+<area shape="rect" id="node9" href="$validity_8h.html#aa0977a766bc0cd47a49ca0e00e706310" title="checkConstantPoolValidity" alt="" coords="860,132,1039,159"/>
+<area shape="rect" id="node11" href="$validity_8h.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="isValidNameIndex" alt="" coords="396,107,524,133"/>
+<area shape="rect" id="node14" href="$validity_8h.html#a778bd378bf5e58d2b5dc40601734b813" title="isValidMethodNameIndex" alt="" coords="375,183,545,209"/>
+<area shape="rect" id="node12" href="$validity_8c.html#a81d937b31b6bd9f76e8b3d82a6cfd87f" title="checkClassIndex" alt="" coords="641,157,764,184"/>
+</map>

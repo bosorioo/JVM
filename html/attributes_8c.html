@@ -1,0 +1,1238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - Java Virtual Machine: Referência ao ficheiro src/attributes.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - Java Virtual Machine
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro attributes.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="attributes_8h_source.html">attributes.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="readfunctions_8h_source.html">readfunctions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utf8_8h_source.html">utf8.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="opcodes_8h_source.html">opcodes.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;inttypes.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Diagrama de dependências de inclusão para attributes.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c__incl.png" border="0" usemap="#src_2attributes_8c" alt=""/></div>
+<map name="src_2attributes_8c" id="src_2attributes_8c">
+<area shape="rect" id="node2" href="attributes_8h.html" title="attributes.h" alt="" coords="154,80,241,107"/>
+<area shape="rect" id="node9" href="readfunctions_8h.html" title="readfunctions.h" alt="" coords="381,80,492,107"/>
+<area shape="rect" id="node10" href="utf8_8h.html" title="utf8.h" alt="" coords="528,155,582,181"/>
+<area shape="rect" id="node11" href="opcodes_8h.html" title="opcodes.h" alt="" coords="576,80,659,107"/>
+<area shape="rect" id="node4" href="javaclass_8h.html" title="javaclass.h" alt="" coords="194,155,282,181"/>
+<area shape="rect" id="node6" href="constantpool_8h.html" title="constantpool.h" alt="" coords="275,229,382,256"/>
+<area shape="rect" id="node7" href="fields_8h.html" title="fields.h" alt="" coords="136,229,200,256"/>
+<area shape="rect" id="node8" href="methods_8h.html" title="methods.h" alt="" coords="30,229,112,256"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1a4c6b25eeb17e81e6376d4a6383c158"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a1a4c6b25eeb17e81e6376d4a6383c158">DECLARE_ATTR_FUNCS</a>(attr)</td></tr>
+<tr class="separator:a1a4c6b25eeb17e81e6376d4a6383c158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa2f48f44da881b9d32c1a7d1e4db4ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#afa2f48f44da881b9d32c1a7d1e4db4ab">IF_ATTR_CHECK</a>(name)</td></tr>
+<tr class="separator:afa2f48f44da881b9d32c1a7d1e4db4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc32225b9d3eb1107b48de3cd4539075"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#acc32225b9d3eb1107b48de3cd4539075">OPCODE_INTERVAL</a>(begin,  end)&#160;&#160;&#160;(opcode &gt;= opcode_##begin &amp;&amp; opcode &lt;= opcode_##end)</td></tr>
+<tr class="separator:acc32225b9d3eb1107b48de3cd4539075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab757e29ce18ed03f73c4b81a869e4b9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ab757e29ce18ed03f73c4b81a869e4b9a">NEXTBYTE</a>&#160;&#160;&#160;(*(info-&gt;code + ++code_offset))</td></tr>
+<tr class="separator:ab757e29ce18ed03f73c4b81a869e4b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9132a8a41b59ee57e8326b1f516fa9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#acd9132a8a41b59ee57e8326b1f516fa9">ATTR_CASE</a>(attr)&#160;&#160;&#160;case ATTR_##attr: freeAttribute##attr(entry); return;</td></tr>
+<tr class="separator:acd9132a8a41b59ee57e8326b1f516fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9132a8a41b59ee57e8326b1f516fa9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#acd9132a8a41b59ee57e8326b1f516fa9">ATTR_CASE</a>(attr)&#160;&#160;&#160;case ATTR_##attr: <a class="el" href="attributes_8h.html#aee295c33031c2ab941c9260654010db7">printAttribute</a>##attr(jc, entry, identationLevel); break;</td></tr>
+<tr class="separator:acd9132a8a41b59ee57e8326b1f516fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a0aab7731ade76c16c2ff8b3bef1111d1"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1">readAttribute</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a0aab7731ade76c16c2ff8b3bef1111d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01657db1f2f2e478b93e5329c666901e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e">ident</a> (int level)</td></tr>
+<tr class="separator:a01657db1f2f2e478b93e5329c666901e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e568e134ff6fb82b263565076da0432"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a5e568e134ff6fb82b263565076da0432">readAttributeDeprecated</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a5e568e134ff6fb82b263565076da0432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80e46006ae1ca8e80f84735d331fc18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ad80e46006ae1ca8e80f84735d331fc18">printAttributeDeprecated</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:ad80e46006ae1ca8e80f84735d331fc18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac122c1bdf1457e87c2cbdb8ec5ca1625"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ac122c1bdf1457e87c2cbdb8ec5ca1625">freeAttributeDeprecated</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:ac122c1bdf1457e87c2cbdb8ec5ca1625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07fa201160b522b15c7353b4ff2ed44"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ac07fa201160b522b15c7353b4ff2ed44">readAttributeConstantValue</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:ac07fa201160b522b15c7353b4ff2ed44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5abd76089f5e6794d1ecc98cea55f158"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a5abd76089f5e6794d1ecc98cea55f158">printAttributeConstantValue</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:a5abd76089f5e6794d1ecc98cea55f158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b65b1bc8966d4ad3a18e52ad7a3586b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a3b65b1bc8966d4ad3a18e52ad7a3586b">freeAttributeConstantValue</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a3b65b1bc8966d4ad3a18e52ad7a3586b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43bfb8cf040e623ccae73943a943a7f8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a43bfb8cf040e623ccae73943a943a7f8">readAttributeSourceFile</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a43bfb8cf040e623ccae73943a943a7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7566e0f5a2ba5992f6e8f84a7b5d0b8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a7566e0f5a2ba5992f6e8f84a7b5d0b8b">printAttributeSourceFile</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:a7566e0f5a2ba5992f6e8f84a7b5d0b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0485d0a13108130dd232c001a4502fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ae0485d0a13108130dd232c001a4502fe">freeAttributeSourceFile</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:ae0485d0a13108130dd232c001a4502fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af979b9e909d50393f578f9cf230fae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a7af979b9e909d50393f578f9cf230fae">readAttributeInnerClasses</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a7af979b9e909d50393f578f9cf230fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c90c1dd47892d19d581ef9fcac24698"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a6c90c1dd47892d19d581ef9fcac24698">printAttributeInnerClasses</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:a6c90c1dd47892d19d581ef9fcac24698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21f76b789715d6055265e69dc63e4eeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a21f76b789715d6055265e69dc63e4eeb">freeAttributeInnerClasses</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a21f76b789715d6055265e69dc63e4eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837af1196cf968ff688539be299648d5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a837af1196cf968ff688539be299648d5">readAttributeLineNumberTable</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a837af1196cf968ff688539be299648d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c510d03555d15e558997e15e000c40f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a8c510d03555d15e558997e15e000c40f">printAttributeLineNumberTable</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:a8c510d03555d15e558997e15e000c40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c25d4cde9d8421cd4fefc8543d1ec7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#af8c25d4cde9d8421cd4fefc8543d1ec7">freeAttributeLineNumberTable</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:af8c25d4cde9d8421cd4fefc8543d1ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a1b04442990e1699afc5b2592c4c93"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#af3a1b04442990e1699afc5b2592c4c93">readAttributeCode</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:af3a1b04442990e1699afc5b2592c4c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae588cbde97553719c8b8612e8e42f4b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ae588cbde97553719c8b8612e8e42f4b4">printAttributeCode</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:ae588cbde97553719c8b8612e8e42f4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8c24440f4c49b6dd8a19cd9fe584c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a2e8c24440f4c49b6dd8a19cd9fe584c0">freeAttributeCode</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a2e8c24440f4c49b6dd8a19cd9fe584c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aabfbdd22c8a11214ee3db33624b734"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a1aabfbdd22c8a11214ee3db33624b734">readAttributeExceptions</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a1aabfbdd22c8a11214ee3db33624b734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aeef532497a7cc1a3dee89d104bd725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a1aeef532497a7cc1a3dee89d104bd725">printAttributeExceptions</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:a1aeef532497a7cc1a3dee89d104bd725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47063751996bba4e939a7d2bcebd2b10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a47063751996bba4e939a7d2bcebd2b10">freeAttributeExceptions</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a47063751996bba4e939a7d2bcebd2b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136bdfadd787ebd62f1c721f99270cc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9">freeAttributeInfo</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *entry)</td></tr>
+<tr class="separator:a136bdfadd787ebd62f1c721f99270cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee295c33031c2ab941c9260654010db7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#aee295c33031c2ab941c9260654010db7">printAttribute</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc, <a class="el" href="structattribute__info.html">attribute_info</a> *entry, int identationLevel)</td></tr>
+<tr class="separator:aee295c33031c2ab941c9260654010db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04e26b66957c879139f8a82e463674a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ae04e26b66957c879139f8a82e463674a">printAllAttributes</a> (<a class="el" href="structJavaClass.html">JavaClass</a> *jc)</td></tr>
+<tr class="separator:ae04e26b66957c879139f8a82e463674a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3ce1b33741046741c90a6f5592911a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5">getAttributeByType</a> (<a class="el" href="structattribute__info.html">attribute_info</a> *attributes, uint16_t attributes_length, enum <a class="el" href="attributes_8h.html#a349a9cde14be8097df865ba0469c0ab2">AttributeType</a> type)</td></tr>
+<tr class="separator:ae3ce1b33741046741c90a6f5592911a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação das macros</h2>
+<a class="anchor" id="acd9132a8a41b59ee57e8326b1f516fa9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ATTR_CASE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr</td><td>)</td>
+          <td>&#160;&#160;&#160;case ATTR_##attr: freeAttribute##attr(entry); return;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acd9132a8a41b59ee57e8326b1f516fa9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ATTR_CASE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr</td><td>)</td>
+          <td>&#160;&#160;&#160;case ATTR_##attr: <a class="el" href="attributes_8h.html#aee295c33031c2ab941c9260654010db7">printAttribute</a>##attr(jc, entry, identationLevel); break;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1a4c6b25eeb17e81e6376d4a6383c158"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DECLARE_ATTR_FUNCS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valor:</b><div class="fragment"><div class="line">uint8_t <a class="code" href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1">readAttribute</a>##attr(<a class="code" href="structJavaClass.html">JavaClass</a>* jc, <a class="code" href="structattribute__info.html">attribute_info</a>* entry); \</div><div class="line">    void <a class="code" href="attributes_8c.html#aee295c33031c2ab941c9260654010db7">printAttribute</a>##attr(<a class="code" href="structJavaClass.html">JavaClass</a>* jc, <a class="code" href="structattribute__info.html">attribute_info</a>* entry, <span class="keywordtype">int</span> identationLevel); \</div><div class="line">    void freeAttribute##attr(<a class="code" href="structattribute__info.html">attribute_info</a>* entry);</div><div class="ttc" id="structJavaClass_html"><div class="ttname"><a href="structJavaClass.html">JavaClass</a></div><div class="ttdef"><b>Definition:</b> javaclass.h:93</div></div>
+<div class="ttc" id="structattribute__info_html"><div class="ttname"><a href="structattribute__info.html">attribute_info</a></div><div class="ttdef"><b>Definition:</b> attributes.h:9</div></div>
+<div class="ttc" id="attributes_8c_html_a0aab7731ade76c16c2ff8b3bef1111d1"><div class="ttname"><a href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1">readAttribute</a></div><div class="ttdeci">char readAttribute(JavaClass *jc, attribute_info *entry)</div><div class="ttdef"><b>Definition:</b> attributes.c:21</div></div>
+<div class="ttc" id="attributes_8c_html_aee295c33031c2ab941c9260654010db7"><div class="ttname"><a href="attributes_8c.html#aee295c33031c2ab941c9260654010db7">printAttribute</a></div><div class="ttdeci">void printAttribute(JavaClass *jc, attribute_info *entry, int identationLevel)</div><div class="ttdef"><b>Definition:</b> attributes.c:1230</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afa2f48f44da881b9d32c1a7d1e4db4ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IF_ATTR_CHECK</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valor:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="code" href="utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e">cmp_UTF8_Ascii</a>(cp-&gt;Utf8.bytes, cp-&gt;Utf8.length, (uint8_t*)#name, <span class="keyword">sizeof</span>(#name) - 1)) { \</div><div class="line">            entry-&gt;attributeType = ATTR_##name; \</div><div class="line">            result = <a class="code" href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1">readAttribute</a>##name(jc, entry); \</div><div class="line">        }</div><div class="ttc" id="utf8_8c_html_a317c1d4f6b0e4b61b5f99baf9d673a8e"><div class="ttname"><a href="utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e">cmp_UTF8_Ascii</a></div><div class="ttdeci">char cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)</div><div class="ttdef"><b>Definition:</b> utf8.c:67</div></div>
+<div class="ttc" id="attributes_8c_html_a0aab7731ade76c16c2ff8b3bef1111d1"><div class="ttname"><a href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1">readAttribute</a></div><div class="ttdeci">char readAttribute(JavaClass *jc, attribute_info *entry)</div><div class="ttdef"><b>Definition:</b> attributes.c:21</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab757e29ce18ed03f73c4b81a869e4b9a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NEXTBYTE&#160;&#160;&#160;(*(info-&gt;code + ++code_offset))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acc32225b9d3eb1107b48de3cd4539075"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OPCODE_INTERVAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">begin, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">end&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(opcode &gt;= opcode_##begin &amp;&amp; opcode &lt;= opcode_##end)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a class="anchor" id="a2e8c24440f4c49b6dd8a19cd9fe584c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3b65b1bc8966d4ad3a18e52ad7a3586b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeConstantValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac122c1bdf1457e87c2cbdb8ec5ca1625"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeDeprecated </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a47063751996bba4e939a7d2bcebd2b10"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeExceptions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a136bdfadd787ebd62f1c721f99270cc9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a136bdfadd787ebd62f1c721f99270cc9_icgraph.png" border="0" usemap="#attributes_8c_a136bdfadd787ebd62f1c721f99270cc9_icgraph" alt=""/></div>
+<map name="attributes_8c_a136bdfadd787ebd62f1c721f99270cc9_icgraph" id="attributes_8c_a136bdfadd787ebd62f1c721f99270cc9_icgraph">
+<area shape="rect" id="node2" href="fields_8h.html#aeaafced8bc17d76aa18f38a005e01f99" title="freeFieldAttributes" alt="" coords="175,5,303,32"/>
+<area shape="rect" id="node3" href="javaclass_8h.html#afc621448c86d015f1f284e3e0bc3f276" title="closeClassFile" alt="" coords="359,56,467,83"/>
+<area shape="rect" id="node7" href="methods_8h.html#a50e4408e126b27fef952d2e1fc1b044e" title="freeMethodAttributes" alt="" coords="168,107,311,133"/>
+<area shape="rect" id="node4" href="jvm_8h.html#a65269d70951aacfe829c89c078dad67a" title="deinitJVM" alt="" coords="524,5,604,32"/>
+<area shape="rect" id="node5" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="661,56,712,83"/>
+<area shape="rect" id="node6" href="jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="515,131,613,157"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a21f76b789715d6055265e69dc63e4eeb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeInnerClasses </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af8c25d4cde9d8421cd4fefc8543d1ec7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeLineNumberTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae0485d0a13108130dd232c001a4502fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeAttributeSourceFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae3ce1b33741046741c90a6f5592911a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structattribute__info.html">attribute_info</a>* getAttributeByType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>attributes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>attributes_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="attributes_8h.html#a349a9cde14be8097df865ba0469c0ab2">AttributeType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ae3ce1b33741046741c90a6f5592911a5_icgraph.png" border="0" usemap="#attributes_8c_ae3ce1b33741046741c90a6f5592911a5_icgraph" alt=""/></div>
+<map name="attributes_8c_ae3ce1b33741046741c90a6f5592911a5_icgraph" id="attributes_8c_ae3ce1b33741046741c90a6f5592911a5_icgraph">
+<area shape="rect" id="node2" href="framestack_8h.html#a38bb1bda9e43d71c8472936c0ee14d72" title="newFrame" alt="" coords="188,5,271,32"/>
+<area shape="rect" id="node3" href="jvm_8h.html#abcb0d8ba358754edbeb13d25de07a07f" title="runMethod" alt="" coords="319,5,401,32"/>
+<area shape="rect" id="node4" href="jvm_8h.html#acb51e68e5a79ca25d5a5134ffb6ddd68" title="executeJVM" alt="" coords="449,5,544,32"/>
+<area shape="rect" id="node5" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="592,5,643,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a01657db1f2f2e478b93e5329c666901e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ident </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a01657db1f2f2e478b93e5329c666901e_icgraph.png" border="0" usemap="#attributes_8c_a01657db1f2f2e478b93e5329c666901e_icgraph" alt=""/></div>
+<map name="attributes_8c_a01657db1f2f2e478b93e5329c666901e_icgraph" id="attributes_8c_a01657db1f2f2e478b93e5329c666901e_icgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#ad80e46006ae1ca8e80f84735d331fc18" title="printAttributeDeprecated" alt="" coords="114,5,277,32"/>
+<area shape="rect" id="node3" href="attributes_8c.html#a5abd76089f5e6794d1ecc98cea55f158" title="printAttributeConstantValue" alt="" coords="104,56,287,83"/>
+<area shape="rect" id="node4" href="attributes_8c.html#a7566e0f5a2ba5992f6e8f84a7b5d0b8b" title="printAttributeSourceFile" alt="" coords="116,107,275,133"/>
+<area shape="rect" id="node5" href="attributes_8c.html#a6c90c1dd47892d19d581ef9fcac24698" title="printAttributeInnerClasses" alt="" coords="109,157,282,184"/>
+<area shape="rect" id="node6" href="attributes_8c.html#a8c510d03555d15e558997e15e000c40f" title="printAttributeLineNumber\lTable" alt="" coords="112,209,279,250"/>
+<area shape="rect" id="node7" href="attributes_8c.html#ae588cbde97553719c8b8612e8e42f4b4" title="printAttributeCode" alt="" coords="335,275,461,301"/>
+<area shape="rect" id="node8" href="attributes_8c.html#a1aeef532497a7cc1a3dee89d104bd725" title="printAttributeExceptions" alt="" coords="115,325,276,352"/>
+<area shape="rect" id="node9" href="attributes_8h.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="147,376,243,403"/>
+<area shape="rect" id="node10" href="attributes_8h.html#ae04e26b66957c879139f8a82e463674a" title="printAllAttributes" alt="" coords="339,325,457,352"/>
+<area shape="rect" id="node13" href="fields_8h.html#a638dfd7ea9c1089e20de1ac871897ddf" title="printAllFields" alt="" coords="349,376,447,403"/>
+<area shape="rect" id="node14" href="methods_8h.html#a88c1302886452c2888da76abd261ccc8" title="printMethods" alt="" coords="349,427,447,453"/>
+<area shape="rect" id="node11" href="javaclass_8h.html#a90175fdf9e50aea1c9db6dee3f828e49" title="printClassFileInfo" alt="" coords="509,376,633,403"/>
+<area shape="rect" id="node12" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="681,376,732,403"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae04e26b66957c879139f8a82e463674a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAllAttributes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ae04e26b66957c879139f8a82e463674a_cgraph.png" border="0" usemap="#attributes_8c_ae04e26b66957c879139f8a82e463674a_cgraph" alt=""/></div>
+<map name="attributes_8c_ae04e26b66957c879139f8a82e463674a_cgraph" id="attributes_8c_ae04e26b66957c879139f8a82e463674a_cgraph">
+<area shape="rect" id="node2" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="172,5,281,32"/>
+<area shape="rect" id="node4" href="attributes_8c.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="179,56,275,83"/>
+<area shape="rect" id="node3" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="329,5,467,32"/>
+<area shape="rect" id="node5" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="373,56,423,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ae04e26b66957c879139f8a82e463674a_icgraph.png" border="0" usemap="#attributes_8c_ae04e26b66957c879139f8a82e463674a_icgraph" alt=""/></div>
+<map name="attributes_8c_ae04e26b66957c879139f8a82e463674a_icgraph" id="attributes_8c_ae04e26b66957c879139f8a82e463674a_icgraph">
+<area shape="rect" id="node2" href="javaclass_8h.html#a90175fdf9e50aea1c9db6dee3f828e49" title="printClassFileInfo" alt="" coords="172,5,296,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="344,5,395,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aee295c33031c2ab941c9260654010db7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_aee295c33031c2ab941c9260654010db7_cgraph.png" border="0" usemap="#attributes_8c_aee295c33031c2ab941c9260654010db7_cgraph" alt=""/></div>
+<map name="attributes_8c_aee295c33031c2ab941c9260654010db7_cgraph" id="attributes_8c_aee295c33031c2ab941c9260654010db7_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="149,5,200,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_aee295c33031c2ab941c9260654010db7_icgraph.png" border="0" usemap="#attributes_8c_aee295c33031c2ab941c9260654010db7_icgraph" alt=""/></div>
+<map name="attributes_8c_aee295c33031c2ab941c9260654010db7_icgraph" id="attributes_8c_aee295c33031c2ab941c9260654010db7_icgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#ae588cbde97553719c8b8612e8e42f4b4" title="printAttributeCode" alt="" coords="149,5,276,32"/>
+<area shape="rect" id="node3" href="attributes_8h.html#ae04e26b66957c879139f8a82e463674a" title="printAllAttributes" alt="" coords="153,56,272,83"/>
+<area shape="rect" id="node6" href="fields_8h.html#a638dfd7ea9c1089e20de1ac871897ddf" title="printAllFields" alt="" coords="164,107,261,133"/>
+<area shape="rect" id="node7" href="methods_8h.html#a88c1302886452c2888da76abd261ccc8" title="printMethods" alt="" coords="164,157,261,184"/>
+<area shape="rect" id="node4" href="javaclass_8h.html#a90175fdf9e50aea1c9db6dee3f828e49" title="printClassFileInfo" alt="" coords="324,107,448,133"/>
+<area shape="rect" id="node5" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="496,107,547,133"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae588cbde97553719c8b8612e8e42f4b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ae588cbde97553719c8b8612e8e42f4b4_cgraph.png" border="0" usemap="#attributes_8c_ae588cbde97553719c8b8612e8e42f4b4_cgraph" alt=""/></div>
+<map name="attributes_8c_ae588cbde97553719c8b8612e8e42f4b4_cgraph" id="attributes_8c_ae588cbde97553719c8b8612e8e42f4b4_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="466,259,517,285"/>
+<area shape="rect" id="node3" href="opcodes_8c.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="getOpcodeMnemonic" alt="" coords="205,56,350,83"/>
+<area shape="rect" id="node4" href="opcodes_8c.html#ad2f03559438a10c49bf32e3c68b4dfb7" title="decodeOpcodeNewarrayType" alt="" coords="180,107,375,133"/>
+<area shape="rect" id="node5" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="223,5,332,32"/>
+<area shape="rect" id="node7" href="constantpool_8c.html#a80f31089353a0ed2d861401c2c741701" title="decodeTag" alt="" coords="234,208,321,235"/>
+<area shape="rect" id="node8" href="readfunctions_8c.html#a977e482ef56ed2bf2180445398e02402" title="readConstantPoolDouble" alt="" coords="194,259,361,285"/>
+<area shape="rect" id="node9" href="readfunctions_8c.html#a32ec03a10ab8f1b50b70175e6d9d988d" title="readConstantPoolFloat" alt="" coords="200,309,355,336"/>
+<area shape="rect" id="node10" href="attributes_8c.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="229,157,325,184"/>
+<area shape="rect" id="node6" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="423,5,560,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5abd76089f5e6794d1ecc98cea55f158"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeConstantValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a5abd76089f5e6794d1ecc98cea55f158_cgraph.png" border="0" usemap="#attributes_8c_a5abd76089f5e6794d1ecc98cea55f158_cgraph" alt=""/></div>
+<map name="attributes_8c_a5abd76089f5e6794d1ecc98cea55f158_cgraph" id="attributes_8c_a5abd76089f5e6794d1ecc98cea55f158_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="294,5,345,32"/>
+<area shape="rect" id="node3" href="readfunctions_8c.html#a32ec03a10ab8f1b50b70175e6d9d988d" title="readConstantPoolFloat" alt="" coords="242,56,397,83"/>
+<area shape="rect" id="node4" href="readfunctions_8c.html#a977e482ef56ed2bf2180445398e02402" title="readConstantPoolDouble" alt="" coords="236,107,403,133"/>
+<area shape="rect" id="node5" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="265,157,374,184"/>
+<area shape="rect" id="node6" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="451,157,588,184"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad80e46006ae1ca8e80f84735d331fc18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeDeprecated </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ad80e46006ae1ca8e80f84735d331fc18_cgraph.png" border="0" usemap="#attributes_8c_ad80e46006ae1ca8e80f84735d331fc18_cgraph" alt=""/></div>
+<map name="attributes_8c_ad80e46006ae1ca8e80f84735d331fc18_cgraph" id="attributes_8c_ad80e46006ae1ca8e80f84735d331fc18_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="216,5,267,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1aeef532497a7cc1a3dee89d104bd725"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeExceptions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a1aeef532497a7cc1a3dee89d104bd725_cgraph.png" border="0" usemap="#attributes_8c_a1aeef532497a7cc1a3dee89d104bd725_cgraph" alt=""/></div>
+<map name="attributes_8c_a1aeef532497a7cc1a3dee89d104bd725_cgraph" id="attributes_8c_a1aeef532497a7cc1a3dee89d104bd725_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="244,5,295,32"/>
+<area shape="rect" id="node3" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="215,56,324,83"/>
+<area shape="rect" id="node4" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="372,56,509,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6c90c1dd47892d19d581ef9fcac24698"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeInnerClasses </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a6c90c1dd47892d19d581ef9fcac24698_cgraph.png" border="0" usemap="#attributes_8c_a6c90c1dd47892d19d581ef9fcac24698_cgraph" alt=""/></div>
+<map name="attributes_8c_a6c90c1dd47892d19d581ef9fcac24698_cgraph" id="attributes_8c_a6c90c1dd47892d19d581ef9fcac24698_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="271,5,322,32"/>
+<area shape="rect" id="node3" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="242,56,351,83"/>
+<area shape="rect" id="node5" href="javaclass_8c.html#aee51865d444d48583f151873b4138d72" title="decodeAccessFlags" alt="" coords="227,107,367,133"/>
+<area shape="rect" id="node4" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="415,56,552,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a8c510d03555d15e558997e15e000c40f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeLineNumberTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a8c510d03555d15e558997e15e000c40f_cgraph.png" border="0" usemap="#attributes_8c_a8c510d03555d15e558997e15e000c40f_cgraph" alt=""/></div>
+<map name="attributes_8c_a8c510d03555d15e558997e15e000c40f_cgraph" id="attributes_8c_a8c510d03555d15e558997e15e000c40f_cgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="220,13,271,39"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7566e0f5a2ba5992f6e8f84a7b5d0b8b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printAttributeSourceFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>identationLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b_cgraph.png" border="0" usemap="#attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b_cgraph" alt=""/></div>
+<map name="attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b_cgraph" id="attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b_cgraph">
+<area shape="rect" id="node2" href="utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="212,5,321,32"/>
+<area shape="rect" id="node4" href="attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="241,56,292,83"/>
+<area shape="rect" id="node3" href="utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="369,5,507,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0aab7731ade76c16c2ff8b3bef1111d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char readAttribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_cgraph.png" border="0" usemap="#attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_cgraph" alt=""/></div>
+<map name="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_cgraph" id="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="149,5,211,32"/>
+<area shape="rect" id="node3" href="readfunctions_8c.html#abc3319bf1d68a0dcd80fdda3f6744f97" title="readu4" alt="" coords="149,56,211,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_icgraph.png" border="0" usemap="#attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_icgraph" alt=""/></div>
+<map name="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_icgraph" id="attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_icgraph">
+<area shape="rect" id="node2" href="attributes_8c.html#af3a1b04442990e1699afc5b2592c4c93" title="readAttributeCode" alt="" coords="149,5,276,32"/>
+<area shape="rect" id="node3" href="fields_8h.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="readField" alt="" coords="175,56,250,83"/>
+<area shape="rect" id="node4" href="javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="324,107,429,133"/>
+<area shape="rect" id="node7" href="methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="readMethod" alt="" coords="167,157,258,184"/>
+<area shape="rect" id="node5" href="jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="477,81,576,108"/>
+<area shape="rect" id="node6" href="main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="624,107,675,133"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af3a1b04442990e1699afc5b2592c4c93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_af3a1b04442990e1699afc5b2592c4c93_cgraph.png" border="0" usemap="#attributes_8c_af3a1b04442990e1699afc5b2592c4c93_cgraph" alt=""/></div>
+<map name="attributes_8c_af3a1b04442990e1699afc5b2592c4c93_cgraph" id="attributes_8c_af3a1b04442990e1699afc5b2592c4c93_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="324,5,385,32"/>
+<area shape="rect" id="node3" href="readfunctions_8c.html#abc3319bf1d68a0dcd80fdda3f6744f97" title="readu4" alt="" coords="324,68,385,95"/>
+<area shape="rect" id="node4" href="attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="180,31,276,57"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac07fa201160b522b15c7353b4ff2ed44"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeConstantValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_ac07fa201160b522b15c7353b4ff2ed44_cgraph.png" border="0" usemap="#attributes_8c_ac07fa201160b522b15c7353b4ff2ed44_cgraph" alt=""/></div>
+<map name="attributes_8c_ac07fa201160b522b15c7353b4ff2ed44_cgraph" id="attributes_8c_ac07fa201160b522b15c7353b4ff2ed44_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="236,5,297,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e568e134ff6fb82b263565076da0432"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeDeprecated </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1aabfbdd22c8a11214ee3db33624b734"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeExceptions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a1aabfbdd22c8a11214ee3db33624b734_cgraph.png" border="0" usemap="#attributes_8c_a1aabfbdd22c8a11214ee3db33624b734_cgraph" alt=""/></div>
+<map name="attributes_8c_a1aabfbdd22c8a11214ee3db33624b734_cgraph" id="attributes_8c_a1aabfbdd22c8a11214ee3db33624b734_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="215,5,276,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7af979b9e909d50393f578f9cf230fae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeInnerClasses </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a7af979b9e909d50393f578f9cf230fae_cgraph.png" border="0" usemap="#attributes_8c_a7af979b9e909d50393f578f9cf230fae_cgraph" alt=""/></div>
+<map name="attributes_8c_a7af979b9e909d50393f578f9cf230fae_cgraph" id="attributes_8c_a7af979b9e909d50393f578f9cf230fae_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="227,5,288,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a837af1196cf968ff688539be299648d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeLineNumberTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a837af1196cf968ff688539be299648d5_cgraph.png" border="0" usemap="#attributes_8c_a837af1196cf968ff688539be299648d5_cgraph" alt=""/></div>
+<map name="attributes_8c_a837af1196cf968ff688539be299648d5_cgraph" id="attributes_8c_a837af1196cf968ff688539be299648d5_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="252,5,313,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a43bfb8cf040e623ccae73943a943a7f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t readAttributeSourceFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structJavaClass.html">JavaClass</a> *&#160;</td>
+          <td class="paramname"><em>jc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>entry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="attributes_8c_a43bfb8cf040e623ccae73943a943a7f8_cgraph.png" border="0" usemap="#attributes_8c_a43bfb8cf040e623ccae73943a943a7f8_cgraph" alt=""/></div>
+<map name="attributes_8c_a43bfb8cf040e623ccae73943a943a7f8_cgraph" id="attributes_8c_a43bfb8cf040e623ccae73943a943a7f8_cgraph">
+<area shape="rect" id="node2" href="readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="readu2" alt="" coords="212,5,273,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

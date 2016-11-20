@@ -1,0 +1,275 @@
+\hypertarget{jvm_8h}{}\section{Referência ao ficheiro src/jvm.h}
+\label{jvm_8h}\index{src/jvm.\+h@{src/jvm.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}javaclass.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}framestack.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para jvm.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{jvm_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLoadedClasses}{Loaded\+Classes}
+\item 
+struct \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} \hyperlink{jvm_8h_a9b56103335f7475ad6bdd51a5cf53f39}{Java\+Virtual\+Machine}
+\item 
+typedef struct \hyperlink{structLoadedClasses}{Loaded\+Classes} \hyperlink{jvm_8h_ab5b0df9e77c6d296e1522c57b7ec4dde}{Loaded\+Classes}
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967}{J\+V\+M\+Status} \{ \\*
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967adbdce9e4742eea01de565e42f934fd81}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}, 
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967a561e2abde79cecdb23fc63331c85d38b}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED}, 
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967af4836e7d97c08c2e3015f4254cdac840}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}, 
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967ae1200b3eaa745cee1d35fc29da251550}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON}, 
+\\*
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967ae3ed7dd1aec587922a5379f0370e18c9}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED}, 
+\hyperlink{jvm_8h_a484d02331081db971c49ba36a1109967a005e0862fb18129abd7a2fe2be5bd932}{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{jvm_8h_aca189885e78ec25ece5d7f70e83022a1}{init\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm)
+\item 
+void \hyperlink{jvm_8h_a65269d70951aacfe829c89c078dad67a}{deinit\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm)
+\item 
+void \hyperlink{jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68}{execute\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a}{resolve\+Class} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const uint8\+\_\+t $\ast$class\+Name\+\_\+utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8h_abcb0d8ba358754edbeb13d25de07a07f}{run\+Method} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$method)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8h_acec4266c56e242e0b507d7d1b4d63c31}{add\+Class\+To\+Loaded\+Classes} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396}{is\+Class\+Loaded} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos tipos}
+\index{jvm.\+h@{jvm.\+h}!Java\+Virtual\+Machine@{Java\+Virtual\+Machine}}
+\index{Java\+Virtual\+Machine@{Java\+Virtual\+Machine}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{Java\+Virtual\+Machine}{JavaVirtualMachine}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Java\+Virtual\+Machine} {\bf Java\+Virtual\+Machine}}\hypertarget{jvm_8h_a9b56103335f7475ad6bdd51a5cf53f39}{}\label{jvm_8h_a9b56103335f7475ad6bdd51a5cf53f39}
+\index{jvm.\+h@{jvm.\+h}!Loaded\+Classes@{Loaded\+Classes}}
+\index{Loaded\+Classes@{Loaded\+Classes}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{Loaded\+Classes}{LoadedClasses}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Loaded\+Classes}  {\bf Loaded\+Classes}}\hypertarget{jvm_8h_ab5b0df9e77c6d296e1522c57b7ec4dde}{}\label{jvm_8h_ab5b0df9e77c6d296e1522c57b7ec4dde}
+
+
+\subsection{Documentação dos valores da enumeração}
+\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+Status@{J\+V\+M\+Status}}
+\index{J\+V\+M\+Status@{J\+V\+M\+Status}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{J\+V\+M\+Status}{JVMStatus}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf J\+V\+M\+Status}}\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967}
+\begin{Desc}
+\item[Valores de enumerações]\par
+\begin{description}
+\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967adbdce9e4742eea01de565e42f934fd81}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967adbdce9e4742eea01de565e42f934fd81}
+}]\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+\_\+\+C\+L\+A\+S\+S\+\_\+\+L\+O\+A\+D\+ED\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967a561e2abde79cecdb23fc63331c85d38b}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967a561e2abde79cecdb23fc63331c85d38b}
+}]\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967af4836e7d97c08c2e3015f4254cdac840}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967af4836e7d97c08c2e3015f4254cdac840}
+}]\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+I\+N\+S\+T\+R\+U\+C\+T\+I\+ON\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967ae1200b3eaa745cee1d35fc29da251550}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967ae1200b3eaa745cee1d35fc29da251550}
+}]\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+B\+O\+R\+T\+ED\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967ae3ed7dd1aec587922a5379f0370e18c9}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967ae3ed7dd1aec587922a5379f0370e18c9}
+}]\index{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY}!jvm.\+h@{jvm.\+h}}\index{jvm.\+h@{jvm.\+h}!J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY@{J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY}}\item[{\em 
+J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+RY\hypertarget{jvm_8h_a484d02331081db971c49ba36a1109967a005e0862fb18129abd7a2fe2be5bd932}{}\label{jvm_8h_a484d02331081db971c49ba36a1109967a005e0862fb18129abd7a2fe2be5bd932}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Documentação das funções}
+\index{jvm.\+h@{jvm.\+h}!add\+Class\+To\+Loaded\+Classes@{add\+Class\+To\+Loaded\+Classes}}
+\index{add\+Class\+To\+Loaded\+Classes@{add\+Class\+To\+Loaded\+Classes}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{add\+Class\+To\+Loaded\+Classes(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc)}{addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t add\+Class\+To\+Loaded\+Classes (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_acec4266c56e242e0b507d7d1b4d63c31}{}\label{jvm_8h_acec4266c56e242e0b507d7d1b4d63c31}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_acec4266c56e242e0b507d7d1b4d63c31_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!deinit\+J\+VM@{deinit\+J\+VM}}
+\index{deinit\+J\+VM@{deinit\+J\+VM}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{deinit\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm)}{deinitJVM(JavaVirtualMachine *jvm)}}]{\setlength{\rightskip}{0pt plus 5cm}void deinit\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_a65269d70951aacfe829c89c078dad67a}{}\label{jvm_8h_a65269d70951aacfe829c89c078dad67a}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_a65269d70951aacfe829c89c078dad67a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{jvm_8h_a65269d70951aacfe829c89c078dad67a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!execute\+J\+VM@{execute\+J\+VM}}
+\index{execute\+J\+VM@{execute\+J\+VM}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{execute\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm)}{executeJVM(JavaVirtualMachine *jvm)}}]{\setlength{\rightskip}{0pt plus 5cm}void execute\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68}{}\label{jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{jvm_8h_acb51e68e5a79ca25d5a5134ffb6ddd68_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!init\+J\+VM@{init\+J\+VM}}
+\index{init\+J\+VM@{init\+J\+VM}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{init\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm)}{initJVM(JavaVirtualMachine *jvm)}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_aca189885e78ec25ece5d7f70e83022a1}{}\label{jvm_8h_aca189885e78ec25ece5d7f70e83022a1}
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{jvm_8h_aca189885e78ec25ece5d7f70e83022a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!is\+Class\+Loaded@{is\+Class\+Loaded}}
+\index{is\+Class\+Loaded@{is\+Class\+Loaded}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{is\+Class\+Loaded(\+Java\+Virtual\+Machine $\ast$jvm, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t is\+Class\+Loaded (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396}{}\label{jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_ab4cb01bb8ccaa15560e70d43c741a396_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!resolve\+Class@{resolve\+Class}}
+\index{resolve\+Class@{resolve\+Class}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{resolve\+Class(\+Java\+Virtual\+Machine $\ast$jvm, const uint8\+\_\+t $\ast$class\+Name\+\_\+utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t resolve\+Class (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const uint8\+\_\+t $\ast$}]{class\+Name\+\_\+utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a}{}\label{jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{jvm_8h_abbb3f9abad1cb2b8d28068d6e453f42a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+h@{jvm.\+h}!run\+Method@{run\+Method}}
+\index{run\+Method@{run\+Method}!jvm.\+h@{jvm.\+h}}
+\subsubsection[{\texorpdfstring{run\+Method(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc, method\+\_\+info $\ast$method)}{runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t run\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{method}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8h_abcb0d8ba358754edbeb13d25de07a07f}{}\label{jvm_8h_abcb0d8ba358754edbeb13d25de07a07f}
+
+
+Grafo de chamadas desta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{jvm_8h_abcb0d8ba358754edbeb13d25de07a07f_icgraph}
+\end{center}
+\end{figure}
+
+
