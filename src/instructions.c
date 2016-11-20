@@ -1,4 +1,5 @@
 #include "instructions.h"
+#include <math.h>
 
 #define NEXT_BYTE (*(frame->code + frame->pc++))
 
@@ -682,14 +683,37 @@ uint8_t instfunc_swap(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
-uint8_t instfunc_iadd(JavaVirtualMachine* jvm, Frame* frame)
+#define DECLR_INTEGER_MATH_OP(instruction, op) \
+    uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int32_t a, b; \
+        popOperand(&frame->operands, &a, NULL); \
+        popOperand(&frame->operands, &b, NULL); \
+        if (!pushOperand(&frame->operands, a op b, OP_INTEGER)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
+
+DECLR_INTEGER_MATH_OP(iadd, +)
+DECLR_INTEGER_MATH_OP(isub, +)
+DECLR_INTEGER_MATH_OP(imul, *)
+DECLR_INTEGER_MATH_OP(idiv, /)
+DECLR_INTEGER_MATH_OP(irem, %)
+DECLR_INTEGER_MATH_OP(iand, &)
+DECLR_INTEGER_MATH_OP(ior, |)
+DECLR_INTEGER_MATH_OP(ixor, ^)
+
+uint8_t instfunc_ishl(JavaVirtualMachine* jvm, Frame* frame)
 {
     int32_t a, b;
 
     popOperand(&frame->operands, &a, NULL);
     popOperand(&frame->operands, &b, NULL);
 
-    if (!pushOperand(&frame->operands, a + b, OP_INTEGER))
+    if (!pushOperand(&frame->operands, a << (b & 0x1F), OP_INTEGER))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -698,7 +722,71 @@ uint8_t instfunc_iadd(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
-uint8_t instfunc_ladd(JavaVirtualMachine* jvm, Frame* frame)
+uint8_t instfunc_ishr(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t a, b;
+
+    popOperand(&frame->operands, &a, NULL);
+    popOperand(&frame->operands, &b, NULL);
+
+    if (!pushOperand(&frame->operands, a >> (b & 0x1F), OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_iushr(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint32_t a, b;
+
+    popOperand(&frame->operands, (int32_t*)&a, NULL);
+    popOperand(&frame->operands, (int32_t*)&b, NULL);
+
+    if (!pushOperand(&frame->operands, a >> (b & 0x1F), OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+#define DECLR_LONG_MATH_OP(instruction, op) \
+    uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int64_t a, b; \
+        int32_t high, low; \
+        popOperand(&frame->operands, &low, NULL); \
+        popOperand(&frame->operands, &high, NULL); \
+        a = high; \
+        a = a << 32 | low; \
+        popOperand(&frame->operands, &low, NULL); \
+        popOperand(&frame->operands, &high, NULL); \
+        b = high; \
+        b = b << 32 | low; \
+        a = a op b; \
+        if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) || \
+            !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
+
+DECLR_LONG_MATH_OP(ladd, +)
+DECLR_LONG_MATH_OP(lsub, -)
+DECLR_LONG_MATH_OP(lmul, *)
+DECLR_LONG_MATH_OP(ldiv, /)
+DECLR_LONG_MATH_OP(lrem, %)
+DECLR_LONG_MATH_OP(land, &)
+DECLR_LONG_MATH_OP(lor, |)
+DECLR_LONG_MATH_OP(lxor, ^)
+
+uint8_t instfunc_lshl(JavaVirtualMachine* jvm, Frame* frame)
 {
     int64_t a, b;
     int32_t high, low;
@@ -715,7 +803,63 @@ uint8_t instfunc_ladd(JavaVirtualMachine* jvm, Frame* frame)
     b = high;
     b = b << 32 | low;
 
-    a += b;
+    a = a << (b & 0x1FLL);
+
+    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
+        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+    return 1;
+}
+
+uint8_t instfunc_lshr(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t a, b;
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    a = high;
+    a = a << 32 | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    b = high;
+    b = b << 32 | low;
+
+    a = a >> (b & 0x1FLL);
+
+    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
+        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+    return 1;
+}
+
+uint8_t instfunc_lushr(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint64_t a, b;
+    uint32_t high, low;
+
+    popOperand(&frame->operands, (int32_t*)&low, NULL);
+    popOperand(&frame->operands, (int32_t*)&high, NULL);
+
+    a = high;
+    a = a << 32 | low;
+
+    popOperand(&frame->operands, (int32_t*)&low, NULL);
+    popOperand(&frame->operands, (int32_t*)&high, NULL);
+
+    b = high;
+    b = b << 32 | low;
+
+    a = a >> (b & 0x1FLL);
 
     if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
         !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFULL), OP_LONG))
@@ -723,7 +867,215 @@ uint8_t instfunc_ladd(JavaVirtualMachine* jvm, Frame* frame)
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
     }
+    return 1;
+}
 
+#define DECLR_FLOAT_MATH_OP(instruction, op) \
+    uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        union { \
+            float f; \
+            int32_t i; \
+        } a, b; \
+        popOperand(&frame->operands, &a.i, NULL); \
+        popOperand(&frame->operands, &b.i, NULL); \
+        a.f = a.f op b.f; \
+        if (!pushOperand(&frame->operands, a.i, OP_FLOAT)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
+
+DECLR_FLOAT_MATH_OP(fadd, +)
+DECLR_FLOAT_MATH_OP(fsub, -)
+DECLR_FLOAT_MATH_OP(fmul, *)
+DECLR_FLOAT_MATH_OP(fdiv, /)
+
+#define DECLR_DOUBLE_MATH_OP(instruction, op) \
+    uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        union { \
+            double d; \
+            int64_t i; \
+        } a, b; \
+        int32_t high, low; \
+        popOperand(&frame->operands, &low, NULL); \
+        popOperand(&frame->operands, &high, NULL); \
+        a.i = high; \
+        a.i = (a.i << 32) | low; \
+        popOperand(&frame->operands, &low, NULL); \
+        popOperand(&frame->operands, &high, NULL); \
+        b.i = high; \
+        b.i = (b.i << 32) | low; \
+        a.d = a.d op b.d; \
+        if (!pushOperand(&frame->operands, (int32_t)(a.i >> 32), OP_DOUBLE) || \
+            !pushOperand(&frame->operands, (int32_t)(a.i & 0xFFFFFFFFLL), OP_DOUBLE)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
+
+DECLR_DOUBLE_MATH_OP(dadd, +)
+DECLR_DOUBLE_MATH_OP(dsub, -)
+DECLR_DOUBLE_MATH_OP(dmul, *)
+DECLR_DOUBLE_MATH_OP(ddiv, /)
+
+uint8_t instfunc_frem(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        float f;
+        int32_t i;
+    } a, b;
+
+    popOperand(&frame->operands, &a.i, NULL);
+    popOperand(&frame->operands, &b.i, NULL);
+
+    // When the dividend is finite and the divisor is infinity, the result should
+    // be equal to the dividend. So we do nothing to 'a'.
+    // Otherwise, we calculate the fmod. We have to make this check because
+    // fmod fails when the divisor is +-infinity, returning NAN.
+    if (!(a.f != INFINITY && a.f != -INFINITY && (b.f == INFINITY || b.f == -INFINITY)))
+        a.f = fmodf(a.f, b.f);
+
+    if (!pushOperand(&frame->operands, a.i, OP_FLOAT))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_drem(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } a, b;
+
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    a.i = high;
+    a.i = (a.i << 32) | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    b.i = high;
+    b.i = (b.i << 32) | low;
+
+    // When the dividend is finite and the divisor is infinity, the result should
+    // be equal to the dividend. So we do nothing to 'a'.
+    // Otherwise, we calculate the fmod. We have to make this check because
+    // fmod fails when the divisor is +-infinity, returning NAN.
+    if (!(a.d != INFINITY && a.d != -INFINITY && (b.d == INFINITY || b.d == -INFINITY)))
+        a.d = fmod(a.d, b.d);
+
+    if (!pushOperand(&frame->operands, (int32_t)(a.i >> 32), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, (int32_t)(a.i & 0xFFFFFFFFLL), OP_DOUBLE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_ineg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t value;
+    popOperand(&frame->operands, &value, NULL);
+    value = -value;
+
+    if (!pushOperand(&frame->operands, value, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_lneg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t value;
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value = high;
+    value = (value << 32) | low;
+    value = -value;
+
+    if (!pushOperand(&frame->operands, (int32_t)(value >> 32), OP_LONG) ||
+        !pushOperand(&frame->operands, (int32_t)(value & 0xFFFFFFFFLL), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_fneg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        float f;
+        int32_t i;
+    } value;
+
+    popOperand(&frame->operands, &value.i, NULL);
+
+    value.f = -value.f;
+
+    if (!pushOperand(&frame->operands, value.i, OP_FLOAT))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_dneg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } value;
+
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value.i = high;
+    value.i = (value.i << 32) | low;
+    value.d = -value.d;
+
+    if (!pushOperand(&frame->operands, (int32_t)(value.i >> 32), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, (int32_t)(value.i & 0xFFFFFFFFLL), OP_DOUBLE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_iinc(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint8_t index = NEXT_BYTE;
+    int8_t immediate = (int8_t)NEXT_BYTE;
+    frame->localVariables[index] += (int32_t)immediate;
     return 1;
 }
 
@@ -762,10 +1114,22 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_pop, instfunc_pop2, instfunc_dup,
         instfunc_dup_x1, instfunc_dup_x2, instfunc_dup2,
         instfunc_dup2_x1, instfunc_dup2_x2, instfunc_swap,
-        instfunc_iadd, instfunc_ladd
+        instfunc_iadd, instfunc_ladd, instfunc_fadd,
+        instfunc_dadd, instfunc_isub, instfunc_lsub,
+        instfunc_fsub, instfunc_dsub, instfunc_imul,
+        instfunc_lmul, instfunc_fmul, instfunc_dmul,
+        instfunc_idiv, instfunc_ldiv, instfunc_fdiv,
+        instfunc_ddiv, instfunc_irem, instfunc_lrem,
+        instfunc_frem, instfunc_drem, instfunc_ineg,
+        instfunc_lneg, instfunc_fneg, instfunc_dneg,
+        instfunc_ishl, instfunc_lshl, instfunc_ishr,
+        instfunc_lshr, instfunc_iushr, instfunc_lushr,
+        instfunc_iand, instfunc_land, instfunc_ior,
+        instfunc_lor, instfunc_ixor, instfunc_lxor,
+        instfunc_iinc,
     };
 
-    if (opcode > 97)
+    if (opcode > 132)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented
