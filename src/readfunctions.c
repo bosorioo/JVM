@@ -8,8 +8,8 @@
 // pointer "*out", if not NULL.
 /**
 * Funcao que le um inteiro sem sinal de 4 bytes da JavaClass ja aberta.
-* @param JavaClass* jc 
-* @param uint32_t *out 
+* @param JavaClass* jc
+* @param uint32_t *out
 * @return uint8_t escrito em *out se nao for NULL
 */
 uint8_t readu4(JavaClass* jc, uint32_t* out)
@@ -199,56 +199,50 @@ int32_t readMethodDescriptor(uint8_t* utf8_bytes, int32_t utf8_len, char checkVa
     return utf8_len == 0 ? bytesProcessed : 0;
 }
 
-// Translates a constant pool entry (that should be pointing to a CONSTANT_Float)
-// to the corresponding float value.
-float readConstantPoolFloat(cp_info* entry)
+// Converts a 32 bit value to its floating point (single precision)
+// representation.
+float readFloatFromUint32(uint32_t value)
 {
-    if (entry->Float.bytes == 0x7F800000UL)
+    if (value == 0x7F800000UL)
         return INFINITY;
 
-    if (entry->Float.bytes == 0xFF800000UL)
+    if (value == 0xFF800000UL)
         return -INFINITY;
 
-    if ((entry->Float.bytes >= 0x7F800000UL && entry->Float.bytes <= 0x7FFFFFFFUL) ||
-        (entry->Float.bytes >= 0xFF800000UL && entry->Float.bytes <= 0xFFFFFFFFUL))
+    if ((value >= 0x7F800000UL && value <= 0x7FFFFFFFUL) ||
+        (value >= 0xFF800000UL && value <= 0xFFFFFFFFUL))
     {
         return NAN;
     }
 
-    int32_t s = (entry->Float.bytes >> 31) == 0 ? 1 : -1;
-    int32_t e = (entry->Float.bytes >> 23) & 0xFF;
+    int32_t s = (value >> 31) == 0 ? 1 : -1;
+    int32_t e = (value >> 23) & 0xFF;
     int32_t m = (e == 0) ?
-        (entry->Float.bytes & 0x7FFFFFUL) << 1 :
-        (entry->Float.bytes & 0x7FFFFFUL) | 0x800000;
+        (value & 0x7FFFFFUL) << 1 :
+        (value & 0x7FFFFFUL) | 0x800000;
 
     return s * (float)ldexp((double)m, e - 150);
 }
 
-// Translates a constant pool entry (that should be pointing to a CONSTANT_Double)
-// to the corresponding double value.
-double readConstantPoolDouble(cp_info* entry)
+double readDoubleFromUint64(uint64_t value)
 {
-    uint64_t bytes = entry->Double.high;
-    bytes <<= 32;
-    bytes |= entry->Double.low;
-
-    if (bytes == 0x7FF0000000000000ULL)
+    if (value == 0x7FF0000000000000ULL)
         return INFINITY;
 
-    if (bytes == 0xFFF0000000000000ULL)
+    if (value == 0xFFF0000000000000ULL)
         return -INFINITY;
 
-    if ((bytes >= 0x7FF0000000000001ULL && bytes <= 0x7FFFFFFFFFFFFFFFULL) ||
-        (bytes >= 0xFFF0000000000001ULL && bytes <= 0xFFFFFFFFFFFFFFFFULL))
+    if ((value >= 0x7FF0000000000001ULL && value <= 0x7FFFFFFFFFFFFFFFULL) ||
+        (value >= 0xFFF0000000000001ULL && value <= 0xFFFFFFFFFFFFFFFFULL))
     {
         return NAN;
     }
 
-    int32_t s = (bytes >> 63) == 0 ? 1 : -1;
-    int32_t e = (bytes >> 52) & 0x7FF;
+    int32_t s = (value >> 63) == 0 ? 1 : -1;
+    int32_t e = (value >> 52) & 0x7FF;
     int64_t m = (e == 0) ?
-        (bytes & 0xFFFFFFFFFFFFFULL) << 1 :
-        (bytes & 0xFFFFFFFFFFFFFULL) | 0x10000000000000ULL;
+        (value & 0xFFFFFFFFFFFFFULL) << 1 :
+        (value & 0xFFFFFFFFFFFFFULL) | 0x10000000000000ULL;
 
     return s * ldexp((double)m, e - 1075);
 }

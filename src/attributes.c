@@ -167,11 +167,11 @@ void printAttributeConstantValue(JavaClass* jc, attribute_info* entry, int ident
             break;
 
         case CONSTANT_Float:
-            printf("%e", readConstantPoolFloat(cp));
+            printf("%e", readFloatFromUint32(cp->Float.bytes));
             break;
 
         case CONSTANT_Double:
-            printf("%e", readConstantPoolDouble(cp));
+            printf("%e", readDoubleFromUint64((uint64_t)cp->Double.high << 32 | cp->Double.low));
             break;
 
         case CONSTANT_String:
@@ -853,7 +853,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                     if (cpi->tag == CONSTANT_Long)
                         printf(" (long: %" PRId64")", ((int64_t)cpi->Long.high << 32) | cpi->Long.low);
                     else if (cpi->tag == CONSTANT_Double)
-                        printf(" (double: %e)", readConstantPoolDouble(cpi));
+                        printf(" (double: %e)", readDoubleFromUint64((uint64_t)cpi->Double.high << 32 | cpi->Double.low));
                     else
                         printf(" (%s, invalid)", decodeOpcodeNewarrayType(cpi->tag));
                 }
@@ -877,7 +877,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                     }
                     else if (cpi->tag == CONSTANT_Float)
                     {
-                        printf(" (float: %e)", readConstantPoolFloat(cpi));
+                        printf(" (float: %e)", readFloatFromUint32(cpi->Float.bytes));
                     }
                     else
                     {

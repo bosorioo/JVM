@@ -333,13 +333,13 @@ void printConstantPoolEntry(JavaClass* jc, cp_info* entry)
 
         case CONSTANT_Float:
             printf("\t\tBytes: 0x%08X\n", entry->Float.bytes);
-            printf("\t\tValue: %e", readConstantPoolFloat(entry));
+            printf("\t\tValue: %e", readFloatFromUint32(entry->Float.bytes));
             break;
 
         case CONSTANT_Double:
             printf("\t\tHigh Bytes:   0x%08X\n", entry->Double.high);
             printf("\t\tLow  Bytes:   0x%08X\n", entry->Double.low);
-            printf("\t\tDouble Value: %e", readConstantPoolDouble(entry));
+            printf("\t\tDouble Value: %e", readDoubleFromUint64((uint64_t)entry->Double.high << 32 | entry->Double.low));
             break;
 
         default:
