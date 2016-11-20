@@ -3,7 +3,7 @@
 #include "validity.h"
 #include "utf8.h"
 #include "string.h"
-#include <stdlib.h>
+#include "memoryinspect.h"
 
 char readMethod(JavaClass* jc, method_info* entry)
 {
@@ -59,10 +59,10 @@ char readMethod(JavaClass* jc, method_info* entry)
         {
             if (!readAttribute(jc, entry->attributes + i))
             {
-                // Only "i" attributes have been successfully read, so to avoid
+                // Only "i" + 1 attributes were attempted to read, so to avoid
                 // releasing uninitialized attributes (which could lead to a crash)
                 // we set the attributes count to the correct amount
-                entry->attributes_count = i;
+                entry->attributes_count = i + 1;
                 return 0;
             }
 

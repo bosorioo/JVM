@@ -2,7 +2,7 @@
 #include "readfunctions.h"
 #include "validity.h"
 #include "utf8.h"
-#include <stdlib.h>
+#include "memoryinspect.h"
 
 char readField(JavaClass* jc, field_info* entry)
 {
@@ -63,10 +63,10 @@ char readField(JavaClass* jc, field_info* entry)
         {
             if (!readAttribute(jc, entry->attributes + i))
             {
-                // Only "i" attributes have been successfully read, so to avoid
+                // Only "i" + 1 attributes were attempted to read, so to avoid
                 // releasing uninitialized attributes (which could lead to a crash)
                 // we set the attributes count to the correct amount
-                entry->attributes_count = i;
+                entry->attributes_count = i + 1;
                 return 0;
             }
 
