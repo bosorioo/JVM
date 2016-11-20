@@ -8,7 +8,7 @@ typedef struct OperandStack OperandStack;
 enum OperandType {
     OP_INTEGER, OP_FLOAT, OP_LONG, OP_DOUBLE,
     OP_NULL, OP_ARRAYREF, OP_STRINGREF, OP_CLASSREF,
-    OP_METHODREF
+    OP_METHODREF, OP_OBJECTREF
 };
 
 struct OperandStack
