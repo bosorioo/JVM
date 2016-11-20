@@ -1,7 +1,7 @@
 #ifndef OPCODES_H
 #define OPCODES_H
 
-#include <stdlib.h>
+#include "memoryinspect.h"
 #include <stdint.h>
 
 enum Opcodes {

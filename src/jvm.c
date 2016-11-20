@@ -3,7 +3,7 @@
 #include "instructions.h"
 #include "opcodes.h"
 
-#include <stdlib.h>
+#include "memoryinspect.h"
 #include <string.h>
 
 void initJVM(JavaVirtualMachine* jvm)

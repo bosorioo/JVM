@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include "javaclass.h"
 #include "jvm.h"
+#include "memoryinspect.h"
 
 int main(int argc, char* args[])
 {

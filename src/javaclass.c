@@ -3,7 +3,7 @@
 #include "constantpool.h"
 #include "utf8.h"
 #include "validity.h"
-#include <stdlib.h>
+#include "memoryinspect.h"
 
 void openClassFile(JavaClass* jc, const char* path)
 {

@@ -1,7 +1,7 @@
 #ifndef INSTRUCTIONS_H
 #define INSTRUCTIONS_H
 
-#include <stdlib.h>
+#include "memoryinspect.h"
 #include <stdint.h>
 #include "jvm.h"
 #include "framestack.h"

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "memoryinspect.h"
 #include <string.h>
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 #include "readfunctions.h"

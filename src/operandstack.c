@@ -1,5 +1,5 @@
 #include "operandstack.h"
-#include <stdlib.h>
+#include "memoryinspect.h"
 
 uint8_t pushOperand(OperandStack** os, int32_t value, enum OperandType type)
 {
