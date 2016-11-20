@@ -2,7 +2,7 @@
 #include "readfunctions.h"
 #include "utf8.h"
 #include "opcodes.h"
-#include <stdlib.h>
+#include "memoryinspect.h"
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 
 #define DECLARE_ATTR_FUNCS(attr) \
@@ -558,7 +558,13 @@ uint8_t readAttributeCode(JavaClass* jc, attribute_info* entry)
     for (u32 = 0; u32 < info->attributes_count; u32++)
     {
         if (!readAttribute(jc, info->attributes + u32))
+        {
+            // Only "u32" + 1 attributes were attempted to read, so to avoid
+            // releasing uninitialized attributes (which could lead to a crash)
+            // we set the attributes count to the correct amount
+            info->attributes_count = u32 + 1;
             return 0;
+        }
     }
 
     return 1;
@@ -1113,6 +1119,16 @@ void freeAttributeCode(attribute_info* entry)
 
         if (info->exception_table)
             free(info->exception_table);
+
+        if (info->attributes)
+        {
+            uint16_t u16;
+
+            for (u16 = 0; u16 < info->attributes_count; u16++)
+                freeAttributeInfo(info->attributes + u16);
+
+            free(info->attributes);
+        }
 
         free(info);
         entry->info = NULL;
