@@ -59,7 +59,11 @@ int main(int argc, char* args[])
     {
         JavaVirtualMachine jvm;
 
-        initJVM(&jvm, &jc);
+        // TODO: It is not enough to open the class file and just run it,
+        // it has to be resolved first. During resolution, other classes
+        // could be loaded, like super classes or interfaces.
+        addClassToMethodArea(&jvm, &jc);
+        initJVM(&jvm);
     }
 
 
