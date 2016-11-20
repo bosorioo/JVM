@@ -5,10 +5,17 @@ typedef struct Frame Frame;
 typedef struct FrameStack FrameStack;
 
 #include "operandstack.h"
+#include "attributes.h"
 
 struct Frame
 {
+    JavaClass* jc;
+
+    uint32_t pc, code_length;
+    uint8_t* code;
+
     OperandStack* operands;
+    int32_t* localVariables;
 };
 
 struct FrameStack
@@ -17,6 +24,9 @@ struct FrameStack
     struct FrameStack* next;
 };
 
-void initFrame(Frame* frame);
+Frame* newFrame(JavaClass* jc, method_info* method);
+void freeFrame(Frame* frame);
+uint8_t pushFrame(FrameStack** fs, Frame* frame);
+uint8_t popFrame(FrameStack** fs, Frame* outPtr);
 
 #endif // FRAMESTACK_H
