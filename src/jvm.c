@@ -129,6 +129,20 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     return success;
 }
 
+uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
+{
+    // TODO: resolve method
+    jvm->status = JVM_STATUS_METHOD_RESOLUTION_FAILED;
+    return 0;
+}
+
+uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, field_info* field)
+{
+    // TODO: resolve field
+    jvm->status = JVM_STATUS_FIELD_RESOLUTION_FAILED;
+    return 0;
+}
+
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
 {
 #ifdef DEBUG
@@ -138,6 +152,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
     }
 #endif // DEBUG
 
+    Frame* callerFrame = jvm->frames ? jvm->frames->frame : NULL;
     Frame* frame = newFrame(jc, method);
 
     if (!frame || !pushFrame(&jvm->frames, frame))
@@ -172,6 +187,11 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
         {
             break;
         }
+    }
+
+    if (frame->returnCount > 0 && callerFrame)
+    {
+        // TODO: move return values from one frame to another
     }
 
     popFrame(&jvm->frames, NULL);
