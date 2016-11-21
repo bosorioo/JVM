@@ -971,7 +971,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
 
                 int32_t offset;
 
-                for (u32 = 0; u32 < highValue - lowValue + 1; u32++)
+                for (u32 = 0; u32 < (uint32_t)(highValue - lowValue + 1); u32++)
                 {
                     printf("\n");
                     ident(identationLevel);
