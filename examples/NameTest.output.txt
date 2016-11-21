@@ -1,0 +1,106 @@
+﻿---- Warning ----
+
+class name and file path don't match.
+Reading will proceed anyway.
+---- General Information ----
+
+Version:		52.0 (Major.minor) [jdk version 1.8]
+Constant pool count:	13
+Access flags:		0x0021 [super, public]
+This class:		cp index #2 <not_examples/NameTest>
+Super class:		cp index #3 <java/lang/Object>
+Interfaces count:	0
+Fields count:		0
+Methods count:		1
+Attributes count:	1
+
+---- Constant Pool ----
+
+	#1: Methodref (tag = 10)
+		class_index: #3 <java/lang/Object>
+		name_and_type_index: #10
+		name_and_type.name_index: #4 <<init>>
+		name_and_type.descriptor_index: #5 <()V>
+
+	#2: Class (tag = 7)
+		name_index: #11 <not_examples/NameTest>
+
+	#3: Class (tag = 7)
+		name_index: #12 <java/lang/Object>
+
+	#4: Utf8 (tag = 1)
+		Byte Count: 6
+		Length: 6
+		ASCII Characters: <init>
+
+	#5: Utf8 (tag = 1)
+		Byte Count: 3
+		Length: 3
+		ASCII Characters: ()V
+
+	#6: Utf8 (tag = 1)
+		Byte Count: 4
+		Length: 4
+		ASCII Characters: Code
+
+	#7: Utf8 (tag = 1)
+		Byte Count: 15
+		Length: 15
+		ASCII Characters: LineNumberTable
+
+	#8: Utf8 (tag = 1)
+		Byte Count: 10
+		Length: 10
+		ASCII Characters: SourceFile
+
+	#9: Utf8 (tag = 1)
+		Byte Count: 13
+		Length: 13
+		ASCII Characters: NameTest.java
+
+	#10: NameAndType (tag = 12)
+		name_index: #4 <<init>>
+		descriptor_index: #5 <()V>
+
+	#11: Utf8 (tag = 1)
+		Byte Count: 21
+		Length: 21
+		ASCII Characters: not_examples/NameTest
+
+	#12: Utf8 (tag = 1)
+		Byte Count: 16
+		Length: 16
+		ASCII Characters: java/lang/Object
+
+---- Methods ----
+
+	Method #1:
+
+		name_index:        #4 <<init>>
+		descriptor_index:  #5 <()V>
+		access_flags:      0x0001 [public]
+		attribute_count:   1
+
+		Method Attribute #1 - Code:
+
+			max_stack: 1, max_locals: 1, code_length: 5
+			exception_table_length: 0, attribute_count: 1
+
+			Code:	Offset	Mnemonic	Parameters
+				0	aload_0
+				1	invokespecial	#1 (Method java/lang/Object.<init>, descriptor: ()V)
+				4	return
+
+			Code Attribute #1 - LineNumberTable:
+
+				line_number_table_length: 1
+
+				Table:	Index	line_number	start_pc
+					1	6		0
+
+
+---- Class Attributes ----
+
+	Attribute #1 - SourceFile:
+
+		sourcefile_index: #9 <NameTest.java>

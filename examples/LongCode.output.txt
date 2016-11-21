@@ -3,7 +3,7 @@
 Version:		52.0 (Major.minor) [jdk version 1.8]
 Constant pool count:	118
 Access flags:		0x0021 [super, public]
-This class:		cp index #42 <longcode/LongCode>
+This class:		cp index #42 <examples/LongCode>
 Super class:		cp index #43 <java/lang/Object>
 Interfaces count:	2
 Fields count:		6
@@ -25,7 +25,7 @@ Attributes count:	2
 		name_index: #51 <[I>
 
 	#4: Fieldref (tag = 9)
-		class_index: #42 <longcode/LongCode>
+		class_index: #42 <examples/LongCode>
 		name_and_type_index: #85
 		name_and_type.name_index: #61 <matrix3d>
 		name_and_type.descriptor_index: #62 <[[[I>
@@ -82,28 +82,28 @@ Attributes count:	2
 		Double Value: -inf
 
 	#25: Fieldref (tag = 9)
-		class_index: #42 <longcode/LongCode>
+		class_index: #42 <examples/LongCode>
 		name_and_type_index: #88
 		name_and_type.name_index: #63 <matrix2d>
 		name_and_type.descriptor_index: #64 <[[D>
 
 	#26: Class (tag = 7)
-		name_index: #89 <longcode/LongCode$NestedClass>
+		name_index: #89 <examples/LongCode$NestedClass>
 
 	#27: Methodref (tag = 10)
-		class_index: #26 <longcode/LongCode$NestedClass>
+		class_index: #26 <examples/LongCode$NestedClass>
 		name_and_type_index: #90
 		name_and_type.name_index: #65 <<init>>
-		name_and_type.descriptor_index: #109 <(Llongcode/LongCode;)V>
+		name_and_type.descriptor_index: #109 <(Lexamples/LongCode;)V>
 
 	#28: InterfaceMethodref (tag = 11)
-		class_index: #48 <longcode/LongCode$Test>
+		class_index: #48 <examples/LongCode$Test>
 		name_and_type_index: #91
 		name_and_type.name_index: #110 <method1>
 		name_and_type.descriptor_index: #111 <([I)I>
 
 	#29: Fieldref (tag = 9)
-		class_index: #42 <longcode/LongCode>
+		class_index: #42 <examples/LongCode>
 		name_and_type_index: #92
 		name_and_type.name_index: #57 <static_long_member>
 		name_and_type.descriptor_index: #58 <J>
@@ -148,7 +148,7 @@ Attributes count:	2
 		name_index: #101 <java/lang/ArithmeticException>
 
 	#39: Fieldref (tag = 9)
-		class_index: #42 <longcode/LongCode>
+		class_index: #42 <examples/LongCode>
 		name_and_type_index: #102
 		name_and_type.name_index: #50 <array_member>
 		name_and_type.descriptor_index: #51 <[I>
@@ -159,7 +159,7 @@ Attributes count:	2
 		Long Value: 98765432123456789
 
 	#42: Class (tag = 7)
-		name_index: #103 <longcode/LongCode>
+		name_index: #103 <examples/LongCode>
 
 	#43: Class (tag = 7)
 		name_index: #104 <java/lang/Object>
@@ -181,7 +181,7 @@ Attributes count:	2
 		ASCII Characters: InnerClasses
 
 	#48: Class (tag = 7)
-		name_index: #107 <longcode/LongCode$Test>
+		name_index: #107 <examples/LongCode$Test>
 
 	#49: Utf8 (tag = 1)
 		Byte Count: 4
@@ -378,11 +378,11 @@ Attributes count:	2
 	#89: Utf8 (tag = 1)
 		Byte Count: 29
 		Length: 29
-		ASCII Characters: longcode/LongCode$NestedClass
+		ASCII Characters: examples/LongCode$NestedClass
 
 	#90: NameAndType (tag = 12)
 		name_index: #65 <<init>>
-		descriptor_index: #109 <(Llongcode/LongCode;)V>
+		descriptor_index: #109 <(Lexamples/LongCode;)V>
 
 	#91: NameAndType (tag = 12)
 		name_index: #110 <method1>
@@ -438,7 +438,7 @@ Attributes count:	2
 	#103: Utf8 (tag = 1)
 		Byte Count: 17
 		Length: 17
-		ASCII Characters: longcode/LongCode
+		ASCII Characters: examples/LongCode
 
 	#104: Utf8 (tag = 1)
 		Byte Count: 16
@@ -458,7 +458,7 @@ Attributes count:	2
 	#107: Utf8 (tag = 1)
 		Byte Count: 22
 		Length: 22
-		ASCII Characters: longcode/LongCode$Test
+		ASCII Characters: examples/LongCode$Test
 
 	#108: Utf8 (tag = 1)
 		Byte Count: 19
@@ -468,7 +468,7 @@ Attributes count:	2
 	#109: Utf8 (tag = 1)
 		Byte Count: 22
 		Length: 22
-		ASCII Characters: (Llongcode/LongCode;)V
+		ASCII Characters: (Lexamples/LongCode;)V
 
 	#110: Utf8 (tag = 1)
 		Byte Count: 7
@@ -653,7 +653,7 @@ Attributes count:	2
 				79	iastore
 				80	aastore
 				81	aastore
-				82	putfield	#4 (Field longcode/LongCode.matrix3d, descriptor: [[[I)
+				82	putfield	#4 (Field examples/LongCode.matrix3d, descriptor: [[[I)
 				85	aload_0
 				86	iconst_3
 				87	anewarray	#5 (class: [D)
@@ -708,7 +708,7 @@ Attributes count:	2
 				157	ldc2_w		#23 (double: -inf)
 				160	dastore
 				161	aastore
-				162	putfield	#25 (Field longcode/LongCode.matrix2d, descriptor: [[D)
+				162	putfield	#25 (Field examples/LongCode.matrix2d, descriptor: [[D)
 				165	return
 
 			Code Attribute #1 - LineNumberTable:
@@ -738,19 +738,19 @@ Attributes count:	2
 				0	iconst_2
 				1	newarray	10 (array of int)
 				3	astore		4
-				5	new		#26 (class: longcode/LongCode$NestedClass)
+				5	new		#26 (class: examples/LongCode$NestedClass)
 				8	dup
 				9	aload_0
-				10	invokespecial	#27 (Method longcode/LongCode$NestedClass.<init>, descriptor: (Llongcode/LongCode;)V)
+				10	invokespecial	#27 (Method examples/LongCode$NestedClass.<init>, descriptor: (Lexamples/LongCode;)V)
 				13	astore		5
 				15	aload		4
 				17	iconst_0
 				18	aload		5
 				20	aload		4
-				22	invokeinterface	#28, count: 2 (InterfaceMethod longcode/LongCode$Test.method1, descriptor: ([I)I)
+				22	invokeinterface	#28, count: 2 (InterfaceMethod examples/LongCode$Test.method1, descriptor: ([I)I)
 				27	iastore
 				28	lload_2
-				29	getstatic	#29 (Field longcode/LongCode.static_long_member, descriptor: J)
+				29	getstatic	#29 (Field examples/LongCode.static_long_member, descriptor: J)
 				32	ladd
 				33	lstore_2
 				34	return
@@ -951,9 +951,9 @@ Attributes count:	2
 				12	iconst_2
 				13	iconst_3
 				14	iastore
-				15	putstatic	#39 (Field longcode/LongCode.array_member, descriptor: [I)
+				15	putstatic	#39 (Field examples/LongCode.array_member, descriptor: [I)
 				18	ldc2_w		#40 (long: 98765432123456789)
-				21	putstatic	#29 (Field longcode/LongCode.static_long_member, descriptor: J)
+				21	putstatic	#29 (Field examples/LongCode.static_long_member, descriptor: J)
 				24	return
 
 			Code Attribute #1 - LineNumberTable:
@@ -978,14 +978,14 @@ Attributes count:	2
 
 		Inner Class #1:
 
-			inner_class_info_index:   #26 <longcode/LongCode$NestedClass>
-			outer_class_info_index:   #42 <longcode/LongCode>
+			inner_class_info_index:   #26 <examples/LongCode$NestedClass>
+			outer_class_info_index:   #42 <examples/LongCode>
 			inner_name_index:         #46 <NestedClass>
 			inner_class_access_flags: 0x0000 [no flags]
 
 		Inner Class #2:
 
-			inner_class_info_index:   #48 <longcode/LongCode$Test>
-			outer_class_info_index:   #42 <longcode/LongCode>
+			inner_class_info_index:   #48 <examples/LongCode$Test>
+			outer_class_info_index:   #42 <examples/LongCode>
 			inner_name_index:         #49 <Test>
 			inner_class_access_flags: 0x0608 [abstract, static, interface]
