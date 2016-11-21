@@ -1,4 +1,4 @@
-package longcode;
+package examples;
 
 import java.util.*;
 import javafx.geometry.Point2D;
