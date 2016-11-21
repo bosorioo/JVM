@@ -274,7 +274,7 @@ void printConstantPoolEntry(JavaClass* jc, cp_info* entry)
             printf("\t\tASCII: %s", buffer);
 
             if (u32 != cpi->Utf8.length)
-                printf("\n\t\tUTF-8: %.*s", cpi->Utf8.bytes, cpi->Utf8.bytes);
+                printf("\n\t\tUTF-8: %.*s", (int)cpi->Utf8.length, cpi->Utf8.bytes);
 
             break;
 
