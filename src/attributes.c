@@ -689,7 +689,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 u32 = NEXTBYTE;
                 u32 = (u32 << 8) | NEXTBYTE;
 
-                printf("\t#%u - CONSTANT_InvokeDynamic not implemented -", u32, NEXTBYTE);
+                printf("\t#%u - CONSTANT_InvokeDynamic not implemented -", u32);
 
                 u32 = NEXTBYTE;
 
@@ -697,7 +697,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 {
                     printf("\n");
                     ident(identationLevel);
-                    printf("%u\t- expected a zero byte in this offset due to invokeinterface, found 0x%.2X instead -", code_offset, u32);
+                    printf("%u\t- expected a zero byte in this offset due to invokedynamic, found 0x%.2X instead -", code_offset, u32);
                 }
 
                 u32 = NEXTBYTE;
@@ -706,7 +706,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 {
                     printf("\n");
                     ident(identationLevel);
-                    printf("%u\t- expected a zero byte in this offset due to invokeinterface, found 0x%.2X instead -", code_offset, u32);
+                    printf("%u\t- expected a zero byte in this offset due to invokedynamic, found 0x%.2X instead -", code_offset, u32);
                 }
 
                 break;
