@@ -85,6 +85,118 @@ char cmp_UTF8_Ascii(const uint8_t* utf8_bytes, int32_t utf8_len, const uint8_t* 
     return ascii_len == utf8_len;
 }
 
+// Function to compare two strings, both in UTF-8.
+// Return value is 1 in case the strings are equal (case sensitive),
+// 0 otherwise.
+// utf8A_bytes and utf8B_bytes are the pointers to the bytes that make the
+// UTF-8 strings A and B that will be compared.
+// utf8A_len and utf8B_len are the length of the bytes that make those strings,
+// respectively.
+char cmp_UTF8(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8B_bytes, int32_t utf8B_len)
+{
+    if (utf8A_len != utf8B_len)
+        return 0;
+
+    int32_t i;
+
+    for (i = 0; i < utf8A_len; i++)
+    {
+        if (utf8A_bytes[i] != utf8B_bytes[i])
+            return 0;
+    }
+
+    return 1;
+}
+
+// Function to compare two strings that contains file paths, both in UTF-8.
+// Return value is 1 in case the strings are equal (case sensitive),
+// 0 otherwise.
+// The difference in this function is that it considers slashes (/)
+// and backslashes (\) the same characters, and consecutive slashes or
+// backslashes are treated like one character, for sake of checking if
+// two strings are actually the path to the same file/directory.
+// utf8A_bytes and utf8B_bytes are the pointers to the bytes that make the
+// UTF-8 strings A and B that will be compared.
+// utf8A_len and utf8B_len are the length of the bytes that make those strings,
+// respectively.
+char cmp_UTF8_FilePath(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8B_bytes, int32_t utf8B_len)
+{
+    uint32_t utf8_charA, utf8_charB;
+    uint8_t bytes_used;
+
+    while (utf8A_len > 0 && utf8B_len > 0)
+    {
+
+        bytes_used = nextUTF8Character(utf8A_bytes, utf8A_len, &utf8_charA);
+
+        if (bytes_used == 0)
+            return 0; // Invalid UTF-8 always return false in comparison
+
+        utf8A_bytes += bytes_used;
+        utf8A_len -= bytes_used;
+
+        bytes_used = nextUTF8Character(utf8B_bytes, utf8B_len, &utf8_charB);
+
+        if (bytes_used == 0)
+            return 0; // Invalid UTF-8 always return false in comparison
+
+        utf8B_bytes += bytes_used;
+        utf8B_len -= bytes_used;
+
+        if ( (utf8_charA == utf8_charB) ||
+             (utf8_charA == '/' && utf8_charB == '\\') ||
+             (utf8_charA == '\\' && utf8_charB == '/'))
+        {
+            // Advance consecutive slashes and backslashes of string A
+            if (utf8_charA == '/' || utf8_charA == '\\')
+            {
+                while (utf8A_len > 0)
+                {
+                    bytes_used = nextUTF8Character(utf8A_bytes, utf8A_len, &utf8_charA);
+
+                    if (bytes_used == 0)
+                        return 0; // Invalid UTF-8 always return false in comparison
+
+                    if (utf8_charA != '/' && utf8_charA != '\\')
+                        break;
+
+                    utf8A_bytes += bytes_used;
+                    utf8A_len -= bytes_used;
+                }
+            }
+
+            // Advance consecutive slashes and backslashes of string B
+            if (utf8_charB == '/' || utf8_charB == '\\')
+            {
+                while (utf8B_len > 0)
+                {
+                    bytes_used = nextUTF8Character(utf8B_bytes, utf8B_len, &utf8_charB);
+
+                    if (bytes_used == 0)
+                        return 0; // Invalid UTF-8 always return false in comparison
+
+                    if (utf8_charB != '/' && utf8_charB != '\\')
+                        break;
+
+                    utf8B_bytes += bytes_used;
+                    utf8B_len -= bytes_used;
+                }
+            }
+
+            // Go to next iteration since both characters extracted are the same
+            continue;
+        }
+
+        // If reached here, string A had a character not equal to string B
+        return 0;
+    }
+
+    // If reached here, one of the strings has reached the end.
+    // So check if their sizes match. If they don't, then one
+    // string is longer than the other
+    return utf8A_len == utf8B_len;
+}
+
 // Function that translates a UTF-8 stream to ASCII, storing the result
 // in the output buffer pointed by "*out_buffer". At most "buffer_len"
 // characters will be written to the buffer, NULL character included.
