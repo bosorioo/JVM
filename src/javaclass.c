@@ -25,6 +25,7 @@ void openClassFile(JavaClass* jc, const char* path)
     jc->thisClass = jc->superClass = jc->accessFlags = 0;
     jc->attributeCount = jc->fieldCount = jc->methodCount = jc->constantPoolCount = jc->interfaceCount = 0;
 
+    jc->classNameMismatch = 0;
     jc->lastTagRead = 0;
     jc->totalBytesRead = 0;
     jc->constantPoolEntriesRead = 0;
@@ -106,8 +107,11 @@ void openClassFile(JavaClass* jc, const char* path)
         return;
     }
 
-    if (!checkClassIndexAndAccessFlags(jc) || !checkClassNameFileNameMatch(jc, path))
+    if (!checkClassIndexAndAccessFlags(jc))
         return;
+
+    if (!checkClassNameFileNameMatch(jc, path))
+        jc->classNameMismatch = 1;
 
     if (!readu2(jc, &jc->interfaceCount))
     {
@@ -316,7 +320,6 @@ const char* decodeJavaClassStatus(enum JavaClassStatus status)
         case CLASS_STATUS_UNSUPPORTED_VERSION: return "class file version isn't supported";
         case CLASS_STATUS_FILE_COULDNT_BE_OPENED: return "class file couldn't be opened";
         case CLASS_STATUS_INVALID_SIGNATURE: return "signature (0xCAFEBABE) mismatch";
-        case CLASS_NAME_FILE_NAME_MISMATCH: return "class name and .class file name don't match";
         case MEMORY_ALLOCATION_FAILED: return "not enough memory";
         case INVALID_CONSTANT_POOL_COUNT: return "constant pool count should be at least 1";
         case UNEXPECTED_EOF: return "end of file found too soon";
@@ -424,6 +427,9 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
 
 void printClassFileDebugInfo(JavaClass* jc)
 {
+    if (jc->classNameMismatch)
+        printf("Warning: class name and file path don't match.\n");
+
     if (jc->currentConstantPoolEntryIndex + 2 != jc->constantPoolCount)
     {
         printf("Failed to read constant pool entry at index #%d\n", jc->currentConstantPoolEntryIndex + 1);
@@ -469,6 +475,9 @@ void printClassFileInfo(JavaClass* jc)
     char buffer[256];
     cp_info* cp;
     uint16_t u16;
+
+    if (jc->classNameMismatch)
+        printf("---- Warning ----\n\nclass name and file path don't match.\nReading will proceed anyway.\n");
 
     printf("---- General Information ----\n\n");
 

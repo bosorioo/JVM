@@ -51,7 +51,6 @@ enum JavaClassStatus {
     CLASS_STATUS_UNSUPPORTED_VERSION,
     CLASS_STATUS_FILE_COULDNT_BE_OPENED,
     CLASS_STATUS_INVALID_SIGNATURE,
-    CLASS_NAME_FILE_NAME_MISMATCH,
     MEMORY_ALLOCATION_FAILED,
     INVALID_CONSTANT_POOL_COUNT,
     UNEXPECTED_EOF,
@@ -94,6 +93,7 @@ struct JavaClass {
     // General
     FILE* file;
     enum JavaClassStatus status;
+    uint8_t classNameMismatch;
 
     // Java
     uint16_t minorVersion, majorVersion;
