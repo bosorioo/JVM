@@ -477,7 +477,7 @@ void printClassFileInfo(JavaClass* jc)
     uint16_t u16;
 
     if (jc->classNameMismatch)
-        printf("---- Warning ----\n\nclass name and file path don't match.\nReading will proceed anyway.\n");
+        printf("---- Warning ----\n\nClass name and file path don't match.\nReading will proceed anyway.\n\n");
 
     printf("---- General Information ----\n\n");
 
