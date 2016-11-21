@@ -1653,6 +1653,7 @@ uint8_t instfunc_ret(JavaVirtualMachine* jvm, Frame* frame)
 uint8_t instfunc_tableswitch(JavaVirtualMachine* jvm, Frame* frame)
 {
     uint32_t base = frame->pc - 1;
+
     // Skip padding bytes
     frame->pc += 4 - (frame->pc % 4);
 
@@ -1687,6 +1688,74 @@ uint8_t instfunc_tableswitch(JavaVirtualMachine* jvm, Frame* frame)
 
     return 1;
 }
+
+uint8_t instfunc_lookupswitch(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint32_t base = frame->pc - 1;
+
+    // Skip padding bytes
+    frame->pc += 4 - (frame->pc % 4);
+
+    int32_t defaultValue = NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+
+    int32_t npairs = NEXT_BYTE;
+    npairs = (npairs << 8) | NEXT_BYTE;
+    npairs = (npairs << 8) | NEXT_BYTE;
+    npairs = (npairs << 8) | NEXT_BYTE;
+
+    int32_t key, match;
+    popOperand(&frame->operands, &key, NULL);
+
+    while (npairs-- > 0)
+    {
+        match = NEXT_BYTE;
+        match = (match << 8) | NEXT_BYTE;
+        match = (match << 8) | NEXT_BYTE;
+        match = (match << 8) | NEXT_BYTE;
+
+        if (key == match)
+        {
+            defaultValue = NEXT_BYTE;
+            defaultValue = (defaultValue << 8) | NEXT_BYTE;
+            defaultValue = (defaultValue << 8) | NEXT_BYTE;
+            defaultValue = (defaultValue << 8) | NEXT_BYTE;
+            break;
+        }
+        else
+        {
+            frame->pc += 4;
+        }
+    }
+
+    frame->pc = base + defaultValue;
+
+    return 1;
+}
+
+#define DECLR_RETURN_FAMILY(instname, retcount) \
+    uint8_t instfunc_##instname(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        /* This will finish the frame, forcing it to return */ \
+        frame->pc = frame->code_length; \
+        /*
+         Set the returnCount to 1, so the caller frame will know \
+         that one operand (the top one obviously) must be popped \
+         from this soon-to-end frame and pushed again to the \
+         caller frame.
+        */ \
+        frame->returnCount = retcount; \
+        return 1;\
+    }
+
+DECLR_RETURN_FAMILY(ireturn, 1)
+DECLR_RETURN_FAMILY(lreturn, 2)
+DECLR_RETURN_FAMILY(freturn, 1)
+DECLR_RETURN_FAMILY(dreturn, 2)
+DECLR_RETURN_FAMILY(areturn, 1)
+DECLR_RETURN_FAMILY(return, 0)
 
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
@@ -1747,10 +1816,13 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_if_icmpeq, instfunc_if_icmpne, instfunc_if_icmplt,
         instfunc_if_icmpge, instfunc_if_icmpgt, instfunc_if_icmple,
         instfunc_if_acmpeq, instfunc_if_acmpne, instfunc_goto,
-        instfunc_jsr, instfunc_ret, instfunc_tableswitch
+        instfunc_jsr, instfunc_ret, instfunc_tableswitch,
+        instfunc_lookupswitch, instfunc_ireturn, instfunc_lreturn,
+        instfunc_freturn, instfunc_dreturn, instfunc_areturn,
+        instfunc_return
     };
 
-    if (opcode > 170)
+    if (opcode > 177)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented

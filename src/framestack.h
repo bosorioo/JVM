@@ -14,6 +14,10 @@ struct Frame
     // Use strict floating points?
     uint8_t fp_strict;
 
+    // How many operands should be moved from this frame to
+    // the caller frame when the method returns?
+    uint8_t returnCount;
+
     uint32_t pc, code_length;
     uint8_t* code;
 
