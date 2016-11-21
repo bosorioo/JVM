@@ -68,14 +68,15 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
 #endif // DEBUG
 
+    if (isClassLoaded(jvm, className_utf8_bytes, utf8_len) ||
+        cmp_UTF8_Ascii(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/Object", 16))
+        return 1;
+
     JavaClass* jc;
     cp_info* cpi;
     char path[1024];
     uint8_t success = 1;
     uint16_t u16;
-
-    if (cmp_UTF8_Ascii(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/Object", 16))
-        return 1;
 
     snprintf(path, sizeof(path), "%.*s.class", utf8_len, className_utf8_bytes);
 
@@ -204,7 +205,11 @@ uint8_t isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_
         cpi = jc->constantPool + jc->thisClass - 1;
         cpi = jc->constantPool + cpi->Class.name_index - 1;
 
-        if (cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, utf8_bytes, utf8_len))
+        // TODO: use validity.c function to correctly check if file path and class names
+        // are a match. Otherwise, classes with same name, but in different packages or
+        // classes with packages won't be properly handled.
+
+        if (cmp_UTF8(cpi->Utf8.bytes, cpi->Utf8.length, utf8_bytes, utf8_len))
             return 1;
 
         classes = classes->next;
