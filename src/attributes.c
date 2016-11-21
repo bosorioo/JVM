@@ -689,7 +689,11 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 u32 = NEXTBYTE;
                 u32 = (u32 << 8) | NEXTBYTE;
 
+<<<<<<< HEAD
                 printf("\t#%u - CONSTANT_InvokeDynamic not implemented -", u32);
+=======
+                printf("\t#%u - CONSTANT_InvokeDynamic not implemented - %u", u32, NEXTBYTE);
+>>>>>>> origin/master
 
                 u32 = NEXTBYTE;
 
