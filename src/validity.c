@@ -159,7 +159,7 @@ char checkClassIndexAndAccessFlags(JavaClass* jc)
 char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
-    char result;
+    cp_info* cpi;
 
     // This is to get the indexes of the last '/' (to ignore folders)
     // and the first '.' (to separe the .class suffix, in case it exists).
@@ -172,52 +172,22 @@ char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
     }
 
     end = i;
-    i = 0;
-    result = 1;
 
-    cp_info* entry = jc->constantPool + jc->thisClass - 1;
-    entry = jc->constantPool + entry->Class.name_index - 1;
+    cpi = jc->constantPool + jc->thisClass - 1;
+    cpi = jc->constantPool + cpi->Class.name_index - 1;
 
-    uint8_t* utf8_class_name = entry->Utf8.bytes;
-    int32_t utf8_len = entry->Utf8.length;
-
-    uint32_t utf8_char;
-    uint8_t bytes_used;
-
-    while (utf8_len > 0)
+    for (i = 0; i < cpi->Utf8.length; i++)
     {
-        bytes_used = nextUTF8Character(utf8_class_name, utf8_len, &utf8_char);
-
-        if (bytes_used == 0)
+        if (*(cpi->Utf8.bytes + i) == '/')
         {
-            jc->status = CLASS_NAME_FILE_NAME_MISMATCH;
-            return 0;
-        }
+            if (begin == 0)
+                break;
 
-        utf8_class_name += bytes_used;
-        utf8_len -= bytes_used;
-
-        if (utf8_char == '/')
-        {
-            i = 0;
-            result = 1;
-        }
-        else
-        {
-            if (result)
-                result = (utf8_char <= 127) && (i < end) && ((char)utf8_char == classFilePath[begin + i]);
-
-            i++;
+            while (--begin > 0 && (classFilePath[begin - 1] != '/' || classFilePath[begin - 1] != '\\'));
         }
     }
 
-    if (result)
-        result = i == (end - begin);
-
-    if (result == 0)
-        jc->status = CLASS_NAME_FILE_NAME_MISMATCH;
-
-    return result;
+    return cmp_UTF8_FilePath(cpi->Utf8.bytes, cpi->Utf8.length, (uint8_t*)classFilePath + begin, end - begin);
 }
 
 // Checks whether the UTF-8 stream is a valid Java Identifier. A java identifer (class name,
