@@ -2,13 +2,15 @@
 #include <math.h>
 
 #define NEXT_BYTE (*(frame->code + frame->pc++))
+#define HIWORD(x) ((int32_t)(x >> 32))
+#define LOWORD(x) ((int32_t)(x & 0xFFFFFFFFll))
 
 uint8_t instfunc_nop(JavaVirtualMachine* jvm, Frame* frame)
 {
     return 1;
 }
 
-uint8_t instfunc_aconstnull(JavaVirtualMachine* jvm, Frame* frame)
+uint8_t instfunc_aconst_null(JavaVirtualMachine* jvm, Frame* frame)
 {
     if (!pushOperand(&frame->operands, 0, OP_NULL))
     {
@@ -768,8 +770,8 @@ uint8_t instfunc_iushr(JavaVirtualMachine* jvm, Frame* frame)
         b = high; \
         b = b << 32 | low; \
         a = a op b; \
-        if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) || \
-            !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG)) \
+        if (!pushOperand(&frame->operands, HIWORD(a), OP_LONG) || \
+            !pushOperand(&frame->operands, LOWORD(a), OP_LONG)) \
         { \
             jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
             return 0; \
@@ -805,8 +807,8 @@ uint8_t instfunc_lshl(JavaVirtualMachine* jvm, Frame* frame)
 
     a = a << (b & 0x1FLL);
 
-    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
-        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG))
+    if (!pushOperand(&frame->operands, HIWORD(a), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(a), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -833,8 +835,8 @@ uint8_t instfunc_lshr(JavaVirtualMachine* jvm, Frame* frame)
 
     a = a >> (b & 0x1FLL);
 
-    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
-        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFLL), OP_LONG))
+    if (!pushOperand(&frame->operands, HIWORD(a), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(a), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -861,8 +863,8 @@ uint8_t instfunc_lushr(JavaVirtualMachine* jvm, Frame* frame)
 
     a = a >> (b & 0x1FLL);
 
-    if (!pushOperand(&frame->operands, (int32_t)(a >> 32), OP_LONG) ||
-        !pushOperand(&frame->operands, (int32_t)(a & 0xFFFFFFFFULL), OP_LONG))
+    if (!pushOperand(&frame->operands, HIWORD(a), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(a), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -910,8 +912,8 @@ DECLR_FLOAT_MATH_OP(fdiv, /)
         b.i = high; \
         b.i = (b.i << 32) | low; \
         a.d = a.d op b.d; \
-        if (!pushOperand(&frame->operands, (int32_t)(a.i >> 32), OP_DOUBLE) || \
-            !pushOperand(&frame->operands, (int32_t)(a.i & 0xFFFFFFFFLL), OP_DOUBLE)) \
+        if (!pushOperand(&frame->operands, HIWORD(a.i), OP_DOUBLE) || \
+            !pushOperand(&frame->operands, LOWORD(a.i), OP_DOUBLE)) \
         { \
             jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
             return 0; \
@@ -978,8 +980,8 @@ uint8_t instfunc_drem(JavaVirtualMachine* jvm, Frame* frame)
     if (!(a.d != INFINITY && a.d != -INFINITY && (b.d == INFINITY || b.d == -INFINITY)))
         a.d = fmod(a.d, b.d);
 
-    if (!pushOperand(&frame->operands, (int32_t)(a.i >> 32), OP_DOUBLE) ||
-        !pushOperand(&frame->operands, (int32_t)(a.i & 0xFFFFFFFFLL), OP_DOUBLE))
+    if (!pushOperand(&frame->operands, HIWORD(a.i), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, LOWORD(a.i), OP_DOUBLE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -1015,8 +1017,8 @@ uint8_t instfunc_lneg(JavaVirtualMachine* jvm, Frame* frame)
     value = (value << 32) | low;
     value = -value;
 
-    if (!pushOperand(&frame->operands, (int32_t)(value >> 32), OP_LONG) ||
-        !pushOperand(&frame->operands, (int32_t)(value & 0xFFFFFFFFLL), OP_LONG))
+    if (!pushOperand(&frame->operands, HIWORD(value), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(value), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -1061,8 +1063,8 @@ uint8_t instfunc_dneg(JavaVirtualMachine* jvm, Frame* frame)
     value.i = (value.i << 32) | low;
     value.d = -value.d;
 
-    if (!pushOperand(&frame->operands, (int32_t)(value.i >> 32), OP_DOUBLE) ||
-        !pushOperand(&frame->operands, (int32_t)(value.i & 0xFFFFFFFFLL), OP_DOUBLE))
+    if (!pushOperand(&frame->operands, HIWORD(value.i), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, LOWORD(value.i), OP_DOUBLE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -1088,8 +1090,8 @@ uint8_t instfunc_i2l(JavaVirtualMachine* jvm, Frame* frame)
 
     value = temp;
 
-    if (!pushOperand(&frame->operands, (int32_t)(value >> 32), OP_LONG) ||
-        !pushOperand(&frame->operands, (int32_t)(value & 0xFFFFFFFFll), OP_LONG))
+    if (!pushOperand(&frame->operands, HIWORD(value), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(value), OP_LONG))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -1129,8 +1131,8 @@ uint8_t instfunc_i2d(JavaVirtualMachine* jvm, Frame* frame)
     popOperand(&frame->operands, &temp, NULL);
     value.d = (double)temp;
 
-    if (!pushOperand(&frame->operands, (int32_t)(value.i >> 32), OP_DOUBLE) ||
-        !pushOperand(&frame->operands, (int32_t)(value.i & 0xFFFFFFFFll), OP_DOUBLE))
+    if (!pushOperand(&frame->operands, HIWORD(value.i), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, LOWORD(value.i), OP_DOUBLE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -1182,10 +1184,514 @@ uint8_t instfunc_l2f(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+uint8_t instfunc_l2d(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } val;
+
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    val.i = temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    val.i = (val.i << 32) | temp;
+    val.d = (double)val.i;
+
+    if (!pushOperand(&frame->operands, HIWORD(val.i), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, LOWORD(val.i), OP_DOUBLE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_f2i(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        float f;
+        int32_t i;
+    } value;
+
+    popOperand(&frame->operands, &value.i, NULL);
+    value.i = (int32_t)value.f;
+
+    if (!pushOperand(&frame->operands, value.i, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_f2l(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int64_t lval;
+
+    union {
+        float f;
+        int32_t i;
+    } temp;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    lval = (int64_t)temp.f;
+
+    if (!pushOperand(&frame->operands, HIWORD(lval), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(lval), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_f2d(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } dval;
+
+    union {
+        float f;
+        int32_t i;
+    } temp;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    dval.d = (double)temp.f;
+
+    if (!pushOperand(&frame->operands, HIWORD(dval.i), OP_DOUBLE) ||
+        !pushOperand(&frame->operands, LOWORD(dval.i), OP_DOUBLE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_d2i(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } dval;
+
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    dval.i = temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    dval.i = (dval.i << 32) | temp;
+    temp = (int32_t)dval.d;
+
+    if (!pushOperand(&frame->operands, temp, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_d2l(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } dval;
+
+    int32_t temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    dval.i = temp;
+
+    popOperand(&frame->operands, &temp, NULL);
+
+    dval.i = (dval.i << 32) | temp;
+    dval.i = (int64_t)dval.d;
+
+    if (!pushOperand(&frame->operands, HIWORD(dval.i), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(dval.i), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_d2f(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        double d;
+        int64_t i;
+    } dval;
+
+    union {
+        float f;
+        int32_t i;
+    } temp;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    dval.i = temp.i;
+
+    popOperand(&frame->operands, &temp.i, NULL);
+
+    dval.i = (dval.i << 32) | temp.i;
+    temp.f = (float)dval.d;
+
+    if (!pushOperand(&frame->operands, temp.i, OP_FLOAT))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_i2b(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t value;
+    int8_t byte;
+
+    popOperand(&frame->operands, &value, NULL);
+
+    byte = (int8_t)value;
+
+    if (!pushOperand(&frame->operands, (int32_t)byte, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_i2c(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t value;
+    uint16_t character;
+
+    popOperand(&frame->operands, &value, NULL);
+
+    character = (uint16_t)value;
+
+    if (!pushOperand(&frame->operands, (int32_t)character, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_i2s(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t value;
+    int16_t sval;
+
+    popOperand(&frame->operands, &value, NULL);
+
+    sval = (int16_t)value;
+
+    if (!pushOperand(&frame->operands, (int32_t)sval, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_lcmp(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int32_t high, low;
+    int64_t value1, value2;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value2 = high;
+    value2 = (value2 << 32) | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value1 = high;
+    value1 = (value1 << 32) | low;
+
+    if (value1 > value2)
+        high = 1;
+    else if (value1 == value2)
+        high = 0;
+    else
+        high = -1;
+
+    if (!pushOperand(&frame->operands, high, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_fcmpl(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        int32_t i;
+        float f;
+    } value1, value2;
+
+    popOperand(&frame->operands, &value2.i, NULL);
+    popOperand(&frame->operands, &value1.i, NULL);
+
+    if (value1.f < value2.f || value1.f == NAN || value2.f == NAN)
+        value1.i = -1;
+    else if (value1.f == value2.f)
+        value1.i = 0;
+    else
+        value1.i = 1;
+
+    if (!pushOperand(&frame->operands, value1.i, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_fcmpg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        int32_t i;
+        float f;
+    } value1, value2;
+
+    popOperand(&frame->operands, &value2.i, NULL);
+    popOperand(&frame->operands, &value1.i, NULL);
+
+    if (value1.f > value2.f || value1.f == NAN || value2.f == NAN)
+        value1.i = 1;
+    else if (value1.f == value2.f)
+        value1.i = 0;
+    else
+        value1.i = -1;
+
+    if (!pushOperand(&frame->operands, value1.i, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_dcmpl(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        int64_t i;
+        double d;
+    } value1, value2;
+
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value2.i = high;
+    value2.i = (value2.i << 32) | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value1.i = high;
+    value1.i = (value1.i << 32) | low;
+
+    if (value1.d < value2.d || value1.d == NAN || value2.d == NAN)
+        value1.i = -1;
+    else if (value1.d == value2.d)
+        value1.i = 0;
+    else
+        value1.i = 1;
+
+    if (!pushOperand(&frame->operands, value1.i, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+uint8_t instfunc_dcmpg(JavaVirtualMachine* jvm, Frame* frame)
+{
+    union {
+        int64_t i;
+        double d;
+    } value1, value2;
+
+    int32_t high, low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value2.i = high;
+    value2.i = (value2.i << 32) | low;
+
+    popOperand(&frame->operands, &low, NULL);
+    popOperand(&frame->operands, &high, NULL);
+
+    value1.i = high;
+    value1.i = (value1.i << 32) | low;
+
+    if (value1.d > value2.d || value1.d == NAN || value2.d == NAN)
+        value1.i = 1;
+    else if (value1.d == value2.d)
+        value1.i = 0;
+    else
+        value1.i = -1;
+
+    if (!pushOperand(&frame->operands, value1.i, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
+}
+
+#define DECLR_IF_FAMILY(inst, op) \
+    uint8_t instfunc_##inst(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int32_t value; \
+        int16_t offset = NEXT_BYTE; \
+        offset = (offset << 8) | NEXT_BYTE; \
+        popOperand(&frame->operands, &value, NULL); \
+        if (value op 0) \
+            frame->pc += offset - 3; \
+        return 1; \
+    }
+
+DECLR_IF_FAMILY(ifeq, ==)
+DECLR_IF_FAMILY(ifne, !=)
+DECLR_IF_FAMILY(iflt, <)
+DECLR_IF_FAMILY(ifle, <=)
+DECLR_IF_FAMILY(ifgt, >)
+DECLR_IF_FAMILY(ifge, >=)
+
+#define DECLR_IF_ICMP_FAMILY(inst, op) \
+    uint8_t instfunc_##inst(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int32_t value1, value2; \
+        int16_t offset = NEXT_BYTE; \
+        offset = (offset << 8) | NEXT_BYTE; \
+        popOperand(&frame->operands, &value2, NULL); \
+        popOperand(&frame->operands, &value1, NULL); \
+        if (value1 op value2) \
+            frame->pc += offset - 3; \
+        return 1; \
+    }
+
+DECLR_IF_ICMP_FAMILY(if_icmpeq, ==)
+DECLR_IF_ICMP_FAMILY(if_icmpne, !=)
+DECLR_IF_ICMP_FAMILY(if_icmplt, <)
+DECLR_IF_ICMP_FAMILY(if_icmple, <=)
+DECLR_IF_ICMP_FAMILY(if_icmpgt, >)
+DECLR_IF_ICMP_FAMILY(if_icmpge, >=)
+
+DECLR_IF_ICMP_FAMILY(if_acmpeq, ==)
+DECLR_IF_ICMP_FAMILY(if_acmpne, !=)
+
+uint8_t instfunc_goto(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int16_t offset = NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    frame->pc += offset - 3;
+    return 1;
+}
+
+uint8_t instfunc_jsr(JavaVirtualMachine* jvm, Frame* frame)
+{
+    int16_t offset = NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+
+    if (!pushOperand(&frame->operands, (int32_t)frame->pc, OP_RETURNADDRESS))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    frame->pc += offset - 3;
+    return 1;
+}
+
+uint8_t instfunc_ret(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint8_t index = NEXT_BYTE;
+    frame->pc = (uint32_t)frame->localVariables[index];
+    return 1;
+}
+
+uint8_t instfunc_tableswitch(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint32_t base = frame->pc - 1;
+    // Skip padding bytes
+    frame->pc += 4 - (frame->pc % 4);
+
+    int32_t defaultValue = NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+    defaultValue = (defaultValue << 8) | NEXT_BYTE;
+
+    int32_t lowValue = NEXT_BYTE;
+    lowValue = (lowValue << 8) | NEXT_BYTE;
+    lowValue = (lowValue << 8) | NEXT_BYTE;
+    lowValue = (lowValue << 8) | NEXT_BYTE;
+
+    int32_t highValue = NEXT_BYTE;
+    highValue = (highValue << 8) | NEXT_BYTE;
+    highValue = (highValue << 8) | NEXT_BYTE;
+    highValue = (highValue << 8) | NEXT_BYTE;
+
+    int32_t index;
+    popOperand(&frame->operands, &index, NULL);
+
+    if (index >= lowValue && index <= highValue)
+    {
+        frame->pc += 4 * (index - lowValue);
+        defaultValue = NEXT_BYTE;
+        defaultValue = (defaultValue << 8) | NEXT_BYTE;
+        defaultValue = (defaultValue << 8) | NEXT_BYTE;
+        defaultValue = (defaultValue << 8) | NEXT_BYTE;
+    }
+
+    frame->pc = base + defaultValue;
+
+    return 1;
+}
+
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
     const InstructionFunction opcodeFunctions[255] = {
-        instfunc_nop, instfunc_aconstnull, instfunc_iconst_m1,
+        instfunc_nop, instfunc_aconst_null, instfunc_iconst_m1,
         instfunc_iconst_0, instfunc_iconst_1, instfunc_iconst_2,
         instfunc_iconst_3, instfunc_iconst_4, instfunc_iconst_5,
         instfunc_lconst_0, instfunc_lconst_1, instfunc_fconst_0,
@@ -1231,10 +1737,20 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_lor, instfunc_ixor, instfunc_lxor,
         instfunc_iinc, instfunc_i2l, instfunc_i2f,
         instfunc_i2d, instfunc_l2i, instfunc_l2f,
-
+        instfunc_l2d, instfunc_f2i, instfunc_f2l,
+        instfunc_f2d, instfunc_d2i, instfunc_d2l,
+        instfunc_d2f, instfunc_i2b, instfunc_i2c,
+        instfunc_i2s, instfunc_lcmp, instfunc_fcmpl,
+        instfunc_fcmpg, instfunc_dcmpl, instfunc_dcmpg,
+        instfunc_ifeq, instfunc_ifne, instfunc_iflt,
+        instfunc_ifge, instfunc_ifgt, instfunc_ifle,
+        instfunc_if_icmpeq, instfunc_if_icmpne, instfunc_if_icmplt,
+        instfunc_if_icmpge, instfunc_if_icmpgt, instfunc_if_icmple,
+        instfunc_if_acmpeq, instfunc_if_acmpne, instfunc_goto,
+        instfunc_jsr, instfunc_ret, instfunc_tableswitch
     };
 
-    if (opcode > 137)
+    if (opcode > 170)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented
