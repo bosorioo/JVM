@@ -95,7 +95,7 @@ struct JavaClass {
     enum JavaClassStatus status;
     uint8_t classNameMismatch;
 
-    // Java
+    // Java Class Specification
     uint16_t minorVersion, majorVersion;
     uint16_t constantPoolCount;
     cp_info* constantPool;
@@ -110,6 +110,10 @@ struct JavaClass {
     method_info* methods;
     uint16_t attributeCount;
     attribute_info* attributes;
+
+    // Class Data Info
+    uint16_t staticFieldCount;
+    uint16_t instanceFieldCount;
 
     // Debug info
     uint32_t totalBytesRead;

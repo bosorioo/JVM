@@ -21,11 +21,11 @@ void openClassFile(JavaClass* jc, const char* path)
     jc->methods = NULL;
     jc->attributes = NULL;
     jc->status = CLASS_STATUS_OK;
+    jc->classNameMismatch = 0;
 
     jc->thisClass = jc->superClass = jc->accessFlags = 0;
     jc->attributeCount = jc->fieldCount = jc->methodCount = jc->constantPoolCount = jc->interfaceCount = 0;
 
-    jc->classNameMismatch = 0;
     jc->lastTagRead = 0;
     jc->totalBytesRead = 0;
     jc->constantPoolEntriesRead = 0;
@@ -164,10 +164,31 @@ void openClassFile(JavaClass* jc, const char* path)
             return;
         }
 
+        jc->staticFieldCount = 0;
+        jc->instanceFieldCount = 0;
+
         for (u32 = 0; u32 < jc->fieldCount; u32++)
         {
-            if (!readField(jc, jc->fields + u32))
+            field_info* field = jc->fields + u32;
+            uint8_t isCat2;
+
+            if (!readField(jc, field))
                 return;
+
+            isCat2 = *jc->constantPool[field->descriptor_index - 1].Utf8.bytes;
+            isCat2 = isCat2 == 'J' || isCat2 == 'D';
+
+            if (field->access_flags & ACC_STATIC)
+            {
+                field->offset = jc->staticFieldCount++;
+                jc->staticFieldCount += isCat2;
+            }
+            else
+            {
+                field->offset = jc->instanceFieldCount++;
+                jc->instanceFieldCount += isCat2;
+            }
+
 
             jc->currentFieldEntryIndex++;
         }

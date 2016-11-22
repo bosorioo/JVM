@@ -79,7 +79,7 @@ int main(int argc, char* args[])
             args[1][inputLength] = '\0';
         }
 
-        if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength))
+        if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength, NULL))
             executeJVM(&jvm);
 
         printf("Execution finished. Status: %d\n", jvm.status);

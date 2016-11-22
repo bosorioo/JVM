@@ -26,6 +26,10 @@ void deinitJVM(JavaVirtualMachine* jvm)
         classnode = classnode->next;
         closeClassFile(tmp->jc);
         free(tmp->jc);
+
+        if (tmp->staticFieldsData)
+            free(tmp->staticFieldsData);
+
         free(tmp);
     }
 
@@ -62,21 +66,35 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
 }
 
-uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len)
+uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, JavaClass** outClass)
 {
 #ifdef DEBUG
     printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
 #endif // DEBUG
-
-    if (isClassLoaded(jvm, className_utf8_bytes, utf8_len) ||
-        cmp_UTF8_Ascii(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/Object", 16))
-        return 1;
 
     JavaClass* jc;
     cp_info* cpi;
     char path[1024];
     uint8_t success = 1;
     uint16_t u16;
+
+    jc = isClassLoaded(jvm, className_utf8_bytes, utf8_len);
+
+    if (jc)
+    {
+        if (outClass)
+            *outClass = jc;
+
+        return 1;
+    }
+
+    if (cmp_UTF8_Ascii(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/Object", 16))
+    {
+        if (outClass)
+            *outClass = NULL;
+
+        return 1;
+    }
 
     snprintf(path, sizeof(path), "%.*s.class", utf8_len, className_utf8_bytes);
 
@@ -99,14 +117,14 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
         {
             cpi = jc->constantPool + jc->superClass - 1;
             cpi = jc->constantPool + cpi->Class.name_index - 1;
-            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL);
         }
 
         for (u16 = 0; success && u16 < jc->interfaceCount; u16++)
         {
             cpi = jc->constantPool + jc->interfaces[u16] - 1;
             cpi = jc->constantPool + cpi->Class.name_index - 1;
-            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL);
         }
     }
 
@@ -118,6 +136,9 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 #endif // DEBUG
 
         addClassToLoadedClasses(jvm, jc);
+
+        if (outClass)
+            *outClass = jc;
     }
     else
     {
@@ -206,6 +227,7 @@ uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
     if (node)
     {
         node->jc = jc;
+        node->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * jc->staticFieldCount);
         node->next = jvm->classes;
         jvm->classes = node;
     }
@@ -213,7 +235,7 @@ uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
     return node != NULL;
 }
 
-uint8_t isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len)
+JavaClass* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len)
 {
     LoadedClasses* classes = jvm->classes;
     JavaClass* jc;
@@ -226,10 +248,10 @@ uint8_t isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_
         cpi = jc->constantPool + cpi->Class.name_index - 1;
 
         if (cmp_UTF8(cpi->Utf8.bytes, cpi->Utf8.length, utf8_bytes, utf8_len))
-            return 1;
+            return jc;
 
         classes = classes->next;
     }
 
-    return 0;
+    return NULL;
 }

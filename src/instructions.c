@@ -117,7 +117,7 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
 
             cpi = frame->jc->constantPool + cpi->Class.name_index - 1;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length))
+            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
             type = OP_CLASSREF;
@@ -172,7 +172,7 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
 
             cpi = frame->jc->constantPool + cpi->Class.name_index - 1;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length))
+            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
             type = OP_CLASSREF;

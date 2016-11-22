@@ -22,6 +22,7 @@ enum JVMStatus {
 typedef struct LoadedClasses
 {
     JavaClass* jc;
+    int32_t* staticFieldsData;
     struct LoadedClasses* next;
 } LoadedClasses;
 
@@ -36,11 +37,11 @@ struct JavaVirtualMachine
 void initJVM(JavaVirtualMachine* jvm);
 void deinitJVM(JavaVirtualMachine* jvm);
 void executeJVM(JavaVirtualMachine* jvm);
-uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len);
+uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, JavaClass** outClass);
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method);
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, field_info* field);
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method);
 uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc);
-uint8_t isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
+JavaClass* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
 
 #endif // JVM_H
