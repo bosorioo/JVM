@@ -45,16 +45,10 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
     }
 
-    JavaClass* jc = jvm->classes->jc;
-    method_info* method = getMethodMatching(jc, "<clinit>", "()V", ACC_STATIC);
-
-    if (method)
-    {
-        if (!runMethod(jvm, jc, method))
-            return;
-    }
-
-    method = getMethodMatching(jc, "main", "([Ljava/lang/String;)V", ACC_STATIC);
+    // Get the class at the top of the stack of loaded classes.
+    // Normally, only one class is loaded and then this function is
+    // called, so that one and only class will be the entry point.
+    method_info* method = getMethodMatching(jvm->classes->jc, "main", "([Ljava/lang/String;)V", ACC_STATIC);
 
     if (!method)
     {
@@ -62,11 +56,11 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
     }
 
-    if (!runMethod(jvm, jc, method))
+    if (!runMethod(jvm, jvm->classes->jc, method))
         return;
 }
 
-uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, JavaClass** outClass)
+uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass)
 {
 #ifdef DEBUG
     printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
@@ -78,20 +72,12 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     uint8_t success = 1;
     uint16_t u16;
 
-    jc = isClassLoaded(jvm, className_utf8_bytes, utf8_len);
+    LoadedClasses* loadedClass = isClassLoaded(jvm, className_utf8_bytes, utf8_len);
 
-    if (jc)
+    if (loadedClass)
     {
         if (outClass)
-            *outClass = jc;
-
-        return 1;
-    }
-
-    if (cmp_UTF8_Ascii(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/Object", 16))
-    {
-        if (outClass)
-            *outClass = NULL;
+            *outClass = loadedClass;
 
         return 1;
     }
@@ -135,10 +121,18 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     printf("   class file '%s' loaded\n", path);
 #endif // DEBUG
 
-        addClassToLoadedClasses(jvm, jc);
+        loadedClass = addClassToLoadedClasses(jvm, jc);
+
+        method_info* clinit = getMethodMatching(jc, "<clinit>", "()V", ACC_STATIC);
+
+        if (clinit)
+        {
+            if (!runMethod(jvm, jc, clinit))
+                success = 0;
+        }
 
         if (outClass)
-            *outClass = jc;
+            *outClass = loadedClass;
     }
     else
     {
@@ -157,11 +151,56 @@ uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* metho
     return 0;
 }
 
-uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, field_info* field)
+uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass)
 {
-    // TODO: resolve field
-    jvm->status = JVM_STATUS_FIELD_RESOLUTION_FAILED;
-    return 0;
+#ifdef DEBUG
+    {
+        char debugbuffer[256];
+        uint32_t length = 0;
+        cp_info* debugcpi = jc->constantPool + cp_field->Fieldref.class_index - 1;
+        debugcpi = jc->constantPool + debugcpi->Class.name_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s.", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        debugcpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
+        debugcpi = jc->constantPool + debugcpi->NameAndType.name_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s:", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        debugcpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
+        debugcpi = jc->constantPool + debugcpi->NameAndType.descriptor_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        printf("debug resolveField %s\n", debugbuffer);
+    }
+#endif // DEBUG
+
+    cp_info* cpi;
+
+    cpi = jc->constantPool + cp_field->Fieldref.class_index - 1;
+    cpi = jc->constantPool + cpi->Class.name_index - 1;
+
+    // Resolve the class the field belongs to
+    if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, outClass))
+        return 0;
+
+    cpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
+    cpi = jc->constantPool + cpi->NameAndType.descriptor_index - 1;
+
+    uint8_t* descriptor_bytes = cpi->Utf8.bytes;
+    int32_t descriptor_len = cpi->Utf8.length;
+
+    // Skip '[' characters, in case this field is an array
+    while (*descriptor_bytes == '[')
+    {
+        descriptor_bytes++;
+        descriptor_len--;
+    }
+
+    // If the type of this field is a class, then that
+    // class must also be resolved
+    if (*descriptor_bytes == 'L')
+    {
+        if (!resolveClass(jvm, descriptor_bytes + 1, descriptor_len - 2, NULL))
+            return 0;
+    }
+
+    return 1;
 }
 
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
@@ -220,7 +259,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
     return jvm->status == JVM_STATUS_OK;
 }
 
-uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
+LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
 {
     LoadedClasses* node = (LoadedClasses*)malloc(sizeof(LoadedClasses));
 
@@ -232,10 +271,10 @@ uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
         jvm->classes = node;
     }
 
-    return node != NULL;
+    return node;
 }
 
-JavaClass* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len)
+LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len)
 {
     LoadedClasses* classes = jvm->classes;
     JavaClass* jc;
@@ -248,7 +287,7 @@ JavaClass* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int
         cpi = jc->constantPool + cpi->Class.name_index - 1;
 
         if (cmp_UTF8(cpi->Utf8.bytes, cpi->Utf8.length, utf8_bytes, utf8_len))
-            return jc;
+            return classes;
 
         classes = classes->next;
     }

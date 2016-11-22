@@ -1757,6 +1757,195 @@ DECLR_RETURN_FAMILY(dreturn, 2)
 DECLR_RETURN_FAMILY(areturn, 1)
 DECLR_RETURN_FAMILY(return, 0)
 
+uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the Fieldref CP entry
+    cp_info* field = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+
+    LoadedClasses* fieldLoadedClass;
+
+    // Resolve the field, i.e, load the class that field belongs to
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the field and its descriptor
+    cpi2 = frame->jc->constantPool + field->Fieldref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    // Find in the field's class the field_info that matches the name and the descriptor
+    field_info* fi = getFieldMatchingUTF8(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                          cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+    if (!fi)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    OperandType type;
+
+    switch (*cpi2->Utf8.bytes)
+    {
+        case 'J': type = OP_LONG; break;
+        case 'D': type = OP_DOUBLE; break;
+        case 'L': type = OP_OBJECTREF; break;
+        case '[': type = OP_ARRAYREF; break;
+        case 'F': type = OP_FLOAT; break;
+
+        case 'B': // byte
+        case 'C': // char
+        case 'I': // int
+        case 'S': // short
+        case 'Z': // boolean
+            type = OP_INTEGER;
+            break;
+
+        default:
+            // todo: throw exception maybe?
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
+    }
+
+    // Push from the static data
+    if (!pushOperand(&frame->operands, *(fieldLoadedClass->staticFieldsData + fi->offset), type))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    // If the field is category 2, push the following index too
+    if (type == OP_LONG || type == OP_DOUBLE)
+    {
+        if (!pushOperand(&frame->operands, *(fieldLoadedClass->staticFieldsData + fi->offset + 1), type))
+        {
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+            return 0;
+        }
+    }
+
+    // TODO: check if the field isn't static and isn't in an interface,
+    // throwing IncompatibleClassChangeError
+
+    // TODO: check if this class can access the field, i.e:
+    //   1) If the field is private, then throw IllegalAccessError.
+    //   2) If the field is protected and this class isn't a subclass
+    //      of the field's class, throw IllegalAccessError.
+
+    return 1;
+}
+
+uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the Fieldref CP entry
+    cp_info* field = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+
+    LoadedClasses* fieldLoadedClass;
+
+    // Resolve the field, i.e, load the class that field belongs to
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the field and its descriptor
+    cpi2 = frame->jc->constantPool + field->Fieldref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    // Find in the field's class the field_info that matches the name and the descriptor
+    field_info* fi = getFieldMatchingUTF8(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                          cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+    if (!fi)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    OperandType type;
+
+    switch (*cpi2->Utf8.bytes)
+    {
+        case 'J': type = OP_LONG; break;
+        case 'D': type = OP_DOUBLE; break;
+        case 'L': type = OP_OBJECTREF; break;
+        case '[': type = OP_ARRAYREF; break;
+        case 'F': type = OP_FLOAT; break;
+
+        case 'B': // byte
+        case 'C': // char
+        case 'I': // int
+        case 'S': // short
+        case 'Z': // boolean
+            type = OP_INTEGER;
+            break;
+
+        default:
+            // todo: throw exception maybe?
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
+    }
+
+    int32_t operand;
+
+    popOperand(&frame->operands, &operand, NULL);
+
+    *(fieldLoadedClass->staticFieldsData + fi->offset) = operand;
+
+    // If the field is category 2, set the following index too
+    if (type == OP_LONG || type == OP_DOUBLE)
+    {
+        popOperand(&frame->operands, &operand, NULL);
+        *(fieldLoadedClass->staticFieldsData + fi->offset + 1) = operand;
+    }
+
+
+    // TODO: check if the field isn't static and isn't in an interface,
+    // throwing IncompatibleClassChangeError
+
+    // TODO: check if this class can access the field, i.e:
+    //   1) If the field is private, then throw IllegalAccessError.
+    //   2) If the field is protected and this class isn't a subclass
+    //      of the field's class, throw IllegalAccessError.
+
+    // TODO: check if the field can be written, ie:
+    //   1) If the field is final and this instruction isn't
+    //      being executed in the method '<clinit>', then
+    //      throw IllegalAccessError
+
+    return 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
     const InstructionFunction opcodeFunctions[255] = {
@@ -1819,10 +2008,10 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_jsr, instfunc_ret, instfunc_tableswitch,
         instfunc_lookupswitch, instfunc_ireturn, instfunc_lreturn,
         instfunc_freturn, instfunc_dreturn, instfunc_areturn,
-        instfunc_return
+        instfunc_return, instfunc_getstatic, instfunc_putstatic
     };
 
-    if (opcode > 177)
+    if (opcode > 179)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented

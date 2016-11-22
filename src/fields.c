@@ -142,3 +142,35 @@ void printAllFields(JavaClass* jc)
 
     printf("\n");
 }
+
+field_info* getFieldMatchingUTF8(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
+                                  int32_t descriptor_len, uint16_t flag_mask)
+{
+    field_info* field = jc->fields;
+    cp_info* cpi;
+    uint16_t index;
+
+    for (index = jc->fieldCount; index > 0; index--, field++)
+    {
+        // Check if flags match
+        if ((field->access_flags & flag_mask) != flag_mask)
+            continue;
+
+        // Get the field name
+        cpi = jc->constantPool + field->name_index - 1;
+        // And check if it matches
+        if (!cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, name, name_len))
+            continue;
+
+        // Get the field descriptor
+        cpi = jc->constantPool + field->descriptor_index - 1;
+        // And check if it matches
+        if (!cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, descriptor, descriptor_len))
+            continue;
+
+
+        return field;
+    }
+
+    return NULL;
+}

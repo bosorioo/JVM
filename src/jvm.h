@@ -37,11 +37,17 @@ struct JavaVirtualMachine
 void initJVM(JavaVirtualMachine* jvm);
 void deinitJVM(JavaVirtualMachine* jvm);
 void executeJVM(JavaVirtualMachine* jvm);
-uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, JavaClass** outClass);
+uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass);
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method);
-uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, field_info* field);
+uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass);
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method);
-uint8_t addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc);
-JavaClass* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
+LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc);
+LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
+
+#ifdef DEBUG
+#define DEBUG_REPORT_INSTRUCTION_ERROR printf("Instruction error on line %d.\n", __LINE__);
+#else
+#define DEBUG_REPORT_INSTRUCTION_ERROR
+#endif // DEBUG
 
 #endif // JVM_H
