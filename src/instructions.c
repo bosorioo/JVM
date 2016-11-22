@@ -2107,7 +2107,7 @@ uint8_t instfunc_jsr_w(JavaVirtualMachine* jvm, Frame* frame)
 
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
-    const InstructionFunction opcodeFunctions[255] = {
+    const InstructionFunction opcodeFunctions[202] = {
         instfunc_nop, instfunc_aconst_null, instfunc_iconst_m1,
         instfunc_iconst_0, instfunc_iconst_1, instfunc_iconst_2,
         instfunc_iconst_3, instfunc_iconst_4, instfunc_iconst_5,
