@@ -2181,8 +2181,5 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
     if (opcode > 201)
         return NULL;
 
-    // TODO: fill instructions that aren't currently implemented
-    // with NULL so the code will properly work
-
     return opcodeFunctions[opcode];
 }
