@@ -830,7 +830,7 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 }
                 else
                 {
-                    printf(" (%s, invalid - not a class)", decodeTag(cpi->tag), buffer);
+                    printf(" (%s, invalid - not a class)", decodeTag(cpi->tag));
                 }
 
                 break;
