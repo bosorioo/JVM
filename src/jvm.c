@@ -62,10 +62,6 @@ void executeJVM(JavaVirtualMachine* jvm)
 
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass)
 {
-#ifdef DEBUG
-    printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
-#endif // DEBUG
-
     JavaClass* jc;
     cp_info* cpi;
     char path[1024];
@@ -81,6 +77,10 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 
         return 1;
     }
+
+#ifdef DEBUG
+    printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
+#endif // DEBUG
 
     snprintf(path, sizeof(path), "%.*s.class", utf8_len, className_utf8_bytes);
 
@@ -153,6 +153,7 @@ uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* metho
 
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass)
 {
+
 #ifdef DEBUG
     {
         char debugbuffer[256];
