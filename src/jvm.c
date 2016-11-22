@@ -56,7 +56,7 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
     }
 
-    if (!runMethod(jvm, jvm->classes->jc, method))
+    if (!runMethod(jvm, jvm->classes->jc, method, 0))
         return;
 }
 
@@ -127,7 +127,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 
         if (clinit)
         {
-            if (!runMethod(jvm, jc, clinit))
+            if (!runMethod(jvm, jc, clinit, 0))
                 success = 0;
         }
 
@@ -204,7 +204,7 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     return 1;
 }
 
-uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
+uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, uint8_t numberOfParameters)
 {
 #ifdef DEBUG
     {
@@ -220,6 +220,15 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
+    }
+
+    uint8_t parameterIndex;
+    int32_t parameter;
+
+    for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
+    {
+        popOperand(&callerFrame->operands, &parameter, NULL);
+        frame->localVariables[parameterIndex] = parameter;
     }
 
     InstructionFunction function;
