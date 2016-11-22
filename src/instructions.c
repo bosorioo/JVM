@@ -349,48 +349,56 @@ DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_OBJECTREF)
 uint8_t instfunc_iaload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_laload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_faload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_daload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_baload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_caload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_saload(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
@@ -471,48 +479,56 @@ DECLR_STORE_N_CAT_1_FAMILY(astore, 3)
 uint8_t instfunc_iastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_lastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_fastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_dastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_aastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_bastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_castore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_sastore(JavaVirtualMachine* jvm, Frame* frame)
 {
     // TODO: implement this instruction
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
@@ -1935,16 +1951,159 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_invokedynamic(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // This instruction isn't to be implemented
+    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
+    return 0;
+}
 
+uint8_t instfunc_new(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_newarray(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
+uint8_t instfunc_arraylength(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_athrow(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_checkcast(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_instanceof(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_monitorenter(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // This instruction isn't to be implemented
+    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
+    return 0;
+}
+
+uint8_t instfunc_monitorexit(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // This instruction isn't to be implemented
+    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
+    return 0;
+}
+
+uint8_t instfunc_wide(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_ifnull(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_ifnonnull(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_goto_w(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
+
+uint8_t instfunc_jsr_w(JavaVirtualMachine* jvm, Frame* frame)
+{
+    // TODO: implement this function
+    DEBUG_REPORT_INSTRUCTION_ERROR
+    return 0;
+}
 
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
@@ -2008,10 +2167,18 @@ InstructionFunction fetchOpcodeFunction(uint8_t opcode)
         instfunc_jsr, instfunc_ret, instfunc_tableswitch,
         instfunc_lookupswitch, instfunc_ireturn, instfunc_lreturn,
         instfunc_freturn, instfunc_dreturn, instfunc_areturn,
-        instfunc_return, instfunc_getstatic, instfunc_putstatic
+        instfunc_return, instfunc_getstatic, instfunc_putstatic,
+        instfunc_getfield, instfunc_putfield, instfunc_invokevirtual,
+        instfunc_invokespecial, instfunc_invokestatic, instfunc_invokeinterface,
+        instfunc_invokedynamic, instfunc_new, instfunc_newarray,
+        instfunc_anewarray, instfunc_arraylength, instfunc_athrow,
+        instfunc_checkcast, instfunc_instanceof, instfunc_monitorenter,
+        instfunc_monitorexit, instfunc_wide, instfunc_multianewarray,
+        instfunc_ifnull, instfunc_ifnonnull, instfunc_goto_w,
+        instfunc_jsr_w
     };
 
-    if (opcode > 179)
+    if (opcode > 201)
         return NULL;
 
     // TODO: fill instructions that aren't currently implemented
