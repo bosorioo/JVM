@@ -78,7 +78,7 @@ enum Opcodes {
     opcode_breakpoint = 0xCA, opcode_impdep1 = 0xFE, opcode_impdep2 = 0xFF
 };
 
-enum Opcode_newarray_types {
+typedef enum Opcode_newarray_type {
     T_BOOLEAN = 4,
     T_CHAR,
     T_FLOAT,
@@ -87,7 +87,7 @@ enum Opcode_newarray_types {
     T_SHORT,
     T_INT,
     T_LONG
-};
+} Opcode_newarray_type;
 
 const char* decodeOpcodeNewarrayType(uint8_t type);
 const char* getOpcodeMnemonic(uint8_t opcode);

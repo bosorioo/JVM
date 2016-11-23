@@ -1,7 +1,6 @@
 #include "jvm.h"
 #include "utf8.h"
 #include "instructions.h"
-#include "opcodes.h"
 
 #include "memoryinspect.h"
 #include <string.h>
@@ -16,6 +15,7 @@ void initJVM(JavaVirtualMachine* jvm)
     jvm->status = JVM_STATUS_OK;
     jvm->frames = NULL;
     jvm->classes = NULL;
+    jvm->objects = NULL;
 }
 
 void deinitJVM(JavaVirtualMachine* jvm)
@@ -23,21 +23,36 @@ void deinitJVM(JavaVirtualMachine* jvm)
     freeFrameStack(&jvm->frames);
 
     LoadedClasses* classnode = jvm->classes;
-    LoadedClasses* tmp;
+    LoadedClasses* classtmp;
 
     while (classnode)
     {
-        tmp = classnode;
+        classtmp = classnode;
         classnode = classnode->next;
-        closeClassFile(tmp->jc);
-        free(tmp->jc);
+        closeClassFile(classtmp->jc);
+        free(classtmp->jc);
 
-        if (tmp->staticFieldsData)
-            free(tmp->staticFieldsData);
+        if (classtmp->staticFieldsData)
+            free(classtmp->staticFieldsData);
 
-        free(tmp);
+        free(classtmp);
     }
 
+    ReferenceTable* refnode = jvm->objects;
+    ReferenceTable* reftmp;
+
+    while (refnode)
+    {
+        reftmp = refnode;
+        refnode = refnode->next;
+
+        // TODO: free the reference internal data
+
+        free(reftmp->obj);
+        free(reftmp);
+    }
+
+    jvm->objects = NULL;
     jvm->classes = NULL;
 }
 
@@ -400,4 +415,35 @@ LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes,
     }
 
     return NULL;
+}
+
+Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
+{
+    Reference* r = (Reference*)malloc(sizeof(Reference));
+    ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
+
+    if (!node || !r)
+    {
+        if (node) free(node);
+        if (r) free(r);
+
+        return NULL;
+    }
+
+    r->type = REFTYPE_CLASSINSTANCE;
+    r->ci.c = jc;
+    r->ci.data = (uint8_t*)malloc(jc->instanceFieldCount);
+
+    if (!r->ci.data)
+    {
+        free(r);
+        free(node);
+        return NULL;
+    }
+
+    node->next = jvm->objects;
+    node->obj = r;
+    jvm->objects = node;
+
+    return r;
 }
