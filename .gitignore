@@ -8,6 +8,9 @@ Desktop.ini
 # Oracle JDK .class files (java/lang/String.class, java/lang/Object.class etc)
 java/*
 
+# Doxygen generated documentation
+doxygen/*
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
