@@ -290,9 +290,8 @@ uint8_t readAttributeInnerClasses(JavaClass* jc, attribute_info* entry)
             jc->constantPool[icf->inner_class_index - 1].tag != CONSTANT_Class ||
             icf->outer_class_index >= jc->constantPoolCount ||
             (icf->outer_class_index > 0 && jc->constantPool[icf->outer_class_index - 1].tag != CONSTANT_Class) ||
-            icf->inner_class_name_index == 0 ||
             icf->inner_class_name_index >= jc->constantPoolCount ||
-            jc->constantPool[icf->inner_class_name_index - 1].tag != CONSTANT_Utf8)
+            (icf->inner_class_name_index > 0 && jc->constantPool[icf->inner_class_name_index - 1].tag != CONSTANT_Utf8))
         {
             jc->status = ATTRIBUTE_INVALID_INNERCLASS_INDEXES;
             return 0;

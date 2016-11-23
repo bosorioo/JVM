@@ -110,7 +110,9 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            type = OP_STRINGREF;
+            // TODO: allocate a String object and set 'value'
+            // to the ID of that object
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Class:
@@ -120,15 +122,21 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
-            type = OP_CLASSREF;
+            // TODO: allocate an instance of that class and set
+            // 'value' to the ID of that instance object
+
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Methodref:
-            // TODO: Resolve method
-            type = OP_METHODREF;
-            break;
+
+            // This isn't supported, because it requires an instance of
+            // MethodType or MethodHandle, which are Java 8 features.
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
 
         default:
+            DEBUG_REPORT_INSTRUCTION_ERROR
             // Shouldn't happen
             return 0;
     }
@@ -165,7 +173,9 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            type = OP_STRINGREF;
+            // TODO: allocate a String object and set 'value'
+            // to the ID of that object
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Class:
@@ -175,15 +185,21 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
             if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
-            type = OP_CLASSREF;
+            // TODO: allocate an instance of that class and set
+            // 'value' to the ID of that instance object
+
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Methodref:
-            // TODO: Resolve method
-            type = OP_METHODREF;
-            break;
+
+            // This isn't supported, because it requires an instance of
+            // MethodType or MethodHandle, which are Java 8 features.
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
 
         default:
+            DEBUG_REPORT_INSTRUCTION_ERROR
             // Shouldn't happen
             return 0;
     }
@@ -289,7 +305,7 @@ uint8_t instfunc_dload(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_aload(JavaVirtualMachine* jvm, Frame* frame)
 {
-    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_OBJECTREF))
+    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_REFERENCE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -341,10 +357,10 @@ DECLR_CAT_2_LOAD_N_FAMILY(dload, 1, OP_DOUBLE)
 DECLR_CAT_2_LOAD_N_FAMILY(dload, 2, OP_DOUBLE)
 DECLR_CAT_2_LOAD_N_FAMILY(dload, 3, OP_DOUBLE)
 
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 0, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_OBJECTREF)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 0, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_REFERENCE)
 
 uint8_t instfunc_iaload(JavaVirtualMachine* jvm, Frame* frame)
 {
@@ -1815,9 +1831,12 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     {
         case 'J': type = OP_LONG; break;
         case 'D': type = OP_DOUBLE; break;
-        case 'L': type = OP_OBJECTREF; break;
-        case '[': type = OP_ARRAYREF; break;
         case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
 
         case 'B': // byte
         case 'C': // char
@@ -1903,9 +1922,12 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     {
         case 'J': type = OP_LONG; break;
         case 'D': type = OP_DOUBLE; break;
-        case 'L': type = OP_OBJECTREF; break;
-        case '[': type = OP_ARRAYREF; break;
         case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
 
         case 'B': // byte
         case 'C': // char
@@ -1981,9 +2003,93 @@ uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the Methodref CP entry
+    cp_info* method = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+
+    LoadedClasses* methodLoadedClass;
+
+    // Resolve the method, i.e, load the class that method belongs to
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the method and its descriptor
+    cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    // Find in the method's class the field_info that matches the name and the descriptor
+    method_info* mi = getMethodMatchingUTF8(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                            cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+    if (!mi)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    uint8_t parameterCount = 0;
+
+    for (index = 1; cpi2->Utf8.bytes[index] != ')'; index++)
+    {
+        switch (cpi2->Utf8.bytes[index])
+        {
+            case 'J': case 'D':
+                parameterCount += 2;
+                break;
+
+            case 'L':
+
+                parameterCount++;
+
+                do {
+                    index++;
+                } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] != ';');
+
+                break;
+
+            case '[':
+
+                parameterCount++;
+
+                do {
+                    index++;
+                } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] == '[');
+
+                if (cpi2->Utf8.bytes[index] == 'L')
+                {
+                    do {
+                        index++;
+                    } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] != ';');
+                }
+
+                break;
+
+            case 'F': // float
+            case 'B': // byte
+            case 'C': // char
+            case 'I': // int
+            case 'S': // short
+            case 'Z': // boolean
+                parameterCount++;
+                break;
+
+            default:
+                jvm->status = JVM_STATUS_INVALID_INSTRUCTION_PARAMETERS;
+                return 0;
+        }
+    }
+
+    return runMethod(jvm, methodLoadedClass->jc, mi, parameterCount);
 }
 
 uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
@@ -2052,15 +2158,13 @@ uint8_t instfunc_instanceof(JavaVirtualMachine* jvm, Frame* frame)
 uint8_t instfunc_monitorenter(JavaVirtualMachine* jvm, Frame* frame)
 {
     // This instruction isn't to be implemented
-    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
-    return 0;
+    return 1;
 }
 
 uint8_t instfunc_monitorexit(JavaVirtualMachine* jvm, Frame* frame)
 {
     // This instruction isn't to be implemented
-    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
-    return 0;
+    return 1;
 }
 
 uint8_t instfunc_wide(JavaVirtualMachine* jvm, Frame* frame)

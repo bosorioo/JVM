@@ -74,7 +74,7 @@ void* memalloc(size_t bytes, const char* file, int line, const char* call)
     return ptr;
 }
 
-void memfree(void* ptr)
+void memfree(void* ptr, const char* file, int line, const char* call)
 {
     MemoryPtrStack* node = _MEMSTACK;
     MemoryPtrStack* previous = NULL;
@@ -97,7 +97,8 @@ void memfree(void* ptr)
         node = node->next;
     }
 
-    printf("\n\n#### Memory Inspect Warning ####\nAttempt to free invalid pointer\n\n");
+    printf("\n\n#### Memory Inspect Warning ####\nAttempt to free invalid pointer\n");
+    printf(" At %s:%d, call: %s\n\n", file, line, call);
     _free(ptr);
 }
 

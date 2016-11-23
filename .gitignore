@@ -5,6 +5,9 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# Oracle JDK .class files (java/lang/String.class, java/lang/Object.class etc)
+java/*
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 

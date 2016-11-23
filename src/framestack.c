@@ -8,19 +8,30 @@ Frame* newFrame(JavaClass* jc, method_info* method)
     if (frame)
     {
         attribute_info* codeAttribute = getAttributeByType(method->attributes, method->attributes_count, ATTR_Code);
-        att_Code_info* code = (att_Code_info*)codeAttribute->info;
+        att_Code_info* code;
+
+        if (codeAttribute)
+        {
+            code = (att_Code_info*)codeAttribute->info;
+            frame->code = code->code;
+            frame->code_length = code->code_length;
+
+            if (code->max_locals > 0)
+                frame->localVariables = (int32_t*)malloc(code->max_locals * sizeof(int32_t));
+            else
+                frame->localVariables = NULL;
+        }
+        else
+        {
+            frame->code = NULL;
+            frame->code_length = 0;
+            frame->localVariables = NULL;
+        }
 
         frame->operands = NULL;
         frame->jc = jc;
         frame->pc = 0;
-        frame->code = code->code;
-        frame->code_length = code->code_length;
         frame->fp_strict = (method->access_flags & ACC_STRICT) != 0;
-
-        if (code->max_locals > 0)
-            frame->localVariables = (int32_t*)malloc(code->max_locals * sizeof(int32_t));
-        else
-            frame->localVariables = NULL;
     }
 
     return frame;

@@ -190,6 +190,7 @@ char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
 
     switch(entry->tag)
     {
+        case CONSTANT_MethodType: // Compatibility with Java 8
         case CONSTANT_Class:
         case CONSTANT_String:
             return readConstantPool_Class(jc, entry);
@@ -197,6 +198,7 @@ char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
         case CONSTANT_Utf8:
             return readConstantPool_Utf8(jc, entry);
 
+        case CONSTANT_InvokeDynamic: // Compatibility with Java 8
         case CONSTANT_Fieldref:
         case CONSTANT_Methodref:
         case CONSTANT_InterfaceMethodref:
@@ -210,6 +212,19 @@ char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
         case CONSTANT_Long:
         case CONSTANT_Double:
             return readConstantPool_Long(jc, entry);
+
+        // Compatibility with Java 8
+        case CONSTANT_MethodHandle:
+
+            if (!readu2(jc, NULL) || fgetc(jc->file) == EOF)
+            {
+                jc->status = UNEXPECTED_EOF_READING_CONSTANT_POOL;
+                return 0;
+            }
+
+            jc->totalBytesRead++;
+
+            break;
 
         default:
             jc->status = UNKNOWN_CONSTANT_POOL_TAG;
