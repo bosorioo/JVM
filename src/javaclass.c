@@ -5,6 +5,16 @@
 #include "validity.h"
 #include "memoryinspect.h"
 
+/// @brief opens the .class file and completes the JavaClass structure
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// completed.
+/// @param const char* path - pointer to char that contains 
+/// the path of file to be read
+///
+/// this function open the .class file and reads byte by byte 
+/// from the file by filling in the fields of the JavaClass struct
+///
 void openClassFile(JavaClass* jc, const char* path)
 {
     if (!jc)
@@ -267,6 +277,11 @@ void openClassFile(JavaClass* jc, const char* path)
     }
 }
 
+/// @brief closes the .class file and frees memory allocated by JavaClass fields
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// released.
+///
 void closeClassFile(JavaClass* jc)
 {
     if (!jc)
@@ -328,6 +343,12 @@ void closeClassFile(JavaClass* jc)
     }
 }
 
+/// @brief decodes JavaClassStatus enumeration elements
+///
+/// @param enum JavaClassStatus status - identifier of the enumeration to be
+/// translated.
+///
+/// @return const char* - pointer to char containing the decoded status
 const char* decodeJavaClassStatus(enum JavaClassStatus status)
 {
     switch (status)
@@ -441,6 +462,13 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     #undef DECODE_FLAG
 }
 
+/// @brief prints class file debug information
+///
+/// @param JavaClass* jc, pointer to the structure to be
+/// debugged.
+///
+/// This function is called If something went wrong, if
+/// the jc.status != CLASS_STATUS_OK,shows debug information
 void printClassFileDebugInfo(JavaClass* jc)
 {
     if (jc->classNameMismatch)
@@ -486,6 +514,11 @@ void printClassFileDebugInfo(JavaClass* jc)
     printf("Number of bytes read: %d\n", jc->totalBytesRead);
 }
 
+/// @brief prints class file information
+///
+/// @param JavaClass* jc, pointer to the structure analyzed
+///
+/// This function is called for print all of information of .class file
 void printClassFileInfo(JavaClass* jc)
 {
     char buffer[256];
