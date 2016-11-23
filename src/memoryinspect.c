@@ -105,4 +105,10 @@ void memfree(void* ptr, const char* file, int line, const char* call)
 #define malloc(bytes) memalloc(bytes)
 #define free(ptr) memfree(ptr)
 
+#else
+
+#define NOT_INCLUDED \
+    this source file is for debugging purposes only. \
+    since DEBUG isn't defined, this module becomes empty.
+
 #endif
