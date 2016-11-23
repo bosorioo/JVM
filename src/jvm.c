@@ -12,7 +12,7 @@
 ///
 /// This function must be called before calling other JavaVirtualMachine functions.
 ///
-/// @see deinitJVM()
+/// @see executeJVM(), deinitJVM()
 void initJVM(JavaVirtualMachine* jvm)
 {
     jvm->status = JVM_STATUS_OK;
@@ -28,6 +28,8 @@ void initJVM(JavaVirtualMachine* jvm)
 ///
 /// All loaded classes and objects created during the execution of the JVM
 /// will be freed.
+///
+/// @see initJVM()
 void deinitJVM(JavaVirtualMachine* jvm)
 {
     freeFrameStack(&jvm->frames);
@@ -81,7 +83,7 @@ void deinitJVM(JavaVirtualMachine* jvm)
 /// If \c mainClass is not a null pointer, the class must
 /// have been previously resolved with a call to \c resolveClass().
 ///
-/// @see resolveClass()
+/// @see resolveClass(), JavaClass
 void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
 {
     if (!mainClass)
