@@ -36,19 +36,20 @@ void deinitJVM(JavaVirtualMachine* jvm)
     jvm->classes = NULL;
 }
 
-void executeJVM(JavaVirtualMachine* jvm)
+void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
 {
-
-    if (!jvm->classes || !jvm->classes->jc)
+    if (!mainClass)
     {
-        jvm->status = JVM_STATUS_NO_CLASS_LOADED;
-        return;
+        if (!jvm->classes || !jvm->classes->jc)
+        {
+            jvm->status = JVM_STATUS_NO_CLASS_LOADED;
+            return;
+        }
+
+        mainClass = jvm->classes->jc;
     }
 
-    // Get the class at the top of the stack of loaded classes.
-    // Normally, only one class is loaded and then this function is
-    // called, so that one and only class will be the entry point.
-    method_info* method = getMethodMatching(jvm->classes->jc, "main", "([Ljava/lang/String;)V", ACC_STATIC);
+    method_info* method = getMethodMatching(mainClass, "main", "([Ljava/lang/String;)V", ACC_STATIC);
 
     if (!method)
     {
@@ -56,7 +57,7 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
     }
 
-    if (!runMethod(jvm, jvm->classes->jc, method, 0))
+    if (!runMethod(jvm, mainClass, method, 0))
         return;
 }
 
@@ -144,11 +145,75 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     return success;
 }
 
-uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
+uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass)
 {
-    // TODO: resolve method
-    jvm->status = JVM_STATUS_METHOD_RESOLUTION_FAILED;
-    return 0;
+#ifdef DEBUG
+    {
+        char debugbuffer[256];
+        uint32_t length = 0;
+        cp_info* debugcpi = jc->constantPool + cp_method->Methodref.class_index - 1;
+        debugcpi = jc->constantPool + debugcpi->Class.name_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s.", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        debugcpi = jc->constantPool + cp_method->Methodref.name_and_type_index - 1;
+        debugcpi = jc->constantPool + debugcpi->NameAndType.name_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s:", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        debugcpi = jc->constantPool + cp_method->Methodref.name_and_type_index - 1;
+        debugcpi = jc->constantPool + debugcpi->NameAndType.descriptor_index - 1;
+        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
+        printf("debug resolveMethod %s\n", debugbuffer);
+    }
+#endif // DEBUG
+
+    cp_info* cpi;
+
+    cpi = jc->constantPool + cp_method->Methodref.class_index - 1;
+    cpi = jc->constantPool + cpi->Class.name_index - 1;
+
+    // Resolve the class the method belongs to
+    if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, outClass))
+        return 0;
+
+    // Get method descriptor
+    cpi = jc->constantPool + cp_method->Methodref.name_and_type_index - 1;
+    cpi = jc->constantPool + cpi->NameAndType.descriptor_index - 1;
+
+    uint8_t* descriptor_bytes = cpi->Utf8.bytes;
+    int32_t descriptor_len = cpi->Utf8.length;
+    int32_t length;
+
+    while (descriptor_len > 0)
+    {
+        // We increment our descriptor here. This will make the first
+        // character to be lost, but the first character in a method
+        // descriptor is a parenthesis, so it doesn't matter.
+        descriptor_bytes++;
+        descriptor_len--;
+
+        switch(*descriptor_bytes)
+        {
+            // if the method has a class as parameter or as return type,
+            // that class must be resolved
+            case 'L':
+
+                length = -1;
+
+                do {
+                    descriptor_bytes++;
+                    descriptor_len--;
+                    length++;
+                } while (*descriptor_bytes != ';');
+
+                if (!resolveClass(jvm, descriptor_bytes - length, length, NULL))
+                    return 0;
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    return 1;
 }
 
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass)
@@ -180,6 +245,7 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, outClass))
         return 0;
 
+    // Get field descriptor
     cpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
     cpi = jc->constantPool + cpi->NameAndType.descriptor_index - 1;
 
@@ -209,12 +275,16 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
 #ifdef DEBUG
     {
         cp_info* debug_cpi = jc->constantPool + method->name_index - 1;
-        printf("debug runMethod %.*s\n", debug_cpi->Utf8.length, debug_cpi->Utf8.bytes);
+        printf("debug runMethod %.*s, params: %u", debug_cpi->Utf8.length, debug_cpi->Utf8.bytes, numberOfParameters);
     }
 #endif // DEBUG
 
     Frame* callerFrame = jvm->frames ? jvm->frames->frame : NULL;
     Frame* frame = newFrame(jc, method);
+
+#ifdef DEBUG
+    printf(", code len: %u\n", frame->code_length);
+#endif // DEBUG
 
     if (!frame || !pushFrame(&jvm->frames, frame))
     {
@@ -255,7 +325,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         }
         else if (!function(jvm, frame))
         {
-            break;
+            return 0;
         }
     }
 
