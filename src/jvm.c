@@ -5,11 +5,14 @@
 #include "memoryinspect.h"
 #include <string.h>
 
-
-/**
-* @brief initializes JVM 
-* @param JavaVirtualMachine* jvm
-*/
+/// @brief Initializes a JavaVirtualMachine structure.
+///
+/// @param JavaVirtualMachine* jvm - pointer to the structure to be
+/// initialized.
+///
+/// This function must be called before calling other JavaVirtualMachine functions.
+///
+/// @see deinitJVM()
 void initJVM(JavaVirtualMachine* jvm)
 {
     jvm->status = JVM_STATUS_OK;
@@ -18,6 +21,13 @@ void initJVM(JavaVirtualMachine* jvm)
     jvm->objects = NULL;
 }
 
+/// @brief Deallocates all memory used by the JavaVirtualMachine structure.
+///
+/// @param JavaVirtualMachine* jvm - pointer to the structure to be
+/// deallocated.
+///
+/// All loaded classes and objects created during the execution of the JVM
+/// will be freed.
 void deinitJVM(JavaVirtualMachine* jvm)
 {
     freeFrameStack(&jvm->frames);
@@ -56,12 +66,22 @@ void deinitJVM(JavaVirtualMachine* jvm)
     jvm->classes = NULL;
 }
 
-
-/**
-* @brief execute JVM
-* @param JavaVirtualMachine* jvm
-* @param JavaClass* mainClass
-*/
+/// @brief Executes the main method of a given class.
+///
+/// @param JavaVirtualMachine* jvm - pointer to an
+/// already initialized JVM structure.
+/// @param JavaClass* mainClass - pointer to a class
+/// that contains the public void static main method.
+///
+/// If \c mainClass is a null pointer, the class
+/// at the top of the stack of loaded classes will be
+/// used as entry point. If no classes are loaded, then
+/// the status of the JVM will be changed to
+/// \c JVM_STATUS_MAIN_METHOD_NOT_FOUND.
+/// If \c mainClass is not a null pointer, the class must
+/// have been previously resolved with a call to \c resolveClass().
+///
+/// @see resolveClass()
 void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
 {
     if (!mainClass)
@@ -87,14 +107,9 @@ void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
         return;
 }
 
-/**
-* @brief resolve Class
-* @param JavaVirtualMachine* jvm
-* @param const uint8_t* className_utf8_bytes
-* @param int32_t utf8_len
-* @param LoadedClasses** outClass
-* @return uint8_t if class was resolved or not
-*/
+/// @brief Loads a .class file.
+///
+///
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass)
 {
     JavaClass* jc;
@@ -304,14 +319,6 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     return 1;
 }
 
-/**
-* @brief run method
-* @param JavaVirtualMachine* jvm
-* @param JavaClass* jc
-* @param method_info* method
-* @param uint8_t numberOfParameters
-* @return uint8_t if method was runed or not
-*/
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, uint8_t numberOfParameters)
 {
 #ifdef DEBUG
