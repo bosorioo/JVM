@@ -107,8 +107,8 @@ void memfree(void* ptr, const char* file, int line, const char* call)
 
 #else
 
-#define NOT_INCLUDED \
-    this source file is for debugging purposes only. \
-    since DEBUG isn't defined, this module becomes empty.
+/// This source file is for debugging purposes only.
+/// Since DEBUG isn't defined, this module becomes empty.
+#define MEMORY_INSPECT_NOT_INCLUDED
 
 #endif
