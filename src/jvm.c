@@ -6,6 +6,9 @@
 #include "memoryinspect.h"
 #include <string.h>
 
+/*
+* initializes JVM by pointing status to ok, the frame stack without frames and no classes loaded
+*/
 void initJVM(JavaVirtualMachine* jvm)
 {
     jvm->status = JVM_STATUS_OK;
@@ -36,6 +39,11 @@ void deinitJVM(JavaVirtualMachine* jvm)
     jvm->classes = NULL;
 }
 
+/*
+* this function checks if there are loaded classes in JVM, updates the JVM status. Get the class at the top of the stack of loaded classes. 
+* Normally, only one class is loaded and then this function is called, so that one and only class will be the entry point. The method must 
+* be main. And then, the method is runed following the frame stack.
+*/
 void executeJVM(JavaVirtualMachine* jvm)
 {
 
@@ -60,6 +68,11 @@ void executeJVM(JavaVirtualMachine* jvm)
         return;
 }
 
+/*
+* first, verifies that the class has already been loaded, if so, returns, otherwise, open class file and loads its content through 
+* openClassFile function, checks if the class is a superClass or interface. If it was readed and resolved like classes with success,
+* adds the class to loaded classes by JVM. The first method must be matching to <clinit>.
+*/
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass)
 {
     JavaClass* jc;
@@ -204,6 +217,12 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     return 1;
 }
 
+/*
+* Check if there are frames in the JVM stack frames, if yes, it is considered the caller frame.
+* A frame is created (newFrame) with arguments and parameters of the current method. Pushes this 
+* frame on stack frame, identifies the opcode function and run it.  If everything happened rightly,
+* popFrame and freeFrame, updating the JVM status.
+*/
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method)
 {
 #ifdef DEBUG
