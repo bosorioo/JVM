@@ -173,7 +173,10 @@ void openClassFile(JavaClass* jc, const char* path)
             uint8_t isCat2;
 
             if (!readField(jc, field))
+            {
+                jc->fieldCount = u32 + 1;
                 return;
+            }
 
             isCat2 = *jc->constantPool[field->descriptor_index - 1].Utf8.bytes;
             isCat2 = isCat2 == 'J' || isCat2 == 'D';
@@ -213,7 +216,10 @@ void openClassFile(JavaClass* jc, const char* path)
         for (u32 = 0; u32 < jc->methodCount; u32++)
         {
             if (!readMethod(jc, jc->methods + u32))
+            {
+                jc->methodCount = u32 + 1;
                 return;
+            }
 
             jc->currentMethodEntryIndex++;
         }
@@ -239,8 +245,11 @@ void openClassFile(JavaClass* jc, const char* path)
 
         for (u32 = 0; u32 < jc->attributeCount; u32++)
         {
-            if (!readAttribute(jc, jc->attributes +  u32))
+            if (!readAttribute(jc, jc->attributes + u32))
+            {
+                jc->attributeCount = u32 + 1;
                 return;
+            }
 
             jc->attributeEntriesRead++;
             jc->currentAttributeEntryIndex++;
@@ -263,7 +272,7 @@ void closeClassFile(JavaClass* jc)
     if (!jc)
         return;
 
-    uint16_t i, j;
+    uint16_t i;
 
     if (jc->file)
     {
@@ -293,16 +302,7 @@ void closeClassFile(JavaClass* jc)
 
     if (jc->methods)
     {
-        // We have to check if the status is OK, because if it is not OK,
-        // only a few method_info would have been correctly initialized.
-        // If a "free" attempt was made on an attribute that wasn't initialized,
-        // the program would crash.
-        if (jc->status != CLASS_STATUS_OK)
-            j = jc->currentMethodEntryIndex + 2;
-        else
-            j = jc->methodCount;
-
-        for (i = 0; i < j; i++)
+        for (i = 0; i < jc->methodCount; i++)
             freeMethodAttributes(jc->methods + i);
 
         free(jc->methods);
@@ -311,12 +311,7 @@ void closeClassFile(JavaClass* jc)
 
     if (jc->fields)
     {
-        if (jc->status != CLASS_STATUS_OK)
-            j = jc->currentFieldEntryIndex + 2;
-        else
-            j = jc->fieldCount;
-
-        for (i = 0; i < j; i++)
+        for (i = 0; i < jc->fieldCount; i++)
             freeFieldAttributes(jc->fields + i);
 
         free(jc->fields);
@@ -325,7 +320,7 @@ void closeClassFile(JavaClass* jc)
 
     if (jc->attributes)
     {
-        for (i = 0; i < jc->attributeEntriesRead; i++)
+        for (i = 0; i < jc->attributeCount; i++)
             freeAttributeInfo(jc->attributes + i);
 
         free(jc->attributes);
