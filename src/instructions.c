@@ -110,7 +110,9 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            type = OP_STRINGREF;
+            // TODO: allocate a String object and set 'value'
+            // to the ID of that object
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Class:
@@ -120,15 +122,21 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
-            type = OP_CLASSREF;
+            // TODO: allocate an instance of that class and set
+            // 'value' to the ID of that instance object
+
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Methodref:
-            // TODO: Resolve method
-            type = OP_METHODREF;
-            break;
+
+            // This isn't supported, because it requires an instance of
+            // MethodType or MethodHandle, which are Java 8 features.
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
 
         default:
+            DEBUG_REPORT_INSTRUCTION_ERROR
             // Shouldn't happen
             return 0;
     }
@@ -165,7 +173,9 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            type = OP_STRINGREF;
+            // TODO: allocate a String object and set 'value'
+            // to the ID of that object
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Class:
@@ -175,15 +185,21 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
             if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
                 return 0;
 
-            type = OP_CLASSREF;
+            // TODO: allocate an instance of that class and set
+            // 'value' to the ID of that instance object
+
+            type = OP_REFERENCE;
             break;
 
         case CONSTANT_Methodref:
-            // TODO: Resolve method
-            type = OP_METHODREF;
-            break;
+
+            // This isn't supported, because it requires an instance of
+            // MethodType or MethodHandle, which are Java 8 features.
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
 
         default:
+            DEBUG_REPORT_INSTRUCTION_ERROR
             // Shouldn't happen
             return 0;
     }
@@ -289,7 +305,7 @@ uint8_t instfunc_dload(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_aload(JavaVirtualMachine* jvm, Frame* frame)
 {
-    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_OBJECTREF))
+    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_REFERENCE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -341,10 +357,10 @@ DECLR_CAT_2_LOAD_N_FAMILY(dload, 1, OP_DOUBLE)
 DECLR_CAT_2_LOAD_N_FAMILY(dload, 2, OP_DOUBLE)
 DECLR_CAT_2_LOAD_N_FAMILY(dload, 3, OP_DOUBLE)
 
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 0, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_OBJECTREF)
-DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_OBJECTREF)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 0, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_REFERENCE)
+DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_REFERENCE)
 
 uint8_t instfunc_iaload(JavaVirtualMachine* jvm, Frame* frame)
 {
@@ -1815,9 +1831,12 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     {
         case 'J': type = OP_LONG; break;
         case 'D': type = OP_DOUBLE; break;
-        case 'L': type = OP_OBJECTREF; break;
-        case '[': type = OP_ARRAYREF; break;
         case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
 
         case 'B': // byte
         case 'C': // char
@@ -1903,9 +1922,12 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     {
         case 'J': type = OP_LONG; break;
         case 'D': type = OP_DOUBLE; break;
-        case 'L': type = OP_OBJECTREF; break;
-        case '[': type = OP_ARRAYREF; break;
         case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
 
         case 'B': // byte
         case 'C': // char
