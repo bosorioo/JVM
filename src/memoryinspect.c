@@ -107,8 +107,8 @@ void memfree(void* ptr, const char* file, int line, const char* call)
 
 #else
 
-/// This source file is for debugging purposes only.
+/// @file memoryinspect.c
+/// @brief This source file is for debugging purposes only.
 /// Since DEBUG isn't defined, this module becomes empty.
-#define MEMORY_INSPECT_NOT_INCLUDED
 
 #endif
