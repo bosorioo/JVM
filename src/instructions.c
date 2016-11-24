@@ -1,6 +1,9 @@
 #include "instructions.h"
 #include <math.h>
 
+// TODO: replace all 'out of memory' status errors with
+// exception OutOfMemory.
+
 #define NEXT_BYTE (*(frame->code + frame->pc++))
 #define HIWORD(x) ((int32_t)(x >> 32))
 #define LOWORD(x) ((int32_t)(x & 0xFFFFFFFFll))
@@ -120,7 +123,11 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             cpi = frame->jc->constantPool + cpi->Class.name_index - 1;
 
             if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
+            {
+                // TODO: throw a resolution exception
+                // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
                 return 0;
+            }
 
             // TODO: allocate an instance of that class and set
             // 'value' to the ID of that instance object
@@ -1815,8 +1822,8 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the field's class the field_info that matches the name and the descriptor
-    field_info* fi = getFieldMatchingUTF8(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                          cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
 
     if (!fi)
     {
@@ -1906,8 +1913,8 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the field's class the field_info that matches the name and the descriptor
-    field_info* fi = getFieldMatchingUTF8(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                          cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
 
     if (!fi)
     {
@@ -2027,8 +2034,8 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the method's class the field_info that matches the name and the descriptor
-    method_info* mi = getMethodMatchingUTF8(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                            cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    method_info* mi = getMethodMatching(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                        cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
 
     if (!mi)
     {
@@ -2108,23 +2115,99 @@ uint8_t instfunc_invokedynamic(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_new(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    uint16_t index;
+    cp_info* cp;
+    LoadedClasses* instanceLoadedClass;
+
+    index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the name of the class of the new instance
+    cp = frame->jc->constantPool + index - 1;
+    cp = frame->jc->constantPool + cp->Class.name_index - 1;
+
+    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &instanceLoadedClass))
+    {
+        // TODO: throw a resolution exception
+        // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
+        return 0;
+    }
+
+    // TODO: check if class is interface or abstract. If so, throw InstantiationError
+
+    Reference* instance = newClassInstance(jvm, instanceLoadedClass->jc);
+
+    if (!instance || !pushOperand(&frame->operands, (int32_t)instance, OP_REFERENCE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_newarray(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    uint8_t type = NEXT_BYTE;
+    int32_t count;
+
+    popOperand(&frame->operands, &count, NULL);
+
+    if (count < 0)
+    {
+        // TODO: throw NegativeArraySizeException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    Reference* arrayref = newArray(jvm, (uint32_t)count, (Opcode_newarray_type)type);
+
+    if (!arrayref || !pushOperand(&frame->operands, (int32_t)arrayref, OP_REFERENCE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    uint16_t index;
+    int32_t count;
+    cp_info* cp;
+
+    index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    popOperand(&frame->operands, &count, NULL);
+
+    if (count < 0)
+    {
+        // TODO: throw NegativeArraySizeException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    cp = frame->jc->constantPool + index - 1;
+    cp = frame->jc->constantPool + cp->Class.name_index - 1;
+
+    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, NULL))
+    {
+        // TODO: throw a resolution exception
+        // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
+        return 0;
+    }
+
+    Reference* aarray = newObjectArray(jvm, count, cp->Utf8.bytes, cp->Utf8.length);
+
+    if (!aarray || !pushOperand(&frame->operands, (int32_t)aarray, OP_REFERENCE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_arraylength(JavaVirtualMachine* jvm, Frame* frame)

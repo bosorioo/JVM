@@ -143,8 +143,8 @@ void printAllFields(JavaClass* jc)
     printf("\n");
 }
 
-field_info* getFieldMatchingUTF8(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
-                                  int32_t descriptor_len, uint16_t flag_mask)
+field_info* getFieldMatching(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
+                             int32_t descriptor_len, uint16_t flag_mask)
 {
     field_info* field = jc->fields;
     cp_info* cpi;

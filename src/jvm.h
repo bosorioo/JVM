@@ -24,26 +24,29 @@ enum JVMStatus {
 typedef struct ClassInstance
 {
     JavaClass* c;
-    uint8_t* data;
+    void* data;
 } ClassInstance;
 
 typedef struct Array
 {
-    uint8_t dimensions;
-    uint32_t* dimensionsLength;
-    uint8_t* data;
+    uint32_t length;
+    void* data;
     Opcode_newarray_type type;
 } Array;
 
 typedef struct ObjectArray
 {
     uint8_t dimensions;
-    uint32_t* dimensionsLength;
-    Reference* elements;
+    uint32_t* dims_length;
+    uint8_t* utf8_className;
+    int32_t utf8_len;
+    Reference** elements;
 } ObjectArray;
 
 typedef enum ReferenceType {
-     REFTYPE_ARRAY, REFTYPE_CLASSINSTANCE, REFTYPE_OBJARRAY
+     REFTYPE_ARRAY,
+     REFTYPE_CLASSINSTANCE,
+     REFTYPE_OBJARRAY
 } ReferenceType;
 
 struct Reference
@@ -91,9 +94,13 @@ LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc);
 LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
 
 Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc);
+Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_type type);
+Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_t* utf8_className, int32_t utf8_len);
+
+void deleteReference(Reference* obj);
 
 #ifdef DEBUG
-#define DEBUG_REPORT_INSTRUCTION_ERROR printf("Abortion request by instruction at %s:%d.\n", __FILE__, __LINE__);
+#define DEBUG_REPORT_INSTRUCTION_ERROR printf("Abortion request by instruction at %s:%u.\n", __FILE__, __LINE__);
 #else
 #define DEBUG_REPORT_INSTRUCTION_ERROR
 #endif // DEBUG

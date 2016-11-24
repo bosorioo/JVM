@@ -57,10 +57,7 @@ void deinitJVM(JavaVirtualMachine* jvm)
     {
         reftmp = refnode;
         refnode = refnode->next;
-
-        // TODO: free the reference internal data
-
-        free(reftmp->obj);
+        deleteReference(reftmp->obj);
         free(reftmp);
     }
 
@@ -97,7 +94,10 @@ void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
         mainClass = jvm->classes->jc;
     }
 
-    method_info* method = getMethodMatching(mainClass, "main", "([Ljava/lang/String;)V", ACC_STATIC);
+    const uint8_t name[] = "main";
+    const uint8_t descriptor[] = "([Ljava/lang/String;)V";
+
+    method_info* method = getMethodMatching(mainClass, name, sizeof(name) - 1, descriptor, sizeof(descriptor) - 1, ACC_STATIC);
 
     if (!method)
     {
@@ -119,6 +119,38 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     char path[1024];
     uint8_t success = 1;
     uint16_t u16;
+
+    // Arrays can also be a class in the constant pool that need
+    // to be resolved.
+    if (utf8_len > 0 && *className_utf8_bytes == '[')
+    {
+        do {
+            utf8_len--;
+            className_utf8_bytes++;
+        } while (utf8_len > 0 && *className_utf8_bytes == '[');
+
+        if (utf8_len == 0)
+        {
+            // Something wrong, as the class name was something like
+            // "[["?
+            return 0;
+        }
+        else if (*className_utf8_bytes != 'L')
+        {
+            // This class is an array of a primitive type, which
+            // require no resolution.
+            if (outClass)
+                *outClass = NULL;
+            return 1;
+        }
+        else
+        {
+            // This class is an array of instance of a certain class,
+            // for example: "[Ljava/lang/String;", so we just try to
+            // resolve the class java/lang/String.
+            return resolveClass(jvm, className_utf8_bytes + 1, utf8_len - 2, outClass);
+        }
+    }
 
     LoadedClasses* loadedClass = isClassLoaded(jvm, className_utf8_bytes, utf8_len);
 
@@ -175,7 +207,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 
         loadedClass = addClassToLoadedClasses(jvm, jc);
 
-        method_info* clinit = getMethodMatching(jc, "<clinit>", "()V", ACC_STATIC);
+        method_info* clinit = getMethodMatching(jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
 
         if (clinit)
         {
@@ -325,8 +357,10 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
 {
 #ifdef DEBUG
     {
+        char debugbuffer[256];
+        decodeAccessFlags(method->access_flags, debugbuffer, sizeof(debugbuffer), ACCT_METHOD);
         cp_info* debug_cpi = jc->constantPool + method->name_index - 1;
-        printf("debug runMethod %.*s, params: %u", debug_cpi->Utf8.length, debug_cpi->Utf8.bytes, numberOfParameters);
+        printf("debug runMethod %s %.*s, params: %u",  debugbuffer, debug_cpi->Utf8.length, debug_cpi->Utf8.bytes, numberOfParameters);
     }
 #endif // DEBUG
 
@@ -334,7 +368,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
     Frame* frame = newFrame(jc, method);
 
 #ifdef DEBUG
-    printf(", code len: %u\n", frame->code_length);
+    printf(", code len: %u%s\n", frame->code_length, frame->code_length == 0 ? " ####### Native Method": "");
 #endif // DEBUG
 
     if (!frame || !pushFrame(&jvm->frames, frame))
@@ -361,7 +395,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         function = fetchOpcodeFunction(opcode);
 
 #ifdef DEBUG
-        printf("   instruction '%s' at offset %u\n", getOpcodeMnemonic(opcode), frame->pc - 1);
+        printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, frame);
 #endif // DEBUG
 
         if (function == NULL)
@@ -455,4 +489,167 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
     jvm->objects = node;
 
     return r;
+}
+
+Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_type type)
+{
+    if (length == 0)
+        return NULL;
+
+    size_t elementSize;
+
+    switch (type)
+    {
+        case T_BOOLEAN:
+        case T_BYTE:
+            elementSize = sizeof(uint8_t);
+            break;
+
+        case T_SHORT:
+        case T_CHAR:
+            elementSize = sizeof(uint16_t);
+            break;
+
+        case T_FLOAT:
+        case T_INT:
+            elementSize = sizeof(uint32_t);
+            break;
+
+        case T_DOUBLE:
+        case T_LONG:
+            elementSize = sizeof(uint64_t);
+            break;
+
+        default:
+            // Can't create array of other data type
+            return NULL;
+    }
+
+    Reference* r = (Reference*)malloc(sizeof(Reference));
+    ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
+
+    if (!node || !r)
+    {
+        if (node) free(node);
+        if (r) free(r);
+
+        return NULL;
+    }
+
+    r->type = REFTYPE_ARRAY;
+    r->arr.length = length;
+    r->arr.type = type;
+    r->arr.data = (uint8_t*)malloc(elementSize * length);
+
+    if (!r->arr.data)
+    {
+        free(r);
+        free(node);
+        return NULL;
+    }
+
+    uint8_t* data = (uint8_t*)r->arr.data;
+
+    while (length-- > 0)
+        *data++ = 0;
+
+    node->next = jvm->objects;
+    node->obj = r;
+    jvm->objects = node;
+
+    return r;
+}
+
+Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_t* utf8_className, int32_t utf8_len)
+{
+    if (utf8_len <= 0)
+        return NULL;
+
+    Reference* r = (Reference*)malloc(sizeof(Reference));
+    ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
+
+    if (!node || !r)
+    {
+        if (node) free(node);
+        if (r) free(r);
+
+        return NULL;
+    }
+
+    r->type = REFTYPE_OBJARRAY;
+    r->oar.dimensions = 1;
+
+    // This is a hack, we don't actually allocate 1 byte, but rather
+    // just use the address as the dimension length, since there is
+    // only 1 dimension.
+    r->oar.dims_length = (uint32_t*)length;
+    r->oar.utf8_className = (uint8_t*)malloc(utf8_len);
+    r->oar.elements = (Reference**)malloc(length * sizeof(Reference));
+    r->oar.utf8_len = utf8_len;
+
+    if (!r->oar.utf8_className || !r->oar.elements)
+    {
+        free(r);
+        free(node);
+
+        if (r->oar.utf8_className) free(r->oar.utf8_className);
+        if (r->oar.elements) free(r->oar.elements);
+
+        return NULL;
+    }
+
+    // Copy class name
+    while (utf8_len-- > 0)
+        r->oar.utf8_className[utf8_len] = utf8_className[utf8_len];
+
+    // Initializes all references to null
+    while (length-- > 0)
+        r->oar.elements[length] = NULL;
+
+    node->next = jvm->objects;
+    node->obj = r;
+    jvm->objects = node;
+
+    return r;
+}
+
+void deleteReference(Reference* obj)
+{
+    switch (obj->type)
+    {
+        case REFTYPE_ARRAY:
+            free(obj->arr.data);
+            break;
+
+        case REFTYPE_CLASSINSTANCE:
+            free(obj->ci.data);
+            break;
+
+        case REFTYPE_OBJARRAY:
+        {
+            uint32_t numberOfElements = 0;
+            uint8_t dimIndex;
+
+            if (obj->oar.dimensions > 1)
+            {
+                for (dimIndex = 0, numberOfElements = 1; dimIndex < obj->oar.dimensions; dimIndex++)
+                    numberOfElements *= obj->oar.dims_length[dimIndex];
+
+                free(obj->oar.dims_length);
+            }
+
+            free(obj->oar.utf8_className);
+
+            while (numberOfElements-- > 0)
+                deleteReference(obj->oar.elements[numberOfElements]);
+
+            free(obj->oar.elements);
+            break;
+        }
+
+        default:
+            return;
+    }
+
+    free(obj);
 }

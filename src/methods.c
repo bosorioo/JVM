@@ -138,42 +138,8 @@ void printMethods(JavaClass* jc)
     }
 }
 
-method_info* getMethodMatching(JavaClass* jc, const char* name, const char* descriptor, uint16_t flag_mask)
-{
-    method_info* method = jc->methods;
-    cp_info* cpi;
-    uint16_t index;
-
-    int32_t nameLength = strlen(name);
-    int32_t descriptorLength = strlen(descriptor);
-
-    for (index = jc->methodCount; index > 0; index--, method++)
-    {
-        // Check if flags match
-        if ((method->access_flags & flag_mask) != flag_mask)
-            continue;
-
-        // Get the method name
-        cpi = jc->constantPool + method->name_index - 1;
-        // And check if it matches
-        if (!cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, (const uint8_t*)name, nameLength))
-            continue;
-
-        // Get the method descriptor
-        cpi = jc->constantPool + method->descriptor_index - 1;
-        // And check if it matches
-        if (!cmp_UTF8_Ascii(cpi->Utf8.bytes, cpi->Utf8.length, (const uint8_t*)descriptor, descriptorLength))
-            continue;
-
-
-        return method;
-    }
-
-    return NULL;
-}
-
-method_info* getMethodMatchingUTF8(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
-                                  int32_t descriptor_len, uint16_t flag_mask)
+method_info* getMethodMatching(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
+                               int32_t descriptor_len, uint16_t flag_mask)
 {
     method_info* method = jc->methods;
     cp_info* cpi;

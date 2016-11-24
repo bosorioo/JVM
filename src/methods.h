@@ -19,9 +19,7 @@ char readMethod(JavaClass* jc, method_info* entry);
 void freeMethodAttributes(method_info* entry);
 void printMethods(JavaClass* jc);
 
-method_info* getMethodMatching(JavaClass* jc, const char* name, const char* descriptor, uint16_t flag_mask);
-
-method_info* getMethodMatchingUTF8(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
-                                  int32_t descriptor_len, uint16_t flag_mask);
+method_info* getMethodMatching(JavaClass* jc, const uint8_t* name, int32_t name_len, const uint8_t* descriptor,
+                               int32_t descriptor_len, uint16_t flag_mask);
 
 #endif // METHODS_H
