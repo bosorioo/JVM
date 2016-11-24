@@ -9,10 +9,10 @@
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// completed.
-/// @param const char* path - pointer to char that contains 
+/// @param const char* path - pointer to char that contains
 /// the path of file to be read
 ///
-/// this function open the .class file and reads byte by byte 
+/// this function open the .class file and reads byte by byte
 /// from the file by filling in the fields of the JavaClass struct
 ///
 void openClassFile(JavaClass* jc, const char* path)
