@@ -112,13 +112,11 @@ char checkClassIndexAndAccessFlags(JavaClass* jc)
         return 0;
     }
 
-    // If the class is abstract, then it must be an interface.
     // If the class is an interface, then it must be abstract.
-    // Abstract/interface must have the ACC_FINAL and ACC_SUPER bits set to 0.
-    if ((jc->accessFlags & ACC_ABSTRACT) || (jc->accessFlags & ACC_INTERFACE))
+    // Interface must have the ACC_FINAL and ACC_SUPER bits set to 0.
+    if (jc->accessFlags & ACC_INTERFACE)
     {
         if ((jc->accessFlags & ACC_ABSTRACT) == 0 ||
-            (jc->accessFlags & ACC_INTERFACE) == 0 ||
             (jc->accessFlags & (ACC_FINAL | ACC_SUPER)))
         {
             jc->status = INVALID_ACCESS_FLAGS;
