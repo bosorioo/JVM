@@ -1,5 +1,6 @@
 #include "jvm.h"
 #include "utf8.h"
+#include "natives.h"
 #include "instructions.h"
 
 #include "memoryinspect.h"
@@ -16,6 +17,7 @@
 void initJVM(JavaVirtualMachine* jvm)
 {
     jvm->status = JVM_STATUS_OK;
+    jvm->simulatingSystemAndStringClasses = 0;
     jvm->frames = NULL;
     jvm->classes = NULL;
     jvm->objects = NULL;
@@ -120,6 +122,12 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     uint8_t success = 1;
     uint16_t u16;
 
+    if (jvm->simulatingSystemAndStringClasses &&
+        cmp_UTF8(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/String", 16))
+    {
+        return 1;
+    }
+
     // Arrays can also be a class in the constant pool that need
     // to be resolved.
     if (utf8_len > 0 && *className_utf8_bytes == '[')
@@ -200,12 +208,16 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 
     if (success)
     {
+        loadedClass = addClassToLoadedClasses(jvm, jc);
+        success = loadedClass != NULL;
+    }
+
+    if (success)
+    {
 
 #ifdef DEBUG
     printf("   class file '%s' loaded\n", path);
 #endif // DEBUG
-
-        loadedClass = addClassToLoadedClasses(jvm, jc);
 
         method_info* clinit = getMethodMatching(jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
 
@@ -368,7 +380,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
     Frame* frame = newFrame(jc, method);
 
 #ifdef DEBUG
-    printf(", code len: %u%s\n", frame->code_length, frame->code_length == 0 ? " ####### Native Method": "");
+    printf(", len: %u, frame %X%s\n", frame->code_length, frame, frame->code_length == 0 ? " ####### Native Method": "");
 #endif // DEBUG
 
     if (!frame || !pushFrame(&jvm->frames, frame))
@@ -377,51 +389,134 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         return 0;
     }
 
-    uint8_t parameterIndex;
-    int32_t parameter;
-
-    for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
+    if (method->access_flags & ACC_NATIVE)
     {
-        popOperand(&callerFrame->operands, &parameter, NULL);
-        frame->localVariables[parameterIndex] = parameter;
+        // TODO: run native
     }
-
-    InstructionFunction function;
-
-    while (frame->pc < frame->code_length)
+    else
     {
+        uint8_t parameterIndex;
+        int32_t parameter;
 
-        uint8_t opcode = *(frame->code + frame->pc++);
-        function = fetchOpcodeFunction(opcode);
+        for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
+        {
+            popOperand(&callerFrame->operands, &parameter, NULL);
+            frame->localVariables[parameterIndex] = parameter;
+        }
 
-#ifdef DEBUG
-        printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, frame);
-#endif // DEBUG
+        InstructionFunction function;
 
-        if (function == NULL)
+        while (frame->pc < frame->code_length)
         {
 
+            uint8_t opcode = *(frame->code + frame->pc++);
+            function = fetchOpcodeFunction(opcode);
+
 #ifdef DEBUG
-        printf("   unknown instruction '%s'\n", getOpcodeMnemonic(opcode));
+    printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, frame);
 #endif // DEBUG
 
-            jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
-            break;
-        }
-        else if (!function(jvm, frame))
-        {
-            return 0;
-        }
-    }
+            if (function == NULL)
+            {
 
-    if (frame->returnCount > 0 && callerFrame)
-    {
-        // TODO: move return values from one frame to another
+#ifdef DEBUG
+    printf("   unknown instruction '%s'\n", getOpcodeMnemonic(opcode));
+#endif // DEBUG
+
+                jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
+                break;
+            }
+            else if (!function(jvm, frame))
+            {
+                return 0;
+            }
+        }
+
+        if (frame->returnCount > 0 && callerFrame)
+        {
+            // At most, two operands can be returned
+            OperandStack parameters[2];
+            uint8_t index;
+
+            for (index = 0; index < frame->returnCount; index++)
+                popOperand(&frame->operands, &parameters[index].value, &parameters[index].type);
+
+            while (frame->returnCount-- > 0)
+            {
+                if (!pushOperand(&callerFrame->operands, parameters[frame->returnCount].value, parameters[frame->returnCount].type))
+                {
+                    jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                    return 0;
+                }
+            }
+        }
     }
 
     popFrame(&jvm->frames, NULL);
     freeFrame(frame);
     return jvm->status == JVM_STATUS_OK;
+}
+
+uint8_t getMethodDescriptorParameterCount(const uint8_t* descriptor_utf8, int32_t utf8_len)
+{
+    uint8_t parameterCount = 0;
+
+    while (utf8_len > 0)
+    {
+        switch (*descriptor_utf8)
+        {
+            case '(': break;
+            case ')': return parameterCount;
+
+            case 'J': case 'D':
+                parameterCount += 2;
+                break;
+
+            case 'L':
+
+                parameterCount++;
+
+                do {
+                    utf8_len--;
+                    descriptor_utf8++;
+                } while (utf8_len > 0 && *descriptor_utf8 != ';');
+
+                break;
+
+            case '[':
+
+                parameterCount++;
+
+                do {
+                    utf8_len--;
+                    descriptor_utf8++;
+                } while (utf8_len > 0 && *descriptor_utf8 == '[');
+
+                do {
+                    utf8_len--;
+                    descriptor_utf8++;
+                } while (utf8_len > 0 && *descriptor_utf8 != ';');
+
+                break;
+
+            case 'F': // float
+            case 'B': // byte
+            case 'C': // char
+            case 'I': // int
+            case 'S': // short
+            case 'Z': // boolean
+                parameterCount++;
+                break;
+
+            default:
+                break;
+        }
+
+        descriptor_utf8++;
+        utf8_len--;
+    }
+
+    return parameterCount;
 }
 
 LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
@@ -431,8 +526,14 @@ LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
     if (node)
     {
         node->jc = jc;
-        node->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * jc->staticFieldCount);
+
+        if (jc->staticFieldCount > 0)
+            node->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * jc->staticFieldCount);
+        else
+            node->staticFieldsData = NULL;
+
         node->next = jvm->classes;
+
         jvm->classes = node;
     }
 
@@ -458,6 +559,92 @@ LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes,
     }
 
     return NULL;
+}
+
+JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc)
+{
+    LoadedClasses* superLoadedClass;
+    cp_info* cp1;
+
+    cp1 = jc->constantPool + jc->superClass - 1;
+    cp1 = jc->constantPool + cp1->Class.name_index - 1;
+
+    superLoadedClass = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
+
+    return superLoadedClass ? superLoadedClass->jc : NULL;
+}
+
+/// @pre Both \c super and \c jc must be classes that have already
+/// been loaded.
+/// @note If \c super and \c jc point to the same class, the function
+/// returns false.
+uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc)
+{
+    cp_info* cp1;
+    cp_info* cp2;
+    LoadedClasses* classes;
+
+    cp2 = super->constantPool + super->thisClass - 1;
+    cp2 = super->constantPool + cp2->Class.name_index - 1;
+
+    while (jc && jc->superClass)
+    {
+        cp1 = jc->constantPool + jc->superClass - 1;
+        cp1 = jc->constantPool + cp1->Class.name_index - 1;
+
+        if (cmp_UTF8(cp1->Utf8.bytes, cp1->Utf8.length, cp2->Utf8.bytes, cp2->Utf8.length))
+            return 1;
+
+        classes = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
+
+        if (classes)
+            jc = classes->jc;
+        else
+            break;
+    }
+
+    return 0;
+}
+
+Reference* newString(JavaVirtualMachine* jvm, const uint8_t* str, int32_t strlen)
+{
+    Reference* r = (Reference*)malloc(sizeof(Reference));
+    ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
+
+    if (!node || !r)
+    {
+        if (node) free(node);
+        if (r) free(r);
+
+        return NULL;
+    }
+
+    r->type = REFTYPE_STRING;
+    r->str.len = strlen;
+
+    if (strlen)
+    {
+        r->str.utf8_bytes = (uint8_t*)malloc(strlen);
+
+        if (!r->str.utf8_bytes)
+        {
+            free(r);
+            free(node);
+            return NULL;
+        }
+
+        memcpy(r->str.utf8_bytes, str, strlen);
+    }
+    else
+    {
+        r->str.utf8_bytes = NULL;
+    }
+
+    node->next = jvm->objects;
+    node->obj = r;
+    jvm->objects = node;
+
+    return r;
 }
 
 Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
@@ -617,6 +804,11 @@ void deleteReference(Reference* obj)
 {
     switch (obj->type)
     {
+        case REFTYPE_STRING:
+            if (obj->str.utf8_bytes)
+                free(obj->str.utf8_bytes);
+            break;
+
         case REFTYPE_ARRAY:
             free(obj->arr.data);
             break;

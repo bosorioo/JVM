@@ -1,4 +1,7 @@
 #include "instructions.h"
+#include "utf8.h"
+#include "jvm.h"
+#include "natives.h"
 #include <math.h>
 
 // TODO: replace all 'out of memory' status errors with
@@ -113,27 +116,47 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            // TODO: allocate a String object and set 'value'
-            // to the ID of that object
+        {
+            cpi = frame->jc->constantPool + cpi->String.string_index - 1;
+
+            Reference* str = newString(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+
+            if (!str)
+            {
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
+            }
+
+            value = (int32_t)str;
             type = OP_REFERENCE;
             break;
+        }
 
         case CONSTANT_Class:
-
+        {
             cpi = frame->jc->constantPool + cpi->Class.name_index - 1;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
+            LoadedClasses* loadedClass;
+
+            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass))
             {
                 // TODO: throw a resolution exception
                 // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
                 return 0;
             }
 
-            // TODO: allocate an instance of that class and set
-            // 'value' to the ID of that instance object
+            Reference* obj = newClassInstance(jvm, loadedClass->jc);
 
+            if (!obj)
+            {
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
+            }
+
+            value = (int32_t)obj;
             type = OP_REFERENCE;
             break;
+        }
 
         case CONSTANT_Methodref:
 
@@ -180,23 +203,47 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
             break;
 
         case CONSTANT_String:
-            // TODO: allocate a String object and set 'value'
-            // to the ID of that object
+        {
+            cpi = frame->jc->constantPool + cpi->String.string_index - 1;
+
+            Reference* str = newString(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+
+            if (!str)
+            {
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
+            }
+
+            value = (int32_t)str;
             type = OP_REFERENCE;
             break;
+        }
 
         case CONSTANT_Class:
-
+        {
             cpi = frame->jc->constantPool + cpi->Class.name_index - 1;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL))
+            LoadedClasses* loadedClass;
+
+            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass))
+            {
+                // TODO: throw a resolution exception
+                // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
                 return 0;
+            }
 
-            // TODO: allocate an instance of that class and set
-            // 'value' to the ID of that instance object
+            Reference* obj = newClassInstance(jvm, loadedClass->jc);
 
+            if (!obj)
+            {
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
+            }
+
+            value = (int32_t)obj;
             type = OP_REFERENCE;
             break;
+        }
 
         case CONSTANT_Methodref:
 
@@ -501,56 +548,56 @@ DECLR_STORE_N_CAT_1_FAMILY(astore, 3)
 
 uint8_t instfunc_iastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_lastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_fastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_dastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_aastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_bastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_castore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_sastore(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
@@ -1806,6 +1853,25 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     cp_info* field = frame->jc->constantPool + index - 1;
     cp_info* cpi1, *cpi2;
 
+    if (jvm->simulatingSystemAndStringClasses)
+    {
+        cpi1 = frame->jc->constantPool + field->Fieldref.class_index - 1;
+        cpi1 = frame->jc->constantPool + cpi1->Class.name_index - 1;
+
+        // All static fields from java/lang/System will be replaced
+        // with null object in simulation mode.
+        if (cmp_UTF8(cpi1->Utf8.bytes, cpi1->Utf8.length, (const uint8_t*)"java/lang/System", 16))
+        {
+            if (!pushOperand(&frame->operands, 0, OP_REFERENCE))
+            {
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
+            }
+
+            return 1;
+        }
+    }
+
     LoadedClasses* fieldLoadedClass;
 
     // Resolve the field, i.e, load the class that field belongs to
@@ -1859,17 +1925,20 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
             return 0;
     }
 
-    // Push from the static data
-    if (!pushOperand(&frame->operands, *(fieldLoadedClass->staticFieldsData + fi->offset), type))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
-    }
-
-    // If the field is category 2, push the following index too
+    // If the field is category 2, push two operands from the static data
     if (type == OP_LONG || type == OP_DOUBLE)
     {
-        if (!pushOperand(&frame->operands, *(fieldLoadedClass->staticFieldsData + fi->offset + 1), type))
+        if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset + 1], type) ||
+            !pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset], type))
+        {
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+            return 0;
+        }
+    }
+    // Otherwise, only one
+    else
+    {
+        if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset], type))
         {
             jvm->status = JVM_STATUS_OUT_OF_MEMORY;
             return 0;
@@ -1954,13 +2023,16 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
 
     popOperand(&frame->operands, &operand, NULL);
 
-    *(fieldLoadedClass->staticFieldsData + fi->offset) = operand;
-
     // If the field is category 2, set the following index too
     if (type == OP_LONG || type == OP_DOUBLE)
     {
+        fieldLoadedClass->staticFieldsData[fi->offset + 1] = operand;
         popOperand(&frame->operands, &operand, NULL);
-        *(fieldLoadedClass->staticFieldsData + fi->offset + 1) = operand;
+        fieldLoadedClass->staticFieldsData[fi->offset] = operand;
+    }
+    else
+    {
+        fieldLoadedClass->staticFieldsData[fi->offset] = operand;
     }
 
 
@@ -1982,30 +2054,246 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the Fieldref CP entry
+    cp_info* field = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+
+    LoadedClasses* fieldLoadedClass;
+
+    // Resolve the field, i.e, load the class that field belongs to and
+    // the class of the that field, if its type is class.
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the field and its descriptor
+    cpi2 = frame->jc->constantPool + field->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+    if (!fi)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    OperandType type;
+
+    switch (*cpi2->Utf8.bytes)
+    {
+        case 'J': type = OP_LONG; break;
+        case 'D': type = OP_DOUBLE; break;
+        case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
+
+        case 'B': // byte
+        case 'C': // char
+        case 'I': // int
+        case 'S': // short
+        case 'Z': // boolean
+            type = OP_INTEGER;
+            break;
+
+        default:
+            // todo: throw exception maybe?
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
+    }
+
+    Reference* object;
+    int32_t lo_operand;
+    int32_t hi_operand;
+    int32_t object_address;
+
+    popOperand(&frame->operands, &lo_operand, NULL);
+
+    // If the field is category 2, pop the other operand too
+    if (type == OP_LONG || type == OP_DOUBLE)
+        popOperand(&frame->operands, &hi_operand, NULL);
+
+    // Get the objectref
+    popOperand(&frame->operands, &object_address, NULL);
+    object = (Reference*)object_address;
+
+    if (type == OP_LONG || type == OP_DOUBLE)
+    {
+        object->ci.data[fi->offset] = hi_operand;
+        object->ci.data[fi->offset + 1] = lo_operand;
+    }
+    else
+    {
+        object->ci.data[fi->offset] = lo_operand;
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+     // Get the Methodref CP entry
+    cp_info* method = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+    method_info* mi = NULL;
+
+    if (jvm->simulatingSystemAndStringClasses)
+    {
+        cpi1 = frame->jc->constantPool + method->Methodref.class_index - 1;
+        cpi1 = frame->jc->constantPool + cpi1->Class.name_index - 1;
+
+        cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+        cpi2 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;
+
+        InstructionFunction nativeFunc = getNative(cpi1->Utf8.bytes, cpi1->Utf8.length, cpi2->Utf8.bytes, cpi2->Utf8.length);
+
+        if (nativeFunc)
+            return nativeFunc(jvm, frame);
+    }
+
+    LoadedClasses* methodLoadedClass;
+
+    // Resolve the method, i.e, load the class that method belongs to
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the method and its descriptor
+    cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    uint8_t operandIndex;
+    uint8_t parameterCount = getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length);
+    OperandStack* node = frame->operands;
+
+    for (operandIndex = 0; operandIndex < parameterCount; operandIndex++)
+        node = node->next;
+
+    Reference* object = (Reference*)node->value;
+
+    JavaClass* jc = object->ci.c;
+
+    while (jc)
+    {
+        mi = getMethodMatching(jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                               cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+        if (mi)
+            break;
+
+        jc = getSuperClass(jvm, jc);
+    }
+
+    if (!mi)
+    {
+        // TODO: throw AbstractMethodError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+
+    // TODO: if the method is static, throw IncompatibleClassChangeError
+
+    return runMethod(jvm, methodLoadedClass->jc, mi, 1 + parameterCount);
 }
 
 uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+     // Get the Methodref CP entry
+    cp_info* method = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+    method_info* mi = NULL;
+
+    LoadedClasses* methodLoadedClass;
+
+    // Resolve the method, i.e, load the class that method belongs to
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the method and its descriptor
+    cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    // If the method being invoked isn't <init> and this class has a super class and
+    // the resolved method belongs to class that is a super class of this class,
+    // then it is necessary to lookup the super classes for that method
+    if (!cmp_UTF8(cpi1->Utf8.bytes, cpi1->Utf8.length, (const uint8_t*)"<init>", 6) &&
+        (frame->jc->accessFlags & ACC_SUPER) && isClassSuperOf(jvm, methodLoadedClass->jc, frame->jc))
+    {
+        JavaClass* super = getSuperClass(jvm, frame->jc);
+
+        while (super)
+        {
+            mi = getMethodMatching(super, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                   cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+            if (mi)
+                break;
+
+            super = getSuperClass(jvm, super);
+        }
+
+        if (!mi)
+        {
+            // TODO: throw AbstractMethodError
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
+        }
+    }
+    else
+    {
+        mi = getMethodMatching(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                               cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    }
+
+    if (!mi)
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // We add one to the parameter count to pop the objectref at the stack as well.
+    uint8_t parameterCount = 1 + getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length);
+
+    return runMethod(jvm, methodLoadedClass->jc, mi, parameterCount);
 }
 
 uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
@@ -2017,6 +2305,20 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
     // Get the Methodref CP entry
     cp_info* method = frame->jc->constantPool + index - 1;
     cp_info* cpi1, *cpi2;
+
+    if (jvm->simulatingSystemAndStringClasses)
+    {
+        cpi1 = frame->jc->constantPool + method->Methodref.class_index - 1;
+        cpi1 = frame->jc->constantPool + cpi1->Class.name_index - 1;
+
+        cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+        cpi2 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;
+
+        InstructionFunction nativeFunc = getNative(cpi1->Utf8.bytes, cpi1->Utf8.length, cpi2->Utf8.bytes, cpi2->Utf8.length);
+
+        if (nativeFunc)
+            return nativeFunc(jvm, frame);
+    }
 
     LoadedClasses* methodLoadedClass;
 
@@ -2044,64 +2346,12 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
         return 0;
     }
 
-    uint8_t parameterCount = 0;
-
-    for (index = 1; cpi2->Utf8.bytes[index] != ')'; index++)
-    {
-        switch (cpi2->Utf8.bytes[index])
-        {
-            case 'J': case 'D':
-                parameterCount += 2;
-                break;
-
-            case 'L':
-
-                parameterCount++;
-
-                do {
-                    index++;
-                } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] != ';');
-
-                break;
-
-            case '[':
-
-                parameterCount++;
-
-                do {
-                    index++;
-                } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] == '[');
-
-                if (cpi2->Utf8.bytes[index] == 'L')
-                {
-                    do {
-                        index++;
-                    } while (index < cpi2->Utf8.length && cpi2->Utf8.bytes[index] != ';');
-                }
-
-                break;
-
-            case 'F': // float
-            case 'B': // byte
-            case 'C': // char
-            case 'I': // int
-            case 'S': // short
-            case 'Z': // boolean
-                parameterCount++;
-                break;
-
-            default:
-                jvm->status = JVM_STATUS_INVALID_INSTRUCTION_PARAMETERS;
-                return 0;
-        }
-    }
-
-    return runMethod(jvm, methodLoadedClass->jc, mi, parameterCount);
+    return runMethod(jvm, methodLoadedClass->jc, mi, getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length));
 }
 
 uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
@@ -2212,28 +2462,28 @@ uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_arraylength(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_athrow(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_checkcast(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_instanceof(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
@@ -2252,42 +2502,42 @@ uint8_t instfunc_monitorexit(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_wide(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_ifnull(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_ifnonnull(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_goto_w(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
 uint8_t instfunc_jsr_w(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this function
+    // TODO: implement this instruction function
     DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }

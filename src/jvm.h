@@ -24,13 +24,19 @@ enum JVMStatus {
 typedef struct ClassInstance
 {
     JavaClass* c;
-    void* data;
+    uint8_t* data;
 } ClassInstance;
+
+typedef struct String
+{
+    uint8_t* utf8_bytes;
+    uint32_t len;
+} String;
 
 typedef struct Array
 {
     uint32_t length;
-    void* data;
+    uint8_t* data;
     Opcode_newarray_type type;
 } Array;
 
@@ -46,7 +52,8 @@ typedef struct ObjectArray
 typedef enum ReferenceType {
      REFTYPE_ARRAY,
      REFTYPE_CLASSINSTANCE,
-     REFTYPE_OBJARRAY
+     REFTYPE_OBJARRAY,
+     REFTYPE_STRING
 } ReferenceType;
 
 struct Reference
@@ -57,8 +64,8 @@ struct Reference
         ClassInstance ci;
         Array arr;
         ObjectArray oar;
+        String str;
     };
-
 };
 
 typedef struct ReferenceTable
@@ -77,6 +84,7 @@ typedef struct LoadedClasses
 struct JavaVirtualMachine
 {
     uint8_t status;
+    uint8_t simulatingSystemAndStringClasses;
 
     ReferenceTable* objects;
     FrameStack* frames;
@@ -90,9 +98,14 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass);
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass);
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, uint8_t numberOfParameters);
+uint8_t getMethodDescriptorParameterCount(const uint8_t* descriptor_utf8, int32_t utf8_len);
+
 LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc);
 LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len);
+JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc);
+uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc);
 
+Reference* newString(JavaVirtualMachine* jvm, const uint8_t* str, int32_t strlen);
 Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc);
 Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_type type);
 Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_t* utf8_className, int32_t utf8_len);
