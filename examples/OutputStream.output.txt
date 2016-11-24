@@ -1,0 +1,327 @@
+﻿---- Warning ----
+
+Class name and file path don't match.
+Reading will proceed anyway.
+
+---- General Information ----
+
+Version:		48.0 (Major.minor) [jdk version 1.4]
+Constant pool count:	29
+Access flags:		0x0421 [super, abstract, public]
+This class:		cp index #13 <java/io/OutputStream>
+Super class:		cp index #16 <java/lang/Object>
+Interfaces count:	0
+Fields count:		0
+Methods count:		6
+Attributes count:	0
+
+---- Constant Pool ----
+
+	#1: Utf8 (tag = 1)
+		Byte Count: 6
+		Length: 6
+		ASCII Characters: <init>
+
+	#2: Utf8 (tag = 1)
+		Byte Count: 4
+		Length: 4
+		ASCII Characters: Code
+
+	#3: Utf8 (tag = 1)
+		Byte Count: 10
+		Length: 10
+		ASCII Characters: Exceptions
+
+	#4: Utf8 (tag = 1)
+		Byte Count: 5
+		Length: 5
+		ASCII Characters: close
+
+	#5: Utf8 (tag = 1)
+		Byte Count: 5
+		Length: 5
+		ASCII Characters: flush
+
+	#6: Utf8 (tag = 1)
+		Byte Count: 19
+		Length: 19
+		ASCII Characters: java/io/IOException
+
+	#7: Utf8 (tag = 1)
+		Byte Count: 20
+		Length: 20
+		ASCII Characters: java/io/OutputStream
+
+	#8: Utf8 (tag = 1)
+		Byte Count: 35
+		Length: 35
+		ASCII Characters: java/lang/IndexOutOfBoundsException
+
+	#9: Utf8 (tag = 1)
+		Byte Count: 30
+		Length: 30
+		ASCII Characters: java/lang/NullPointerException
+
+	#10: Utf8 (tag = 1)
+		Byte Count: 16
+		Length: 16
+		ASCII Characters: java/lang/Object
+
+	#11: Utf8 (tag = 1)
+		Byte Count: 5
+		Length: 5
+		ASCII Characters: write
+
+	#12: Class (tag = 7)
+		name_index: #6 <java/io/IOException>
+
+	#13: Class (tag = 7)
+		name_index: #7 <java/io/OutputStream>
+
+	#14: Class (tag = 7)
+		name_index: #8 <java/lang/IndexOutOfBoundsException>
+
+	#15: Class (tag = 7)
+		name_index: #9 <java/lang/NullPointerException>
+
+	#16: Class (tag = 7)
+		name_index: #10 <java/lang/Object>
+
+	#17: Utf8 (tag = 1)
+		Byte Count: 3
+		Length: 3
+		ASCII Characters: ()V
+
+	#18: Utf8 (tag = 1)
+		Byte Count: 4
+		Length: 4
+		ASCII Characters: (I)V
+
+	#19: Utf8 (tag = 1)
+		Byte Count: 5
+		Length: 5
+		ASCII Characters: ([B)V
+
+	#20: Utf8 (tag = 1)
+		Byte Count: 7
+		Length: 7
+		ASCII Characters: ([BII)V
+
+	#21: NameAndType (tag = 12)
+		name_index: #1 <<init>>
+		descriptor_index: #17 <()V>
+
+	#22: NameAndType (tag = 12)
+		name_index: #11 <write>
+		descriptor_index: #18 <(I)V>
+
+	#23: NameAndType (tag = 12)
+		name_index: #11 <write>
+		descriptor_index: #20 <([BII)V>
+
+	#24: Methodref (tag = 10)
+		class_index: #13 <java/io/OutputStream>
+		name_and_type_index: #22
+		name_and_type.name_index: #11 <write>
+		name_and_type.descriptor_index: #18 <(I)V>
+
+	#25: Methodref (tag = 10)
+		class_index: #13 <java/io/OutputStream>
+		name_and_type_index: #23
+		name_and_type.name_index: #11 <write>
+		name_and_type.descriptor_index: #20 <([BII)V>
+
+	#26: Methodref (tag = 10)
+		class_index: #14 <java/lang/IndexOutOfBoundsException>
+		name_and_type_index: #21
+		name_and_type.name_index: #1 <<init>>
+		name_and_type.descriptor_index: #17 <()V>
+
+	#27: Methodref (tag = 10)
+		class_index: #15 <java/lang/NullPointerException>
+		name_and_type_index: #21
+		name_and_type.name_index: #1 <<init>>
+		name_and_type.descriptor_index: #17 <()V>
+
+	#28: Methodref (tag = 10)
+		class_index: #16 <java/lang/Object>
+		name_and_type_index: #21
+		name_and_type.name_index: #1 <<init>>
+		name_and_type.descriptor_index: #17 <()V>
+
+---- Methods ----
+
+	Method #1:
+
+		name_index:        #1 <<init>>
+		descriptor_index:  #17 <()V>
+		access_flags:      0x0001 [public]
+		attribute_count:   1
+
+		Method Attribute #1 - Code:
+
+			max_stack: 1, max_locals: 1, code_length: 5
+			exception_table_length: 0, attribute_count: 0
+
+			Code:	Offset	Mnemonic	Parameters
+				0	aload_0
+				1	invokespecial	#28 (Method java/lang/Object.<init>, descriptor: ()V)
+				4	return
+
+
+	Method #2:
+
+		name_index:        #4 <close>
+		descriptor_index:  #17 <()V>
+		access_flags:      0x0001 [public]
+		attribute_count:   2
+
+		Method Attribute #1 - Exceptions:
+
+			number_of_exceptions: 1
+
+				Exception #1: #12 <java/io/IOException>
+
+
+		Method Attribute #2 - Code:
+
+			max_stack: 0, max_locals: 1, code_length: 1
+			exception_table_length: 0, attribute_count: 0
+
+			Code:	Offset	Mnemonic	Parameters
+				0	return
+
+
+	Method #3:
+
+		name_index:        #5 <flush>
+		descriptor_index:  #17 <()V>
+		access_flags:      0x0001 [public]
+		attribute_count:   2
+
+		Method Attribute #1 - Exceptions:
+
+			number_of_exceptions: 1
+
+				Exception #1: #12 <java/io/IOException>
+
+
+		Method Attribute #2 - Code:
+
+			max_stack: 0, max_locals: 1, code_length: 1
+			exception_table_length: 0, attribute_count: 0
+
+			Code:	Offset	Mnemonic	Parameters
+				0	return
+
+
+	Method #4:
+
+		name_index:        #11 <write>
+		descriptor_index:  #18 <(I)V>
+		access_flags:      0x0401 [abstract, public]
+		attribute_count:   1
+
+		Method Attribute #1 - Exceptions:
+
+			number_of_exceptions: 1
+
+				Exception #1: #12 <java/io/IOException>
+
+
+	Method #5:
+
+		name_index:        #11 <write>
+		descriptor_index:  #19 <([B)V>
+		access_flags:      0x0001 [public]
+		attribute_count:   2
+
+		Method Attribute #1 - Exceptions:
+
+			number_of_exceptions: 1
+
+				Exception #1: #12 <java/io/IOException>
+
+
+		Method Attribute #2 - Code:
+
+			max_stack: 4, max_locals: 2, code_length: 9
+			exception_table_length: 0, attribute_count: 0
+
+			Code:	Offset	Mnemonic	Parameters
+				0	aload_0
+				1	aload_1
+				2	iconst_0
+				3	aload_1
+				4	arraylength
+				5	invokevirtual	#25 (Method java/io/OutputStream.write, descriptor: ([BII)V)
+				8	return
+
+
+	Method #6:
+
+		name_index:        #11 <write>
+		descriptor_index:  #20 <([BII)V>
+		access_flags:      0x0001 [public]
+		attribute_count:   2
+
+		Method Attribute #1 - Exceptions:
+
+			number_of_exceptions: 1
+
+				Exception #1: #12 <java/io/IOException>
+
+
+		Method Attribute #2 - Code:
+
+			max_stack: 4, max_locals: 5, code_length: 79
+			exception_table_length: 0, attribute_count: 0
+
+			Code:	Offset	Mnemonic	Parameters
+				0	aload_1
+				1	ifnonnull	pc + 11 = address 12
+				4	new		#15 (class: java/lang/NullPointerException)
+				7	dup
+				8	invokespecial	#27 (Method java/lang/NullPointerException.<init>, descriptor: ()V)
+				11	athrow
+				12	iload_2
+				13	iflt		pc + 27 = address 40
+				16	iload_2
+				17	aload_1
+				18	arraylength
+				19	if_icmpgt	pc + 21 = address 40
+				22	iload_3
+				23	iflt		pc + 17 = address 40
+				26	iload_2
+				27	iload_3
+				28	iadd
+				29	aload_1
+				30	arraylength
+				31	if_icmpgt	pc + 9 = address 40
+				34	iload_2
+				35	iload_3
+				36	iadd
+				37	ifge		pc + 11 = address 48
+				40	new		#14 (class: java/lang/IndexOutOfBoundsException)
+				43	dup
+				44	invokespecial	#26 (Method java/lang/IndexOutOfBoundsException.<init>, descriptor: ()V)
+				47	athrow
+				48	iload_3
+				49	ifne		pc + 4 = address 53
+				52	return
+				53	iconst_0
+				54	istore		4
+				56	iload		4
+				58	iload_3
+				59	if_icmpge	pc + 19 = address 78
+				62	aload_0
+				63	aload_1
+				64	iload_2
+				65	iload		4
+				67	iadd
+				68	baload
+				69	invokevirtual	#24 (Method java/io/OutputStream.write, descriptor: (I)V)
+				72	iinc		4, 1
+				75	goto		pc + -19 = address 56
+				78	return
+

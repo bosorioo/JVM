@@ -1,0 +1,139 @@
+Classfile /C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/examples/OutputStream.class
+  Last modified Dec 31, 1979; size 581 bytes
+  MD5 checksum f5c4f584bbbc006ad8ff8baedd3b2388
+public abstract class java.io.OutputStream
+  minor version: 0
+  major version: 48
+  flags: ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+Constant pool:
+   #1 = Utf8               <init>
+   #2 = Utf8               Code
+   #3 = Utf8               Exceptions
+   #4 = Utf8               close
+   #5 = Utf8               flush
+   #6 = Utf8               java/io/IOException
+   #7 = Utf8               java/io/OutputStream
+   #8 = Utf8               java/lang/IndexOutOfBoundsException
+   #9 = Utf8               java/lang/NullPointerException
+  #10 = Utf8               java/lang/Object
+  #11 = Utf8               write
+  #12 = Class              #6             // java/io/IOException
+  #13 = Class              #7             // java/io/OutputStream
+  #14 = Class              #8             // java/lang/IndexOutOfBoundsException
+  #15 = Class              #9             // java/lang/NullPointerException
+  #16 = Class              #10            // java/lang/Object
+  #17 = Utf8               ()V
+  #18 = Utf8               (I)V
+  #19 = Utf8               ([B)V
+  #20 = Utf8               ([BII)V
+  #21 = NameAndType        #1:#17         // "<init>":()V
+  #22 = NameAndType        #11:#18        // write:(I)V
+  #23 = NameAndType        #11:#20        // write:([BII)V
+  #24 = Methodref          #13.#22        // java/io/OutputStream.write:(I)V
+  #25 = Methodref          #13.#23        // java/io/OutputStream.write:([BII)V
+  #26 = Methodref          #14.#21        // java/lang/IndexOutOfBoundsException."<init>":()V
+  #27 = Methodref          #15.#21        // java/lang/NullPointerException."<init>":()V
+  #28 = Methodref          #16.#21        // java/lang/Object."<init>":()V
+{
+  public java.io.OutputStream();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #28                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public void close() throws java.io.IOException;
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Exceptions:
+      throws java.io.IOException
+    Code:
+      stack=0, locals=1, args_size=1
+         0: return
+
+  public void flush() throws java.io.IOException;
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Exceptions:
+      throws java.io.IOException
+    Code:
+      stack=0, locals=1, args_size=1
+         0: return
+
+  public abstract void write(int) throws java.io.IOException;
+    descriptor: (I)V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+    Exceptions:
+      throws java.io.IOException
+
+  public void write(byte[]) throws java.io.IOException;
+    descriptor: ([B)V
+    flags: ACC_PUBLIC
+    Exceptions:
+      throws java.io.IOException
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: iconst_0
+         3: aload_1
+         4: arraylength
+         5: invokevirtual #25                 // Method write:([BII)V
+         8: return
+
+  public void write(byte[], int, int) throws java.io.IOException;
+    descriptor: ([BII)V
+    flags: ACC_PUBLIC
+    Exceptions:
+      throws java.io.IOException
+    Code:
+      stack=4, locals=5, args_size=4
+         0: aload_1
+         1: ifnonnull     12
+         4: new           #15                 // class java/lang/NullPointerException
+         7: dup
+         8: invokespecial #27                 // Method java/lang/NullPointerException."<init>":()V
+        11: athrow
+        12: iload_2
+        13: iflt          40
+        16: iload_2
+        17: aload_1
+        18: arraylength
+        19: if_icmpgt     40
+        22: iload_3
+        23: iflt          40
+        26: iload_2
+        27: iload_3
+        28: iadd
+        29: aload_1
+        30: arraylength
+        31: if_icmpgt     40
+        34: iload_2
+        35: iload_3
+        36: iadd
+        37: ifge          48
+        40: new           #14                 // class java/lang/IndexOutOfBoundsException
+        43: dup
+        44: invokespecial #26                 // Method java/lang/IndexOutOfBoundsException."<init>":()V
+        47: athrow
+        48: iload_3
+        49: ifne          53
+        52: return
+        53: iconst_0
+        54: istore        4
+        56: iload         4
+        58: iload_3
+        59: if_icmpge     78
+        62: aload_0
+        63: aload_1
+        64: iload_2
+        65: iload         4
+        67: iadd
+        68: baload
+        69: invokevirtual #24                 // Method write:(I)V
+        72: iinc          4, 1
+        75: goto          56
+        78: return
+}

@@ -1,0 +1,37 @@
+Classfile /C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/examples/CharSequence.class
+  Last modified Dec 31, 1979; size 216 bytes
+  MD5 checksum 35ce8791506d786f730cd759aa912341
+public interface java.lang.CharSequence
+  minor version: 0
+  major version: 48
+  flags: ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+Constant pool:
+   #1 = Utf8               charAt
+   #2 = Utf8               java/lang/CharSequence
+   #3 = Utf8               java/lang/Object
+   #4 = Utf8               length
+   #5 = Utf8               subSequence
+   #6 = Utf8               toString
+   #7 = Class              #2             // java/lang/CharSequence
+   #8 = Class              #3             // java/lang/Object
+   #9 = Utf8               ()I
+  #10 = Utf8               (I)C
+  #11 = Utf8               (II)Ljava/lang/CharSequence;
+  #12 = Utf8               ()Ljava/lang/String;
+{
+  public abstract int length();
+    descriptor: ()I
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract char charAt(int);
+    descriptor: (I)C
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract java.lang.CharSequence subSequence(int, int);
+    descriptor: (II)Ljava/lang/CharSequence;
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+}

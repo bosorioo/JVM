@@ -1,7 +1,8 @@
 ﻿---- Warning ----
 
-class name and file path don't match.
+Class name and file path don't match.
 Reading will proceed anyway.
+
 ---- General Information ----
 
 Version:		52.0 (Major.minor) [jdk version 1.8]
