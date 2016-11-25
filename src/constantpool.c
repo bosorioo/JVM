@@ -5,10 +5,17 @@
 #include "constantpool.h"
 #include "utf8.h"
 
-// Reads a cp_info of type CONSTANT_Class from the file
-// Data read is written to pointer *entry.
-// CONSTANT_Class has the same structure as CONSTANT_String,
-// so this function could be used to read that too.
+/// @brief Reads a cp_info of type CONSTANT_Class from the file
+/// 
+/// Reads a cp_info of type CONSTANT_Class from the file
+/// Data read is written to pointer *entry.
+/// CONSTANT_Class has the same structure as CONSTANT_String,
+/// so this function could be used to read that too.
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
+/// @return   
 char readConstantPool_Class(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Class.name_index))
@@ -37,11 +44,16 @@ char readConstantPool_Class(JavaClass* jc, cp_info* entry)
     return 1;
 }
 
-// Reads a cp_info of type CONSTANT_Fieldref from the file
-// Data read is written to pointer *entry
-// CONSTANT_Fieldref has the same internal structure as CONSTANT_Methodref
-// CONSTANT_InterfaceMethodref and CONSTANT_NameAndType, so this function
-// can be also used to read those.
+/// @brief Reads a cp_info of type CONSTANT_Fieldref from the file
+///
+/// CONSTANT_Fieldref has the same internal structure as CONSTANT_Methodref
+/// CONSTANT_InterfaceMethodref and CONSTANT_NameAndType, so this function
+/// can be also used to read those.
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
+/// @return
 char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Fieldref.class_index))
@@ -82,10 +94,15 @@ char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
     return 1;
 }
 
-// Reads a cp_info of type CONSTANT_Integer from the file
-// Data read is written to pointer *entry.
-// CONSTANT_Integer has the same structure as CONSTANT_Float,
-// so this function could be used to read that too.
+/// @brief Reads a cp_info of type CONSTANT_Integer from the file
+///
+/// CONSTANT_Integer has the same structure as CONSTANT_Float,
+/// so this function could be used to read that too.
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
+/// @return 
 char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
 {
     if (!readu4(jc, &entry->Integer.value))
@@ -97,10 +114,14 @@ char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
     return 1;
 }
 
-// Reads a cp_info of type CONSTANT_Long from the file
-// Data read is written to pointer *entry.
-// CONSTANT_Long has the same structure as CONSTANT_Double,
-// so this function could be used to read that too.
+/// @brief Reads a cp_info of type CONSTANT_Long from the file
+///
+/// CONSTANT_Long has the same structure as CONSTANT_Double,
+/// so this function could be used to read that too.
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
 char readConstantPool_Long(JavaClass* jc, cp_info* entry)
 {
     if (!readu4(jc, &entry->Long.high))
@@ -118,8 +139,12 @@ char readConstantPool_Long(JavaClass* jc, cp_info* entry)
     return 1;
 }
 
-// Reads a cp_info of type CONSTANT_Utf8 from the file
-// Data read is written to pointer *entry.
+/// @brief Reads a cp_info of type CONSTANT_Utf8 from the file
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
+/// @return char
 char readConstantPool_Utf8(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Utf8.length))
@@ -234,6 +259,11 @@ char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
     return 0;
 }
 
+/// @brief Decodes ConstantPoolTag enumeration elements
+///
+/// @param uint8_t tag - identifier of the enumeration to be
+/// translated.
+/// @return const char* - pointer to char containing the decoded tag
 const char* decodeTag(uint8_t tag)
 {
     switch(tag)
@@ -256,10 +286,12 @@ const char* decodeTag(uint8_t tag)
     return "Unknown Tag";
 }
 
-// Print one single constant from the constant pool.
-// *jc must already be loaded, no checks are made.
-// *entry is the pointer to the constant that will be
-// printed.
+/// @brief Print one single constant from the constant pool.
+/// 
+/// @param JavaClass* jc - pointer to JavaClass structure that must already
+/// be loaded, no checks are made.
+/// @param *entry - the pointer to the constant that will be
+/// printed.
 void printConstantPoolEntry(JavaClass* jc, cp_info* entry)
 {
     char buffer[48];
@@ -364,8 +396,11 @@ void printConstantPoolEntry(JavaClass* jc, cp_info* entry)
     printf("\n");
 }
 
-// Function to print all the constants from the constant pool
-// of the class file. *jc must already be loaded.
+/// @brief Function to print all the constants from the constant pool
+/// of the class file. 
+///
+/// @param JavaClass *jc - pointer to JavaClass structure that must already
+/// be loaded
 void printConstantPool(JavaClass* jc)
 {
     uint16_t u16;
