@@ -39,17 +39,17 @@ int main(int argc, char* args[])
             printf("Unknown argument #%d ('%s')\n", argIndex, args[argIndex]);
     }
 
+    // If requested, outputs the three byte sequence that tells that
+    // the data is encoded as UTF-8.
+    // This is required by some programs (like notepad) to correctly
+    // render UTF-8 characters. This is useful when the output of this
+    // program is redirected to a file. With this parameter given, the file
+    // will also contain the UTF-8 BOM.
+    if (includeBOM)
+        printf("%c%c%c", 0xEF, 0xBB, 0xBF);
+
     if (printClassContent)
     {
-        // If requested, outputs the three byte sequence that tells that
-        // the data is encoded as UTF-8.
-        // This is required by some programs (like notepad) to correctly
-        // render UTF-8 characters. This is useful when the output of this
-        // program is redirected to a file. With this parameter given, the file
-        // will also contain the UTF-8 BOM.
-        if (includeBOM)
-            printf("%c%c%c", 0xEF, 0xBB, 0xBF);
-
         // Open .class file given as parameter
         JavaClass jc;
         openClassFile(&jc, args[1]);
