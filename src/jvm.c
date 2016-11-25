@@ -21,6 +21,7 @@ void initJVM(JavaVirtualMachine* jvm)
     jvm->frames = NULL;
     jvm->classes = NULL;
     jvm->objects = NULL;
+    jvm->stringClass = NULL;
 }
 
 /// @brief Deallocates all memory used by the JavaVirtualMachine structure.
@@ -195,7 +196,15 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
         {
             cpi = jc->constantPool + jc->superClass - 1;
             cpi = jc->constantPool + cpi->Class.name_index - 1;
-            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL);
+            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass);
+
+            if (success)
+            {
+                jc->instanceFieldCount += loadedClass->jc->instanceFieldCount;
+
+                for (u16 = 0; u16 < jc->fieldCount; u16++)
+                    jc->fields[u16].offset += loadedClass->jc->instanceFieldCount;
+            }
         }
 
         for (u16 = 0; success && u16 < jc->interfaceCount; u16++)
@@ -210,6 +219,15 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     {
         loadedClass = addClassToLoadedClasses(jvm, jc);
         success = loadedClass != NULL;
+
+        // We keep a special reference to the String class, as we might
+        // wanna create an instance of String and it is easier if the
+        // class pointer is already known.
+        if (!jvm->stringClass && success &&
+            cmp_UTF8(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/String", 16))
+        {
+            jvm->stringClass = loadedClass;
+        }
     }
 
     if (success)
@@ -218,14 +236,6 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 #ifdef DEBUG
     printf("   class file '%s' loaded\n", path);
 #endif // DEBUG
-
-        method_info* clinit = getMethodMatching(jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
-
-        if (clinit)
-        {
-            if (!runMethod(jvm, jc, clinit, 0))
-                success = 0;
-        }
 
         if (outClass)
             *outClass = loadedClass;
@@ -380,7 +390,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
     Frame* frame = newFrame(jc, method);
 
 #ifdef DEBUG
-    printf(", len: %u, frame %X%s\n", frame->code_length, frame, frame->code_length == 0 ? " ####### Native Method": "");
+    printf(", len: %u, frame %X%s\n", frame->code_length, (uint32_t)frame, frame->code_length == 0 ? " ####### Native Method": "");
 #endif // DEBUG
 
     if (!frame || !pushFrame(&jvm->frames, frame))
@@ -389,21 +399,31 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         return 0;
     }
 
+    uint8_t parameterIndex;
+    int32_t parameter;
+
+    for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
+    {
+        popOperand(&callerFrame->operands, &parameter, NULL);
+        frame->localVariables[numberOfParameters - parameterIndex - 1] = parameter;
+    }
+
     if (method->access_flags & ACC_NATIVE)
     {
-        // TODO: run native
+        cp_info* className = jc->constantPool + jc->thisClass - 1;
+        className = jc->constantPool + className->Class.name_index - 1;
+
+        cp_info* methodName = jc->constantPool + method->name_index - 1;
+        cp_info* descriptor = jc->constantPool + method->descriptor_index - 1;
+
+        NativeFunction native = getNative(className->Utf8.bytes, className->Utf8.length,
+                                          methodName->Utf8.bytes, methodName->Utf8.length,
+                                          descriptor->Utf8.bytes, descriptor->Utf8.length);
+        if (native)
+            native(jvm, frame, descriptor->Utf8.bytes, descriptor->Utf8.length);
     }
     else
     {
-        uint8_t parameterIndex;
-        int32_t parameter;
-
-        for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
-        {
-            popOperand(&callerFrame->operands, &parameter, NULL);
-            frame->localVariables[numberOfParameters - parameterIndex - 1] = parameter;
-        }
-
         InstructionFunction function;
 
         while (frame->pc < frame->code_length)
@@ -413,7 +433,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
             function = fetchOpcodeFunction(opcode);
 
 #ifdef DEBUG
-    printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, frame);
+    printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, (uint32_t)frame);
 #endif // DEBUG
 
             if (function == NULL)
@@ -431,23 +451,23 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
                 return 0;
             }
         }
+    }
 
-        if (frame->returnCount > 0 && callerFrame)
+    if (frame->returnCount > 0 && callerFrame)
+    {
+        // At most, two operands can be returned
+        OperandStack parameters[2];
+        uint8_t index;
+
+        for (index = 0; index < frame->returnCount; index++)
+            popOperand(&frame->operands, &parameters[index].value, &parameters[index].type);
+
+        while (frame->returnCount-- > 0)
         {
-            // At most, two operands can be returned
-            OperandStack parameters[2];
-            uint8_t index;
-
-            for (index = 0; index < frame->returnCount; index++)
-                popOperand(&frame->operands, &parameters[index].value, &parameters[index].type);
-
-            while (frame->returnCount-- > 0)
+            if (!pushOperand(&callerFrame->operands, parameters[frame->returnCount].value, parameters[frame->returnCount].type))
             {
-                if (!pushOperand(&callerFrame->operands, parameters[frame->returnCount].value, parameters[frame->returnCount].type))
-                {
-                    jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-                    return 0;
-                }
+                jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+                return 0;
             }
         }
     }
@@ -492,10 +512,13 @@ uint8_t getMethodDescriptorParameterCount(const uint8_t* descriptor_utf8, int32_
                     descriptor_utf8++;
                 } while (utf8_len > 0 && *descriptor_utf8 == '[');
 
-                do {
-                    utf8_len--;
-                    descriptor_utf8++;
-                } while (utf8_len > 0 && *descriptor_utf8 != ';');
+                if (utf8_len > 0 && *descriptor_utf8 == 'L')
+                {
+                    do {
+                        utf8_len--;
+                        descriptor_utf8++;
+                    } while (utf8_len > 0 && *descriptor_utf8 != ';');
+                }
 
                 break;
 
@@ -526,12 +549,8 @@ LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
     if (node)
     {
         node->jc = jc;
-
-        if (jc->staticFieldCount > 0)
-            node->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * jc->staticFieldCount);
-        else
-            node->staticFieldsData = NULL;
-
+        node->staticFieldsData = NULL;
+        node->requiresInit = 1;
         node->next = jvm->classes;
 
         jvm->classes = node;
@@ -563,15 +582,15 @@ LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes,
 
 JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc)
 {
-    LoadedClasses* superLoadedClass;
+    LoadedClasses* lc;
     cp_info* cp1;
 
     cp1 = jc->constantPool + jc->superClass - 1;
     cp1 = jc->constantPool + cp1->Class.name_index - 1;
 
-    superLoadedClass = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
+    lc = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
 
-    return superLoadedClass ? superLoadedClass->jc : NULL;
+    return lc ? lc->jc : NULL;
 }
 
 /// @pre Both \c super and \c jc must be classes that have already
@@ -604,6 +623,27 @@ uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc)
     }
 
     return 0;
+}
+
+uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
+{
+    if (lc->requiresInit)
+        lc->requiresInit = 0;
+    else
+        return 1;
+
+    if (lc->jc->staticFieldCount > 0)
+    {
+        lc->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * lc->jc->staticFieldCount);
+
+    }
+
+    method_info* clinit = getMethodMatching(lc->jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
+
+    if (clinit && !runMethod(jvm, lc->jc, clinit, 0))
+        return 0;
+
+    return 1;
 }
 
 Reference* newString(JavaVirtualMachine* jvm, const uint8_t* str, int32_t strlen)
@@ -647,8 +687,12 @@ Reference* newString(JavaVirtualMachine* jvm, const uint8_t* str, int32_t strlen
     return r;
 }
 
-Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
+Reference* newClassInstance(JavaVirtualMachine* jvm, LoadedClasses* lc)
 {
+    if (!initClass(jvm, lc))
+        return 0;
+
+    JavaClass* jc = lc->jc;
     Reference* r = (Reference*)malloc(sizeof(Reference));
     ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
 
@@ -662,13 +706,21 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
 
     r->type = REFTYPE_CLASSINSTANCE;
     r->ci.c = jc;
-    r->ci.data = (uint8_t*)malloc(jc->instanceFieldCount);
 
-    if (!r->ci.data)
+    if (jc->instanceFieldCount)
     {
-        free(r);
-        free(node);
-        return NULL;
+        r->ci.data = (uint8_t*)malloc(jc->instanceFieldCount);
+
+        if (!r->ci.data)
+        {
+            free(r);
+            free(node);
+            return NULL;
+        }
+    }
+    else
+    {
+        r->ci.data = NULL;
     }
 
     node->next = jvm->objects;
@@ -680,9 +732,6 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, JavaClass* jc)
 
 Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_type type)
 {
-    if (length == 0)
-        return NULL;
-
     size_t elementSize;
 
     switch (type)
@@ -726,19 +775,27 @@ Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_ty
     r->type = REFTYPE_ARRAY;
     r->arr.length = length;
     r->arr.type = type;
-    r->arr.data = (uint8_t*)malloc(elementSize * length);
 
-    if (!r->arr.data)
+    if (length > 0)
     {
-        free(r);
-        free(node);
-        return NULL;
+        r->arr.data = (uint8_t*)malloc(elementSize * length);
+
+        if (!r->arr.data)
+        {
+            free(r);
+            free(node);
+            return NULL;
+        }
+
+        uint8_t* data = (uint8_t*)r->arr.data;
+
+        while (length-- > 0)
+            *data++ = 0;
     }
-
-    uint8_t* data = (uint8_t*)r->arr.data;
-
-    while (length-- > 0)
-        *data++ = 0;
+    else
+    {
+        r->arr.data = NULL;
+    }
 
     node->next = jvm->objects;
     node->obj = r;
@@ -749,6 +806,88 @@ Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_ty
 
 Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_t* utf8_className, int32_t utf8_len)
 {
+    if (utf8_len <= 1)
+        return NULL;
+
+    switch (utf8_className[1])
+    {
+        case 'J': return newArray(jvm, length, T_LONG);
+        case 'Z': return newArray(jvm, length, T_BOOLEAN);
+        case 'B': return newArray(jvm, length, T_BYTE);
+        case 'C': return newArray(jvm, length, T_CHAR);
+        case 'S': return newArray(jvm, length, T_SHORT);
+        case 'I': return newArray(jvm, length, T_INT);
+        case 'F': return newArray(jvm, length, T_FLOAT);
+        case 'D': return newArray(jvm, length, T_DOUBLE);
+        default:
+            break;
+    }
+
+    Reference* r = (Reference*)malloc(sizeof(Reference));
+    ReferenceTable* node = (ReferenceTable*)malloc(sizeof(ReferenceTable));
+
+    if (!node || !r)
+    {
+        if (node) free(node);
+        if (r) free(r);
+
+        return NULL;
+    }
+
+    r->type = REFTYPE_OBJARRAY;
+    r->oar.length = length;
+    r->oar.utf8_className = (uint8_t*)malloc(utf8_len);
+    r->oar.utf8_len = utf8_len;
+
+    if (!r->oar.utf8_className)
+    {
+        free(r);
+        free(node);
+        return NULL;
+    }
+
+    if (length > 0)
+    {
+        r->oar.elements = (Reference**)malloc(length * sizeof(Reference));
+
+        if (!r->oar.elements)
+        {
+            free(r->oar.utf8_className);
+            free(r);
+            free(node);
+            return NULL;
+        }
+
+        // Initializes all references to null
+        while (length-- > 0)
+            r->oar.elements[length] = NULL;
+
+    }
+    else
+    {
+        r->oar.elements = NULL;
+    }
+
+    // Copy class name
+    while (utf8_len-- > 0)
+        r->oar.utf8_className[utf8_len] = utf8_className[utf8_len];
+
+    node->next = jvm->objects;
+    node->obj = r;
+    jvm->objects = node;
+
+    return r;
+}
+
+Reference* newObjectMultiArray(JavaVirtualMachine* jvm, int32_t* dimensions, uint8_t dimensionsSize,
+                               const uint8_t* utf8_className, int32_t utf8_len)
+{
+    if (dimensionsSize == 0)
+        return NULL;
+
+    if (dimensionsSize == 1)
+        return newObjectArray(jvm, dimensions[0], utf8_className, utf8_len);
+
     if (utf8_len <= 0)
         return NULL;
 
@@ -764,35 +903,43 @@ Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_
     }
 
     r->type = REFTYPE_OBJARRAY;
-    r->oar.dimensions = 1;
-
-    // This is a hack, we don't actually allocate 1 byte, but rather
-    // just use the address as the dimension length, since there is
-    // only 1 dimension.
-    r->oar.dims_length = (uint32_t*)length;
-    r->oar.elementCount = length;
+    r->oar.length = dimensions[0];
     r->oar.utf8_className = (uint8_t*)malloc(utf8_len);
-    r->oar.elements = (Reference**)malloc(length * sizeof(Reference));
     r->oar.utf8_len = utf8_len;
 
-    if (!r->oar.utf8_className || !r->oar.elements)
+    if (!r->oar.utf8_className)
     {
         free(r);
         free(node);
-
-        if (r->oar.utf8_className) free(r->oar.utf8_className);
-        if (r->oar.elements) free(r->oar.elements);
-
         return NULL;
     }
 
-    // Copy class name
-    while (utf8_len-- > 0)
-        r->oar.utf8_className[utf8_len] = utf8_className[utf8_len];
+    if (dimensions[0] > 0)
+    {
+        r->oar.elements = (Reference**)malloc(dimensions[0] * sizeof(Reference));
 
-    // Initializes all references to null
-    while (length-- > 0)
-        r->oar.elements[length] = NULL;
+        if (!r->oar.elements)
+        {
+            free(r->oar.utf8_className);
+            free(r);
+            free(node);
+            return NULL;
+        }
+
+        uint32_t dimensionLength = dimensions[0];
+
+        // Initializes all references to subarrays
+        while (dimensionLength-- > 0)
+            r->oar.elements[dimensionLength] = newObjectMultiArray(jvm, dimensions + 1, dimensionsSize - 1, utf8_className + 1, utf8_len - 1);
+
+    }
+    else
+    {
+        r->oar.elements = NULL;
+    }
+
+    // Copy class name
+    memcpy(r->oar.utf8_className, utf8_className, utf8_len);
 
     node->next = jvm->objects;
     node->obj = r;
@@ -811,32 +958,26 @@ void deleteReference(Reference* obj)
             break;
 
         case REFTYPE_ARRAY:
-            free(obj->arr.data);
+            if (obj->arr.data)
+                free(obj->arr.data);
             break;
 
         case REFTYPE_CLASSINSTANCE:
-            free(obj->ci.data);
+            if (obj->ci.data)
+                free(obj->ci.data);
             break;
 
         case REFTYPE_OBJARRAY:
         {
-            uint32_t numberOfElements = 0;
-            uint8_t dimIndex;
-
-            if (obj->oar.dimensions > 1)
-            {
-                for (dimIndex = 0, numberOfElements = 1; dimIndex < obj->oar.dimensions; dimIndex++)
-                    numberOfElements *= obj->oar.dims_length[dimIndex];
-
-                free(obj->oar.dims_length);
-            }
-
             free(obj->oar.utf8_className);
 
-            while (numberOfElements-- > 0)
-                deleteReference(obj->oar.elements[numberOfElements]);
+            if (obj->oar.elements)
+                free(obj->oar.elements);
 
-            free(obj->oar.elements);
+            // There is no need to delete the references created by this
+            // object array, because they are all added to the created
+            // objects table inside the JVM, which will be deleted later.
+
             break;
         }
 

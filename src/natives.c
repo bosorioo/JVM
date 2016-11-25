@@ -5,6 +5,10 @@
 #include "jvm.h"
 #include <string.h>
 #include <inttypes.h>
+#include <time.h>
+
+#define HIWORD(x) ((int32_t)(x >> 32))
+#define LOWORD(x) ((int32_t)(x & 0xFFFFFFFFll))
 
 uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* descriptor_utf8, int32_t utf8_len)
 {
@@ -33,7 +37,10 @@ uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* des
 
         case 'C':
             popOperand(&frame->operands, &low, NULL);
-            printf("%c%c", (int16_t)low >> 8, (int16_t)low & 0xFF);
+            if (low <= 127)
+                printf("%c", (char)low);
+            else
+                printf("%c%c", (int16_t)low >> 8, (int16_t)low & 0xFF);
             break;
 
         case 'D':
@@ -90,6 +97,21 @@ uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* des
     return 1;
 }
 
+uint8_t native_currentTimeMillis(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* descriptor_utf8, int32_t utf8_len)
+{
+    int64_t seconds = (int64_t)time(NULL) * 1000;
+
+    if (!pushOperand(&frame->operands, HIWORD(seconds), OP_LONG) ||
+        !pushOperand(&frame->operands, LOWORD(seconds), OP_LONG))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    frame->returnCount = 2;
+    return 1;
+}
+
 NativeFunction getNative(const uint8_t* className, int32_t classLen,
                          const uint8_t* methodName, int32_t methodLen,
                          const uint8_t* descriptor, int32_t descrLen)
@@ -100,7 +122,8 @@ NativeFunction getNative(const uint8_t* className, int32_t classLen,
         char* descriptor; int32_t descrlen;
         NativeFunction func;
     } nativeMethods[] = {
-        {"java/io/PrintStream", 19, "println", 7, NULL, 0, native_println}
+        {"java/io/PrintStream", 19, "println", 7, NULL, 0, native_println},
+        {"java/lang/System", 16, "currentTimeMillis", 17, NULL, 0, native_currentTimeMillis},
     };
 
     uint32_t index;

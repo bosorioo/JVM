@@ -145,7 +145,7 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
                 return 0;
             }
 
-            Reference* obj = newClassInstance(jvm, loadedClass->jc);
+            Reference* obj = newClassInstance(jvm, loadedClass);
 
             if (!obj)
             {
@@ -232,7 +232,7 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
                 return 0;
             }
 
-            Reference* obj = newClassInstance(jvm, loadedClass->jc);
+            Reference* obj = newClassInstance(jvm, loadedClass);
 
             if (!obj)
             {
@@ -416,60 +416,109 @@ DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_REFERENCE)
 DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_REFERENCE)
 DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_REFERENCE)
 
-uint8_t instfunc_iaload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+#define DECLR_ALOAD_CAT_1_FAMILY(instructionname, type, op_type) \
+    uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int32_t index; \
+        int32_t arrayref; \
+        Reference* obj; \
+        popOperand(&frame->operands, &index, NULL); \
+        popOperand(&frame->operands, &arrayref, NULL); \
+        obj = (Reference*)arrayref; \
+        if (obj == NULL) \
+        { \
+            /* TODO: throw NullPointerException*/ \
+            DEBUG_REPORT_INSTRUCTION_ERROR \
+            return 0; \
+        } \
+        if (index < 0 || (uint32_t)index >= obj->arr.length) \
+        { \
+            /* TODO: throw ArrayIndexOutOfBoundsException*/ \
+            DEBUG_REPORT_INSTRUCTION_ERROR \
+            return 0; \
+        } \
+        type* ptr = (type*)obj->arr.data; \
+        if (!pushOperand(&frame->operands, ptr[index], op_type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
 
-uint8_t instfunc_laload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+#define DECLR_ALOAD_CAT_2_FAMILY(instructionname, type, op_type) \
+    uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        int32_t index; \
+        int32_t arrayref; \
+        Reference* obj; \
+        popOperand(&frame->operands, &index, NULL); \
+        popOperand(&frame->operands, &arrayref, NULL); \
+        obj = (Reference*)arrayref; \
+        if (obj == NULL) \
+        { \
+            /* TODO: throw NullPointerException*/ \
+            DEBUG_REPORT_INSTRUCTION_ERROR \
+            return 0; \
+        } \
+        if (index < 0 || (uint32_t)index >= obj->arr.length) \
+        { \
+            /* TODO: throw ArrayIndexOutOfBoundsException*/ \
+            DEBUG_REPORT_INSTRUCTION_ERROR \
+            return 0; \
+        } \
+        type* ptr = (type*)obj->arr.data; \
+        if (!pushOperand(&frame->operands, HIWORD(ptr[index]), op_type) || \
+            !pushOperand(&frame->operands, LOWORD(ptr[index]), op_type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
+    }
 
-uint8_t instfunc_faload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
-
-uint8_t instfunc_daload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+DECLR_ALOAD_CAT_1_FAMILY(iaload, int32_t, OP_INTEGER)
+DECLR_ALOAD_CAT_2_FAMILY(laload, int64_t, OP_INTEGER)
+DECLR_ALOAD_CAT_1_FAMILY(faload, int32_t, OP_FLOAT)
+DECLR_ALOAD_CAT_2_FAMILY(daload, int64_t, OP_INTEGER)
+DECLR_ALOAD_CAT_1_FAMILY(baload, int8_t, OP_INTEGER)
+DECLR_ALOAD_CAT_1_FAMILY(saload, int16_t, OP_INTEGER)
+DECLR_ALOAD_CAT_1_FAMILY(caload, int16_t, OP_INTEGER)
 
 uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+    int32_t index;
+    int32_t arrayref;
+    Reference* obj;
 
-uint8_t instfunc_baload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+    popOperand(&frame->operands, &index, NULL);
+    popOperand(&frame->operands, &arrayref, NULL);
 
-uint8_t instfunc_caload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
-}
+    obj = (Reference*)arrayref;
 
-uint8_t instfunc_saload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    // TODO: implement this instruction
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    if (obj == NULL)
+    {
+        /* TODO: throw NullPointerException*/
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if (index < 0 || (uint32_t)index >= obj->oar.length)
+    {
+        /* TODO: throw ArrayIndexOutOfBoundsException*/
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    Reference** ptr = (Reference**)obj->oar.elements;
+
+    if (!pushOperand(&frame->operands, (int32_t)ptr[index], OP_REFERENCE))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
 }
 
 #define DECLR_STORE_CAT_1_FAMILY(instructionprefix) \
@@ -570,7 +619,7 @@ DECLR_STORE_N_CAT_1_FAMILY(astore, 3)
             return 0; \
         } \
         type* ptr = (type*)obj->arr.data; \
-        *(ptr + sizeof(type) * index) = (type)operand; \
+        ptr[index] = (type)operand; \
         return 1; \
     }
 
@@ -606,7 +655,7 @@ DECLR_ASTORE_CAT_1_FAMILY(fastore, int32_t)
             return 0; \
         } \
         int64_t* ptr = (int64_t*)obj->arr.data; \
-        *(ptr + sizeof(int64_t) * index) = ((int64_t)highoperand << 32) | (uint32_t)lowoperand; \
+        ptr[index] = ((int64_t)highoperand << 32) | (uint32_t)lowoperand; \
         return 1; \
     }
 
@@ -636,7 +685,7 @@ uint8_t instfunc_aastore(JavaVirtualMachine* jvm, Frame* frame)
         return 0; \
     }
 
-    if (index < 0 || (uint32_t)index >= arrayobj->oar.elementCount)
+    if (index < 0 || (uint32_t)index >= arrayobj->oar.length)
     {
         // TODO: throw ArrayIndexOutOfBoundsException
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -1909,7 +1958,8 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     LoadedClasses* fieldLoadedClass;
 
     // Resolve the field, i.e, load the class that field belongs to
-    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) ||
+        !fieldLoadedClass || !initClass(jvm, fieldLoadedClass))
     {
         // TODO: throw NoSuchFieldError
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -1959,20 +2009,16 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
             return 0;
     }
 
-    // If the field is category 2, push two operands from the static data
+    if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset], type))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    // If the field is category 2, push the second part operand from the static data
     if (type == OP_LONG || type == OP_DOUBLE)
     {
-        if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset + 1], type) ||
-            !pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset], type))
-        {
-            jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-            return 0;
-        }
-    }
-    // Otherwise, only one
-    else
-    {
-        if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset], type))
+        if (!pushOperand(&frame->operands, fieldLoadedClass->staticFieldsData[fi->offset + 1], type))
         {
             jvm->status = JVM_STATUS_OUT_OF_MEMORY;
             return 0;
@@ -2003,7 +2049,8 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     LoadedClasses* fieldLoadedClass;
 
     // Resolve the field, i.e, load the class that field belongs to
-    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) ||
+        !fieldLoadedClass || !initClass(jvm, fieldLoadedClass))
     {
         // TODO: throw NoSuchFieldError
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -2088,9 +2135,98 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    // Get the Fieldref CP entry
+    cp_info* field = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+
+    LoadedClasses* fieldLoadedClass;
+
+    // Resolve the field, i.e, load the class that field belongs to and
+    // the class of the that field, if its type is class.
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) ||
+        !fieldLoadedClass || !initClass(jvm, fieldLoadedClass))
+    {
+        // TODO: throw Error or other linkage exception
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the field and its descriptor
+    cpi2 = frame->jc->constantPool + field->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+
+    if (!fi)
+    {
+        // TODO: throw NoSuchFieldError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    OperandType type;
+
+    switch (*cpi2->Utf8.bytes)
+    {
+        case 'J': type = OP_LONG; break;
+        case 'D': type = OP_DOUBLE; break;
+        case 'F': type = OP_FLOAT; break;
+
+        case 'L':
+        case '[':
+            type = OP_REFERENCE;
+            break;
+
+        case 'B': // byte
+        case 'C': // char
+        case 'I': // int
+        case 'S': // short
+        case 'Z': // boolean
+            type = OP_INTEGER;
+            break;
+
+        default:
+            // todo: throw exception maybe?
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            return 0;
+    }
+
+    Reference* object;
+    int32_t object_address;
+
+    // Get the objectref
+    popOperand(&frame->operands, &object_address, NULL);
+    object = (Reference*)object_address;
+
+    if (!object)
+    {
+        // TODO: throw NullPointerException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if (!pushOperand(&frame->operands, object->ci.data[fi->offset], type))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    if (type == OP_LONG || type == OP_DOUBLE)
+    {
+        if (!pushOperand(&frame->operands, object->ci.data[fi->offset + 1], type))
+        {
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
@@ -2107,7 +2243,8 @@ uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
 
     // Resolve the field, i.e, load the class that field belongs to and
     // the class of the that field, if its type is class.
-    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) || !fieldLoadedClass)
+    if (!resolveField(jvm, frame->jc, field, &fieldLoadedClass) ||
+        !fieldLoadedClass || !initClass(jvm, fieldLoadedClass))
     {
         // TODO: throw Error
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -2171,6 +2308,13 @@ uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
     popOperand(&frame->operands, &object_address, NULL);
     object = (Reference*)object_address;
 
+    if (!object)
+    {
+        // TODO: throw NullPointerException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
     if (type == OP_LONG || type == OP_DOUBLE)
     {
         object->ci.data[fi->offset] = hi_operand;
@@ -2217,7 +2361,8 @@ uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
     LoadedClasses* methodLoadedClass;
 
     // Resolve the method, i.e, load the class that method belongs to
-    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) ||
+        !methodLoadedClass || !initClass(jvm, methodLoadedClass))
     {
         // TODO: throw Error
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -2238,17 +2383,26 @@ uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
 
     Reference* object = (Reference*)node->value;
 
-    JavaClass* jc = object->ci.c;
-
-    while (jc)
+    if (object)
     {
-        mi = getMethodMatching(jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                               cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+        JavaClass* jc = object->ci.c;
 
-        if (mi)
-            break;
+        while (jc)
+        {
+            mi = getMethodMatching(jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
+                                   cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
 
-        jc = getSuperClass(jvm, jc);
+            if (mi)
+                break;
+
+            jc = getSuperClass(jvm, jc);
+        }
+    }
+    else
+    {
+        // TODO: throw NullPointerException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
     }
 
     if (!mi)
@@ -2278,7 +2432,8 @@ uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
     LoadedClasses* methodLoadedClass;
 
     // Resolve the method, i.e, load the class that method belongs to
-    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) ||
+        !methodLoadedClass || !initClass(jvm, methodLoadedClass))
     {
         // TODO: throw Error
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -2367,7 +2522,8 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
     LoadedClasses* methodLoadedClass;
 
     // Resolve the method, i.e, load the class that method belongs to
-    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) || !methodLoadedClass)
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) ||
+        !methodLoadedClass || !initClass(jvm, methodLoadedClass))
     {
         // TODO: throw Error
         DEBUG_REPORT_INSTRUCTION_ERROR
@@ -2420,16 +2576,20 @@ uint8_t instfunc_new(JavaVirtualMachine* jvm, Frame* frame)
     cp = frame->jc->constantPool + index - 1;
     cp = frame->jc->constantPool + cp->Class.name_index - 1;
 
-    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &instanceLoadedClass))
+    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &instanceLoadedClass) || !instanceLoadedClass)
     {
         // TODO: throw a resolution exception
         // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
+
+        // NOTE: IT IS CURRENTLY NOT POSSIBLE TO CREATE AN INSTANCE OF CLASS String
+        // USING THE KEYWORD 'new'.
+        DEBUG_REPORT_INSTRUCTION_ERROR
         return 0;
     }
 
     // TODO: check if class is interface or abstract. If so, throw InstantiationError
 
-    Reference* instance = newClassInstance(jvm, instanceLoadedClass->jc);
+    Reference* instance = newClassInstance(jvm, instanceLoadedClass);
 
     if (!instance || !pushOperand(&frame->operands, (int32_t)instance, OP_REFERENCE))
     {
@@ -2486,7 +2646,9 @@ uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
     cp = frame->jc->constantPool + index - 1;
     cp = frame->jc->constantPool + cp->Class.name_index - 1;
 
-    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, NULL))
+    LoadedClasses* loadedClass;
+
+    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &loadedClass))
     {
         // TODO: throw a resolution exception
         // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
@@ -2506,9 +2668,42 @@ uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_arraylength(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    int32_t operand;
+    Reference* object;
+
+    popOperand(&frame->operands, &operand, NULL);
+
+    object = (Reference*)operand;
+
+    if (!object)
+    {
+        // TODO: throw NullPointerException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if (object->type == REFTYPE_ARRAY)
+    {
+        operand = object->arr.length;
+    }
+    else if (object->type == REFTYPE_OBJARRAY)
+    {
+        operand = object->oar.length;
+    }
+    else
+    {
+        // TODO: maybe throw NullPointerException ?
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if (!pushOperand(&frame->operands, operand, OP_INTEGER))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    return 1;
 }
 
 uint8_t instfunc_athrow(JavaVirtualMachine* jvm, Frame* frame)
@@ -2553,9 +2748,71 @@ uint8_t instfunc_wide(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    uint16_t index;
+    uint8_t numberOfDimensions;
+    int32_t* dimensions;
+    cp_info* cp;
+
+    index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+
+    numberOfDimensions = NEXT_BYTE;
+    dimensions = (int32_t*)malloc(sizeof(int32_t) * numberOfDimensions);
+
+    if (!dimensions)
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    uint8_t dimensionIndex = numberOfDimensions;
+
+    while (dimensionIndex--)
+    {
+        popOperand(&frame->operands, dimensions + dimensionIndex, NULL);
+
+        if (dimensions[dimensionIndex] < 0)
+        {
+            // TODO: throw NegativeArraySizeException
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            free(dimensions);
+            return 0;
+        }
+        else if (dimensions[dimensionIndex] == 0)
+        {
+            // TODO: Java specifies that if the dimension size is equal to 0,
+            // no subsequent dimensions should be allocated, but I have no
+            // idea of what that means. What could a matrix with one of its
+            // dimensions with size zero could possibly mean? int matrix[4][6][0]?
+            DEBUG_REPORT_INSTRUCTION_ERROR
+            free(dimensions);
+            return 0;
+
+        }
+    }
+
+    cp = frame->jc->constantPool + index - 1;
+    cp = frame->jc->constantPool + cp->Class.name_index - 1;
+
+    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, NULL))
+    {
+        // TODO: throw a resolution exception
+        // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
+        free(dimensions);
+        return 0;
+    }
+
+    Reference* aarray = newObjectMultiArray(jvm, dimensions, numberOfDimensions, cp->Utf8.bytes, cp->Utf8.length);
+
+    if (!aarray || !pushOperand(&frame->operands, (int32_t)aarray, OP_REFERENCE))
+    {
+        free(dimensions);
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    free(dimensions);
+    return 1;
 }
 
 uint8_t instfunc_ifnull(JavaVirtualMachine* jvm, Frame* frame)
