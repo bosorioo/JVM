@@ -21,6 +21,12 @@ uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame)
 
     val.intval = operand;
 
+    if (type == OP_NULL)
+    {
+        printf("\n");
+        return 1;
+    }
+
     if (type == OP_LONG || type == OP_DOUBLE)
     {
         popOperand(&frame->operands, &operand, NULL);
