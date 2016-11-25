@@ -5,14 +5,14 @@
 #include "validity.h"
 #include "memoryinspect.h"
 
-/// @brief opens the .class file and completes the JavaClass structure
+/// @brief Opens the .class file and completes the JavaClass structure
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// completed.
 /// @param const char* path - pointer to char that contains
 /// the path of file to be read
 ///
-/// this function open the .class file and reads byte by byte
+/// This function open the .class file and reads byte by byte
 /// from the file by filling in the fields of the JavaClass struct
 ///
 void openClassFile(JavaClass* jc, const char* path)
@@ -277,7 +277,7 @@ void openClassFile(JavaClass* jc, const char* path)
     }
 }
 
-/// @brief closes the .class file and frees memory allocated by JavaClass fields
+/// @brief Closes the .class file and frees memory allocated by JavaClass fields
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// released.
@@ -343,7 +343,7 @@ void closeClassFile(JavaClass* jc)
     }
 }
 
-/// @brief decodes JavaClassStatus enumeration elements
+/// @brief Decodes JavaClassStatus enumeration elements
 ///
 /// @param enum JavaClassStatus status - identifier of the enumeration to be
 /// translated.
@@ -462,7 +462,7 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     #undef DECODE_FLAG
 }
 
-/// @brief prints class file debug information
+/// @brief Prints class file debug information
 ///
 /// @param JavaClass* jc, pointer to the structure to be
 /// debugged.
@@ -514,7 +514,7 @@ void printClassFileDebugInfo(JavaClass* jc)
     printf("Number of bytes read: %d\n", jc->totalBytesRead);
 }
 
-/// @brief prints class file information
+/// @brief Prints class file information
 ///
 /// @param JavaClass* jc, pointer to the structure analyzed
 ///
