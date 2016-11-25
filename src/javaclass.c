@@ -36,6 +36,9 @@ void openClassFile(JavaClass* jc, const char* path)
     jc->thisClass = jc->superClass = jc->accessFlags = 0;
     jc->attributeCount = jc->fieldCount = jc->methodCount = jc->constantPoolCount = jc->interfaceCount = 0;
 
+    jc->staticFieldCount = 0;
+    jc->instanceFieldCount = 0;
+
     jc->lastTagRead = 0;
     jc->totalBytesRead = 0;
     jc->constantPoolEntriesRead = 0;
@@ -174,9 +177,6 @@ void openClassFile(JavaClass* jc, const char* path)
             return;
         }
 
-        jc->staticFieldCount = 0;
-        jc->instanceFieldCount = 0;
-
         for (u32 = 0; u32 < jc->fieldCount; u32++)
         {
             field_info* field = jc->fields + u32;
@@ -275,6 +275,7 @@ void openClassFile(JavaClass* jc, const char* path)
         fclose(jc->file);
         jc->file = NULL;
     }
+
 }
 
 /// @brief Closes the .class file and frees memory allocated by JavaClass fields
