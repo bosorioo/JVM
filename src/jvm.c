@@ -401,7 +401,7 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         for (parameterIndex = 0; parameterIndex < numberOfParameters; parameterIndex++)
         {
             popOperand(&callerFrame->operands, &parameter, NULL);
-            frame->localVariables[parameterIndex] = parameter;
+            frame->localVariables[numberOfParameters - parameterIndex - 1] = parameter;
         }
 
         InstructionFunction function;
@@ -770,6 +770,7 @@ Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_
     // just use the address as the dimension length, since there is
     // only 1 dimension.
     r->oar.dims_length = (uint32_t*)length;
+    r->oar.elementCount = length;
     r->oar.utf8_className = (uint8_t*)malloc(utf8_len);
     r->oar.elements = (Reference**)malloc(length * sizeof(Reference));
     r->oar.utf8_len = utf8_len;

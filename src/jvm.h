@@ -44,6 +44,7 @@ typedef struct ObjectArray
 {
     uint8_t dimensions;
     uint32_t* dims_length;
+    uint32_t elementCount;
     uint8_t* utf8_className;
     int32_t utf8_len;
     Reference** elements;
