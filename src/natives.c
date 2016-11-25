@@ -1,54 +1,82 @@
 #include "natives.h"
+#include "readfunctions.h"
 #include "memoryinspect.h"
 #include "utf8.h"
 #include "jvm.h"
 #include <string.h>
 #include <inttypes.h>
 
-uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame)
+uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* descriptor_utf8, int32_t utf8_len)
 {
-    union {
-        int64_t longval;
-        int32_t intval;
-        float floatval;
-        double doubleval;
-    } val;
+    int64_t longvalue = 0;
+    int32_t high, low;
 
-    int32_t operand;
-    OperandType type;
-
-    popOperand(&frame->operands, &operand, &type);
-
-    val.intval = operand;
-
-    if (type == OP_NULL)
+    if (utf8_len < 2)
     {
-        printf("\n");
-        return 1;
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
     }
 
-    if (type == OP_LONG || type == OP_DOUBLE)
+    switch (descriptor_utf8[1])
     {
-        popOperand(&frame->operands, &operand, NULL);
-        val.longval = val.intval;
-        val.longval = (val.longval << 32) | operand;
-    }
+        case ')': break;
 
-    switch(type)
-    {
-        case OP_DOUBLE: printf("%g", val.doubleval); break;
-        case OP_FLOAT: printf("%g", val.floatval); break;
-        case OP_INTEGER: printf("%d", val.intval); break;
-        case OP_LONG: printf("%" PRId64"", val.longval); break;
-        case OP_REFERENCE:
+        case 'Z':
+            popOperand(&frame->operands, &low, NULL);
+            printf("%s", (int8_t)low ? "true" : "false");
+            break;
+
+        case 'B':
+            popOperand(&frame->operands, &low, NULL);
+            printf("%d", (int8_t)low);
+            break;
+
+        case 'C':
+            popOperand(&frame->operands, &low, NULL);
+            printf("%c%c", (int16_t)low >> 8, (int16_t)low & 0xFF);
+            break;
+
+        case 'D':
+        case 'J':
+            popOperand(&frame->operands, &low, NULL);
+            popOperand(&frame->operands, &high, NULL);
+            longvalue = high;
+            longvalue = (longvalue << 32) | (uint32_t)low;
+
+            if (descriptor_utf8[1] == 'D')
+                printf("%#f", readDoubleFromUint64(longvalue));
+            else
+                printf("%" PRId64"", longvalue);
+
+            break;
+
+        case 'F':
+            popOperand(&frame->operands, &low, NULL);
+            printf("%#f", readFloatFromUint32(low));
+            break;
+
+        case 'I':
+            popOperand(&frame->operands, &low, NULL);
+            printf("%d", low);
+            break;
+
+        case 'L':
         {
-            Reference* obj = (Reference*)val.intval;
+            popOperand(&frame->operands, &low, NULL);
+            Reference* obj = (Reference*)low;
 
             if (obj->type == REFTYPE_STRING)
                 printf("%.*s", obj->str.len, obj->str.utf8_bytes);
             else
-                printf("0x%.8X", val.intval); break;
+                printf("0x%.8X", low);
+
+            break;
         }
+
+        case '[':
+            popOperand(&frame->operands, &low, NULL);
+            printf("0x%X", low);
+            break;
 
         default:
             break;
@@ -62,16 +90,17 @@ uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
-InstructionFunction getNative(const uint8_t* className, int32_t classLen, const uint8_t* methodName, int32_t methodLen)
+NativeFunction getNative(const uint8_t* className, int32_t classLen,
+                         const uint8_t* methodName, int32_t methodLen,
+                         const uint8_t* descriptor, int32_t descrLen)
 {
     const struct {
-        char* methodname;
-        int32_t methodlen;
-        char* classname;
-        int32_t classlen;
-        InstructionFunction func;
+        char* classname; int32_t classlen;
+        char* methodname; int32_t methodlen;
+        char* descriptor; int32_t descrlen;
+        NativeFunction func;
     } nativeMethods[] = {
-        {"println", 7, "java/io/PrintStream", 19, native_println}
+        {"java/io/PrintStream", 19, "println", 7, NULL, 0, native_println}
     };
 
     uint32_t index;
@@ -80,7 +109,13 @@ InstructionFunction getNative(const uint8_t* className, int32_t classLen, const 
     {
         if (cmp_UTF8((uint8_t*)nativeMethods[index].methodname, nativeMethods[index].methodlen, methodName, methodLen) &&
             cmp_UTF8((uint8_t*)nativeMethods[index].classname, nativeMethods[index].classlen, className, classLen))
-            return nativeMethods[index].func;
+        {
+            if (!nativeMethods[index].descriptor ||
+                cmp_UTF8((uint8_t*)nativeMethods[index].descriptor, nativeMethods[index].descrlen, descriptor, descrLen))
+            {
+                return nativeMethods[index].func;
+            }
+        }
     }
 
     return NULL;
