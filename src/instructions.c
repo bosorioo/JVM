@@ -18,7 +18,7 @@ uint8_t instfunc_nop(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_aconst_null(JavaVirtualMachine* jvm, Frame* frame)
 {
-    if (!pushOperand(&frame->operands, 0, OP_NULL))
+    if (!pushOperand(&frame->operands, 0, OP_REFERENCE))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -774,10 +774,10 @@ uint8_t instfunc_swap(JavaVirtualMachine* jvm, Frame* frame)
 #define DECLR_INTEGER_MATH_OP(instruction, op) \
     uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
     { \
-        int32_t a, b; \
-        popOperand(&frame->operands, &a, NULL); \
-        popOperand(&frame->operands, &b, NULL); \
-        if (!pushOperand(&frame->operands, a op b, OP_INTEGER)) \
+        int32_t value1, value2; \
+        popOperand(&frame->operands, &value2, NULL); \
+        popOperand(&frame->operands, &value1, NULL); \
+        if (!pushOperand(&frame->operands, value1 op value2, OP_INTEGER)) \
         { \
             jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
             return 0; \
@@ -1862,7 +1862,7 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
         // with null object in simulation mode.
         if (cmp_UTF8(cpi1->Utf8.bytes, cpi1->Utf8.length, (const uint8_t*)"java/lang/System", 16))
         {
-            if (!pushOperand(&frame->operands, 0, OP_REFERENCE))
+            if (!pushOperand(&frame->operands, 0, OP_NULL))
             {
                 jvm->status = JVM_STATUS_OUT_OF_MEMORY;
                 return 0;
