@@ -89,7 +89,9 @@ int main(int argc, char* args[])
         if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength, &mainLoadedClass))
             executeJVM(&jvm, mainLoadedClass->jc);
 
+#ifdef DEBUG
         printf("Execution finished. Status: %d\n", jvm.status);
+#endif // DEBUG
 
         deinitJVM(&jvm);
     }
