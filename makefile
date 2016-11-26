@@ -1,5 +1,5 @@
 all:
-	gcc -std=c99 -Wall src/*.c -o jvm.exe -lm
+	gcc -m32 -std=c99 -Wall src/*.c -o jvm.exe -lm
 	
 debug:
 	gcc -std=c99 -Wall src/*.c -DDEBUG -o jvmdebug.exe -lm

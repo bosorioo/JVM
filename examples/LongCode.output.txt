@@ -36,17 +36,17 @@ Attributes count:	2
 	#6: Double (tag = 6)
 		High Bytes:   0x405EDD2F
 		Low  Bytes:   0x1A9FBE77
-		Double Value: 1.234560e+002
+		Double Value: 1.234560e+02
 
 	#8: Double (tag = 6)
 		High Bytes:   0xC0847291
 		Low  Bytes:   0x6872B021
-		Double Value: -6.543210e+002
+		Double Value: -6.543210e+02
 
 	#10: Double (tag = 6)
 		High Bytes:   0x41CD6F34
 		Low  Bytes:   0x588FCD6F
-		Double Value: 9.876543e+008
+		Double Value: 9.876543e+08
 
 	#12: Class (tag = 7)
 		name_index: #87 <java/lang/Double>
@@ -110,7 +110,7 @@ Attributes count:	2
 
 	#30: Float (tag = 4)
 		Bytes: 0x41A00000
-		Value: 2.000000e+001
+		Value: 2.000000e+01
 
 	#31: Class (tag = 7)
 		name_index: #93 <java/lang/Error>
@@ -663,15 +663,15 @@ Attributes count:	2
 				93	newarray	7 (array of double)
 				95	dup
 				96	iconst_0
-				97	ldc2_w		#6 (double: 1.234560e+002)
+				97	ldc2_w		#6 (double: 1.234560e+02)
 				100	dastore
 				101	dup
 				102	iconst_1
-				103	ldc2_w		#8 (double: -6.543210e+002)
+				103	ldc2_w		#8 (double: -6.543210e+02)
 				106	dastore
 				107	dup
 				108	iconst_2
-				109	ldc2_w		#10 (double: 9.876543e+008)
+				109	ldc2_w		#10 (double: 9.876543e+08)
 				112	dastore
 				113	aastore
 				114	dup
@@ -786,12 +786,12 @@ Attributes count:	2
 				19	  case 30: pc + 35 = address 36
 				-	  default: pc + 43 = address 44
 				28	fload_2
-				29	ldc		#30 (float: 2.000000e+001)
+				29	ldc		#30 (float: 2.000000e+01)
 				31	fadd
 				32	fstore_2
 				33	goto		pc + 11 = address 44
 				36	fload_2
-				37	ldc		#30 (float: 2.000000e+001)
+				37	ldc		#30 (float: 2.000000e+01)
 				39	fsub
 				40	fstore_2
 				41	goto		pc + 3 = address 44
