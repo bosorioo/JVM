@@ -2852,16 +2852,29 @@ uint8_t instfunc_ifnonnull(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_goto_w(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    int32_t offset = NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    frame->pc += offset - 5;
+    return 1;
 }
 
 uint8_t instfunc_jsr_w(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    int32_t offset = NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+    offset = (offset << 8) | NEXT_BYTE;
+
+    if (!pushOperand(&frame->operands, (int32_t)frame->pc, OP_RETURNADDRESS))
+    {
+        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
+        return 0;
+    }
+
+    frame->pc += offset - 5;
+    return 1;
 }
 
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
