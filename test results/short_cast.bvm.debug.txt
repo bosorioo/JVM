@@ -1,274 +1,274 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/short_cast
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/short_cast
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/short_cast.class' loaded
-debug runMethod public, static main, params: 0, len: 85, frame 9045C8
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/short_cast.class' loaded
+debug runMethod public, static main, params: 0, len: 85, frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 9453424 1956204968 1956206128 1956206512 1956910368 
-   instruction 'sipush' at offset 0 of frame 9045C8
+10764496 10698792 1956204704 0 0 0 
+   instruction 'sipush' at offset 0 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 9453424 1956204968 1956206128 1956206512 1956910368 
-   instruction 'istore_1' at offset 3 of frame 9045C8
+10764496 10698792 1956204704 0 0 0 
+   instruction 'istore_1' at offset 3 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1956204968 1956206128 1956206512 1956910368 
-   instruction 'iload_1' at offset 4 of frame 9045C8
+10764496 255 1956204704 0 0 0 
+   instruction 'iload_1' at offset 4 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1956204968 1956206128 1956206512 1956910368 
-   instruction 'i2d' at offset 5 of frame 9045C8
+10764496 255 1956204704 0 0 0 
+   instruction 'i2d' at offset 5 of frame A344E8
 
 debug operand stack:
 0.3 1081073664.3 
 debug localvars:
-9455088 255 1956204968 1956206128 1956206512 1956910368 
-   instruction 'dstore_2' at offset 6 of frame 9045C8
+10764496 255 1956204704 0 0 0 
+   instruction 'dstore_2' at offset 6 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1956206512 1956910368 
-   instruction 'iload_1' at offset 7 of frame 9045C8
+10764496 255 1081073664 0 0 0 
+   instruction 'iload_1' at offset 7 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1081073664 0 1956206512 1956910368 
-   instruction 'i2f' at offset 8 of frame 9045C8
+10764496 255 1081073664 0 0 0 
+   instruction 'i2f' at offset 8 of frame A344E8
 
 debug operand stack:
 1132396544.1 
 debug localvars:
-9455088 255 1081073664 0 1956206512 1956910368 
-   instruction 'fstore' at offset 9 of frame 9045C8
+10764496 255 1081073664 0 0 0 
+   instruction 'fstore' at offset 9 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 1956910368 
-   instruction 'iload_1' at offset 11 of frame 9045C8
+10764496 255 1081073664 0 1132396544 0 
+   instruction 'iload_1' at offset 11 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1081073664 0 1132396544 1956910368 
-   instruction 'istore' at offset 12 of frame 9045C8
+10764496 255 1081073664 0 1132396544 0 
+   instruction 'istore' at offset 12 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 14 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 14 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload_1' at offset 17 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload_1' at offset 17 of frame A344E8
 
 debug operand stack:
 255.0 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 18 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 18 of frame A344E8
 255
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 21 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 21 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'dload_2' at offset 24 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'dload_2' at offset 24 of frame A344E8
 
 debug operand stack:
 0.3 1081073664.3 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 25 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 25 of frame A344E8
 255.000000
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 28 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 28 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'fload' at offset 31 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'fload' at offset 31 of frame A344E8
 
 debug operand stack:
 1132396544.1 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 33 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 33 of frame A344E8
 255.000000
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 36 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 36 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload' at offset 39 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload' at offset 39 of frame A344E8
 
 debug operand stack:
 255.0 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 41 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 41 of frame A344E8
 255
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload_1' at offset 44 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload_1' at offset 44 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'i2d' at offset 45 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'i2d' at offset 45 of frame A344E8
 
 debug operand stack:
 0.3 1081073664.3 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'dstore_2' at offset 46 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'dstore_2' at offset 46 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload_1' at offset 47 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload_1' at offset 47 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'i2f' at offset 48 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'i2f' at offset 48 of frame A344E8
 
 debug operand stack:
 1132396544.1 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'fstore' at offset 49 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'fstore' at offset 49 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload_1' at offset 51 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload_1' at offset 51 of frame A344E8
 
 debug operand stack:
 255.0 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'istore' at offset 52 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'istore' at offset 52 of frame A344E8
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 54 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 54 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload_1' at offset 57 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload_1' at offset 57 of frame A344E8
 
 debug operand stack:
 255.0 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 58 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 58 of frame A344E8
 255
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 61 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 61 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'dload_2' at offset 64 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'dload_2' at offset 64 of frame A344E8
 
 debug operand stack:
 0.3 1081073664.3 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 65 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 65 of frame A344E8
 255.000000
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 68 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 68 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'fload' at offset 71 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'fload' at offset 71 of frame A344E8
 
 debug operand stack:
 1132396544.1 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 73 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 73 of frame A344E8
 255.000000
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'getstatic' at offset 76 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'getstatic' at offset 76 of frame A344E8
 
 debug operand stack:
 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'iload' at offset 79 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'iload' at offset 79 of frame A344E8
 
 debug operand stack:
 255.0 0.4 
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'invokevirtual' at offset 81 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'invokevirtual' at offset 81 of frame A344E8
 255
 
 debug operand stack:
 empty.
 debug localvars:
-9455088 255 1081073664 0 1132396544 255 
-   instruction 'return' at offset 84 of frame 9045C8
+10764496 255 1081073664 0 1132396544 255 
+   instruction 'return' at offset 84 of frame A344E8
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####

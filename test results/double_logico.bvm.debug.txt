@@ -1,167 +1,167 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_logico
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/double_logico
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_logico.class' loaded
-debug runMethod public, static main, params: 0, len: 46, frame 7648B8
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/double_logico.class' loaded
+debug runMethod public, static main, params: 0, len: 46, frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 0 0 0 0 
-   instruction 'dconst_1' at offset 0 of frame 7648B8
+   instruction 'dconst_1' at offset 0 of frame 9449B0
 
 debug operand stack:
 0.3 1072693248.3 
 debug localvars:
 0 0 0 0 0 
-   instruction 'dstore_1' at offset 1 of frame 7648B8
+   instruction 'dstore_1' at offset 1 of frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 0 0 
-   instruction 'ldc2_w' at offset 2 of frame 7648B8
+   instruction 'ldc2_w' at offset 2 of frame 9449B0
 
 debug operand stack:
 0.3 1073741824.3 
 debug localvars:
 0 1072693248 0 0 0 
-   instruction 'dstore_3' at offset 5 of frame 7648B8
+   instruction 'dstore_3' at offset 5 of frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_3' at offset 6 of frame 7648B8
+   instruction 'dload_3' at offset 6 of frame 9449B0
 
 debug operand stack:
 0.3 1073741824.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_1' at offset 7 of frame 7648B8
+   instruction 'dload_1' at offset 7 of frame 9449B0
 
 debug operand stack:
 0.3 1072693248.3 0.3 1073741824.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dcmpl' at offset 8 of frame 7648B8
+   instruction 'dcmpl' at offset 8 of frame 9449B0
 
 debug operand stack:
 1.0 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'ifle' at offset 9 of frame 7648B8
+   instruction 'ifle' at offset 9 of frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'getstatic' at offset 12 of frame 7648B8
+   instruction 'getstatic' at offset 12 of frame 9449B0
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_3' at offset 15 of frame 7648B8
+   instruction 'dload_3' at offset 15 of frame 9449B0
 
 debug operand stack:
 0.3 1073741824.3 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'invokevirtual' at offset 16 of frame 7648B8
+   instruction 'invokevirtual' at offset 16 of frame 9449B0
 2.000000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_1' at offset 19 of frame 7648B8
+   instruction 'dload_1' at offset 19 of frame 9449B0
 
 debug operand stack:
 0.3 1072693248.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_3' at offset 20 of frame 7648B8
+   instruction 'dload_3' at offset 20 of frame 9449B0
 
 debug operand stack:
 0.3 1073741824.3 0.3 1072693248.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dcmpg' at offset 21 of frame 7648B8
+   instruction 'dcmpg' at offset 21 of frame 9449B0
 
 debug operand stack:
 -1.0 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'ifge' at offset 22 of frame 7648B8
+   instruction 'ifge' at offset 22 of frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'getstatic' at offset 25 of frame 7648B8
+   instruction 'getstatic' at offset 25 of frame 9449B0
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_1' at offset 28 of frame 7648B8
+   instruction 'dload_1' at offset 28 of frame 9449B0
 
 debug operand stack:
 0.3 1072693248.3 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'invokevirtual' at offset 29 of frame 7648B8
+   instruction 'invokevirtual' at offset 29 of frame 9449B0
 1.000000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_1' at offset 32 of frame 7648B8
+   instruction 'dload_1' at offset 32 of frame 9449B0
 
 debug operand stack:
 0.3 1072693248.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dload_3' at offset 33 of frame 7648B8
+   instruction 'dload_3' at offset 33 of frame 9449B0
 
 debug operand stack:
 0.3 1073741824.3 0.3 1072693248.3 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'dcmpl' at offset 34 of frame 7648B8
+   instruction 'dcmpl' at offset 34 of frame 9449B0
 
 debug operand stack:
 -1.0 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'ifeq' at offset 35 of frame 7648B8
+   instruction 'ifeq' at offset 35 of frame 9449B0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'getstatic' at offset 38 of frame 7648B8
+   instruction 'getstatic' at offset 38 of frame 9449B0
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'iconst_0' at offset 41 of frame 7648B8
+   instruction 'iconst_0' at offset 41 of frame 9449B0
 
 debug operand stack:
 0.0 0.4 
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'invokevirtual' at offset 42 of frame 7648B8
+   instruction 'invokevirtual' at offset 42 of frame 9449B0
 0
 
 debug operand stack:
 empty.
 debug localvars:
 0 1072693248 0 1073741824 0 
-   instruction 'return' at offset 45 of frame 7648B8
+   instruction 'return' at offset 45 of frame 9449B0
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####

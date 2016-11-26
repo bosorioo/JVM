@@ -1,185 +1,185 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/method_test
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/method_test
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/method_test.class' loaded
-debug runMethod public, static main, params: 0, len: 42, frame CC9E8
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/method_test.class' loaded
+debug runMethod public, static main, params: 0, len: 42, frame A28718
 
 debug operand stack:
 empty.
 debug localvars:
 0 
-   instruction 'getstatic' at offset 0 of frame CC9E8
+   instruction 'getstatic' at offset 0 of frame A28718
 
 debug operand stack:
 0.4 
 debug localvars:
 0 
-   instruction 'iconst_2' at offset 3 of frame CC9E8
+   instruction 'iconst_2' at offset 3 of frame A28718
 
 debug operand stack:
 2.0 0.4 
 debug localvars:
 0 
-   instruction 'iconst_3' at offset 4 of frame CC9E8
+   instruction 'iconst_3' at offset 4 of frame A28718
 
 debug operand stack:
 3.0 2.0 0.4 
 debug localvars:
 0 
-   instruction 'invokestatic' at offset 5 of frame CC9E8
+   instruction 'invokestatic' at offset 5 of frame A28718
 debug resolveMethod method_test.Soma:(II)I
-debug runMethod public, static Soma, params: 2, len: 4, frame CCA10
+debug runMethod public, static Soma, params: 2, len: 4, frame A286C8
 
 debug operand stack:
 empty.
 debug localvars:
 2 3 
-   instruction 'iload_0' at offset 0 of frame CCA10
+   instruction 'iload_0' at offset 0 of frame A286C8
 
 debug operand stack:
 2.0 
 debug localvars:
 2 3 
-   instruction 'iload_1' at offset 1 of frame CCA10
+   instruction 'iload_1' at offset 1 of frame A286C8
 
 debug operand stack:
 3.0 2.0 
 debug localvars:
 2 3 
-   instruction 'iadd' at offset 2 of frame CCA10
+   instruction 'iadd' at offset 2 of frame A286C8
 
 debug operand stack:
 5.0 
 debug localvars:
 2 3 
-   instruction 'ireturn' at offset 3 of frame CCA10
+   instruction 'ireturn' at offset 3 of frame A286C8
 
 debug operand stack:
 5.0 0.4 
 debug localvars:
 0 
-   instruction 'invokevirtual' at offset 8 of frame CC9E8
+   instruction 'invokevirtual' at offset 8 of frame A28718
 5
 
 debug operand stack:
 empty.
 debug localvars:
 0 
-   instruction 'getstatic' at offset 11 of frame CC9E8
+   instruction 'getstatic' at offset 11 of frame A28718
 
 debug operand stack:
 0.4 
 debug localvars:
 0 
-   instruction 'ldc2_w' at offset 14 of frame CC9E8
+   instruction 'ldc2_w' at offset 14 of frame A28718
 
 debug operand stack:
 -858993459.3 1078045900.3 0.4 
 debug localvars:
 0 
-   instruction 'ldc2_w' at offset 17 of frame CC9E8
+   instruction 'ldc2_w' at offset 17 of frame A28718
 
 debug operand stack:
 -1717986918.3 1077827993.3 -858993459.3 1078045900.3 0.4 
 debug localvars:
 0 
-   instruction 'invokestatic' at offset 20 of frame CC9E8
+   instruction 'invokestatic' at offset 20 of frame A28718
 debug resolveMethod method_test.Soma:(DD)D
-debug runMethod public, static Soma, params: 4, len: 4, frame CCB28
+debug runMethod public, static Soma, params: 4, len: 4, frame A287B8
 
 debug operand stack:
 empty.
 debug localvars:
 1078045900 -858993459 1077827993 -1717986918 
-   instruction 'dload_0' at offset 0 of frame CCB28
+   instruction 'dload_0' at offset 0 of frame A287B8
 
 debug operand stack:
 -858993459.3 1078045900.3 
 debug localvars:
 1078045900 -858993459 1077827993 -1717986918 
-   instruction 'dload_2' at offset 1 of frame CCB28
+   instruction 'dload_2' at offset 1 of frame A287B8
 
 debug operand stack:
 -1717986918.3 1077827993.3 -858993459.3 1078045900.3 
 debug localvars:
 1078045900 -858993459 1077827993 -1717986918 
-   instruction 'dadd' at offset 2 of frame CCB28
+   instruction 'dadd' at offset 2 of frame A287B8
 
 debug operand stack:
 -858993459.3 1079012556.3 
 debug localvars:
 1078045900 -858993459 1077827993 -1717986918 
-   instruction 'dreturn' at offset 3 of frame CCB28
+   instruction 'dreturn' at offset 3 of frame A287B8
 
 debug operand stack:
 -858993459.3 1079012556.3 0.4 
 debug localvars:
 0 
-   instruction 'invokevirtual' at offset 23 of frame CC9E8
+   instruction 'invokevirtual' at offset 23 of frame A28718
 65.700000
 
 debug operand stack:
 empty.
 debug localvars:
 0 
-   instruction 'getstatic' at offset 26 of frame CC9E8
+   instruction 'getstatic' at offset 26 of frame A28718
 
 debug operand stack:
 0.4 
 debug localvars:
 0 
-   instruction 'ldc2_w' at offset 29 of frame CC9E8
+   instruction 'ldc2_w' at offset 29 of frame A28718
 
 debug operand stack:
 300000000.2 0.2 0.4 
 debug localvars:
 0 
-   instruction 'ldc2_w' at offset 32 of frame CC9E8
+   instruction 'ldc2_w' at offset 32 of frame A28718
 
 debug operand stack:
 700000000.2 0.2 300000000.2 0.2 0.4 
 debug localvars:
 0 
-   instruction 'invokestatic' at offset 35 of frame CC9E8
+   instruction 'invokestatic' at offset 35 of frame A28718
 debug resolveMethod method_test.Soma:(JJ)J
-debug runMethod public, static Soma, params: 4, len: 4, frame CCCB8
+debug runMethod public, static Soma, params: 4, len: 4, frame A288D0
 
 debug operand stack:
 empty.
 debug localvars:
 0 300000000 0 700000000 
-   instruction 'lload_0' at offset 0 of frame CCCB8
+   instruction 'lload_0' at offset 0 of frame A288D0
 
 debug operand stack:
 300000000.2 0.2 
 debug localvars:
 0 300000000 0 700000000 
-   instruction 'lload_2' at offset 1 of frame CCCB8
+   instruction 'lload_2' at offset 1 of frame A288D0
 
 debug operand stack:
 700000000.2 0.2 300000000.2 0.2 
 debug localvars:
 0 300000000 0 700000000 
-   instruction 'lsub' at offset 2 of frame CCCB8
+   instruction 'lsub' at offset 2 of frame A288D0
 
 debug operand stack:
 -400000000.2 -1.2 
 debug localvars:
 0 300000000 0 700000000 
-   instruction 'lreturn' at offset 3 of frame CCCB8
+   instruction 'lreturn' at offset 3 of frame A288D0
 
 debug operand stack:
 -400000000.2 -1.2 0.4 
 debug localvars:
 0 
-   instruction 'invokevirtual' at offset 38 of frame CC9E8
+   instruction 'invokevirtual' at offset 38 of frame A28718
 -400000000
 
 debug operand stack:
 empty.
 debug localvars:
 0 
-   instruction 'return' at offset 41 of frame CC9E8
+   instruction 'return' at offset 41 of frame A28718
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####

@@ -1,218 +1,218 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_aritmetica
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/double_aritmetica
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_aritmetica.class' loaded
-debug runMethod public, static main, params: 0, len: 62, frame A148B8
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/double_aritmetica.class' loaded
+debug runMethod public, static main, params: 0, len: 62, frame 8A48B8
 
 debug operand stack:
 empty.
 debug localvars:
 0 0 0 0 0 
-   instruction 'ldc2_w' at offset 0 of frame A148B8
+   instruction 'ldc2_w' at offset 0 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 
 debug localvars:
 0 0 0 0 0 
-   instruction 'dstore_1' at offset 3 of frame A148B8
+   instruction 'dstore_1' at offset 3 of frame 8A48B8
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 0 0 
-   instruction 'ldc2_w' at offset 4 of frame A148B8
+   instruction 'ldc2_w' at offset 4 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 
 debug localvars:
 0 1079545692 687194767 0 0 
-   instruction 'dstore_3' at offset 7 of frame A148B8
+   instruction 'dstore_3' at offset 7 of frame 8A48B8
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 8 of frame A148B8
+   instruction 'getstatic' at offset 8 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 11 of frame A148B8
+   instruction 'dload_1' at offset 11 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_3' at offset 12 of frame A148B8
+   instruction 'dload_3' at offset 12 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dadd' at offset 13 of frame A148B8
+   instruction 'dadd' at offset 13 of frame 8A48B8
 
 debug operand stack:
 515396076.3 1080894341.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 14 of frame A148B8
+   instruction 'invokevirtual' at offset 14 of frame 8A48B8
 233.110000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 17 of frame A148B8
+   instruction 'getstatic' at offset 17 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 20 of frame A148B8
+   instruction 'dload_1' at offset 20 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_3' at offset 21 of frame A148B8
+   instruction 'dload_3' at offset 21 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dsub' at offset 22 of frame A148B8
+   instruction 'dsub' at offset 22 of frame 8A48B8
 
 debug operand stack:
 -687194766.3 -1069395805.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 23 of frame A148B8
+   instruction 'invokevirtual' at offset 23 of frame 8A48B8
 -36.630000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 26 of frame A148B8
+   instruction 'getstatic' at offset 26 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 29 of frame A148B8
+   instruction 'dload_1' at offset 29 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_3' at offset 30 of frame A148B8
+   instruction 'dload_3' at offset 30 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dmul' at offset 31 of frame A148B8
+   instruction 'dmul' at offset 31 of frame 8A48B8
 
 debug operand stack:
 2089072093.3 1086972112.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 32 of frame A148B8
+   instruction 'invokevirtual' at offset 32 of frame 8A48B8
 13249.628800
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 35 of frame A148B8
+   instruction 'getstatic' at offset 35 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 38 of frame A148B8
+   instruction 'dload_1' at offset 38 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_3' at offset 39 of frame A148B8
+   instruction 'dload_3' at offset 39 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'ddiv' at offset 40 of frame A148B8
+   instruction 'ddiv' at offset 40 of frame 8A48B8
 
 debug operand stack:
 1189738104.3 1072123672.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 41 of frame A148B8
+   instruction 'invokevirtual' at offset 41 of frame 8A48B8
 0.728405
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 44 of frame A148B8
+   instruction 'getstatic' at offset 44 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 47 of frame A148B8
+   instruction 'dload_1' at offset 47 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dneg' at offset 48 of frame A148B8
+   instruction 'dneg' at offset 48 of frame 8A48B8
 
 debug operand stack:
 687194767.3 -1067937956.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 49 of frame A148B8
+   instruction 'invokevirtual' at offset 49 of frame 8A48B8
 -98.240000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'getstatic' at offset 52 of frame A148B8
+   instruction 'getstatic' at offset 52 of frame 8A48B8
 
 debug operand stack:
 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_3' at offset 55 of frame A148B8
+   instruction 'dload_3' at offset 55 of frame 8A48B8
 
 debug operand stack:
 171798692.3 1080089559.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'dload_1' at offset 56 of frame A148B8
+   instruction 'dload_1' at offset 56 of frame 8A48B8
 
 debug operand stack:
 687194767.3 1079545692.3 171798692.3 1080089559.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'drem' at offset 57 of frame A148B8
+   instruction 'drem' at offset 57 of frame 8A48B8
 
 debug operand stack:
 -687194766.3 1078087843.3 0.4 
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'invokevirtual' at offset 58 of frame A148B8
+   instruction 'invokevirtual' at offset 58 of frame 8A48B8
 36.630000
 
 debug operand stack:
 empty.
 debug localvars:
 0 1079545692 687194767 1080089559 171798692 
-   instruction 'return' at offset 61 of frame A148B8
+   instruction 'return' at offset 61 of frame 8A48B8
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####

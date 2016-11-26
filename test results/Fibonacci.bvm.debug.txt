@@ -1,1263 +1,1263 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/Fibonacci
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/Fibonacci
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/Fibonacci.class' loaded
-debug runMethod public, static main, params: 0, len: 54, frame AB48B8
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/Fibonacci.class' loaded
+debug runMethod public, static main, params: 0, len: 54, frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 11223896 0 0 0 0 0 0 0 
-   instruction 'bipush' at offset 0 of frame AB48B8
+10830008 10504664 0 0 0 0 0 0 0 
+   instruction 'bipush' at offset 0 of frame A049B0
 
 debug operand stack:
 12.0 
 debug localvars:
-11289792 11223896 0 0 0 0 0 0 0 
-   instruction 'istore_1' at offset 2 of frame AB48B8
+10830008 10504664 0 0 0 0 0 0 0 
+   instruction 'istore_1' at offset 2 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'getstatic' at offset 3 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'getstatic' at offset 3 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'ldc' at offset 6 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'ldc' at offset 6 of frame A049B0
 
 debug operand stack:
-11222768.5 0.4 
+10501688.5 0.4 
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'invokevirtual' at offset 8 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'invokevirtual' at offset 8 of frame A049B0
 Serie De Fibonacci: 
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'lconst_0' at offset 11 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'lconst_0' at offset 11 of frame A049B0
 
 debug operand stack:
 0.2 0.2 
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'lstore' at offset 12 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'lstore' at offset 12 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'lconst_1' at offset 14 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'lconst_1' at offset 14 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 0 0 0 0 0 0 
-   instruction 'lstore' at offset 15 of frame AB48B8
+10830008 12 0 0 0 0 0 0 0 
+   instruction 'lstore' at offset 15 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 1 0 
-   instruction 'iconst_1' at offset 17 of frame AB48B8
+10830008 12 0 0 0 0 0 1 0 
+   instruction 'iconst_1' at offset 17 of frame A049B0
 
 debug operand stack:
 1.0 
 debug localvars:
-11289792 12 0 0 0 0 0 1 0 
-   instruction 'istore' at offset 18 of frame AB48B8
+10830008 12 0 0 0 0 0 1 0 
+   instruction 'istore' at offset 18 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 1.0 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 1.0 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 1.2 0.2 0.4 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 1
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 0.2 0.2 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 0 0 0 0 1 1 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 0 0 0 0 1 1 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 1 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 0 0 1 0 1 1 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 0.2 0.2 
 debug localvars:
-11289792 12 0 0 0 1 0 1 1 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 0 0 1 0 1 1 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 1.2 0.2 0.2 0.2 
 debug localvars:
-11289792 12 0 0 0 1 0 1 1 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 0 0 1 0 1 1 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 0 0 1 0 1 1 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 0 0 1 0 1 1 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 1 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 0 0 1 0 1 1 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 2.0 
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 2.0 
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 1.2 0.2 0.4 
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 1
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 0 0 1 0 1 2 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 0 0 1 0 1 2 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 1.2 0.2 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 2.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 1 2 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 1 0 1 0 1 2 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 2 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 1 0 1 0 2 2 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 3.0 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 3.0 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 2.2 0.2 0.4 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 2
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 2.2 0.2 
 debug localvars:
-11289792 12 0 1 0 1 0 2 3 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 1 0 1 0 2 3 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 2 3 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 1 0 2 0 2 3 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 2 0 2 3 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 1 0 2 0 2 3 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 2.2 0.2 1.2 0.2 
 debug localvars:
-11289792 12 0 1 0 2 0 2 3 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 1 0 2 0 2 3 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 3.2 0.2 
 debug localvars:
-11289792 12 0 1 0 2 0 2 3 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 1 0 2 0 2 3 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 3 3 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 1 0 2 0 3 3 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 4.0 
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 4.0 
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 3.2 0.2 0.4 
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 3
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 2.2 0.2 
 debug localvars:
-11289792 12 0 1 0 2 0 3 4 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 1 0 2 0 3 4 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 2 0 3 4 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 2 0 2 0 3 4 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 3.2 0.2 
 debug localvars:
-11289792 12 0 2 0 2 0 3 4 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 2 0 2 0 3 4 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 3 4 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 2 0 3 0 3 4 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 2.2 0.2 
 debug localvars:
-11289792 12 0 2 0 3 0 3 4 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 2 0 3 0 3 4 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 3.2 0.2 2.2 0.2 
 debug localvars:
-11289792 12 0 2 0 3 0 3 4 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 2 0 3 0 3 4 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 5.2 0.2 
 debug localvars:
-11289792 12 0 2 0 3 0 3 4 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 2 0 3 0 3 4 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 5 4 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 2 0 3 0 5 4 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 5.0 
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 5.0 
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 5.2 0.2 0.4 
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 5
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 3.2 0.2 
 debug localvars:
-11289792 12 0 2 0 3 0 5 5 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 2 0 3 0 5 5 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 3 0 5 5 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 3 0 3 0 5 5 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 5.2 0.2 
 debug localvars:
-11289792 12 0 3 0 3 0 5 5 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 3 0 3 0 5 5 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 5 5 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 3 0 5 0 5 5 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 3.2 0.2 
 debug localvars:
-11289792 12 0 3 0 5 0 5 5 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 3 0 5 0 5 5 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 5.2 0.2 3.2 0.2 
 debug localvars:
-11289792 12 0 3 0 5 0 5 5 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 3 0 5 0 5 5 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 8.2 0.2 
 debug localvars:
-11289792 12 0 3 0 5 0 5 5 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 3 0 5 0 5 5 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 8 5 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 3 0 5 0 8 5 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 6.0 
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 6.0 
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 8.2 0.2 0.4 
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 8
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 5.2 0.2 
 debug localvars:
-11289792 12 0 3 0 5 0 8 6 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 3 0 5 0 8 6 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 5 0 8 6 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 5 0 5 0 8 6 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 8.2 0.2 
 debug localvars:
-11289792 12 0 5 0 5 0 8 6 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 5 0 5 0 8 6 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 8 6 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 5 0 8 0 8 6 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 5.2 0.2 
 debug localvars:
-11289792 12 0 5 0 8 0 8 6 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 5 0 8 0 8 6 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 8.2 0.2 5.2 0.2 
 debug localvars:
-11289792 12 0 5 0 8 0 8 6 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 5 0 8 0 8 6 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 13.2 0.2 
 debug localvars:
-11289792 12 0 5 0 8 0 8 6 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 5 0 8 0 8 6 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 13 6 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 5 0 8 0 13 6 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 7.0 
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 7.0 
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 13.2 0.2 0.4 
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 13
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 8.2 0.2 
 debug localvars:
-11289792 12 0 5 0 8 0 13 7 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 5 0 8 0 13 7 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 8 0 13 7 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 8 0 8 0 13 7 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 13.2 0.2 
 debug localvars:
-11289792 12 0 8 0 8 0 13 7 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 8 0 8 0 13 7 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 13 7 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 8 0 13 0 13 7 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 8.2 0.2 
 debug localvars:
-11289792 12 0 8 0 13 0 13 7 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 8 0 13 0 13 7 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 13.2 0.2 8.2 0.2 
 debug localvars:
-11289792 12 0 8 0 13 0 13 7 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 8 0 13 0 13 7 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 21.2 0.2 
 debug localvars:
-11289792 12 0 8 0 13 0 13 7 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 8 0 13 0 13 7 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 21 7 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 8 0 13 0 21 7 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 8.0 
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 8.0 
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 21.2 0.2 0.4 
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 21
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 13.2 0.2 
 debug localvars:
-11289792 12 0 8 0 13 0 21 8 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 8 0 13 0 21 8 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 13 0 21 8 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 13 0 13 0 21 8 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 21.2 0.2 
 debug localvars:
-11289792 12 0 13 0 13 0 21 8 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 13 0 13 0 21 8 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 21 8 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 13 0 21 0 21 8 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 13.2 0.2 
 debug localvars:
-11289792 12 0 13 0 21 0 21 8 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 13 0 21 0 21 8 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 21.2 0.2 13.2 0.2 
 debug localvars:
-11289792 12 0 13 0 21 0 21 8 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 13 0 21 0 21 8 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 34.2 0.2 
 debug localvars:
-11289792 12 0 13 0 21 0 21 8 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 13 0 21 0 21 8 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 34 8 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 13 0 21 0 34 8 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 9.0 
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 9.0 
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 34.2 0.2 0.4 
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 34
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 21.2 0.2 
 debug localvars:
-11289792 12 0 13 0 21 0 34 9 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 13 0 21 0 34 9 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 21 0 34 9 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 21 0 21 0 34 9 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 34.2 0.2 
 debug localvars:
-11289792 12 0 21 0 21 0 34 9 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 21 0 21 0 34 9 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 34 9 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 21 0 34 0 34 9 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 21.2 0.2 
 debug localvars:
-11289792 12 0 21 0 34 0 34 9 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 21 0 34 0 34 9 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 34.2 0.2 21.2 0.2 
 debug localvars:
-11289792 12 0 21 0 34 0 34 9 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 21 0 34 0 34 9 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 55.2 0.2 
 debug localvars:
-11289792 12 0 21 0 34 0 34 9 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 21 0 34 0 34 9 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 55 9 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 21 0 34 0 55 9 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 10.0 
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 10.0 
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 55.2 0.2 0.4 
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 55
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 34.2 0.2 
 debug localvars:
-11289792 12 0 21 0 34 0 55 10 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 21 0 34 0 55 10 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 34 0 55 10 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 34 0 34 0 55 10 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 55.2 0.2 
 debug localvars:
-11289792 12 0 34 0 34 0 55 10 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 34 0 34 0 55 10 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 55 10 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 34 0 55 0 55 10 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 34.2 0.2 
 debug localvars:
-11289792 12 0 34 0 55 0 55 10 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 34 0 55 0 55 10 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 55.2 0.2 34.2 0.2 
 debug localvars:
-11289792 12 0 34 0 55 0 55 10 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 34 0 55 0 55 10 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 89.2 0.2 
 debug localvars:
-11289792 12 0 34 0 55 0 55 10 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 34 0 55 0 55 10 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 89 10 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 34 0 55 0 89 10 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 11.0 
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 11.0 
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 89.2 0.2 0.4 
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 89
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 55.2 0.2 
 debug localvars:
-11289792 12 0 34 0 55 0 89 11 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 34 0 55 0 89 11 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 55 0 89 11 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 55 0 55 0 89 11 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 89.2 0.2 
 debug localvars:
-11289792 12 0 55 0 55 0 89 11 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 55 0 55 0 89 11 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 89 11 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 55 0 89 0 89 11 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 55.2 0.2 
 debug localvars:
-11289792 12 0 55 0 89 0 89 11 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 55 0 89 0 89 11 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 89.2 0.2 55.2 0.2 
 debug localvars:
-11289792 12 0 55 0 89 0 89 11 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 55 0 89 0 89 11 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 144.2 0.2 
 debug localvars:
-11289792 12 0 55 0 89 0 89 11 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 55 0 89 0 89 11 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 144 11 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 55 0 89 0 144 11 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 12.0 
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 12.0 
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'getstatic' at offset 26 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'getstatic' at offset 26 of frame A049B0
 
 debug operand stack:
 0.4 
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'lload' at offset 29 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'lload' at offset 29 of frame A049B0
 
 debug operand stack:
 144.2 0.2 0.4 
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'invokevirtual' at offset 31 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'invokevirtual' at offset 31 of frame A049B0
 144
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'lload' at offset 34 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'lload' at offset 34 of frame A049B0
 
 debug operand stack:
 89.2 0.2 
 debug localvars:
-11289792 12 0 55 0 89 0 144 12 
-   instruction 'lstore_2' at offset 36 of frame AB48B8
+10830008 12 0 55 0 89 0 144 12 
+   instruction 'lstore_2' at offset 36 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 89 0 144 12 
-   instruction 'lload' at offset 37 of frame AB48B8
+10830008 12 0 89 0 89 0 144 12 
+   instruction 'lload' at offset 37 of frame A049B0
 
 debug operand stack:
 144.2 0.2 
 debug localvars:
-11289792 12 0 89 0 89 0 144 12 
-   instruction 'lstore' at offset 39 of frame AB48B8
+10830008 12 0 89 0 89 0 144 12 
+   instruction 'lstore' at offset 39 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 144 0 144 12 
-   instruction 'lload_2' at offset 41 of frame AB48B8
+10830008 12 0 89 0 144 0 144 12 
+   instruction 'lload_2' at offset 41 of frame A049B0
 
 debug operand stack:
 89.2 0.2 
 debug localvars:
-11289792 12 0 89 0 144 0 144 12 
-   instruction 'lload' at offset 42 of frame AB48B8
+10830008 12 0 89 0 144 0 144 12 
+   instruction 'lload' at offset 42 of frame A049B0
 
 debug operand stack:
 144.2 0.2 89.2 0.2 
 debug localvars:
-11289792 12 0 89 0 144 0 144 12 
-   instruction 'ladd' at offset 44 of frame AB48B8
+10830008 12 0 89 0 144 0 144 12 
+   instruction 'ladd' at offset 44 of frame A049B0
 
 debug operand stack:
 233.2 0.2 
 debug localvars:
-11289792 12 0 89 0 144 0 144 12 
-   instruction 'lstore' at offset 45 of frame AB48B8
+10830008 12 0 89 0 144 0 144 12 
+   instruction 'lstore' at offset 45 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 144 0 233 12 
-   instruction 'iinc' at offset 47 of frame AB48B8
+10830008 12 0 89 0 144 0 233 12 
+   instruction 'iinc' at offset 47 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 144 0 233 13 
-   instruction 'goto' at offset 50 of frame AB48B8
+10830008 12 0 89 0 144 0 233 13 
+   instruction 'goto' at offset 50 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 144 0 233 13 
-   instruction 'iload' at offset 20 of frame AB48B8
+10830008 12 0 89 0 144 0 233 13 
+   instruction 'iload' at offset 20 of frame A049B0
 
 debug operand stack:
 13.0 
 debug localvars:
-11289792 12 0 89 0 144 0 233 13 
-   instruction 'iload_1' at offset 22 of frame AB48B8
+10830008 12 0 89 0 144 0 233 13 
+   instruction 'iload_1' at offset 22 of frame A049B0
 
 debug operand stack:
 12.0 13.0 
 debug localvars:
-11289792 12 0 89 0 144 0 233 13 
-   instruction 'if_icmpgt' at offset 23 of frame AB48B8
+10830008 12 0 89 0 144 0 233 13 
+   instruction 'if_icmpgt' at offset 23 of frame A049B0
 
 debug operand stack:
 empty.
 debug localvars:
-11289792 12 0 89 0 144 0 233 13 
-   instruction 'return' at offset 53 of frame AB48B8
+10830008 12 0 89 0 144 0 233 13 
+   instruction 'return' at offset 53 of frame A049B0
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####

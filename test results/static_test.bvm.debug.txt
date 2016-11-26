@@ -1,87 +1,87 @@
-debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/static_test
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/static_test
 debug resolveClass java/lang/Object
    class file 'java/lang/Object.class' loaded
-   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/static_test.class' loaded
-debug runMethod static <clinit>, params: 0, len: 11, frame AB4690
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\JVM\test files\/static_test.class' loaded
+debug runMethod static <clinit>, params: 0, len: 11, frame A14418
 
 debug operand stack:
 empty.
 debug localvars:
 empty.
-   instruction 'iconst_m1' at offset 0 of frame AB4690
+   instruction 'iconst_m1' at offset 0 of frame A14418
 
 debug operand stack:
 -1.0 
 debug localvars:
 empty.
-   instruction 'putstatic' at offset 1 of frame AB4690
+   instruction 'putstatic' at offset 1 of frame A14418
 debug resolveField static_test.a:I
 
 debug operand stack:
 empty.
 debug localvars:
 empty.
-   instruction 'ldc2_w' at offset 4 of frame AB4690
+   instruction 'ldc2_w' at offset 4 of frame A14418
 
 debug operand stack:
 0.3 -1073741824.3 
 debug localvars:
 empty.
-   instruction 'putstatic' at offset 7 of frame AB4690
+   instruction 'putstatic' at offset 7 of frame A14418
 debug resolveField static_test.b:D
 
 debug operand stack:
 empty.
 debug localvars:
 empty.
-   instruction 'return' at offset 10 of frame AB4690
-debug runMethod public, static main, params: 0, len: 19, frame AB4708
+   instruction 'return' at offset 10 of frame A14418
+debug runMethod public, static main, params: 0, len: 19, frame A146C0
 
 debug operand stack:
 empty.
 debug localvars:
-11224720 
-   instruction 'getstatic' at offset 0 of frame AB4708
+0 
+   instruction 'getstatic' at offset 0 of frame A146C0
 
 debug operand stack:
 0.4 
 debug localvars:
-11224720 
-   instruction 'getstatic' at offset 3 of frame AB4708
+0 
+   instruction 'getstatic' at offset 3 of frame A146C0
 debug resolveField static_test.a:I
 
 debug operand stack:
 -1.0 0.4 
 debug localvars:
-11224720 
-   instruction 'invokevirtual' at offset 6 of frame AB4708
+0 
+   instruction 'invokevirtual' at offset 6 of frame A146C0
 -1
 
 debug operand stack:
 empty.
 debug localvars:
-11224720 
-   instruction 'getstatic' at offset 9 of frame AB4708
+0 
+   instruction 'getstatic' at offset 9 of frame A146C0
 
 debug operand stack:
 0.4 
 debug localvars:
-11224720 
-   instruction 'getstatic' at offset 12 of frame AB4708
+0 
+   instruction 'getstatic' at offset 12 of frame A146C0
 debug resolveField static_test.b:D
 
 debug operand stack:
 0.3 -1073741824.3 0.4 
 debug localvars:
-11224720 
-   instruction 'invokevirtual' at offset 15 of frame AB4708
+0 
+   instruction 'invokevirtual' at offset 15 of frame A146C0
 -2.000000
 
 debug operand stack:
 empty.
 debug localvars:
-11224720 
-   instruction 'return' at offset 18 of frame AB4708
+0 
+   instruction 'return' at offset 18 of frame A146C0
 Execution finished. Status: 0
 
 #### Memory Inspect Report ####
