@@ -64,7 +64,6 @@ int main(int argc, char* args[])
     {
         JavaVirtualMachine jvm;
         initJVM(&jvm);
-        jvm.simulatingSystemAndStringClasses = 1;
 
         size_t inputLength = strlen(args[1]);
 
@@ -83,7 +82,7 @@ int main(int argc, char* args[])
         LoadedClasses* mainLoadedClass;
 
         if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength, &mainLoadedClass))
-            executeJVM(&jvm, mainLoadedClass->jc);
+            executeJVM(&jvm, mainLoadedClass);
 
 #ifdef DEBUG
         printf("Execution finished. Status: %d\n", jvm.status);

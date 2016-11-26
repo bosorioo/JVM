@@ -17,11 +17,15 @@
 void initJVM(JavaVirtualMachine* jvm)
 {
     jvm->status = JVM_STATUS_OK;
-    jvm->simulatingSystemAndStringClasses = 0;
     jvm->frames = NULL;
     jvm->classes = NULL;
     jvm->objects = NULL;
-    jvm->stringClass = NULL;
+
+    // We need to simulate those two classes, and their support is
+    // highly limited. Reading them from the Oracle .class files
+    // requires processing of many other .class, including
+    // dealing with native methods.
+    jvm->simulatingSystemAndStringClasses = 1;
 }
 
 /// @brief Deallocates all memory used by the JavaVirtualMachine structure.
@@ -72,8 +76,9 @@ void deinitJVM(JavaVirtualMachine* jvm)
 ///
 /// @param JavaVirtualMachine* jvm - pointer to an
 /// already initialized JVM structure.
-/// @param JavaClass* mainClass - pointer to a class
-/// that contains the public void static main method.
+/// @param LoadedClasses* mainClass - pointer to a class
+/// that has been loaded and contains the public void static
+/// main method.
 ///
 /// If \c mainClass is a null pointer, the class
 /// at the top of the stack of loaded classes will be
@@ -84,7 +89,7 @@ void deinitJVM(JavaVirtualMachine* jvm)
 /// have been previously resolved with a call to \c resolveClass().
 ///
 /// @see resolveClass(), JavaClass
-void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
+void executeJVM(JavaVirtualMachine* jvm, LoadedClasses* mainClass)
 {
     if (!mainClass)
     {
@@ -94,13 +99,18 @@ void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
             return;
         }
 
-        mainClass = jvm->classes->jc;
+        mainClass = jvm->classes;
+    }
+    else if (!initClass(jvm, mainClass))
+    {
+        jvm->status = JVM_STATUS_MAIN_CLASS_RESOLUTION_FAILED;
+        return;
     }
 
     const uint8_t name[] = "main";
     const uint8_t descriptor[] = "([Ljava/lang/String;)V";
 
-    method_info* method = getMethodMatching(mainClass, name, sizeof(name) - 1, descriptor, sizeof(descriptor) - 1, ACC_STATIC);
+    method_info* method = getMethodMatching(mainClass->jc, name, sizeof(name) - 1, descriptor, sizeof(descriptor) - 1, ACC_STATIC);
 
     if (!method)
     {
@@ -108,7 +118,7 @@ void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass)
         return;
     }
 
-    if (!runMethod(jvm, mainClass, method, 0))
+    if (!runMethod(jvm, mainClass->jc, method, 0))
         return;
 }
 
@@ -205,6 +215,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
                 for (u16 = 0; u16 < jc->fieldCount; u16++)
                     jc->fields[u16].offset += loadedClass->jc->instanceFieldCount;
             }
+
         }
 
         for (u16 = 0; success && u16 < jc->interfaceCount; u16++)
@@ -219,15 +230,6 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     {
         loadedClass = addClassToLoadedClasses(jvm, jc);
         success = loadedClass != NULL;
-
-        // We keep a special reference to the String class, as we might
-        // wanna create an instance of String and it is easier if the
-        // class pointer is already known.
-        if (!jvm->stringClass && success &&
-            cmp_UTF8(className_utf8_bytes, utf8_len, (const uint8_t*)"java/lang/String", 16))
-        {
-            jvm->stringClass = loadedClass;
-        }
     }
 
     if (success)
@@ -428,6 +430,24 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
 
         while (frame->pc < frame->code_length)
         {
+
+#ifdef DEBUG
+    OperandStack* node;
+    node = frame->operands;
+    printf("\ndebug operand stack:\n");
+    if (!node) printf("empty.");
+    else while (node)
+    {
+        printf("%d.%d ", node->value, node->type);
+        node = node->next;
+    }
+    uint16_t ii;
+    printf("\ndebug localvars:\n");
+    if (!frame->localVariables) printf("empty.");
+    else for (ii = 0; ii < frame->max_locals; ii++)
+        printf("%d ", frame->localVariables[ii]);
+    printf("\n");
+#endif // DEBUG
 
             uint8_t opcode = *(frame->code + frame->pc++);
             function = fetchOpcodeFunction(opcode);
@@ -726,6 +746,12 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, LoadedClasses* lc)
     node->next = jvm->objects;
     node->obj = r;
     jvm->objects = node;
+
+#ifdef DEBUG
+    cp_info* cpi = jc->constantPool + jc->thisClass - 1;
+    cpi = jc->constantPool + cpi->Class.name_index - 1;
+    printf("debug New class instance %d->%d of type %.*s\n", (int)r, (int)r->ci.data, cpi->Utf8.length, cpi->Utf8.bytes);
+#endif
 
     return r;
 }

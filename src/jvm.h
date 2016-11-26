@@ -12,6 +12,7 @@ typedef struct Reference Reference;
 enum JVMStatus {
     JVM_STATUS_OK,
     JVM_STATUS_NO_CLASS_LOADED,
+    JVM_STATUS_MAIN_CLASS_RESOLUTION_FAILED,
     JVM_STATUS_CLASS_RESOLUTION_FAILED,
     JVM_STATUS_METHOD_RESOLUTION_FAILED,
     JVM_STATUS_FIELD_RESOLUTION_FAILED,
@@ -89,13 +90,11 @@ struct JavaVirtualMachine
     ReferenceTable* objects;
     FrameStack* frames;
     LoadedClasses* classes;
-
-    LoadedClasses* stringClass;
 };
 
 void initJVM(JavaVirtualMachine* jvm);
 void deinitJVM(JavaVirtualMachine* jvm);
-void executeJVM(JavaVirtualMachine* jvm, JavaClass* mainClass);
+void executeJVM(JavaVirtualMachine* jvm, LoadedClasses* mainClass);
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass);
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass);
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass);

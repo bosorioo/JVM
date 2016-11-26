@@ -23,6 +23,10 @@ struct Frame
 
     OperandStack* operands;
     int32_t* localVariables;
+
+#ifdef DEBUG
+    uint16_t max_locals;
+#endif
 };
 
 struct FrameStack

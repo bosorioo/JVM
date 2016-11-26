@@ -73,7 +73,14 @@ uint8_t native_println(JavaVirtualMachine* jvm, Frame* frame, const uint8_t* des
             Reference* obj = (Reference*)low;
 
             if (obj->type == REFTYPE_STRING)
-                printf("%.*s", obj->str.len, obj->str.utf8_bytes);
+            {
+                uint8_t* bytes = obj->str.utf8_bytes;
+                int32_t len = obj->str.len;
+
+                if (len > 0)
+                    printf("%.*s", len, bytes);
+
+            }
             else
                 printf("0x%.8X", low);
 

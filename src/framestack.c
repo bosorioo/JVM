@@ -20,6 +20,11 @@ Frame* newFrame(JavaClass* jc, method_info* method)
                 frame->localVariables = (int32_t*)malloc(code->max_locals * sizeof(int32_t));
             else
                 frame->localVariables = NULL;
+
+#ifdef DEBUG
+            frame->max_locals = code->max_locals;
+#endif // DEBUG
+
         }
         else
         {
