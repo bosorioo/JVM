@@ -1,0 +1,309 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/float_logico
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/float_logico.class' loaded
+debug runMethod public, static main, params: 0, len: 96, frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 1703948 1207961371 4784140 
+   instruction 'ldc' at offset 0 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 
+debug localvars:
+1073807361 1703948 1207961371 4784140 
+   instruction 'fstore_1' at offset 2 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 1207961371 4784140 
+   instruction 'fconst_0' at offset 3 of frame AC48B8
+
+debug operand stack:
+0.1 
+debug localvars:
+1073807361 -1082130432 1207961371 4784140 
+   instruction 'fstore_2' at offset 4 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 4784140 
+   instruction 'ldc' at offset 5 of frame AC48B8
+
+debug operand stack:
+1235476865.1 
+debug localvars:
+1073807361 -1082130432 0 4784140 
+   instruction 'fstore_3' at offset 7 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 8 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_3' at offset 11 of frame AC48B8
+
+debug operand stack:
+1235476865.1 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 12 of frame AC48B8
+1342512.125000
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 15 of frame AC48B8
+
+debug operand stack:
+0.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 16 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 0.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpl' at offset 17 of frame AC48B8
+
+debug operand stack:
+1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ifle' at offset 18 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 21 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 24 of frame AC48B8
+
+debug operand stack:
+0.1 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 25 of frame AC48B8
+0.000000
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 28 of frame AC48B8
+
+debug operand stack:
+0.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 29 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 0.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpl' at offset 30 of frame AC48B8
+
+debug operand stack:
+1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'iflt' at offset 31 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 34 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 37 of frame AC48B8
+
+debug operand stack:
+0.1 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 38 of frame AC48B8
+0.000000
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 41 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 42 of frame AC48B8
+
+debug operand stack:
+0.1 -1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpg' at offset 43 of frame AC48B8
+
+debug operand stack:
+-1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ifgt' at offset 44 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 47 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 50 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 51 of frame AC48B8
+-1.000000
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 54 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 55 of frame AC48B8
+
+debug operand stack:
+0.1 -1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpg' at offset 56 of frame AC48B8
+
+debug operand stack:
+-1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ifge' at offset 57 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 60 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 63 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 64 of frame AC48B8
+-1.000000
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 67 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 68 of frame AC48B8
+
+debug operand stack:
+0.1 -1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpl' at offset 69 of frame AC48B8
+
+debug operand stack:
+-1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ifeq' at offset 70 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'getstatic' at offset 73 of frame AC48B8
+
+debug operand stack:
+0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ldc' at offset 76 of frame AC48B8
+
+debug operand stack:
+11288336.5 0.4 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'invokevirtual' at offset 78 of frame AC48B8
+diferente
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_1' at offset 81 of frame AC48B8
+
+debug operand stack:
+-1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fload_2' at offset 82 of frame AC48B8
+
+debug operand stack:
+0.1 -1082130432.1 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'fcmpl' at offset 83 of frame AC48B8
+
+debug operand stack:
+-1.0 
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'ifne' at offset 84 of frame AC48B8
+
+debug operand stack:
+empty.
+debug localvars:
+1073807361 -1082130432 0 1235476865 
+   instruction 'return' at offset 95 of frame AC48B8
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

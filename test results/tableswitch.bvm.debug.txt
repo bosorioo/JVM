@@ -1,0 +1,270 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/tableswitch
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/tableswitch.class' loaded
+debug runMethod public, static main, params: 0, len: 51, frame B746F0
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'getstatic' at offset 0 of frame B746F0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 
+   instruction 'iconst_m1' at offset 3 of frame B746F0
+
+debug operand stack:
+-1.0 0.4 
+debug localvars:
+0 
+   instruction 'invokestatic' at offset 4 of frame B746F0
+debug resolveMethod tableswitch.chooseNear:(I)I
+debug runMethod public, static chooseNear, params: 1, len: 36, frame A04518
+
+debug operand stack:
+empty.
+debug localvars:
+-1 
+   instruction 'iload_0' at offset 0 of frame A04518
+
+debug operand stack:
+-1.0 
+debug localvars:
+-1 
+   instruction 'tableswitch' at offset 1 of frame A04518
+
+debug operand stack:
+empty.
+debug localvars:
+-1 
+   instruction 'iconst_m1' at offset 34 of frame A04518
+
+debug operand stack:
+-1.0 
+debug localvars:
+-1 
+   instruction 'ireturn' at offset 35 of frame A04518
+
+debug operand stack:
+-1.0 0.4 
+debug localvars:
+0 
+   instruction 'invokevirtual' at offset 7 of frame B746F0
+-1
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'getstatic' at offset 10 of frame B746F0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 
+   instruction 'iconst_0' at offset 13 of frame B746F0
+
+debug operand stack:
+0.0 0.4 
+debug localvars:
+0 
+   instruction 'invokestatic' at offset 14 of frame B746F0
+debug resolveMethod tableswitch.chooseNear:(I)I
+debug runMethod public, static chooseNear, params: 1, len: 36, frame A04720
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'iload_0' at offset 0 of frame A04720
+
+debug operand stack:
+0.0 
+debug localvars:
+0 
+   instruction 'tableswitch' at offset 1 of frame A04720
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'iconst_0' at offset 28 of frame A04720
+
+debug operand stack:
+0.0 
+debug localvars:
+0 
+   instruction 'ireturn' at offset 29 of frame A04720
+
+debug operand stack:
+0.0 0.4 
+debug localvars:
+0 
+   instruction 'invokevirtual' at offset 17 of frame B746F0
+0
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'getstatic' at offset 20 of frame B746F0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 
+   instruction 'iconst_1' at offset 23 of frame B746F0
+
+debug operand stack:
+1.0 0.4 
+debug localvars:
+0 
+   instruction 'invokestatic' at offset 24 of frame B746F0
+debug resolveMethod tableswitch.chooseNear:(I)I
+debug runMethod public, static chooseNear, params: 1, len: 36, frame A047E8
+
+debug operand stack:
+empty.
+debug localvars:
+1 
+   instruction 'iload_0' at offset 0 of frame A047E8
+
+debug operand stack:
+1.0 
+debug localvars:
+1 
+   instruction 'tableswitch' at offset 1 of frame A047E8
+
+debug operand stack:
+empty.
+debug localvars:
+1 
+   instruction 'iconst_1' at offset 30 of frame A047E8
+
+debug operand stack:
+1.0 
+debug localvars:
+1 
+   instruction 'ireturn' at offset 31 of frame A047E8
+
+debug operand stack:
+1.0 0.4 
+debug localvars:
+0 
+   instruction 'invokevirtual' at offset 27 of frame B746F0
+1
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'getstatic' at offset 30 of frame B746F0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 
+   instruction 'iconst_2' at offset 33 of frame B746F0
+
+debug operand stack:
+2.0 0.4 
+debug localvars:
+0 
+   instruction 'invokestatic' at offset 34 of frame B746F0
+debug resolveMethod tableswitch.chooseNear:(I)I
+debug runMethod public, static chooseNear, params: 1, len: 36, frame A045B8
+
+debug operand stack:
+empty.
+debug localvars:
+2 
+   instruction 'iload_0' at offset 0 of frame A045B8
+
+debug operand stack:
+2.0 
+debug localvars:
+2 
+   instruction 'tableswitch' at offset 1 of frame A045B8
+
+debug operand stack:
+empty.
+debug localvars:
+2 
+   instruction 'iconst_2' at offset 32 of frame A045B8
+
+debug operand stack:
+2.0 
+debug localvars:
+2 
+   instruction 'ireturn' at offset 33 of frame A045B8
+
+debug operand stack:
+2.0 0.4 
+debug localvars:
+0 
+   instruction 'invokevirtual' at offset 37 of frame B746F0
+2
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'getstatic' at offset 40 of frame B746F0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 
+   instruction 'iconst_3' at offset 43 of frame B746F0
+
+debug operand stack:
+3.0 0.4 
+debug localvars:
+0 
+   instruction 'invokestatic' at offset 44 of frame B746F0
+debug resolveMethod tableswitch.chooseNear:(I)I
+debug runMethod public, static chooseNear, params: 1, len: 36, frame A04798
+
+debug operand stack:
+empty.
+debug localvars:
+3 
+   instruction 'iload_0' at offset 0 of frame A04798
+
+debug operand stack:
+3.0 
+debug localvars:
+3 
+   instruction 'tableswitch' at offset 1 of frame A04798
+
+debug operand stack:
+empty.
+debug localvars:
+3 
+   instruction 'iconst_m1' at offset 34 of frame A04798
+
+debug operand stack:
+-1.0 
+debug localvars:
+3 
+   instruction 'ireturn' at offset 35 of frame A04798
+
+debug operand stack:
+-1.0 0.4 
+debug localvars:
+0 
+   instruction 'invokevirtual' at offset 47 of frame B746F0
+-1
+
+debug operand stack:
+empty.
+debug localvars:
+0 
+   instruction 'return' at offset 50 of frame B746F0
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

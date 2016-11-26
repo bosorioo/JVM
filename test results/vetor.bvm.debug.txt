@@ -1,0 +1,3279 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/vetor
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/vetor.class' loaded
+debug runMethod public, static main, params: 0, len: 386, frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 10718232 0 0 0 0 0 0 0 
+   instruction 'bipush' at offset 0 of frame ECCA0
+
+debug operand stack:
+10.0 
+debug localvars:
+10767432 10718232 0 0 0 0 0 0 0 
+   instruction 'newarray' at offset 2 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 10718232 0 0 0 0 0 0 0 
+   instruction 'astore_1' at offset 4 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'iconst_3' at offset 5 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'newarray' at offset 6 of frame ECCA0
+
+debug operand stack:
+933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dup' at offset 8 of frame ECCA0
+
+debug operand stack:
+933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'iconst_0' at offset 9 of frame ECCA0
+
+debug operand stack:
+0.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 10 of frame ECCA0
+
+debug operand stack:
+0.3 1073741824.3 0.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dastore' at offset 13 of frame ECCA0
+
+debug operand stack:
+933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dup' at offset 14 of frame ECCA0
+
+debug operand stack:
+933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'iconst_1' at offset 15 of frame ECCA0
+
+debug operand stack:
+1.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 16 of frame ECCA0
+
+debug operand stack:
+0.3 1074266112.3 1.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dastore' at offset 19 of frame ECCA0
+
+debug operand stack:
+933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dup' at offset 20 of frame ECCA0
+
+debug operand stack:
+933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'iconst_2' at offset 21 of frame ECCA0
+
+debug operand stack:
+2.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 22 of frame ECCA0
+
+debug operand stack:
+0.3 -1072431104.3 2.0 933992.5 933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'dastore' at offset 25 of frame ECCA0
+
+debug operand stack:
+933992.5 
+debug localvars:
+10767432 969976 0 0 0 0 0 0 0 
+   instruction 'astore_2' at offset 26 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'iconst_4' at offset 27 of frame ECCA0
+
+debug operand stack:
+4.0 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'newarray' at offset 28 of frame ECCA0
+
+debug operand stack:
+934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'dup' at offset 30 of frame ECCA0
+
+debug operand stack:
+934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'iconst_0' at offset 31 of frame ECCA0
+
+debug operand stack:
+0.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 32 of frame ECCA0
+
+debug operand stack:
+-5.2 -1.2 0.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'lastore' at offset 35 of frame ECCA0
+
+debug operand stack:
+934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'dup' at offset 36 of frame ECCA0
+
+debug operand stack:
+934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'iconst_1' at offset 37 of frame ECCA0
+
+debug operand stack:
+1.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 38 of frame ECCA0
+
+debug operand stack:
+3.2 0.2 1.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'lastore' at offset 41 of frame ECCA0
+
+debug operand stack:
+934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'dup' at offset 42 of frame ECCA0
+
+debug operand stack:
+934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'iconst_2' at offset 43 of frame ECCA0
+
+debug operand stack:
+2.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 44 of frame ECCA0
+
+debug operand stack:
+6426246.2 0.2 2.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'lastore' at offset 47 of frame ECCA0
+
+debug operand stack:
+934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'dup' at offset 48 of frame ECCA0
+
+debug operand stack:
+934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'iconst_3' at offset 49 of frame ECCA0
+
+debug operand stack:
+3.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'ldc2_w' at offset 50 of frame ECCA0
+
+debug operand stack:
+-433242.2 -1.2 3.0 934248.5 934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'lastore' at offset 53 of frame ECCA0
+
+debug operand stack:
+934248.5 
+debug localvars:
+10767432 969976 933992 0 0 0 0 0 0 
+   instruction 'astore_3' at offset 54 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'iconst_3' at offset 55 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'newarray' at offset 56 of frame ECCA0
+
+debug operand stack:
+934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'dup' at offset 58 of frame ECCA0
+
+debug operand stack:
+934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'iconst_0' at offset 59 of frame ECCA0
+
+debug operand stack:
+0.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'fconst_2' at offset 60 of frame ECCA0
+
+debug operand stack:
+1073741824.1 0.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'fastore' at offset 61 of frame ECCA0
+
+debug operand stack:
+934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'dup' at offset 62 of frame ECCA0
+
+debug operand stack:
+934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'iconst_1' at offset 63 of frame ECCA0
+
+debug operand stack:
+1.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'ldc' at offset 64 of frame ECCA0
+
+debug operand stack:
+1077936128.1 1.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'fastore' at offset 66 of frame ECCA0
+
+debug operand stack:
+934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'dup' at offset 67 of frame ECCA0
+
+debug operand stack:
+934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'iconst_2' at offset 68 of frame ECCA0
+
+debug operand stack:
+2.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'ldc' at offset 69 of frame ECCA0
+
+debug operand stack:
+-1063256064.1 2.0 934184.5 934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'fastore' at offset 71 of frame ECCA0
+
+debug operand stack:
+934184.5 
+debug localvars:
+10767432 969976 933992 934248 0 0 0 0 0 
+   instruction 'astore' at offset 72 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_3' at offset 74 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'newarray' at offset 75 of frame ECCA0
+
+debug operand stack:
+933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'dup' at offset 77 of frame ECCA0
+
+debug operand stack:
+933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_0' at offset 78 of frame ECCA0
+
+debug operand stack:
+0.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'bipush' at offset 79 of frame ECCA0
+
+debug operand stack:
+-2.0 0.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'bastore' at offset 81 of frame ECCA0
+
+debug operand stack:
+933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'dup' at offset 82 of frame ECCA0
+
+debug operand stack:
+933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_1' at offset 83 of frame ECCA0
+
+debug operand stack:
+1.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_4' at offset 84 of frame ECCA0
+
+debug operand stack:
+4.0 1.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'bastore' at offset 85 of frame ECCA0
+
+debug operand stack:
+933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'dup' at offset 86 of frame ECCA0
+
+debug operand stack:
+933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_2' at offset 87 of frame ECCA0
+
+debug operand stack:
+2.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'iconst_0' at offset 88 of frame ECCA0
+
+debug operand stack:
+0.0 2.0 933960.5 933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'bastore' at offset 89 of frame ECCA0
+
+debug operand stack:
+933960.5 
+debug localvars:
+10767432 969976 933992 934248 934184 0 0 0 0 
+   instruction 'astore' at offset 90 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'iconst_3' at offset 92 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'newarray' at offset 93 of frame ECCA0
+
+debug operand stack:
+934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'dup' at offset 95 of frame ECCA0
+
+debug operand stack:
+934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'iconst_0' at offset 96 of frame ECCA0
+
+debug operand stack:
+0.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'bipush' at offset 97 of frame ECCA0
+
+debug operand stack:
+97.0 0.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'castore' at offset 99 of frame ECCA0
+
+debug operand stack:
+934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'dup' at offset 100 of frame ECCA0
+
+debug operand stack:
+934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'iconst_1' at offset 101 of frame ECCA0
+
+debug operand stack:
+1.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'bipush' at offset 102 of frame ECCA0
+
+debug operand stack:
+48.0 1.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'castore' at offset 104 of frame ECCA0
+
+debug operand stack:
+934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'dup' at offset 105 of frame ECCA0
+
+debug operand stack:
+934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'iconst_2' at offset 106 of frame ECCA0
+
+debug operand stack:
+2.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'bipush' at offset 107 of frame ECCA0
+
+debug operand stack:
+41.0 2.0 934312.5 934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'castore' at offset 109 of frame ECCA0
+
+debug operand stack:
+934312.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 0 0 0 
+   instruction 'astore' at offset 110 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'iconst_3' at offset 112 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'newarray' at offset 113 of frame ECCA0
+
+debug operand stack:
+934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'dup' at offset 115 of frame ECCA0
+
+debug operand stack:
+934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'iconst_0' at offset 116 of frame ECCA0
+
+debug operand stack:
+0.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'bipush' at offset 117 of frame ECCA0
+
+debug operand stack:
+15.0 0.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'sastore' at offset 119 of frame ECCA0
+
+debug operand stack:
+934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'dup' at offset 120 of frame ECCA0
+
+debug operand stack:
+934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'iconst_1' at offset 121 of frame ECCA0
+
+debug operand stack:
+1.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'sipush' at offset 122 of frame ECCA0
+
+debug operand stack:
+1000.0 1.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'sastore' at offset 125 of frame ECCA0
+
+debug operand stack:
+934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'dup' at offset 126 of frame ECCA0
+
+debug operand stack:
+934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'iconst_2' at offset 127 of frame ECCA0
+
+debug operand stack:
+2.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'bipush' at offset 128 of frame ECCA0
+
+debug operand stack:
+-2.0 2.0 934024.5 934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'sastore' at offset 130 of frame ECCA0
+
+debug operand stack:
+934024.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 0 0 
+   instruction 'astore' at offset 131 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_0' at offset 133 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'istore' at offset 134 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+0.0 0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+1.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+1.0 1.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+2.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+2.0 2.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+3.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+4.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+4.0 4.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+5.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 5.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+5.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+5.0 5.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+6.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 6.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+6.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+6.0 6.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+7.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 7.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+7.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+7.0 7.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+8.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 8.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+8.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+8.0 8.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+9.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 9.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'aload_1' at offset 143 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iload' at offset 144 of frame ECCA0
+
+debug operand stack:
+9.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iload' at offset 146 of frame ECCA0
+
+debug operand stack:
+9.0 9.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iastore' at offset 148 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iinc' at offset 149 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'goto' at offset 152 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iload' at offset 136 of frame ECCA0
+
+debug operand stack:
+10.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'bipush' at offset 138 of frame ECCA0
+
+debug operand stack:
+10.0 10.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'if_icmpge' at offset 140 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'aload_1' at offset 155 of frame ECCA0
+
+debug operand stack:
+969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iconst_0' at offset 156 of frame ECCA0
+
+debug operand stack:
+0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'dup2' at offset 157 of frame ECCA0
+
+debug operand stack:
+0.0 969976.5 0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iaload' at offset 158 of frame ECCA0
+
+debug operand stack:
+0.0 0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'ldc' at offset 159 of frame ECCA0
+
+debug operand stack:
+100000.0 0.0 0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iadd' at offset 161 of frame ECCA0
+
+debug operand stack:
+100000.0 0.0 969976.5 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iastore' at offset 162 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iconst_0' at offset 163 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'istore' at offset 164 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+0.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+100000.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+100000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+1.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+1.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+1
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+2.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+2.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+2
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+3.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+3.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+3
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+4.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+4.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+4
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+5.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 5.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+5.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+5.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+5
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 5 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+6.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 6.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+6.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+6.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+6
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 6 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+7.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 7.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+7.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+7.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+7
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 7 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+8.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 8.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+8.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+8.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+8
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 8 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+9.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 9.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'getstatic' at offset 173 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'aload_1' at offset 176 of frame ECCA0
+
+debug operand stack:
+969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iload' at offset 177 of frame ECCA0
+
+debug operand stack:
+9.0 969976.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iaload' at offset 179 of frame ECCA0
+
+debug operand stack:
+9.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'invokevirtual' at offset 180 of frame ECCA0
+9
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 9 
+   instruction 'iinc' at offset 183 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'goto' at offset 186 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iload' at offset 166 of frame ECCA0
+
+debug operand stack:
+10.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'bipush' at offset 168 of frame ECCA0
+
+debug operand stack:
+10.0 10.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'if_icmpge' at offset 170 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'getstatic' at offset 189 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'invokevirtual' at offset 192 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'iconst_0' at offset 195 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 10 
+   instruction 'istore' at offset 196 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 198 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_3' at offset 200 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 201 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 204 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload_2' at offset 207 of frame ECCA0
+
+debug operand stack:
+933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 208 of frame ECCA0
+
+debug operand stack:
+0.0 933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'daload' at offset 210 of frame ECCA0
+
+debug operand stack:
+0.0 1073741824.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 211 of frame ECCA0
+2.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 214 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 217 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 198 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_3' at offset 200 of frame ECCA0
+
+debug operand stack:
+3.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 201 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 204 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload_2' at offset 207 of frame ECCA0
+
+debug operand stack:
+933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 208 of frame ECCA0
+
+debug operand stack:
+1.0 933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'daload' at offset 210 of frame ECCA0
+
+debug operand stack:
+0.0 1074266112.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 211 of frame ECCA0
+3.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 214 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 217 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 198 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_3' at offset 200 of frame ECCA0
+
+debug operand stack:
+3.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 201 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 204 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload_2' at offset 207 of frame ECCA0
+
+debug operand stack:
+933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 208 of frame ECCA0
+
+debug operand stack:
+2.0 933992.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'daload' at offset 210 of frame ECCA0
+
+debug operand stack:
+0.0 -1072431104.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 211 of frame ECCA0
+-5.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 214 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 217 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 198 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_3' at offset 200 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 201 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 220 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 223 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_0' at offset 226 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'istore' at offset 227 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 229 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_4' at offset 231 of frame ECCA0
+
+debug operand stack:
+4.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 232 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 235 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload_3' at offset 238 of frame ECCA0
+
+debug operand stack:
+934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 239 of frame ECCA0
+
+debug operand stack:
+0.0 934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'laload' at offset 241 of frame ECCA0
+
+debug operand stack:
+-5.0 -1.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 242 of frame ECCA0
+-5
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 245 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 248 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 229 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_4' at offset 231 of frame ECCA0
+
+debug operand stack:
+4.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 232 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 235 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload_3' at offset 238 of frame ECCA0
+
+debug operand stack:
+934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 239 of frame ECCA0
+
+debug operand stack:
+1.0 934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'laload' at offset 241 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 242 of frame ECCA0
+3
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 245 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 248 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 229 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_4' at offset 231 of frame ECCA0
+
+debug operand stack:
+4.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 232 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 235 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload_3' at offset 238 of frame ECCA0
+
+debug operand stack:
+934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 239 of frame ECCA0
+
+debug operand stack:
+2.0 934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'laload' at offset 241 of frame ECCA0
+
+debug operand stack:
+6426246.0 0.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 242 of frame ECCA0
+6426246
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 245 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 248 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 229 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_4' at offset 231 of frame ECCA0
+
+debug operand stack:
+4.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 232 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 235 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'aload_3' at offset 238 of frame ECCA0
+
+debug operand stack:
+934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 239 of frame ECCA0
+
+debug operand stack:
+3.0 934248.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'laload' at offset 241 of frame ECCA0
+
+debug operand stack:
+-433242.0 -1.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 242 of frame ECCA0
+-433242
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iinc' at offset 245 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'goto' at offset 248 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iload' at offset 229 of frame ECCA0
+
+debug operand stack:
+4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iconst_4' at offset 231 of frame ECCA0
+
+debug operand stack:
+4.0 4.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'if_icmpge' at offset 232 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'getstatic' at offset 251 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'invokevirtual' at offset 254 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'iconst_0' at offset 257 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 4 
+   instruction 'istore' at offset 258 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 260 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_3' at offset 262 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 263 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 266 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload' at offset 269 of frame ECCA0
+
+debug operand stack:
+934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 271 of frame ECCA0
+
+debug operand stack:
+0.0 934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'faload' at offset 273 of frame ECCA0
+
+debug operand stack:
+1073741824.1 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 274 of frame ECCA0
+2.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 277 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 280 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 260 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_3' at offset 262 of frame ECCA0
+
+debug operand stack:
+3.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 263 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 266 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload' at offset 269 of frame ECCA0
+
+debug operand stack:
+934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 271 of frame ECCA0
+
+debug operand stack:
+1.0 934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'faload' at offset 273 of frame ECCA0
+
+debug operand stack:
+1077936128.1 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 274 of frame ECCA0
+3.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 277 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 280 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 260 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_3' at offset 262 of frame ECCA0
+
+debug operand stack:
+3.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 263 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 266 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload' at offset 269 of frame ECCA0
+
+debug operand stack:
+934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 271 of frame ECCA0
+
+debug operand stack:
+2.0 934184.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'faload' at offset 273 of frame ECCA0
+
+debug operand stack:
+-1063256064.1 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 274 of frame ECCA0
+-5.000000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 277 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 280 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 260 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_3' at offset 262 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 263 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 283 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 286 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_0' at offset 289 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'istore' at offset 290 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 292 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_3' at offset 294 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 295 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 298 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload' at offset 301 of frame ECCA0
+
+debug operand stack:
+933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 303 of frame ECCA0
+
+debug operand stack:
+0.0 933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'baload' at offset 305 of frame ECCA0
+
+debug operand stack:
+-2.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 306 of frame ECCA0
+-2
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 309 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 312 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 292 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_3' at offset 294 of frame ECCA0
+
+debug operand stack:
+3.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 295 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 298 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload' at offset 301 of frame ECCA0
+
+debug operand stack:
+933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 303 of frame ECCA0
+
+debug operand stack:
+1.0 933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'baload' at offset 305 of frame ECCA0
+
+debug operand stack:
+4.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 306 of frame ECCA0
+4
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 309 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 312 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 292 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_3' at offset 294 of frame ECCA0
+
+debug operand stack:
+3.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 295 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 298 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload' at offset 301 of frame ECCA0
+
+debug operand stack:
+933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 303 of frame ECCA0
+
+debug operand stack:
+2.0 933960.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'baload' at offset 305 of frame ECCA0
+
+debug operand stack:
+0.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 306 of frame ECCA0
+0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 309 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 312 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 292 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_3' at offset 294 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 295 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 315 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 318 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_0' at offset 321 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'istore' at offset 322 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 324 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_3' at offset 326 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 327 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 330 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload' at offset 333 of frame ECCA0
+
+debug operand stack:
+934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 335 of frame ECCA0
+
+debug operand stack:
+0.0 934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'caload' at offset 337 of frame ECCA0
+
+debug operand stack:
+97.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 338 of frame ECCA0
+a
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 341 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 344 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 324 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_3' at offset 326 of frame ECCA0
+
+debug operand stack:
+3.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 327 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 330 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload' at offset 333 of frame ECCA0
+
+debug operand stack:
+934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 335 of frame ECCA0
+
+debug operand stack:
+1.0 934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'caload' at offset 337 of frame ECCA0
+
+debug operand stack:
+48.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 338 of frame ECCA0
+0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 341 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 344 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 324 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_3' at offset 326 of frame ECCA0
+
+debug operand stack:
+3.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 327 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 330 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload' at offset 333 of frame ECCA0
+
+debug operand stack:
+934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 335 of frame ECCA0
+
+debug operand stack:
+2.0 934312.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'caload' at offset 337 of frame ECCA0
+
+debug operand stack:
+41.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 338 of frame ECCA0
+)
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 341 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 344 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 324 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_3' at offset 326 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 327 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 347 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 350 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_0' at offset 353 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'istore' at offset 354 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 356 of frame ECCA0
+
+debug operand stack:
+0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iconst_3' at offset 358 of frame ECCA0
+
+debug operand stack:
+3.0 0.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'if_icmpge' at offset 359 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'getstatic' at offset 362 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'aload' at offset 365 of frame ECCA0
+
+debug operand stack:
+934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iload' at offset 367 of frame ECCA0
+
+debug operand stack:
+0.0 934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'saload' at offset 369 of frame ECCA0
+
+debug operand stack:
+15.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'invokevirtual' at offset 370 of frame ECCA0
+15
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 0 
+   instruction 'iinc' at offset 373 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'goto' at offset 376 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 356 of frame ECCA0
+
+debug operand stack:
+1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iconst_3' at offset 358 of frame ECCA0
+
+debug operand stack:
+3.0 1.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'if_icmpge' at offset 359 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'getstatic' at offset 362 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'aload' at offset 365 of frame ECCA0
+
+debug operand stack:
+934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iload' at offset 367 of frame ECCA0
+
+debug operand stack:
+1.0 934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'saload' at offset 369 of frame ECCA0
+
+debug operand stack:
+1000.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'invokevirtual' at offset 370 of frame ECCA0
+1000
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 1 
+   instruction 'iinc' at offset 373 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'goto' at offset 376 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 356 of frame ECCA0
+
+debug operand stack:
+2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iconst_3' at offset 358 of frame ECCA0
+
+debug operand stack:
+3.0 2.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'if_icmpge' at offset 359 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'getstatic' at offset 362 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'aload' at offset 365 of frame ECCA0
+
+debug operand stack:
+934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iload' at offset 367 of frame ECCA0
+
+debug operand stack:
+2.0 934024.5 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'saload' at offset 369 of frame ECCA0
+
+debug operand stack:
+-2.0 0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'invokevirtual' at offset 370 of frame ECCA0
+-2
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 2 
+   instruction 'iinc' at offset 373 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'goto' at offset 376 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iload' at offset 356 of frame ECCA0
+
+debug operand stack:
+3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'iconst_3' at offset 358 of frame ECCA0
+
+debug operand stack:
+3.0 3.0 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'if_icmpge' at offset 359 of frame ECCA0
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'getstatic' at offset 379 of frame ECCA0
+
+debug operand stack:
+0.4 
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'invokevirtual' at offset 382 of frame ECCA0
+
+
+debug operand stack:
+empty.
+debug localvars:
+10767432 969976 933992 934248 934184 933960 934312 934024 3 
+   instruction 'return' at offset 385 of frame ECCA0
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

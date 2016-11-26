@@ -1,0 +1,293 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/long_cast
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/long_cast.class' loaded
+debug runMethod public, static main, params: 0, len: 88, frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 9977712 1956204968 1956206128 1956206512 1956910368 
+   instruction 'ldc2_w' at offset 0 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 
+debug localvars:
+9979376 9977712 1956204968 1956206128 1956206512 1956910368 
+   instruction 'lstore_1' at offset 3 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 1956206128 1956206512 1956910368 
+   instruction 'lload_1' at offset 4 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 
+debug localvars:
+9979376 -1 -268435457 1956206128 1956206512 1956910368 
+   instruction 'l2i' at offset 5 of frame 9845C8
+
+debug operand stack:
+-268435457.0 
+debug localvars:
+9979376 -1 -268435457 1956206128 1956206512 1956910368 
+   instruction 'i2s' at offset 6 of frame 9845C8
+
+debug operand stack:
+-1.0 
+debug localvars:
+9979376 -1 -268435457 1956206128 1956206512 1956910368 
+   instruction 'istore_3' at offset 7 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 1956206512 1956910368 
+   instruction 'lload_1' at offset 8 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 
+debug localvars:
+9979376 -1 -268435457 -1 1956206512 1956910368 
+   instruction 'l2f' at offset 9 of frame 9845C8
+
+debug operand stack:
+-847249408.1 
+debug localvars:
+9979376 -1 -268435457 -1 1956206512 1956910368 
+   instruction 'fstore' at offset 10 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 1956910368 
+   instruction 'lload_1' at offset 12 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 1956910368 
+   instruction 'l2i' at offset 13 of frame 9845C8
+
+debug operand stack:
+-268435457.0 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 1956910368 
+   instruction 'istore' at offset 14 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'getstatic' at offset 16 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'lload_1' at offset 19 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'invokevirtual' at offset 20 of frame 9845C8
+-268435457
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'getstatic' at offset 23 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'iload_3' at offset 26 of frame 9845C8
+
+debug operand stack:
+-1.0 0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'invokevirtual' at offset 27 of frame 9845C8
+-1
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'getstatic' at offset 30 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'fload' at offset 33 of frame 9845C8
+
+debug operand stack:
+-847249408.1 0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'invokevirtual' at offset 35 of frame 9845C8
+-268435456.000000
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'getstatic' at offset 38 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'iload' at offset 41 of frame 9845C8
+
+debug operand stack:
+-268435457.0 0.4 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'invokevirtual' at offset 43 of frame 9845C8
+-268435457
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'lload_1' at offset 46 of frame 9845C8
+
+debug operand stack:
+-268435457.2 -1.2 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'lneg' at offset 47 of frame 9845C8
+
+debug operand stack:
+268435457.2 0.2 
+debug localvars:
+9979376 -1 -268435457 -1 -847249408 -268435457 
+   instruction 'lstore_1' at offset 48 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 -847249408 -268435457 
+   instruction 'lload_1' at offset 49 of frame 9845C8
+
+debug operand stack:
+268435457.2 0.2 
+debug localvars:
+9979376 0 268435457 -1 -847249408 -268435457 
+   instruction 'l2f' at offset 50 of frame 9845C8
+
+debug operand stack:
+1300234240.1 
+debug localvars:
+9979376 0 268435457 -1 -847249408 -268435457 
+   instruction 'fstore' at offset 51 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 -268435457 
+   instruction 'lload_1' at offset 53 of frame 9845C8
+
+debug operand stack:
+268435457.2 0.2 
+debug localvars:
+9979376 0 268435457 -1 1300234240 -268435457 
+   instruction 'l2i' at offset 54 of frame 9845C8
+
+debug operand stack:
+268435457.0 
+debug localvars:
+9979376 0 268435457 -1 1300234240 -268435457 
+   instruction 'istore' at offset 55 of frame 9845C8
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'getstatic' at offset 57 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'lload_1' at offset 60 of frame 9845C8
+
+debug operand stack:
+268435457.2 0.2 0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'invokevirtual' at offset 61 of frame 9845C8
+268435457
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'getstatic' at offset 64 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'iload_3' at offset 67 of frame 9845C8
+
+debug operand stack:
+-1.0 0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'invokevirtual' at offset 68 of frame 9845C8
+-1
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'getstatic' at offset 71 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'fload' at offset 74 of frame 9845C8
+
+debug operand stack:
+1300234240.1 0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'invokevirtual' at offset 76 of frame 9845C8
+268435456.000000
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'getstatic' at offset 79 of frame 9845C8
+
+debug operand stack:
+0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'iload' at offset 82 of frame 9845C8
+
+debug operand stack:
+268435457.0 0.4 
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'invokevirtual' at offset 84 of frame 9845C8
+268435457
+
+debug operand stack:
+empty.
+debug localvars:
+9979376 0 268435457 -1 1300234240 268435457 
+   instruction 'return' at offset 87 of frame 9845C8
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

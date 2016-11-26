@@ -1,0 +1,1390 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/HarmonicSeries
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/HarmonicSeries.class' loaded
+debug runMethod public, static main, params: 0, len: 30, frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 0 
+   instruction 'bipush' at offset 0 of frame A141E0
+
+debug operand stack:
+20.0 
+debug localvars:
+0 0 0 0 
+   instruction 'istore_1' at offset 2 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 20 0 0 
+   instruction 'dconst_0' at offset 3 of frame A141E0
+
+debug operand stack:
+0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'dstore_2' at offset 4 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 20 0 0 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+20.0 
+debug localvars:
+0 20 0 0 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 20 0 0 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+20.0 0.3 1072693248.3 0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1077149696.3 0.3 1072693248.3 0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1717986918.3 1068079513.3 0.3 0.3 
+debug localvars:
+0 20 0 0 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1717986918.3 1068079513.3 
+debug localvars:
+0 20 0 0 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 20 1068079513 -1717986918 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+19.0 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-1717986918.3 1068079513.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1717986918.3 1068079513.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+19.0 0.3 1072693248.3 -1717986918.3 1068079513.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1077084160.3 0.3 1072693248.3 -1717986918.3 1068079513.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1130254552.3 1068167814.3 -1717986918.3 1068079513.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+723362913.3 1069172240.3 
+debug localvars:
+0 19 1068079513 -1717986918 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 19 1069172240 723362913 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+18.0 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+723362913.3 1069172240.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 723362913.3 1069172240.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+18.0 0.3 1072693248.3 723362913.3 1069172240.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1077018624.3 0.3 1072693248.3 723362913.3 1069172240.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+477218588.3 1068265927.3 723362913.3 1069172240.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-592755720.3 1069825913.3 
+debug localvars:
+0 18 1069172240 723362913 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 18 1069825913 -592755720 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+17.0 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-592755720.3 1069825913.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -592755720.3 1069825913.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+17.0 0.3 1072693248.3 -592755720.3 1069825913.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076953088.3 0.3 1072693248.3 -592755720.3 1069825913.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+505290270.3 1068375582.3 -592755720.3 1069825913.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+1681050496.3 1070319361.3 
+debug localvars:
+0 17 1069825913 -592755720 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 17 1070319361 1681050496 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+16.0 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+1681050496.3 1070319361.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 1681050496.3 1070319361.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+16.0 0.3 1072693248.3 1681050496.3 1070319361.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076887552.3 0.3 1072693248.3 1681050496.3 1070319361.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+0.3 1068498944.3 1681050496.3 1070319361.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1306958400.3 1070719872.3 
+debug localvars:
+0 16 1070319361 1681050496 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 16 1070719872 -1306958400 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+15.0 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-1306958400.3 1070719872.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1306958400.3 1070719872.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+15.0 0.3 1072693248.3 -1306958400.3 1070719872.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076756480.3 0.3 1072693248.3 -1306958400.3 1070719872.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+286331153.3 1068568849.3 -1306958400.3 1070719872.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-161633788.3 1070999492.3 
+debug localvars:
+0 15 1070719872 -1306958400 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 15 1070999492 -161633788 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+14.0 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-161633788.3 1070999492.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -161633788.3 1070999492.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+14.0 0.3 1072693248.3 -161633788.3 1070999492.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076625408.3 0.3 1072693248.3 -161633788.3 1070999492.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1840700270.3 1068648740.3 -161633788.3 1070999492.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+451932968.3 1071299086.3 
+debug localvars:
+0 14 1070999492 -161633788 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 14 1071299086 451932968 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+13.0 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+451932968.3 1071299086.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 451932968.3 1071299086.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+13.0 0.3 1072693248.3 451932968.3 1071299086.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076494336.3 0.3 1072693248.3 451932968.3 1071299086.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+330382100.3 1068740923.3 451932968.3 1071299086.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-539213331.3 1071621724.3 
+debug localvars:
+0 13 1071299086 451932968 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 13 1071621724 -539213331 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+12.0 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-539213331.3 1071621724.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -539213331.3 1071621724.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+12.0 0.3 1072693248.3 -539213331.3 1071621724.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076363264.3 0.3 1072693248.3 -539213331.3 1071621724.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+1431655765.3 1068848469.3 -539213331.3 1071621724.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+446221217.3 1071807961.3 
+debug localvars:
+0 12 1071621724 -539213331 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 12 1071807961 446221217 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+11.0 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+446221217.3 1071807961.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 446221217.3 1071807961.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+11.0 0.3 1072693248.3 446221217.3 1071807961.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076232192.3 0.3 1072693248.3 446221217.3 1071807961.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+1952257862.3 1068975569.3 446221217.3 1071807961.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+1227124362.3 1071998611.3 
+debug localvars:
+0 11 1071807961 446221217 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 11 1071998611 1227124362 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+10.0 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+1227124362.3 1071998611.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 1227124362.3 1071998611.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+10.0 0.3 1072693248.3 1227124362.3 1071998611.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1076101120.3 0.3 1072693248.3 1227124362.3 1071998611.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1717986918.3 1069128089.3 1227124362.3 1071998611.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+2086117821.3 1072208326.3 
+debug localvars:
+0 10 1071998611 1227124362 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 10 1072208326 2086117821 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+9.0 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+2086117821.3 1072208326.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 2086117821.3 1072208326.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+9.0 0.3 1072693248.3 2086117821.3 1072208326.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1075970048.3 0.3 1072693248.3 2086117821.3 1072208326.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+477218588.3 1069314503.3 2086117821.3 1072208326.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+1608899232.3 1072441343.3 
+debug localvars:
+0 9 1072208326 2086117821 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 9 1072441343 1608899232 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+8.0 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+1608899232.3 1072441343.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 1608899232.3 1072441343.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+8.0 0.3 1072693248.3 1608899232.3 1072441343.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1075838976.3 0.3 1072693248.3 1608899232.3 1072441343.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+0.3 1069547520.3 1608899232.3 1072441343.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1343034032.3 1072698367.3 
+debug localvars:
+0 8 1072441343 1608899232 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 8 1072698367 -1343034032 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+7.0 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-1343034032.3 1072698367.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1343034032.3 1072698367.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+7.0 0.3 1072693248.3 -1343034032.3 1072698367.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1075576832.3 0.3 1072693248.3 -1343034032.3 1072698367.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1840700270.3 1069697316.3 -1343034032.3 1072698367.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+1111232994.3 1072848164.3 
+debug localvars:
+0 7 1072698367 -1343034032 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 7 1072848164 1111232994 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+6.0 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+1111232994.3 1072848164.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 1111232994.3 1072848164.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+6.0 0.3 1072693248.3 1111232994.3 1072848164.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1075314688.3 0.3 1072693248.3 1111232994.3 1072848164.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+1431655765.3 1069897045.3 1111232994.3 1072848164.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-320422771.3 1073022926.3 
+debug localvars:
+0 6 1072848164 1111232994 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 6 1073022926 -320422771 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+5.0 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-320422771.3 1073022926.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -320422771.3 1073022926.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+5.0 0.3 1072693248.3 -320422771.3 1073022926.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1075052544.3 0.3 1072693248.3 -320422771.3 1073022926.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+-1717986918.3 1070176665.3 -320422771.3 1073022926.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+538570688.3 1073232642.3 
+debug localvars:
+0 5 1073022926 -320422771 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 5 1073232642 538570688 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+4.0 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+538570688.3 1073232642.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 538570688.3 1073232642.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+4.0 0.3 1072693248.3 538570688.3 1073232642.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1074790400.3 0.3 1072693248.3 538570688.3 1073232642.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+0.3 1070596096.3 538570688.3 1073232642.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+538570688.3 1073494786.3 
+debug localvars:
+0 4 1073232642 538570688 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 4 1073494786 538570688 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+3.0 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+538570688.3 1073494786.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 538570688.3 1073494786.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+3.0 0.3 1072693248.3 538570688.3 1073494786.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1074266112.3 0.3 1072693248.3 538570688.3 1073494786.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+1431655765.3 1070945621.3 538570688.3 1073494786.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1073793067.3 
+debug localvars:
+0 3 1073494786 538570688 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 3 1073793067 -1162370421 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+2.0 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1073793067.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1162370421.3 1073793067.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+2.0 0.3 1072693248.3 -1162370421.3 1073793067.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1073741824.3 0.3 1072693248.3 -1162370421.3 1073793067.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+0.3 1071644672.3 -1162370421.3 1073793067.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1074055211.3 
+debug localvars:
+0 2 1073793067 -1162370421 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 1074055211 -1162370421 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+1.0 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'dload_2' at offset 9 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1074055211.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'dconst_1' at offset 10 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1162370421.3 1074055211.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'iload_1' at offset 11 of frame A141E0
+
+debug operand stack:
+1.0 0.3 1072693248.3 -1162370421.3 1074055211.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'i2d' at offset 12 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 0.3 1072693248.3 -1162370421.3 1074055211.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'ddiv' at offset 13 of frame A141E0
+
+debug operand stack:
+0.3 1072693248.3 -1162370421.3 1074055211.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'dadd' at offset 14 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1074579499.3 
+debug localvars:
+0 1 1074055211 -1162370421 
+   instruction 'dstore_2' at offset 15 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1074579499 -1162370421 
+   instruction 'iinc' at offset 16 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'goto' at offset 19 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'iload_1' at offset 5 of frame A141E0
+
+debug operand stack:
+0.0 
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'ifle' at offset 6 of frame A141E0
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'getstatic' at offset 22 of frame A141E0
+
+debug operand stack:
+0.4 
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'dload_2' at offset 25 of frame A141E0
+
+debug operand stack:
+-1162370421.3 1074579499.3 0.4 
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'invokevirtual' at offset 26 of frame A141E0
+3.597740
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1074579499 -1162370421 
+   instruction 'return' at offset 29 of frame A141E0
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

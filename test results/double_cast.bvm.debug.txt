@@ -1,0 +1,102 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_cast
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/double_cast.class' loaded
+debug runMethod public, static main, params: 0, len: 29, frame 8745C8
+
+debug operand stack:
+empty.
+debug localvars:
+1986095650 1634479969 1227843438 
+   instruction 'ldc2_w' at offset 0 of frame 8745C8
+
+debug operand stack:
+1717986918.3 1079584358.3 
+debug localvars:
+1986095650 1634479969 1227843438 
+   instruction 'dstore_1' at offset 3 of frame 8745C8
+
+debug operand stack:
+empty.
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'getstatic' at offset 4 of frame 8745C8
+
+debug operand stack:
+0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'dload_1' at offset 7 of frame 8745C8
+
+debug operand stack:
+1717986918.3 1079584358.3 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'd2f' at offset 8 of frame 8745C8
+
+debug operand stack:
+1120482099.1 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'invokevirtual' at offset 9 of frame 8745C8
+100.599998
+
+debug operand stack:
+empty.
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'getstatic' at offset 12 of frame 8745C8
+
+debug operand stack:
+0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'dload_1' at offset 15 of frame 8745C8
+
+debug operand stack:
+1717986918.3 1079584358.3 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'd2i' at offset 16 of frame 8745C8
+
+debug operand stack:
+100.0 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'invokevirtual' at offset 17 of frame 8745C8
+100
+
+debug operand stack:
+empty.
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'getstatic' at offset 20 of frame 8745C8
+
+debug operand stack:
+0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'dload_1' at offset 23 of frame 8745C8
+
+debug operand stack:
+1717986918.3 1079584358.3 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'd2l' at offset 24 of frame 8745C8
+
+debug operand stack:
+100.2 0.2 0.4 
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'invokevirtual' at offset 25 of frame 8745C8
+100
+
+debug operand stack:
+empty.
+debug localvars:
+1986095650 1079584358 1717986918 
+   instruction 'return' at offset 28 of frame 8745C8
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

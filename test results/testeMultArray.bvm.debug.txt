@@ -1,0 +1,3357 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/testeMultArray
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/testeMultArray.class' loaded
+debug runMethod public, static main, params: 0, len: 149, frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 0 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 1 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 0 
+   instruction 'multianewarray' at offset 2 of frame 82DEE8
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 0 0 
+   instruction 'putstatic' at offset 6 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 9 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 10 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 0 
+   instruction 'multianewarray' at offset 11 of frame 82DEE8
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 0 0 
+   instruction 'putstatic' at offset 15 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 18 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 19 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 0 
+   instruction 'multianewarray' at offset 20 of frame 82DEE8
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 0 0 
+   instruction 'putstatic' at offset 24 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 27 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 28 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 0 
+   instruction 'multianewarray' at offset 29 of frame 82DEE8
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 0 0 
+   instruction 'putstatic' at offset 33 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 36 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 37 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 0 
+   instruction 'multianewarray' at offset 38 of frame 82DEE8
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 0 0 
+   instruction 'putstatic' at offset 42 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_0' at offset 45 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 0 0 
+   instruction 'istore_1' at offset 46 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'goto' at offset 47 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 113 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 114 of frame 82DEE8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+0 0 0 
+   instruction 'if_icmplt' at offset 115 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iconst_0' at offset 50 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 0 0 
+   instruction 'istore_2' at offset 51 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'goto' at offset 52 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 0 0 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+0 0 0 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'getstatic' at offset 55 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 58 of frame 82DEE8
+
+debug operand stack:
+0.0 8537096.5 
+debug localvars:
+0 0 0 
+   instruction 'aaload' at offset 59 of frame 82DEE8
+
+debug operand stack:
+8537608.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 60 of frame 82DEE8
+
+debug operand stack:
+0.0 8537608.5 
+debug localvars:
+0 0 0 
+   instruction 'bipush' at offset 61 of frame 82DEE8
+
+debug operand stack:
+10.0 0.0 8537608.5 
+debug localvars:
+0 0 0 
+   instruction 'iastore' at offset 63 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'getstatic' at offset 64 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 67 of frame 82DEE8
+
+debug operand stack:
+0.0 8537960.5 
+debug localvars:
+0 0 0 
+   instruction 'aaload' at offset 68 of frame 82DEE8
+
+debug operand stack:
+8537448.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 69 of frame 82DEE8
+
+debug operand stack:
+0.0 8537448.5 
+debug localvars:
+0 0 0 
+   instruction 'ldc2_w' at offset 70 of frame 82DEE8
+
+debug operand stack:
+15.2 0.2 0.0 8537448.5 
+debug localvars:
+0 0 0 
+   instruction 'lastore' at offset 73 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'getstatic' at offset 74 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 77 of frame 82DEE8
+
+debug operand stack:
+0.0 8537160.5 
+debug localvars:
+0 0 0 
+   instruction 'aaload' at offset 78 of frame 82DEE8
+
+debug operand stack:
+8537480.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 79 of frame 82DEE8
+
+debug operand stack:
+0.0 8537480.5 
+debug localvars:
+0 0 0 
+   instruction 'bipush' at offset 80 of frame 82DEE8
+
+debug operand stack:
+20.0 0.0 8537480.5 
+debug localvars:
+0 0 0 
+   instruction 'bastore' at offset 82 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'getstatic' at offset 83 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 86 of frame 82DEE8
+
+debug operand stack:
+0.0 8537672.5 
+debug localvars:
+0 0 0 
+   instruction 'aaload' at offset 87 of frame 82DEE8
+
+debug operand stack:
+8537704.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 88 of frame 82DEE8
+
+debug operand stack:
+0.0 8537704.5 
+debug localvars:
+0 0 0 
+   instruction 'ldc' at offset 89 of frame 82DEE8
+
+debug operand stack:
+1103626240.1 0.0 8537704.5 
+debug localvars:
+0 0 0 
+   instruction 'fastore' at offset 91 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'getstatic' at offset 92 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_1' at offset 95 of frame 82DEE8
+
+debug operand stack:
+0.0 8538024.5 
+debug localvars:
+0 0 0 
+   instruction 'aaload' at offset 96 of frame 82DEE8
+
+debug operand stack:
+8537224.5 
+debug localvars:
+0 0 0 
+   instruction 'iload_2' at offset 97 of frame 82DEE8
+
+debug operand stack:
+0.0 8537224.5 
+debug localvars:
+0 0 0 
+   instruction 'ldc2_w' at offset 98 of frame 82DEE8
+
+debug operand stack:
+0.3 1077805056.3 0.0 8537224.5 
+debug localvars:
+0 0 0 
+   instruction 'dastore' at offset 101 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 0 
+   instruction 'iinc' at offset 102 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+1.0 
+debug localvars:
+0 0 1 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+0 0 1 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'getstatic' at offset 55 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_1' at offset 58 of frame 82DEE8
+
+debug operand stack:
+0.0 8537096.5 
+debug localvars:
+0 0 1 
+   instruction 'aaload' at offset 59 of frame 82DEE8
+
+debug operand stack:
+8537608.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 60 of frame 82DEE8
+
+debug operand stack:
+1.0 8537608.5 
+debug localvars:
+0 0 1 
+   instruction 'bipush' at offset 61 of frame 82DEE8
+
+debug operand stack:
+10.0 1.0 8537608.5 
+debug localvars:
+0 0 1 
+   instruction 'iastore' at offset 63 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'getstatic' at offset 64 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_1' at offset 67 of frame 82DEE8
+
+debug operand stack:
+0.0 8537960.5 
+debug localvars:
+0 0 1 
+   instruction 'aaload' at offset 68 of frame 82DEE8
+
+debug operand stack:
+8537448.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 69 of frame 82DEE8
+
+debug operand stack:
+1.0 8537448.5 
+debug localvars:
+0 0 1 
+   instruction 'ldc2_w' at offset 70 of frame 82DEE8
+
+debug operand stack:
+15.2 0.2 1.0 8537448.5 
+debug localvars:
+0 0 1 
+   instruction 'lastore' at offset 73 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'getstatic' at offset 74 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_1' at offset 77 of frame 82DEE8
+
+debug operand stack:
+0.0 8537160.5 
+debug localvars:
+0 0 1 
+   instruction 'aaload' at offset 78 of frame 82DEE8
+
+debug operand stack:
+8537480.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 79 of frame 82DEE8
+
+debug operand stack:
+1.0 8537480.5 
+debug localvars:
+0 0 1 
+   instruction 'bipush' at offset 80 of frame 82DEE8
+
+debug operand stack:
+20.0 1.0 8537480.5 
+debug localvars:
+0 0 1 
+   instruction 'bastore' at offset 82 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'getstatic' at offset 83 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_1' at offset 86 of frame 82DEE8
+
+debug operand stack:
+0.0 8537672.5 
+debug localvars:
+0 0 1 
+   instruction 'aaload' at offset 87 of frame 82DEE8
+
+debug operand stack:
+8537704.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 88 of frame 82DEE8
+
+debug operand stack:
+1.0 8537704.5 
+debug localvars:
+0 0 1 
+   instruction 'ldc' at offset 89 of frame 82DEE8
+
+debug operand stack:
+1103626240.1 1.0 8537704.5 
+debug localvars:
+0 0 1 
+   instruction 'fastore' at offset 91 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'getstatic' at offset 92 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_1' at offset 95 of frame 82DEE8
+
+debug operand stack:
+0.0 8538024.5 
+debug localvars:
+0 0 1 
+   instruction 'aaload' at offset 96 of frame 82DEE8
+
+debug operand stack:
+8537224.5 
+debug localvars:
+0 0 1 
+   instruction 'iload_2' at offset 97 of frame 82DEE8
+
+debug operand stack:
+1.0 8537224.5 
+debug localvars:
+0 0 1 
+   instruction 'ldc2_w' at offset 98 of frame 82DEE8
+
+debug operand stack:
+0.3 1077805056.3 1.0 8537224.5 
+debug localvars:
+0 0 1 
+   instruction 'dastore' at offset 101 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 1 
+   instruction 'iinc' at offset 102 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 2 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 0 2 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 0 2 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 0 2 
+   instruction 'iinc' at offset 110 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 2 
+   instruction 'iload_1' at offset 113 of frame 82DEE8
+
+debug operand stack:
+1.0 
+debug localvars:
+0 1 2 
+   instruction 'iconst_2' at offset 114 of frame 82DEE8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+0 1 2 
+   instruction 'if_icmplt' at offset 115 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 2 
+   instruction 'iconst_0' at offset 50 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 1 2 
+   instruction 'istore_2' at offset 51 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'goto' at offset 52 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+0.0 
+debug localvars:
+0 1 0 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+0 1 0 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'getstatic' at offset 55 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_1' at offset 58 of frame 82DEE8
+
+debug operand stack:
+1.0 8537096.5 
+debug localvars:
+0 1 0 
+   instruction 'aaload' at offset 59 of frame 82DEE8
+
+debug operand stack:
+8537544.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 60 of frame 82DEE8
+
+debug operand stack:
+0.0 8537544.5 
+debug localvars:
+0 1 0 
+   instruction 'bipush' at offset 61 of frame 82DEE8
+
+debug operand stack:
+10.0 0.0 8537544.5 
+debug localvars:
+0 1 0 
+   instruction 'iastore' at offset 63 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'getstatic' at offset 64 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_1' at offset 67 of frame 82DEE8
+
+debug operand stack:
+1.0 8537960.5 
+debug localvars:
+0 1 0 
+   instruction 'aaload' at offset 68 of frame 82DEE8
+
+debug operand stack:
+8537128.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 69 of frame 82DEE8
+
+debug operand stack:
+0.0 8537128.5 
+debug localvars:
+0 1 0 
+   instruction 'ldc2_w' at offset 70 of frame 82DEE8
+
+debug operand stack:
+15.2 0.2 0.0 8537128.5 
+debug localvars:
+0 1 0 
+   instruction 'lastore' at offset 73 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'getstatic' at offset 74 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_1' at offset 77 of frame 82DEE8
+
+debug operand stack:
+1.0 8537160.5 
+debug localvars:
+0 1 0 
+   instruction 'aaload' at offset 78 of frame 82DEE8
+
+debug operand stack:
+8537192.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 79 of frame 82DEE8
+
+debug operand stack:
+0.0 8537192.5 
+debug localvars:
+0 1 0 
+   instruction 'bipush' at offset 80 of frame 82DEE8
+
+debug operand stack:
+20.0 0.0 8537192.5 
+debug localvars:
+0 1 0 
+   instruction 'bastore' at offset 82 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'getstatic' at offset 83 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_1' at offset 86 of frame 82DEE8
+
+debug operand stack:
+1.0 8537672.5 
+debug localvars:
+0 1 0 
+   instruction 'aaload' at offset 87 of frame 82DEE8
+
+debug operand stack:
+8537992.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 88 of frame 82DEE8
+
+debug operand stack:
+0.0 8537992.5 
+debug localvars:
+0 1 0 
+   instruction 'ldc' at offset 89 of frame 82DEE8
+
+debug operand stack:
+1103626240.1 0.0 8537992.5 
+debug localvars:
+0 1 0 
+   instruction 'fastore' at offset 91 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'getstatic' at offset 92 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_1' at offset 95 of frame 82DEE8
+
+debug operand stack:
+1.0 8538024.5 
+debug localvars:
+0 1 0 
+   instruction 'aaload' at offset 96 of frame 82DEE8
+
+debug operand stack:
+8537640.5 
+debug localvars:
+0 1 0 
+   instruction 'iload_2' at offset 97 of frame 82DEE8
+
+debug operand stack:
+0.0 8537640.5 
+debug localvars:
+0 1 0 
+   instruction 'ldc2_w' at offset 98 of frame 82DEE8
+
+debug operand stack:
+0.3 1077805056.3 0.0 8537640.5 
+debug localvars:
+0 1 0 
+   instruction 'dastore' at offset 101 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 0 
+   instruction 'iinc' at offset 102 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+1.0 
+debug localvars:
+0 1 1 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+0 1 1 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'getstatic' at offset 55 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_1' at offset 58 of frame 82DEE8
+
+debug operand stack:
+1.0 8537096.5 
+debug localvars:
+0 1 1 
+   instruction 'aaload' at offset 59 of frame 82DEE8
+
+debug operand stack:
+8537544.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 60 of frame 82DEE8
+
+debug operand stack:
+1.0 8537544.5 
+debug localvars:
+0 1 1 
+   instruction 'bipush' at offset 61 of frame 82DEE8
+
+debug operand stack:
+10.0 1.0 8537544.5 
+debug localvars:
+0 1 1 
+   instruction 'iastore' at offset 63 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'getstatic' at offset 64 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_1' at offset 67 of frame 82DEE8
+
+debug operand stack:
+1.0 8537960.5 
+debug localvars:
+0 1 1 
+   instruction 'aaload' at offset 68 of frame 82DEE8
+
+debug operand stack:
+8537128.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 69 of frame 82DEE8
+
+debug operand stack:
+1.0 8537128.5 
+debug localvars:
+0 1 1 
+   instruction 'ldc2_w' at offset 70 of frame 82DEE8
+
+debug operand stack:
+15.2 0.2 1.0 8537128.5 
+debug localvars:
+0 1 1 
+   instruction 'lastore' at offset 73 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'getstatic' at offset 74 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_1' at offset 77 of frame 82DEE8
+
+debug operand stack:
+1.0 8537160.5 
+debug localvars:
+0 1 1 
+   instruction 'aaload' at offset 78 of frame 82DEE8
+
+debug operand stack:
+8537192.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 79 of frame 82DEE8
+
+debug operand stack:
+1.0 8537192.5 
+debug localvars:
+0 1 1 
+   instruction 'bipush' at offset 80 of frame 82DEE8
+
+debug operand stack:
+20.0 1.0 8537192.5 
+debug localvars:
+0 1 1 
+   instruction 'bastore' at offset 82 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'getstatic' at offset 83 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_1' at offset 86 of frame 82DEE8
+
+debug operand stack:
+1.0 8537672.5 
+debug localvars:
+0 1 1 
+   instruction 'aaload' at offset 87 of frame 82DEE8
+
+debug operand stack:
+8537992.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 88 of frame 82DEE8
+
+debug operand stack:
+1.0 8537992.5 
+debug localvars:
+0 1 1 
+   instruction 'ldc' at offset 89 of frame 82DEE8
+
+debug operand stack:
+1103626240.1 1.0 8537992.5 
+debug localvars:
+0 1 1 
+   instruction 'fastore' at offset 91 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'getstatic' at offset 92 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_1' at offset 95 of frame 82DEE8
+
+debug operand stack:
+1.0 8538024.5 
+debug localvars:
+0 1 1 
+   instruction 'aaload' at offset 96 of frame 82DEE8
+
+debug operand stack:
+8537640.5 
+debug localvars:
+0 1 1 
+   instruction 'iload_2' at offset 97 of frame 82DEE8
+
+debug operand stack:
+1.0 8537640.5 
+debug localvars:
+0 1 1 
+   instruction 'ldc2_w' at offset 98 of frame 82DEE8
+
+debug operand stack:
+0.3 1077805056.3 1.0 8537640.5 
+debug localvars:
+0 1 1 
+   instruction 'dastore' at offset 101 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 1 
+   instruction 'iinc' at offset 102 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 2 
+   instruction 'iload_2' at offset 105 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 1 2 
+   instruction 'iconst_2' at offset 106 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 1 2 
+   instruction 'if_icmplt' at offset 107 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 1 2 
+   instruction 'iinc' at offset 110 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'iload_1' at offset 113 of frame 82DEE8
+
+debug operand stack:
+2.0 
+debug localvars:
+0 2 2 
+   instruction 'iconst_2' at offset 114 of frame 82DEE8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+0 2 2 
+   instruction 'if_icmplt' at offset 115 of frame 82DEE8
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'getstatic' at offset 118 of frame 82DEE8
+debug resolveField testeMultArray.vetint:[[I
+
+debug operand stack:
+8537096.5 
+debug localvars:
+0 2 2 
+   instruction 'invokestatic' at offset 121 of frame 82DEE8
+debug resolveMethod testeMultArray.printint:([[I)V
+debug runMethod static printint, params: 1, len: 38, frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 3 8575584 
+   instruction 'iconst_0' at offset 0 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 3 8575584 
+   instruction 'istore_1' at offset 1 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 8575584 
+   instruction 'goto' at offset 2 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 8575584 
+   instruction 'iload_1' at offset 32 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 0 8575584 
+   instruction 'iconst_2' at offset 33 of frame 82DF10
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537096 0 8575584 
+   instruction 'if_icmplt' at offset 34 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 8575584 
+   instruction 'iconst_0' at offset 5 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 0 8575584 
+   instruction 'istore_2' at offset 6 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 0 
+   instruction 'goto' at offset 7 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 0 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 0 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537096 0 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 0 
+   instruction 'getstatic' at offset 10 of frame 82DF10
+
+debug operand stack:
+0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'aload_0' at offset 13 of frame 82DF10
+
+debug operand stack:
+8537096.5 0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'iload_1' at offset 14 of frame 82DF10
+
+debug operand stack:
+0.0 8537096.5 0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'aaload' at offset 15 of frame 82DF10
+
+debug operand stack:
+8537608.5 0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'iload_2' at offset 16 of frame 82DF10
+
+debug operand stack:
+0.0 8537608.5 0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'iaload' at offset 17 of frame 82DF10
+
+debug operand stack:
+10.0 0.4 
+debug localvars:
+8537096 0 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF10
+10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 0 
+   instruction 'iinc' at offset 21 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 1 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+1.0 
+debug localvars:
+8537096 0 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537096 0 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 1 
+   instruction 'getstatic' at offset 10 of frame 82DF10
+
+debug operand stack:
+0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'aload_0' at offset 13 of frame 82DF10
+
+debug operand stack:
+8537096.5 0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'iload_1' at offset 14 of frame 82DF10
+
+debug operand stack:
+0.0 8537096.5 0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'aaload' at offset 15 of frame 82DF10
+
+debug operand stack:
+8537608.5 0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'iload_2' at offset 16 of frame 82DF10
+
+debug operand stack:
+1.0 8537608.5 0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'iaload' at offset 17 of frame 82DF10
+
+debug operand stack:
+10.0 0.4 
+debug localvars:
+8537096 0 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF10
+10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 1 
+   instruction 'iinc' at offset 21 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 2 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+2.0 
+debug localvars:
+8537096 0 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537096 0 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 0 2 
+   instruction 'iinc' at offset 29 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 2 
+   instruction 'iload_1' at offset 32 of frame 82DF10
+
+debug operand stack:
+1.0 
+debug localvars:
+8537096 1 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF10
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537096 1 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 2 
+   instruction 'iconst_0' at offset 5 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 1 2 
+   instruction 'istore_2' at offset 6 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 0 
+   instruction 'goto' at offset 7 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 0 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+0.0 
+debug localvars:
+8537096 1 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537096 1 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 0 
+   instruction 'getstatic' at offset 10 of frame 82DF10
+
+debug operand stack:
+0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'aload_0' at offset 13 of frame 82DF10
+
+debug operand stack:
+8537096.5 0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'iload_1' at offset 14 of frame 82DF10
+
+debug operand stack:
+1.0 8537096.5 0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'aaload' at offset 15 of frame 82DF10
+
+debug operand stack:
+8537544.5 0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'iload_2' at offset 16 of frame 82DF10
+
+debug operand stack:
+0.0 8537544.5 0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'iaload' at offset 17 of frame 82DF10
+
+debug operand stack:
+10.0 0.4 
+debug localvars:
+8537096 1 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF10
+10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 0 
+   instruction 'iinc' at offset 21 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 1 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+1.0 
+debug localvars:
+8537096 1 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537096 1 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 1 
+   instruction 'getstatic' at offset 10 of frame 82DF10
+
+debug operand stack:
+0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'aload_0' at offset 13 of frame 82DF10
+
+debug operand stack:
+8537096.5 0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'iload_1' at offset 14 of frame 82DF10
+
+debug operand stack:
+1.0 8537096.5 0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'aaload' at offset 15 of frame 82DF10
+
+debug operand stack:
+8537544.5 0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'iload_2' at offset 16 of frame 82DF10
+
+debug operand stack:
+1.0 8537544.5 0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'iaload' at offset 17 of frame 82DF10
+
+debug operand stack:
+10.0 0.4 
+debug localvars:
+8537096 1 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF10
+10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 1 
+   instruction 'iinc' at offset 21 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 2 
+   instruction 'iload_2' at offset 24 of frame 82DF10
+
+debug operand stack:
+2.0 
+debug localvars:
+8537096 1 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF10
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537096 1 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 1 2 
+   instruction 'iinc' at offset 29 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 2 2 
+   instruction 'iload_1' at offset 32 of frame 82DF10
+
+debug operand stack:
+2.0 
+debug localvars:
+8537096 2 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF10
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537096 2 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+8537096 2 2 
+   instruction 'return' at offset 37 of frame 82DF10
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'getstatic' at offset 124 of frame 82DEE8
+debug resolveField testeMultArray.vetlong:[[J
+
+debug operand stack:
+8537960.5 
+debug localvars:
+0 2 2 
+   instruction 'invokestatic' at offset 127 of frame 82DEE8
+debug resolveMethod testeMultArray.printlong:([[J)V
+debug runMethod static printlong, params: 1, len: 38, frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 8576136 
+   instruction 'iconst_0' at offset 0 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 0 8576136 
+   instruction 'istore_1' at offset 1 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 8576136 
+   instruction 'goto' at offset 2 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 8576136 
+   instruction 'iload_1' at offset 32 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 0 8576136 
+   instruction 'iconst_2' at offset 33 of frame 82DFB0
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537960 0 8576136 
+   instruction 'if_icmplt' at offset 34 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 8576136 
+   instruction 'iconst_0' at offset 5 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 0 8576136 
+   instruction 'istore_2' at offset 6 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 0 
+   instruction 'goto' at offset 7 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 0 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 0 0 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537960 0 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 0 
+   instruction 'getstatic' at offset 10 of frame 82DFB0
+
+debug operand stack:
+0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'aload_0' at offset 13 of frame 82DFB0
+
+debug operand stack:
+8537960.5 0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'iload_1' at offset 14 of frame 82DFB0
+
+debug operand stack:
+0.0 8537960.5 0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'aaload' at offset 15 of frame 82DFB0
+
+debug operand stack:
+8537448.5 0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'iload_2' at offset 16 of frame 82DFB0
+
+debug operand stack:
+0.0 8537448.5 0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'laload' at offset 17 of frame 82DFB0
+
+debug operand stack:
+15.0 0.0 0.4 
+debug localvars:
+8537960 0 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DFB0
+15
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 0 
+   instruction 'iinc' at offset 21 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 1 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+1.0 
+debug localvars:
+8537960 0 1 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537960 0 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 1 
+   instruction 'getstatic' at offset 10 of frame 82DFB0
+
+debug operand stack:
+0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'aload_0' at offset 13 of frame 82DFB0
+
+debug operand stack:
+8537960.5 0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'iload_1' at offset 14 of frame 82DFB0
+
+debug operand stack:
+0.0 8537960.5 0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'aaload' at offset 15 of frame 82DFB0
+
+debug operand stack:
+8537448.5 0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'iload_2' at offset 16 of frame 82DFB0
+
+debug operand stack:
+1.0 8537448.5 0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'laload' at offset 17 of frame 82DFB0
+
+debug operand stack:
+15.0 0.0 0.4 
+debug localvars:
+8537960 0 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DFB0
+15
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 1 
+   instruction 'iinc' at offset 21 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 2 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+2.0 
+debug localvars:
+8537960 0 2 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537960 0 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 0 2 
+   instruction 'iinc' at offset 29 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 2 
+   instruction 'iload_1' at offset 32 of frame 82DFB0
+
+debug operand stack:
+1.0 
+debug localvars:
+8537960 1 2 
+   instruction 'iconst_2' at offset 33 of frame 82DFB0
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537960 1 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 2 
+   instruction 'iconst_0' at offset 5 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 1 2 
+   instruction 'istore_2' at offset 6 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 0 
+   instruction 'goto' at offset 7 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 0 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+0.0 
+debug localvars:
+8537960 1 0 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537960 1 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 0 
+   instruction 'getstatic' at offset 10 of frame 82DFB0
+
+debug operand stack:
+0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'aload_0' at offset 13 of frame 82DFB0
+
+debug operand stack:
+8537960.5 0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'iload_1' at offset 14 of frame 82DFB0
+
+debug operand stack:
+1.0 8537960.5 0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'aaload' at offset 15 of frame 82DFB0
+
+debug operand stack:
+8537128.5 0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'iload_2' at offset 16 of frame 82DFB0
+
+debug operand stack:
+0.0 8537128.5 0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'laload' at offset 17 of frame 82DFB0
+
+debug operand stack:
+15.0 0.0 0.4 
+debug localvars:
+8537960 1 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DFB0
+15
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 0 
+   instruction 'iinc' at offset 21 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 1 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+1.0 
+debug localvars:
+8537960 1 1 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537960 1 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 1 
+   instruction 'getstatic' at offset 10 of frame 82DFB0
+
+debug operand stack:
+0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'aload_0' at offset 13 of frame 82DFB0
+
+debug operand stack:
+8537960.5 0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'iload_1' at offset 14 of frame 82DFB0
+
+debug operand stack:
+1.0 8537960.5 0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'aaload' at offset 15 of frame 82DFB0
+
+debug operand stack:
+8537128.5 0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'iload_2' at offset 16 of frame 82DFB0
+
+debug operand stack:
+1.0 8537128.5 0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'laload' at offset 17 of frame 82DFB0
+
+debug operand stack:
+15.0 0.0 0.4 
+debug localvars:
+8537960 1 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DFB0
+15
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 1 
+   instruction 'iinc' at offset 21 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 2 
+   instruction 'iload_2' at offset 24 of frame 82DFB0
+
+debug operand stack:
+2.0 
+debug localvars:
+8537960 1 2 
+   instruction 'iconst_2' at offset 25 of frame 82DFB0
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537960 1 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 1 2 
+   instruction 'iinc' at offset 29 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 2 2 
+   instruction 'iload_1' at offset 32 of frame 82DFB0
+
+debug operand stack:
+2.0 
+debug localvars:
+8537960 2 2 
+   instruction 'iconst_2' at offset 33 of frame 82DFB0
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537960 2 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+8537960 2 2 
+   instruction 'return' at offset 37 of frame 82DFB0
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'getstatic' at offset 130 of frame 82DEE8
+debug resolveField testeMultArray.vetbyte:[[B
+
+debug operand stack:
+8537160.5 
+debug localvars:
+0 2 2 
+   instruction 'invokestatic' at offset 133 of frame 82DEE8
+debug resolveMethod testeMultArray.printbyte:([[B)V
+debug runMethod static printbyte, params: 1, len: 38, frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 8576136 
+   instruction 'iconst_0' at offset 0 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 0 8576136 
+   instruction 'istore_1' at offset 1 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 8576136 
+   instruction 'goto' at offset 2 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 8576136 
+   instruction 'iload_1' at offset 32 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 0 8576136 
+   instruction 'iconst_2' at offset 33 of frame 82DDF8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537160 0 8576136 
+   instruction 'if_icmplt' at offset 34 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 8576136 
+   instruction 'iconst_0' at offset 5 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 0 8576136 
+   instruction 'istore_2' at offset 6 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 0 
+   instruction 'goto' at offset 7 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 0 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 0 0 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537160 0 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 0 
+   instruction 'getstatic' at offset 10 of frame 82DDF8
+
+debug operand stack:
+0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'aload_0' at offset 13 of frame 82DDF8
+
+debug operand stack:
+8537160.5 0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'iload_1' at offset 14 of frame 82DDF8
+
+debug operand stack:
+0.0 8537160.5 0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'aaload' at offset 15 of frame 82DDF8
+
+debug operand stack:
+8537480.5 0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'iload_2' at offset 16 of frame 82DDF8
+
+debug operand stack:
+0.0 8537480.5 0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'baload' at offset 17 of frame 82DDF8
+
+debug operand stack:
+20.0 0.4 
+debug localvars:
+8537160 0 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DDF8
+20
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 0 
+   instruction 'iinc' at offset 21 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 1 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+1.0 
+debug localvars:
+8537160 0 1 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537160 0 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 1 
+   instruction 'getstatic' at offset 10 of frame 82DDF8
+
+debug operand stack:
+0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'aload_0' at offset 13 of frame 82DDF8
+
+debug operand stack:
+8537160.5 0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'iload_1' at offset 14 of frame 82DDF8
+
+debug operand stack:
+0.0 8537160.5 0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'aaload' at offset 15 of frame 82DDF8
+
+debug operand stack:
+8537480.5 0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'iload_2' at offset 16 of frame 82DDF8
+
+debug operand stack:
+1.0 8537480.5 0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'baload' at offset 17 of frame 82DDF8
+
+debug operand stack:
+20.0 0.4 
+debug localvars:
+8537160 0 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DDF8
+20
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 1 
+   instruction 'iinc' at offset 21 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 2 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+2.0 
+debug localvars:
+8537160 0 2 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537160 0 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 0 2 
+   instruction 'iinc' at offset 29 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 2 
+   instruction 'iload_1' at offset 32 of frame 82DDF8
+
+debug operand stack:
+1.0 
+debug localvars:
+8537160 1 2 
+   instruction 'iconst_2' at offset 33 of frame 82DDF8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537160 1 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 2 
+   instruction 'iconst_0' at offset 5 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 1 2 
+   instruction 'istore_2' at offset 6 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 0 
+   instruction 'goto' at offset 7 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 0 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+0.0 
+debug localvars:
+8537160 1 0 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537160 1 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 0 
+   instruction 'getstatic' at offset 10 of frame 82DDF8
+
+debug operand stack:
+0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'aload_0' at offset 13 of frame 82DDF8
+
+debug operand stack:
+8537160.5 0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'iload_1' at offset 14 of frame 82DDF8
+
+debug operand stack:
+1.0 8537160.5 0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'aaload' at offset 15 of frame 82DDF8
+
+debug operand stack:
+8537192.5 0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'iload_2' at offset 16 of frame 82DDF8
+
+debug operand stack:
+0.0 8537192.5 0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'baload' at offset 17 of frame 82DDF8
+
+debug operand stack:
+20.0 0.4 
+debug localvars:
+8537160 1 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DDF8
+20
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 0 
+   instruction 'iinc' at offset 21 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 1 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+1.0 
+debug localvars:
+8537160 1 1 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537160 1 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 1 
+   instruction 'getstatic' at offset 10 of frame 82DDF8
+
+debug operand stack:
+0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'aload_0' at offset 13 of frame 82DDF8
+
+debug operand stack:
+8537160.5 0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'iload_1' at offset 14 of frame 82DDF8
+
+debug operand stack:
+1.0 8537160.5 0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'aaload' at offset 15 of frame 82DDF8
+
+debug operand stack:
+8537192.5 0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'iload_2' at offset 16 of frame 82DDF8
+
+debug operand stack:
+1.0 8537192.5 0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'baload' at offset 17 of frame 82DDF8
+
+debug operand stack:
+20.0 0.4 
+debug localvars:
+8537160 1 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DDF8
+20
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 1 
+   instruction 'iinc' at offset 21 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 2 
+   instruction 'iload_2' at offset 24 of frame 82DDF8
+
+debug operand stack:
+2.0 
+debug localvars:
+8537160 1 2 
+   instruction 'iconst_2' at offset 25 of frame 82DDF8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537160 1 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 1 2 
+   instruction 'iinc' at offset 29 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 2 2 
+   instruction 'iload_1' at offset 32 of frame 82DDF8
+
+debug operand stack:
+2.0 
+debug localvars:
+8537160 2 2 
+   instruction 'iconst_2' at offset 33 of frame 82DDF8
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537160 2 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+8537160 2 2 
+   instruction 'return' at offset 37 of frame 82DDF8
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'getstatic' at offset 136 of frame 82DEE8
+debug resolveField testeMultArray.vetfloat:[[F
+
+debug operand stack:
+8537672.5 
+debug localvars:
+0 2 2 
+   instruction 'invokestatic' at offset 139 of frame 82DEE8
+debug resolveMethod testeMultArray.printfloat:([[F)V
+debug runMethod static printfloat, params: 1, len: 38, frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 8576088 
+   instruction 'iconst_0' at offset 0 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 0 8576088 
+   instruction 'istore_1' at offset 1 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 8576088 
+   instruction 'goto' at offset 2 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 8576088 
+   instruction 'iload_1' at offset 32 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 0 8576088 
+   instruction 'iconst_2' at offset 33 of frame 82DF88
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537672 0 8576088 
+   instruction 'if_icmplt' at offset 34 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 8576088 
+   instruction 'iconst_0' at offset 5 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 0 8576088 
+   instruction 'istore_2' at offset 6 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 0 
+   instruction 'goto' at offset 7 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 0 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 0 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537672 0 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 0 
+   instruction 'getstatic' at offset 10 of frame 82DF88
+
+debug operand stack:
+0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'aload_0' at offset 13 of frame 82DF88
+
+debug operand stack:
+8537672.5 0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'iload_1' at offset 14 of frame 82DF88
+
+debug operand stack:
+0.0 8537672.5 0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'aaload' at offset 15 of frame 82DF88
+
+debug operand stack:
+8537704.5 0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'iload_2' at offset 16 of frame 82DF88
+
+debug operand stack:
+0.0 8537704.5 0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'faload' at offset 17 of frame 82DF88
+
+debug operand stack:
+1103626240.1 0.4 
+debug localvars:
+8537672 0 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF88
+25.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 0 
+   instruction 'iinc' at offset 21 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 1 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+1.0 
+debug localvars:
+8537672 0 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537672 0 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 1 
+   instruction 'getstatic' at offset 10 of frame 82DF88
+
+debug operand stack:
+0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'aload_0' at offset 13 of frame 82DF88
+
+debug operand stack:
+8537672.5 0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'iload_1' at offset 14 of frame 82DF88
+
+debug operand stack:
+0.0 8537672.5 0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'aaload' at offset 15 of frame 82DF88
+
+debug operand stack:
+8537704.5 0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'iload_2' at offset 16 of frame 82DF88
+
+debug operand stack:
+1.0 8537704.5 0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'faload' at offset 17 of frame 82DF88
+
+debug operand stack:
+1103626240.1 0.4 
+debug localvars:
+8537672 0 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF88
+25.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 1 
+   instruction 'iinc' at offset 21 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 2 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+2.0 
+debug localvars:
+8537672 0 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537672 0 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 0 2 
+   instruction 'iinc' at offset 29 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 2 
+   instruction 'iload_1' at offset 32 of frame 82DF88
+
+debug operand stack:
+1.0 
+debug localvars:
+8537672 1 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF88
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537672 1 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 2 
+   instruction 'iconst_0' at offset 5 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 1 2 
+   instruction 'istore_2' at offset 6 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 0 
+   instruction 'goto' at offset 7 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 0 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+0.0 
+debug localvars:
+8537672 1 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8537672 1 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 0 
+   instruction 'getstatic' at offset 10 of frame 82DF88
+
+debug operand stack:
+0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'aload_0' at offset 13 of frame 82DF88
+
+debug operand stack:
+8537672.5 0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'iload_1' at offset 14 of frame 82DF88
+
+debug operand stack:
+1.0 8537672.5 0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'aaload' at offset 15 of frame 82DF88
+
+debug operand stack:
+8537992.5 0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'iload_2' at offset 16 of frame 82DF88
+
+debug operand stack:
+0.0 8537992.5 0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'faload' at offset 17 of frame 82DF88
+
+debug operand stack:
+1103626240.1 0.4 
+debug localvars:
+8537672 1 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF88
+25.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 0 
+   instruction 'iinc' at offset 21 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 1 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+1.0 
+debug localvars:
+8537672 1 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8537672 1 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 1 
+   instruction 'getstatic' at offset 10 of frame 82DF88
+
+debug operand stack:
+0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'aload_0' at offset 13 of frame 82DF88
+
+debug operand stack:
+8537672.5 0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'iload_1' at offset 14 of frame 82DF88
+
+debug operand stack:
+1.0 8537672.5 0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'aaload' at offset 15 of frame 82DF88
+
+debug operand stack:
+8537992.5 0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'iload_2' at offset 16 of frame 82DF88
+
+debug operand stack:
+1.0 8537992.5 0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'faload' at offset 17 of frame 82DF88
+
+debug operand stack:
+1103626240.1 0.4 
+debug localvars:
+8537672 1 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF88
+25.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 1 
+   instruction 'iinc' at offset 21 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 2 
+   instruction 'iload_2' at offset 24 of frame 82DF88
+
+debug operand stack:
+2.0 
+debug localvars:
+8537672 1 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF88
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537672 1 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 1 2 
+   instruction 'iinc' at offset 29 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 2 2 
+   instruction 'iload_1' at offset 32 of frame 82DF88
+
+debug operand stack:
+2.0 
+debug localvars:
+8537672 2 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF88
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8537672 2 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+8537672 2 2 
+   instruction 'return' at offset 37 of frame 82DF88
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'getstatic' at offset 142 of frame 82DEE8
+debug resolveField testeMultArray.vetdouble:[[D
+
+debug operand stack:
+8538024.5 
+debug localvars:
+0 2 2 
+   instruction 'invokestatic' at offset 145 of frame 82DEE8
+debug resolveMethod testeMultArray.printdouble:([[D)V
+debug runMethod static printdouble, params: 1, len: 38, frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 5 8575800 
+   instruction 'iconst_0' at offset 0 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 5 8575800 
+   instruction 'istore_1' at offset 1 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 8575800 
+   instruction 'goto' at offset 2 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 8575800 
+   instruction 'iload_1' at offset 32 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 0 8575800 
+   instruction 'iconst_2' at offset 33 of frame 82DF38
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8538024 0 8575800 
+   instruction 'if_icmplt' at offset 34 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 8575800 
+   instruction 'iconst_0' at offset 5 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 0 8575800 
+   instruction 'istore_2' at offset 6 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 0 
+   instruction 'goto' at offset 7 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 0 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 0 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8538024 0 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 0 
+   instruction 'getstatic' at offset 10 of frame 82DF38
+
+debug operand stack:
+0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'aload_0' at offset 13 of frame 82DF38
+
+debug operand stack:
+8538024.5 0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'iload_1' at offset 14 of frame 82DF38
+
+debug operand stack:
+0.0 8538024.5 0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'aaload' at offset 15 of frame 82DF38
+
+debug operand stack:
+8537224.5 0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'iload_2' at offset 16 of frame 82DF38
+
+debug operand stack:
+0.0 8537224.5 0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'daload' at offset 17 of frame 82DF38
+
+debug operand stack:
+0.0 1077805056.0 0.4 
+debug localvars:
+8538024 0 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF38
+30.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 0 
+   instruction 'iinc' at offset 21 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 1 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+1.0 
+debug localvars:
+8538024 0 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8538024 0 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 1 
+   instruction 'getstatic' at offset 10 of frame 82DF38
+
+debug operand stack:
+0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'aload_0' at offset 13 of frame 82DF38
+
+debug operand stack:
+8538024.5 0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'iload_1' at offset 14 of frame 82DF38
+
+debug operand stack:
+0.0 8538024.5 0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'aaload' at offset 15 of frame 82DF38
+
+debug operand stack:
+8537224.5 0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'iload_2' at offset 16 of frame 82DF38
+
+debug operand stack:
+1.0 8537224.5 0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'daload' at offset 17 of frame 82DF38
+
+debug operand stack:
+0.0 1077805056.0 0.4 
+debug localvars:
+8538024 0 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF38
+30.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 1 
+   instruction 'iinc' at offset 21 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 2 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+2.0 
+debug localvars:
+8538024 0 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8538024 0 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 0 2 
+   instruction 'iinc' at offset 29 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 2 
+   instruction 'iload_1' at offset 32 of frame 82DF38
+
+debug operand stack:
+1.0 
+debug localvars:
+8538024 1 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF38
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8538024 1 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 2 
+   instruction 'iconst_0' at offset 5 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 1 2 
+   instruction 'istore_2' at offset 6 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 0 
+   instruction 'goto' at offset 7 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 0 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+0.0 
+debug localvars:
+8538024 1 0 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 0.0 
+debug localvars:
+8538024 1 0 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 0 
+   instruction 'getstatic' at offset 10 of frame 82DF38
+
+debug operand stack:
+0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'aload_0' at offset 13 of frame 82DF38
+
+debug operand stack:
+8538024.5 0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'iload_1' at offset 14 of frame 82DF38
+
+debug operand stack:
+1.0 8538024.5 0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'aaload' at offset 15 of frame 82DF38
+
+debug operand stack:
+8537640.5 0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'iload_2' at offset 16 of frame 82DF38
+
+debug operand stack:
+0.0 8537640.5 0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'daload' at offset 17 of frame 82DF38
+
+debug operand stack:
+0.0 1077805056.0 0.4 
+debug localvars:
+8538024 1 0 
+   instruction 'invokevirtual' at offset 18 of frame 82DF38
+30.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 0 
+   instruction 'iinc' at offset 21 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 1 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+1.0 
+debug localvars:
+8538024 1 1 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 1.0 
+debug localvars:
+8538024 1 1 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 1 
+   instruction 'getstatic' at offset 10 of frame 82DF38
+
+debug operand stack:
+0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'aload_0' at offset 13 of frame 82DF38
+
+debug operand stack:
+8538024.5 0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'iload_1' at offset 14 of frame 82DF38
+
+debug operand stack:
+1.0 8538024.5 0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'aaload' at offset 15 of frame 82DF38
+
+debug operand stack:
+8537640.5 0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'iload_2' at offset 16 of frame 82DF38
+
+debug operand stack:
+1.0 8537640.5 0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'daload' at offset 17 of frame 82DF38
+
+debug operand stack:
+0.0 1077805056.0 0.4 
+debug localvars:
+8538024 1 1 
+   instruction 'invokevirtual' at offset 18 of frame 82DF38
+30.000000
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 1 
+   instruction 'iinc' at offset 21 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 2 
+   instruction 'iload_2' at offset 24 of frame 82DF38
+
+debug operand stack:
+2.0 
+debug localvars:
+8538024 1 2 
+   instruction 'iconst_2' at offset 25 of frame 82DF38
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8538024 1 2 
+   instruction 'if_icmplt' at offset 26 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 1 2 
+   instruction 'iinc' at offset 29 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 2 2 
+   instruction 'iload_1' at offset 32 of frame 82DF38
+
+debug operand stack:
+2.0 
+debug localvars:
+8538024 2 2 
+   instruction 'iconst_2' at offset 33 of frame 82DF38
+
+debug operand stack:
+2.0 2.0 
+debug localvars:
+8538024 2 2 
+   instruction 'if_icmplt' at offset 34 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+8538024 2 2 
+   instruction 'return' at offset 37 of frame 82DF38
+
+debug operand stack:
+empty.
+debug localvars:
+0 2 2 
+   instruction 'return' at offset 148 of frame 82DEE8
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.

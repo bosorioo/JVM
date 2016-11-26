@@ -1,0 +1,24 @@
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com long
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com float
+Passou >
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)
+Agora com double
+Passou >
+true
+Passou <
+Passou ==
+Passou <=
+Passou !(<=)

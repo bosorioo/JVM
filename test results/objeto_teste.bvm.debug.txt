@@ -1,0 +1,604 @@
+debug resolveClass C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/objeto_teste
+debug resolveClass java/lang/Object
+   class file 'java/lang/Object.class' loaded
+   class file 'C:\Users\Bruno\Desktop\UnB\Software Basico\testLadeira/objeto_teste.class' loaded
+debug runMethod public, static main, params: 0, len: 100, frame D4500
+
+debug operand stack:
+empty.
+debug localvars:
+65550 1310739 1376257 
+   instruction 'new' at offset 0 of frame D4500
+debug resolveClass objeto
+   class file 'objeto.class' loaded
+debug New class instance 10636400->10633912 of type objeto
+
+debug operand stack:
+10636400.5 
+debug localvars:
+65550 1310739 1376257 
+   instruction 'dup' at offset 3 of frame D4500
+
+debug operand stack:
+10636400.5 10636400.5 
+debug localvars:
+65550 1310739 1376257 
+   instruction 'iconst_3' at offset 4 of frame D4500
+
+debug operand stack:
+3.0 10636400.5 10636400.5 
+debug localvars:
+65550 1310739 1376257 
+   instruction 'ldc2_w' at offset 5 of frame D4500
+
+debug operand stack:
+0.3 1075052544.3 3.0 10636400.5 10636400.5 
+debug localvars:
+65550 1310739 1376257 
+   instruction 'invokespecial' at offset 8 of frame D4500
+debug resolveMethod objeto.<init>:(ID)V
+debug runMethod public <init>, params: 4, len: 15, frame A39858
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'aload_0' at offset 0 of frame A39858
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'invokespecial' at offset 1 of frame A39858
+debug resolveMethod java/lang/Object.<init>:()V
+debug runMethod static <clinit>, params: 0, len: 4, frame A39650
+
+debug operand stack:
+empty.
+debug localvars:
+empty.
+   instruction 'invokestatic' at offset 0 of frame A39650
+debug resolveMethod java/lang/Object.registerNatives:()V
+debug runMethod native, private, static registerNatives, params: 0, len: 0, frame A39808 ####### Native Method
+
+debug operand stack:
+empty.
+debug localvars:
+empty.
+   instruction 'return' at offset 3 of frame A39650
+debug runMethod public <init>, params: 1, len: 1, frame A398A8
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 
+   instruction 'return' at offset 0 of frame A398A8
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'aload_0' at offset 4 of frame A39858
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'iload_1' at offset 5 of frame A39858
+
+debug operand stack:
+3.0 10636400.5 
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'putfield' at offset 6 of frame A39858
+debug resolveField objeto.a:I
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'aload_0' at offset 9 of frame A39858
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'dload_2' at offset 10 of frame A39858
+
+debug operand stack:
+0.3 1075052544.3 10636400.5 
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'putfield' at offset 11 of frame A39858
+debug resolveField objeto.c:D
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 3 1075052544 0 
+   instruction 'return' at offset 14 of frame A39858
+
+debug operand stack:
+10636400.5 
+debug localvars:
+65550 1310739 1376257 
+   instruction 'astore_1' at offset 11 of frame D4500
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 1376257 
+   instruction 'new' at offset 12 of frame D4500
+debug New class instance 10636368->10634008 of type objeto
+
+debug operand stack:
+10636368.5 
+debug localvars:
+65550 10636400 1376257 
+   instruction 'dup' at offset 15 of frame D4500
+
+debug operand stack:
+10636368.5 10636368.5 
+debug localvars:
+65550 10636400 1376257 
+   instruction 'sipush' at offset 16 of frame D4500
+
+debug operand stack:
+-30000.0 10636368.5 10636368.5 
+debug localvars:
+65550 10636400 1376257 
+   instruction 'ldc2_w' at offset 19 of frame D4500
+
+debug operand stack:
+-1202590843.3 -1068907234.3 -30000.0 10636368.5 10636368.5 
+debug localvars:
+65550 10636400 1376257 
+   instruction 'invokespecial' at offset 22 of frame D4500
+debug resolveMethod objeto.<init>:(ID)V
+debug runMethod public <init>, params: 4, len: 15, frame A396A0
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'aload_0' at offset 0 of frame A396A0
+
+debug operand stack:
+10636368.5 
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'invokespecial' at offset 1 of frame A396A0
+debug resolveMethod java/lang/Object.<init>:()V
+debug runMethod public <init>, params: 1, len: 1, frame A396C8
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 
+   instruction 'return' at offset 0 of frame A396C8
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'aload_0' at offset 4 of frame A396A0
+
+debug operand stack:
+10636368.5 
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'iload_1' at offset 5 of frame A396A0
+
+debug operand stack:
+-30000.0 10636368.5 
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'putfield' at offset 6 of frame A396A0
+debug resolveField objeto.a:I
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'aload_0' at offset 9 of frame A396A0
+
+debug operand stack:
+10636368.5 
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'dload_2' at offset 10 of frame A396A0
+
+debug operand stack:
+-1202590843.3 -1068907234.3 10636368.5 
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'putfield' at offset 11 of frame A396A0
+debug resolveField objeto.c:D
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 -30000 -1068907234 -1202590843 
+   instruction 'return' at offset 14 of frame A396A0
+
+debug operand stack:
+10636368.5 
+debug localvars:
+65550 10636400 1376257 
+   instruction 'astore_2' at offset 25 of frame D4500
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 26 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 29 of frame D4500
+
+debug operand stack:
+10636400.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 30 of frame D4500
+debug resolveMethod objeto.get_a:()I
+debug runMethod public get_a, params: 1, len: 5, frame A39588
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 
+   instruction 'aload_0' at offset 0 of frame A39588
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 
+   instruction 'getfield' at offset 1 of frame A39588
+debug resolveField objeto.a:I
+
+debug operand stack:
+3.0 
+debug localvars:
+10636400 
+   instruction 'ireturn' at offset 4 of frame A39588
+
+debug operand stack:
+3.0 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 33 of frame D4500
+3
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 36 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 39 of frame D4500
+
+debug operand stack:
+10636400.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 40 of frame D4500
+debug resolveMethod objeto.get_c:()D
+debug runMethod public get_c, params: 1, len: 5, frame A39600
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 
+   instruction 'aload_0' at offset 0 of frame A39600
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 
+   instruction 'getfield' at offset 1 of frame A39600
+debug resolveField objeto.c:D
+
+debug operand stack:
+0.3 1075052544.3 
+debug localvars:
+10636400 
+   instruction 'dreturn' at offset 4 of frame A39600
+
+debug operand stack:
+0.3 1075052544.3 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 43 of frame D4500
+5.000000
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 46 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_2' at offset 49 of frame D4500
+
+debug operand stack:
+10636368.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 50 of frame D4500
+debug resolveMethod objeto.get_a:()I
+debug runMethod public get_a, params: 1, len: 5, frame A39628
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 
+   instruction 'aload_0' at offset 0 of frame A39628
+
+debug operand stack:
+10636368.5 
+debug localvars:
+10636368 
+   instruction 'getfield' at offset 1 of frame A39628
+debug resolveField objeto.a:I
+
+debug operand stack:
+-30000.0 
+debug localvars:
+10636368 
+   instruction 'ireturn' at offset 4 of frame A39628
+
+debug operand stack:
+-30000.0 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 53 of frame D4500
+-30000
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 56 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_2' at offset 59 of frame D4500
+
+debug operand stack:
+10636368.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 60 of frame D4500
+debug resolveMethod objeto.get_c:()D
+debug runMethod public get_c, params: 1, len: 5, frame A396A0
+
+debug operand stack:
+empty.
+debug localvars:
+10636368 
+   instruction 'aload_0' at offset 0 of frame A396A0
+
+debug operand stack:
+10636368.5 
+debug localvars:
+10636368 
+   instruction 'getfield' at offset 1 of frame A396A0
+debug resolveField objeto.c:D
+
+debug operand stack:
+-1202590843.3 -1068907234.3 
+debug localvars:
+10636368 
+   instruction 'dreturn' at offset 4 of frame A396A0
+
+debug operand stack:
+-1202590843.3 -1068907234.3 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 63 of frame D4500
+-51.540000
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 66 of frame D4500
+
+debug operand stack:
+10636400.5 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'bipush' at offset 67 of frame D4500
+
+debug operand stack:
+42.0 10636400.5 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 69 of frame D4500
+debug resolveMethod objeto.set_a:(I)V
+debug runMethod public set_a, params: 2, len: 6, frame A396A0
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 42 
+   instruction 'aload_0' at offset 0 of frame A396A0
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 42 
+   instruction 'iload_1' at offset 1 of frame A396A0
+
+debug operand stack:
+42.0 10636400.5 
+debug localvars:
+10636400 42 
+   instruction 'putfield' at offset 2 of frame A396A0
+debug resolveField objeto.a:I
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 42 
+   instruction 'return' at offset 5 of frame A396A0
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 72 of frame D4500
+
+debug operand stack:
+10636400.5 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'ldc2_w' at offset 73 of frame D4500
+
+debug operand stack:
+0.3 1078263808.3 10636400.5 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 76 of frame D4500
+debug resolveMethod objeto.set_c:(D)V
+debug runMethod public set_c, params: 3, len: 6, frame A39808
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 1078263808 0 
+   instruction 'aload_0' at offset 0 of frame A39808
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 1078263808 0 
+   instruction 'dload_1' at offset 1 of frame A39808
+
+debug operand stack:
+0.3 1078263808.3 10636400.5 
+debug localvars:
+10636400 1078263808 0 
+   instruction 'putfield' at offset 2 of frame A39808
+debug resolveField objeto.c:D
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 1078263808 0 
+   instruction 'return' at offset 5 of frame A39808
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 79 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 82 of frame D4500
+
+debug operand stack:
+10636400.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 83 of frame D4500
+debug resolveMethod objeto.get_a:()I
+debug runMethod public get_a, params: 1, len: 5, frame A398D0
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 
+   instruction 'aload_0' at offset 0 of frame A398D0
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 
+   instruction 'getfield' at offset 1 of frame A398D0
+debug resolveField objeto.a:I
+
+debug operand stack:
+42.0 
+debug localvars:
+10636400 
+   instruction 'ireturn' at offset 4 of frame A398D0
+
+debug operand stack:
+42.0 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 86 of frame D4500
+42
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'getstatic' at offset 89 of frame D4500
+
+debug operand stack:
+0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'aload_1' at offset 92 of frame D4500
+
+debug operand stack:
+10636400.5 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 93 of frame D4500
+debug resolveMethod objeto.get_c:()D
+debug runMethod public get_c, params: 1, len: 5, frame A39830
+
+debug operand stack:
+empty.
+debug localvars:
+10636400 
+   instruction 'aload_0' at offset 0 of frame A39830
+
+debug operand stack:
+10636400.5 
+debug localvars:
+10636400 
+   instruction 'getfield' at offset 1 of frame A39830
+debug resolveField objeto.c:D
+
+debug operand stack:
+0.3 1078263808.3 
+debug localvars:
+10636400 
+   instruction 'dreturn' at offset 4 of frame A39830
+
+debug operand stack:
+0.3 1078263808.3 0.4 
+debug localvars:
+65550 10636400 10636368 
+   instruction 'invokevirtual' at offset 96 of frame D4500
+42.000000
+
+debug operand stack:
+empty.
+debug localvars:
+65550 10636400 10636368 
+   instruction 'return' at offset 99 of frame D4500
+Execution finished. Status: 0
+
+#### Memory Inspect Report ####
+No memory leak.
