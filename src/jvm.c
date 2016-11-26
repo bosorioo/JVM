@@ -709,7 +709,7 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, LoadedClasses* lc)
 
     if (jc->instanceFieldCount)
     {
-        r->ci.data = (uint8_t*)malloc(jc->instanceFieldCount);
+        r->ci.data = (uint8_t*)malloc(sizeof(int32_t) * jc->instanceFieldCount);
 
         if (!r->ci.data)
         {

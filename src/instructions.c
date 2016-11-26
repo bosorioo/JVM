@@ -2211,7 +2211,7 @@ uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
         return 0;
     }
 
-    if (!pushOperand(&frame->operands, object->ci.data[fi->offset], type))
+    if (!pushOperand(&frame->operands, *(int32_t*)(object->ci.data + sizeof(int32_t) * fi->offset), type))
     {
         jvm->status = JVM_STATUS_OUT_OF_MEMORY;
         return 0;
@@ -2219,7 +2219,7 @@ uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
 
     if (type == OP_LONG || type == OP_DOUBLE)
     {
-        if (!pushOperand(&frame->operands, object->ci.data[fi->offset + 1], type))
+        if (!pushOperand(&frame->operands, *(int32_t*)(object->ci.data + sizeof(int32_t) * (fi->offset + 1)), type))
         {
             jvm->status = JVM_STATUS_OUT_OF_MEMORY;
             return 0;
@@ -2317,13 +2317,13 @@ uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
 
     if (type == OP_LONG || type == OP_DOUBLE)
     {
-        object->ci.data[fi->offset] = hi_operand;
-        object->ci.data[fi->offset + 1] = lo_operand;
+        *(int32_t*)(object->ci.data + sizeof(int32_t) * fi->offset) = hi_operand;
+        *(int32_t*)(object->ci.data + sizeof(int32_t) * (fi->offset + 1)) = lo_operand;
     }
     else
     {
-        object->ci.data[fi->offset] = lo_operand;
-    }
+        *(int32_t*)(object->ci.data + sizeof(int32_t) * fi->offset) = lo_operand;
+   }
 
     return 1;
 }
@@ -2817,16 +2817,32 @@ uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_ifnull(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    int16_t branch = NEXT_BYTE;
+    branch = (branch << 8) | NEXT_BYTE;
+
+    int32_t address;
+
+    popOperand(&frame->operands, &address, NULL);
+
+    if (!address)
+        frame->pc += branch - 3;
+
+    return 1;
 }
 
 uint8_t instfunc_ifnonnull(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    int16_t branch = NEXT_BYTE;
+    branch = (branch << 8) | NEXT_BYTE;
+
+    int32_t address;
+
+    popOperand(&frame->operands, &address, NULL);
+
+    if (address)
+        frame->pc += branch - 3;
+
+    return 1;
 }
 
 uint8_t instfunc_goto_w(JavaVirtualMachine* jvm, Frame* frame)
