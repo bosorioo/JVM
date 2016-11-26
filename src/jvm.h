@@ -90,6 +90,10 @@ struct JavaVirtualMachine
     ReferenceTable* objects;
     FrameStack* frames;
     LoadedClasses* classes;
+
+    char classPath[256]; // TODO: make JVM look for classes in this path.
+                         // This path should be the folder where the main
+                         // class is contained.
 };
 
 void initJVM(JavaVirtualMachine* jvm);
