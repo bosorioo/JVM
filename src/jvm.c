@@ -656,6 +656,7 @@ uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
     {
         lc->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * lc->jc->staticFieldCount);
 
+        // TODO: init static fields that have the attribute ConstantValue
     }
 
     method_info* clinit = getMethodMatching(lc->jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
@@ -729,7 +730,7 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, LoadedClasses* lc)
 
     if (jc->instanceFieldCount)
     {
-        r->ci.data = (uint8_t*)malloc(sizeof(int32_t) * jc->instanceFieldCount);
+        r->ci.data = (int32_t*)malloc(sizeof(int32_t) * jc->instanceFieldCount);
 
         if (!r->ci.data)
         {

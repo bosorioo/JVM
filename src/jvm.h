@@ -25,7 +25,7 @@ enum JVMStatus {
 typedef struct ClassInstance
 {
     JavaClass* c;
-    uint8_t* data;
+    int32_t* data;
 } ClassInstance;
 
 typedef struct String
