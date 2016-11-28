@@ -669,7 +669,7 @@ uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
             if (!(field->access_flags & ACC_STATIC))
                 continue;
 
-            att = getAttributeByType(lc->jc->attributes, lc->jc->attributeCount, ATTR_ConstantValue);
+            att = getAttributeByType(field->attributes, field->attributes_count, ATTR_ConstantValue);
 
             if (!att)
                 continue;
