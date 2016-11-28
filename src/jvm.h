@@ -91,9 +91,11 @@ struct JavaVirtualMachine
     FrameStack* frames;
     LoadedClasses* classes;
 
-    char classPath[256]; // TODO: make JVM look for classes in this path.
-                         // This path should be the folder where the main
-                         // class is contained.
+    char classPath[256]; ///< Path to look for files when opening classes.
+                         ///< If an attempt to open a class file in the
+                         ///< current directory fails, then this classPath
+                         ///< is used to build another directory to look for
+                         ///< the class file.
 };
 
 void initJVM(JavaVirtualMachine* jvm);
