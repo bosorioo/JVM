@@ -200,7 +200,6 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
     uint8_t used_bytes;
     uint8_t firstChar = 1;
     char isValid = 1;
-    char* previousLocale = setlocale(LC_CTYPE, "pt_BR.UTF-8");
 
     if (*utf8_bytes == '[')
         return readFieldDescriptor(utf8_bytes, utf8_len, 1) == utf8_len;
@@ -229,8 +228,6 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
             break;
         }
     }
-
-    setlocale(LC_CTYPE, previousLocale);
 
     return isValid;
 }
@@ -360,8 +357,10 @@ char checkMethodNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 char checkConstantPoolValidity(JavaClass* jc)
 {
     uint16_t i;
+    char success = 1;
+    char* previousLocale = setlocale(LC_CTYPE, "pt_BR.UTF-8");
 
-    for (i = 0; i < jc->constantPoolCount - 1; i++)
+    for (i = 0; success && i < jc->constantPoolCount - 1; i++)
     {
         jc->currentValidityEntryIndex = i;
         cp_info* entry = jc->constantPool + i;
@@ -373,7 +372,7 @@ char checkConstantPoolValidity(JavaClass* jc)
                 if (!isValidNameIndex(jc, entry->Class.name_index, 1))
                 {
                     jc->status = INVALID_NAME_INDEX;
-                    return 0;
+                    success = 0;
                 }
 
                 break;
@@ -383,7 +382,7 @@ char checkConstantPoolValidity(JavaClass* jc)
                 if (!isValidUTF8Index(jc, entry->String.string_index))
                 {
                     jc->status = INVALID_STRING_INDEX;
-                    return 0;
+                    success = 0;
                 }
 
                 break;
@@ -391,21 +390,21 @@ char checkConstantPoolValidity(JavaClass* jc)
             case CONSTANT_Methodref:
             case CONSTANT_InterfaceMethodref:
 
-                if (!checkClassIndex(jc, entry->Methodref.class_index))
-                    return 0;
-
-                if (!checkMethodNameAndTypeIndex(jc, entry->Methodref.name_and_type_index))
-                    return 0;
+                if (!checkClassIndex(jc, entry->Methodref.class_index) ||
+                    !checkMethodNameAndTypeIndex(jc, entry->Methodref.name_and_type_index))
+                {
+                    success = 0;
+                }
 
                 break;
 
             case CONSTANT_Fieldref:
 
-                if (!checkClassIndex(jc, entry->Fieldref.class_index))
-                    return 0;
-
-                if (!checkFieldNameAndTypeIndex(jc, entry->Fieldref.name_and_type_index))
-                    return 0;
+                if (!checkClassIndex(jc, entry->Fieldref.class_index) ||
+                    !checkFieldNameAndTypeIndex(jc, entry->Fieldref.name_and_type_index))
+                {
+                    success = 0;
+                }
 
                 break;
 
@@ -415,7 +414,7 @@ char checkConstantPoolValidity(JavaClass* jc)
                     !isValidUTF8Index(jc, entry->NameAndType.descriptor_index))
                 {
                     jc->status = INVALID_NAME_AND_TYPE_INDEX;
-                    return 0;
+                    success = 0;
                 }
 
                 break;
@@ -441,6 +440,7 @@ char checkConstantPoolValidity(JavaClass* jc)
     }
 
     jc->currentValidityEntryIndex = -1;
+    setlocale(LC_CTYPE, previousLocale);
 
-    return 1;
+    return success;
 }

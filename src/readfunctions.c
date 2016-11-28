@@ -3,64 +3,57 @@
 #include "validity.h"
 #include <math.h>
 
-// Reads a four-byte long unsigned integer from the JavaClass
-// that has already been opened. The result is written in the
-// pointer "*out", if not NULL.
-/**
-* Funcao que le um inteiro sem sinal de 4 bytes da JavaClass ja aberta.
-* @param JavaClass* jc
-* @param uint32_t *out
-* @return uint8_t escrito em *out se nao for NULL
-*/
+static const union {
+    uint16_t value;
+    uint8_t bytes[2];
+} byte_order = {1};
+
+#define IS_LITTLE_ENDIAN byte_order.bytes[1]
+
+/// @brief Reads a four-byte unsigned integer from the JavaClass file
+/// @param JavaClass* jc - poiter to an already open JavaClass file
+/// @param [out] uint32_t* out - pointer to variable that will receive
+/// the value read, if non null.
+/// @return 1 in case of success, 0 in case of failure
 uint8_t readu4(JavaClass* jc, uint32_t* out)
 {
-    int byte;
     uint32_t u4 = 0;
-    uint8_t i;
 
-    for (i = 0; i < 4; i++)
-    {
-        byte = fgetc(jc->file);
+    if (fread(&u4, sizeof(uint32_t), 1, jc->file) != 1)
+        return 0;
 
-        if (byte == EOF)
-            break;
+    jc->totalBytesRead += 4;
 
-        u4 <<= 8;
-        u4 |= byte;
-        jc->totalBytesRead++;
-    }
+    if (!IS_LITTLE_ENDIAN)
+        u4 = (u4 >> 24) | ((u4 & 0xFF0000) >> 8) | ((u4 & 0xFF00) << 8) | ((u4 & 0xFF) << 24);
 
     if (out)
         *out = u4;
 
-    return i == 4;
+    return 1;
 }
 
-// Reads a two-byte long unsigned integer from the JavaClass
-// that has already been opened. The result is written in the
-// pointer "*out", if not NULL.
+/// @brief Reads a two-byte unsigned integer from the JavaClass file
+/// @param JavaClass* jc - poiter to an already open JavaClass file
+/// @param [out] uint16_t* out - pointer to variable that will receive
+/// the value read, if non null.
+/// @return 1 in case of success, 0 in case of failure
 uint8_t readu2(JavaClass* jc, uint16_t* out)
 {
-    int byte;
     uint16_t u2 = 0;
-    uint8_t i;
 
-    for (i = 0; i < 2; i++)
-    {
-        byte = fgetc(jc->file);
+    if (fread(&u2, sizeof(uint16_t), 1, jc->file) != 1)
+        return 0;
 
-        if (byte == EOF)
-            break;
+    jc->totalBytesRead += 2;
 
-        u2 <<= 8;
-        u2 |= byte;
-        jc->totalBytesRead++;
-    }
+    if (!IS_LITTLE_ENDIAN)
+        u2 = (u2 >> 8) | ((u2 & 0xFF) << 8);
 
     if (out)
         *out = u2;
 
-    return i == 2;
+    return 1;
 }
 
 // This function tries to read a field descriptor from the UTF-8 stream.

@@ -492,19 +492,13 @@ uint8_t readAttributeCode(JavaClass* jc, attribute_info* entry)
         return 0;
     }
 
-    for (u32 = 0; u32 < info->code_length; u32++)
+    if (fread(info->code, sizeof(uint8_t), info->code_length, jc->file) != info->code_length)
     {
-        int byte = fgetc(jc->file);
-
-        if (byte == EOF)
-        {
-            jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
-            return 0;
-        }
-
-        jc->totalBytesRead++;
-        *(info->code + u32) = (uint8_t)byte;
+        jc->status = UNEXPECTED_EOF_READING_ATTRIBUTE_INFO;
+        return 0;
     }
+
+    jc->totalBytesRead += info->code_length;
 
     // TODO: check if all instructions are valid and have correct parameters.
 
