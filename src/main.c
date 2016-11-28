@@ -21,7 +21,7 @@ int main(int argc, char* args[])
     {
         printf("Warning: pointers cannot be stored in an int32_t.\n");
         printf("This is very likely to malfunction when handling references.\n");
-        printf("Continue anyway? (Y/N)");
+        printf("Continue anyway? (Y/N)\n");
 
         int input;
 
