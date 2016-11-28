@@ -21,6 +21,8 @@ void initJVM(JavaVirtualMachine* jvm)
     jvm->classes = NULL;
     jvm->objects = NULL;
 
+    jvm->classPath[0] = '\0';
+
     // We need to simulate those two classes, and their support is
     // highly limited. Reading them from the Oracle .class files
     // requires processing of many other .class, including
@@ -122,6 +124,23 @@ void executeJVM(JavaVirtualMachine* jvm, LoadedClasses* mainClass)
         return;
 }
 
+void setClassPath(JavaVirtualMachine* jvm, const char* path)
+{
+    uint32_t index;
+    uint32_t lastSlash = 0;
+
+    for (index = 0; path[index]; index++)
+    {
+        if (path[index] == '/' || path[index] == '\\')
+            lastSlash = index;
+    }
+
+    if (lastSlash)
+        memcpy(jvm->classPath, path, lastSlash + 1);
+    else
+        jvm->classPath[0] = '\0';
+}
+
 /// @brief Loads a .class file.
 ///
 ///
@@ -189,6 +208,12 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 
     jc = (JavaClass*)malloc(sizeof(JavaClass));
     openClassFile(jc, path);
+
+    if (jc->status == CLASS_STATUS_FILE_COULDNT_BE_OPENED && jvm->classPath[0])
+    {
+        snprintf(path, sizeof(path), "%s%.*s.class", jvm->classPath, utf8_len, className_utf8_bytes);
+        openClassFile(jc, path);
+    }
 
     if (jc->status != CLASS_STATUS_OK)
     {

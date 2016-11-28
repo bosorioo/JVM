@@ -99,6 +99,7 @@ struct JavaVirtualMachine
 void initJVM(JavaVirtualMachine* jvm);
 void deinitJVM(JavaVirtualMachine* jvm);
 void executeJVM(JavaVirtualMachine* jvm, LoadedClasses* mainClass);
+void setClassPath(JavaVirtualMachine* jvm, const char* path);
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass);
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass);
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass);

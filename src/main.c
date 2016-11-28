@@ -27,7 +27,7 @@ int main(int argc, char* args[])
 
         do {
 
-            input = fgetchar();
+            input = getchar();
 
             if (input == 'Y' || input == 'y')
                 break;
@@ -35,7 +35,7 @@ int main(int argc, char* args[])
             if (input == 'N' || input == 'n')
                 exit(0);
 
-            while (fgetchar() != '\n');
+            while (getchar() != '\n');
 
         } while (1);
 
@@ -104,6 +104,8 @@ int main(int argc, char* args[])
         }
 
         LoadedClasses* mainLoadedClass;
+
+        setClassPath(&jvm, args[1]);
 
         if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength, &mainLoadedClass))
             executeJVM(&jvm, mainLoadedClass);
