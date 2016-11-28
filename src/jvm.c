@@ -656,7 +656,51 @@ uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
     {
         lc->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * lc->jc->staticFieldCount);
 
-        // TODO: init static fields that have the attribute ConstantValue
+        uint16_t index;
+        attribute_info* att;
+        field_info* field;
+        att_ConstantValue_info* cv;
+        cp_info* cp;
+
+        for (index = 0; index < lc->jc->fieldCount; index++)
+        {
+            field = lc->jc->fields + index;
+
+            if (!(field->access_flags & ACC_STATIC))
+                continue;
+
+            att = getAttributeByType(lc->jc->attributes, lc->jc->attributeCount, ATTR_ConstantValue);
+
+            if (!att)
+                continue;
+
+            cv = (att_ConstantValue_info*)att->info;
+
+            if (!cv)
+                continue;
+
+            cp = lc->jc->constantPool + cv->constantvalue_index - 1;
+
+            switch (cp->tag)
+            {
+                case CONSTANT_Integer: case CONSTANT_Float:
+                    lc->staticFieldsData[field->offset] = cp->Integer.value;
+                    break;
+
+                case CONSTANT_Double: case CONSTANT_Long:
+                    lc->staticFieldsData[field->offset] = cp->Long.high;
+                    lc->staticFieldsData[field->offset + 1] = cp->Long.low;
+                    break;
+
+                case CONSTANT_String:
+                    cp = lc->jc->constantPool + cp->String.string_index - 1;
+                    lc->staticFieldsData[field->offset] = (int32_t)newString(jvm, cp->Utf8.bytes, cp->Utf8.length);
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 
     method_info* clinit = getMethodMatching(lc->jc, (uint8_t*)"<clinit>", 8, (uint8_t*)"()V", 3, ACC_STATIC);
