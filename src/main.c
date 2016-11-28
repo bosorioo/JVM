@@ -17,6 +17,30 @@ int main(int argc, char* args[])
         return 0;
     }
 
+    if (sizeof(int32_t*) > sizeof(int32_t))
+    {
+        printf("Warning: pointers cannot be stored in an int32_t.\n");
+        printf("This is very likely to malfunction when handling references.\n");
+        printf("Continue anyway? (Y/N)");
+
+        int input;
+
+        do {
+
+            input = fgetchar();
+
+            if (input == 'Y' || input == 'y')
+                break;
+
+            if (input == 'N' || input == 'n')
+                exit(0);
+
+            while (fgetchar() != '\n');
+
+        } while (1);
+
+    }
+
     uint8_t printClassContent = 0;
     uint8_t executeClassMain = 0;
     uint8_t includeBOM = 0;
