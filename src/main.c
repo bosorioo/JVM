@@ -119,3 +119,40 @@ int main(int argc, char* args[])
 
     return 0;
 }
+
+/// @mainpage Java Virtual Machine
+///
+/// <pre>
+/// Group members:
+///     Bruno Osorio
+///     Joao Araujo
+///     Leticia Ribeiro
+///     Tiago Kfouri
+///     Victoria Goularte
+/// </pre>
+/// @section intro Introduction
+/// Simple implementation of java virtual machine that is able to read class files and
+/// display their content and execute the class' main method. Not all instructions have
+/// been implemented and there are other limitations.
+/// <br>
+/// All instructions are implemented in a single function. They can be found in instructions.c.
+///
+/// @section limitations Limitations
+/// There are a few instructions that haven't been implemented. They are listed below:
+///     - invokeinterface - will produce error if executed
+///     - invokedynamic - will produce error if executed
+///     - checkcast - will produce error if executed
+///     - instanceof - will produce error if executed
+///     - monitorenter - ignored
+///     - monitorexit - ignored
+///
+/// There is also no support for exceptions nor try/catch/finally blocks.
+/// Class "java/lang/System" and "java/lang/String" can be used, but they are
+/// also limited.
+/// <br>
+/// It is possible to print data to stdout using java/lang/System.out.println(),
+/// but all other System's methods are unavailable.
+/// <br>
+/// Strings have no methods implemented, therefore they can only be created
+/// and printed. Other common instructions that deal with with objects will
+/// also work for strings, like comparing them with 'null'.
