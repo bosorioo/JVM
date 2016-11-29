@@ -322,7 +322,7 @@ void closeClassFile(JavaClass* jc)
             freeMethodAttributes(jc->methods + i);
 
         free(jc->methods);
-        jc->constantPoolCount = 0;
+        jc->methodCount = 0;
     }
 
     if (jc->fields)
