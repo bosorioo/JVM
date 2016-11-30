@@ -3,12 +3,13 @@
 #include "validity.h"
 #include <math.h>
 
+/// @cond
 static const union {
     uint16_t value;
     uint8_t bytes[2];
 } byte_order = {1};
-
 #define IS_LITTLE_ENDIAN byte_order.bytes[1]
+/// @endcond
 
 /// @brief Reads a four-byte unsigned integer from the JavaClass file
 /// @param JavaClass* jc - poiter to an already open JavaClass file

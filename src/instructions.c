@@ -27,6 +27,8 @@ uint8_t instfunc_aconst_null(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "iconst_<n>" and
+/// fconst_<n>.
 #define DECLR_CONST_CAT_1_FAMILY(instructionprefix, value, type) \
     uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -38,6 +40,8 @@ uint8_t instfunc_aconst_null(JavaVirtualMachine* jvm, Frame* frame)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "lconst_<n>" and
+/// dconst_<n>.
 #define DECLR_CONST_CAT_2_FAMILY(instructionprefix, highvalue, lowvalue, type) \
     uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -368,6 +372,8 @@ uint8_t instfunc_aload(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "lload_<n>",
+/// "fload_<n>" and "aload_<n>".
 #define DECLR_CAT_1_LOAD_N_FAMILY(instructionprefix, value, type) \
     uint8_t instfunc_##instructionprefix##_##value(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -379,6 +385,8 @@ uint8_t instfunc_aload(JavaVirtualMachine* jvm, Frame* frame)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "dload_<n>"
+/// and "lload_<n>".
 #define DECLR_CAT_2_LOAD_N_FAMILY(instructionprefix, value, type) \
     uint8_t instfunc_##instructionprefix##_##value(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -416,6 +424,8 @@ DECLR_CAT_1_LOAD_N_FAMILY(aload, 1, OP_REFERENCE)
 DECLR_CAT_1_LOAD_N_FAMILY(aload, 2, OP_REFERENCE)
 DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_REFERENCE)
 
+/// @brief Used to automatically generate instructions "iaload", "faload",
+/// "baload", "saload" and "caload".
 #define DECLR_ALOAD_CAT_1_FAMILY(instructionname, type, op_type) \
     uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -446,6 +456,8 @@ DECLR_CAT_1_LOAD_N_FAMILY(aload, 3, OP_REFERENCE)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "laload" and
+/// "daload".
 #define DECLR_ALOAD_CAT_2_FAMILY(instructionname, type, op_type) \
     uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -521,6 +533,8 @@ uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "istore", "fstore"
+/// and "astore".
 #define DECLR_STORE_CAT_1_FAMILY(instructionprefix) \
     uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -530,6 +544,8 @@ uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "l" and
+/// "dstore".
 #define DECLR_STORE_CAT_2_FAMILY(instructionprefix) \
     uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -549,6 +565,8 @@ DECLR_STORE_CAT_1_FAMILY(fstore)
 DECLR_STORE_CAT_2_FAMILY(dstore)
 DECLR_STORE_CAT_1_FAMILY(astore)
 
+/// @brief Used to automatically generate instructions "istore_<n>", "fstore_<n>"
+/// and "astore_<n>".
 #define DECLR_STORE_N_CAT_1_FAMILY(instructionprefix, N) \
     uint8_t instfunc_##instructionprefix##_##N(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -558,6 +576,8 @@ DECLR_STORE_CAT_1_FAMILY(astore)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "lstore_<n>" and
+/// "dstore_<n>".
 #define DECLR_STORE_N_CAT_2_FAMILY(instructionprefix, N) \
     uint8_t instfunc_##instructionprefix##_##N(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -595,6 +615,8 @@ DECLR_STORE_N_CAT_1_FAMILY(astore, 1)
 DECLR_STORE_N_CAT_1_FAMILY(astore, 2)
 DECLR_STORE_N_CAT_1_FAMILY(astore, 3)
 
+/// @brief Used to automatically generate instructions "bastore", "castore",
+/// "sastore", "iastore" and "fastore".
 #define DECLR_ASTORE_CAT_1_FAMILY(instructionname, type) \
     uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -629,6 +651,8 @@ DECLR_ASTORE_CAT_1_FAMILY(castore, int16_t)
 DECLR_ASTORE_CAT_1_FAMILY(iastore, int32_t)
 DECLR_ASTORE_CAT_1_FAMILY(fastore, int32_t)
 
+/// @brief Used to automatically generate instructions "dastore" and
+/// "lastore".
 #define DECLR_ASTORE_CAT_2_FAMILY(instructionname) \
     uint8_t instfunc_##instructionname(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -868,6 +892,8 @@ uint8_t instfunc_swap(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "iadd", "isub",
+/// "imul", "idiv", "irem", "iand", "ior" and "ixor".
 #define DECLR_INTEGER_MATH_OP(instruction, op) \
     uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -939,6 +965,8 @@ uint8_t instfunc_iushr(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "ladd", "lsub",
+/// "lmul", "ldiv", "lrem", "land", "lor" and "lxor".
 #define DECLR_LONG_MATH_OP(instruction, op) \
     uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -1043,6 +1071,8 @@ uint8_t instfunc_lushr(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "fadd", "fsub",
+/// "fmul" and "fdiv".
 #define DECLR_FLOAT_MATH_OP(instruction, op) \
     uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -1066,6 +1096,8 @@ DECLR_FLOAT_MATH_OP(fsub, -)
 DECLR_FLOAT_MATH_OP(fmul, *)
 DECLR_FLOAT_MATH_OP(fdiv, /)
 
+/// @brief Used to automatically generate instructions "dadd", "dsub",
+/// "dmul" and "ddiv".
 #define DECLR_DOUBLE_MATH_OP(instruction, op) \
     uint8_t instfunc_##instruction(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -1747,6 +1779,8 @@ uint8_t instfunc_dcmpg(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "ifeq", "ifne",
+/// "iflt", "ifle", "ifgt" and "ifge".
 #define DECLR_IF_FAMILY(inst, op) \
     uint8_t instfunc_##inst(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -1766,6 +1800,8 @@ DECLR_IF_FAMILY(ifle, <=)
 DECLR_IF_FAMILY(ifgt, >)
 DECLR_IF_FAMILY(ifge, >=)
 
+/// @brief Used to automatically generate instructions "if_icmpeq", "if_icmpne",
+/// "if_icmplt", "if_icmple", "if_icmpgt", "if_icmpge", "if_acmpeq" and "if_acmpne".
 #define DECLR_IF_ICMP_FAMILY(inst, op) \
     uint8_t instfunc_##inst(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -1904,6 +1940,8 @@ uint8_t instfunc_lookupswitch(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Used to automatically generate instructions "ireturn", "lreturn",
+/// "freturn", "dreturn", "areturn" and "return".
 #define DECLR_RETURN_FAMILY(instname, retcount) \
     uint8_t instfunc_##instname(JavaVirtualMachine* jvm, Frame* frame) \
     { \
@@ -2877,6 +2915,12 @@ uint8_t instfunc_jsr_w(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+/// @brief Retrieves the instruction function for a given
+/// instruction opcode.
+/// @return The function that needs to be called for the
+/// instruction to be executed if there is one for the given
+/// opcode. Otherwise, returns NULL.
+/// @see Opcodes, getOpcodeMnemonic()
 InstructionFunction fetchOpcodeFunction(uint8_t opcode)
 {
     const InstructionFunction opcodeFunctions[202] = {

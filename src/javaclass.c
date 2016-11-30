@@ -5,16 +5,21 @@
 #include "validity.h"
 #include "memoryinspect.h"
 
-/// @brief Opens the .class file and completes the JavaClass structure
+/// @brief Opens a class file and parse it, storing the class
+/// information in the JavaClass structure.
+/// @param JavaClass* jc - pointer to the structure that will
+/// hold the class data
+/// @param const char* path - string containing the path to the
+/// class file to be read
 ///
-/// @param JavaClass* jc - pointer to the structure to be
-/// completed.
-/// @param const char* path - pointer to char that contains
-/// the path of file to be read
+/// This function opens the .class file and reads its content
+/// from the file by filling in the fields of the JavaClass struct.
+/// A bunch of other functions from different modules are called
+/// to read some pieces of the class file. Various checks are made
+/// during the parsing of the read data.
 ///
-/// This function open the .class file and reads byte by byte
-/// from the file by filling in the fields of the JavaClass struct
-///
+/// @see closeClassFile, printClassFileInfo(), printClassFileDebugInfo()
+/// @hidecallergraph
 void openClassFile(JavaClass* jc, const char* path)
 {
     if (!jc)
@@ -278,11 +283,12 @@ void openClassFile(JavaClass* jc, const char* path)
 
 }
 
-/// @brief Closes the .class file and frees memory allocated by JavaClass fields
-///
-/// @param JavaClass* jc - pointer to the structure to be
-/// released.
-///
+/// @brief Closes the .class file and releases resources used by
+/// the JavaClass struct.
+/// @param JavaClass* jc - pointer to the class to be closed.
+/// @note This function does not free the @b *jc pointer.
+/// @see openClassFile()
+/// @hidecallergraph
 void closeClassFile(JavaClass* jc)
 {
     if (!jc)
@@ -408,10 +414,12 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     const char* comma = ", ";
     const char* empty = "";
 
+    /// @cond
     #define DECODE_FLAG(flag, name) if (flags & flag) { \
         bytes = snprintf(buffer, buffer_len, "%s%s", bytes ? comma : empty, name); \
         buffer += bytes; \
         buffer_len -= bytes; }
+    /// @endcod
 
     if (acctype == ACCT_CLASS)
     {
