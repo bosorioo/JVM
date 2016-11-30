@@ -222,7 +222,7 @@ void openClassFile(JavaClass* jc, const char* path)
     {
         jc->methods = (method_info*)malloc(sizeof(method_info) * jc->methodCount);
 
-        if (!jc->methodCount)
+        if (!jc->methods)
         {
             jc->status = MEMORY_ALLOCATION_FAILED;
             return;
