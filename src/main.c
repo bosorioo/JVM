@@ -132,10 +132,33 @@ int main(int argc, char* args[])
 /// </pre>
 /// @section intro Introduction
 /// Simple implementation of java virtual machine that is able to read class files and
-/// display their content and execute the class' main method. Not all instructions have
-/// been implemented and there are other limitations.
+/// display their content and execute the class' main method.
 /// <br>
-/// All instructions are implemented in a single function. They can be found in instructions.c.
+/// Not all instructions have been implemented and there are other limitations.
+/// Refer to section @ref limitations Limitations to see more.
+/// <br>
+///
+///
+/// @section instructions Instructions Implementation
+/// Each instruction is implemented entirely within its single C function. They are all
+/// declared in file instructions.c.
+/// <br>
+/// All instructions functions share the prefix "instfunc_" and have the same
+/// function prototype, which is:
+/// @code
+/// uint8_t instfunc_<instruction name>(JavaVirtualMachine* jvm, Frame* frame)
+/// @endcode
+/// A Frame structure contains all necessary information to run a method, i.e. the
+/// method's bytecode along with its length, the method's program counter, an array
+/// storing all local variables and a stack of operands (OperandStack).
+/// The frame is used to manipulate the operands and the local variables, and read
+/// instructions parameters from the method's bytecode.
+/// <br>
+/// Instructions use the JavaVirtualMachine pointer to set errors (like insufficient
+/// memory), resolve and look for classes, and create new objects
+/// (arrays, class instances, strings).
+/// <br>
+///
 ///
 /// @section limitations Limitations
 /// There are a few instructions that haven't been implemented. They are listed below:
