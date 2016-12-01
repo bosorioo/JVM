@@ -6,10 +6,15 @@
 #include <wctype.h>
 #include <ctype.h>
 
-// Checks whether the "accessFlags" parameter has a valid combination
-// of method flags. In case of issues, jc->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jc, and the
-// return value is 1.
+/// @brief Checks whether the "accessFlags" parameter has a valid combination
+/// of method flags. 
+/// 
+/// @param JavaClass* jc - pointer to the class 
+/// @param uint16_t accessFlags - flag to be analyzed  
+///
+/// @return char - in case of issues, jc->status is changed, and the
+/// function returns 0. Otherwise, nothing is changed with jc, and the
+/// return value is 1.
 char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
 {
     if (accessFlags & ACC_INVALID_METHOD_FLAG_MASK)
@@ -47,10 +52,15 @@ char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
     return 1;
 }
 
-// Checks whether the "accessFlags" parameter has a valid combination
-// of field flags. In case of issues, jc->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jc, and the
-// return value is 1.
+/// @brief Checks whether the "accessFlags" parameter has a valid combination
+/// of field flags. 
+/// 
+/// @param JavaClass* jc - pointer to the class 
+/// @param uint16_t accessFlags - flag to be analyzed  
+///
+/// @return char - in case of issues, jc->status is changed, and the
+/// function returns 0. Otherwise, nothing is changed with jc, and the
+/// return value is 1.
 char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
 {
     if (accessFlags & ACC_INVALID_FIELD_FLAG_MASK)
@@ -98,12 +108,17 @@ char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
     return 1;
 }
 
-// Checks whether the "accessFlags" from the class file is a valid
-// combination of class flags. It also checks if "thisClass" and
-// "superClass" points to valid class indexes.
-// In case of issues, jc->status is changed, and the
-// function returns 0. Otherwise, nothing is changed with jc, and the
-// return value is 1. This function also
+/// @brief Checks whether the "accessFlags" from the class file is a valid
+/// combination of class flags. 
+/// 
+/// This function also checks if "thisClass" and
+/// "superClass" points to valid class indexes.
+///
+/// @param JavaClass* jc - pointer to class to be analyzed
+///
+/// @return char - in case of issues, jc->status is changed, and the
+/// function returns 0. Otherwise, nothing is changed with jc, and the
+/// return value is 1. This function also
 char checkClassIndexAndAccessFlags(JavaClass* jc)
 {
     if (jc->accessFlags & ACC_INVALID_CLASS_FLAG_MASK)
@@ -146,14 +161,19 @@ char checkClassIndexAndAccessFlags(JavaClass* jc)
     return 1;
 }
 
-// Checks whether the name of the class pointed by "thisClass" is the same name
-// as the class file. This function doesn't check package and folders. It
-// basically gets the name of file, for instance: "C:/mypath/File.class" will be
-// understood as "File". The name of the class could be something like: "package/MyClass",
-// the package will be ignored and function will understand the class name as "MyClass".
-// The function then proceeds to compare "MyClass" and "File". If there is a mismatch,
-// jc->status is modified and the function returns 0. Otherwise, it is left unchanged
-// and the return value is 1.
+/// @brief Checks whether the name of the class pointed by "thisClass" is the same name
+/// as the class file. 
+///
+/// This function doesn't check package and folders. It
+/// basically gets the name of file, for instance: "C:/mypath/File.class" will be
+/// understood as "File". The name of the class could be something like: "package/MyClass",
+/// the package will be ignored and function will understand the class name as "MyClass".
+/// The function then proceeds to compare "MyClass" and "File". 
+///
+/// @param JavaClass* jc - pointer to class to be analyzed
+///
+/// @return char - If there is a mismatch, jc->status is modified and the function 
+/// returns 0. Otherwise, it is left unchanged and the return value is 1.
 char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
@@ -188,12 +208,18 @@ char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
     return cmp_UTF8_FilePath(cpi->Utf8.bytes, cpi->Utf8.length, (uint8_t*)classFilePath + begin, end - begin);
 }
 
-// Checks whether the UTF-8 stream is a valid Java Identifier. A java identifer (class name,
-// variable name, etc) must start with underscore, dollar sign or letter, and could finish
-// with numbers, letters, dollar sign or underscore. In case the parameter "isClassIdentifier"
-// is set to anything but zero, then this function will also accept slashes (/), as classes
-// have their full path separated by slashes. The function returns 1 if it the string is indeed
-// a valid Java Identifier, otherwise zero.
+/// @brief Checks whether the UTF-8 stream is a valid Java Identifier. 
+///
+/// A java identifer (class name, variable name, etc) must start with underscore, dollar sign 
+/// or letter, and could finish with numbers, letters, dollar sign or underscore. 
+///
+/// @param uint8_t* utf8_bytes - pointer to the sequence of bytes that identify the class name
+/// @param int32_t utf8_len - legth of class name
+/// @param uint8_t isClassIdentifier - is set to anything but zero, then this function will also 
+/// accept slashes (/), as classes have their full path separated by slashes. 
+///
+/// @ return char - The function returns 1 if it the string is indeed
+/// a valid Java Identifier, otherwise zero.
 char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
 {
     uint32_t utf8_char;
@@ -232,7 +258,12 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
     return isValid;
 }
 
-// Returns 1 if the index points to a UTF-8 constant, 0 otherwise.
+/// @brief Identifies if a index in JavaClass is valid
+///
+/// @param JavaClass* jc - pointer to the class
+/// @param uint16_t index - represents the actual index
+///
+/// @return char - 1 if the index points to a UTF-8 constant, 0 otherwise.
 char isValidUTF8Index(JavaClass* jc, uint16_t index)
 {
     return (jc->constantPool + index - 1)->tag == CONSTANT_Utf8;
