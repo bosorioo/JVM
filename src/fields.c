@@ -4,6 +4,14 @@
 #include "utf8.h"
 #include "memoryinspect.h"
 
+/// @brief Reads a field_info from the file
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read
+/// @param field_info* entry - where the data read is written 
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readField(JavaClass* jc, field_info* entry)
 {
     entry->attributes = NULL;
@@ -77,6 +85,13 @@ char readField(JavaClass* jc, field_info* entry)
     return 1;
 }
 
+/// @brief Releases attributes used by the field_info struct
+///
+/// @param field_info* entry - pointer to the field_info that 
+/// contains the attributes
+///
+/// @note This function does not free the @b *entry pointer, 
+/// just attributes
 void freeFieldAttributes(field_info* entry)
 {
     uint32_t i;
@@ -93,6 +108,10 @@ void freeFieldAttributes(field_info* entry)
     }
 }
 
+/// @brief Function to print all fields of the class file. 
+///
+/// @param JavaClass *jc - pointer to JavaClass structure that must already
+/// be loaded
 void printAllFields(JavaClass* jc)
 {
     if (jc->fieldCount == 0)

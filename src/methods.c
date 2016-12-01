@@ -5,7 +5,6 @@
 #include "string.h"
 #include "memoryinspect.h"
 
-
 /// @brief Reads a method_info from the file
 ///
 /// @param JavaClass* jc - pointer to the structure to be
