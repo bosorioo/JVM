@@ -5,6 +5,15 @@
 #include "string.h"
 #include "memoryinspect.h"
 
+
+/// @brief Reads a method_info from the file
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param method_info* entry - where the data read is written 
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readMethod(JavaClass* jc, method_info* entry)
 {
     entry->attributes = NULL;
@@ -73,6 +82,13 @@ char readMethod(JavaClass* jc, method_info* entry)
     return 1;
 }
 
+/// @brief Releases attributes used by the method_info struct
+///
+/// @param method_info* entry - pointer to the method_info that 
+/// contains the attributes
+///
+/// @note This function does not free the @b *entry pointer, 
+/// just attributes
 void freeMethodAttributes(method_info* entry)
 {
     uint32_t i;
@@ -89,6 +105,10 @@ void freeMethodAttributes(method_info* entry)
     }
 }
 
+/// @brief Function to print all methods of the class file. 
+///
+/// @param JavaClass *jc - pointer to JavaClass structure that must already
+/// be loaded
 void printMethods(JavaClass* jc)
 {
 

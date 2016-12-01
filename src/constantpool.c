@@ -15,7 +15,9 @@
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
 /// @param cp_info* entry - where the data read is written 
-/// @return   
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readConstantPool_Class(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Class.name_index))
@@ -53,7 +55,9 @@ char readConstantPool_Class(JavaClass* jc, cp_info* entry)
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
 /// @param cp_info* entry - where the data read is written 
-/// @return
+/// 
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Fieldref.class_index))
@@ -102,7 +106,9 @@ char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
 /// @param cp_info* entry - where the data read is written 
-/// @return 
+/// 
+/// @return char - retuns 0 if something unexpected happened 
+/// 1 in case of success
 char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
 {
     if (!readu4(jc, &entry->Integer.value))
@@ -122,6 +128,9 @@ char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
 /// @param cp_info* entry - where the data read is written 
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readConstantPool_Long(JavaClass* jc, cp_info* entry)
 {
     if (!readu4(jc, &entry->Long.high))
@@ -144,7 +153,9 @@ char readConstantPool_Long(JavaClass* jc, cp_info* entry)
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
 /// @param cp_info* entry - where the data read is written 
-/// @return char
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readConstantPool_Utf8(JavaClass* jc, cp_info* entry)
 {
     if (!readu2(jc, &entry->Utf8.length))
@@ -196,6 +207,17 @@ char readConstantPool_Utf8(JavaClass* jc, cp_info* entry)
     return 1;
 }
 
+/// @brief Reads a cp_info from the file
+///
+/// This function identifies the structure indicated by the tag byte
+/// and selects the corresponding reading type
+///
+/// @param JavaClass* jc - pointer to the structure to be
+/// read.
+/// @param cp_info* entry - where the data read is written 
+///
+/// @return char - retuns 0 if something unexpected happened or
+/// failure, 1 in case of success
 char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
 {
     // Gets the entry tag
@@ -263,6 +285,7 @@ char readConstantPoolEntry(JavaClass* jc, cp_info* entry)
 ///
 /// @param uint8_t tag - identifier of the enumeration to be
 /// translated.
+///
 /// @return const char* - pointer to char containing the decoded tag
 const char* decodeTag(uint8_t tag)
 {
