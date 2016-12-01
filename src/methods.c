@@ -3,7 +3,7 @@
 #include "validity.h"
 #include "utf8.h"
 #include "string.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 
 /// @brief Reads a method_info from the file
 ///

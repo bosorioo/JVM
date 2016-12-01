@@ -1,6 +1,6 @@
 #include "natives.h"
 #include "readfunctions.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 #include "utf8.h"
 #include "jvm.h"
 #include <string.h>

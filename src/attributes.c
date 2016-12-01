@@ -2,7 +2,7 @@
 #include "readfunctions.h"
 #include "utf8.h"
 #include "opcodes.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 
 #define DECLARE_ATTR_FUNCS(attr) \

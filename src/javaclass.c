@@ -3,7 +3,7 @@
 #include "constantpool.h"
 #include "utf8.h"
 #include "validity.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 
 /// @brief Opens a class file and parse it, storing the class
 /// information in the JavaClass structure.

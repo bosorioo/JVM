@@ -3,7 +3,7 @@
 #include <string.h>
 #include "javaclass.h"
 #include "jvm.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 
 int main(int argc, char* args[])
 {
@@ -143,7 +143,7 @@ int main(int argc, char* args[])
 ///
 ///
 ///
-/// @section stepguideJavaClass Step-by-step on how a .class file is read and displayed
+/// @section stepguideJavaClass Step-by-step: display class content
 /// -# Command line are parsed in file main.c to get file path.
 /// -# openClassFile() is called, defined in module javaclass.c.
 /// -# file signature, version and constant pool count are read.
@@ -170,7 +170,7 @@ int main(int argc, char* args[])
 ///
 ///
 ///
-/// @section stepguideJVM Step-by-step on how a .class file is executed
+/// @section stepguideJVM Step-by-step: execute a class
 ///
 ///
 ///
@@ -188,11 +188,13 @@ int main(int argc, char* args[])
 /// method's bytecode along with its length, the method's program counter, an array
 /// storing all local variables and a stack of operands (OperandStack).
 /// The frame is used to manipulate the operands and the local variables, and read
-/// instructions parameters from the method's bytecode.
+/// instructions parameters from the method's bytecode. An OperandStack is manipulated
+/// using functions pushOperand() and popOperand().
 /// <br>
 /// Instructions use the JavaVirtualMachine pointer to set errors (like insufficient
 /// memory), resolve and look for classes, and create new objects
-/// (arrays, class instances, strings).
+/// (arrays, class instances, strings). Object creation is done using functions
+/// newString(), newClassInstance(), newArray(), newObjectArray() and newObjectMultiArray().
 /// <br>
 ///
 ///
@@ -223,3 +225,5 @@ int main(int argc, char* args[])
 /// Strings have no methods implemented, therefore they can only be created
 /// and printed. Other common instructions that deal with with objects will
 /// also work for strings, like comparing them with 'null'.
+/// <br>
+/// Parameter passing from command line to the running java program is not possible.

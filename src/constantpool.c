@@ -1,4 +1,4 @@
-#include "memoryinspect.h"
+#include "debugging.h"
 #include <string.h>
 #include <inttypes.h> // Usage of macro "PRId64" to print 64 bit integer
 #include "readfunctions.h"
@@ -6,7 +6,7 @@
 #include "utf8.h"
 
 /// @brief Reads a cp_info of type CONSTANT_Class from the file
-/// 
+///
 /// Reads a cp_info of type CONSTANT_Class from the file
 /// Data read is written to pointer *entry.
 /// CONSTANT_Class has the same structure as CONSTANT_String,
@@ -14,7 +14,7 @@
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
+/// @param cp_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
@@ -54,8 +54,8 @@ char readConstantPool_Class(JavaClass* jc, cp_info* entry)
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
-/// 
+/// @param cp_info* entry - where the data read is written
+///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
 char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
@@ -105,9 +105,9 @@ char readConstantPool_Fieldref(JavaClass* jc, cp_info* entry)
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
-/// 
-/// @return char - retuns 0 if something unexpected happened 
+/// @param cp_info* entry - where the data read is written
+///
+/// @return char - retuns 0 if something unexpected happened
 /// 1 in case of success
 char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
 {
@@ -127,7 +127,7 @@ char readConstantPool_Integer(JavaClass* jc, cp_info* entry)
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
+/// @param cp_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
@@ -152,7 +152,7 @@ char readConstantPool_Long(JavaClass* jc, cp_info* entry)
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
+/// @param cp_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
@@ -214,7 +214,7 @@ char readConstantPool_Utf8(JavaClass* jc, cp_info* entry)
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param cp_info* entry - where the data read is written 
+/// @param cp_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
@@ -310,7 +310,7 @@ const char* decodeTag(uint8_t tag)
 }
 
 /// @brief Print one single constant from the constant pool.
-/// 
+///
 /// @param JavaClass* jc - pointer to JavaClass structure that must already
 /// be loaded, no checks are made.
 /// @param *entry - the pointer to the constant that will be
@@ -420,7 +420,7 @@ void printConstantPoolEntry(JavaClass* jc, cp_info* entry)
 }
 
 /// @brief Function to print all the constants from the constant pool
-/// of the class file. 
+/// of the class file.
 ///
 /// @param JavaClass *jc - pointer to JavaClass structure that must already
 /// be loaded

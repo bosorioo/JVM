@@ -1,6 +1,6 @@
 #ifdef DEBUG
 
-#include "memoryinspect.h"
+#include "debugging.h"
 #undef malloc
 #undef free
 #define _malloc(b) malloc(b)

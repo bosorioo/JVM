@@ -3,7 +3,7 @@
 #include "natives.h"
 #include "instructions.h"
 
-#include "memoryinspect.h"
+#include "debugging.h"
 #include <string.h>
 
 /// @brief Initializes a JavaVirtualMachine structure.

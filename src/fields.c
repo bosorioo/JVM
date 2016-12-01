@@ -2,7 +2,7 @@
 #include "readfunctions.h"
 #include "validity.h"
 #include "utf8.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 
 /// @brief Reads a field_info from the file
 ///

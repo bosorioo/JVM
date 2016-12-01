@@ -1,5 +1,5 @@
 #include "framestack.h"
-#include "memoryinspect.h"
+#include "debugging.h"
 
 Frame* newFrame(JavaClass* jc, method_info* method)
 {
