@@ -122,14 +122,12 @@ struct JavaClass {
     // Debug info
     uint32_t totalBytesRead;
     uint8_t lastTagRead;
-    int32_t currentConstantPoolEntryIndex;
     int32_t constantPoolEntriesRead;
-    int32_t currentInterfaceEntryIndex;
-    int32_t currentFieldEntryIndex;
-    int32_t currentMethodEntryIndex;
-    int32_t currentAttributeEntryIndex;
+    int32_t interfaceEntriesRead;
+    int32_t fieldEntriesRead;
+    int32_t methodEntriesRead;
     int32_t attributeEntriesRead;
-    int32_t currentValidityEntryIndex;
+    int32_t validityEntriesChecked;
 
 };
 

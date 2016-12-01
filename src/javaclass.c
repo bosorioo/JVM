@@ -48,12 +48,11 @@ void openClassFile(JavaClass* jc, const char* path)
     jc->totalBytesRead = 0;
     jc->constantPoolEntriesRead = 0;
     jc->attributeEntriesRead = 0;
-    jc->currentConstantPoolEntryIndex = -1;
-    jc->currentInterfaceEntryIndex = -1;
-    jc->currentFieldEntryIndex = -1;
-    jc->currentMethodEntryIndex = -1;
-    jc->currentAttributeEntryIndex = -1;
-    jc->currentValidityEntryIndex = -1;
+    jc->constantPoolEntriesRead = 0;
+    jc->interfaceEntriesRead = 0;
+    jc->fieldEntriesRead = 0;
+    jc->methodEntriesRead = 0;
+    jc->validityEntriesChecked = 0;
 
     if (!jc->file)
     {
@@ -100,16 +99,17 @@ void openClassFile(JavaClass* jc, const char* path)
         for (u16 = 0; u16 < jc->constantPoolCount - 1; u16++)
         {
             if (!readConstantPoolEntry(jc, jc->constantPool + u16))
+            {
+                jc->constantPoolCount = u16 + 1;
                 return;
+            }
 
             if (jc->constantPool[u16].tag == CONSTANT_Double ||
                 jc->constantPool[u16].tag == CONSTANT_Long)
             {
                 u16++;
-                jc->currentConstantPoolEntryIndex++;
             }
 
-            jc->currentConstantPoolEntryIndex++;
             jc->constantPoolEntriesRead++;
         }
 
@@ -162,7 +162,7 @@ void openClassFile(JavaClass* jc, const char* path)
             }
 
             *(jc->interfaces + u32) = u16;
-            jc->currentInterfaceEntryIndex++;
+            jc->interfaceEntriesRead++;
         }
     }
 
@@ -208,7 +208,7 @@ void openClassFile(JavaClass* jc, const char* path)
             }
 
 
-            jc->currentFieldEntryIndex++;
+            jc->fieldEntriesRead++;
         }
     }
 
@@ -236,7 +236,7 @@ void openClassFile(JavaClass* jc, const char* path)
                 return;
             }
 
-            jc->currentMethodEntryIndex++;
+            jc->methodEntriesRead++;
         }
     }
 
@@ -248,6 +248,7 @@ void openClassFile(JavaClass* jc, const char* path)
 
     if (jc->attributeCount > 0)
     {
+        jc->attributeEntriesRead = 0;
         jc->attributes = (attribute_info*)malloc(sizeof(attribute_info) * jc->attributeCount);
 
         if (!jc->attributes)
@@ -255,8 +256,6 @@ void openClassFile(JavaClass* jc, const char* path)
             jc->status = MEMORY_ALLOCATION_FAILED;
             return;
         }
-
-        jc->currentAttributeEntryIndex = -1;
 
         for (u32 = 0; u32 < jc->attributeCount; u32++)
         {
@@ -267,7 +266,6 @@ void openClassFile(JavaClass* jc, const char* path)
             }
 
             jc->attributeEntriesRead++;
-            jc->currentAttributeEntryIndex++;
         }
     }
 
@@ -483,40 +481,36 @@ void printClassFileDebugInfo(JavaClass* jc)
     if (jc->classNameMismatch)
         printf("Warning: class name and file path don't match.\n");
 
-    if (jc->currentConstantPoolEntryIndex + 2 != jc->constantPoolCount)
+    if (jc->constantPoolEntriesRead != jc->constantPoolCount)
     {
-        printf("Failed to read constant pool entry at index #%d\n", jc->currentConstantPoolEntryIndex + 1);
-        printf("Constant pool count: %u, constants successfully read: %d\n", jc->constantPoolCount, jc->constantPoolEntriesRead);
+        printf("Failed to read constant pool entry at index #%d\n", jc->constantPoolEntriesRead);
     }
-    else if (jc->currentValidityEntryIndex != -1)
+    else if (jc->validityEntriesChecked != jc->constantPoolCount)
     {
-        printf("Failed to check constant pool validity. Entry at index #%d is not valid.\n", jc->currentValidityEntryIndex + 1);
+        printf("Failed to check constant pool validity. Entry at index #%d is not valid.\n", jc->validityEntriesChecked);
     }
-    else if (jc->currentInterfaceEntryIndex + 1 != jc->interfaceCount)
+    else if (jc->interfaceEntriesRead != jc->interfaceCount)
     {
-        printf("Failed to read interface at index #%d\n", jc->currentInterfaceEntryIndex + 1);
-        printf("Interface count: %u, interfaces successfully read: %d\n", jc->interfaceCount, 1 + jc->currentInterfaceEntryIndex);
+        printf("Failed to read interface at index #%d\n", jc->interfaceEntriesRead);
     }
-    else if (jc->currentFieldEntryIndex + 1 != jc->fieldCount)
+    else if (jc->fieldEntriesRead != jc->fieldCount)
     {
-        printf("Failed to read field at index #%d\n", jc->currentFieldEntryIndex + 1);
-        printf("Last attribute index read: %d\n", jc->currentAttributeEntryIndex);
-        printf("Fields count: %u, fields successfully read: %d\n", jc->fieldCount, 1 + jc->currentFieldEntryIndex);
-    }
-    else if (jc->currentMethodEntryIndex + 1 != jc->methodCount)
-    {
-        printf("Failed to read method at index #%d\n", jc->currentMethodEntryIndex + 1);
+        printf("Failed to read field at index #%d\n", jc->fieldEntriesRead);
 
-        if (jc->currentAttributeEntryIndex > -2)
-        {
-            printf("Couldn't read attribute at index: %d\n", jc->currentAttributeEntryIndex + 1);
-        }
-        printf("Methods count: %u, methods successfully read: %d\n", jc->methodCount, 1 + jc->currentMethodEntryIndex);
+        if (jc->attributeEntriesRead != -1)
+            printf("Failed to read its attribute at index %d.\n", jc->attributeEntriesRead);
+    }
+    else if (jc->methodEntriesRead != jc->methodCount)
+    {
+        printf("Failed to read method at index #%d\n", jc->methodEntriesRead);
+
+        if (jc->attributeEntriesRead != -1)
+            printf("Failed to read its attribute at index %d.\n", jc->attributeEntriesRead);
     }
     else if (jc->attributeEntriesRead != jc->attributeCount)
     {
-        printf("Failed to read attribute at index #%d\n", jc->currentAttributeEntryIndex + 1);
-        printf("Attributes count: %u, attributes successfully read: %d\n", jc->attributeCount, jc->attributeEntriesRead);
+        printf("Failed to read attribute at index #%d\n", jc->attributeEntriesRead);
+
     }
 
     printf("File status code: %d\nStatus description: %s.\n", jc->status, decodeJavaClassStatus(jc->status));

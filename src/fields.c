@@ -8,13 +8,14 @@
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read
-/// @param field_info* entry - where the data read is written 
+/// @param field_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
 char readField(JavaClass* jc, field_info* entry)
 {
     entry->attributes = NULL;
+    jc->attributeEntriesRead = -1;
 
     if (!readu2(jc, &entry->access_flags) ||
         !readu2(jc, &entry->name_index) ||
@@ -65,7 +66,7 @@ char readField(JavaClass* jc, field_info* entry)
 
         uint16_t i;
 
-        jc->currentAttributeEntryIndex = -1;
+        jc->attributeEntriesRead = 0;
 
         for (i = 0; i < entry->attributes_count; i++)
         {
@@ -78,7 +79,7 @@ char readField(JavaClass* jc, field_info* entry)
                 return 0;
             }
 
-            jc->currentAttributeEntryIndex++;
+            jc->attributeEntriesRead++;
         }
     }
 
@@ -87,10 +88,10 @@ char readField(JavaClass* jc, field_info* entry)
 
 /// @brief Releases attributes used by the field_info struct
 ///
-/// @param field_info* entry - pointer to the field_info that 
+/// @param field_info* entry - pointer to the field_info that
 /// contains the attributes
 ///
-/// @note This function does not free the @b *entry pointer, 
+/// @note This function does not free the @b *entry pointer,
 /// just attributes
 void freeFieldAttributes(field_info* entry)
 {
@@ -108,7 +109,7 @@ void freeFieldAttributes(field_info* entry)
     }
 }
 
-/// @brief Function to print all fields of the class file. 
+/// @brief Function to print all fields of the class file.
 ///
 /// @param JavaClass *jc - pointer to JavaClass structure that must already
 /// be loaded

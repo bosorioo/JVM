@@ -9,14 +9,14 @@
 ///
 /// @param JavaClass* jc - pointer to the structure to be
 /// read.
-/// @param method_info* entry - where the data read is written 
+/// @param method_info* entry - where the data read is written
 ///
 /// @return char - retuns 0 if something unexpected happened or
 /// failure, 1 in case of success
 char readMethod(JavaClass* jc, method_info* entry)
 {
     entry->attributes = NULL;
-    jc->currentAttributeEntryIndex = -2;
+    jc->attributeEntriesRead = -1;
 
     if (!readu2(jc, &entry->access_flags) ||
         !readu2(jc, &entry->name_index) ||
@@ -61,7 +61,7 @@ char readMethod(JavaClass* jc, method_info* entry)
 
         uint16_t i;
 
-        jc->currentAttributeEntryIndex = -1;
+        jc->attributeEntriesRead = 0;
 
         for (i = 0; i < entry->attributes_count; i++)
         {
@@ -74,7 +74,7 @@ char readMethod(JavaClass* jc, method_info* entry)
                 return 0;
             }
 
-            jc->currentAttributeEntryIndex++;
+            jc->attributeEntriesRead++;
         }
     }
 
@@ -83,10 +83,10 @@ char readMethod(JavaClass* jc, method_info* entry)
 
 /// @brief Releases attributes used by the method_info struct
 ///
-/// @param method_info* entry - pointer to the method_info that 
+/// @param method_info* entry - pointer to the method_info that
 /// contains the attributes
 ///
-/// @note This function does not free the @b *entry pointer, 
+/// @note This function does not free the @b *entry pointer,
 /// just attributes
 void freeMethodAttributes(method_info* entry)
 {
@@ -104,7 +104,7 @@ void freeMethodAttributes(method_info* entry)
     }
 }
 
-/// @brief Function to print all methods of the class file. 
+/// @brief Function to print all methods of the class file.
 ///
 /// @param JavaClass *jc - pointer to JavaClass structure that must already
 /// be loaded

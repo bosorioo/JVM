@@ -7,10 +7,10 @@
 #include <ctype.h>
 
 /// @brief Checks whether the "accessFlags" parameter has a valid combination
-/// of method flags. 
-/// 
-/// @param JavaClass* jc - pointer to the class 
-/// @param uint16_t accessFlags - flag to be analyzed  
+/// of method flags.
+///
+/// @param JavaClass* jc - pointer to the class
+/// @param uint16_t accessFlags - flag to be analyzed
 ///
 /// @return char - in case of issues, jc->status is changed, and the
 /// function returns 0. Otherwise, nothing is changed with jc, and the
@@ -53,10 +53,10 @@ char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
 }
 
 /// @brief Checks whether the "accessFlags" parameter has a valid combination
-/// of field flags. 
-/// 
-/// @param JavaClass* jc - pointer to the class 
-/// @param uint16_t accessFlags - flag to be analyzed  
+/// of field flags.
+///
+/// @param JavaClass* jc - pointer to the class
+/// @param uint16_t accessFlags - flag to be analyzed
 ///
 /// @return char - in case of issues, jc->status is changed, and the
 /// function returns 0. Otherwise, nothing is changed with jc, and the
@@ -109,8 +109,8 @@ char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
 }
 
 /// @brief Checks whether the "accessFlags" from the class file is a valid
-/// combination of class flags. 
-/// 
+/// combination of class flags.
+///
 /// This function also checks if "thisClass" and
 /// "superClass" points to valid class indexes.
 ///
@@ -162,17 +162,17 @@ char checkClassIndexAndAccessFlags(JavaClass* jc)
 }
 
 /// @brief Checks whether the name of the class pointed by "thisClass" is the same name
-/// as the class file. 
+/// as the class file.
 ///
 /// This function doesn't check package and folders. It
 /// basically gets the name of file, for instance: "C:/mypath/File.class" will be
 /// understood as "File". The name of the class could be something like: "package/MyClass",
 /// the package will be ignored and function will understand the class name as "MyClass".
-/// The function then proceeds to compare "MyClass" and "File". 
+/// The function then proceeds to compare "MyClass" and "File".
 ///
 /// @param JavaClass* jc - pointer to class to be analyzed
 ///
-/// @return char - If there is a mismatch, jc->status is modified and the function 
+/// @return char - If there is a mismatch, jc->status is modified and the function
 /// returns 0. Otherwise, it is left unchanged and the return value is 1.
 char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 {
@@ -208,15 +208,15 @@ char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
     return cmp_UTF8_FilePath(cpi->Utf8.bytes, cpi->Utf8.length, (uint8_t*)classFilePath + begin, end - begin);
 }
 
-/// @brief Checks whether the UTF-8 stream is a valid Java Identifier. 
+/// @brief Checks whether the UTF-8 stream is a valid Java Identifier.
 ///
-/// A java identifer (class name, variable name, etc) must start with underscore, dollar sign 
-/// or letter, and could finish with numbers, letters, dollar sign or underscore. 
+/// A java identifer (class name, variable name, etc) must start with underscore, dollar sign
+/// or letter, and could finish with numbers, letters, dollar sign or underscore.
 ///
 /// @param uint8_t* utf8_bytes - pointer to the sequence of bytes that identify the class name
 /// @param int32_t utf8_len - legth of class name
-/// @param uint8_t isClassIdentifier - is set to anything but zero, then this function will also 
-/// accept slashes (/), as classes have their full path separated by slashes. 
+/// @param uint8_t isClassIdentifier - is set to anything but zero, then this function will also
+/// accept slashes (/), as classes have their full path separated by slashes.
 ///
 /// @ return char - The function returns 1 if it the string is indeed
 /// a valid Java Identifier, otherwise zero.
@@ -393,7 +393,6 @@ char checkConstantPoolValidity(JavaClass* jc)
 
     for (i = 0; success && i < jc->constantPoolCount - 1; i++)
     {
-        jc->currentValidityEntryIndex = i;
         cp_info* entry = jc->constantPool + i;
 
         switch(entry->tag)
@@ -468,9 +467,10 @@ char checkConstantPoolValidity(JavaClass* jc)
                 // earlier, while reading the constant pool from .class file.
                 break;
         }
+
+        jc->validityEntriesChecked = i + 1;
     }
 
-    jc->currentValidityEntryIndex = -1;
     setlocale(LC_CTYPE, previousLocale);
 
     return success;
