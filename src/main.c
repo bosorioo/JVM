@@ -130,13 +130,49 @@ int main(int argc, char* args[])
 ///     Tiago Kfouri
 ///     Victoria Goularte
 /// </pre>
+///
+///
+///
 /// @section intro Introduction
 /// Simple implementation of java virtual machine that is able to read class files and
 /// display their content and execute the class' main method.
 /// <br>
 /// Not all instructions have been implemented and there are other limitations.
-/// Refer to section @ref limitations Limitations to see more.
+/// Refer to section @ref limitations to see more.
 /// <br>
+///
+///
+///
+/// @section stepguideJavaClass Step-by-step on how a .class file is read and displayed
+/// -# Command line are parsed in file main.c to get file path.
+/// -# openClassFile() is called, defined in module javaclass.c.
+/// -# file signature, version and constant pool count are read.
+/// -# readConstantPoolEntry() is called several times to fill the constant pool.
+/// -# checkConstantPoolValidity() will check if there are inconsistencies in the constant pool.
+/// Refer to section @ref validity for verification mades and the ones that aren't.
+/// -# this class index, super class index and access flags are read and checked using function checkClassIndexAndAccessFlags().
+/// -# file name is checked against "this class" name to see if they match.
+/// -# interface count and interfaces' index are read, checking if the indexes are a valid class index.
+/// -# field count is read, and then several calls to readField() are made to fill in the fields
+/// of the class. In this step, the class starts counting how many static fields and instance fields the
+/// class has. Thus, when new instances of this class are created later, it is possible to know how many bytes
+/// have to be allocated to hold the instance field data. When the class is initialized, it is also possible
+/// to know the how many bytes it needs for its static field data.
+/// -# method count is read, and then several calls to readMethod() are made to fill in the methods of the class.
+/// -# attribute count is read, and then several calls to readAttribute() are made to fill in the attributes of the class.
+///
+/// Methods and fields can also have attributes, so their read functions also make calls to readAttributes.
+/// If no errors occurred during the class loading procedure, then the function printClassFileInfo() is called, and
+/// if there were errors, some debug information will show up telling what went wrong.
+///
+/// Note that if the class file name and the class actual name don't match (including package path), the class loading
+/// will normally continue, but the JavaClass* structure holding the class information will be marked as name mismatch.
+///
+///
+///
+/// @section stepguideJVM Step-by-step on how a .class file is executed
+///
+///
 ///
 ///
 /// @section instructions Instructions Implementation
@@ -160,12 +196,20 @@ int main(int argc, char* args[])
 /// <br>
 ///
 ///
+///
+///
+/// @section validity Validity
+///
+///
+///
+///
 /// @section limitations Limitations
 /// There are a few instructions that haven't been implemented. They are listed below:
 ///     - invokeinterface - will produce error if executed
 ///     - invokedynamic - will produce error if executed
 ///     - checkcast - will produce error if executed
 ///     - instanceof - will produce error if executed
+///     - athrow - will produce error if executed
 ///     - monitorenter - ignored
 ///     - monitorexit - ignored
 ///
