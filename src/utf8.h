@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+#define PRINT_UTF8(x) x->Utf8.length, x->Utf8.bytes
+#define UTF8(x) x->Utf8.bytes, x->Utf8.length
+
 uint8_t nextUTF8Character(const uint8_t* utf8_bytes, int32_t utf8_len, uint32_t* outCharacter);
 char cmp_UTF8_Ascii(const uint8_t* utf8_bytes, int32_t utf8_len, const uint8_t* ascii_bytes, int32_t ascii_len);
 char cmp_UTF8(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8B_bytes, int32_t utf8B_len);
