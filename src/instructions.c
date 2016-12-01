@@ -2194,12 +2194,27 @@ uint8_t instfunc_getfield(JavaVirtualMachine* jvm, Frame* frame)
     }
 
     // Get the name of the field and its descriptor
-    cpi2 = frame->jc->constantPool + field->Methodref.name_and_type_index - 1;
+    cpi2 = frame->jc->constantPool + field->Fieldref.name_and_type_index - 1;
     cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
-    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
+
+    if (!fi)
+    {
+        // maybe it is located in the super class
+        JavaClass* super = getSuperClass(jvm, fieldLoadedClass->jc);
+
+        while (super)
+        {
+            fi = getFieldMatching(super, UTF8(cpi1), UTF8(cpi2), 0);
+
+            if (fi)
+                break;
+
+            super = getSuperClass(jvm, super);
+        }
+    }
 
     if (!fi)
     {
@@ -2296,8 +2311,23 @@ uint8_t instfunc_putfield(JavaVirtualMachine* jvm, Frame* frame)
     cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
-    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
+
+    if (!fi)
+    {
+        // maybe it is located in the super class
+        JavaClass* super = getSuperClass(jvm, fieldLoadedClass->jc);
+
+        while (super)
+        {
+            fi = getFieldMatching(super, UTF8(cpi1), UTF8(cpi2), 0);
+
+            if (fi)
+                break;
+
+            super = getSuperClass(jvm, super);
+        }
+    }
 
     if (!fi)
     {
