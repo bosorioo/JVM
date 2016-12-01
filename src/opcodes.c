@@ -1,4 +1,5 @@
 #include "opcodes.h"
+#include <stdlib.h>
 
 const char* decodeOpcodeNewarrayType(uint8_t type)
 {

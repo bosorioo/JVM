@@ -201,7 +201,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     }
 
 #ifdef DEBUG
-    printf("debug resolveClass %.*s\n", utf8_len, className_utf8_bytes);
+    printf("Resolving class %.*s\n", utf8_len, className_utf8_bytes);
 #endif // DEBUG
 
     snprintf(path, sizeof(path), "%.*s.class", utf8_len, className_utf8_bytes);
@@ -219,7 +219,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     {
 
 #ifdef DEBUG
-    printf("   class '%.*s' loading failed\n", utf8_len, className_utf8_bytes);
+    printf("   class '%.*s' loading failed.\n", utf8_len, className_utf8_bytes);
     printf("   status: %s\n", decodeJavaClassStatus(jc->status));
 #endif // DEBUG
 
@@ -261,7 +261,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     {
 
 #ifdef DEBUG
-    printf("   class file '%s' loaded\n", path);
+    printf("   class file '%s' loaded.\n", path);
 #endif // DEBUG
 
         if (outClass)
@@ -280,20 +280,9 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass)
 {
 #ifdef DEBUG
-    {
-        char debugbuffer[256];
-        uint32_t length = 0;
-        cp_info* debugcpi = jc->constantPool + cp_method->Methodref.class_index - 1;
-        debugcpi = jc->constantPool + debugcpi->Class.name_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s.", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        debugcpi = jc->constantPool + cp_method->Methodref.name_and_type_index - 1;
-        debugcpi = jc->constantPool + debugcpi->NameAndType.name_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s:", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        debugcpi = jc->constantPool + cp_method->Methodref.name_and_type_index - 1;
-        debugcpi = jc->constantPool + debugcpi->NameAndType.descriptor_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        printf("debug resolveMethod %s\n", debugbuffer);
-    }
+    printf("Resolving method ");
+    debugPrintMethodFieldRef(jc, cp_method);
+    printf("\n");
 #endif // DEBUG
 
     cp_info* cpi;
@@ -352,20 +341,9 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
 {
 
 #ifdef DEBUG
-    {
-        char debugbuffer[256];
-        uint32_t length = 0;
-        cp_info* debugcpi = jc->constantPool + cp_field->Fieldref.class_index - 1;
-        debugcpi = jc->constantPool + debugcpi->Class.name_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s.", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        debugcpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
-        debugcpi = jc->constantPool + debugcpi->NameAndType.name_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s:", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        debugcpi = jc->constantPool + cp_field->Fieldref.name_and_type_index - 1;
-        debugcpi = jc->constantPool + debugcpi->NameAndType.descriptor_index - 1;
-        length += snprintf(debugbuffer + length, sizeof(debugbuffer) - length, "%.*s", debugcpi->Utf8.length, debugcpi->Utf8.bytes);
-        printf("debug resolveField %s\n", debugbuffer);
-    }
+    printf("Resolving field ");
+    debugPrintMethodFieldRef(jc, cp_field);
+    printf("\n");
 #endif // DEBUG
 
     cp_info* cpi;
@@ -405,19 +383,18 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, uint8_t numberOfParameters)
 {
 #ifdef DEBUG
-    {
-        char debugbuffer[256];
-        decodeAccessFlags(method->access_flags, debugbuffer, sizeof(debugbuffer), ACCT_METHOD);
-        cp_info* debug_cpi = jc->constantPool + method->name_index - 1;
-        printf("debug runMethod %s %.*s, params: %u",  debugbuffer, debug_cpi->Utf8.length, debug_cpi->Utf8.bytes, numberOfParameters);
-    }
+    printf("\nRunning method ");
+    debugPrintMethod(jc, method);
 #endif // DEBUG
 
     Frame* callerFrame = jvm->frames ? jvm->frames->frame : NULL;
     Frame* frame = newFrame(jc, method);
 
 #ifdef DEBUG
-    printf(", len: %u, frame %X%s\n", frame->code_length, (uint32_t)frame, frame->code_length == 0 ? " ####### Native Method": "");
+    printf(", code len: %u, frame id: %d", frame->code_length, debugGetFrameId(frame));
+    if (frame->code_length == 0)
+        printf(" ### Native Method ###");
+    printf("\n");
 #endif // DEBUG
 
     if (!frame || !pushFrame(&jvm->frames, frame))
@@ -457,28 +434,16 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         {
 
 #ifdef DEBUG
-    OperandStack* node;
-    node = frame->operands;
-    printf("\ndebug operand stack:\n");
-    if (!node) printf("empty.");
-    else while (node)
-    {
-        printf("%d.%d ", node->value, node->type);
-        node = node->next;
-    }
-    uint16_t ii;
-    printf("\ndebug localvars:\n");
-    if (!frame->localVariables) printf("empty.");
-    else for (ii = 0; ii < frame->max_locals; ii++)
-        printf("%d ", frame->localVariables[ii]);
     printf("\n");
+    debugPrintOperandStack(frame->operands);
+    debugPrintLocalVariables(frame->localVariables, frame->max_locals);
 #endif // DEBUG
 
             uint8_t opcode = *(frame->code + frame->pc++);
             function = fetchOpcodeFunction(opcode);
 
 #ifdef DEBUG
-    printf("   instruction '%s' at offset %u of frame %X\n", getOpcodeMnemonic(opcode), frame->pc - 1, (uint32_t)frame);
+    printf("   instruction '%s' at offset %u of frame %d\n", getOpcodeMnemonic(opcode), frame->pc - 1, debugGetFrameId(frame));
 #endif // DEBUG
 
             if (function == NULL)
@@ -519,6 +484,11 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
 
     popFrame(&jvm->frames, NULL);
     freeFrame(frame);
+
+#ifdef DEBUG
+    debugGetFrameId(NULL);
+#endif // DEBUG
+
     return jvm->status == JVM_STATUS_OK;
 }
 
@@ -774,6 +744,10 @@ Reference* newString(JavaVirtualMachine* jvm, const uint8_t* str, int32_t strlen
     node->obj = r;
     jvm->objects = node;
 
+#ifdef DEBUG
+    debugPrintNewObject(r);
+#endif // DEBUG
+
     return r;
 }
 
@@ -818,10 +792,8 @@ Reference* newClassInstance(JavaVirtualMachine* jvm, LoadedClasses* lc)
     jvm->objects = node;
 
 #ifdef DEBUG
-    cp_info* cpi = jc->constantPool + jc->thisClass - 1;
-    cpi = jc->constantPool + cpi->Class.name_index - 1;
-    printf("debug New class instance %d->%d of type %.*s\n", (int)r, (int)r->ci.data, cpi->Utf8.length, cpi->Utf8.bytes);
-#endif
+    debugPrintNewObject(r);
+#endif // DEBUG
 
     return r;
 }
@@ -896,6 +868,10 @@ Reference* newArray(JavaVirtualMachine* jvm, uint32_t length, Opcode_newarray_ty
     node->next = jvm->objects;
     node->obj = r;
     jvm->objects = node;
+
+#ifdef DEBUG
+    debugPrintNewObject(r);
+#endif // DEBUG
 
     return r;
 }
@@ -972,6 +948,10 @@ Reference* newObjectArray(JavaVirtualMachine* jvm, uint32_t length, const uint8_
     node->obj = r;
     jvm->objects = node;
 
+#ifdef DEBUG
+    debugPrintNewObject(r);
+#endif // DEBUG
+
     return r;
 }
 
@@ -1040,6 +1020,10 @@ Reference* newObjectMultiArray(JavaVirtualMachine* jvm, int32_t* dimensions, uin
     node->next = jvm->objects;
     node->obj = r;
     jvm->objects = node;
+
+#ifdef DEBUG
+    debugPrintNewObject(r);
+#endif // DEBUG
 
     return r;
 }
