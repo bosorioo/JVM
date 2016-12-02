@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operandstack',['OperandStack',['../operandstack_8h.html#a346a5006b3ffde66941ce40c277fbf86',1,'operandstack.h']]]
+  ['nativefunction',['NativeFunction',['../natives_8h.html#a4a755f04d6a03b54b8bdf52ffa9c0ba4',1,'natives.h']]]
 ];

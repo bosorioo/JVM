@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['op_5farrayref',['OP_ARRAYREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a9b17614c3cbe8009a3c077100f055abe',1,'operandstack.h']]],
-  ['op_5fclassref',['OP_CLASSREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a2468854051f36c9ba8b3f16d254ed202',1,'operandstack.h']]],
   ['op_5fdouble',['OP_DOUBLE',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4aa36f2949170ca1e708196ca721980275',1,'operandstack.h']]],
   ['op_5ffloat',['OP_FLOAT',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4ae0ed5f5c231ae95ba186cf99792ed418',1,'operandstack.h']]],
   ['op_5finteger',['OP_INTEGER',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4aa5087579d71722be9d06816518da2bc2',1,'operandstack.h']]],
   ['op_5flong',['OP_LONG',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a2069b5f7fac5141a8c24357fde7fe026',1,'operandstack.h']]],
-  ['op_5fmethodref',['OP_METHODREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a95be567f99bd14f9aa78f062e9dd3daa',1,'operandstack.h']]],
   ['op_5fnull',['OP_NULL',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a3a429eddbb7f929a66970a68efc450a0',1,'operandstack.h']]],
-  ['op_5fstringref',['OP_STRINGREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a17497e3d994fffd3a208ac823a372311',1,'operandstack.h']]],
+  ['op_5freference',['OP_REFERENCE',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a75b1a2229366cda5d1a421d3b35de562',1,'operandstack.h']]],
+  ['op_5freturnaddress',['OP_RETURNADDRESS',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4add028a6a1ad41baf2250c04373786d51',1,'operandstack.h']]],
   ['opcode_5faaload',['opcode_aaload',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002caca33b456e25ff4765a504cdd1f6355593e',1,'opcodes.h']]],
   ['opcode_5faastore',['opcode_aastore',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacabd25451242cb6d8b1d1ded29c6201896',1,'opcodes.h']]],
   ['opcode_5faconst_5fnull',['opcode_aconst_null',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacae68767319acc15fa1241bfc9149d9c83',1,'opcodes.h']]],

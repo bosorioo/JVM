@@ -1,0 +1,67 @@
+\hypertarget{instructions_8h}{}\section{src/instructions.h File Reference}
+\label{instructions_8h}\index{src/instructions.\+h@{src/instructions.\+h}}
+{\ttfamily \#include \char`\"{}debugging.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}jvm.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}framestack.\+h\char`\"{}}\\*
+Include dependency graph for instructions.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{instructions_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t($\ast$ \hyperlink{instructions_8h_ae8affa9babea747642d20877780599fa}{Instruction\+Function}) (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structFrame}{Frame} $\ast$current\+Frame)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{instructions_8h_ae8affa9babea747642d20877780599fa}{Instruction\+Function} \hyperlink{instructions_8h_a036f840d5a734d71a7807c8d4fc203c6}{fetch\+Opcode\+Function} (uint8\+\_\+t opcode)
+\begin{DoxyCompactList}\small\item\em Retrieves the instruction function for a given instruction opcode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{instructions.\+h@{instructions.\+h}!Instruction\+Function@{Instruction\+Function}}
+\index{Instruction\+Function@{Instruction\+Function}!instructions.\+h@{instructions.\+h}}
+\subsubsection[{\texorpdfstring{Instruction\+Function}{InstructionFunction}}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\+\_\+t($\ast$ Instruction\+Function) ({\bf Java\+Virtual\+Machine} $\ast$jvm, {\bf Frame} $\ast$current\+Frame)}\hypertarget{instructions_8h_ae8affa9babea747642d20877780599fa}{}\label{instructions_8h_ae8affa9babea747642d20877780599fa}
+
+
+\subsection{Function Documentation}
+\index{instructions.\+h@{instructions.\+h}!fetch\+Opcode\+Function@{fetch\+Opcode\+Function}}
+\index{fetch\+Opcode\+Function@{fetch\+Opcode\+Function}!instructions.\+h@{instructions.\+h}}
+\subsubsection[{\texorpdfstring{fetch\+Opcode\+Function(uint8\+\_\+t opcode)}{fetchOpcodeFunction(uint8_t opcode)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Instruction\+Function} fetch\+Opcode\+Function (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{opcode}
+\end{DoxyParamCaption}
+)}\hypertarget{instructions_8h_a036f840d5a734d71a7807c8d4fc203c6}{}\label{instructions_8h_a036f840d5a734d71a7807c8d4fc203c6}
+
+
+Retrieves the instruction function for a given instruction opcode. 
+
+\begin{DoxyReturn}{Returns}
+The function that needs to be called for the instruction to be executed if there is one for the given opcode. Otherwise, returns N\+U\+LL. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{opcodes_8h_abeeee4622d9285fa92e9b61857002cac}{Opcodes}, \hyperlink{opcodes_8c_a7a0d335043d2fcc1028dcb2e4d1b1ba8}{get\+Opcode\+Mnemonic()} 
+\end{DoxySeeAlso}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8h_a036f840d5a734d71a7807c8d4fc203c6_icgraph}
+\end{center}
+\end{figure}
+
+

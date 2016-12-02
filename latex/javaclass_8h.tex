@@ -1,0 +1,472 @@
+\hypertarget{javaclass_8h}{}\section{src/javaclass.h File Reference}
+\label{javaclass_8h}\index{src/javaclass.\+h@{src/javaclass.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}constantpool.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}attributes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fields.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}methods.\+h\char`\"{}}\\*
+Include dependency graph for javaclass.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structJavaClass}{Java\+Class}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structJavaClass}{Java\+Class} \hyperlink{javaclass_8h_ac17e902332f273fa155c5f3591e192b5}{Java\+Class}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1}{Access\+Flags\+Type} \{ \hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a9366cd7f8c45f98f158d3db562a5c151}{A\+C\+C\+T\+\_\+\+C\+L\+A\+SS}, 
+\hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a473ab8698ed2b3566137c16c9eb7e302}{A\+C\+C\+T\+\_\+\+F\+I\+E\+LD}, 
+\hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1ad4353a5a1e14128b0e9862e94a14d58d}{A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD}, 
+\hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1aed036ddc63bb82144571d7f50f9f081a}{A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS}
+ \}
+\item 
+enum \hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167}{Access\+Flags} \{ \\*
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad6addf2497a04181c180bee6a0fc98d7}{A\+C\+C\+\_\+\+P\+U\+B\+L\+IC} = 0x0001, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a731a95fbfab2cc573d34f824c68103da}{A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE} = 0x0002, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1378b6f4a9d71ae89f08ff9c41e2643}{A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED} = 0x0004, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a881208cf77b17d32dfc923ff4541c1fe}{A\+C\+C\+\_\+\+S\+T\+A\+T\+IC} = 0x0008, 
+\\*
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ab78a5bd0833ef7c394ee026acdfb166f}{A\+C\+C\+\_\+\+F\+I\+N\+AL} = 0x0010, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a59ef122665d2a44976860b18e074e8a2}{A\+C\+C\+\_\+\+S\+U\+P\+ER} = 0x0020, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1b97438d7d91ae90cbe69668b25e0e9}{A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED} = 0x0020, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a69ae3efc84a507f0dab732f391a29243}{A\+C\+C\+\_\+\+B\+R\+I\+D\+GE} = 0x0040, 
+\\*
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a062990ad544d7fe6f1910880dcce455e}{A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE} = 0x0040, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a63a2d0424d59c2fed955a1633974f50a}{A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT} = 0x0080, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4103e9877019a62fd8ad9576db36d889}{A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS} = 0x0080, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a94900e08f1643779887f4eb0e1e16f1f}{A\+C\+C\+\_\+\+N\+A\+T\+I\+VE} = 0x0100, 
+\\*
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a6d061156e0c1a7d2fd2612cdfc22cc9e}{A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE} = 0x0200, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ac326b159ac221f52e4eb29b48d0da481}{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT} = 0x0400, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a76a7711c5903238a058555ac603ac435}{A\+C\+C\+\_\+\+S\+T\+R\+I\+CT} = 0x0800, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a980b3db8759afd4fd626103668481058}{A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC} = 0x1000, 
+\\*
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a503f7e7efc837648b71f6356598e63e6}{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK} = $\sim$(A\+C\+C\+\_\+\+P\+U\+B\+L\+IC $\vert$ A\+C\+C\+\_\+\+F\+I\+N\+AL $\vert$ A\+C\+C\+\_\+\+S\+U\+P\+ER $\vert$ A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE $\vert$ A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT), 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4c334d0daed8dce296fe6f5699511f2a}{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a22bfd577effe1eabceae5b91767a3022}{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}, 
+\hyperlink{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a489395c7c71b95b22664ed825dffc61b}{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}
+ \}
+\item 
+enum \hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5ac}{Java\+Class\+Status} \{ \\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa1a463d1116ffd2858224160e7746fb4}{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca1430fc24ed090d4e9201f5c0a88c24e3}{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac4afaaf3223fbf722373c5b88ac596be}{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae565f6f480818980a5d0924ff1526be2}{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaaf47c82f53381347e93f7e837a862f5d}{M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8bfeef0f6d09104c59a43da5d9538002}{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3c11f72d7fe5c250269252f880b64627}{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acadc08fbbab208dad422b876da163e0e76}{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca40d49368cf6057430b018d2d8b9a613a}{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaedc6739d686346d56b5266505eb15b8f}{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca20a282bd3a3c7a03b4308c2c8368ac18}{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaebda37cb508a0ad4391676139cd486e2}{I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca05feab7f3b9415a0a706f95baa548b5b}{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae51911344cdf74428f5d30758a0a2d2a}{U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7942d62b2f3202eddfff89415ecd5bb7}{I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca90dc29b317e3c00e22e37a818d3eec55}{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3a574a835e6dd65532746733dbacf721}{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca0831e73b1cc7f5e9f27c04d3fdb1c8bc}{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca59eb83d2a7b113c2d9abb27da7ed5e28}{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca352afd012919746e5c8a7d2db2892bed}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acab497e716f70149f72449856aed3f09a7}{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa838f82a15cba16e0377137588870a14}{I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca82c50cfdf49737542575a0b4707d1927}{I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac024cb11850d2e0c2add30aea8ef4356}{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca42706743a2ce1a2532151635eb61ac23}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca43d4fa32dda22f34cdb20e973e13e92f}{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca094612094aa2ad3cf32b3b35456cb636}{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca2c8c30acf5c1b97bbea13e7efe0d7fe2}{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7e8c0bb317f4d4489d683be02d9581d4}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca4660bf99516946fa5f6f490d4b3334e6}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca5de8630713660c1e1981780df9c7ff25}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca70d3af15082e9daba389056b5f524540}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES}, 
+\\*
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8ffa2b3d6067763be6d7dc8d153b202a}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa326cc70e8910b9d9751e6dd2737bc7c}{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH}, 
+\hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3b08073ff7dff286757878e5cb576e46}{F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{javaclass_8h_ae447cd0966dc3beb54467b9097e08f2c}{open\+Class\+File} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em Opens a class file and parse it, storing the class information in the \hyperlink{structJavaClass}{Java\+Class} structure. \end{DoxyCompactList}\item 
+void \hyperlink{javaclass_8h_afc621448c86d015f1f284e3e0bc3f276}{close\+Class\+File} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\begin{DoxyCompactList}\small\item\em Closes the .class file and releases resources used by the \hyperlink{structJavaClass}{Java\+Class} struct. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{javaclass_8h_ad5d8dd2d21cd880ea01d8bdb07958808}{decode\+Java\+Class\+Status} (enum \hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5ac}{Java\+Class\+Status})
+\begin{DoxyCompactList}\small\item\em Decodes Java\+Class\+Status enumeration elements. \end{DoxyCompactList}\item 
+void \hyperlink{javaclass_8h_aee51865d444d48583f151873b4138d72}{decode\+Access\+Flags} (uint16\+\_\+t flags, char $\ast$buffer, int32\+\_\+t buffer\+\_\+len, enum \hyperlink{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1}{Access\+Flags\+Type} acctype)
+\item 
+void \hyperlink{javaclass_8h_acecf1f772b4815f304205fe030697f31}{print\+Class\+File\+Debug\+Info} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+void \hyperlink{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49}{print\+Class\+File\+Info} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{javaclass.\+h@{javaclass.\+h}!Java\+Class@{Java\+Class}}
+\index{Java\+Class@{Java\+Class}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{Java\+Class}{JavaClass}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Java\+Class} {\bf Java\+Class}}\hypertarget{javaclass_8h_ac17e902332f273fa155c5f3591e192b5}{}\label{javaclass_8h_ac17e902332f273fa155c5f3591e192b5}
+
+
+\subsection{Enumeration Type Documentation}
+\index{javaclass.\+h@{javaclass.\+h}!Access\+Flags@{Access\+Flags}}
+\index{Access\+Flags@{Access\+Flags}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{Access\+Flags}{AccessFlags}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Access\+Flags}}\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\+C\+C\+\_\+\+P\+U\+B\+L\+IC@{A\+C\+C\+\_\+\+P\+U\+B\+L\+IC}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+P\+U\+B\+L\+IC@{A\+C\+C\+\_\+\+P\+U\+B\+L\+IC}}\item[{\em 
+A\+C\+C\+\_\+\+P\+U\+B\+L\+IC\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad6addf2497a04181c180bee6a0fc98d7}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad6addf2497a04181c180bee6a0fc98d7}
+}]\index{A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE@{A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE@{A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE}}\item[{\em 
+A\+C\+C\+\_\+\+P\+R\+I\+V\+A\+TE\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a731a95fbfab2cc573d34f824c68103da}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a731a95fbfab2cc573d34f824c68103da}
+}]\index{A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED@{A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED@{A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED}}\item[{\em 
+A\+C\+C\+\_\+\+P\+R\+O\+T\+E\+C\+T\+ED\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1378b6f4a9d71ae89f08ff9c41e2643}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1378b6f4a9d71ae89f08ff9c41e2643}
+}]\index{A\+C\+C\+\_\+\+S\+T\+A\+T\+IC@{A\+C\+C\+\_\+\+S\+T\+A\+T\+IC}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+S\+T\+A\+T\+IC@{A\+C\+C\+\_\+\+S\+T\+A\+T\+IC}}\item[{\em 
+A\+C\+C\+\_\+\+S\+T\+A\+T\+IC\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a881208cf77b17d32dfc923ff4541c1fe}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a881208cf77b17d32dfc923ff4541c1fe}
+}]\index{A\+C\+C\+\_\+\+F\+I\+N\+AL@{A\+C\+C\+\_\+\+F\+I\+N\+AL}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+F\+I\+N\+AL@{A\+C\+C\+\_\+\+F\+I\+N\+AL}}\item[{\em 
+A\+C\+C\+\_\+\+F\+I\+N\+AL\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ab78a5bd0833ef7c394ee026acdfb166f}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ab78a5bd0833ef7c394ee026acdfb166f}
+}]\index{A\+C\+C\+\_\+\+S\+U\+P\+ER@{A\+C\+C\+\_\+\+S\+U\+P\+ER}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+S\+U\+P\+ER@{A\+C\+C\+\_\+\+S\+U\+P\+ER}}\item[{\em 
+A\+C\+C\+\_\+\+S\+U\+P\+ER\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a59ef122665d2a44976860b18e074e8a2}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a59ef122665d2a44976860b18e074e8a2}
+}]\index{A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED@{A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED@{A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED}}\item[{\em 
+A\+C\+C\+\_\+\+S\+Y\+N\+C\+H\+R\+O\+N\+I\+Z\+ED\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1b97438d7d91ae90cbe69668b25e0e9}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ad1b97438d7d91ae90cbe69668b25e0e9}
+}]\index{A\+C\+C\+\_\+\+B\+R\+I\+D\+GE@{A\+C\+C\+\_\+\+B\+R\+I\+D\+GE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+B\+R\+I\+D\+GE@{A\+C\+C\+\_\+\+B\+R\+I\+D\+GE}}\item[{\em 
+A\+C\+C\+\_\+\+B\+R\+I\+D\+GE\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a69ae3efc84a507f0dab732f391a29243}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a69ae3efc84a507f0dab732f391a29243}
+}]\index{A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE@{A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE@{A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE}}\item[{\em 
+A\+C\+C\+\_\+\+V\+O\+L\+A\+T\+I\+LE\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a062990ad544d7fe6f1910880dcce455e}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a062990ad544d7fe6f1910880dcce455e}
+}]\index{A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT@{A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT@{A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT}}\item[{\em 
+A\+C\+C\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a63a2d0424d59c2fed955a1633974f50a}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a63a2d0424d59c2fed955a1633974f50a}
+}]\index{A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS@{A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS@{A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS}}\item[{\em 
+A\+C\+C\+\_\+\+V\+A\+R\+A\+R\+GS\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4103e9877019a62fd8ad9576db36d889}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4103e9877019a62fd8ad9576db36d889}
+}]\index{A\+C\+C\+\_\+\+N\+A\+T\+I\+VE@{A\+C\+C\+\_\+\+N\+A\+T\+I\+VE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+N\+A\+T\+I\+VE@{A\+C\+C\+\_\+\+N\+A\+T\+I\+VE}}\item[{\em 
+A\+C\+C\+\_\+\+N\+A\+T\+I\+VE\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a94900e08f1643779887f4eb0e1e16f1f}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a94900e08f1643779887f4eb0e1e16f1f}
+}]\index{A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE@{A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE@{A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE}}\item[{\em 
+A\+C\+C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a6d061156e0c1a7d2fd2612cdfc22cc9e}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a6d061156e0c1a7d2fd2612cdfc22cc9e}
+}]\index{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT@{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT@{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT}}\item[{\em 
+A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ac326b159ac221f52e4eb29b48d0da481}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167ac326b159ac221f52e4eb29b48d0da481}
+}]\index{A\+C\+C\+\_\+\+S\+T\+R\+I\+CT@{A\+C\+C\+\_\+\+S\+T\+R\+I\+CT}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+S\+T\+R\+I\+CT@{A\+C\+C\+\_\+\+S\+T\+R\+I\+CT}}\item[{\em 
+A\+C\+C\+\_\+\+S\+T\+R\+I\+CT\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a76a7711c5903238a058555ac603ac435}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a76a7711c5903238a058555ac603ac435}
+}]\index{A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC@{A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC@{A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC}}\item[{\em 
+A\+C\+C\+\_\+\+S\+Y\+N\+T\+H\+E\+T\+IC\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a980b3db8759afd4fd626103668481058}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a980b3db8759afd4fd626103668481058}
+}]\index{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}}\item[{\em 
+A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a503f7e7efc837648b71f6356598e63e6}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a503f7e7efc837648b71f6356598e63e6}
+}]\index{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}}\item[{\em 
+A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4c334d0daed8dce296fe6f5699511f2a}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a4c334d0daed8dce296fe6f5699511f2a}
+}]\index{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}}\item[{\em 
+A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a22bfd577effe1eabceae5b91767a3022}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a22bfd577effe1eabceae5b91767a3022}
+}]\index{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK@{A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK}}\item[{\em 
+A\+C\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+F\+L\+A\+G\+\_\+\+M\+A\+SK\hypertarget{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a489395c7c71b95b22664ed825dffc61b}{}\label{javaclass_8h_ad57f7fb13c5f728d348f4a42e7d97167a489395c7c71b95b22664ed825dffc61b}
+}]\end{description}
+\end{Desc}
+\index{javaclass.\+h@{javaclass.\+h}!Access\+Flags\+Type@{Access\+Flags\+Type}}
+\index{Access\+Flags\+Type@{Access\+Flags\+Type}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{Access\+Flags\+Type}{AccessFlagsType}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Access\+Flags\+Type}}\hypertarget{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1}{}\label{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\+C\+C\+T\+\_\+\+C\+L\+A\+SS@{A\+C\+C\+T\+\_\+\+C\+L\+A\+SS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+T\+\_\+\+C\+L\+A\+SS@{A\+C\+C\+T\+\_\+\+C\+L\+A\+SS}}\item[{\em 
+A\+C\+C\+T\+\_\+\+C\+L\+A\+SS\hypertarget{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a9366cd7f8c45f98f158d3db562a5c151}{}\label{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a9366cd7f8c45f98f158d3db562a5c151}
+}]\index{A\+C\+C\+T\+\_\+\+F\+I\+E\+LD@{A\+C\+C\+T\+\_\+\+F\+I\+E\+LD}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+T\+\_\+\+F\+I\+E\+LD@{A\+C\+C\+T\+\_\+\+F\+I\+E\+LD}}\item[{\em 
+A\+C\+C\+T\+\_\+\+F\+I\+E\+LD\hypertarget{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a473ab8698ed2b3566137c16c9eb7e302}{}\label{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1a473ab8698ed2b3566137c16c9eb7e302}
+}]\index{A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD@{A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD@{A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD}}\item[{\em 
+A\+C\+C\+T\+\_\+\+M\+E\+T\+H\+OD\hypertarget{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1ad4353a5a1e14128b0e9862e94a14d58d}{}\label{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1ad4353a5a1e14128b0e9862e94a14d58d}
+}]\index{A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS@{A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS@{A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS}}\item[{\em 
+A\+C\+C\+T\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+SS\hypertarget{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1aed036ddc63bb82144571d7f50f9f081a}{}\label{javaclass_8h_a5798e6b755b18c1fad1d7b170552e8e1aed036ddc63bb82144571d7f50f9f081a}
+}]\end{description}
+\end{Desc}
+\index{javaclass.\+h@{javaclass.\+h}!Java\+Class\+Status@{Java\+Class\+Status}}
+\index{Java\+Class\+Status@{Java\+Class\+Status}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{Java\+Class\+Status}{JavaClassStatus}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Java\+Class\+Status}}\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5ac}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5ac}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK}}\item[{\em 
+C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+OK\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa1a463d1116ffd2858224160e7746fb4}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa1a463d1116ffd2858224160e7746fb4}
+}]\index{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON}}\item[{\em 
+C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca1430fc24ed090d4e9201f5c0a88c24e3}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca1430fc24ed090d4e9201f5c0a88c24e3}
+}]\index{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED}}\item[{\em 
+C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+U\+L\+D\+N\+T\+\_\+\+B\+E\+\_\+\+O\+P\+E\+N\+ED\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac4afaaf3223fbf722373c5b88ac596be}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac4afaaf3223fbf722373c5b88ac596be}
+}]\index{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE@{C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE}}\item[{\em 
+C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae565f6f480818980a5d0924ff1526be2}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae565f6f480818980a5d0924ff1526be2}
+}]\index{M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED@{M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED@{M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}}\item[{\em 
+M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaaf47c82f53381347e93f7e837a862f5d}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaaf47c82f53381347e93f7e837a862f5d}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+C\+O\+U\+NT\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8bfeef0f6d09104c59a43da5d9538002}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8bfeef0f6d09104c59a43da5d9538002}
+}]\index{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF}}\item[{\em 
+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3c11f72d7fe5c250269252f880b64627}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3c11f72d7fe5c250269252f880b64627}
+}]\index{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL}}\item[{\em 
+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acadc08fbbab208dad422b876da163e0e76}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acadc08fbbab208dad422b876da163e0e76}
+}]\index{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8}}\item[{\em 
+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca40d49368cf6057430b018d2d8b9a613a}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca40d49368cf6057430b018d2d8b9a613a}
+}]\index{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES}}\item[{\em 
+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaedc6739d686346d56b5266505eb15b8f}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaedc6739d686346d56b5266505eb15b8f}
+}]\index{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO@{U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO}}\item[{\em 
+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca20a282bd3a3c7a03b4308c2c8368ac18}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca20a282bd3a3c7a03b4308c2c8368ac18}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES@{I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES@{I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaebda37cb508a0ad4391676139cd486e2}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaebda37cb508a0ad4391676139cd486e2}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca05feab7f3b9415a0a706f95baa548b5b}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca05feab7f3b9415a0a706f95baa548b5b}
+}]\index{U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG@{U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG@{U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG}}\item[{\em 
+U\+N\+K\+N\+O\+W\+N\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+O\+L\+\_\+\+T\+AG\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae51911344cdf74428f5d30758a0a2d2a}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acae51911344cdf74428f5d30758a0a2d2a}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7942d62b2f3202eddfff89415ecd5bb7}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7942d62b2f3202eddfff89415ecd5bb7}
+}]\index{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}}\item[{\em 
+U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca90dc29b317e3c00e22e37a818d3eec55}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca90dc29b317e3c00e22e37a818d3eec55}
+}]\index{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}}\item[{\em 
+U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3a574a835e6dd65532746733dbacf721}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3a574a835e6dd65532746733dbacf721}
+}]\index{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS@{U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS}}\item[{\em 
+U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca0831e73b1cc7f5e9f27c04d3fdb1c8bc}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca0831e73b1cc7f5e9f27c04d3fdb1c8bc}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca59eb83d2a7b113c2d9abb27da7ed5e28}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca59eb83d2a7b113c2d9abb27da7ed5e28}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca352afd012919746e5c8a7d2db2892bed}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca352afd012919746e5c8a7d2db2892bed}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acab497e716f70149f72449856aed3f09a7}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acab497e716f70149f72449856aed3f09a7}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa838f82a15cba16e0377137588870a14}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa838f82a15cba16e0377137588870a14}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca82c50cfdf49737542575a0b4707d1927}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca82c50cfdf49737542575a0b4707d1927}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac024cb11850d2e0c2add30aea8ef4356}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acac024cb11850d2e0c2add30aea8ef4356}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca42706743a2ce1a2532151635eb61ac23}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca42706743a2ce1a2532151635eb61ac23}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca43d4fa32dda22f34cdb20e973e13e92f}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca43d4fa32dda22f34cdb20e973e13e92f}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX@{I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+A\+N\+D\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca094612094aa2ad3cf32b3b35456cb636}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca094612094aa2ad3cf32b3b35456cb636}
+}]\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+A\+V\+A\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca2c8c30acf5c1b97bbea13e7efe0d7fe2}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca2c8c30acf5c1b97bbea13e7efe0d7fe2}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7e8c0bb317f4d4489d683be02d9581d4}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca7e8c0bb317f4d4489d683be02d9581d4}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca4660bf99516946fa5f6f490d4b3334e6}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca4660bf99516946fa5f6f490d4b3334e6}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca5de8630713660c1e1981780df9c7ff25}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca5de8630713660c1e1981780df9c7ff25}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca70d3af15082e9daba389056b5f524540}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca70d3af15082e9daba389056b5f524540}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8ffa2b3d6067763be6d7dc8d153b202a}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca8ffa2b3d6067763be6d7dc8d153b202a}
+}]\index{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH@{A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH}}\item[{\em 
+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa326cc70e8910b9d9751e6dd2737bc7c}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5acaa326cc70e8910b9d9751e6dd2737bc7c}
+}]\index{F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA@{F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA}!javaclass.\+h@{javaclass.\+h}}\index{javaclass.\+h@{javaclass.\+h}!F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA@{F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA}}\item[{\em 
+F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA\hypertarget{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3b08073ff7dff286757878e5cb576e46}{}\label{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5aca3b08073ff7dff286757878e5cb576e46}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{javaclass.\+h@{javaclass.\+h}!close\+Class\+File@{close\+Class\+File}}
+\index{close\+Class\+File@{close\+Class\+File}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{close\+Class\+File(\+Java\+Class $\ast$jc)}{closeClassFile(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void close\+Class\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_afc621448c86d015f1f284e3e0bc3f276}{}\label{javaclass_8h_afc621448c86d015f1f284e3e0bc3f276}
+
+
+Closes the .class file and releases resources used by the \hyperlink{structJavaClass}{Java\+Class} struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Class$\ast$} & jc -\/ pointer to the class to be closed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function does not free the {\bfseries $\ast$jc} pointer. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{javaclass_8c_ae447cd0966dc3beb54467b9097e08f2c}{open\+Class\+File()} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_afc621448c86d015f1f284e3e0bc3f276_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_afc621448c86d015f1f284e3e0bc3f276_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{javaclass.\+h@{javaclass.\+h}!decode\+Access\+Flags@{decode\+Access\+Flags}}
+\index{decode\+Access\+Flags@{decode\+Access\+Flags}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{decode\+Access\+Flags(uint16\+\_\+t flags, char $\ast$buffer, int32\+\_\+t buffer\+\_\+len, enum Access\+Flags\+Type acctype)}{decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)}}]{\setlength{\rightskip}{0pt plus 5cm}void decode\+Access\+Flags (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{flags, }
+\item[{char $\ast$}]{buffer, }
+\item[{int32\+\_\+t}]{buffer\+\_\+len, }
+\item[{enum {\bf Access\+Flags\+Type}}]{acctype}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_aee51865d444d48583f151873b4138d72}{}\label{javaclass_8h_aee51865d444d48583f151873b4138d72}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_aee51865d444d48583f151873b4138d72_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_aee51865d444d48583f151873b4138d72_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{javaclass.\+h@{javaclass.\+h}!decode\+Java\+Class\+Status@{decode\+Java\+Class\+Status}}
+\index{decode\+Java\+Class\+Status@{decode\+Java\+Class\+Status}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{decode\+Java\+Class\+Status(enum Java\+Class\+Status)}{decodeJavaClassStatus(enum JavaClassStatus)}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ decode\+Java\+Class\+Status (
+\begin{DoxyParamCaption}
+\item[{enum {\bf Java\+Class\+Status}}]{status}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_ad5d8dd2d21cd880ea01d8bdb07958808}{}\label{javaclass_8h_ad5d8dd2d21cd880ea01d8bdb07958808}
+
+
+Decodes Java\+Class\+Status enumeration elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enum} & Java\+Class\+Status status -\/ identifier of the enumeration to be translated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const char$\ast$ -\/ pointer to char containing the decoded status 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_ad5d8dd2d21cd880ea01d8bdb07958808_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{javaclass.\+h@{javaclass.\+h}!open\+Class\+File@{open\+Class\+File}}
+\index{open\+Class\+File@{open\+Class\+File}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{open\+Class\+File(\+Java\+Class $\ast$jc, const char $\ast$path)}{openClassFile(JavaClass *jc, const char *path)}}]{\setlength{\rightskip}{0pt plus 5cm}void open\+Class\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{const char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_ae447cd0966dc3beb54467b9097e08f2c}{}\label{javaclass_8h_ae447cd0966dc3beb54467b9097e08f2c}
+
+
+Opens a class file and parse it, storing the class information in the \hyperlink{structJavaClass}{Java\+Class} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Class$\ast$} & jc -\/ pointer to the structure that will hold the class data \\
+\hline
+{\em const} & char$\ast$ path -\/ string containing the path to the class file to be read\\
+\hline
+\end{DoxyParams}
+This function opens the .class file and reads its content from the file by filling in the fields of the \hyperlink{structJavaClass}{Java\+Class} struct. A bunch of other functions from different modules are called to read some pieces of the class file. Various checks are made during the parsing of the read data.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{javaclass_8c_afc621448c86d015f1f284e3e0bc3f276}{close\+Class\+File}, \hyperlink{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49}{print\+Class\+File\+Info()}, \hyperlink{javaclass_8h_acecf1f772b4815f304205fe030697f31}{print\+Class\+File\+Debug\+Info()} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_ae447cd0966dc3beb54467b9097e08f2c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_ae447cd0966dc3beb54467b9097e08f2c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{javaclass.\+h@{javaclass.\+h}!print\+Class\+File\+Debug\+Info@{print\+Class\+File\+Debug\+Info}}
+\index{print\+Class\+File\+Debug\+Info@{print\+Class\+File\+Debug\+Info}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{print\+Class\+File\+Debug\+Info(\+Java\+Class $\ast$jc)}{printClassFileDebugInfo(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Class\+File\+Debug\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_acecf1f772b4815f304205fe030697f31}{}\label{javaclass_8h_acecf1f772b4815f304205fe030697f31}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_acecf1f772b4815f304205fe030697f31_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{javaclass.\+h@{javaclass.\+h}!print\+Class\+File\+Info@{print\+Class\+File\+Info}}
+\index{print\+Class\+File\+Info@{print\+Class\+File\+Info}!javaclass.\+h@{javaclass.\+h}}
+\subsubsection[{\texorpdfstring{print\+Class\+File\+Info(\+Java\+Class $\ast$jc)}{printClassFileInfo(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Class\+File\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49}{}\label{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49_icgraph}
+\end{center}
+\end{figure}
+
+

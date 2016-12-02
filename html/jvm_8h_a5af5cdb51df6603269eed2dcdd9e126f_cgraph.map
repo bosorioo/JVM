@@ -1,0 +1,51 @@
+<map id="newClassInstance" name="newClassInstance">
+<area shape="rect" id="node2" href="$jvm_8c.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="initClass" alt="" coords="184,119,257,145"/>
+<area shape="rect" id="node3" href="$attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5" title="getAttributeByType" alt="" coords="698,156,833,183"/>
+<area shape="rect" id="node4" href="$jvm_8c.html#a8a0f79bec7b4a76d2ca09ab27342f639" title="newString" alt="" coords="904,283,984,309"/>
+<area shape="rect" id="node5" href="$methods_8c.html#a35dc2cb5c4d0d8834d78711b207096a9" title="getMethodMatching" alt="" coords="305,93,441,120"/>
+<area shape="rect" id="node8" href="$jvm_8c.html#a84bbfdfb213d48f48d7252c5264c229b" title="runMethod" alt="" coords="332,1119,415,1145"/>
+<area shape="rect" id="node6" href="$utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="Function to compare two strings, one in UTF&#45;8 and other in ASCII. " alt="" coords="501,93,624,120"/>
+<area shape="rect" id="node7" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="697,93,834,120"/>
+<area shape="rect" id="node9" href="$framestack_8c.html#a38bb1bda9e43d71c8472936c0ee14d72" title="newFrame" alt="" coords="521,195,604,221"/>
+<area shape="rect" id="node10" href="$framestack_8c.html#a173f487de2e018f4d63d576edccb4c3d" title="pushFrame" alt="" coords="519,1296,606,1323"/>
+<area shape="rect" id="node11" href="$operandstack_8c.html#a5ba14f5f382f622f8c50f17aed6e3805" title="popOperand" alt="" coords="898,1423,990,1449"/>
+<area shape="rect" id="node12" href="$natives_8c.html#a1f310d5e1692606d76298f438c0ed4b2" title="getNative" alt="" coords="523,1245,602,1272"/>
+<area shape="rect" id="node15" href="$operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="895,941,993,968"/>
+<area shape="rect" id="node17" href="$instructions_8c.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="489,1043,636,1069"/>
+<area shape="rect" id="node48" href="$opcodes_8c.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="getOpcodeMnemonic" alt="" coords="490,1093,635,1120"/>
+<area shape="rect" id="node49" href="$framestack_8c.html#ab279becc7f4fe166543e43d12e45ef56" title="popFrame" alt="" coords="523,1144,603,1171"/>
+<area shape="rect" id="node50" href="$framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="freeFrame" alt="" coords="522,1195,603,1221"/>
+<area shape="rect" id="node13" href="$natives_8c.html#a481ac99c2facb29e37dbba52e692b6e5" title="native_println" alt="" coords="716,1904,815,1931"/>
+<area shape="rect" id="node14" href="$natives_8c.html#af0d8cada4a1bfe281476a1234d46f88d" title="native_currentTimeMillis" alt="" coords="684,891,847,917"/>
+<area shape="rect" id="node16" href="$utf8_8c.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="722,1853,809,1880"/>
+<area shape="rect" id="node18" href="$instructions_8c.html#a66a6ac26513b757e08d88b0ed26213a2" title="instfunc_nop" alt="" coords="717,1195,813,1221"/>
+<area shape="rect" id="node19" href="$instructions_8c.html#a5e1a4beb32fc362c93f19b3f0e67969f" title="instfunc_aconst_null" alt="" coords="695,789,836,816"/>
+<area shape="rect" id="node20" href="$instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="709,384,822,411"/>
+<area shape="rect" id="node21" href="$instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="709,435,822,461"/>
+<area shape="rect" id="node22" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="719,283,811,309"/>
+<area shape="rect" id="node23" href="$instructions_8c.html#a25b6b831a827b32f6afc0ad1961ba248" title="instfunc_ldc_w" alt="" coords="711,333,820,360"/>
+<area shape="rect" id="node24" href="$instructions_8c.html#a9f86456cc432b6c908ec3ded390791da" title="instfunc_ldc2_w" alt="" coords="707,485,823,512"/>
+<area shape="rect" id="node25" href="$instructions_8c.html#a74f07f9cf2355bb2f2a41e17d5ee7080" title="instfunc_aaload" alt="" coords="709,1347,822,1373"/>
+<area shape="rect" id="node26" href="$instructions_8c.html#a648f161b9b150e189a4f533036ba889a" title="instfunc_aastore" alt="" coords="706,1752,825,1779"/>
+<area shape="rect" id="node27" href="$instructions_8c.html#a69a5411d259a08519f379ee9cb76386b" title="instfunc_pop" alt="" coords="717,1701,813,1728"/>
+<area shape="rect" id="node28" href="$instructions_8c.html#a608b84cf53b51d7b6e6dfe2cfca9ed08" title="instfunc_pop2" alt="" coords="714,1803,817,1829"/>
+<area shape="rect" id="node29" href="$instructions_8c.html#a98119280a3bad3e396e70f9beaaff4bd" title="instfunc_dup" alt="" coords="717,536,813,563"/>
+<area shape="rect" id="node30" href="$instructions_8c.html#aa8a17433965bd5be5bb8ebf75f4b5fe0" title="instfunc_dup_x1" alt="" coords="707,637,824,664"/>
+<area shape="rect" id="node31" href="$instructions_8c.html#a7323def5c4a7ffe4dfcb3206e8f9a5f1" title="instfunc_dup_x2" alt="" coords="707,688,824,715"/>
+<area shape="rect" id="node32" href="$instructions_8c.html#a4a6a50c53d4149581b0ccdd6607e0d17" title="instfunc_dup2" alt="" coords="714,739,817,765"/>
+<area shape="rect" id="node33" href="$instructions_8c.html#a6864e2ff8c66c7aac01eac379e4f60bb" title="instfunc_dup2_x1" alt="" coords="703,1043,827,1069"/>
+<area shape="rect" id="node34" href="$instructions_8c.html#a2d9d9fbfb50b0ef8890421479c4c204a" title="instfunc_dup2_x2" alt="" coords="703,1093,827,1120"/>
+<area shape="rect" id="node35" href="$instructions_8c.html#a531d98d278acaf04e942c4a82aeb1193" title="instfunc_swap" alt="" coords="712,587,819,613"/>
+<area shape="rect" id="node36" href="$instructions_8c.html#a9ff2a7857acb442d204529135a68226a" title="instfunc_frem" alt="" coords="715,1600,816,1627"/>
+<area shape="rect" id="node37" href="$instructions_8c.html#afbfe8069926d1dd4eb8ed0e8b509f42d" title="instfunc_drem" alt="" coords="713,1549,817,1576"/>
+<area shape="rect" id="node38" href="$instructions_8c.html#a6eb5349e9ecc5a303f72c73e23813a29" title="instfunc_ineg" alt="" coords="716,1651,815,1677"/>
+<area shape="rect" id="node39" href="$instructions_8c.html#af499397a818413a5391ffd640f952636" title="instfunc_lneg" alt="" coords="716,1245,815,1272"/>
+<area shape="rect" id="node40" href="$instructions_8c.html#a4ad69c026bab846f76b2fc0a4a00958c" title="instfunc_fneg" alt="" coords="715,1144,815,1171"/>
+<area shape="rect" id="node41" href="$instructions_8c.html#a46758bd6685eb49ca98a77f613bcde33" title="instfunc_dneg" alt="" coords="714,840,817,867"/>
+<area shape="rect" id="node42" href="$instructions_8c.html#a532d07af52c17ac03344770c322b035a" title="instfunc_ishl" alt="" coords="718,1296,813,1323"/>
+<area shape="rect" id="node43" href="$instructions_8c.html#a3713153b6bb1cfa6cd6281e87a98ca29" title="instfunc_lshl" alt="" coords="718,941,813,968"/>
+<area shape="rect" id="node44" href="$instructions_8c.html#ab6452a3f2c7c103e4f42449375883e71" title="instfunc_ishr" alt="" coords="717,992,813,1019"/>
+<area shape="rect" id="node45" href="$instructions_8c.html#ac6f821de50ba095e30b6b3936e3c9bd0" title="instfunc_lshr" alt="" coords="717,1397,813,1424"/>
+<area shape="rect" id="node46" href="$instructions_8c.html#a5dc7861eff7a42e9247d1ff6856bdc1e" title="instfunc_iushr" alt="" coords="714,1448,817,1475"/>
+<area shape="rect" id="node47" href="$instructions_8c.html#a36067065a4b9dd14b24c8a680700273d" title="instfunc_lushr" alt="" coords="714,1499,817,1525"/>
+</map>

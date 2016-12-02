@@ -1,7 +1,17 @@
 <map id="printAllFields" name="printAllFields">
-<area shape="rect" id="node2" href="$utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="166,5,275,32"/>
-<area shape="rect" id="node4" href="$javaclass_8c.html#aee51865d444d48583f151873b4138d72" title="decodeAccessFlags" alt="" coords="151,56,291,83"/>
-<area shape="rect" id="node5" href="$attributes_8c.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="173,107,269,133"/>
-<area shape="rect" id="node3" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="339,5,476,32"/>
-<area shape="rect" id="node6" href="$attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="382,107,433,133"/>
+<area shape="rect" id="node2" href="$utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="Function that translates a UTF&#45;8 stream to ASCII. " alt="" coords="779,157,889,184"/>
+<area shape="rect" id="node4" href="$javaclass_8c.html#aee51865d444d48583f151873b4138d72" title="decodeAccessFlags" alt="" coords="151,183,291,209"/>
+<area shape="rect" id="node14" href="$attributes_8c.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="581,5,677,32"/>
+<area shape="rect" id="node3" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="960,157,1097,184"/>
+<area shape="rect" id="node5" href="$javaclass_8h.html#acecf1f772b4815f304205fe030697f31" title="printClassFileDebugInfo" alt="" coords="339,208,502,235"/>
+<area shape="rect" id="node6" href="$javaclass_8c.html#a38efa2c89d8bc742293cdc1c6e0f3250" title="Decodes JavaClassStatus enumeration elements. " alt="" coords="339,259,503,285"/>
+<area shape="rect" id="node7" href="$javaclass_8h.html#a90175fdf9e50aea1c9db6dee3f828e49" title="printClassFileInfo" alt="" coords="359,309,483,336"/>
+<area shape="rect" id="node8" href="$constantpool_8c.html#ab7d27eb8d4164ae1a1fd11664ba4d1ef" title="Function to print all the constants from the constant pool of the class file. " alt="" coords="357,360,484,387"/>
+<area shape="rect" id="node13" href="$methods_8c.html#a88c1302886452c2888da76abd261ccc8" title="Function to print all methods of the class file. " alt="" coords="372,107,469,133"/>
+<area shape="rect" id="node16" href="$attributes_8c.html#ae04e26b66957c879139f8a82e463674a" title="printAllAttributes" alt="" coords="361,56,480,83"/>
+<area shape="rect" id="node9" href="$constantpool_8c.html#a80f31089353a0ed2d861401c2c741701" title="Decodes ConstantPoolTag enumeration elements. " alt="" coords="586,360,673,387"/>
+<area shape="rect" id="node10" href="$constantpool_8c.html#a507c6272d8116f956bc75820b2c6ed23" title="Print one single constant from the constant pool. " alt="" coords="551,461,708,488"/>
+<area shape="rect" id="node11" href="$readfunctions_8c.html#a9ee9e635c8197187cec0334000ba1f7b" title="readFloatFromUint32" alt="" coords="762,487,906,513"/>
+<area shape="rect" id="node12" href="$readfunctions_8c.html#a7f0b7cf08c775d82db36228940fa6df6" title="readDoubleFromUint64" alt="" coords="756,436,912,463"/>
+<area shape="rect" id="node15" href="$attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="809,5,859,32"/>
 </map>

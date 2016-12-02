@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['triple_5fbyte_5fmask',['TRIPLE_BYTE_MASK',['../utf8_8c.html#a3dad8f48b583405ace3f414b82d2d3d0',1,'utf8.c']]],
-  ['triple_5fbyte_5fvalue',['TRIPLE_BYTE_VALUE',['../utf8_8c.html#a4f286840bd2331f4b3dab631aa142a32',1,'utf8.c']]]
+  ['opcode_5finterval',['OPCODE_INTERVAL',['../attributes_8c.html#acc32225b9d3eb1107b48de3cd4539075',1,'attributes.c']]]
 ];

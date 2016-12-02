@@ -1,0 +1,655 @@
+\hypertarget{jvm_8c}{}\section{src/jvm.c File Reference}
+\label{jvm_8c}\index{src/jvm.\+c@{src/jvm.\+c}}
+{\ttfamily \#include \char`\"{}jvm.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utf8.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}natives.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}instructions.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}debugging.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+Include dependency graph for jvm.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{jvm_8c_aca189885e78ec25ece5d7f70e83022a1}{init\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm)
+\begin{DoxyCompactList}\small\item\em Initializes a \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} structure. \end{DoxyCompactList}\item 
+void \hyperlink{jvm_8c_a65269d70951aacfe829c89c078dad67a}{deinit\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm)
+\begin{DoxyCompactList}\small\item\em Deallocates all memory used by the \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} structure. \end{DoxyCompactList}\item 
+void \hyperlink{jvm_8c_a38b6a19996260e30af5a369a9588dc31}{execute\+J\+VM} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$main\+Class)
+\begin{DoxyCompactList}\small\item\em Executes the main method of a given class. \end{DoxyCompactList}\item 
+void \hyperlink{jvm_8c_a9e3f0d51da0f42ba4b2bd4887f190999}{set\+Class\+Path} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const char $\ast$path)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb}{resolve\+Class} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const uint8\+\_\+t $\ast$class\+Name\+\_\+utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$$\ast$out\+Class)
+\begin{DoxyCompactList}\small\item\em Loads a .class file. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{jvm_8c_abeafee896426d7e9f54af6dbce4438e2}{resolve\+Method} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structcp__info}{cp\+\_\+info} $\ast$cp\+\_\+method, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$$\ast$out\+Class)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_af83bb4c4db933c767e72a02d65a1b197}{resolve\+Field} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structcp__info}{cp\+\_\+info} $\ast$cp\+\_\+field, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$$\ast$out\+Class)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_a84bbfdfb213d48f48d7252c5264c229b}{run\+Method} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$method, uint8\+\_\+t number\+Of\+Parameters)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_a9b9337f59d86aec0872dc322080eedc6}{get\+Method\+Descriptor\+Parameter\+Count} (const uint8\+\_\+t $\ast$descriptor\+\_\+utf8, int32\+\_\+t utf8\+\_\+len)
+\item 
+\hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$ \hyperlink{jvm_8c_a734afa606cdeb650a38586176bf7d5ef}{add\+Class\+To\+Loaded\+Classes} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+\hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$ \hyperlink{jvm_8c_a10f44f11aaec2c3e616c61d127a1df67}{is\+Class\+Loaded} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\item 
+\hyperlink{structJavaClass}{Java\+Class} $\ast$ \hyperlink{jvm_8c_a81f4407b092381a7d4c0ec99ad8b813b}{get\+Super\+Class} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_a784da15a054ac049455b608f6bcc0ef1}{is\+Class\+Super\+Of} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structJavaClass}{Java\+Class} $\ast$super, \hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+uint8\+\_\+t \hyperlink{jvm_8c_ae702b2c5a05e0f39c5edcaf78bcb4c95}{init\+Class} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$lc)
+\item 
+\hyperlink{structReference}{Reference} $\ast$ \hyperlink{jvm_8c_a8a0f79bec7b4a76d2ca09ab27342f639}{new\+String} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, const uint8\+\_\+t $\ast$str, int32\+\_\+t strlen)
+\item 
+\hyperlink{structReference}{Reference} $\ast$ \hyperlink{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1}{new\+Class\+Instance} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structLoadedClasses}{Loaded\+Classes} $\ast$lc)
+\item 
+\hyperlink{structReference}{Reference} $\ast$ \hyperlink{jvm_8c_a718c81a95f3f6222a97b8e8b6980bdcb}{new\+Array} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, uint32\+\_\+t length, \hyperlink{opcodes_8h_a4cc308729b4fd75bab5788f95d7980d6}{Opcode\+\_\+newarray\+\_\+type} type)
+\item 
+\hyperlink{structReference}{Reference} $\ast$ \hyperlink{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d}{new\+Object\+Array} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, uint32\+\_\+t length, const uint8\+\_\+t $\ast$utf8\+\_\+class\+Name, int32\+\_\+t utf8\+\_\+len)
+\item 
+\hyperlink{structReference}{Reference} $\ast$ \hyperlink{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179}{new\+Object\+Multi\+Array} (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, int32\+\_\+t $\ast$dimensions, uint8\+\_\+t dimensions\+Size, const uint8\+\_\+t $\ast$utf8\+\_\+class\+Name, int32\+\_\+t utf8\+\_\+len)
+\item 
+void \hyperlink{jvm_8c_a4496705945248c1e848995ded82012c8}{delete\+Reference} (\hyperlink{structReference}{Reference} $\ast$obj)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{jvm.\+c@{jvm.\+c}!add\+Class\+To\+Loaded\+Classes@{add\+Class\+To\+Loaded\+Classes}}
+\index{add\+Class\+To\+Loaded\+Classes@{add\+Class\+To\+Loaded\+Classes}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{add\+Class\+To\+Loaded\+Classes(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc)}{addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Loaded\+Classes}$\ast$ add\+Class\+To\+Loaded\+Classes (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a734afa606cdeb650a38586176bf7d5ef}{}\label{jvm_8c_a734afa606cdeb650a38586176bf7d5ef}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a734afa606cdeb650a38586176bf7d5ef_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!deinit\+J\+VM@{deinit\+J\+VM}}
+\index{deinit\+J\+VM@{deinit\+J\+VM}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{deinit\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm)}{deinitJVM(JavaVirtualMachine *jvm)}}]{\setlength{\rightskip}{0pt plus 5cm}void deinit\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a65269d70951aacfe829c89c078dad67a}{}\label{jvm_8c_a65269d70951aacfe829c89c078dad67a}
+
+
+Deallocates all memory used by the \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Virtual\+Machine$\ast$} & jvm -\/ pointer to the structure to be deallocated.\\
+\hline
+\end{DoxyParams}
+All loaded classes and objects created during the execution of the J\+VM will be freed.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{jvm_8c_aca189885e78ec25ece5d7f70e83022a1}{init\+J\+V\+M()} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a65269d70951aacfe829c89c078dad67a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{jvm_8c_a65269d70951aacfe829c89c078dad67a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!delete\+Reference@{delete\+Reference}}
+\index{delete\+Reference@{delete\+Reference}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{delete\+Reference(\+Reference $\ast$obj)}{deleteReference(Reference *obj)}}]{\setlength{\rightskip}{0pt plus 5cm}void delete\+Reference (
+\begin{DoxyParamCaption}
+\item[{{\bf Reference} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a4496705945248c1e848995ded82012c8}{}\label{jvm_8c_a4496705945248c1e848995ded82012c8}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{jvm_8c_a4496705945248c1e848995ded82012c8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!execute\+J\+VM@{execute\+J\+VM}}
+\index{execute\+J\+VM@{execute\+J\+VM}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{execute\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm, Loaded\+Classes $\ast$main\+Class)}{executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass)}}]{\setlength{\rightskip}{0pt plus 5cm}void execute\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Loaded\+Classes} $\ast$}]{main\+Class}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a38b6a19996260e30af5a369a9588dc31}{}\label{jvm_8c_a38b6a19996260e30af5a369a9588dc31}
+
+
+Executes the main method of a given class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Virtual\+Machine$\ast$} & jvm -\/ pointer to an already initialized J\+VM structure. \\
+\hline
+{\em Loaded\+Classes$\ast$} & main\+Class -\/ pointer to a class that has been loaded and contains the public void static main method.\\
+\hline
+\end{DoxyParams}
+If {\ttfamily main\+Class} is a null pointer, the class at the top of the stack of loaded classes will be used as entry point. If no classes are loaded, then the status of the J\+VM will be changed to {\ttfamily J\+V\+M\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+A\+I\+N\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+ND}. If {\ttfamily main\+Class} is not a null pointer, the class must have been previously resolved with a call to {\ttfamily \hyperlink{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb}{resolve\+Class()}}.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb}{resolve\+Class()}, \hyperlink{structJavaClass}{Java\+Class} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{jvm_8c_a38b6a19996260e30af5a369a9588dc31_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{jvm_8c_a38b6a19996260e30af5a369a9588dc31_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!get\+Method\+Descriptor\+Parameter\+Count@{get\+Method\+Descriptor\+Parameter\+Count}}
+\index{get\+Method\+Descriptor\+Parameter\+Count@{get\+Method\+Descriptor\+Parameter\+Count}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{get\+Method\+Descriptor\+Parameter\+Count(const uint8\+\_\+t $\ast$descriptor\+\_\+utf8, int32\+\_\+t utf8\+\_\+len)}{getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t get\+Method\+Descriptor\+Parameter\+Count (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{descriptor\+\_\+utf8, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a9b9337f59d86aec0872dc322080eedc6}{}\label{jvm_8c_a9b9337f59d86aec0872dc322080eedc6}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a9b9337f59d86aec0872dc322080eedc6_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!get\+Super\+Class@{get\+Super\+Class}}
+\index{get\+Super\+Class@{get\+Super\+Class}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{get\+Super\+Class(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc)}{getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Java\+Class}$\ast$ get\+Super\+Class (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a81f4407b092381a7d4c0ec99ad8b813b}{}\label{jvm_8c_a81f4407b092381a7d4c0ec99ad8b813b}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a81f4407b092381a7d4c0ec99ad8b813b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a81f4407b092381a7d4c0ec99ad8b813b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!init\+Class@{init\+Class}}
+\index{init\+Class@{init\+Class}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{init\+Class(\+Java\+Virtual\+Machine $\ast$jvm, Loaded\+Classes $\ast$lc)}{initClass(JavaVirtualMachine *jvm, LoadedClasses *lc)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t init\+Class (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Loaded\+Classes} $\ast$}]{lc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_ae702b2c5a05e0f39c5edcaf78bcb4c95}{}\label{jvm_8c_ae702b2c5a05e0f39c5edcaf78bcb4c95}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{jvm_8c_ae702b2c5a05e0f39c5edcaf78bcb4c95_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_ae702b2c5a05e0f39c5edcaf78bcb4c95_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!init\+J\+VM@{init\+J\+VM}}
+\index{init\+J\+VM@{init\+J\+VM}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{init\+J\+V\+M(\+Java\+Virtual\+Machine $\ast$jvm)}{initJVM(JavaVirtualMachine *jvm)}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+J\+VM (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_aca189885e78ec25ece5d7f70e83022a1}{}\label{jvm_8c_aca189885e78ec25ece5d7f70e83022a1}
+
+
+Initializes a \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Virtual\+Machine$\ast$} & jvm -\/ pointer to the structure to be initialized.\\
+\hline
+\end{DoxyParams}
+This function must be called before calling other \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} functions.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{jvm_8c_a38b6a19996260e30af5a369a9588dc31}{execute\+J\+V\+M()}, \hyperlink{jvm_8c_a65269d70951aacfe829c89c078dad67a}{deinit\+J\+V\+M()} 
+\end{DoxySeeAlso}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{jvm_8c_aca189885e78ec25ece5d7f70e83022a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!is\+Class\+Loaded@{is\+Class\+Loaded}}
+\index{is\+Class\+Loaded@{is\+Class\+Loaded}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{is\+Class\+Loaded(\+Java\+Virtual\+Machine $\ast$jvm, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Loaded\+Classes}$\ast$ is\+Class\+Loaded (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a10f44f11aaec2c3e616c61d127a1df67}{}\label{jvm_8c_a10f44f11aaec2c3e616c61d127a1df67}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{jvm_8c_a10f44f11aaec2c3e616c61d127a1df67_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a10f44f11aaec2c3e616c61d127a1df67_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!is\+Class\+Super\+Of@{is\+Class\+Super\+Of}}
+\index{is\+Class\+Super\+Of@{is\+Class\+Super\+Of}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{is\+Class\+Super\+Of(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$super, Java\+Class $\ast$jc)}{isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t is\+Class\+Super\+Of (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{super, }
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a784da15a054ac049455b608f6bcc0ef1}{}\label{jvm_8c_a784da15a054ac049455b608f6bcc0ef1}
+\begin{DoxyPrecond}{Precondition}
+Both {\ttfamily super} and {\ttfamily jc} must be classes that have already been loaded. 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+If {\ttfamily super} and {\ttfamily jc} point to the same class, the function returns false. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a784da15a054ac049455b608f6bcc0ef1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a784da15a054ac049455b608f6bcc0ef1_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!new\+Array@{new\+Array}}
+\index{new\+Array@{new\+Array}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{new\+Array(\+Java\+Virtual\+Machine $\ast$jvm, uint32\+\_\+t length, Opcode\+\_\+newarray\+\_\+type type)}{newArray(JavaVirtualMachine *jvm, uint32_t length, Opcode_newarray_type type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reference}$\ast$ new\+Array (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{uint32\+\_\+t}]{length, }
+\item[{{\bf Opcode\+\_\+newarray\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a718c81a95f3f6222a97b8e8b6980bdcb}{}\label{jvm_8c_a718c81a95f3f6222a97b8e8b6980bdcb}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a718c81a95f3f6222a97b8e8b6980bdcb_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!new\+Class\+Instance@{new\+Class\+Instance}}
+\index{new\+Class\+Instance@{new\+Class\+Instance}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{new\+Class\+Instance(\+Java\+Virtual\+Machine $\ast$jvm, Loaded\+Classes $\ast$lc)}{newClassInstance(JavaVirtualMachine *jvm, LoadedClasses *lc)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reference}$\ast$ new\+Class\+Instance (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Loaded\+Classes} $\ast$}]{lc}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1}{}\label{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!new\+Object\+Array@{new\+Object\+Array}}
+\index{new\+Object\+Array@{new\+Object\+Array}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{new\+Object\+Array(\+Java\+Virtual\+Machine $\ast$jvm, uint32\+\_\+t length, const uint8\+\_\+t $\ast$utf8\+\_\+class\+Name, int32\+\_\+t utf8\+\_\+len)}{newObjectArray(JavaVirtualMachine *jvm, uint32_t length, const uint8_t *utf8_className, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reference}$\ast$ new\+Object\+Array (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{uint32\+\_\+t}]{length, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+class\+Name, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d}{}\label{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!new\+Object\+Multi\+Array@{new\+Object\+Multi\+Array}}
+\index{new\+Object\+Multi\+Array@{new\+Object\+Multi\+Array}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{new\+Object\+Multi\+Array(\+Java\+Virtual\+Machine $\ast$jvm, int32\+\_\+t $\ast$dimensions, uint8\+\_\+t dimensions\+Size, const uint8\+\_\+t $\ast$utf8\+\_\+class\+Name, int32\+\_\+t utf8\+\_\+len)}{newObjectMultiArray(JavaVirtualMachine *jvm, int32_t *dimensions, uint8_t dimensionsSize, const uint8_t *utf8_className, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reference}$\ast$ new\+Object\+Multi\+Array (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{int32\+\_\+t $\ast$}]{dimensions, }
+\item[{uint8\+\_\+t}]{dimensions\+Size, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+class\+Name, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179}{}\label{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!new\+String@{new\+String}}
+\index{new\+String@{new\+String}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{new\+String(\+Java\+Virtual\+Machine $\ast$jvm, const uint8\+\_\+t $\ast$str, int32\+\_\+t strlen)}{newString(JavaVirtualMachine *jvm, const uint8_t *str, int32_t strlen)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reference}$\ast$ new\+String (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const uint8\+\_\+t $\ast$}]{str, }
+\item[{int32\+\_\+t}]{strlen}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a8a0f79bec7b4a76d2ca09ab27342f639}{}\label{jvm_8c_a8a0f79bec7b4a76d2ca09ab27342f639}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a8a0f79bec7b4a76d2ca09ab27342f639_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!resolve\+Class@{resolve\+Class}}
+\index{resolve\+Class@{resolve\+Class}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{resolve\+Class(\+Java\+Virtual\+Machine $\ast$jvm, const uint8\+\_\+t $\ast$class\+Name\+\_\+utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, Loaded\+Classes $\ast$$\ast$out\+Class)}{resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t resolve\+Class (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const uint8\+\_\+t $\ast$}]{class\+Name\+\_\+utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{{\bf Loaded\+Classes} $\ast$$\ast$}]{out\+Class}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb}{}\label{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb}
+
+
+Loads a .class file. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_afc01abbd34a25316bb3e806471ebdbeb_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!resolve\+Field@{resolve\+Field}}
+\index{resolve\+Field@{resolve\+Field}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{resolve\+Field(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc, cp\+\_\+info $\ast$cp\+\_\+field, Loaded\+Classes $\ast$$\ast$out\+Class)}{resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t resolve\+Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf cp\+\_\+info} $\ast$}]{cp\+\_\+field, }
+\item[{{\bf Loaded\+Classes} $\ast$$\ast$}]{out\+Class}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_af83bb4c4db933c767e72a02d65a1b197}{}\label{jvm_8c_af83bb4c4db933c767e72a02d65a1b197}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_af83bb4c4db933c767e72a02d65a1b197_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_af83bb4c4db933c767e72a02d65a1b197_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!resolve\+Method@{resolve\+Method}}
+\index{resolve\+Method@{resolve\+Method}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{resolve\+Method(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc, cp\+\_\+info $\ast$cp\+\_\+method, Loaded\+Classes $\ast$$\ast$out\+Class)}{resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t resolve\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf cp\+\_\+info} $\ast$}]{cp\+\_\+method, }
+\item[{{\bf Loaded\+Classes} $\ast$$\ast$}]{out\+Class}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_abeafee896426d7e9f54af6dbce4438e2}{}\label{jvm_8c_abeafee896426d7e9f54af6dbce4438e2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_abeafee896426d7e9f54af6dbce4438e2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_abeafee896426d7e9f54af6dbce4438e2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!run\+Method@{run\+Method}}
+\index{run\+Method@{run\+Method}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{run\+Method(\+Java\+Virtual\+Machine $\ast$jvm, Java\+Class $\ast$jc, method\+\_\+info $\ast$method, uint8\+\_\+t number\+Of\+Parameters)}{runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t run\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{method, }
+\item[{uint8\+\_\+t}]{number\+Of\+Parameters}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a84bbfdfb213d48f48d7252c5264c229b}{}\label{jvm_8c_a84bbfdfb213d48f48d7252c5264c229b}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{jvm_8c_a84bbfdfb213d48f48d7252c5264c229b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jvm_8c_a84bbfdfb213d48f48d7252c5264c229b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{jvm.\+c@{jvm.\+c}!set\+Class\+Path@{set\+Class\+Path}}
+\index{set\+Class\+Path@{set\+Class\+Path}!jvm.\+c@{jvm.\+c}}
+\subsubsection[{\texorpdfstring{set\+Class\+Path(\+Java\+Virtual\+Machine $\ast$jvm, const char $\ast$path)}{setClassPath(JavaVirtualMachine *jvm, const char *path)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Class\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Virtual\+Machine} $\ast$}]{jvm, }
+\item[{const char $\ast$}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{jvm_8c_a9e3f0d51da0f42ba4b2bd4887f190999}{}\label{jvm_8c_a9e3f0d51da0f42ba4b2bd4887f190999}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{jvm_8c_a9e3f0d51da0f42ba4b2bd4887f190999_icgraph}
+\end{center}
+\end{figure}
+
+

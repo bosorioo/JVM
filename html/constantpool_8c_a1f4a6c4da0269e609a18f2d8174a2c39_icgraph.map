@@ -1,6 +1,26 @@
 <map id="readConstantPool_Long" name="readConstantPool_Long">
-<area shape="rect" id="node2" href="$constantpool_8h.html#a62504539fde83f5183d20f262d4b1943" title="readConstantPoolEntry" alt="" coords="215,55,372,81"/>
-<area shape="rect" id="node3" href="$javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="openClassFile" alt="" coords="420,55,525,81"/>
-<area shape="rect" id="node4" href="$jvm_8h.html#abbb3f9abad1cb2b8d28068d6e453f42a" title="resolveClass" alt="" coords="573,29,672,56"/>
-<area shape="rect" id="node5" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="720,55,771,81"/>
+<area shape="rect" id="node2" href="$constantpool_8h.html#a62504539fde83f5183d20f262d4b1943" title="Reads a cp_info from the file. " alt="" coords="215,929,372,956"/>
+<area shape="rect" id="node3" href="$javaclass_8h.html#ae447cd0966dc3beb54467b9097e08f2c" title="Opens a class file and parse it, storing the class information in the JavaClass structure. " alt="" coords="420,929,525,956"/>
+<area shape="rect" id="node4" href="$jvm_8h.html#afc01abbd34a25316bb3e806471ebdbeb" title="Loads a .class file. " alt="" coords="573,752,672,779"/>
+<area shape="rect" id="node13" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1669,1056,1720,1083"/>
+<area shape="rect" id="node5" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="755,651,847,677"/>
+<area shape="rect" id="node20" href="$instructions_8c.html#a25b6b831a827b32f6afc0ad1961ba248" title="instfunc_ldc_w" alt="" coords="1640,955,1749,981"/>
+<area shape="rect" id="node21" href="$instructions_8c.html#a178ca8179e5d3037b2c5c5c7d3d58e36" title="instfunc_new" alt="" coords="1645,43,1744,69"/>
+<area shape="rect" id="node22" href="$instructions_8c.html#a2130f4eaddf3199320a4e794d7a9bfdd" title="instfunc_anewarray" alt="" coords="734,701,869,728"/>
+<area shape="rect" id="node23" href="$instructions_8c.html#a7e1fba62de557e3c3c949d77c4bb2c94" title="instfunc_multianewarray" alt="" coords="720,752,883,779"/>
+<area shape="rect" id="node24" href="$jvm_8h.html#abeafee896426d7e9f54af6dbce4438e2" title="resolveMethod" alt="" coords="1256,347,1363,373"/>
+<area shape="rect" id="node25" href="$jvm_8h.html#af83bb4c4db933c767e72a02d65a1b197" title="resolveField" alt="" coords="1263,803,1355,829"/>
+<area shape="rect" id="node6" href="$instructions_8h.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="931,676,1077,703"/>
+<area shape="rect" id="node7" href="$jvm_8h.html#a84bbfdfb213d48f48d7252c5264c229b" title="runMethod" alt="" coords="1125,499,1208,525"/>
+<area shape="rect" id="node8" href="$instructions_8c.html#a3ffd230810fadca7e0c5720f3c84f2fa" title="instfunc_invokevirtual" alt="" coords="1414,296,1562,323"/>
+<area shape="rect" id="node10" href="$instructions_8c.html#a7ff9a907830a5bfd8ee8c97171815507" title="instfunc_invokespecial" alt="" coords="1411,423,1565,449"/>
+<area shape="rect" id="node11" href="$instructions_8c.html#a12f892cfda6a1bdbabd72c9a7028ca03" title="instfunc_invokestatic" alt="" coords="1415,524,1561,551"/>
+<area shape="rect" id="node12" href="$jvm_8h.html#a38b6a19996260e30af5a369a9588dc31" title="Executes the main method of a given class. " alt="" coords="1441,651,1535,677"/>
+<area shape="rect" id="node14" href="$jvm_8h.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="initClass" alt="" coords="1273,651,1346,677"/>
+<area shape="rect" id="node9" href="$instructions_8c.html#a4b88fa6a76e21dd9034a54808a3b5ef7" title="instfunc_invokeinterface" alt="" coords="1613,245,1776,272"/>
+<area shape="rect" id="node15" href="$instructions_8c.html#aacb5e3cdcafeb85c2e2290884ade4159" title="instfunc_getstatic" alt="" coords="1425,701,1551,728"/>
+<area shape="rect" id="node16" href="$instructions_8c.html#a039f1fa8b3f891d297e75fb734bbc696" title="instfunc_putstatic" alt="" coords="1425,752,1551,779"/>
+<area shape="rect" id="node17" href="$instructions_8c.html#a5548cc8388f689b4961dd5b212af9cc9" title="instfunc_getfield" alt="" coords="1429,803,1547,829"/>
+<area shape="rect" id="node18" href="$instructions_8c.html#aec7c357e7b5efdd6d282b716beea625d" title="instfunc_putfield" alt="" coords="1429,853,1547,880"/>
+<area shape="rect" id="node19" href="$jvm_8h.html#a5af5cdb51df6603269eed2dcdd9e126f" title="newClassInstance" alt="" coords="1423,245,1553,272"/>
 </map>

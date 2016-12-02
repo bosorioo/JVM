@@ -1,0 +1,206 @@
+\hypertarget{methods_8h}{}\section{src/methods.h File Reference}
+\label{methods_8h}\index{src/methods.\+h@{src/methods.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}javaclass.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}attributes.\+h\char`\"{}}\\*
+Include dependency graph for methods.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmethod__info}{method\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmethod__info}{method\+\_\+info} \hyperlink{methods_8h_a8bb5945393748ebec11db13dc8993aa4}{method\+\_\+info}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}{read\+Method} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\begin{DoxyCompactList}\small\item\em Reads a \hyperlink{structmethod__info}{method\+\_\+info} from the file. \end{DoxyCompactList}\item 
+void \hyperlink{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}{free\+Method\+Attributes} (\hyperlink{structmethod__info}{method\+\_\+info} $\ast$entry)
+\begin{DoxyCompactList}\small\item\em Releases attributes used by the \hyperlink{structmethod__info}{method\+\_\+info} struct. \end{DoxyCompactList}\item 
+void \hyperlink{methods_8h_a88c1302886452c2888da76abd261ccc8}{print\+Methods} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\begin{DoxyCompactList}\small\item\em Function to print all methods of the class file. \end{DoxyCompactList}\item 
+\hyperlink{structmethod__info}{method\+\_\+info} $\ast$ \hyperlink{methods_8h_a35dc2cb5c4d0d8834d78711b207096a9}{get\+Method\+Matching} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, const uint8\+\_\+t $\ast$name, int32\+\_\+t name\+\_\+len, const uint8\+\_\+t $\ast$descriptor, int32\+\_\+t descriptor\+\_\+len, uint16\+\_\+t flag\+\_\+mask)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{methods.\+h@{methods.\+h}!method\+\_\+info@{method\+\_\+info}}
+\index{method\+\_\+info@{method\+\_\+info}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{method\+\_\+info}{method_info}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\+\_\+info} {\bf method\+\_\+info}}\hypertarget{methods_8h_a8bb5945393748ebec11db13dc8993aa4}{}\label{methods_8h_a8bb5945393748ebec11db13dc8993aa4}
+
+
+\subsection{Function Documentation}
+\index{methods.\+h@{methods.\+h}!free\+Method\+Attributes@{free\+Method\+Attributes}}
+\index{free\+Method\+Attributes@{free\+Method\+Attributes}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{free\+Method\+Attributes(method\+\_\+info $\ast$entry)}{freeMethodAttributes(method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Method\+Attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}{}\label{methods_8h_a50e4408e126b27fef952d2e1fc1b044e}
+
+
+Releases attributes used by the \hyperlink{structmethod__info}{method\+\_\+info} struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em method\+\_\+info$\ast$} & entry -\/ pointer to the \hyperlink{structmethod__info}{method\+\_\+info} that contains the attributes\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function does not free the {\bfseries $\ast$entry} pointer, just attributes 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{methods_8h_a50e4408e126b27fef952d2e1fc1b044e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a50e4408e126b27fef952d2e1fc1b044e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!get\+Method\+Matching@{get\+Method\+Matching}}
+\index{get\+Method\+Matching@{get\+Method\+Matching}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{get\+Method\+Matching(\+Java\+Class $\ast$jc, const uint8\+\_\+t $\ast$name, int32\+\_\+t name\+\_\+len, const uint8\+\_\+t $\ast$descriptor, int32\+\_\+t descriptor\+\_\+len, uint16\+\_\+t flag\+\_\+mask)}{getMethodMatching(JavaClass *jc, const uint8_t *name, int32_t name_len, const uint8_t *descriptor, int32_t descriptor_len, uint16_t flag_mask)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\+\_\+info}$\ast$ get\+Method\+Matching (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{const uint8\+\_\+t $\ast$}]{name, }
+\item[{int32\+\_\+t}]{name\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{descriptor, }
+\item[{int32\+\_\+t}]{descriptor\+\_\+len, }
+\item[{uint16\+\_\+t}]{flag\+\_\+mask}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a35dc2cb5c4d0d8834d78711b207096a9}{}\label{methods_8h_a35dc2cb5c4d0d8834d78711b207096a9}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a35dc2cb5c4d0d8834d78711b207096a9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a35dc2cb5c4d0d8834d78711b207096a9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!print\+Methods@{print\+Methods}}
+\index{print\+Methods@{print\+Methods}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{print\+Methods(\+Java\+Class $\ast$jc)}{printMethods(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Methods (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a88c1302886452c2888da76abd261ccc8}{}\label{methods_8h_a88c1302886452c2888da76abd261ccc8}
+
+
+Function to print all methods of the class file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structJavaClass}{Java\+Class}} & $\ast$jc -\/ pointer to \hyperlink{structJavaClass}{Java\+Class} structure that must already be loaded \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a88c1302886452c2888da76abd261ccc8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a88c1302886452c2888da76abd261ccc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{methods.\+h@{methods.\+h}!read\+Method@{read\+Method}}
+\index{read\+Method@{read\+Method}!methods.\+h@{methods.\+h}}
+\subsubsection[{\texorpdfstring{read\+Method(\+Java\+Class $\ast$jc, method\+\_\+info $\ast$entry)}{readMethod(JavaClass *jc, method_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}char read\+Method (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf method\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}{}\label{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9}
+
+
+Reads a \hyperlink{structmethod__info}{method\+\_\+info} from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Java\+Class$\ast$} & jc -\/ pointer to the structure to be read. \\
+\hline
+{\em method\+\_\+info$\ast$} & entry -\/ where the data read is written\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char -\/ retuns 0 if something unexpected happened or failure, 1 in case of success 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{methods_8h_a0ee1df02a4ba0b51f9e6db74bef74ac9_icgraph}
+\end{center}
+\end{figure}
+
+

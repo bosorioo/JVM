@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['validity_2ec',['validity.c',['../validity_8c.html',1,'']]],
-  ['validity_2eh',['validity.h',['../validity_8h.html',1,'']]]
+  ['readfunctions_2ec',['readfunctions.c',['../readfunctions_8c.html',1,'']]],
+  ['readfunctions_2eh',['readfunctions.h',['../readfunctions_8h.html',1,'']]]
 ];

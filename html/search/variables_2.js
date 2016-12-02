@@ -1,19 +1,17 @@
 var searchData=
 [
+  ['c',['c',['../structClassInstance.html#a315745fb5b53a63e4c9771c778a05373',1,'ClassInstance']]],
   ['catch_5ftype',['catch_type',['../structExceptionTableEntry.html#a7c5ab5cc44557c2e4b92c4643683205d',1,'ExceptionTableEntry']]],
+  ['ci',['ci',['../structReference.html#add84ffa45a635db324cfcbe73ce7074c',1,'Reference']]],
   ['class',['Class',['../structcp__info.html#aeb14fdcb3ba2363a18f2ecbeac15ac41',1,'cp_info']]],
   ['class_5findex',['class_index',['../structcp__info.html#ab2b48e96f2178c47f9f6b683c9b2fc59',1,'cp_info']]],
   ['classes',['classes',['../structJavaVirtualMachine.html#a36266aec8ba9d25b4d9f67509967dd4c',1,'JavaVirtualMachine']]],
+  ['classnamemismatch',['classNameMismatch',['../structJavaClass.html#ae51618e3eb35bfce4a1267d57a686259',1,'JavaClass']]],
+  ['classpath',['classPath',['../structJavaVirtualMachine.html#a62e35894409c262231bcae405b4e291b',1,'JavaVirtualMachine']]],
   ['code',['code',['../structatt__Code__info.html#a8fb8f2fa609ccf1786492efca32d3be9',1,'att_Code_info::code()'],['../structFrame.html#a9de8be272246d00c7a0c2ddc899fe8f2',1,'Frame::code()']]],
   ['code_5flength',['code_length',['../structatt__Code__info.html#a24832826292dff47147e23f9d440bd2a',1,'att_Code_info::code_length()'],['../structFrame.html#a33a0dd3a739e1dcfd8b03621c752bb28',1,'Frame::code_length()']]],
   ['constantpool',['constantPool',['../structJavaClass.html#ad56dc000ce07c5c6ef57a1ef6f4859e0',1,'JavaClass']]],
   ['constantpoolcount',['constantPoolCount',['../structJavaClass.html#a89731a6218fb65b228ee1e056c368628',1,'JavaClass']]],
   ['constantpoolentriesread',['constantPoolEntriesRead',['../structJavaClass.html#a7e50281e01408da883645af7d983570c',1,'JavaClass']]],
-  ['constantvalue_5findex',['constantvalue_index',['../structatt__ConstantValue__info.html#a6d9c6fc03274f8dc77c2ea8c53744dfa',1,'att_ConstantValue_info']]],
-  ['currentattributeentryindex',['currentAttributeEntryIndex',['../structJavaClass.html#a26d4612d384289588b48be393c9705ac',1,'JavaClass']]],
-  ['currentconstantpoolentryindex',['currentConstantPoolEntryIndex',['../structJavaClass.html#adedfcc5044efcb1c0798a87d52d30360',1,'JavaClass']]],
-  ['currentfieldentryindex',['currentFieldEntryIndex',['../structJavaClass.html#ad62c5545a3b4151e71bdc7b742606c55',1,'JavaClass']]],
-  ['currentinterfaceentryindex',['currentInterfaceEntryIndex',['../structJavaClass.html#a45a51f67c49e0c528c212a65051bc349',1,'JavaClass']]],
-  ['currentmethodentryindex',['currentMethodEntryIndex',['../structJavaClass.html#a2a78abe9f88e0538b2912e6c72c22426',1,'JavaClass']]],
-  ['currentvalidityentryindex',['currentValidityEntryIndex',['../structJavaClass.html#a785953f9978e474e59dada8ed5b17b25',1,'JavaClass']]]
+  ['constantvalue_5findex',['constantvalue_index',['../structatt__ConstantValue__info.html#a6d9c6fc03274f8dc77c2ea8c53744dfa',1,'att_ConstantValue_info']]]
 ];

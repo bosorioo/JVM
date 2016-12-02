@@ -1,8 +1,8 @@
 <map id="checkMethodNameAndTypeIndex" name="checkMethodNameAndTypeIndex">
-<area shape="rect" id="node2" href="$validity_8c.html#a778bd378bf5e58d2b5dc40601734b813" title="isValidMethodNameIndex" alt="" coords="272,95,443,121"/>
+<area shape="rect" id="node2" href="$validity_8c.html#a778bd378bf5e58d2b5dc40601734b813" title="checks if the name index points to a valid UTF&#45;8 and is a valid java identifier. " alt="" coords="272,95,443,121"/>
 <area shape="rect" id="node7" href="$readfunctions_8c.html#a4f647535c3f4f744463ddffb93a1ad68" title="readMethodDescriptor" alt="" coords="491,145,641,172"/>
-<area shape="rect" id="node3" href="$utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="cmp_UTF8_Ascii" alt="" coords="695,5,818,32"/>
-<area shape="rect" id="node5" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="isValidJavaIdentifier" alt="" coords="497,95,635,121"/>
-<area shape="rect" id="node4" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="872,81,1009,108"/>
+<area shape="rect" id="node3" href="$utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="Function to compare two strings, one in UTF&#45;8 and other in ASCII. " alt="" coords="695,5,818,32"/>
+<area shape="rect" id="node5" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="Checks whether the UTF&#45;8 stream is a valid Java Identifier. " alt="" coords="497,95,635,121"/>
+<area shape="rect" id="node4" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="872,81,1009,108"/>
 <area shape="rect" id="node6" href="$readfunctions_8c.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="689,107,824,133"/>
 </map>

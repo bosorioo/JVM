@@ -1,0 +1,339 @@
+\hypertarget{utf8_8c}{}\section{src/utf8.c File Reference}
+\label{utf8_8c}\index{src/utf8.\+c@{src/utf8.\+c}}
+{\ttfamily \#include \char`\"{}utf8.\+h\char`\"{}}\\*
+Include dependency graph for utf8.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{utf8_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utf8_8c_a758bc36df30f64ecedfe721d99962b64}{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}~0x80
+\item 
+\#define \hyperlink{utf8_8c_aa1a058d50852d0a4202b260921e07e0e}{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}~0
+\item 
+\#define \hyperlink{utf8_8c_a43be7d9aaa3417170e8cbf9cda962f69}{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}~0x\+E0
+\item 
+\#define \hyperlink{utf8_8c_ac7ac2029e311c50a24b74276d5781dfe}{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}~0x\+C0
+\item 
+\#define \hyperlink{utf8_8c_a3dad8f48b583405ace3f414b82d2d3d0}{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}~0x\+F0
+\item 
+\#define \hyperlink{utf8_8c_a4f286840bd2331f4b3dab631aa142a32}{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}~0x\+E0
+\item 
+\#define \hyperlink{utf8_8c_ac8debc92cb0a2ca9eac49e2812d9efc6}{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}~0x\+C0
+\item 
+\#define \hyperlink{utf8_8c_ad5f7a22e7d815898cda622d504ca0c65}{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}~0x80
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{utf8_8c_aa27c74e3b232110e625a4286efbc6102}{next\+U\+T\+F8\+Character} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)
+\begin{DoxyCompactList}\small\item\em Function to iterate over the bytes of a U\+T\+F-\/8. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e}{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings, one in U\+T\+F-\/8 and other in A\+S\+C\+II. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8c_a22e876bf276422ed9e58e74feb81576f}{cmp\+\_\+\+U\+T\+F8} (const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings, both in U\+T\+F-\/8. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8c_a70130474d8da2b03b16c5a72c5621ce4}{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path} (const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings that contains file paths, both in U\+T\+F-\/8. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{utf8_8c_af7bd03175f66a7cecdff5b2360bfbade}{U\+T\+F8\+\_\+to\+\_\+\+Ascii} (uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function that translates a U\+T\+F-\/8 stream to A\+S\+C\+II. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{utf8_8c_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{U\+T\+F8\+String\+Length} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Returns the number of characters a U\+T\+F-\/8 string has. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{utf8.\+c@{utf8.\+c}!D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}}
+\index{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}{DOUBLE_BYTE_MASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK~0x\+E0}\hypertarget{utf8_8c_a43be7d9aaa3417170e8cbf9cda962f69}{}\label{utf8_8c_a43be7d9aaa3417170e8cbf9cda962f69}
+\index{utf8.\+c@{utf8.\+c}!D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}}
+\index{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}{DOUBLE_BYTE_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+U\+B\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE~0x\+C0}\hypertarget{utf8_8c_ac7ac2029e311c50a24b74276d5781dfe}{}\label{utf8_8c_ac7ac2029e311c50a24b74276d5781dfe}
+\index{utf8.\+c@{utf8.\+c}!F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}}
+\index{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}{FOLLOW_BYTE_MASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK~0x\+C0}\hypertarget{utf8_8c_ac8debc92cb0a2ca9eac49e2812d9efc6}{}\label{utf8_8c_ac8debc92cb0a2ca9eac49e2812d9efc6}
+\index{utf8.\+c@{utf8.\+c}!F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}}
+\index{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}{FOLLOW_BYTE_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+L\+L\+O\+W\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE~0x80}\hypertarget{utf8_8c_ad5f7a22e7d815898cda622d504ca0c65}{}\label{utf8_8c_ad5f7a22e7d815898cda622d504ca0c65}
+\index{utf8.\+c@{utf8.\+c}!S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}}
+\index{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}{SINGLE_BYTE_MASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK~0x80}\hypertarget{utf8_8c_a758bc36df30f64ecedfe721d99962b64}{}\label{utf8_8c_a758bc36df30f64ecedfe721d99962b64}
+\index{utf8.\+c@{utf8.\+c}!S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}}
+\index{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}{SINGLE_BYTE_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+I\+N\+G\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE~0}\hypertarget{utf8_8c_aa1a058d50852d0a4202b260921e07e0e}{}\label{utf8_8c_aa1a058d50852d0a4202b260921e07e0e}
+\index{utf8.\+c@{utf8.\+c}!T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}}
+\index{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK@{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK}{TRIPLE_BYTE_MASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+M\+A\+SK~0x\+F0}\hypertarget{utf8_8c_a3dad8f48b583405ace3f414b82d2d3d0}{}\label{utf8_8c_a3dad8f48b583405ace3f414b82d2d3d0}
+\index{utf8.\+c@{utf8.\+c}!T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}}
+\index{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE@{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE}{TRIPLE_BYTE_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+I\+P\+L\+E\+\_\+\+B\+Y\+T\+E\+\_\+\+V\+A\+L\+UE~0x\+E0}\hypertarget{utf8_8c_a4f286840bd2331f4b3dab631aa142a32}{}\label{utf8_8c_a4f286840bd2331f4b3dab631aa142a32}
+
+
+\subsection{Function Documentation}
+\index{utf8.\+c@{utf8.\+c}!cmp\+\_\+\+U\+T\+F8@{cmp\+\_\+\+U\+T\+F8}}
+\index{cmp\+\_\+\+U\+T\+F8@{cmp\+\_\+\+U\+T\+F8}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8(const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)}{cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8 (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+A\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+A\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+B\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+B\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_a22e876bf276422ed9e58e74feb81576f}{}\label{utf8_8c_a22e876bf276422ed9e58e74feb81576f}
+
+
+Function to compare two strings, both in U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+A\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 A string to be compared \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ utf8\+B\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 B string to be compared \\
+\hline
+{\em int32\+\_\+t} & utf8\+A\+\_\+len -\/ length of the bytes that make the A string \\
+\hline
+{\em int32\+\_\+t} & utf8\+B\+\_\+len -\/ length of the bytes that make the B string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value is 1 in case the strings are equal (case sensitive), 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8c_a22e876bf276422ed9e58e74feb81576f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+c@{utf8.\+c}!cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}}
+\index{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)}{cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{ascii\+\_\+bytes, }
+\item[{int32\+\_\+t}]{ascii\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e}{}\label{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e}
+
+
+Function to compare two strings, one in U\+T\+F-\/8 and other in A\+S\+C\+II. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ bytes of the U\+T\+F-\/8 string \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ length of the U\+T\+F-\/8 string \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ ascii\+\_\+bytes -\/ A\+S\+C\+II string to compare to \\
+\hline
+{\em int32\+\_\+t} & ascii\+\_\+len -\/ length of A\+S\+C\+II string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Will return 1 if the strings are equal (case sensitive), 0 otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Doesn\textquotesingle{}t matter if the string is null terminated or not, as long as the length is correct. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+c@{utf8.\+c}!cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path@{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path}}
+\index{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path@{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path(const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)}{cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+A\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+A\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+B\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+B\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_a70130474d8da2b03b16c5a72c5621ce4}{}\label{utf8_8c_a70130474d8da2b03b16c5a72c5621ce4}
+
+
+Function to compare two strings that contains file paths, both in U\+T\+F-\/8. 
+
+The difference in this function is that it considers slashes (/) and backslashes () the same characters, and consecutive slashes or backslashes are treated like one character, for sake of checking if two strings are actually the path to the same file/directory. utf8\+A\+\_\+bytes and utf8\+B\+\_\+bytes are the pointers to the bytes that make the U\+T\+F-\/8 strings A and B that will be compared. utf8\+A\+\_\+len and utf8\+B\+\_\+len are the length of the bytes that make those strings, respectively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+A\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 A string to be compared \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ utf8\+B\+\_\+bytes pointer to the bytes that make the U\+T\+F-\/8 B string to be compared \\
+\hline
+{\em int32\+\_\+t} & utf8\+A\+\_\+len -\/ length of the bytes that make the A string \\
+\hline
+{\em int32\+\_\+t} & utf8\+B\+\_\+len -\/ length of the bytes that make the B string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value is 1 in case the strings are equal (case sensitive), 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{utf8_8c_a70130474d8da2b03b16c5a72c5621ce4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8c_a70130474d8da2b03b16c5a72c5621ce4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+c@{utf8.\+c}!next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}}
+\index{next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{next\+U\+T\+F8\+Character(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)}{nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t next\+U\+T\+F8\+Character (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{uint32\+\_\+t $\ast$}]{out\+Character}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_aa27c74e3b232110e625a4286efbc6102}{}\label{utf8_8c_aa27c74e3b232110e625a4286efbc6102}
+
+
+Function to iterate over the bytes of a U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ represents the character being read \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ is the number of characteres \\
+\hline
+{\em uint32\+\_\+t$\ast$} & out\+Character -\/ pointer where the character being read is written, if it isn\textquotesingle{}t N\+U\+LL\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t -\/ the number of bytes read from the U\+T\+F-\/8 stream to represent that single character. If the return value is 0, then nothing was read. It could mean that the length is not sufficient, that the U\+T\+F-\/8 encoding is wrong or the stream has a four-\/byte character, which isn\textquotesingle{}t supported by this program. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8c_aa27c74e3b232110e625a4286efbc6102_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+c@{utf8.\+c}!U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}}
+\index{U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+\_\+to\+\_\+\+Ascii(uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+\_\+to\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{out\+\_\+buffer, }
+\item[{int32\+\_\+t}]{buffer\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_af7bd03175f66a7cecdff5b2360bfbade}{}\label{utf8_8c_af7bd03175f66a7cecdff5b2360bfbade}
+
+
+Function that translates a U\+T\+F-\/8 stream to A\+S\+C\+II. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ U\+T\+F-\/8 strem to be translate \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ length of the bytes that make the U\+T\+F-\/8 strem \\
+\hline
+{\em uint8\+\_\+t$\ast$} & out\+\_\+buffer -\/ pointer where the result will be stored \\
+\hline
+{\em int32\+\_\+t} & buffer\+\_\+len -\/ length of the bytes that make out\+\_\+buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\char`\"{}buffer\+\_\+len\char`\"{} characters will be written to the buffer, N\+U\+LL character included. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{utf8_8c_af7bd03175f66a7cecdff5b2360bfbade_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8c_af7bd03175f66a7cecdff5b2360bfbade_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+c@{utf8.\+c}!U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}}
+\index{U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}!utf8.\+c@{utf8.\+c}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+String\+Length(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+String\+Length (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8c_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{}\label{utf8_8c_a0ea66b9b2bde134bda1f88b1cfdc0cc2}
+
+
+Returns the number of characters a U\+T\+F-\/8 string has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ U\+T\+F-\/8 strem \\
+\hline
+{\em length} & of the bytes that make utf8\+\_\+bytes\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of characters a U\+T\+F-\/8 string has 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{utf8_8c_a0ea66b9b2bde134bda1f88b1cfdc0cc2_cgraph}
+\end{center}
+\end{figure}
+
+

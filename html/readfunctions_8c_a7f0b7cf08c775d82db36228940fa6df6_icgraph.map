@@ -1,0 +1,29 @@
+<map id="readDoubleFromUint64" name="readDoubleFromUint64">
+<area shape="rect" id="node2" href="$attributes_8c.html#a5abd76089f5e6794d1ecc98cea55f158" title="printAttributeConstantValue" alt="" coords="209,37,392,64"/>
+<area shape="rect" id="node3" href="$attributes_8c.html#ae588cbde97553719c8b8612e8e42f4b4" title="printAttributeCode" alt="" coords="237,88,364,115"/>
+<area shape="rect" id="node4" href="$constantpool_8c.html#a507c6272d8116f956bc75820b2c6ed23" title="Print one single constant from the constant pool. " alt="" coords="222,139,379,165"/>
+<area shape="rect" id="node10" href="$natives_8c.html#a481ac99c2facb29e37dbba52e692b6e5" title="native_println" alt="" coords="251,215,350,241"/>
+<area shape="rect" id="node5" href="$constantpool_8h.html#ab7d27eb8d4164ae1a1fd11664ba4d1ef" title="Function to print all the constants from the constant pool of the class file. " alt="" coords="440,88,567,115"/>
+<area shape="rect" id="node6" href="$javaclass_8h.html#aee51865d444d48583f151873b4138d72" title="decodeAccessFlags" alt="" coords="619,81,759,108"/>
+<area shape="rect" id="node7" href="$attributes_8c.html#a6c90c1dd47892d19d581ef9fcac24698" title="printAttributeInnerClasses" alt="" coords="811,5,984,32"/>
+<area shape="rect" id="node8" href="$fields_8h.html#a638dfd7ea9c1089e20de1ac871897ddf" title="Function to print all fields of the class file. " alt="" coords="849,56,946,83"/>
+<area shape="rect" id="node9" href="$methods_8h.html#a88c1302886452c2888da76abd261ccc8" title="Function to print all methods of the class file. " alt="" coords="849,107,946,133"/>
+<area shape="rect" id="node11" href="$natives_8h.html#a1f310d5e1692606d76298f438c0ed4b2" title="getNative" alt="" coords="464,227,543,253"/>
+<area shape="rect" id="node12" href="$instructions_8c.html#a3ffd230810fadca7e0c5720f3c84f2fa" title="instfunc_invokevirtual" alt="" coords="615,360,763,387"/>
+<area shape="rect" id="node15" href="$jvm_8h.html#a84bbfdfb213d48f48d7252c5264c229b" title="runMethod" alt="" coords="1227,309,1309,336"/>
+<area shape="rect" id="node17" href="$instructions_8c.html#a12f892cfda6a1bdbabd72c9a7028ca03" title="instfunc_invokestatic" alt="" coords="1483,233,1629,260"/>
+<area shape="rect" id="node13" href="$instructions_8c.html#a4b88fa6a76e21dd9034a54808a3b5ef7" title="instfunc_invokeinterface" alt="" coords="816,537,979,564"/>
+<area shape="rect" id="node14" href="$instructions_8h.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="1032,551,1179,577"/>
+<area shape="rect" id="node16" href="$instructions_8c.html#a7ff9a907830a5bfd8ee8c97171815507" title="instfunc_invokespecial" alt="" coords="1479,411,1633,437"/>
+<area shape="rect" id="node18" href="$jvm_8h.html#a38b6a19996260e30af5a369a9588dc31" title="Executes the main method of a given class. " alt="" coords="1509,335,1603,361"/>
+<area shape="rect" id="node20" href="$jvm_8h.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="initClass" alt="" coords="1357,461,1431,488"/>
+<area shape="rect" id="node19" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="1711,335,1761,361"/>
+<area shape="rect" id="node21" href="$instructions_8c.html#aacb5e3cdcafeb85c2e2290884ade4159" title="instfunc_getstatic" alt="" coords="1493,563,1619,589"/>
+<area shape="rect" id="node22" href="$instructions_8c.html#a039f1fa8b3f891d297e75fb734bbc696" title="instfunc_putstatic" alt="" coords="1493,613,1619,640"/>
+<area shape="rect" id="node23" href="$instructions_8c.html#a5548cc8388f689b4961dd5b212af9cc9" title="instfunc_getfield" alt="" coords="1497,664,1615,691"/>
+<area shape="rect" id="node24" href="$instructions_8c.html#aec7c357e7b5efdd6d282b716beea625d" title="instfunc_putfield" alt="" coords="1497,512,1615,539"/>
+<area shape="rect" id="node25" href="$jvm_8h.html#a5af5cdb51df6603269eed2dcdd9e126f" title="newClassInstance" alt="" coords="1491,461,1621,488"/>
+<area shape="rect" id="node26" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="1690,703,1782,729"/>
+<area shape="rect" id="node27" href="$instructions_8c.html#a25b6b831a827b32f6afc0ad1961ba248" title="instfunc_ldc_w" alt="" coords="1681,816,1791,843"/>
+<area shape="rect" id="node28" href="$instructions_8c.html#a178ca8179e5d3037b2c5c5c7d3d58e36" title="instfunc_new" alt="" coords="1687,588,1785,615"/>
+</map>

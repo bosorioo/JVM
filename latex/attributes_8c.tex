@@ -1,0 +1,614 @@
+\hypertarget{attributes_8c}{}\section{src/attributes.c File Reference}
+\label{attributes_8c}\index{src/attributes.\+c@{src/attributes.\+c}}
+{\ttfamily \#include \char`\"{}attributes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}readfunctions.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utf8.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}opcodes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}debugging.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$inttypes.\+h$>$}\\*
+Include dependency graph for attributes.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{attributes_8c_a1a4c6b25eeb17e81e6376d4a6383c158}{D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS}(attr)
+\item 
+\#define \hyperlink{attributes_8c_afa2f48f44da881b9d32c1a7d1e4db4ab}{I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK}(name)
+\item 
+\#define \hyperlink{attributes_8c_acc32225b9d3eb1107b48de3cd4539075}{O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}(begin,  end)~(opcode $>$= opcode\+\_\+\#\#begin \&\& opcode $<$= opcode\+\_\+\#\#end)
+\item 
+\#define \hyperlink{attributes_8c_ab757e29ce18ed03f73c4b81a869e4b9a}{N\+E\+X\+T\+B\+Y\+TE}~($\ast$(info-\/$>$code + ++code\+\_\+offset))
+\item 
+\#define \hyperlink{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}{A\+T\+T\+R\+\_\+\+C\+A\+SE}(attr)~case A\+T\+T\+R\+\_\+\#\#attr\+: free\+Attribute\#\#attr(entry); return;
+\item 
+\#define \hyperlink{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}{A\+T\+T\+R\+\_\+\+C\+A\+SE}(attr)~case A\+T\+T\+R\+\_\+\#\#attr\+: \hyperlink{attributes_8h_aee295c33031c2ab941c9260654010db7}{print\+Attribute}\#\#attr(jc, entry, identation\+Level); break;
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}{read\+Attribute} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a01657db1f2f2e478b93e5329c666901e}{ident} (int level)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_a5e568e134ff6fb82b263565076da0432}{read\+Attribute\+Deprecated} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_ad80e46006ae1ca8e80f84735d331fc18}{print\+Attribute\+Deprecated} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_ac122c1bdf1457e87c2cbdb8ec5ca1625}{free\+Attribute\+Deprecated} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_ac07fa201160b522b15c7353b4ff2ed44}{read\+Attribute\+Constant\+Value} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a5abd76089f5e6794d1ecc98cea55f158}{print\+Attribute\+Constant\+Value} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_a3b65b1bc8966d4ad3a18e52ad7a3586b}{free\+Attribute\+Constant\+Value} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_a43bfb8cf040e623ccae73943a943a7f8}{read\+Attribute\+Source\+File} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b}{print\+Attribute\+Source\+File} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_ae0485d0a13108130dd232c001a4502fe}{free\+Attribute\+Source\+File} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_a7af979b9e909d50393f578f9cf230fae}{read\+Attribute\+Inner\+Classes} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a6c90c1dd47892d19d581ef9fcac24698}{print\+Attribute\+Inner\+Classes} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_a21f76b789715d6055265e69dc63e4eeb}{free\+Attribute\+Inner\+Classes} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_a837af1196cf968ff688539be299648d5}{read\+Attribute\+Line\+Number\+Table} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a8c510d03555d15e558997e15e000c40f}{print\+Attribute\+Line\+Number\+Table} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_af8c25d4cde9d8421cd4fefc8543d1ec7}{free\+Attribute\+Line\+Number\+Table} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_af3a1b04442990e1699afc5b2592c4c93}{read\+Attribute\+Code} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_ae588cbde97553719c8b8612e8e42f4b4}{print\+Attribute\+Code} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_a2e8c24440f4c49b6dd8a19cd9fe584c0}{free\+Attribute\+Code} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+uint8\+\_\+t \hyperlink{attributes_8c_a1aabfbdd22c8a11214ee3db33624b734}{read\+Attribute\+Exceptions} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a1aeef532497a7cc1a3dee89d104bd725}{print\+Attribute\+Exceptions} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_a47063751996bba4e939a7d2bcebd2b10}{free\+Attribute\+Exceptions} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_a136bdfadd787ebd62f1c721f99270cc9}{free\+Attribute\+Info} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry)
+\item 
+void \hyperlink{attributes_8c_aee295c33031c2ab941c9260654010db7}{print\+Attribute} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc, \hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$entry, int identation\+Level)
+\item 
+void \hyperlink{attributes_8c_ae04e26b66957c879139f8a82e463674a}{print\+All\+Attributes} (\hyperlink{structJavaClass}{Java\+Class} $\ast$jc)
+\item 
+\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$ \hyperlink{attributes_8c_ae3ce1b33741046741c90a6f5592911a5}{get\+Attribute\+By\+Type} (\hyperlink{structattribute__info}{attribute\+\_\+info} $\ast$attributes, uint16\+\_\+t attributes\+\_\+length, enum \hyperlink{attributes_8h_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{attributes.\+c@{attributes.\+c}!A\+T\+T\+R\+\_\+\+C\+A\+SE@{A\+T\+T\+R\+\_\+\+C\+A\+SE}}
+\index{A\+T\+T\+R\+\_\+\+C\+A\+SE@{A\+T\+T\+R\+\_\+\+C\+A\+SE}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{A\+T\+T\+R\+\_\+\+C\+A\+SE}{ATTR_CASE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+T\+T\+R\+\_\+\+C\+A\+SE(
+\begin{DoxyParamCaption}
+\item[{}]{attr}
+\end{DoxyParamCaption}
+)~case A\+T\+T\+R\+\_\+\#\#attr\+: free\+Attribute\#\#attr(entry); return;}\hypertarget{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}{}\label{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}
+\index{attributes.\+c@{attributes.\+c}!A\+T\+T\+R\+\_\+\+C\+A\+SE@{A\+T\+T\+R\+\_\+\+C\+A\+SE}}
+\index{A\+T\+T\+R\+\_\+\+C\+A\+SE@{A\+T\+T\+R\+\_\+\+C\+A\+SE}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{A\+T\+T\+R\+\_\+\+C\+A\+SE}{ATTR_CASE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+T\+T\+R\+\_\+\+C\+A\+SE(
+\begin{DoxyParamCaption}
+\item[{}]{attr}
+\end{DoxyParamCaption}
+)~case A\+T\+T\+R\+\_\+\#\#attr\+: {\bf print\+Attribute}\#\#attr(jc, entry, identation\+Level); break;}\hypertarget{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}{}\label{attributes_8c_acd9132a8a41b59ee57e8326b1f516fa9}
+\index{attributes.\+c@{attributes.\+c}!D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS@{D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS}}
+\index{D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS@{D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS}{DECLARE_ATTR_FUNCS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+C\+L\+A\+R\+E\+\_\+\+A\+T\+T\+R\+\_\+\+F\+U\+N\+CS(
+\begin{DoxyParamCaption}
+\item[{}]{attr}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a1a4c6b25eeb17e81e6376d4a6383c158}{}\label{attributes_8c_a1a4c6b25eeb17e81e6376d4a6383c158}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+uint8\_t \hyperlink{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}{readAttribute}##attr(\hyperlink{structJavaClass}{JavaClass}* jc, \hyperlink{structattribute__info}{attribute\_info}* entry); \(\backslash\)
+    void \hyperlink{attributes_8c_aee295c33031c2ab941c9260654010db7}{printAttribute}##attr(\hyperlink{structJavaClass}{JavaClass}* jc, 
+      \hyperlink{structattribute__info}{attribute\_info}* entry, \textcolor{keywordtype}{int} identationLevel); \(\backslash\)
+    void freeAttribute##attr(\hyperlink{structattribute__info}{attribute\_info}* entry);
+\end{DoxyCode}
+\index{attributes.\+c@{attributes.\+c}!I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK@{I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK}}
+\index{I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK@{I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK}{IF_ATTR_CHECK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+F\+\_\+\+A\+T\+T\+R\+\_\+\+C\+H\+E\+CK(
+\begin{DoxyParamCaption}
+\item[{}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_afa2f48f44da881b9d32c1a7d1e4db4ab}{}\label{attributes_8c_afa2f48f44da881b9d32c1a7d1e4db4ab}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (\hyperlink{utf8_8c_a317c1d4f6b0e4b61b5f99baf9d673a8e}{cmp\_UTF8\_Ascii}(cp->Utf8.bytes, cp->Utf8.length, (uint8\_t*)#name, \textcolor{keyword}{sizeof}(#name) - 1)) \{ \(\backslash\)
+            entry->attributeType = ATTR\_##name; \(\backslash\)
+            result = \hyperlink{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}{readAttribute}##name(jc, entry); \(\backslash\)
+        \}
+\end{DoxyCode}
+\index{attributes.\+c@{attributes.\+c}!N\+E\+X\+T\+B\+Y\+TE@{N\+E\+X\+T\+B\+Y\+TE}}
+\index{N\+E\+X\+T\+B\+Y\+TE@{N\+E\+X\+T\+B\+Y\+TE}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{N\+E\+X\+T\+B\+Y\+TE}{NEXTBYTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+E\+X\+T\+B\+Y\+TE~($\ast$(info-\/$>$code + ++code\+\_\+offset))}\hypertarget{attributes_8c_ab757e29ce18ed03f73c4b81a869e4b9a}{}\label{attributes_8c_ab757e29ce18ed03f73c4b81a869e4b9a}
+\index{attributes.\+c@{attributes.\+c}!O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL@{O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}}
+\index{O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL@{O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL}{OPCODE_INTERVAL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+P\+C\+O\+D\+E\+\_\+\+I\+N\+T\+E\+R\+V\+AL(
+\begin{DoxyParamCaption}
+\item[{}]{begin, }
+\item[{}]{end}
+\end{DoxyParamCaption}
+)~(opcode $>$= opcode\+\_\+\#\#begin \&\& opcode $<$= opcode\+\_\+\#\#end)}\hypertarget{attributes_8c_acc32225b9d3eb1107b48de3cd4539075}{}\label{attributes_8c_acc32225b9d3eb1107b48de3cd4539075}
+
+
+\subsection{Function Documentation}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Code@{free\+Attribute\+Code}}
+\index{free\+Attribute\+Code@{free\+Attribute\+Code}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Code(attribute\+\_\+info $\ast$entry)}{freeAttributeCode(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Code (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a2e8c24440f4c49b6dd8a19cd9fe584c0}{}\label{attributes_8c_a2e8c24440f4c49b6dd8a19cd9fe584c0}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{attributes_8c_a2e8c24440f4c49b6dd8a19cd9fe584c0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Constant\+Value@{free\+Attribute\+Constant\+Value}}
+\index{free\+Attribute\+Constant\+Value@{free\+Attribute\+Constant\+Value}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Constant\+Value(attribute\+\_\+info $\ast$entry)}{freeAttributeConstantValue(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Constant\+Value (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a3b65b1bc8966d4ad3a18e52ad7a3586b}{}\label{attributes_8c_a3b65b1bc8966d4ad3a18e52ad7a3586b}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Deprecated@{free\+Attribute\+Deprecated}}
+\index{free\+Attribute\+Deprecated@{free\+Attribute\+Deprecated}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Deprecated(attribute\+\_\+info $\ast$entry)}{freeAttributeDeprecated(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Deprecated (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ac122c1bdf1457e87c2cbdb8ec5ca1625}{}\label{attributes_8c_ac122c1bdf1457e87c2cbdb8ec5ca1625}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Exceptions@{free\+Attribute\+Exceptions}}
+\index{free\+Attribute\+Exceptions@{free\+Attribute\+Exceptions}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Exceptions(attribute\+\_\+info $\ast$entry)}{freeAttributeExceptions(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Exceptions (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a47063751996bba4e939a7d2bcebd2b10}{}\label{attributes_8c_a47063751996bba4e939a7d2bcebd2b10}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Info@{free\+Attribute\+Info}}
+\index{free\+Attribute\+Info@{free\+Attribute\+Info}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Info(attribute\+\_\+info $\ast$entry)}{freeAttributeInfo(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a136bdfadd787ebd62f1c721f99270cc9}{}\label{attributes_8c_a136bdfadd787ebd62f1c721f99270cc9}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a136bdfadd787ebd62f1c721f99270cc9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Inner\+Classes@{free\+Attribute\+Inner\+Classes}}
+\index{free\+Attribute\+Inner\+Classes@{free\+Attribute\+Inner\+Classes}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Inner\+Classes(attribute\+\_\+info $\ast$entry)}{freeAttributeInnerClasses(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Inner\+Classes (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a21f76b789715d6055265e69dc63e4eeb}{}\label{attributes_8c_a21f76b789715d6055265e69dc63e4eeb}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Line\+Number\+Table@{free\+Attribute\+Line\+Number\+Table}}
+\index{free\+Attribute\+Line\+Number\+Table@{free\+Attribute\+Line\+Number\+Table}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Line\+Number\+Table(attribute\+\_\+info $\ast$entry)}{freeAttributeLineNumberTable(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Line\+Number\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_af8c25d4cde9d8421cd4fefc8543d1ec7}{}\label{attributes_8c_af8c25d4cde9d8421cd4fefc8543d1ec7}
+\index{attributes.\+c@{attributes.\+c}!free\+Attribute\+Source\+File@{free\+Attribute\+Source\+File}}
+\index{free\+Attribute\+Source\+File@{free\+Attribute\+Source\+File}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{free\+Attribute\+Source\+File(attribute\+\_\+info $\ast$entry)}{freeAttributeSourceFile(attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+Attribute\+Source\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ae0485d0a13108130dd232c001a4502fe}{}\label{attributes_8c_ae0485d0a13108130dd232c001a4502fe}
+\index{attributes.\+c@{attributes.\+c}!get\+Attribute\+By\+Type@{get\+Attribute\+By\+Type}}
+\index{get\+Attribute\+By\+Type@{get\+Attribute\+By\+Type}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{get\+Attribute\+By\+Type(attribute\+\_\+info $\ast$attributes, uint16\+\_\+t attributes\+\_\+length, enum Attribute\+Type type)}{getAttributeByType(attribute_info *attributes, uint16_t attributes_length, enum AttributeType type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf attribute\+\_\+info}$\ast$ get\+Attribute\+By\+Type (
+\begin{DoxyParamCaption}
+\item[{{\bf attribute\+\_\+info} $\ast$}]{attributes, }
+\item[{uint16\+\_\+t}]{attributes\+\_\+length, }
+\item[{enum {\bf Attribute\+Type}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ae3ce1b33741046741c90a6f5592911a5}{}\label{attributes_8c_ae3ce1b33741046741c90a6f5592911a5}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_ae3ce1b33741046741c90a6f5592911a5_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!ident@{ident}}
+\index{ident@{ident}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{ident(int level)}{ident(int level)}}]{\setlength{\rightskip}{0pt plus 5cm}void ident (
+\begin{DoxyParamCaption}
+\item[{int}]{level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a01657db1f2f2e478b93e5329c666901e}{}\label{attributes_8c_a01657db1f2f2e478b93e5329c666901e}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a01657db1f2f2e478b93e5329c666901e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+All\+Attributes@{print\+All\+Attributes}}
+\index{print\+All\+Attributes@{print\+All\+Attributes}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+All\+Attributes(\+Java\+Class $\ast$jc)}{printAllAttributes(JavaClass *jc)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+All\+Attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ae04e26b66957c879139f8a82e463674a}{}\label{attributes_8c_ae04e26b66957c879139f8a82e463674a}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_ae04e26b66957c879139f8a82e463674a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_ae04e26b66957c879139f8a82e463674a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute@{print\+Attribute}}
+\index{print\+Attribute@{print\+Attribute}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttribute(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_aee295c33031c2ab941c9260654010db7}{}\label{attributes_8c_aee295c33031c2ab941c9260654010db7}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{attributes_8c_aee295c33031c2ab941c9260654010db7_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_aee295c33031c2ab941c9260654010db7_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Code@{print\+Attribute\+Code}}
+\index{print\+Attribute\+Code@{print\+Attribute\+Code}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Code(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeCode(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Code (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ae588cbde97553719c8b8612e8e42f4b4}{}\label{attributes_8c_ae588cbde97553719c8b8612e8e42f4b4}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_ae588cbde97553719c8b8612e8e42f4b4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Constant\+Value@{print\+Attribute\+Constant\+Value}}
+\index{print\+Attribute\+Constant\+Value@{print\+Attribute\+Constant\+Value}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Constant\+Value(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeConstantValue(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Constant\+Value (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a5abd76089f5e6794d1ecc98cea55f158}{}\label{attributes_8c_a5abd76089f5e6794d1ecc98cea55f158}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a5abd76089f5e6794d1ecc98cea55f158_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Deprecated@{print\+Attribute\+Deprecated}}
+\index{print\+Attribute\+Deprecated@{print\+Attribute\+Deprecated}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Deprecated(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeDeprecated(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Deprecated (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ad80e46006ae1ca8e80f84735d331fc18}{}\label{attributes_8c_ad80e46006ae1ca8e80f84735d331fc18}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{attributes_8c_ad80e46006ae1ca8e80f84735d331fc18_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Exceptions@{print\+Attribute\+Exceptions}}
+\index{print\+Attribute\+Exceptions@{print\+Attribute\+Exceptions}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Exceptions(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeExceptions(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Exceptions (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a1aeef532497a7cc1a3dee89d104bd725}{}\label{attributes_8c_a1aeef532497a7cc1a3dee89d104bd725}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a1aeef532497a7cc1a3dee89d104bd725_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Inner\+Classes@{print\+Attribute\+Inner\+Classes}}
+\index{print\+Attribute\+Inner\+Classes@{print\+Attribute\+Inner\+Classes}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Inner\+Classes(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeInnerClasses(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Inner\+Classes (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a6c90c1dd47892d19d581ef9fcac24698}{}\label{attributes_8c_a6c90c1dd47892d19d581ef9fcac24698}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a6c90c1dd47892d19d581ef9fcac24698_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Line\+Number\+Table@{print\+Attribute\+Line\+Number\+Table}}
+\index{print\+Attribute\+Line\+Number\+Table@{print\+Attribute\+Line\+Number\+Table}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Line\+Number\+Table(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeLineNumberTable(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Line\+Number\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a8c510d03555d15e558997e15e000c40f}{}\label{attributes_8c_a8c510d03555d15e558997e15e000c40f}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{attributes_8c_a8c510d03555d15e558997e15e000c40f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!print\+Attribute\+Source\+File@{print\+Attribute\+Source\+File}}
+\index{print\+Attribute\+Source\+File@{print\+Attribute\+Source\+File}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{print\+Attribute\+Source\+File(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry, int identation\+Level)}{printAttributeSourceFile(JavaClass *jc, attribute_info *entry, int identationLevel)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Attribute\+Source\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry, }
+\item[{int}]{identation\+Level}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b}{}\label{attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a7566e0f5a2ba5992f6e8f84a7b5d0b8b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute@{read\+Attribute}}
+\index{read\+Attribute@{read\+Attribute}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttribute(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}char read\+Attribute (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}{}\label{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Code@{read\+Attribute\+Code}}
+\index{read\+Attribute\+Code@{read\+Attribute\+Code}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Code(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeCode(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Code (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_af3a1b04442990e1699afc5b2592c4c93}{}\label{attributes_8c_af3a1b04442990e1699afc5b2592c4c93}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{attributes_8c_af3a1b04442990e1699afc5b2592c4c93_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Constant\+Value@{read\+Attribute\+Constant\+Value}}
+\index{read\+Attribute\+Constant\+Value@{read\+Attribute\+Constant\+Value}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Constant\+Value(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeConstantValue(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Constant\+Value (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_ac07fa201160b522b15c7353b4ff2ed44}{}\label{attributes_8c_ac07fa201160b522b15c7353b4ff2ed44}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{attributes_8c_ac07fa201160b522b15c7353b4ff2ed44_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Deprecated@{read\+Attribute\+Deprecated}}
+\index{read\+Attribute\+Deprecated@{read\+Attribute\+Deprecated}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Deprecated(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeDeprecated(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Deprecated (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a5e568e134ff6fb82b263565076da0432}{}\label{attributes_8c_a5e568e134ff6fb82b263565076da0432}
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Exceptions@{read\+Attribute\+Exceptions}}
+\index{read\+Attribute\+Exceptions@{read\+Attribute\+Exceptions}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Exceptions(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeExceptions(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Exceptions (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a1aabfbdd22c8a11214ee3db33624b734}{}\label{attributes_8c_a1aabfbdd22c8a11214ee3db33624b734}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{attributes_8c_a1aabfbdd22c8a11214ee3db33624b734_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Inner\+Classes@{read\+Attribute\+Inner\+Classes}}
+\index{read\+Attribute\+Inner\+Classes@{read\+Attribute\+Inner\+Classes}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Inner\+Classes(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeInnerClasses(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Inner\+Classes (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a7af979b9e909d50393f578f9cf230fae}{}\label{attributes_8c_a7af979b9e909d50393f578f9cf230fae}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{attributes_8c_a7af979b9e909d50393f578f9cf230fae_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Line\+Number\+Table@{read\+Attribute\+Line\+Number\+Table}}
+\index{read\+Attribute\+Line\+Number\+Table@{read\+Attribute\+Line\+Number\+Table}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Line\+Number\+Table(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeLineNumberTable(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Line\+Number\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a837af1196cf968ff688539be299648d5}{}\label{attributes_8c_a837af1196cf968ff688539be299648d5}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{attributes_8c_a837af1196cf968ff688539be299648d5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{attributes.\+c@{attributes.\+c}!read\+Attribute\+Source\+File@{read\+Attribute\+Source\+File}}
+\index{read\+Attribute\+Source\+File@{read\+Attribute\+Source\+File}!attributes.\+c@{attributes.\+c}}
+\subsubsection[{\texorpdfstring{read\+Attribute\+Source\+File(\+Java\+Class $\ast$jc, attribute\+\_\+info $\ast$entry)}{readAttributeSourceFile(JavaClass *jc, attribute_info *entry)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t read\+Attribute\+Source\+File (
+\begin{DoxyParamCaption}
+\item[{{\bf Java\+Class} $\ast$}]{jc, }
+\item[{{\bf attribute\+\_\+info} $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}\hypertarget{attributes_8c_a43bfb8cf040e623ccae73943a943a7f8}{}\label{attributes_8c_a43bfb8cf040e623ccae73943a943a7f8}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{attributes_8c_a43bfb8cf040e623ccae73943a943a7f8_cgraph}
+\end{center}
+\end{figure}
+
+

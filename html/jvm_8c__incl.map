@@ -1,13 +1,15 @@
 <map id="src/jvm.c" name="src/jvm.c">
-<area shape="rect" id="node2" href="$jvm_8h.html" title="jvm.h" alt="" coords="497,155,551,181"/>
-<area shape="rect" id="node12" href="$utf8_8h.html" title="utf8.h" alt="" coords="678,155,733,181"/>
-<area shape="rect" id="node13" href="$instructions_8h.html" title="instructions.h" alt="" coords="567,80,667,107"/>
-<area shape="rect" id="node15" href="$opcodes_8h.html" title="opcodes.h" alt="" coords="793,80,876,107"/>
-<area shape="rect" id="node4" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="252,229,340,256"/>
-<area shape="rect" id="node10" href="$framestack_8h.html" title="framestack.h" alt="" coords="501,229,600,256"/>
-<area shape="rect" id="node6" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="47,304,153,331"/>
-<area shape="rect" id="node7" href="$attributes_8h.html" title="attributes.h" alt="" coords="333,379,419,405"/>
-<area shape="rect" id="node8" href="$fields_8h.html" title="fields.h" alt="" coords="177,304,241,331"/>
-<area shape="rect" id="node9" href="$methods_8h.html" title="methods.h" alt="" coords="425,304,508,331"/>
-<area shape="rect" id="node11" href="$operandstack_8h.html" title="operandstack.h" alt="" coords="498,379,609,405"/>
+<area shape="rect" id="node2" href="$jvm_8h.html" title="jvm.h" alt="" coords="490,155,545,181"/>
+<area shape="rect" id="node13" href="$utf8_8h.html" title="utf8.h" alt="" coords="869,155,923,181"/>
+<area shape="rect" id="node14" href="$natives_8h.html" title="natives.h" alt="" coords="405,80,480,107"/>
+<area shape="rect" id="node15" href="$instructions_8h.html" title="instructions.h" alt="" coords="555,80,655,107"/>
+<area shape="rect" id="node16" href="$debugging_8h.html" title="debugging.h" alt="" coords="646,155,738,181"/>
+<area shape="rect" id="node4" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="360,229,448,256"/>
+<area shape="rect" id="node10" href="$opcodes_8h.html" title="opcodes.h" alt="" coords="49,379,132,405"/>
+<area shape="rect" id="node11" href="$framestack_8h.html" title="framestack.h" alt="" coords="556,229,655,256"/>
+<area shape="rect" id="node6" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="93,304,200,331"/>
+<area shape="rect" id="node7" href="$attributes_8h.html" title="attributes.h" alt="" coords="447,379,534,405"/>
+<area shape="rect" id="node8" href="$fields_8h.html" title="fields.h" alt="" coords="275,304,339,331"/>
+<area shape="rect" id="node9" href="$methods_8h.html" title="methods.h" alt="" coords="363,304,445,331"/>
+<area shape="rect" id="node12" href="$operandstack_8h.html" title="operandstack.h" alt="" coords="646,379,757,405"/>
 </map>

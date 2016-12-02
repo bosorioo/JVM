@@ -4,6 +4,7 @@
 <area shape="rect" id="node4" href="$fields_8c.html" title="src/fields.c" alt="" coords="293,80,379,107"/>
 <area shape="rect" id="node5" href="$javaclass_8c.html" title="src/javaclass.c" alt="" coords="403,80,514,107"/>
 <area shape="rect" id="node6" href="$methods_8c.html" title="src/methods.c" alt="" coords="538,80,643,107"/>
-<area shape="rect" id="node7" href="$readfunctions_8c.html" title="src/readfunctions.c" alt="" coords="668,80,801,107"/>
-<area shape="rect" id="node8" href="$validity_8c.html" title="src/validity.c" alt="" coords="825,80,921,107"/>
+<area shape="rect" id="node7" href="$natives_8c.html" title="src/natives.c" alt="" coords="667,80,765,107"/>
+<area shape="rect" id="node8" href="$readfunctions_8c.html" title="src/readfunctions.c" alt="" coords="789,80,923,107"/>
+<area shape="rect" id="node9" href="$validity_8c.html" title="src/validity.c" alt="" coords="947,80,1043,107"/>
 </map>

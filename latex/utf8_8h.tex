@@ -1,0 +1,348 @@
+\hypertarget{utf8_8h}{}\section{src/utf8.h File Reference}
+\label{utf8_8h}\index{src/utf8.\+h@{src/utf8.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for utf8.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{utf8_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utf8_8h_aefee06e94db62ffede9de698416b8dd3}{P\+R\+I\+N\+T\+\_\+\+U\+T\+F8}(x)~x-\/$>$Utf8.\+length, x-\/$>$Utf8.\+bytes
+\begin{DoxyCompactList}\small\item\em Utility macro to reduce code and improve readability. \end{DoxyCompactList}\item 
+\#define \hyperlink{utf8_8h_a84e0a3e6c7c2b7be64ecc2591eb613d8}{U\+T\+F8}(x)~x-\/$>$Utf8.\+bytes, x-\/$>$Utf8.\+length
+\begin{DoxyCompactList}\small\item\em Utility macro to reduce code and improve readability. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{utf8_8h_aa27c74e3b232110e625a4286efbc6102}{next\+U\+T\+F8\+Character} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)
+\begin{DoxyCompactList}\small\item\em Function to iterate over the bytes of a U\+T\+F-\/8. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings, one in U\+T\+F-\/8 and other in A\+S\+C\+II. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8h_a22e876bf276422ed9e58e74feb81576f}{cmp\+\_\+\+U\+T\+F8} (const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings, both in U\+T\+F-\/8. \end{DoxyCompactList}\item 
+char \hyperlink{utf8_8h_a70130474d8da2b03b16c5a72c5621ce4}{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path} (const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function to compare two strings that contains file paths, both in U\+T\+F-\/8. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}{U\+T\+F8\+\_\+to\+\_\+\+Ascii} (uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Function that translates a U\+T\+F-\/8 stream to A\+S\+C\+II. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{U\+T\+F8\+String\+Length} (const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Returns the number of characters a U\+T\+F-\/8 string has. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{utf8.\+h@{utf8.\+h}!P\+R\+I\+N\+T\+\_\+\+U\+T\+F8@{P\+R\+I\+N\+T\+\_\+\+U\+T\+F8}}
+\index{P\+R\+I\+N\+T\+\_\+\+U\+T\+F8@{P\+R\+I\+N\+T\+\_\+\+U\+T\+F8}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{P\+R\+I\+N\+T\+\_\+\+U\+T\+F8}{PRINT_UTF8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+I\+N\+T\+\_\+\+U\+T\+F8(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~x-\/$>$Utf8.\+length, x-\/$>$Utf8.\+bytes}\hypertarget{utf8_8h_aefee06e94db62ffede9de698416b8dd3}{}\label{utf8_8h_aefee06e94db62ffede9de698416b8dd3}
+
+
+Utility macro to reduce code and improve readability. 
+
+Usage example\+: 
+\begin{DoxyCode}
+1 printf("%.*s", PRINT\_UTF8(my\_utf8\_var)); 
+\end{DoxyCode}
+ Instead of\+: 
+\begin{DoxyCode}
+1 printf("%.*s", my\_utf8\_var->Utf8.length, my\_utf8\_var->Utf8.bytes); 
+\end{DoxyCode}
+ \index{utf8.\+h@{utf8.\+h}!U\+T\+F8@{U\+T\+F8}}
+\index{U\+T\+F8@{U\+T\+F8}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{U\+T\+F8}{UTF8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+T\+F8(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~x-\/$>$Utf8.\+bytes, x-\/$>$Utf8.\+length}\hypertarget{utf8_8h_a84e0a3e6c7c2b7be64ecc2591eb613d8}{}\label{utf8_8h_a84e0a3e6c7c2b7be64ecc2591eb613d8}
+
+
+Utility macro to reduce code and improve readability. 
+
+Usage example\+: 
+\begin{DoxyCode}
+1 cmp\_UTF8(UTF8(varA), UTF8(varB)); 
+\end{DoxyCode}
+ Instead of\+: 
+\begin{DoxyCode}
+1 cmp\_UTF8(varA->Utf8.bytes, varA->Utf8.length, varB->Utf8.bytes, varB->Utf8.length); 
+\end{DoxyCode}
+ 
+
+\subsection{Function Documentation}
+\index{utf8.\+h@{utf8.\+h}!cmp\+\_\+\+U\+T\+F8@{cmp\+\_\+\+U\+T\+F8}}
+\index{cmp\+\_\+\+U\+T\+F8@{cmp\+\_\+\+U\+T\+F8}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8(const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)}{cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8 (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+A\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+A\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+B\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+B\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a22e876bf276422ed9e58e74feb81576f}{}\label{utf8_8h_a22e876bf276422ed9e58e74feb81576f}
+
+
+Function to compare two strings, both in U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+A\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 A string to be compared \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ utf8\+B\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 B string to be compared \\
+\hline
+{\em int32\+\_\+t} & utf8\+A\+\_\+len -\/ length of the bytes that make the A string \\
+\hline
+{\em int32\+\_\+t} & utf8\+B\+\_\+len -\/ length of the bytes that make the B string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value is 1 in case the strings are equal (case sensitive), 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_a22e876bf276422ed9e58e74feb81576f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}}
+\index{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii@{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, const uint8\+\_\+t $\ast$ascii\+\_\+bytes, int32\+\_\+t ascii\+\_\+len)}{cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{ascii\+\_\+bytes, }
+\item[{int32\+\_\+t}]{ascii\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}{}\label{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e}
+
+
+Function to compare two strings, one in U\+T\+F-\/8 and other in A\+S\+C\+II. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ bytes of the U\+T\+F-\/8 string \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ length of the U\+T\+F-\/8 string \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ ascii\+\_\+bytes -\/ A\+S\+C\+II string to compare to \\
+\hline
+{\em int32\+\_\+t} & ascii\+\_\+len -\/ length of A\+S\+C\+II string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Will return 1 if the strings are equal (case sensitive), 0 otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Doesn\textquotesingle{}t matter if the string is null terminated or not, as long as the length is correct. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_a317c1d4f6b0e4b61b5f99baf9d673a8e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path@{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path}}
+\index{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path@{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path(const uint8\+\_\+t $\ast$utf8\+A\+\_\+bytes, int32\+\_\+t utf8\+A\+\_\+len, const uint8\+\_\+t $\ast$utf8\+B\+\_\+bytes, int32\+\_\+t utf8\+B\+\_\+len)}{cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)}}]{\setlength{\rightskip}{0pt plus 5cm}char cmp\+\_\+\+U\+T\+F8\+\_\+\+File\+Path (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+A\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+A\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+B\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+B\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a70130474d8da2b03b16c5a72c5621ce4}{}\label{utf8_8h_a70130474d8da2b03b16c5a72c5621ce4}
+
+
+Function to compare two strings that contains file paths, both in U\+T\+F-\/8. 
+
+The difference in this function is that it considers slashes (/) and backslashes () the same characters, and consecutive slashes or backslashes are treated like one character, for sake of checking if two strings are actually the path to the same file/directory. utf8\+A\+\_\+bytes and utf8\+B\+\_\+bytes are the pointers to the bytes that make the U\+T\+F-\/8 strings A and B that will be compared. utf8\+A\+\_\+len and utf8\+B\+\_\+len are the length of the bytes that make those strings, respectively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+A\+\_\+bytes -\/ pointer to the bytes that make the U\+T\+F-\/8 A string to be compared \\
+\hline
+{\em const} & uint8\+\_\+t$\ast$ utf8\+B\+\_\+bytes pointer to the bytes that make the U\+T\+F-\/8 B string to be compared \\
+\hline
+{\em int32\+\_\+t} & utf8\+A\+\_\+len -\/ length of the bytes that make the A string \\
+\hline
+{\em int32\+\_\+t} & utf8\+B\+\_\+len -\/ length of the bytes that make the B string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value is 1 in case the strings are equal (case sensitive), 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{utf8_8h_a70130474d8da2b03b16c5a72c5621ce4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_a70130474d8da2b03b16c5a72c5621ce4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}}
+\index{next\+U\+T\+F8\+Character@{next\+U\+T\+F8\+Character}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{next\+U\+T\+F8\+Character(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len, uint32\+\_\+t $\ast$out\+Character)}{nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t next\+U\+T\+F8\+Character (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len, }
+\item[{uint32\+\_\+t $\ast$}]{out\+Character}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_aa27c74e3b232110e625a4286efbc6102}{}\label{utf8_8h_aa27c74e3b232110e625a4286efbc6102}
+
+
+Function to iterate over the bytes of a U\+T\+F-\/8. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ represents the character being read \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ is the number of characteres \\
+\hline
+{\em uint32\+\_\+t$\ast$} & out\+Character -\/ pointer where the character being read is written, if it isn\textquotesingle{}t N\+U\+LL\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t -\/ the number of bytes read from the U\+T\+F-\/8 stream to represent that single character. If the return value is 0, then nothing was read. It could mean that the length is not sufficient, that the U\+T\+F-\/8 encoding is wrong or the stream has a four-\/byte character, which isn\textquotesingle{}t supported by this program. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_aa27c74e3b232110e625a4286efbc6102_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}}
+\index{U\+T\+F8\+\_\+to\+\_\+\+Ascii@{U\+T\+F8\+\_\+to\+\_\+\+Ascii}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+\_\+to\+\_\+\+Ascii(uint8\+\_\+t $\ast$out\+\_\+buffer, int32\+\_\+t buffer\+\_\+len, const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+\_\+to\+\_\+\+Ascii (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{out\+\_\+buffer, }
+\item[{int32\+\_\+t}]{buffer\+\_\+len, }
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}{}\label{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade}
+
+
+Function that translates a U\+T\+F-\/8 stream to A\+S\+C\+II. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ U\+T\+F-\/8 strem to be translate \\
+\hline
+{\em int32\+\_\+t} & utf8\+\_\+len -\/ length of the bytes that make the U\+T\+F-\/8 strem \\
+\hline
+{\em uint8\+\_\+t$\ast$} & out\+\_\+buffer -\/ pointer where the result will be stored \\
+\hline
+{\em int32\+\_\+t} & buffer\+\_\+len -\/ length of the bytes that make out\+\_\+buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+\char`\"{}buffer\+\_\+len\char`\"{} characters will be written to the buffer, N\+U\+LL character included. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utf8_8h_af7bd03175f66a7cecdff5b2360bfbade_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{utf8.\+h@{utf8.\+h}!U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}}
+\index{U\+T\+F8\+String\+Length@{U\+T\+F8\+String\+Length}!utf8.\+h@{utf8.\+h}}
+\subsubsection[{\texorpdfstring{U\+T\+F8\+String\+Length(const uint8\+\_\+t $\ast$utf8\+\_\+bytes, int32\+\_\+t utf8\+\_\+len)}{UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t U\+T\+F8\+String\+Length (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{utf8\+\_\+bytes, }
+\item[{int32\+\_\+t}]{utf8\+\_\+len}
+\end{DoxyParamCaption}
+)}\hypertarget{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}{}\label{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2}
+
+
+Returns the number of characters a U\+T\+F-\/8 string has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & uint8\+\_\+t$\ast$ utf8\+\_\+bytes -\/ U\+T\+F-\/8 strem \\
+\hline
+{\em length} & of the bytes that make utf8\+\_\+bytes\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of characters a U\+T\+F-\/8 string has 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{utf8_8h_a0ea66b9b2bde134bda1f88b1cfdc0cc2_cgraph}
+\end{center}
+\end{figure}
+
+

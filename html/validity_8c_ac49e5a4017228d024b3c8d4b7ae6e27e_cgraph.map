@@ -1,4 +1,4 @@
 <map id="isValidJavaIdentifier" name="isValidJavaIdentifier">
 <area shape="rect" id="node2" href="$readfunctions_8c.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="192,5,327,32"/>
-<area shape="rect" id="node3" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="375,31,512,57"/>
+<area shape="rect" id="node3" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="375,31,512,57"/>
 </map>

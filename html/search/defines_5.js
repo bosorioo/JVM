@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opcode_5finterval',['OPCODE_INTERVAL',['../attributes_8c.html#acc32225b9d3eb1107b48de3cd4539075',1,'attributes.c']]]
+  ['loword',['LOWORD',['../instructions_8c.html#a4ec5a680e70d723cdfa7c2876b26d0ba',1,'LOWORD():&#160;instructions.c'],['../natives_8c.html#a4ec5a680e70d723cdfa7c2876b26d0ba',1,'LOWORD():&#160;natives.c']]]
 ];

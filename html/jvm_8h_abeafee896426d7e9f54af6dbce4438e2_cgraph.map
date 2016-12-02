@@ -1,0 +1,40 @@
+<map id="resolveMethod" name="resolveMethod">
+<area shape="rect" id="node2" href="$jvm_8c.html#afc01abbd34a25316bb3e806471ebdbeb" title="Loads a .class file. " alt="" coords="160,613,259,640"/>
+<area shape="rect" id="node3" href="$utf8_8c.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="589,5,676,32"/>
+<area shape="rect" id="node4" href="$jvm_8c.html#a10f44f11aaec2c3e616c61d127a1df67" title="isClassLoaded" alt="" coords="344,284,452,311"/>
+<area shape="rect" id="node5" href="$javaclass_8c.html#ae447cd0966dc3beb54467b9097e08f2c" title="Opens a class file and parse it, storing the class information in the JavaClass structure. " alt="" coords="345,588,451,615"/>
+<area shape="rect" id="node34" href="$javaclass_8c.html#a38efa2c89d8bc742293cdc1c6e0f3250" title="Decodes JavaClassStatus enumeration elements. " alt="" coords="316,639,480,665"/>
+<area shape="rect" id="node35" href="$jvm_8c.html#a734afa606cdeb650a38586176bf7d5ef" title="addClassToLoadedClasses" alt="" coords="307,689,489,716"/>
+<area shape="rect" id="node36" href="$javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="Closes the .class file and releases resources used by the JavaClass struct. " alt="" coords="344,1179,452,1205"/>
+<area shape="rect" id="node6" href="$readfunctions_8c.html#abc3319bf1d68a0dcd80fdda3f6744f97" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1121,563,1183,589"/>
+<area shape="rect" id="node7" href="$readfunctions_8c.html#a81c7a8b4472b9261dd8db5b7190d67fb" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1121,284,1183,311"/>
+<area shape="rect" id="node8" href="$constantpool_8c.html#a62504539fde83f5183d20f262d4b1943" title="Reads a cp_info from the file. " alt="" coords="554,259,711,285"/>
+<area shape="rect" id="node14" href="$validity_8c.html#aa0977a766bc0cd47a49ca0e00e706310" title="Iterates over the constant pool looking for inconsistencies in it. " alt="" coords="543,1019,722,1045"/>
+<area shape="rect" id="node26" href="$validity_8c.html#a3f8d1665f8c40afb0bf126a9ca693b00" title="Verifies the class indexes and access flags. " alt="" coords="537,1070,728,1111"/>
+<area shape="rect" id="node27" href="$validity_8c.html#af6d2b7c857a46255df3afb4283c5e5bb" title="Checks whether the name of the class pointed by &quot;thisClass&quot; is the same name as the class file..." alt="" coords="1043,132,1261,159"/>
+<area shape="rect" id="node29" href="$fields_8c.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="Reads a field_info from the file. " alt="" coords="595,740,670,767"/>
+<area shape="rect" id="node31" href="$attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="837,613,933,640"/>
+<area shape="rect" id="node32" href="$methods_8c.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="Reads a method_info from the file. " alt="" coords="587,563,678,589"/>
+<area shape="rect" id="node9" href="$constantpool_8c.html#afea5409b47477cdbdb590472022c45f9" title="Reads a cp_info of type CONSTANT_Class from the file. " alt="" coords="802,208,969,235"/>
+<area shape="rect" id="node10" href="$constantpool_8c.html#a730bf0dfa0b00508ed8ed3b6119853c3" title="Reads a cp_info of type CONSTANT_Utf8 from the file. " alt="" coords="806,259,965,285"/>
+<area shape="rect" id="node11" href="$constantpool_8c.html#ab3d1d9a9bdb1b7162d341ce9c8fd8784" title="Reads a cp_info of type CONSTANT_Fieldref from the file. " alt="" coords="797,107,973,133"/>
+<area shape="rect" id="node12" href="$constantpool_8c.html#a73f94285fc7c4790ca2900b6fc78b0f3" title="Reads a cp_info of type CONSTANT_Integer from the file. " alt="" coords="799,512,972,539"/>
+<area shape="rect" id="node13" href="$constantpool_8c.html#a1f4a6c4da0269e609a18f2d8174a2c39" title="Reads a cp_info of type CONSTANT_Long from the file. " alt="" coords="805,461,966,488"/>
+<area shape="rect" id="node15" href="$validity_8c.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="Identifies if a name index in JavaClass is valid. " alt="" coords="1088,1005,1216,1032"/>
+<area shape="rect" id="node19" href="$validity_8c.html#a121c42f0653a58fca056cb4397390af6" title="Identifies if a UTF8 index in JavaClass is valid. " alt="" coords="822,1019,949,1045"/>
+<area shape="rect" id="node20" href="$validity_8c.html#a81d937b31b6bd9f76e8b3d82a6cfd87f" title="Checks whether the index points to a valid class. " alt="" coords="824,1069,947,1096"/>
+<area shape="rect" id="node21" href="$validity_8c.html#a4d63a85c447a20a08c12168e73468438" title="Checks if the name and the descriptor of a method are valid. " alt="" coords="776,867,995,893"/>
+<area shape="rect" id="node25" href="$validity_8c.html#ad4ad6d4744a849eb777477793ccf2675" title="Checks if the name and the descriptor of a field are valid. " alt="" coords="783,1171,987,1197"/>
+<area shape="rect" id="node16" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="Checks whether the UTF&#45;8 stream is a valid Java Identifier. " alt="" coords="1315,968,1454,995"/>
+<area shape="rect" id="node17" href="$readfunctions_8c.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="1508,917,1643,944"/>
+<area shape="rect" id="node18" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="1691,867,1828,893"/>
+<area shape="rect" id="node22" href="$validity_8c.html#a778bd378bf5e58d2b5dc40601734b813" title="checks if the name index points to a valid UTF&#45;8 and is a valid java identifier. " alt="" coords="1067,867,1237,893"/>
+<area shape="rect" id="node24" href="$readfunctions_8c.html#a4f647535c3f4f744463ddffb93a1ad68" title="readMethodDescriptor" alt="" coords="1309,816,1460,843"/>
+<area shape="rect" id="node23" href="$utf8_8c.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="Function to compare two strings, one in UTF&#45;8 and other in ASCII. " alt="" coords="1514,867,1637,893"/>
+<area shape="rect" id="node28" href="$utf8_8c.html#a70130474d8da2b03b16c5a72c5621ce4" title="Function to compare two strings that contains file paths, both in UTF&#45;8. " alt="" coords="1313,291,1456,317"/>
+<area shape="rect" id="node30" href="$validity_8c.html#ae92343db487c57fae11501fad146897a" title="Checks whether the &quot;accessFlags&quot; parameter has a valid combination of field flags. " alt="" coords="805,715,966,741"/>
+<area shape="rect" id="node33" href="$validity_8c.html#a60bc1663d4cc614ea2d0709d9e57d20d" title="Checks whether the &quot;accessFlags&quot; parameter has a valid combination of method flags. " alt="" coords="797,563,973,589"/>
+<area shape="rect" id="node37" href="$methods_8c.html#a50e4408e126b27fef952d2e1fc1b044e" title="Releases attributes used by the method_info struct. " alt="" coords="561,1255,704,1281"/>
+<area shape="rect" id="node38" href="$attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="828,1221,943,1248"/>
+<area shape="rect" id="node39" href="$fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="Releases attributes used by the field_info struct. " alt="" coords="569,1204,697,1231"/>
+</map>

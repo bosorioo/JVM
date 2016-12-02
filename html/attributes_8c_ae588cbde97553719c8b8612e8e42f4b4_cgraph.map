@@ -2,10 +2,10 @@
 <area shape="rect" id="node2" href="$attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="466,259,517,285"/>
 <area shape="rect" id="node3" href="$opcodes_8c.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="getOpcodeMnemonic" alt="" coords="205,56,350,83"/>
 <area shape="rect" id="node4" href="$opcodes_8c.html#ad2f03559438a10c49bf32e3c68b4dfb7" title="decodeOpcodeNewarrayType" alt="" coords="180,107,375,133"/>
-<area shape="rect" id="node5" href="$utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="UTF8_to_Ascii" alt="" coords="223,5,332,32"/>
-<area shape="rect" id="node7" href="$constantpool_8c.html#a80f31089353a0ed2d861401c2c741701" title="decodeTag" alt="" coords="234,208,321,235"/>
-<area shape="rect" id="node8" href="$readfunctions_8c.html#a977e482ef56ed2bf2180445398e02402" title="readConstantPoolDouble" alt="" coords="194,259,361,285"/>
-<area shape="rect" id="node9" href="$readfunctions_8c.html#a32ec03a10ab8f1b50b70175e6d9d988d" title="readConstantPoolFloat" alt="" coords="200,309,355,336"/>
+<area shape="rect" id="node5" href="$utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="Function that translates a UTF&#45;8 stream to ASCII. " alt="" coords="223,5,332,32"/>
+<area shape="rect" id="node7" href="$constantpool_8c.html#a80f31089353a0ed2d861401c2c741701" title="Decodes ConstantPoolTag enumeration elements. " alt="" coords="234,208,321,235"/>
+<area shape="rect" id="node8" href="$readfunctions_8c.html#a7f0b7cf08c775d82db36228940fa6df6" title="readDoubleFromUint64" alt="" coords="199,259,355,285"/>
+<area shape="rect" id="node9" href="$readfunctions_8c.html#a9ee9e635c8197187cec0334000ba1f7b" title="readFloatFromUint32" alt="" coords="205,309,349,336"/>
 <area shape="rect" id="node10" href="$attributes_8c.html#aee295c33031c2ab941c9260654010db7" title="printAttribute" alt="" coords="229,157,325,184"/>
-<area shape="rect" id="node6" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="nextUTF8Character" alt="" coords="423,5,560,32"/>
+<area shape="rect" id="node6" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="423,5,560,32"/>
 </map>

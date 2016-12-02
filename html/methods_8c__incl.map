@@ -1,10 +1,11 @@
 <map id="src/methods.c" name="src/methods.c">
-<area shape="rect" id="node2" href="$methods_8h.html" title="methods.h" alt="" coords="78,80,161,107"/>
-<area shape="rect" id="node9" href="$readfunctions_8h.html" title="readfunctions.h" alt="" coords="284,80,395,107"/>
-<area shape="rect" id="node10" href="$validity_8h.html" title="validity.h" alt="" coords="185,80,260,107"/>
-<area shape="rect" id="node11" href="$utf8_8h.html" title="utf8.h" alt="" coords="534,155,588,181"/>
-<area shape="rect" id="node4" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="148,155,236,181"/>
-<area shape="rect" id="node7" href="$attributes_8h.html" title="attributes.h" alt="" coords="35,304,122,331"/>
-<area shape="rect" id="node6" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="266,229,373,256"/>
-<area shape="rect" id="node8" href="$fields_8h.html" title="fields.h" alt="" coords="128,229,192,256"/>
+<area shape="rect" id="node2" href="$methods_8h.html" title="methods.h" alt="" coords="131,80,213,107"/>
+<area shape="rect" id="node9" href="$readfunctions_8h.html" title="readfunctions.h" alt="" coords="337,80,447,107"/>
+<area shape="rect" id="node10" href="$validity_8h.html" title="validity.h" alt="" coords="237,80,312,107"/>
+<area shape="rect" id="node11" href="$utf8_8h.html" title="utf8.h" alt="" coords="526,304,581,331"/>
+<area shape="rect" id="node13" href="$debugging_8h.html" title="debugging.h" alt="" coords="471,80,563,107"/>
+<area shape="rect" id="node4" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="156,155,244,181"/>
+<area shape="rect" id="node7" href="$attributes_8h.html" title="attributes.h" alt="" coords="34,304,121,331"/>
+<area shape="rect" id="node6" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="265,229,372,256"/>
+<area shape="rect" id="node8" href="$fields_8h.html" title="fields.h" alt="" coords="127,229,191,256"/>
 </map>

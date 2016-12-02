@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['op_5farrayref',['OP_ARRAYREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a9b17614c3cbe8009a3c077100f055abe',1,'operandstack.h']]],
-  ['op_5fclassref',['OP_CLASSREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a2468854051f36c9ba8b3f16d254ed202',1,'operandstack.h']]],
+  ['oar',['oar',['../structReference.html#a5eac3f1de74138347244ca0ef623ee24',1,'Reference']]],
+  ['obj',['obj',['../structReferenceTable.html#a7730da3973b57f3c86c6007b9a90e7f8',1,'ReferenceTable']]],
+  ['objectarray',['ObjectArray',['../structObjectArray.html',1,'ObjectArray'],['../jvm_8h.html#ad14bcc4d80f97681dbeff13150a33508',1,'ObjectArray():&#160;jvm.h']]],
+  ['objects',['objects',['../structJavaVirtualMachine.html#a7513525a761cf3172a0ed080cafcee06',1,'JavaVirtualMachine']]],
+  ['offset',['offset',['../structfield__info.html#ad6febfc2078ae2a35339d57079a28b3d',1,'field_info']]],
   ['op_5fdouble',['OP_DOUBLE',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4aa36f2949170ca1e708196ca721980275',1,'operandstack.h']]],
   ['op_5ffloat',['OP_FLOAT',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4ae0ed5f5c231ae95ba186cf99792ed418',1,'operandstack.h']]],
   ['op_5finteger',['OP_INTEGER',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4aa5087579d71722be9d06816518da2bc2',1,'operandstack.h']]],
   ['op_5flong',['OP_LONG',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a2069b5f7fac5141a8c24357fde7fe026',1,'operandstack.h']]],
-  ['op_5fmethodref',['OP_METHODREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a95be567f99bd14f9aa78f062e9dd3daa',1,'operandstack.h']]],
   ['op_5fnull',['OP_NULL',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a3a429eddbb7f929a66970a68efc450a0',1,'operandstack.h']]],
-  ['op_5fstringref',['OP_STRINGREF',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a17497e3d994fffd3a208ac823a372311',1,'operandstack.h']]],
+  ['op_5freference',['OP_REFERENCE',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4a75b1a2229366cda5d1a421d3b35de562',1,'operandstack.h']]],
+  ['op_5freturnaddress',['OP_RETURNADDRESS',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4add028a6a1ad41baf2250c04373786d51',1,'operandstack.h']]],
   ['opcode_5faaload',['opcode_aaload',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002caca33b456e25ff4765a504cdd1f6355593e',1,'opcodes.h']]],
   ['opcode_5faastore',['opcode_aastore',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacabd25451242cb6d8b1d1ded29c6201896',1,'opcodes.h']]],
   ['opcode_5faconst_5fnull',['opcode_aconst_null',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacae68767319acc15fa1241bfc9149d9c83',1,'opcodes.h']]],
@@ -202,7 +205,7 @@ var searchData=
   ['opcode_5fmultianewarray',['opcode_multianewarray',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacae6b98296e77ce8dc7f9f31a74ba04f7d',1,'opcodes.h']]],
   ['opcode_5fnew',['opcode_new',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002caca1cb7d36146a027e5672bbfdcce4bd977',1,'opcodes.h']]],
   ['opcode_5fnewarray',['opcode_newarray',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacaab93f65e8d8b4a418079a1da45464021',1,'opcodes.h']]],
-  ['opcode_5fnewarray_5ftypes',['Opcode_newarray_types',['../opcodes_8h.html#a0f5f5ae335f87f89da735df05e99052c',1,'opcodes.h']]],
+  ['opcode_5fnewarray_5ftype',['Opcode_newarray_type',['../opcodes_8h.html#a4cc308729b4fd75bab5788f95d7980d6',1,'Opcode_newarray_type():&#160;opcodes.h'],['../opcodes_8h.html#afac513700e2a98660e526e5c113f4905',1,'Opcode_newarray_type():&#160;opcodes.h']]],
   ['opcode_5fnop',['opcode_nop',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002caca426a4f9c3188f746b946d348137617a6',1,'opcodes.h']]],
   ['opcode_5fpop',['opcode_pop',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002caca932b1ff6f79349ed0f261efac742f652',1,'opcodes.h']]],
   ['opcode_5fpop2',['opcode_pop2',['../opcodes_8h.html#abeeee4622d9285fa92e9b61857002cacadd22c7a1daf9e54db7ad5ebeb0997092',1,'opcodes.h']]],
@@ -224,6 +227,6 @@ var searchData=
   ['operandstack',['OperandStack',['../structOperandStack.html',1,'OperandStack'],['../operandstack_8h.html#a346a5006b3ffde66941ce40c277fbf86',1,'OperandStack():&#160;operandstack.h']]],
   ['operandstack_2ec',['operandstack.c',['../operandstack_8c.html',1,'']]],
   ['operandstack_2eh',['operandstack.h',['../operandstack_8h.html',1,'']]],
-  ['operandtype',['OperandType',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4',1,'operandstack.h']]],
+  ['operandtype',['OperandType',['../operandstack_8h.html#aa4b9b8291a90b1a586c468110fb346a4',1,'OperandType():&#160;operandstack.h'],['../operandstack_8h.html#a9b74d74a239e56d590598d48cc5c6b06',1,'OperandType():&#160;operandstack.h']]],
   ['outer_5fclass_5findex',['outer_class_index',['../structInnerClassInfo.html#a8449c27dc3cac6e437f4e1c1132ea229',1,'InnerClassInfo']]]
 ];

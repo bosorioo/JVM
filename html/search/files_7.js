@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readfunctions_2ec',['readfunctions.c',['../readfunctions_8c.html',1,'']]],
-  ['readfunctions_2eh',['readfunctions.h',['../readfunctions_8h.html',1,'']]]
+  ['natives_2ec',['natives.c',['../natives_8c.html',1,'']]],
+  ['natives_2eh',['natives.h',['../natives_8h.html',1,'']]]
 ];

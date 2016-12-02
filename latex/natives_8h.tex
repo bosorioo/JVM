@@ -1,0 +1,71 @@
+\hypertarget{natives_8h}{}\section{src/natives.h File Reference}
+\label{natives_8h}\index{src/natives.\+h@{src/natives.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}jvm.\+h\char`\"{}}\\*
+Include dependency graph for natives.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{natives_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{natives_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t($\ast$ \hyperlink{natives_8h_a4a755f04d6a03b54b8bdf52ffa9c0ba4}{Native\+Function}) (\hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} $\ast$jvm, \hyperlink{structFrame}{Frame} $\ast$frame, const uint8\+\_\+t $\ast$descriptor\+\_\+utf8, int32\+\_\+t utf8\+\_\+len)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{natives_8h_a4a755f04d6a03b54b8bdf52ffa9c0ba4}{Native\+Function} \hyperlink{natives_8h_a1f310d5e1692606d76298f438c0ed4b2}{get\+Native} (const uint8\+\_\+t $\ast$class\+Name, int32\+\_\+t class\+Len, const uint8\+\_\+t $\ast$method\+Name, int32\+\_\+t method\+Len, const uint8\+\_\+t $\ast$descriptor, int32\+\_\+t descr\+Len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{natives.\+h@{natives.\+h}!Native\+Function@{Native\+Function}}
+\index{Native\+Function@{Native\+Function}!natives.\+h@{natives.\+h}}
+\subsubsection[{\texorpdfstring{Native\+Function}{NativeFunction}}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\+\_\+t($\ast$ Native\+Function) ({\bf Java\+Virtual\+Machine} $\ast$jvm, {\bf Frame} $\ast$frame, const uint8\+\_\+t $\ast$descriptor\+\_\+utf8, int32\+\_\+t utf8\+\_\+len)}\hypertarget{natives_8h_a4a755f04d6a03b54b8bdf52ffa9c0ba4}{}\label{natives_8h_a4a755f04d6a03b54b8bdf52ffa9c0ba4}
+
+
+\subsection{Function Documentation}
+\index{natives.\+h@{natives.\+h}!get\+Native@{get\+Native}}
+\index{get\+Native@{get\+Native}!natives.\+h@{natives.\+h}}
+\subsubsection[{\texorpdfstring{get\+Native(const uint8\+\_\+t $\ast$class\+Name, int32\+\_\+t class\+Len, const uint8\+\_\+t $\ast$method\+Name, int32\+\_\+t method\+Len, const uint8\+\_\+t $\ast$descriptor, int32\+\_\+t descr\+Len)}{getNative(const uint8_t *className, int32_t classLen, const uint8_t *methodName, int32_t methodLen, const uint8_t *descriptor, int32_t descrLen)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Native\+Function} get\+Native (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{class\+Name, }
+\item[{int32\+\_\+t}]{class\+Len, }
+\item[{const uint8\+\_\+t $\ast$}]{method\+Name, }
+\item[{int32\+\_\+t}]{method\+Len, }
+\item[{const uint8\+\_\+t $\ast$}]{descriptor, }
+\item[{int32\+\_\+t}]{descr\+Len}
+\end{DoxyParamCaption}
+)}\hypertarget{natives_8h_a1f310d5e1692606d76298f438c0ed4b2}{}\label{natives_8h_a1f310d5e1692606d76298f438c0ed4b2}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{natives_8h_a1f310d5e1692606d76298f438c0ed4b2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{natives_8h_a1f310d5e1692606d76298f438c0ed4b2_icgraph}
+\end{center}
+\end{figure}
+
+

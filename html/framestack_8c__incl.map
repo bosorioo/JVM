@@ -1,9 +1,10 @@
 <map id="src/framestack.c" name="src/framestack.c">
-<area shape="rect" id="node2" href="$framestack_8h.html" title="framestack.h" alt="" coords="369,80,468,107"/>
-<area shape="rect" id="node3" href="$operandstack_8h.html" title="operandstack.h" alt="" coords="518,229,629,256"/>
-<area shape="rect" id="node5" href="$attributes_8h.html" title="attributes.h" alt="" coords="281,155,367,181"/>
-<area shape="rect" id="node6" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="231,229,319,256"/>
-<area shape="rect" id="node8" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="112,304,219,331"/>
-<area shape="rect" id="node9" href="$fields_8h.html" title="fields.h" alt="" coords="379,304,443,331"/>
-<area shape="rect" id="node10" href="$methods_8h.html" title="methods.h" alt="" coords="5,304,88,331"/>
+<area shape="rect" id="node2" href="$framestack_8h.html" title="framestack.h" alt="" coords="241,80,339,107"/>
+<area shape="rect" id="node11" href="$debugging_8h.html" title="debugging.h" alt="" coords="481,80,573,107"/>
+<area shape="rect" id="node3" href="$operandstack_8h.html" title="operandstack.h" alt="" coords="5,229,116,256"/>
+<area shape="rect" id="node5" href="$attributes_8h.html" title="attributes.h" alt="" coords="247,155,333,181"/>
+<area shape="rect" id="node6" href="$javaclass_8h.html" title="javaclass.h" alt="" coords="246,229,334,256"/>
+<area shape="rect" id="node8" href="$constantpool_8h.html" title="constantpool.h" alt="" coords="237,304,343,331"/>
+<area shape="rect" id="node9" href="$fields_8h.html" title="fields.h" alt="" coords="367,304,431,331"/>
+<area shape="rect" id="node10" href="$methods_8h.html" title="methods.h" alt="" coords="79,304,162,331"/>
 </map>

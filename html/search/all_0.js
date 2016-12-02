@@ -1,6 +1,7 @@
 var searchData=
 [
   ['acc_5fabstract',['ACC_ABSTRACT',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167ac326b159ac221f52e4eb29b48d0da481',1,'javaclass.h']]],
+  ['acc_5fbridge',['ACC_BRIDGE',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a69ae3efc84a507f0dab732f391a29243',1,'javaclass.h']]],
   ['acc_5ffinal',['ACC_FINAL',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167ab78a5bd0833ef7c394ee026acdfb166f',1,'javaclass.h']]],
   ['acc_5finterface',['ACC_INTERFACE',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a6d061156e0c1a7d2fd2612cdfc22cc9e',1,'javaclass.h']]],
   ['acc_5finvalid_5fclass_5fflag_5fmask',['ACC_INVALID_CLASS_FLAG_MASK',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a503f7e7efc837648b71f6356598e63e6',1,'javaclass.h']]],
@@ -15,7 +16,9 @@ var searchData=
   ['acc_5fstrict',['ACC_STRICT',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a76a7711c5903238a058555ac603ac435',1,'javaclass.h']]],
   ['acc_5fsuper',['ACC_SUPER',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a59ef122665d2a44976860b18e074e8a2',1,'javaclass.h']]],
   ['acc_5fsynchronized',['ACC_SYNCHRONIZED',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167ad1b97438d7d91ae90cbe69668b25e0e9',1,'javaclass.h']]],
+  ['acc_5fsynthetic',['ACC_SYNTHETIC',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a980b3db8759afd4fd626103668481058',1,'javaclass.h']]],
   ['acc_5ftransient',['ACC_TRANSIENT',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a63a2d0424d59c2fed955a1633974f50a',1,'javaclass.h']]],
+  ['acc_5fvarargs',['ACC_VARARGS',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a4103e9877019a62fd8ad9576db36d889',1,'javaclass.h']]],
   ['acc_5fvolatile',['ACC_VOLATILE',['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167a062990ad544d7fe6f1910880dcce455e',1,'javaclass.h']]],
   ['access_5fflags',['access_flags',['../structfield__info.html#a97bcc8f6647cee71ea02bdd4183ba1da',1,'field_info::access_flags()'],['../structmethod__info.html#a8fc68aba419f2617deda879c467f5410',1,'method_info::access_flags()']]],
   ['accessflags',['accessFlags',['../structJavaClass.html#a305af686b39aafe8248cb4b5af0f5ad4',1,'JavaClass::accessFlags()'],['../javaclass_8h.html#ad57f7fb13c5f728d348f4a42e7d97167',1,'AccessFlags():&#160;javaclass.h']]],
@@ -24,7 +27,9 @@ var searchData=
   ['acct_5ffield',['ACCT_FIELD',['../javaclass_8h.html#a5798e6b755b18c1fad1d7b170552e8e1a473ab8698ed2b3566137c16c9eb7e302',1,'javaclass.h']]],
   ['acct_5finnerclass',['ACCT_INNERCLASS',['../javaclass_8h.html#a5798e6b755b18c1fad1d7b170552e8e1aed036ddc63bb82144571d7f50f9f081a',1,'javaclass.h']]],
   ['acct_5fmethod',['ACCT_METHOD',['../javaclass_8h.html#a5798e6b755b18c1fad1d7b170552e8e1ad4353a5a1e14128b0e9862e94a14d58d',1,'javaclass.h']]],
-  ['addclasstoloadedclasses',['addClassToLoadedClasses',['../jvm_8c.html#acec4266c56e242e0b507d7d1b4d63c31',1,'addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc):&#160;jvm.c'],['../jvm_8h.html#acec4266c56e242e0b507d7d1b4d63c31',1,'addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc):&#160;jvm.c']]],
+  ['addclasstoloadedclasses',['addClassToLoadedClasses',['../jvm_8c.html#a734afa606cdeb650a38586176bf7d5ef',1,'addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc):&#160;jvm.c'],['../jvm_8h.html#a734afa606cdeb650a38586176bf7d5ef',1,'addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc):&#160;jvm.c']]],
+  ['arr',['arr',['../structReference.html#abc67939f75b19f2e4fc35ef13ee5c407',1,'Reference']]],
+  ['array',['Array',['../structArray.html',1,'Array'],['../jvm_8h.html#a1141e7c469d9e68ad66429e0829aa509',1,'Array():&#160;jvm.h']]],
   ['att_5fcode_5finfo',['att_Code_info',['../structatt__Code__info.html',1,'']]],
   ['att_5fconstantvalue_5finfo',['att_ConstantValue_info',['../structatt__ConstantValue__info.html',1,'']]],
   ['att_5fexceptions_5finfo',['att_Exceptions_info',['../structatt__Exceptions__info.html',1,'']]],

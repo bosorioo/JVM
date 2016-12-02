@@ -1,0 +1,20 @@
+\hypertarget{group__jvm}{}\section{J\+VM module}
+\label{group__jvm}\index{J\+V\+M module@{J\+V\+M module}}
+
+
+Defines a structure to hold the necessary information to execute class files.  
+
+
+Defines a structure to hold the necessary information to execute class files. 
+
+The main struct of this module is a \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine}. It holds all data necessary for the execution of class file.
+
+To setup the virtual machine, a call to \hyperlink{jvm_8h_aca189885e78ec25ece5d7f70e83022a1}{init\+J\+V\+M()} is made. When execution is finished, a call to \hyperlink{jvm_8h_a65269d70951aacfe829c89c078dad67a}{deinit\+J\+V\+M()} will release any resources associated with the J\+VM.
+
+The class holding a \char`\"{}public static void main(\+String\mbox{[}$\,$\mbox{]})\char`\"{} method must be resolved before being executed, which can be done with \hyperlink{jvm_8h_afc01abbd34a25316bb3e806471ebdbeb}{resolve\+Class()}.
+
+Any other class files that the entry class file uses is resolved automatically during run-\/time.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{jvm_8c}{jvm.\+c} 
+\end{DoxySeeAlso}

@@ -1,0 +1,80 @@
+
+\begin{DoxyPre}
+Group members:
+    Bruno Osorio
+    Joao Araujo
+    Leticia Ribeiro
+    Tiago Kfouri
+    Victoria Goularte
+\end{DoxyPre}
+\hypertarget{index_intro}{}\section{Introduction}\label{index_intro}
+Simple implementation of java virtual machine that is able to read class files and display their content and execute the class\textquotesingle{} main method. ~\newline
+ Not all instructions have been implemented and there are other limitations. Refer to section \hyperlink{index_limitations}{Limitations} to see more. ~\newline
+\hypertarget{index_stepguideJavaClass}{}\section{Step-\/by-\/step\+: display class content}\label{index_stepguideJavaClass}
+
+\begin{DoxyEnumerate}
+\item Command line are parsed in file \hyperlink{main_8c}{main.\+c} to get file path.
+\item \hyperlink{javaclass_8c_ae447cd0966dc3beb54467b9097e08f2c}{open\+Class\+File()} is called, defined in module \hyperlink{javaclass_8c}{javaclass.\+c}.
+\item file signature, version and constant pool count are read.
+\item \hyperlink{constantpool_8c_a62504539fde83f5183d20f262d4b1943}{read\+Constant\+Pool\+Entry()} is called several times to fill the constant pool.
+\item \hyperlink{validity_8c_aa0977a766bc0cd47a49ca0e00e706310}{check\+Constant\+Pool\+Validity()} will check if there are inconsistencies in the constant pool. Refer to section \hyperlink{index_validity}{Validity and Errors} for verification mades and the ones that aren\textquotesingle{}t.
+\item this class index, super class index and access flags are read and checked using function \hyperlink{validity_8c_a3f8d1665f8c40afb0bf126a9ca693b00}{check\+Class\+Index\+And\+Access\+Flags()}.
+\item file name is checked against \char`\"{}this class\char`\"{} name to see if they match.
+\item interface count and interfaces\textquotesingle{} index are read, checking if the indexes are a valid class index.
+\item field count is read, and then several calls to \hyperlink{fields_8c_a5f94d9f571277dfd4d401b69ee8ce0f1}{read\+Field()} are made to fill in the fields of the class. In this step, the class starts counting how many static fields and instance fields the class has. Thus, when new instances of this class are created later, it is possible to know how many bytes have to be allocated to hold the instance field data. When the class is initialized, it is also possible to know the how many bytes it needs for its static field data.
+\item method count is read, and then several calls to \hyperlink{methods_8c_a0ee1df02a4ba0b51f9e6db74bef74ac9}{read\+Method()} are made to fill in the methods of the class.
+\item attribute count is read, and then several calls to \hyperlink{attributes_8c_a0aab7731ade76c16c2ff8b3bef1111d1}{read\+Attribute()} are made to fill in the attributes of the class.
+\end{DoxyEnumerate}
+
+Methods and fields can also have attributes, so their read functions also make calls to read\+Attributes. If no errors occurred during the class loading procedure, then the function \hyperlink{javaclass_8h_a90175fdf9e50aea1c9db6dee3f828e49}{print\+Class\+File\+Info()} is called, and if there were errors, some debug information will show up telling what went wrong.
+
+Note that if the class file name and the class actual name don\textquotesingle{}t match (including package path), the class loading will normally continue, but the Java\+Class$\ast$ structure holding the class information will be marked as name mismatch.\hypertarget{index_stepguideJVM}{}\section{Step-\/by-\/step\+: execute a class}\label{index_stepguideJVM}
+\hypertarget{index_instructions}{}\section{Instructions Implementation}\label{index_instructions}
+Each instruction is implemented entirely within its single C function. They are all declared in file \hyperlink{instructions_8c}{instructions.\+c}. ~\newline
+ All instructions functions share the prefix \char`\"{}instfunc\+\_\+\char`\"{} and have the same function prototype, which is\+: 
+\begin{DoxyCode}
+uint8\_t instfunc\_<instruction name>(\hyperlink{structJavaVirtualMachine}{JavaVirtualMachine}* jvm, 
+      \hyperlink{structFrame}{Frame}* frame)
+\end{DoxyCode}
+ A \hyperlink{structFrame}{Frame} structure contains all necessary information to run a method, i.\+e. the method\textquotesingle{}s bytecode along with its length, the method\textquotesingle{}s program counter, an array storing all local variables and a stack of operands (\hyperlink{structOperandStack}{Operand\+Stack}). The frame is used to manipulate the operands and the local variables, and read instructions parameters from the method\textquotesingle{}s bytecode. An \hyperlink{structOperandStack}{Operand\+Stack} is manipulated using functions \hyperlink{operandstack_8c_a303eeaf9017d19267a875dd251fa2857}{push\+Operand()} and \hyperlink{operandstack_8c_a5ba14f5f382f622f8c50f17aed6e3805}{pop\+Operand()}. ~\newline
+ Instructions use the \hyperlink{structJavaVirtualMachine}{Java\+Virtual\+Machine} pointer to set errors (like insufficient memory), resolve and look for classes, and create new objects (arrays, class instances, strings). Object creation is done using functions \hyperlink{jvm_8c_a8a0f79bec7b4a76d2ca09ab27342f639}{new\+String()}, \hyperlink{jvm_8c_a8bbe91a3e26f98b22758016825b6cdd1}{new\+Class\+Instance()}, \hyperlink{jvm_8c_a718c81a95f3f6222a97b8e8b6980bdcb}{new\+Array()}, \hyperlink{jvm_8c_a03c8cda9f6251e682f2b46262b7a672d}{new\+Object\+Array()} and \hyperlink{jvm_8c_ae92de2ed6014d3c92ec9ea84a3bd4179}{new\+Object\+Multi\+Array()}. ~\newline
+ Some instructions are very similar to a few others. In those cases, instructions were implemented using macros to reduce source code length. To see those macros, check file intructions.\+c.\hypertarget{index_validity}{}\section{Validity and Errors}\label{index_validity}
+File \hyperlink{validity_8c}{validity.\+c} contains various functions to help verify that some invalid configurations of constant pool, fields and methods won\textquotesingle{}t happen. ~\newline
+ Right after reading all entries of the constant pool from the class file, function \hyperlink{validity_8c_aa0977a766bc0cd47a49ca0e00e706310}{check\+Constant\+Pool\+Validity()} is called. That function will iterate over all constant pool entries, checking them. ~\newline
+ Checks include\+:
+\begin{DoxyItemize}
+\item File name / class name match. If they don\textquotesingle{}t, the class will be marked, \hyperlink{structJavaClass_ae51618e3eb35bfce4a1267d57a686259}{Java\+Class\+::class\+Name\+Mismatch}.
+\item Class access flags will be checked for invalid flags combination, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS or U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS.
+\item All fields and methods access flags will be checked for invalid flags combination, possibly setting the class status to U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS, U\+S\+E\+\_\+\+O\+F\+\_\+\+R\+E\+S\+E\+R\+V\+E\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS or I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+F\+L\+A\+GS.
+\item Class \char`\"{}this\+\_\+class\char`\"{} and \char`\"{}super\+\_\+class\char`\"{} indexes will be checked to see if they point to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class entry in the constant pool, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+H\+I\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX or I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+U\+P\+E\+R\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX.
+\item Constant pool entries with C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class tag will be checked if name\+\_\+index points to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 entry that contains a valid class name, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX.
+\item Constant pool entries with C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String tag will be checked if string\+\_\+index points to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 entry, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+D\+EX.
+\item Contant pool entries with C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref or C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref tag will be checked if name\+\_\+index points a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 entry, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX. name\+\_\+and\+\_\+type index will also be checked to see if they point to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type. The name\+\_\+index and descriptor\+\_\+index of the C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type will be checked to see if it they point to a C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 index. The name\+\_\+index will be checked to see if it holds a valid method name, and the descriptor will be checked to see if it holds a valid method descriptor. Possible status setting due to errors are\+: I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX, I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX and I\+N\+V\+A\+L\+I\+D\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX.
+\item Contant pool entries with C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref tag will be checked if name\+\_\+index points a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 entry, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX. name\+\_\+and\+\_\+type index will also be checked to see if they point to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type. The name\+\_\+index and descriptor\+\_\+index of the C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type will be checked to see if it they point to a C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8 index. The name\+\_\+index will be checked to see if it holds a valid field name, and the descriptor will be checked to see if it holds a valid field descriptor. Possible status setting due to errors are\+: I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX, I\+N\+V\+A\+L\+I\+D\+\_\+\+N\+A\+M\+E\+\_\+\+I\+N\+D\+EX and I\+N\+V\+A\+L\+I\+D\+\_\+\+F\+I\+E\+L\+D\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+I\+N\+D\+EX.
+\item Every time something is read from the class file, it is checked if an End Of File was found too soon. The class status will be changed if an E\+OF was unexpected. Possible status setting due to E\+OF related errors are\+: U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+OF, U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+P\+O\+OL, U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+U\+T\+F8, U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+ES and U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+E\+O\+F\+\_\+\+R\+E\+A\+D\+I\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+FO.
+\item Memory allocation failures will set the class status to M\+E\+M\+O\+R\+Y\+\_\+\+A\+L\+L\+O\+C\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED.
+\item 0x\+C\+A\+F\+E\+B\+A\+BE signature will be checked, along with file version. Possible status setting because of this are\+: C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+V\+E\+R\+S\+I\+ON or C\+L\+A\+S\+S\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+T\+U\+RE.
+\item By the end of the class file reading, if there are more data than expected, class status will be changed to F\+I\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+S\+\_\+\+U\+N\+E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+D\+A\+TA.
+\item All interfaces\textquotesingle{} index read are checked to see if they point to a valid C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class entry in the constant pool, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+I\+N\+D\+EX.
+\item All U\+T\+F-\/8 streams are checked for invalid bytes during their extraction from the file, possibly setting the class status to I\+N\+V\+A\+L\+I\+D\+\_\+\+U\+T\+F8\+\_\+\+B\+Y\+T\+ES.
+\end{DoxyItemize}
+
+All those status code are defined in \hyperlink{javaclass_8h}{javaclass.\+h}, see \hyperlink{javaclass_8h_a9b332e6330d199c30e246d4ad8bff5ac}{Java\+Class\+Status} for all status. Errors description can be obtained with the function \hyperlink{javaclass_8c_a38efa2c89d8bc742293cdc1c6e0f3250}{decode\+Java\+Class\+Status()}.
+
+Some other checks while reading attributes (from classes, fields and methods) are also made, possibly setting the class status to\+: A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+M\+I\+S\+M\+A\+T\+CH, A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+N\+S\+T\+A\+N\+T\+V\+A\+L\+U\+E\+\_\+\+I\+N\+D\+EX, A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+U\+R\+C\+E\+F\+I\+L\+E\+\_\+\+I\+N\+D\+EX, A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+N\+E\+R\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+E\+X\+ES, A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+S\+\_\+\+C\+L\+A\+S\+S\+\_\+\+I\+N\+D\+EX or A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+C\+O\+D\+E\+\_\+\+L\+E\+N\+G\+TH.
+
+There is currently no verification made on instruction parameters and validity of bytecode.\hypertarget{index_limitations}{}\section{Limitations}\label{index_limitations}
+There are a few instructions that haven\textquotesingle{}t been implemented. They are listed below\+:
+\begin{DoxyItemize}
+\item invokedynamic -\/ will produce error if executed
+\item checkcast -\/ will produce error if executed
+\item instanceof -\/ will produce error if executed
+\item athrow -\/ will produce error if executed
+\item monitorenter -\/ ignored
+\item monitorexit -\/ ignored
+\end{DoxyItemize}
+
+There is also no support for exceptions nor try/catch/finally blocks. Class \char`\"{}java/lang/\+System\char`\"{} and \char`\"{}java/lang/\+String\char`\"{} can be used, but they are also limited. ~\newline
+ It is possible to print data to stdout using java/lang/\+System.\+out.\+println(), but all other System\textquotesingle{}s methods are unavailable. ~\newline
+ Strings have no methods implemented, therefore they can only be created and printed. Other common instructions that deal with with objects will also work for strings, like comparing them with \textquotesingle{}null\textquotesingle{}. ~\newline
+ Parameter passing from command line to the running java program is not possible. 

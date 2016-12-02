@@ -1,5 +1,11 @@
 <map id="src/opcodes.h" name="src/opcodes.h">
-<area shape="rect" id="node2" href="$attributes_8c.html" title="src/attributes.c" alt="" coords="5,80,115,107"/>
-<area shape="rect" id="node3" href="$jvm_8c.html" title="src/jvm.c" alt="" coords="139,80,215,107"/>
-<area shape="rect" id="node4" href="$opcodes_8c.html" title="src/opcodes.c" alt="" coords="240,80,344,107"/>
+<area shape="rect" id="node2" href="$attributes_8c.html" title="src/attributes.c" alt="" coords="91,80,201,107"/>
+<area shape="rect" id="node3" href="$jvm_8h.html" title="src/jvm.h" alt="" coords="225,80,301,107"/>
+<area shape="rect" id="node10" href="$opcodes_8c.html" title="src/opcodes.c" alt="" coords="326,80,430,107"/>
+<area shape="rect" id="node4" href="$instructions_8h.html" title="src/instructions.h" alt="" coords="23,155,146,181"/>
+<area shape="rect" id="node5" href="$instructions_8c.html" title="src/instructions.c" alt="" coords="23,229,146,256"/>
+<area shape="rect" id="node6" href="$jvm_8c.html" title="src/jvm.c" alt="" coords="181,229,257,256"/>
+<area shape="rect" id="node7" href="$natives_8h.html" title="src/natives.h" alt="" coords="171,155,268,181"/>
+<area shape="rect" id="node8" href="$natives_8c.html" title="src/natives.c" alt="" coords="295,229,392,256"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="src/main.c" alt="" coords="394,155,477,181"/>
 </map>

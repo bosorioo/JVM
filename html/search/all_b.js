@@ -8,6 +8,7 @@ var searchData=
   ['memory_5fallocation_5ffailed',['MEMORY_ALLOCATION_FAILED',['../javaclass_8h.html#a9b332e6330d199c30e246d4ad8bff5acaaf47c82f53381347e93f7e837a862f5d',1,'javaclass.h']]],
   ['method_5finfo',['method_info',['../structmethod__info.html',1,'method_info'],['../methods_8h.html#a8bb5945393748ebec11db13dc8993aa4',1,'method_info():&#160;methods.h']]],
   ['methodcount',['methodCount',['../structJavaClass.html#a4451678a1ac1921ddb929aced262d1d9',1,'JavaClass']]],
+  ['methodentriesread',['methodEntriesRead',['../structJavaClass.html#a5369bcdeb6b25d30dc02df99bf0f0656',1,'JavaClass']]],
   ['methodref',['Methodref',['../structcp__info.html#a3a2f2fccc08f122c44a2cd3405ee6264',1,'cp_info']]],
   ['methods',['methods',['../structJavaClass.html#ab923c8f31c71ce1602ca21576a48bcb8',1,'JavaClass']]],
   ['methods_2ec',['methods.c',['../methods_8c.html',1,'']]],
