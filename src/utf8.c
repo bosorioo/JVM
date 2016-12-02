@@ -16,10 +16,10 @@
 /// @param uint32_t* outCharacter - pointer where the character being read
 /// is written, if it isn't NULL
 ///
-/// @return uint8_t - the number of bytes read from the UTF-8 stream to 
-/// represent that single character. If the return value is 0, then nothing 
+/// @return uint8_t - the number of bytes read from the UTF-8 stream to
+/// represent that single character. If the return value is 0, then nothing
 /// was read. It could mean that the length is not sufficient, that the UTF-8
-/// encoding is wrong or the stream has a four-byte character, which isn't 
+/// encoding is wrong or the stream has a four-byte character, which isn't
 /// supported by this program.
 uint8_t nextUTF8Character(const uint8_t* utf8_bytes, int32_t utf8_len, uint32_t* outCharacter)
 {
@@ -63,16 +63,16 @@ uint8_t nextUTF8Character(const uint8_t* utf8_bytes, int32_t utf8_len, uint32_t*
 
 /// @brief Function to compare two strings, one in UTF-8 and other in ASCII.
 ///
-/// @param const uint8_t* utf8_bytes - is the string in utf8_bytes
-/// @param int32_t utf8_len - is the number of characters
-/// @param const uint8_t* ascii_bytes - is the string in ASCII
-/// @param int32_t ascii_len - is the number of characters
+/// @param const uint8_t* utf8_bytes - bytes of the UTF-8 string
+/// @param int32_t utf8_len - length of the UTF-8 string
+/// @param const uint8_t* ascii_bytes - ASCII string to compare to
+/// @param int32_t ascii_len - length of ASCII string
 ///
-/// @return char - value is 1 in case the strings are equal (case sensitive),
+/// @return Will return 1 if the strings are equal (case sensitive),
 /// 0 otherwise.
-/// 
-/// @note doesn't matter if the string is null terminated
-/// or not.
+///
+/// @note Doesn't matter if the string is null terminated
+/// or not, as long as the length is correct.
 char cmp_UTF8_Ascii(const uint8_t* utf8_bytes, int32_t utf8_len, const uint8_t* ascii_bytes, int32_t ascii_len)
 {
     uint32_t utf8_char;
@@ -95,14 +95,14 @@ char cmp_UTF8_Ascii(const uint8_t* utf8_bytes, int32_t utf8_len, const uint8_t* 
 }
 
 /// @brief Function to compare two strings, both in UTF-8.
-/// 
-/// @param const uint8_t* utf8A_bytes - pointer to the bytes that make the 
+///
+/// @param const uint8_t* utf8A_bytes - pointer to the bytes that make the
 /// UTF-8 A string to be compared
-/// @param const uint8_t* utf8B_bytes - pointer to the bytes that make the 
+/// @param const uint8_t* utf8B_bytes - pointer to the bytes that make the
 /// UTF-8 B string to be compared
-/// @param int32_t utf8A_len - length of the bytes that make the A string 
-/// @param int32_t utf8B_len - length of the bytes that make the B string 
-/// 
+/// @param int32_t utf8A_len - length of the bytes that make the A string
+/// @param int32_t utf8B_len - length of the bytes that make the B string
+///
 /// @return return value is 1 in case the strings are equal (case sensitive),
 /// 0 otherwise.
 char cmp_UTF8(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8B_bytes, int32_t utf8B_len)
@@ -122,7 +122,7 @@ char cmp_UTF8(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8
 }
 
 /// @brief Function to compare two strings that contains file paths, both in UTF-8.
-/// 
+///
 /// The difference in this function is that it considers slashes (/)
 /// and backslashes (\) the same characters, and consecutive slashes or
 /// backslashes are treated like one character, for sake of checking if
@@ -132,12 +132,12 @@ char cmp_UTF8(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint8_t* utf8
 /// utf8A_len and utf8B_len are the length of the bytes that make those strings,
 /// respectively.
 ///
-/// @param const uint8_t* utf8A_bytes - pointer to the bytes that make the 
+/// @param const uint8_t* utf8A_bytes - pointer to the bytes that make the
 /// UTF-8 A string to be compared
-/// @param const uint8_t* utf8B_bytes pointer to the bytes that make the 
+/// @param const uint8_t* utf8B_bytes pointer to the bytes that make the
 /// UTF-8 B string to be compared
-/// @param int32_t utf8A_len - length of the bytes that make the A string 
-/// @param int32_t utf8B_len - length of the bytes that make the B string 
+/// @param int32_t utf8A_len - length of the bytes that make the A string
+/// @param int32_t utf8B_len - length of the bytes that make the B string
 ///
 /// @return return value is 1 in case the strings are equal (case sensitive),
 /// 0 otherwise.
@@ -222,10 +222,10 @@ char cmp_UTF8_FilePath(const uint8_t* utf8A_bytes, int32_t utf8A_len, const uint
 /// @brief Function that translates a UTF-8 stream to ASCII
 ///
 /// @param const uint8_t* utf8_bytes - UTF-8 strem to be translate
-/// @param int32_t utf8_len - length of the bytes that make the UTF-8 strem 
+/// @param int32_t utf8_len - length of the bytes that make the UTF-8 strem
 /// @param uint8_t* out_buffer - pointer where the result will be stored
-/// @param int32_t buffer_len - length of the bytes that make out_buffer 
-/// 
+/// @param int32_t buffer_len - length of the bytes that make out_buffer
+///
 /// @note "buffer_len" characters will be written to the buffer, NULL character included.
 uint32_t UTF8_to_Ascii(uint8_t* out_buffer, int32_t buffer_len, const uint8_t* utf8_bytes, int32_t utf8_len)
 {
