@@ -26,12 +26,6 @@ char readField(JavaClass* jc, field_info* entry)
         return 0;
     }
 
-    if (entry->access_flags & ACC_INVALID_FIELD_FLAG_MASK)
-    {
-        jc->status = USE_OF_RESERVED_FIELD_ACCESS_FLAGS;
-        return 0;
-    }
-
     if (!checkFieldAccessFlags(jc, entry->access_flags))
         return 0;
 
