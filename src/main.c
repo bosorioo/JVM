@@ -207,7 +207,6 @@ int main(int argc, char* args[])
 ///
 /// @section limitations Limitations
 /// There are a few instructions that haven't been implemented. They are listed below:
-///     - invokeinterface - will produce error if executed
 ///     - invokedynamic - will produce error if executed
 ///     - checkcast - will produce error if executed
 ///     - instanceof - will produce error if executed

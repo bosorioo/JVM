@@ -311,68 +311,78 @@ uint8_t instfunc_ldc2_w(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
-uint8_t instfunc_iload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_INTEGER))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
+/// @brief Used to automatically generate instructions "iload",
+/// "fload" and "aload".
+#define DECLR_LOAD_CAT_1_FAMILY(instructionprefix, type) \
+    uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
     }
 
-    return 1;
-}
-
-uint8_t instfunc_lload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    uint8_t index = NEXT_BYTE;
-
-    if (!pushOperand(&frame->operands, *(frame->localVariables + index), OP_LONG) ||
-        !pushOperand(&frame->operands, *(frame->localVariables + index + 1), OP_LONG))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
+/// @brief Used to automatically generate instructions "lload",
+/// and "dload".
+#define DECLR_LOAD_CAT_2_FAMILY(instructionprefix, type) \
+    uint8_t instfunc_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        uint8_t index = NEXT_BYTE; \
+        if (!pushOperand(&frame->operands, *(frame->localVariables + index), type) || \
+            !pushOperand(&frame->operands, *(frame->localVariables + index + 1), type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
     }
 
-    return 1;
-}
-
-uint8_t instfunc_fload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_FLOAT))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
+/// @brief Used to automatically generate instructions "iload",
+/// "fload" and "aload" that are widened.
+#define DECLR_WIDE_LOAD_CAT_1_FAMILY(instructionprefix, type) \
+    uint8_t instfunc_wide_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        uint16_t index = NEXT_BYTE; \
+        index = (index << 8) | NEXT_BYTE; \
+        if (!pushOperand(&frame->operands, *(frame->localVariables + index), type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
     }
 
-    return 1;
-}
-
-uint8_t instfunc_dload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    uint8_t index = NEXT_BYTE;
-
-    if (!pushOperand(&frame->operands, *(frame->localVariables + index), OP_DOUBLE) ||
-        !pushOperand(&frame->operands, *(frame->localVariables + index + 1), OP_DOUBLE))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
+/// @brief Used to automatically generate instructions "lload",
+/// and "dload" that are widened.
+#define DECLR_WIDE_LOAD_CAT_2_FAMILY(instructionprefix, type) \
+    uint8_t instfunc_wide_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        uint16_t index = NEXT_BYTE; \
+        index = (index << 8) | NEXT_BYTE; \
+        if (!pushOperand(&frame->operands, *(frame->localVariables + index), type) || \
+            !pushOperand(&frame->operands, *(frame->localVariables + index + 1), type)) \
+        { \
+            jvm->status = JVM_STATUS_OUT_OF_MEMORY; \
+            return 0; \
+        } \
+        return 1; \
     }
 
-    return 1;
-}
+DECLR_LOAD_CAT_1_FAMILY(iload, OP_INTEGER)
+DECLR_LOAD_CAT_2_FAMILY(lload, OP_LONG)
+DECLR_LOAD_CAT_1_FAMILY(fload, OP_FLOAT)
+DECLR_LOAD_CAT_2_FAMILY(dload, OP_DOUBLE)
+DECLR_LOAD_CAT_1_FAMILY(aload, OP_REFERENCE)
 
-uint8_t instfunc_aload(JavaVirtualMachine* jvm, Frame* frame)
-{
-    if (!pushOperand(&frame->operands, *(frame->localVariables + NEXT_BYTE), OP_REFERENCE))
-    {
-        jvm->status = JVM_STATUS_OUT_OF_MEMORY;
-        return 0;
-    }
+DECLR_WIDE_LOAD_CAT_1_FAMILY(iload, OP_INTEGER)
+DECLR_WIDE_LOAD_CAT_2_FAMILY(lload, OP_LONG)
+DECLR_WIDE_LOAD_CAT_1_FAMILY(fload, OP_FLOAT)
+DECLR_WIDE_LOAD_CAT_2_FAMILY(dload, OP_DOUBLE)
+DECLR_WIDE_LOAD_CAT_1_FAMILY(aload, OP_REFERENCE)
 
-    return 1;
-}
-
-/// @brief Used to automatically generate instructions "lload_<n>",
+/// @brief Used to automatically generate instructions "iload_<n>",
 /// "fload_<n>" and "aload_<n>".
 #define DECLR_CAT_1_LOAD_N_FAMILY(instructionprefix, value, type) \
     uint8_t instfunc_##instructionprefix##_##value(JavaVirtualMachine* jvm, Frame* frame) \
@@ -544,6 +554,19 @@ uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "istore", "fstore"
+/// and "astore" that are widened.
+#define DECLR_WIDE_STORE_CAT_1_FAMILY(instructionprefix) \
+    uint8_t instfunc_wide_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        uint16_t index = NEXT_BYTE; \
+        index = (index << 8) | NEXT_BYTE; \
+        int32_t operand; \
+        popOperand(&frame->operands, &operand, NULL); \
+        *(frame->localVariables + NEXT_BYTE) = operand; \
+        return 1; \
+    }
+
 /// @brief Used to automatically generate instructions "l" and
 /// "dstore".
 #define DECLR_STORE_CAT_2_FAMILY(instructionprefix) \
@@ -559,11 +582,33 @@ uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
         return 1; \
     }
 
+/// @brief Used to automatically generate instructions "l" and
+/// "dstore" that are widened.
+#define DECLR_WIDE_STORE_CAT_2_FAMILY(instructionprefix) \
+    uint8_t instfunc_wide_##instructionprefix(JavaVirtualMachine* jvm, Frame* frame) \
+    { \
+        uint16_t index = NEXT_BYTE; \
+        index = (index << 8) | NEXT_BYTE; \
+        int32_t highoperand; \
+        int32_t lowoperand; \
+        popOperand(&frame->operands, &lowoperand, NULL); \
+        popOperand(&frame->operands, &highoperand, NULL); \
+        *(frame->localVariables + index) = highoperand; \
+        *(frame->localVariables + index + 1) = lowoperand; \
+        return 1; \
+    }
+
 DECLR_STORE_CAT_1_FAMILY(istore)
 DECLR_STORE_CAT_2_FAMILY(lstore)
 DECLR_STORE_CAT_1_FAMILY(fstore)
 DECLR_STORE_CAT_2_FAMILY(dstore)
 DECLR_STORE_CAT_1_FAMILY(astore)
+
+DECLR_WIDE_STORE_CAT_1_FAMILY(istore)
+DECLR_WIDE_STORE_CAT_2_FAMILY(lstore)
+DECLR_WIDE_STORE_CAT_1_FAMILY(fstore)
+DECLR_WIDE_STORE_CAT_2_FAMILY(dstore)
+DECLR_WIDE_STORE_CAT_1_FAMILY(astore)
 
 /// @brief Used to automatically generate instructions "istore_<n>", "fstore_<n>"
 /// and "astore_<n>".
@@ -1284,6 +1329,16 @@ uint8_t instfunc_iinc(JavaVirtualMachine* jvm, Frame* frame)
     return 1;
 }
 
+uint8_t instfunc_wide_iinc(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
+    int16_t immediate = NEXT_BYTE;
+    immediate = (immediate << 8) | NEXT_BYTE;
+    frame->localVariables[index] += (int32_t)immediate;
+    return 1;
+}
+
 uint8_t instfunc_i2l(JavaVirtualMachine* jvm, Frame* frame)
 {
     int64_t value;
@@ -1851,6 +1906,14 @@ uint8_t instfunc_jsr(JavaVirtualMachine* jvm, Frame* frame)
 uint8_t instfunc_ret(JavaVirtualMachine* jvm, Frame* frame)
 {
     uint8_t index = NEXT_BYTE;
+    frame->pc = (uint32_t)frame->localVariables[index];
+    return 1;
+}
+
+uint8_t instfunc_wide_ret(JavaVirtualMachine* jvm, Frame* frame)
+{
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
     frame->pc = (uint32_t)frame->localVariables[index];
     return 1;
 }
@@ -2624,15 +2687,13 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    return instfunc_invokevirtual(jvm, frame);
 }
 
 uint8_t instfunc_invokedynamic(JavaVirtualMachine* jvm, Frame* frame)
 {
     // This instruction isn't to be implemented
-    jvm->status = JVM_STATUS_UNKNOWN_INSTRUCTION;
+    DEBUG_REPORT_INSTRUCTION_ERROR
     return 0;
 }
 
@@ -2814,9 +2875,33 @@ uint8_t instfunc_monitorexit(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_wide(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // TODO: implement this instruction function
-    DEBUG_REPORT_INSTRUCTION_ERROR
-    return 0;
+    uint8_t opcode = NEXT_BYTE;
+    uint8_t index;
+
+    if (opcode >= opcode_iload && opcode <= opcode_lload)
+        index = opcode - opcode_iload;
+    else if (opcode >= opcode_istore || opcode <= opcode_astore)
+        index = 5 + opcode - opcode_istore;
+    else if (opcode == opcode_ret)
+        index = 10;
+    else if (opcode == opcode_iinc)
+        index = 11;
+    else
+    {
+        // trying to wide an instruction that can't
+        // be widened.
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    const InstructionFunction funcs[] = {
+        instfunc_wide_iload, instfunc_wide_lload, instfunc_wide_fload,
+        instfunc_wide_dload, instfunc_wide_aload, instfunc_wide_istore,
+        instfunc_wide_lstore, instfunc_wide_fstore, instfunc_wide_dstore,
+        instfunc_wide_dstore, instfunc_wide_ret, instfunc_wide_iinc
+    };
+
+    return funcs[index](jvm, frame);
 }
 
 uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
