@@ -9,10 +9,14 @@
 /// @brief Checks whether the "accessFlags" parameter has a valid combination
 /// of method flags.
 ///
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t accessFlags - flag to be analyzed
+/// The following status can be set by calling this function:
+/// - USE_OF_RESERVED_METHOD_ACCESS_FLAGS
+/// - INVALID_ACCESS_FLAGS
 ///
-/// @return char - in case of issues, jc->status is changed, and the
+/// @param JavaClass* jc - pointer to the class containing the method
+/// @param uint16_t accessFlags - method flags to be checked
+///
+/// @return In case of issues, jc->status is changed, and the
 /// function returns 0. Otherwise, nothing is changed with jc, and the
 /// return value is 1.
 char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
@@ -55,10 +59,14 @@ char checkMethodAccessFlags(JavaClass* jc, uint16_t accessFlags)
 /// @brief Checks whether the "accessFlags" parameter has a valid combination
 /// of field flags.
 ///
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t accessFlags - flag to be analyzed
+/// The following status can be set by calling this function:
+/// - USE_OF_RESERVED_FIELD_ACCESS_FLAGS
+/// - INVALID_ACCESS_FLAGS
 ///
-/// @return char - in case of issues, jc->status is changed, and the
+/// @param JavaClass* jc - pointer to the class containing the field
+/// @param uint16_t accessFlags - field flags to be checked
+///
+/// @return In case of issues, jc->status is changed, and the
 /// function returns 0. Otherwise, nothing is changed with jc, and the
 /// return value is 1.
 char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
@@ -81,7 +89,7 @@ char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
     // If the class is an interface, then the bits PUBLIC, STATIC and FINAL must
     // be set to 1 for all fields.
     if ((jc->accessFlags & ACC_INTERFACE) &&
-        ((jc->accessFlags & interfaceRequiredBitMask) != interfaceRequiredBitMask))
+        ((accessFlags & interfaceRequiredBitMask) != interfaceRequiredBitMask))
     {
         jc->status = INVALID_ACCESS_FLAGS;
         return 0;
@@ -108,15 +116,15 @@ char checkFieldAccessFlags(JavaClass* jc, uint16_t accessFlags)
     return 1;
 }
 
-/// @brief Checks whether the "accessFlags" from the class file is a valid
-/// combination of class flags.
+/// @brief Verifies the class indexes and access flags.
 ///
-/// This function also checks if "thisClass" and
+/// Checks whether the accessFlags from the class file is a valid
+/// combination of class flags. This function also checks if "thisClass" and
 /// "superClass" points to valid class indexes.
 ///
-/// @param JavaClass* jc - pointer to class to be analyzed
+/// @param JavaClass* jc - pointer to the class to be checked
 ///
-/// @return char - in case of issues, jc->status is changed, and the
+/// @return In case of issues, jc->status is changed, and the
 /// function returns 0. Otherwise, nothing is changed with jc, and the
 /// return value is 1. This function also
 char checkClassIndexAndAccessFlags(JavaClass* jc)
@@ -164,16 +172,12 @@ char checkClassIndexAndAccessFlags(JavaClass* jc)
 /// @brief Checks whether the name of the class pointed by "thisClass" is the same name
 /// as the class file.
 ///
-/// This function doesn't check package and folders. It
-/// basically gets the name of file, for instance: "C:/mypath/File.class" will be
-/// understood as "File". The name of the class could be something like: "package/MyClass",
-/// the package will be ignored and function will understand the class name as "MyClass".
-/// The function then proceeds to compare "MyClass" and "File".
+/// This function also checks if the folder location match with the class package.
 ///
-/// @param JavaClass* jc - pointer to class to be analyzed
+/// @param JavaClass* jc - pointer to the class holding the constant pool
 ///
-/// @return char - If there is a mismatch, jc->status is modified and the function
-/// returns 0. Otherwise, it is left unchanged and the return value is 1.
+/// @return If there is a mismatch, the function
+/// returns 0. Otherwise, the return value is 1.
 char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 {
     int32_t i, begin = 0, end;
@@ -215,10 +219,11 @@ char checkClassNameFileNameMatch(JavaClass* jc, const char* classFilePath)
 ///
 /// @param uint8_t* utf8_bytes - pointer to the sequence of bytes that identify the class name
 /// @param int32_t utf8_len - legth of class name
-/// @param uint8_t isClassIdentifier - is set to anything but zero, then this function will also
-/// accept slashes (/), as classes have their full path separated by slashes.
+/// @param uint8_t isClassIdentifier - if set to anything but zero, then this function will
+/// accept slashes (/) as valid characters for identifiers. Classes have their full path separated
+/// by slashes, so this must be set to any value other than zero to check classes.
 ///
-/// @ return char - The function returns 1 if it the string is indeed
+/// @return The function returns 1 if it the string is indeed
 /// a valid Java Identifier, otherwise zero.
 char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
 {
@@ -260,10 +265,14 @@ char isValidJavaIdentifier(uint8_t* utf8_bytes, int32_t utf8_len, uint8_t isClas
 
 /// @brief Identifies if a UTF8 index in JavaClass is valid
 ///
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t index - represents the actual index
+/// @param JavaClass* jc - pointer to the class holding the constant pool
+/// @param uint16_t index - index of the UTF-8 constant in the constant pool
 ///
-/// @return char - 1 if the index points to a UTF-8 constant, 0 otherwise.
+/// @note This function does not check if the UTF-8 stream is valid, and it
+/// it not necessary. UTF-8 streams are checked as they are read. To see that
+/// check, see file utf8.c.
+///
+/// @return Returns 1 if the index points to a UTF-8 constant, 0 otherwise.
 char isValidUTF8Index(JavaClass* jc, uint16_t index)
 {
     return (jc->constantPool + index - 1)->tag == CONSTANT_Utf8;
@@ -272,14 +281,14 @@ char isValidUTF8Index(JavaClass* jc, uint16_t index)
 
 /// @brief Identifies if a name index in JavaClass is valid
 ///
-/// @param JavaClass* jc - pointer to the class
+/// @param JavaClass* jc - pointer to the class holding the constant pool
 /// @param uint8_t isClassIdentifier - if set to zero,
 /// will not accept slashes (/) as valid identifier characters. If
 /// "isClassIdentifier" is different than zero, then classes with slashes
 /// in its name like "java/io/Stream" will be accepted as valid names.
-/// @param uint16_t name_index - name_index to be analyzed
-///
-/// @return char - 1 if "name_index" points to a valid UTF-8 and is a valid
+/// @param uint16_t name_index - name_index to be checked.
+
+/// @return Returns 1 if "name_index" points to a valid UTF-8 and is a valid
 /// java identifier. Returns 0 otherwise.
 char isValidNameIndex(JavaClass* jc, uint16_t name_index, uint8_t isClassIdentifier)
 {
@@ -288,17 +297,17 @@ char isValidNameIndex(JavaClass* jc, uint16_t name_index, uint8_t isClassIdentif
 }
 
 /// @brief checks if the name index points to a valid UTF-8 and is a valid
-/// java  identifier.
+/// java identifier.
 ///
-/// The difference between this function and "isValidNameIndex"
+/// The difference between this function and isValidNameIndex()
 /// is that this function accepts "<init>" and "<clinit>" as valid names for methods,
-/// whereas "isValidNameIndex" (consenquently "isValidJavaIdentifier") function wouldn't
-/// accept those names as valid. 
-/// 
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t name_index - name_index to be analyzed
+/// whereas isValidNameIndex() (when consenquently calling isValidJavaIdentifier()) wouldn't
+/// accept those names as valid.
 ///
-/// @return char - 1 if "name_index" points to a valid UTF-8 and is a valid
+/// @param JavaClass* jc - pointer to the class holding the constant pool
+/// @param uint16_t name_index - name_index to be check
+///
+/// @return Returns 1 if "name_index" points to a valid UTF-8 and is a valid
 /// java identifier. Returns 0 otherwise.
 char isValidMethodNameIndex(JavaClass* jc, uint16_t name_index)
 {
@@ -314,20 +323,19 @@ char isValidMethodNameIndex(JavaClass* jc, uint16_t name_index)
     return isValidJavaIdentifier(entry->Utf8.bytes, entry->Utf8.length, 0);
 }
 
-/// @brief Checks whether the index points to a valid class and whether that
-/// class name is valid. 
+/// @brief Checks whether the index points to a valid class.
 ///
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t class_index - class_index to be analyzed
+/// @param JavaClass* jc - pointer to the class holding the constant pool
+/// @param uint16_t class_index - index to be check
 ///
-/// @return char - in case the check fails, jc->status is changed and
+/// @return In case the check fails, jc->status is changed and
 /// the function returns 0. If everything is successful, the function returns 1
 /// while leaving jc unchanged.
 char checkClassIndex(JavaClass* jc, uint16_t class_index)
 {
     cp_info* entry = jc->constantPool + class_index - 1;
 
-    if (entry->tag != CONSTANT_Class || !isValidNameIndex(jc, entry->Class.name_index, 1))
+    if (entry->tag != CONSTANT_Class)
     {
         jc->status = INVALID_CLASS_INDEX;
         return 0;
@@ -336,13 +344,13 @@ char checkClassIndex(JavaClass* jc, uint16_t class_index)
     return 1;
 }
 
-/// @brief Checks if the name and the descriptor are valid. The descriptor must be
-/// a valid field descriptor.
-/// 
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t name_and_type_index - points to a CONSTANT_NameAndType to be checked
+/// @brief Checks if the name and the descriptor of a field are valid.
 ///
-/// @return char - in case of failure, the function changes jc->status and returns 0.
+/// @param JavaClass* jc - pointer to the class holding the constant pool
+/// @param uint16_t name_and_type_index - index of the name_and_type of a
+/// CONSTANT_Fieldref to be checked
+///
+/// @return In case of failure, the function changes jc->status and returns 0.
 /// Otherwise, jc is left unchanged, and the function returns 1.
 char checkFieldNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 {
@@ -371,13 +379,13 @@ char checkFieldNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
     return 1;
 }
 
-/// @brief Checks if the name and the descriptor are valid. The descriptor must be
-/// a valid method descriptor.
-/// 
-/// @param JavaClass* jc - pointer to the class
-/// @param uint16_t name_and_type_index - points to a CONSTANT_NameAndType to be checked
+/// @brief Checks if the name and the descriptor of a method are valid.
 ///
-/// @return char - in case of failure, the function changes jc->status and returns 0.
+/// @param JavaClass* jc - pointer to the class holding the constant pool
+/// @param uint16_t name_and_type_index - index of the name_and_type of a
+/// CONSTANT_Methodref to be checked
+///
+/// @return In case of failure, the function changes jc->status and returns 0.
 /// Otherwise, jc is left unchanged, and the function returns 1.
 char checkMethodNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 {
@@ -408,10 +416,10 @@ char checkMethodNameAndTypeIndex(JavaClass* jc, uint16_t name_and_type_index)
 
 
 /// @brief Iterates over the constant pool looking for inconsistencies in it.
-/// 
-/// @param JavaClass* jc - pointer to the javaClass that contains the constantPool to be analyzed
 ///
-/// @return char - if no error is encountered, the function returns 1. In case of failures,
+/// @param JavaClass* jc - pointer to the javaClass holding the constant pool to be checked.
+///
+/// @return If no error is encountered, the function returns 1. In case of failures,
 /// the function will set jc->status accordingly and will return 0.
 char checkConstantPoolValidity(JavaClass* jc)
 {
