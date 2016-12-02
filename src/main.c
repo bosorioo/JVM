@@ -196,12 +196,66 @@ int main(int argc, char* args[])
 /// (arrays, class instances, strings). Object creation is done using functions
 /// newString(), newClassInstance(), newArray(), newObjectArray() and newObjectMultiArray().
 /// <br>
+/// Some instructions are very similar to a few others. In those cases, instructions were
+/// implemented using macros to reduce source code length. To see those macros, check file
+/// intructions.c.
 ///
 ///
 ///
+/// @section validity Validity and Errors
+/// File validity.c contains various functions to help verify that some invalid configurations
+/// of constant pool, fields and methods won't happen.
+/// <br>
+/// Right after reading all entries of the constant pool from the class file, function checkConstantPoolValidity()
+/// is called. That function will iterate over all constant pool entries, checking them.
+/// <br>
+/// Checks include:
+/// - File name / class name match. If they don't, the class will be marked, JavaClass::classNameMismatch.
+/// - Class access flags will be checked for invalid flags combination, possibly setting the class status to
+/// INVALID_ACCESS_FLAGS or USE_OF_RESERVED_CLASS_ACCESS_FLAGS.
+/// - All fields and methods access flags will be checked for invalid flags combination, possibly setting the class
+/// status to USE_OF_RESERVED_FIELD_ACCESS_FLAGS, USE_OF_RESERVED_METHOD_ACCESS_FLAGS or INVALID_ACCESS_FLAGS.
+/// - Class "this_class" and "super_class" indexes will be checked to see if they point to a valid CONSTANT_Class
+/// entry in the constant pool, possibly setting the class status to INVALID_THIS_CLASS_INDEX or INVALID_SUPER_CLASS_INDEX.
+/// - Constant pool entries with CONSTANT_Class tag will be checked if name_index points to a valid CONSTANT_Utf8
+/// entry that contains a valid class name, possibly setting the class status to INVALID_NAME_INDEX.
+/// - Constant pool entries with CONSTANT_String tag will be checked if string_index points to a valid CONSTANT_Utf8
+/// entry, possibly setting the class status to INVALID_STRING_INDEX.
+/// - Contant pool entries with CONSTANT_Methodref or CONSTANT_InterfaceMethodref tag will be checked if name_index points
+/// a valid CONSTANT_Utf8 entry, possibly setting the class status to INVALID_CLASS_INDEX. name_and_type index will also
+/// be checked to see if they point to a valid CONSTANT_NameAndType. The name_index and descriptor_index of the
+/// CONSTANT_NameAndType will be checked to see if it they point to a CONSTANT_Utf8 index. The name_index will be checked
+/// to see if it holds a valid method name, and the descriptor will be checked to see if it holds a valid method descriptor.
+/// Possible status setting due to errors are: INVALID_CLASS_INDEX, INVALID_NAME_INDEX and INVALID_METHOD_DESCRIPTOR_INDEX.
+/// - Contant pool entries with CONSTANT_Fieldref tag will be checked if name_index points a valid CONSTANT_Utf8 entry,
+/// possibly setting the class status to INVALID_CLASS_INDEX. name_and_type index will also
+/// be checked to see if they point to a valid CONSTANT_NameAndType. The name_index and descriptor_index of the
+/// CONSTANT_NameAndType will be checked to see if it they point to a CONSTANT_Utf8 index. The name_index will be checked
+/// to see if it holds a valid field name, and the descriptor will be checked to see if it holds a valid field descriptor.
+/// Possible status setting due to errors are: INVALID_CLASS_INDEX, INVALID_NAME_INDEX and INVALID_FIELD_DESCRIPTOR_INDEX.
+/// - Every time something is read from the class file, it is checked if an End Of File was found too soon. The class status
+/// will be changed if an EOF was unexpected. Possible status setting due to EOF related errors are: UNEXPECTED_EOF,
+/// UNEXPECTED_EOF_READING_CONSTANT_POOL, UNEXPECTED_EOF_READING_UTF8, UNEXPECTED_EOF_READING_INTERFACES and
+/// UNEXPECTED_EOF_READING_ATTRIBUTE_INFO.
+/// - Memory allocation failures will set the class status to MEMORY_ALLOCATION_FAILED.
+/// - 0xCAFEBABE signature will be checked, along with file version. Possible status setting because of this are:
+/// CLASS_STATUS_UNSUPPORTED_VERSION or CLASS_STATUS_INVALID_SIGNATURE.
+/// - By the end of the class file reading, if there are more data than expected, class status will be changed to
+/// FILE_CONTAINS_UNEXPECTED_DATA.
+/// - All interfaces' index read are checked to see if they point to a valid CONSTANT_Class entry in the constant pool,
+/// possibly setting the class status to INVALID_INTERFACE_INDEX.
+/// - All UTF-8 streams are checked for invalid bytes during their extraction from the file, possibly setting the class
+/// status to INVALID_UTF8_BYTES.
 ///
-/// @section validity Validity
+/// All those status code are defined in javaclass.h, see @ref JavaClassStatus for all status.
+/// Errors description can be obtained with the function decodeJavaClassStatus().
 ///
+/// Some other checks while reading attributes (from classes, fields and methods) are also made,
+/// possibly setting the class status to:
+/// ATTRIBUTE_LENGTH_MISMATCH, ATTRIBUTE_INVALID_CONSTANTVALUE_INDEX, ATTRIBUTE_INVALID_SOURCEFILE_INDEX,
+/// ATTRIBUTE_INVALID_INNERCLASS_INDEXES, ATTRIBUTE_INVALID_EXCEPTIONS_CLASS_INDEX or ATTRIBUTE_INVALID_CODE_LENGTH.
+///
+/// There is currently no verification made on instruction parameters and validity of bytecode.
 ///
 ///
 ///
