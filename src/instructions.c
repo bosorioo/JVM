@@ -2687,7 +2687,16 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
 
 uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
 {
-    return instfunc_invokevirtual(jvm, frame);
+    // invoke interface is currently implemented
+    uint8_t result = instfunc_invokevirtual(jvm, frame);
+
+    if (!result)
+        return result;
+
+    // Skip the count and the zero byte of the instruction
+    frame->pc += 2;
+
+    return 1;
 }
 
 uint8_t instfunc_invokedynamic(JavaVirtualMachine* jvm, Frame* frame)
