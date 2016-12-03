@@ -6,6 +6,8 @@
 ///@param uint8_t type - number of the type in the enum Opcode_newarray_type.
 ///
 ///@return the type of the opcode as a String if not NULL, "unknown type" otherwise.
+///
+///@see instruction.c
 const char* decodeOpcodeNewarrayType(uint8_t type)
 {
     const char* typeName[] = {
@@ -19,11 +21,12 @@ const char* decodeOpcodeNewarrayType(uint8_t type)
     return "unknown type";
 }
 
-///@brief A Java Virtual Machine instruction consists of an opcode specifying the operation to be performed,
-/// this function gets the mnemonic of the opcode.
+///@brief The instruction's mnemonic is its name. Its opcode is its numeric representation which specifies the operation to be performed. 
+/// This functions gives the instruction's mnemonic by it's opcode.
 ///@param uint8_t opcode - the opcode of the instruction.
 ///
 ///@return the mnemonic of the opcode in case it exists, return "- unknown opcode -" otherwise.
+///@see instruction.c
 const char* getOpcodeMnemonic(uint8_t opcode)
 {
     const char* mnemonics[] = {
