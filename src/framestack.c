@@ -103,6 +103,7 @@ uint8_t popFrame(FrameStack** fs, Frame* outPtr)
 
     return node != NULL;
 }
+
 ///@brief Free all the elements of the FrameStack passed as parameter by reference
 ///
 ///@param FrameStack** fs - pointer to the FrameStack.
