@@ -1,6 +1,11 @@
 #include "opcodes.h"
 #include <stdlib.h>
-
+ 
+///@brief Return the Opcode_newarray_type type as a String.
+///
+///@param uint8_t type - number of the type in the enum Opcode_newarray_type.
+///
+///@return the type of the opcode as a String if not NULL, "unknown type" otherwise.
 const char* decodeOpcodeNewarrayType(uint8_t type)
 {
     const char* typeName[] = {
@@ -14,6 +19,11 @@ const char* decodeOpcodeNewarrayType(uint8_t type)
     return "unknown type";
 }
 
+///@brief A Java Virtual Machine instruction consists of an opcode specifying the operation to be performed,
+/// this function gets the mnemonic of the opcode.
+///@param uint8_t opcode - the opcode of the instruction.
+///
+///@return the mnemonic of the opcode in case it exists, return "- unknown opcode -" otherwise.
 const char* getOpcodeMnemonic(uint8_t opcode)
 {
     const char* mnemonics[] = {
