@@ -1,9 +1,0 @@
-<map id="getNative" name="getNative">
-<area shape="rect" id="node2" href="$natives_8c.html#a481ac99c2facb29e37dbba52e692b6e5" title="native_println" alt="" coords="164,81,263,108"/>
-<area shape="rect" id="node6" href="$natives_8c.html#af0d8cada4a1bfe281476a1234d46f88d" title="native_currentTimeMillis" alt="" coords="132,144,295,171"/>
-<area shape="rect" id="node8" href="$utf8_8c.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="170,195,257,221"/>
-<area shape="rect" id="node3" href="$operandstack_8c.html#a5ba14f5f382f622f8c50f17aed6e3805" title="popOperand" alt="" coords="375,5,467,32"/>
-<area shape="rect" id="node4" href="$readfunctions_8c.html#a7f0b7cf08c775d82db36228940fa6df6" title="readDoubleFromUint64" alt="" coords="343,56,499,83"/>
-<area shape="rect" id="node5" href="$readfunctions_8c.html#a9ee9e635c8197187cec0334000ba1f7b" title="readFloatFromUint32" alt="" coords="349,107,493,133"/>
-<area shape="rect" id="node7" href="$operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="371,157,470,184"/>
-</map>

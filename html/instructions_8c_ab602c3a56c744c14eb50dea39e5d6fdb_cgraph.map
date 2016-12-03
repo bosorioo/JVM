@@ -1,5 +1,0 @@
-<map id="instfunc_newarray" name="instfunc_newarray">
-<area shape="rect" id="node2" href="$operandstack_8c.html#a5ba14f5f382f622f8c50f17aed6e3805" title="popOperand" alt="" coords="185,5,277,32"/>
-<area shape="rect" id="node3" href="$jvm_8c.html#a718c81a95f3f6222a97b8e8b6980bdcb" title="newArray" alt="" coords="192,56,269,83"/>
-<area shape="rect" id="node4" href="$operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="181,107,280,133"/>
-</map>

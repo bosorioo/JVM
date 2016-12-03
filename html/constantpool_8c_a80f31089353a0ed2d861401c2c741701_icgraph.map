@@ -1,8 +1,0 @@
-<map id="decodeTag" name="decodeTag">
-<area shape="rect" id="node2" href="$attributes_8c.html#ae588cbde97553719c8b8612e8e42f4b4" title="printAttributeCode" alt="" coords="140,5,267,32"/>
-<area shape="rect" id="node3" href="$constantpool_8h.html#ab7d27eb8d4164ae1a1fd11664ba4d1ef" title="Function to print all the constants from the constant pool of the class file. " alt="" coords="140,56,267,83"/>
-<area shape="rect" id="node4" href="$javaclass_8h.html#aee51865d444d48583f151873b4138d72" title="decodeAccessFlags" alt="" coords="315,56,455,83"/>
-<area shape="rect" id="node5" href="$attributes_8c.html#a6c90c1dd47892d19d581ef9fcac24698" title="printAttributeInnerClasses" alt="" coords="503,5,676,32"/>
-<area shape="rect" id="node6" href="$fields_8h.html#a638dfd7ea9c1089e20de1ac871897ddf" title="Function to print all fields of the class file. " alt="" coords="541,56,638,83"/>
-<area shape="rect" id="node7" href="$methods_8h.html#a88c1302886452c2888da76abd261ccc8" title="Function to print all methods of the class file. " alt="" coords="541,107,638,133"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="fetchOpcodeFunction" name="fetchOpcodeFunction">
-<area shape="rect" id="node2" href="$instructions_8c.html#a66a6ac26513b757e08d88b0ed26213a2" title="instfunc_nop" alt="" coords="219,5,315,32"/>
-<area shape="rect" id="node3" href="$instructions_8c.html#a39b87c11ed1110abbd8f8abe499f2ca8" title="instfunc_aconstnull" alt="" coords="200,56,335,83"/>
-<area shape="rect" id="node5" href="$instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="211,107,324,133"/>
-<area shape="rect" id="node6" href="$instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="211,157,324,184"/>
-<area shape="rect" id="node7" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="221,208,313,235"/>
-<area shape="rect" id="node4" href="$operandstack_8c.html#a303eeaf9017d19267a875dd251fa2857" title="pushOperand" alt="" coords="383,132,481,159"/>
-</map>

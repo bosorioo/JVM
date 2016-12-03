@@ -1,7 +1,0 @@
-<map id="printAttributeConstantValue" name="printAttributeConstantValue">
-<area shape="rect" id="node2" href="$attributes_8c.html#a01657db1f2f2e478b93e5329c666901e" title="ident" alt="" coords="289,5,339,32"/>
-<area shape="rect" id="node3" href="$readfunctions_8c.html#a9ee9e635c8197187cec0334000ba1f7b" title="readFloatFromUint32" alt="" coords="242,56,386,83"/>
-<area shape="rect" id="node4" href="$readfunctions_8c.html#a7f0b7cf08c775d82db36228940fa6df6" title="readDoubleFromUint64" alt="" coords="236,107,392,133"/>
-<area shape="rect" id="node5" href="$utf8_8c.html#af7bd03175f66a7cecdff5b2360bfbade" title="Function that translates a UTF&#45;8 stream to ASCII. " alt="" coords="259,157,369,184"/>
-<area shape="rect" id="node6" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="440,157,577,184"/>
-</map>

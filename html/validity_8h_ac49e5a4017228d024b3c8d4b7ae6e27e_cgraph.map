@@ -1,5 +1,0 @@
-<map id="isValidJavaIdentifier" name="isValidJavaIdentifier">
-<area shape="rect" id="node2" href="$readfunctions_8c.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="192,22,327,49"/>
-<area shape="rect" id="node3" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="561,22,699,49"/>
-<area shape="rect" id="node4" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="Checks whether the UTF&#45;8 stream is a valid Java Identifier. " alt="" coords="375,22,513,49"/>
-</map>
