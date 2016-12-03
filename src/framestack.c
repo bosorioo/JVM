@@ -1,6 +1,12 @@
 #include "framestack.h"
 #include "debugging.h"
 
+///@brief A new frame is created each time a method is invoked.
+///
+///@param JavaClass* jc - pointer to the javaClass holding the method.
+///@param method_info* method - pointer to the method
+///
+///@return pointer to the Frame created.
 Frame* newFrame(JavaClass* jc, method_info* method)
 {
     Frame* frame = (Frame*)malloc(sizeof(Frame));
@@ -42,6 +48,9 @@ Frame* newFrame(JavaClass* jc, method_info* method)
     return frame;
 }
 
+///@brief Free the Frame passed as parameter.
+///
+///@param Frame* frame - pointer to Frame to be freed.
 void freeFrame(Frame* frame)
 {
     if (frame->localVariables)
@@ -53,6 +62,12 @@ void freeFrame(Frame* frame)
     free(frame);
 }
 
+///@brief Push the Frame into the FrameStack passed as parameter by reference
+///
+///@param FrameStack** fs - pointer to the FrameStack where the Frame will be pushed.
+///@param Frame* frame - pointer to Frame to be pushed.
+///
+///@return 0 if node is NULL, in other words, if the push was not successful, any other integer value otherwise
 uint8_t pushFrame(FrameStack** fs, Frame* frame)
 {
     FrameStack* node = (FrameStack*)malloc(sizeof(FrameStack));
@@ -64,9 +79,15 @@ uint8_t pushFrame(FrameStack** fs, Frame* frame)
         *fs = node;
     }
 
-    return fs != NULL;
+    return node != NULL;
 }
 
+///@brief Pop the Frame passed as parameter by reference
+///
+///@param FrameStack** fs - pointer to the FrameStack.
+///@param Frame* outPtr - pointer to Frame that will be popped.
+///
+///@return 1 if the pop operation was sucessful, 0 otherwise.
 uint8_t popFrame(FrameStack** fs, Frame* outPtr)
 {
     FrameStack* node = *fs;
@@ -82,7 +103,9 @@ uint8_t popFrame(FrameStack** fs, Frame* outPtr)
 
     return node != NULL;
 }
-
+///@brief Free all the elements of the FrameStack passed as parameter by reference
+///
+///@param FrameStack** fs - pointer to the FrameStack.
 void freeFrameStack(FrameStack** fs)
 {
     FrameStack* node = *fs;
