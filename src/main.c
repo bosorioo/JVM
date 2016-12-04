@@ -160,6 +160,9 @@ int main(int argc, char* args[])
 /// to know the how many bytes it needs for its static field data.
 /// -# method count is read, and then several calls to readMethod() are made to fill in the methods of the class.
 /// -# attribute count is read, and then several calls to readAttribute() are made to fill in the attributes of the class.
+/// -# a call to the function printClassFileInfo() will start printing general information of the class, like version, this
+/// class index, super class index, constant pool/field/method/interface count and the class access flags.
+/// -# printClassFileInfo() also make calls to printConstantPool(), printAllFields(), printMethods() and printAllAttributes().
 ///
 /// Methods and fields can also have attributes, so their read functions also make calls to readAttributes.
 /// If no errors occurred during the class loading procedure, then the function printClassFileInfo() is called, and

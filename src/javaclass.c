@@ -405,6 +405,18 @@ const char* decodeJavaClassStatus(enum JavaClassStatus status)
     return "unknown status";
 }
 
+/// @brief Given flags of a certain method/field/class, this class will convert
+/// the bits to a string telling which flags are set to 1, writing the result in the
+/// output buffer.
+///
+/// @param uint16_t flags - the flags of the method/field/class
+/// @param [out] char* buffer - pointer to where the string will be stored
+/// @param int32_t buffer_len - length of the buffer
+/// @param enum AccessFlagsType acctype - type of access flags, telling if it is a class,
+/// a method or a field.
+///
+/// This method will write at most \b buffer_len characters to the output buffer.
+/// Depending on parameter \b acctype, meaning for some bits might change.
 void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum AccessFlagsType acctype)
 {
     uint32_t bytes = 0;
@@ -413,6 +425,7 @@ void decodeAccessFlags(uint16_t flags, char* buffer, int32_t buffer_len, enum Ac
     const char* empty = "";
 
     /// @cond
+    /// No need to document this macro
     #define DECODE_FLAG(flag, name) if (flags & flag) { \
         bytes = snprintf(buffer, buffer_len, "%s%s", bytes ? comma : empty, name); \
         buffer += bytes; \
