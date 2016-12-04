@@ -185,7 +185,7 @@ int main(int argc, char* args[])
 /// only when the class really needs to be initialized. Some instructions will trigger class initialization (new, putstatic, getstatic,
 /// putfield, getfield, invokeinterface, invokespecial, invokestatic). executeJVM() will make the main class initialize. Class initialization
 /// is done by reserving bytes to store the class static data (setting their initial value accordingly if a ConstantValue attribute is present),
-/// and calling the @b <clinit> method of the class. See initClass().
+/// and calling the <b><clinit></b> method of the class. See initClass().
 /// -# After initializing the main class, a method with the signature <b>public static void main(String[] args)</b> will be searched and,
 /// if found, called. Method calling is done via runMethod(). Note that the current implementation does not support command line parameter
 /// passing to the main method.
@@ -193,7 +193,7 @@ int main(int argc, char* args[])
 /// (FrameStack) with a call to pushFrame(). A frame holds the class of the method, the bytecode of the method, the length in bytes of
 /// the bytecode, the number of operands that need to be popped from this frame and pushed to a caller frame once the method returns,
 /// a stack of operands (OperandStack) and an array of local variables.
-/// -# Each instruction is fetched from the Code attribute of the method and the corresponding InstructionFunction function pointer is
+/// -# Each instruction is fetched from the Code attribute of the method and the corresponding @ref InstructionFunction function pointer is
 /// called. Fetch is done with a call to fetchOpcodeFunction(), which will return one of the functions defined in instructions.c.
 /// -# Once a method is finished, its frame will be removed with a call to popFrame(). The frame will be deallocated with freeFrame().
 /// If the method returns data, some of its operands in the OperandStack will be popped and pushed to the caller frame.
@@ -204,7 +204,7 @@ int main(int argc, char* args[])
 /// newObjectMultiArray(). They are all released after the entire execution of the entry point class is over, during deinitialization of
 /// the JVM. Specific object freeing is done with function deleteReference().
 ///
-/// String class has no methods s it is only simulated. Class java/lang/System is specifically checked in some instruction for special
+/// %String class has no methods implemented, it is only simulated. Class java/lang/System is specifically checked in some instruction for special
 /// handling, like getting the static java/lang/System.out and calling its println method. This is implemented in file natives.c.
 ///
 ///
