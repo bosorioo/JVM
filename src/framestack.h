@@ -11,8 +11,6 @@ struct Frame
 {
     JavaClass* jc;
 
-    // Use strict floating points?
-    uint8_t fp_strict;
 
     // How many operands should be moved from this frame to
     // the caller frame when the method returns?

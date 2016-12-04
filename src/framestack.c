@@ -42,7 +42,7 @@ Frame* newFrame(JavaClass* jc, method_info* method)
         frame->operands = NULL;
         frame->jc = jc;
         frame->pc = 0;
-        frame->fp_strict = (method->access_flags & ACC_STRICT) != 0;
+        //frame->fp_strict = (method->access_flags & ACC_STRICT) != 0;
     }
 
     return frame;
