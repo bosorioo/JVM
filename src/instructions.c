@@ -563,7 +563,7 @@ uint8_t instfunc_aaload(JavaVirtualMachine* jvm, Frame* frame)
         index = (index << 8) | NEXT_BYTE; \
         int32_t operand; \
         popOperand(&frame->operands, &operand, NULL); \
-        *(frame->localVariables + NEXT_BYTE) = operand; \
+        *(frame->localVariables + index) = operand; \
         return 1; \
     }
 
