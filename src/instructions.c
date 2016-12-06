@@ -123,7 +123,7 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
         {
             cpi = frame->jc->constantPool + cpi->String.string_index - 1;
 
-            Reference* str = newString(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+            Reference* str = newString(jvm, UTF8(cpi));
 
             if (!str)
             {
@@ -142,7 +142,7 @@ uint8_t instfunc_ldc(JavaVirtualMachine* jvm, Frame* frame)
 
             LoadedClasses* loadedClass;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass))
+            if (!resolveClass(jvm, UTF8(cpi), &loadedClass))
             {
                 // TODO: throw a resolution exception
                 // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
@@ -210,7 +210,7 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
         {
             cpi = frame->jc->constantPool + cpi->String.string_index - 1;
 
-            Reference* str = newString(jvm, cpi->Utf8.bytes, cpi->Utf8.length);
+            Reference* str = newString(jvm, UTF8(cpi));
 
             if (!str)
             {
@@ -229,7 +229,7 @@ uint8_t instfunc_ldc_w(JavaVirtualMachine* jvm, Frame* frame)
 
             LoadedClasses* loadedClass;
 
-            if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass))
+            if (!resolveClass(jvm, UTF8(cpi), &loadedClass))
             {
                 // TODO: throw a resolution exception
                 // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
@@ -2044,7 +2044,7 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
 
         // All static fields from java/lang/System will be replaced
         // with null object in simulation mode.
-        if (cmp_UTF8(cpi1->Utf8.bytes, cpi1->Utf8.length, (const uint8_t*)"java/lang/System", 16))
+        if (cmp_UTF8(UTF8(cpi1), (const uint8_t*)"java/lang/System", 16))
         {
             if (!pushOperand(&frame->operands, 0, OP_NULL))
             {
@@ -2073,8 +2073,7 @@ uint8_t instfunc_getstatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the field's class the field_info that matches the name and the descriptor
-    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
 
     if (!fi)
     {
@@ -2164,8 +2163,7 @@ uint8_t instfunc_putstatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the field's class the field_info that matches the name and the descriptor
-    field_info* fi = getFieldMatching(fieldLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                      cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    field_info* fi = getFieldMatching(fieldLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
 
     if (!fi)
     {
@@ -2486,12 +2484,10 @@ uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
         cpi3 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
         cpi3 = frame->jc->constantPool + cpi3->NameAndType.descriptor_index - 1;
 
-        NativeFunction nativeFunc = getNative(cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                              cpi2->Utf8.bytes, cpi2->Utf8.length,
-                                              cpi3->Utf8.bytes, cpi3->Utf8.length);
+        NativeFunction nativeFunc = getNative(UTF8(cpi1), UTF8(cpi2), UTF8(cpi3));
 
         if (nativeFunc)
-            return nativeFunc(jvm, frame, cpi3->Utf8.bytes, cpi3->Utf8.length);
+            return nativeFunc(jvm, frame, UTF8(cpi3));
     }
 
     LoadedClasses* methodLoadedClass;
@@ -2511,22 +2507,20 @@ uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     uint8_t operandIndex;
-    uint8_t parameterCount = getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length);
+    uint8_t parameterCount = getMethodDescriptorParameterCount(UTF8(cpi2));
     OperandStack* node = frame->operands;
 
     for (operandIndex = 0; operandIndex < parameterCount; operandIndex++)
         node = node->next;
 
     Reference* object = (Reference*)node->value;
+    JavaClass* jc = object->ci.c;
 
     if (object)
     {
-        JavaClass* jc = object->ci.c;
-
         while (jc)
         {
-            mi = getMethodMatching(jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                   cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+            mi = getMethodMatching(jc, UTF8(cpi1), UTF8(cpi2), 0);
 
             if (mi)
                 break;
@@ -2551,7 +2545,7 @@ uint8_t instfunc_invokevirtual(JavaVirtualMachine* jvm, Frame* frame)
 
     // TODO: if the method is static, throw IncompatibleClassChangeError
 
-    return runMethod(jvm, methodLoadedClass->jc, mi, 1 + parameterCount);
+    return runMethod(jvm, jc, mi, 1 + parameterCount);
 }
 
 uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
@@ -2584,18 +2578,20 @@ uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
     // If the method being invoked isn't <init> and this class has a super class and
     // the resolved method belongs to class that is a super class of this class,
     // then it is necessary to lookup the super classes for that method
-    if (!cmp_UTF8(cpi1->Utf8.bytes, cpi1->Utf8.length, (const uint8_t*)"<init>", 6) &&
+    if (!cmp_UTF8(UTF8(cpi1), (const uint8_t*)"<init>", 6) &&
         (frame->jc->accessFlags & ACC_SUPER) && isClassSuperOf(jvm, methodLoadedClass->jc, frame->jc))
     {
         JavaClass* super = getSuperClass(jvm, frame->jc);
 
         while (super)
         {
-            mi = getMethodMatching(super, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                   cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+            mi = getMethodMatching(super, UTF8(cpi1), UTF8(cpi2), 0);
 
             if (mi)
+            {
+                methodLoadedClass->jc = super;
                 break;
+            }
 
             super = getSuperClass(jvm, super);
         }
@@ -2609,8 +2605,7 @@ uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
     }
     else
     {
-        mi = getMethodMatching(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                               cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+        mi = getMethodMatching(methodLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
     }
 
     if (!mi)
@@ -2621,7 +2616,7 @@ uint8_t instfunc_invokespecial(JavaVirtualMachine* jvm, Frame* frame)
     }
 
     // We add one to the parameter count to pop the objectref at the stack as well.
-    uint8_t parameterCount = 1 + getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length);
+    uint8_t parameterCount = 1 + getMethodDescriptorParameterCount(UTF8(cpi2));
 
     return runMethod(jvm, methodLoadedClass->jc, mi, parameterCount);
 }
@@ -2647,12 +2642,10 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
         cpi3 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
         cpi3 = frame->jc->constantPool + cpi3->NameAndType.descriptor_index - 1;
 
-        NativeFunction nativeFunc = getNative(cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                              cpi2->Utf8.bytes, cpi2->Utf8.length,
-                                              cpi3->Utf8.bytes, cpi3->Utf8.length);
+        NativeFunction nativeFunc = getNative(UTF8(cpi1), UTF8(cpi2), UTF8(cpi3));
 
         if (nativeFunc)
-            return nativeFunc(jvm, frame, cpi3->Utf8.bytes, cpi3->Utf8.length);
+            return nativeFunc(jvm, frame, UTF8(cpi3));
     }
 
     LoadedClasses* methodLoadedClass;
@@ -2672,8 +2665,7 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
     cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
 
     // Find in the method's class the field_info that matches the name and the descriptor
-    method_info* mi = getMethodMatching(methodLoadedClass->jc, cpi1->Utf8.bytes, cpi1->Utf8.length,
-                                        cpi2->Utf8.bytes, cpi2->Utf8.length, 0);
+    method_info* mi = getMethodMatching(methodLoadedClass->jc, UTF8(cpi1), UTF8(cpi2), 0);
 
     if (!mi)
     {
@@ -2682,21 +2674,87 @@ uint8_t instfunc_invokestatic(JavaVirtualMachine* jvm, Frame* frame)
         return 0;
     }
 
-    return runMethod(jvm, methodLoadedClass->jc, mi, getMethodDescriptorParameterCount(cpi2->Utf8.bytes, cpi2->Utf8.length));
+    return runMethod(jvm, methodLoadedClass->jc, mi, getMethodDescriptorParameterCount(UTF8(cpi2)));
 }
 
 uint8_t instfunc_invokeinterface(JavaVirtualMachine* jvm, Frame* frame)
 {
-    // invoke interface is currently implemented
-    uint8_t result = instfunc_invokevirtual(jvm, frame);
+    // Get the parameter of the instruction
+    uint16_t index = NEXT_BYTE;
+    index = (index << 8) | NEXT_BYTE;
 
-    if (!result)
-        return result;
-
-    // Skip the count and the zero byte of the instruction
+    // Skip the other two parameters
     frame->pc += 2;
 
-    return 1;
+     // Get the InterfaceMethodref CP entry
+    cp_info* method = frame->jc->constantPool + index - 1;
+    cp_info* cpi1, *cpi2;
+    method_info* mi = NULL;
+
+    LoadedClasses* methodLoadedClass;
+
+    // Resolve the method, i.e, load the class that method belongs to
+    if (!resolveMethod(jvm, frame->jc, method, &methodLoadedClass) ||
+        !methodLoadedClass || !initClass(jvm, methodLoadedClass))
+    {
+        // TODO: throw Error
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    // Get the name of the method and its descriptor
+    cpi2 = frame->jc->constantPool + method->Methodref.name_and_type_index - 1;
+    cpi1 = frame->jc->constantPool + cpi2->NameAndType.name_index - 1;          // name
+    cpi2 = frame->jc->constantPool + cpi2->NameAndType.descriptor_index - 1;    // descriptor
+
+    uint8_t operandIndex;
+    uint8_t parameterCount = getMethodDescriptorParameterCount(UTF8(cpi2));
+    OperandStack* node = frame->operands;
+
+    for (operandIndex = 0; operandIndex < parameterCount; operandIndex++)
+        node = node->next;
+
+    Reference* object = (Reference*)node->value;
+    JavaClass* jc = object->ci.c;
+
+    // TODO: check if "jc" implements interface "methodLoadedClass->jc".
+    // If not, throw IncompatibleClassChangeError.
+
+    if (object)
+    {
+
+        while (jc)
+        {
+            mi = getMethodMatching(jc, UTF8(cpi1), UTF8(cpi2), 0);
+
+            if (mi)
+                break;
+
+            jc = getSuperClass(jvm, jc);
+        }
+    }
+    else
+    {
+        // TODO: throw NullPointerException
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if (!mi || (mi->access_flags & ACC_ABSTRACT))
+    {
+        // TODO: throw AbstractMethodError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    if ((mi->access_flags & ACC_PUBLIC) == 0)
+    {
+        // TODO: throw IllegalAccessError
+        DEBUG_REPORT_INSTRUCTION_ERROR
+        return 0;
+    }
+
+    return runMethod(jvm, jc, mi, 1 + parameterCount);
 }
 
 uint8_t instfunc_invokedynamic(JavaVirtualMachine* jvm, Frame* frame)
@@ -2719,7 +2777,7 @@ uint8_t instfunc_new(JavaVirtualMachine* jvm, Frame* frame)
     cp = frame->jc->constantPool + index - 1;
     cp = frame->jc->constantPool + cp->Class.name_index - 1;
 
-    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &instanceLoadedClass) || !instanceLoadedClass)
+    if (!resolveClass(jvm, UTF8(cp), &instanceLoadedClass) || !instanceLoadedClass)
     {
         // TODO: throw a resolution exception
         // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
@@ -2791,14 +2849,14 @@ uint8_t instfunc_anewarray(JavaVirtualMachine* jvm, Frame* frame)
 
     LoadedClasses* loadedClass;
 
-    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, &loadedClass))
+    if (!resolveClass(jvm, UTF8(cp), &loadedClass))
     {
         // TODO: throw a resolution exception
         // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
         return 0;
     }
 
-    Reference* aarray = newObjectArray(jvm, count, cp->Utf8.bytes, cp->Utf8.length);
+    Reference* aarray = newObjectArray(jvm, count, UTF8(cp));
 
     if (!aarray || !pushOperand(&frame->operands, (int32_t)aarray, OP_REFERENCE))
     {
@@ -2961,7 +3019,7 @@ uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
     cp = frame->jc->constantPool + index - 1;
     cp = frame->jc->constantPool + cp->Class.name_index - 1;
 
-    if (!resolveClass(jvm, cp->Utf8.bytes, cp->Utf8.length, NULL))
+    if (!resolveClass(jvm, UTF8(cp), NULL))
     {
         // TODO: throw a resolution exception
         // Could be LinkageError, NoClassDefFoundError or IllegalAccessError
@@ -2969,7 +3027,7 @@ uint8_t instfunc_multianewarray(JavaVirtualMachine* jvm, Frame* frame)
         return 0;
     }
 
-    Reference* aarray = newObjectMultiArray(jvm, dimensions, numberOfDimensions, cp->Utf8.bytes, cp->Utf8.length);
+    Reference* aarray = newObjectMultiArray(jvm, dimensions, numberOfDimensions, UTF8(cp));
 
     if (!aarray || !pushOperand(&frame->operands, (int32_t)aarray, OP_REFERENCE))
     {
