@@ -231,7 +231,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
         {
             cpi = jc->constantPool + jc->superClass - 1;
             cpi = jc->constantPool + cpi->Class.name_index - 1;
-            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, &loadedClass);
+            success = resolveClass(jvm, UTF8(cpi), &loadedClass);
 
             if (success)
             {
@@ -247,7 +247,7 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
         {
             cpi = jc->constantPool + jc->interfaces[u16] - 1;
             cpi = jc->constantPool + cpi->Class.name_index - 1;
-            success = resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, NULL);
+            success = resolveClass(jvm, UTF8(cpi), NULL);
         }
     }
 
@@ -291,7 +291,7 @@ uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method
     cpi = jc->constantPool + cpi->Class.name_index - 1;
 
     // Resolve the class the method belongs to
-    if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, outClass))
+    if (!resolveClass(jvm, UTF8(cpi), outClass))
         return 0;
 
     // Get method descriptor
@@ -352,7 +352,7 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     cpi = jc->constantPool + cpi->Class.name_index - 1;
 
     // Resolve the class the field belongs to
-    if (!resolveClass(jvm, cpi->Utf8.bytes, cpi->Utf8.length, outClass))
+    if (!resolveClass(jvm, UTF8(cpi), outClass))
         return 0;
 
     // Get field descriptor
@@ -420,11 +420,10 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
         cp_info* methodName = jc->constantPool + method->name_index - 1;
         cp_info* descriptor = jc->constantPool + method->descriptor_index - 1;
 
-        NativeFunction native = getNative(className->Utf8.bytes, className->Utf8.length,
-                                          methodName->Utf8.bytes, methodName->Utf8.length,
-                                          descriptor->Utf8.bytes, descriptor->Utf8.length);
+        NativeFunction native = getNative(UTF8(className), UTF8(methodName), UTF8(descriptor));
+
         if (native)
-            native(jvm, frame, descriptor->Utf8.bytes, descriptor->Utf8.length);
+            native(jvm, frame, UTF8(descriptor));
     }
     else
     {
@@ -586,7 +585,7 @@ LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes,
         cpi = jc->constantPool + jc->thisClass - 1;
         cpi = jc->constantPool + cpi->Class.name_index - 1;
 
-        if (cmp_UTF8(cpi->Utf8.bytes, cpi->Utf8.length, utf8_bytes, utf8_len))
+        if (cmp_UTF8(UTF8(cpi), utf8_bytes, utf8_len))
             return classes;
 
         classes = classes->next;
@@ -603,7 +602,7 @@ JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc)
     cp1 = jc->constantPool + jc->superClass - 1;
     cp1 = jc->constantPool + cp1->Class.name_index - 1;
 
-    lc = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
+    lc = isClassLoaded(jvm, UTF8(cp1));
 
     return lc ? lc->jc : NULL;
 }
@@ -626,10 +625,10 @@ uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc)
         cp1 = jc->constantPool + jc->superClass - 1;
         cp1 = jc->constantPool + cp1->Class.name_index - 1;
 
-        if (cmp_UTF8(cp1->Utf8.bytes, cp1->Utf8.length, cp2->Utf8.bytes, cp2->Utf8.length))
+        if (cmp_UTF8(UTF8(cp1), UTF8(cp2)))
             return 1;
 
-        classes = isClassLoaded(jvm, cp1->Utf8.bytes, cp1->Utf8.length);
+        classes = isClassLoaded(jvm, UTF8(cp1));
 
         if (classes)
             jc = classes->jc;
@@ -689,7 +688,7 @@ uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
 
                 case CONSTANT_String:
                     cp = lc->jc->constantPool + cp->String.string_index - 1;
-                    lc->staticFieldsData[field->offset] = (int32_t)newString(jvm, cp->Utf8.bytes, cp->Utf8.length);
+                    lc->staticFieldsData[field->offset] = (int32_t)newString(jvm, UTF8(cp));
                     break;
 
                 default:
