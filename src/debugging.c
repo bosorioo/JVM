@@ -139,7 +139,7 @@ void debugPrintMethod(JavaClass* jc, method_info* method)
     decodeAccessFlags(method->access_flags, accessFlags, sizeof(accessFlags), ACCT_METHOD);
     cp_info* name = jc->constantPool + method->name_index - 1;
     cp_info* descriptor = jc->constantPool + method->descriptor_index - 1;
-    printf("%s %.*s%.*s",  accessFlags, PRINT_UTF8(name), PRINT_UTF8(descriptor));
+    printf("%s %.*s.%.*s", accessFlags, PRINT_UTF8(name), PRINT_UTF8(descriptor));
 }
 
 void debugPrintMethodFieldRef(JavaClass* jc, cp_info* cpi)
