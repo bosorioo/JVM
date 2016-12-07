@@ -124,6 +124,12 @@ void executeJVM(JavaVirtualMachine* jvm, LoadedClasses* mainClass)
         return;
 }
 
+/// @brief Will set the path to look for classes when opening them.
+/// @param JavaVirtualMachine* jvm - The JVM that will load classes.
+/// @param const char* path - The string containing the path.
+/// @note The JVM will always look for the class in the current working
+/// directory first, and then (if the file couldn't be found) look for it
+/// in the class path.
 void setClassPath(JavaVirtualMachine* jvm, const char* path)
 {
     uint32_t index;
@@ -141,9 +147,30 @@ void setClassPath(JavaVirtualMachine* jvm, const char* path)
         jvm->classPath[0] = '\0';
 }
 
-/// @brief Loads a .class file.
+/// @brief Loads a .class file without initializing it.
+/// @param JavaVirtualMachine* jvm - pointer to the JVM structure
+/// that is resolving the class
+/// @param const uint8_t* className_utf8_bytes - UTF-8 bytes containing
+/// the class name.
+/// @param  int32_t utf8_len - length of the UTF-8 class name
+/// @param [out] LoadedClasses** outClass - the class that has been resolved,
+/// as an element of the loaded classes table of the JVM.
 ///
+/// This function will open the class file and read its content. All interfaces
+/// and super classes are also resolved. During class resolution, the amount of
+/// bytes required to hold an instance of that class is determined. The class will
+/// not be initialized, which means that the static data won't be allocated and the
+/// method <b><clinit></b> won't be called. To initialize a class, the function
+/// initClass() needs to be called. Class resolution may be triggered by resolution
+/// of fields, methods or some instructions that refer to classes (getstatic, new etc).
+/// All resolved classes will be added to the list of all loaded classes of the JVM.
+/// If the parameter @b outClass is not null, it will receive the node containig the
+/// already loaded class that was resolved by a call to this function.
 ///
+/// @return Will return 1 if the resolution was completed successfully, otherwise 0.
+/// Resolution may fail if there was a problem opening and parsing any of the class files,
+/// may it be the class being resolved or a super class or interface.
+/// @see initClass(), resolveField(), resolveMethod()
 uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_bytes, int32_t utf8_len, LoadedClasses** outClass)
 {
     JavaClass* jc;
@@ -277,6 +304,25 @@ uint8_t resolveClass(JavaVirtualMachine* jvm, const uint8_t* className_utf8_byte
     return success;
 }
 
+/// @brief Resolves a method.
+/// @param JavaVirtualMachine* jvm - pointer to the JVM structure
+/// that is running
+/// @param JavaClass* jc - pointer to the class that holds the method
+/// being resolved in its constant pool
+/// @param cp_info* cp_method - pointer to the element in the constant pool
+/// that contains the method to be resolved. Must be a CONSTANT_Methodref CP entry.
+/// @param [out] LoadedClasses** outClass - the class that contains the method that
+/// has been resolved, as an element of the loaded classes table of the JVM.
+///
+/// Method resolution means to resolve possible classes in its parameters or return
+/// type, and the class in which the method is defined. All identified classes will
+/// also be resolved, with a call to resolveClass(). All resolved classes will be added
+/// to the list of all loaded classes of the JVM. If the parameter @b outClass is not null,
+/// it will receive the node containig the already loaded class that declared that method.
+///
+/// @return Will return 1 if the resolution was completed successfully, otherwise 0.
+/// Resolution may fail if there was a problem with possible calls to resolveClass().
+/// @see resolveField(), resolveClass()
 uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method, LoadedClasses** outClass)
 {
 #ifdef DEBUG
@@ -337,6 +383,26 @@ uint8_t resolveMethod(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_method
     return 1;
 }
 
+/// @brief Resolves a field.
+/// @param JavaVirtualMachine* jvm - pointer to the JVM structure
+/// that is running
+/// @param JavaClass* jc - pointer to the class that holds the field
+/// being resolved in its constant pool
+/// @param cp_info* cp_method - pointer to the element in the constant pool
+/// that contains the field to be resolved. Must be a CONSTANT_Fieldref CP entry.
+/// @param [out] LoadedClasses** outClass - the class that contains the field that
+/// has been resolved, as an element of the loaded classes table of the JVM.
+///
+/// Field resolution means to resolve the class that declared the field and type
+/// of the field, if it is a class.
+/// If the type of the field is a class, then it will also be resolved, with a call to
+/// resolveClass(). The resolved classes will be added
+/// to the list of all loaded classes of the JVM. If the parameter @b outClass is not null,
+/// it will receive the node containig the already loaded class that declared that field.
+///
+/// @return Will return 1 if the resolution was completed successfully, otherwise 0.
+/// Resolution may fail if there was a problem with possible calls to resolveClass().
+/// @see resolveClass()
 uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, LoadedClasses** outClass)
 {
 
@@ -380,6 +446,26 @@ uint8_t resolveField(JavaVirtualMachine* jvm, JavaClass* jc, cp_info* cp_field, 
     return 1;
 }
 
+/// @brief Executes the bytecode of a given method.
+/// @param JavaVirtualMachine* jvm - pointer to the JVM structure
+/// that is running.
+/// @param JavaClass* jc - pointer to the class that contains the method
+/// that will be executed.
+/// @param method_info* method - pointer to method that will be executed.
+/// @param uint8_t numberOfParameters - number of operands that need to be
+/// popped from the top frame and pushed to the frame that will be created to
+/// execute the given method (parameter passing).
+///
+/// This function will create a new frame and push it in the stack of frame of the
+/// JVM (FrameStack). To see what a frame is and why it is necessary, check documentation
+/// of Frame. Instruction will be fetched one by one and executed until there is no more
+/// code to be executed from this method. Then the frame will be popped.
+///
+/// @return Will return 1 if the execution was completed successfully, otherwise 0.
+/// Execution will fail if there was a problem running an instruction or some other
+/// problems, like insufficient memory, unsupported feature/instruction, unimplemented
+/// native method, etc.
+/// @see resolveClass()
 uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, uint8_t numberOfParameters)
 {
 #ifdef DEBUG
@@ -491,6 +577,22 @@ uint8_t runMethod(JavaVirtualMachine* jvm, JavaClass* jc, method_info* method, u
     return jvm->status == JVM_STATUS_OK;
 }
 
+/// @brief Gets how many operands a method descriptor requires.
+/// @param const uint8_t* descriptor_utf8 - UTF-8 string containing the method
+/// descriptor
+/// @param int32_t utf8_len - length of the UTF-8 string
+///
+/// This function counts how many operands (which are 32-bit integers) are
+/// needed from a function with the given descriptor. For example, the following
+/// method: @code public int mymethod(long a, byte b) @endcode will have the
+/// following descriptor: (JB)I. When called, this method would require
+/// 3 operands to be passed as parameter, 2 to form the 64-bit long variable, and
+/// another one to form the 32-bit byte variable. A call to this function with that
+/// example descriptor will return 3, meaning that three operands should be popped
+/// from a caller frame and pushed to the callee frame.
+///
+/// @return Number of operands that need to be handled when calling a method
+/// with the given descriptor.
 uint8_t getMethodDescriptorParameterCount(const uint8_t* descriptor_utf8, int32_t utf8_len)
 {
     uint8_t parameterCount = 0;
@@ -556,6 +658,11 @@ uint8_t getMethodDescriptorParameterCount(const uint8_t* descriptor_utf8, int32_
     return parameterCount;
 }
 
+/// @brief Adds a class to the list of all loaded classes by the JVM.
+/// @param JavaVirtualMachine* jvm - the JVM that has loaded the given class
+/// @param JavaClass* jc - a class that has already been loaded and will be
+/// added to the list.
+/// @return The node created to store the class.
 LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
 {
     LoadedClasses* node = (LoadedClasses*)malloc(sizeof(LoadedClasses));
@@ -573,6 +680,14 @@ LoadedClasses* addClassToLoadedClasses(JavaVirtualMachine* jvm, JavaClass* jc)
     return node;
 }
 
+/// @brief Checks if a class has already been loaded by its name.
+/// @param JavaVirtualMachine* jvm - the JVM that contains a loaded clases list.
+/// @param const uint8_t* utf8_bytes - UTF-8 string containing the class name to be
+/// searched.
+/// @param int32_t utf8_len - length of the UTF-8 string.
+/// @return If the class is found, returns the node containing that loaded class. Otherwise,
+/// returns NULL.
+/// @note This function performs a linear search.
 LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes, int32_t utf8_len)
 {
     LoadedClasses* classes = jvm->classes;
@@ -594,6 +709,11 @@ LoadedClasses* isClassLoaded(JavaVirtualMachine* jvm, const uint8_t* utf8_bytes,
     return NULL;
 }
 
+/// @brief Gets the super class of a given class.
+/// @param JavaVirtualMachine* jvm - the JVM that contains the classes
+/// @param JavaClass* jc - the class that will have its super class seached.
+/// @return If the class is found, returns it. Otherwise, returns NULL.
+/// @note This function performs a linear search, by calling isClassLoaded().
 JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc)
 {
     LoadedClasses* lc;
@@ -607,10 +727,17 @@ JavaClass* getSuperClass(JavaVirtualMachine* jvm, JavaClass* jc)
     return lc ? lc->jc : NULL;
 }
 
+/// @brief Check if one class is a super class of another.
+/// @param JavaVirtualMachine* jvm - the JVM that holds both classes
+/// @param JavaClass* super - a class that will be checked to see if it
+/// is extended by @b jc.
+/// @param JavaClass* jc - the class that will be checked to see if it
+/// extends @b super.
 /// @pre Both \c super and \c jc must be classes that have already
 /// been loaded.
 /// @note If \c super and \c jc point to the same class, the function
 /// returns false.
+/// @return Will return 1 if @b super is a super class of @b jc. Otherwise, 0.
 uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc)
 {
     cp_info* cp1;
@@ -639,6 +766,21 @@ uint8_t isClassSuperOf(JavaVirtualMachine* jvm, JavaClass* super, JavaClass* jc)
     return 0;
 }
 
+/// @brief Initializes a class.
+/// @param JavaVirtualMachine* jvm - the JVM that is being executed
+/// @param LoadedClasses* lc - node of the list of loaded classes that holds
+/// the class to be initialized.
+///
+/// Class initialization is done by allocating memory for the class static data.
+/// The number of bytes necessary to hold the static data is determined when the
+/// class file is opened and parsed (openClassFile()). The static data is also initialized
+/// if the static fields have a ConstantValue attribute. After allocating the static
+/// data, the method <b><clinit></b> of the class will be called, if it exists.
+/// Even if this function is called several times, class initialization is performed only once.
+///
+/// @return Will return 1 if the initialization was completed successfully. Otherwise, 0.
+/// Initialization could fail if there wasn't enough memory to allocate space for the
+/// static data or if there were any problems running its <clinit> method.
 uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
 {
     if (lc->requiresInit)
@@ -649,6 +791,9 @@ uint8_t initClass(JavaVirtualMachine* jvm, LoadedClasses* lc)
     if (lc->jc->staticFieldCount > 0)
     {
         lc->staticFieldsData = (int32_t*)malloc(sizeof(int32_t) * lc->jc->staticFieldCount);
+
+        if (!lc->staticFieldsData)
+            return 0;
 
         uint16_t index;
         attribute_info* att;
