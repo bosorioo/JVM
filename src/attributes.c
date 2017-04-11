@@ -508,6 +508,8 @@ uint8_t readAttributeCode(JavaClass* jc, attribute_info* entry)
         return 0;
     }
 
+    // TODO: check if exception_table_length isn't 0, as that could lead to a crash
+
     info->exception_table = (ExceptionTableEntry*)malloc(info->exception_table_length * sizeof(ExceptionTableEntry));
 
     if (!info->exception_table)
@@ -529,6 +531,7 @@ uint8_t readAttributeCode(JavaClass* jc, attribute_info* entry)
             return 0;
         }
 
+        except++;
         // TODO: check if start_pc, end_pc and handler_pc are valid program counters inside
         // the code. Also check if catch_type is a pointer to a valid class with Throwable as
         // parent, or if it is NULL (finally block).
