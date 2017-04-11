@@ -1080,6 +1080,8 @@ void printAttributeCode(JavaClass* jc, attribute_info* entry, int identationLeve
                 UTF8_to_Ascii((uint8_t*)buffer, sizeof(buffer), cpi->Utf8.bytes, cpi->Utf8.length);
                 printf(" <%s>", buffer);
             }
+
+            except++;
         }
 
         printf("\n");
