@@ -9,7 +9,7 @@ Desktop.ini
 # java/*
 
 # Doxygen generated documentation
-doxygen/
+# doxygen/
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
