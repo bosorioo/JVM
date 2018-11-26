@@ -59,6 +59,12 @@ int main(int argc, char* args[])
             printf("Unknown argument #%d ('%s')\n", argIndex, args[argIndex]);
     }
 
+    if (!printClassContent && !executeClassMain)
+    {
+        printf("Nothing to do with input.\n");
+        printf("Ensure that at least one of the following options are included: \"-c\", \"-e\".\n");
+    }
+
     // If requested, outputs the three byte sequence that tells that
     // the data is encoded as UTF-8.
     // This is required by some programs (like notepad) to correctly
@@ -110,9 +116,17 @@ int main(int argc, char* args[])
         if (resolveClass(&jvm, (const uint8_t*)args[1], inputLength, &mainLoadedClass))
             executeJVM(&jvm, mainLoadedClass);
 
+        uint8_t printStatus = jvm.status != JVM_STATUS_OK;
+
 #ifdef DEBUG
-        printf("Execution finished. Status: %d\n", jvm.status);
+        printStatus = 1;
 #endif // DEBUG
+
+        if (printStatus)
+        {
+            printf("Execution finished. Status: %d\n", jvm.status);
+            printf("Status message: %s.", getJvmStatusMessage(jvm.status));
+        }
 
         deinitJVM(&jvm);
     }

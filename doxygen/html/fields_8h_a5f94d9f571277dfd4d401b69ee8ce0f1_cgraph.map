@@ -1,0 +1,10 @@
+<map id="readField" name="readField">
+<area shape="rect" id="node2" href="$readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="374,12,435,38"/>
+<area shape="rect" id="node3" href="$validity_8c.html#ae92343db487c57fae11501fad146897a" title="Checks whether the &quot;accessFlags&quot; parameter has a valid combination of field flags. " alt="" coords="128,37,289,64"/>
+<area shape="rect" id="node4" href="$validity_8c.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="Identifies if a name index in JavaClass is valid. " alt="" coords="145,138,272,165"/>
+<area shape="rect" id="node6" href="$readfunctions_8h.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="520,164,655,190"/>
+<area shape="rect" id="node8" href="$attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="161,88,257,114"/>
+<area shape="rect" id="node5" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="Checks whether the UTF&#45;8 stream is a valid Java Identifier. " alt="" coords="337,138,472,165"/>
+<area shape="rect" id="node7" href="$utf8_8h.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="703,138,837,165"/>
+<area shape="rect" id="node9" href="$readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="374,88,435,114"/>
+</map>

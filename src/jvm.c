@@ -6,6 +6,25 @@
 #include "debugging.h"
 #include <string.h>
 
+const char* getJvmStatusMessage(enum JVMStatus status)
+{
+  switch (status)
+  {
+    case JVM_STATUS_OK: return "Ok";
+    case JVM_STATUS_NO_CLASS_LOADED: return "No class loaded";
+    case JVM_STATUS_MAIN_CLASS_RESOLUTION_FAILED: return "Main class resolution failed";
+    case JVM_STATUS_CLASS_RESOLUTION_FAILED: return "Class resolution failed";
+    case JVM_STATUS_METHOD_RESOLUTION_FAILED: return "Method resolution failed";
+    case JVM_STATUS_FIELD_RESOLUTION_FAILED: return "Field resolution failed";
+    case JVM_STATUS_UNKNOWN_INSTRUCTION: return "Unknown instruction";
+    case JVM_STATUS_OUT_OF_MEMORY: return "Out of memory";
+    case JVM_STATUS_MAIN_METHOD_NOT_FOUND: return "Main method not found";
+    case JVM_STATUS_INVALID_INSTRUCTION_PARAMETERS: return "Invalid instruction parameters";
+  }
+
+  return "Unknown status";
+}
+
 /// @brief Initializes a JavaVirtualMachine structure.
 ///
 /// @param JavaVirtualMachine* jvm - pointer to the structure to be

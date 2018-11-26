@@ -1,0 +1,19 @@
+<map id="instfunc_pop2" name="instfunc_pop2">
+<area shape="rect" id="node2" href="$instructions_8h.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="156,433,301,460"/>
+<area shape="rect" id="node3" href="$jvm_8h.html#a84bbfdfb213d48f48d7252c5264c229b" title="Executes the bytecode of a given method. " alt="" coords="349,205,432,232"/>
+<area shape="rect" id="node4" href="$instructions_8c.html#a3ffd230810fadca7e0c5720f3c84f2fa" title="instfunc_invokevirtual" alt="" coords="608,357,751,384"/>
+<area shape="rect" id="node5" href="$instructions_8c.html#a7ff9a907830a5bfd8ee8c97171815507" title="instfunc_invokespecial" alt="" coords="604,53,755,80"/>
+<area shape="rect" id="node6" href="$instructions_8c.html#a12f892cfda6a1bdbabd72c9a7028ca03" title="instfunc_invokestatic" alt="" coords="608,104,751,131"/>
+<area shape="rect" id="node7" href="$instructions_8c.html#a4b88fa6a76e21dd9034a54808a3b5ef7" title="instfunc_invokeinterface" alt="" coords="600,256,759,283"/>
+<area shape="rect" id="node8" href="$jvm_8h.html#a38b6a19996260e30af5a369a9588dc31" title="Executes the main method of a given class. " alt="" coords="632,180,727,207"/>
+<area shape="rect" id="node10" href="$jvm_8h.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="Initializes a class. " alt="" coords="480,307,552,333"/>
+<area shape="rect" id="node9" href="$main_8c.html#a700a0caa5b70a06d1064e576f9f3cf65" title="main" alt="" coords="835,180,885,207"/>
+<area shape="rect" id="node11" href="$instructions_8c.html#aacb5e3cdcafeb85c2e2290884ade4159" title="instfunc_getstatic" alt="" coords="617,420,741,447"/>
+<area shape="rect" id="node12" href="$instructions_8c.html#a039f1fa8b3f891d297e75fb734bbc696" title="instfunc_putstatic" alt="" coords="617,496,741,523"/>
+<area shape="rect" id="node13" href="$instructions_8c.html#a5548cc8388f689b4961dd5b212af9cc9" title="instfunc_getfield" alt="" coords="622,553,737,580"/>
+<area shape="rect" id="node14" href="$instructions_8c.html#aec7c357e7b5efdd6d282b716beea625d" title="instfunc_putfield" alt="" coords="622,608,737,635"/>
+<area shape="rect" id="node15" href="$jvm_8h.html#a5af5cdb51df6603269eed2dcdd9e126f" title="newClassInstance" alt="" coords="616,307,743,333"/>
+<area shape="rect" id="node16" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="815,269,905,296"/>
+<area shape="rect" id="node17" href="$instructions_8c.html#a25b6b831a827b32f6afc0ad1961ba248" title="instfunc_ldc_w" alt="" coords="807,509,913,536"/>
+<area shape="rect" id="node18" href="$instructions_8c.html#a178ca8179e5d3037b2c5c5c7d3d58e36" title="instfunc_new" alt="" coords="811,636,909,663"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="opcodes.h" name="opcodes.h">
+<area shape="rect" id="node2" href="$attributes_8c.html" title="attributes.c" alt="" coords="85,80,172,107"/>
+<area shape="rect" id="node3" href="$jvm_8h.html" title="jvm.h" alt="" coords="196,80,248,107"/>
+<area shape="rect" id="node10" href="$opcodes_8c.html" title="opcodes.c" alt="" coords="272,80,355,107"/>
+<area shape="rect" id="node4" href="$instructions_8h.html" title="instructions.h" alt="" coords="24,155,124,181"/>
+<area shape="rect" id="node5" href="$instructions_8c.html" title="instructions.c" alt="" coords="24,229,124,256"/>
+<area shape="rect" id="node6" href="$jvm_8c.html" title="jvm.c" alt="" coords="158,229,210,256"/>
+<area shape="rect" id="node7" href="$natives_8h.html" title="natives.h" alt="" coords="148,155,221,181"/>
+<area shape="rect" id="node8" href="$natives_8c.html" title="natives.c" alt="" coords="253,229,326,256"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="main.c" alt="" coords="347,155,408,181"/>
+</map>

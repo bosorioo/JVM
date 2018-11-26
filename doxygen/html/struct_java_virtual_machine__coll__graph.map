@@ -1,0 +1,17 @@
+<map id="JavaVirtualMachine" name="JavaVirtualMachine">
+<area shape="rect" id="node2" href="$struct_reference_table.html" title="ReferenceTable" alt="" coords="5,476,116,503"/>
+<area shape="rect" id="node3" href="$struct_reference.html" title="Reference" alt="" coords="138,375,218,401"/>
+<area shape="rect" id="node6" href="$struct_object_array.html" title="ObjectArray" alt="" coords="194,476,285,503"/>
+<area shape="rect" id="node4" href="$struct_string.html" title="String" alt="" coords="71,273,127,300"/>
+<area shape="rect" id="node5" href="$struct_array.html" title="Array" alt="" coords="151,273,205,300"/>
+<area shape="rect" id="node7" href="$struct_class_instance.html" title="ClassInstance" alt="" coords="229,273,333,300"/>
+<area shape="rect" id="node8" href="$struct_java_class.html" title="JavaClass" alt="" coords="326,184,406,211"/>
+<area shape="rect" id="node13" href="$struct_loaded_classes.html" title="Linked list data struct that holds information about a class that has already been resolved..." alt="" coords="269,324,380,351"/>
+<area shape="rect" id="node15" href="$struct_frame.html" title="Structure that will be associated with a method and holds the information necessary to run the method..." alt="" coords="435,273,494,300"/>
+<area shape="rect" id="node9" href="$structfield__info.html" title="field_info" alt="" coords="203,95,275,121"/>
+<area shape="rect" id="node10" href="$structattribute__info.html" title="attribute_info" alt="" coords="275,5,371,32"/>
+<area shape="rect" id="node11" href="$structmethod__info.html" title="method_info" alt="" coords="407,95,499,121"/>
+<area shape="rect" id="node12" href="$structcp__info.html" title="cp_info" alt="" coords="523,95,585,121"/>
+<area shape="rect" id="node14" href="$struct_frame_stack.html" title="Stack of frames to store all frames created by method calling during execution of the JVM..." alt="" coords="399,425,493,452"/>
+<area shape="rect" id="node16" href="$struct_operand_stack.html" title="OperandStack" alt="" coords="431,184,536,211"/>
+</map>

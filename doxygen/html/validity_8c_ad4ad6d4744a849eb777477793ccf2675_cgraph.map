@@ -1,0 +1,6 @@
+<map id="checkFieldNameAndTypeIndex" name="checkFieldNameAndTypeIndex">
+<area shape="rect" id="node2" href="$validity_8c.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="Identifies if a name index in JavaClass is valid. " alt="" coords="255,5,381,32"/>
+<area shape="rect" id="node4" href="$readfunctions_8h.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="612,31,747,57"/>
+<area shape="rect" id="node3" href="$validity_8c.html#ac49e5a4017228d024b3c8d4b7ae6e27e" title="Checks whether the UTF&#45;8 stream is a valid Java Identifier. " alt="" coords="429,5,564,32"/>
+<area shape="rect" id="node5" href="$utf8_8h.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="795,5,929,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="deinitJVM" name="deinitJVM">
+<area shape="rect" id="node2" href="$framestack_8c.html#a6debf06c308367fb8e44acfdb0d27ea8" title="Free all the elements of the FrameStack passed as parameter by reference. " alt="" coords="132,19,247,45"/>
+<area shape="rect" id="node5" href="$javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="Closes the .class file and releases resources used by the JavaClass struct. " alt="" coords="136,81,243,108"/>
+<area shape="rect" id="node9" href="$jvm_8c.html#a4496705945248c1e848995ded82012c8" title="deleteReference" alt="" coords="132,132,247,159"/>
+<area shape="rect" id="node3" href="$framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="Free the Frame passed as parameter. " alt="" coords="326,5,406,32"/>
+<area shape="rect" id="node4" href="$operandstack_8h.html#a0e5f73651cf63f65cd5c30437070e5dd" title="Free all the elements of the OperandStack passed as parameter by reference. " alt="" coords="485,5,612,32"/>
+<area shape="rect" id="node6" href="$methods_8h.html#a50e4408e126b27fef952d2e1fc1b044e" title="Releases attributes used by the method_info struct. " alt="" coords="295,56,437,83"/>
+<area shape="rect" id="node7" href="$attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="493,107,605,133"/>
+<area shape="rect" id="node8" href="$fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="Releases attributes used by the field_info struct. " alt="" coords="303,157,429,184"/>
+</map>

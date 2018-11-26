@@ -1,0 +1,51 @@
+<map id="instfunc_ldc" name="instfunc_ldc">
+<area shape="rect" id="node2" href="$jvm_8c.html#a8a0f79bec7b4a76d2ca09ab27342f639" title="newString" alt="" coords="613,1300,692,1327"/>
+<area shape="rect" id="node3" href="$jvm_8c.html#afc01abbd34a25316bb3e806471ebdbeb" title="Loads a .class file without initializing it. " alt="" coords="160,1148,255,1175"/>
+<area shape="rect" id="node39" href="$jvm_8c.html#a8bbe91a3e26f98b22758016825b6cdd1" title="newClassInstance" alt="" coords="144,1452,271,1479"/>
+<area shape="rect" id="node50" href="$operandstack_8h.html#a6f7339310c50b11f4cbf123170b995aa" title="Push the operand on the top of OperandStack passed as parameter by reference. " alt="" coords="867,1655,965,1682"/>
+<area shape="rect" id="node4" href="$utf8_8h.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="1114,1250,1199,1276"/>
+<area shape="rect" id="node5" href="$jvm_8c.html#a10f44f11aaec2c3e616c61d127a1df67" title="Checks if a class has already been loaded by its name. " alt="" coords="355,1250,461,1276"/>
+<area shape="rect" id="node6" href="$javaclass_8c.html#ae447cd0966dc3beb54467b9097e08f2c" title="Opens a class file and parse it, storing the class information in the JavaClass structure. " alt="" coords="356,570,460,596"/>
+<area shape="rect" id="node33" href="$javaclass_8c.html#a38efa2c89d8bc742293cdc1c6e0f3250" title="Decodes JavaClassStatus enumeration elements. " alt="" coords="328,1098,488,1124"/>
+<area shape="rect" id="node34" href="$jvm_8c.html#a734afa606cdeb650a38586176bf7d5ef" title="Adds a class to the list of all loaded classes by the JVM. " alt="" coords="319,1148,497,1175"/>
+<area shape="rect" id="node35" href="$javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="Closes the .class file and releases resources used by the JavaClass struct. " alt="" coords="355,1047,461,1074"/>
+<area shape="rect" id="node7" href="$readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1126,59,1187,86"/>
+<area shape="rect" id="node8" href="$readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1126,338,1187,364"/>
+<area shape="rect" id="node9" href="$constantpool_8c.html#a62504539fde83f5183d20f262d4b1943" title="Reads a cp_info from the file. " alt="" coords="575,186,731,212"/>
+<area shape="rect" id="node15" href="$validity_8c.html#aa0977a766bc0cd47a49ca0e00e706310" title="Iterates over the constant pool looking for inconsistencies in it. " alt="" coords="563,920,742,947"/>
+<area shape="rect" id="node25" href="$validity_8c.html#a3f8d1665f8c40afb0bf126a9ca693b00" title="Verifies the class indexes and access flags. " alt="" coords="559,592,747,633"/>
+<area shape="rect" id="node26" href="$validity_8c.html#af6d2b7c857a46255df3afb4283c5e5bb" title="Checks whether the name of the class pointed by &quot;thisClass&quot; is the same name as the class file..." alt="" coords="545,971,760,998"/>
+<area shape="rect" id="node28" href="$fields_8c.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="Reads a field_info from the file. " alt="" coords="615,675,690,702"/>
+<area shape="rect" id="node30" href="$attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="868,388,964,415"/>
+<area shape="rect" id="node31" href="$methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="Reads a method_info from the file. " alt="" coords="607,464,698,491"/>
+<area shape="rect" id="node10" href="$constantpool_8c.html#afea5409b47477cdbdb590472022c45f9" title="Reads a cp_info of type CONSTANT_Class from the file. " alt="" coords="833,186,999,212"/>
+<area shape="rect" id="node11" href="$constantpool_8c.html#a730bf0dfa0b00508ed8ed3b6119853c3" title="Reads a cp_info of type CONSTANT_Utf8 from the file. " alt="" coords="839,236,993,263"/>
+<area shape="rect" id="node12" href="$constantpool_8c.html#ab3d1d9a9bdb1b7162d341ce9c8fd8784" title="Reads a cp_info of type CONSTANT_Fieldref from the file. " alt="" coords="829,287,1003,314"/>
+<area shape="rect" id="node13" href="$constantpool_8c.html#a73f94285fc7c4790ca2900b6fc78b0f3" title="Reads a cp_info of type CONSTANT_Integer from the file. " alt="" coords="831,34,1001,60"/>
+<area shape="rect" id="node14" href="$constantpool_8c.html#a1f4a6c4da0269e609a18f2d8174a2c39" title="Reads a cp_info of type CONSTANT_Long from the file. " alt="" coords="836,84,996,111"/>
+<area shape="rect" id="node16" href="$validity_8c.html#ae0b08a08925ed5f9b128b7e4761a1fd7" title="Identifies if a name index in JavaClass is valid. " alt="" coords="1093,996,1220,1023"/>
+<area shape="rect" id="node17" href="$validity_8c.html#a121c42f0653a58fca056cb4397390af6" title="Identifies if a UTF8 index in JavaClass is valid. " alt="" coords="855,895,977,922"/>
+<area shape="rect" id="node18" href="$validity_8c.html#a81d937b31b6bd9f76e8b3d82a6cfd87f" title="Checks whether the index points to a valid class. " alt="" coords="855,946,977,972"/>
+<area shape="rect" id="node19" href="$validity_8c.html#a4d63a85c447a20a08c12168e73468438" title="Checks if the name and the descriptor of a method are valid. " alt="" coords="808,743,1024,770"/>
+<area shape="rect" id="node23" href="$validity_8c.html#ad4ad6d4744a849eb777477793ccf2675" title="Checks if the name and the descriptor of a field are valid. " alt="" coords="815,1047,1017,1074"/>
+<area shape="rect" id="node20" href="$validity_8c.html#a778bd378bf5e58d2b5dc40601734b813" title="checks if the name index points to a valid UTF&#45;8 and is a valid java identifier. " alt="" coords="1072,743,1241,770"/>
+<area shape="rect" id="node22" href="$readfunctions_8h.html#a4f647535c3f4f744463ddffb93a1ad68" title="readMethodDescriptor" alt="" coords="1082,591,1231,618"/>
+<area shape="rect" id="node21" href="$utf8_8h.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="Function to compare two strings, one in UTF&#45;8 and other in ASCII. " alt="" coords="1289,1022,1411,1048"/>
+<area shape="rect" id="node24" href="$readfunctions_8h.html#a08f0cfff6472d6f452771f609e65c221" title="readFieldDescriptor" alt="" coords="1089,1047,1224,1074"/>
+<area shape="rect" id="node27" href="$utf8_8h.html#a70130474d8da2b03b16c5a72c5621ce4" title="Function to compare two strings that contains file paths, both in UTF&#45;8. " alt="" coords="846,1098,986,1124"/>
+<area shape="rect" id="node29" href="$validity_8c.html#ae92343db487c57fae11501fad146897a" title="Checks whether the &quot;accessFlags&quot; parameter has a valid combination of field flags. " alt="" coords="835,692,997,719"/>
+<area shape="rect" id="node32" href="$validity_8c.html#a60bc1663d4cc614ea2d0709d9e57d20d" title="Checks whether the &quot;accessFlags&quot; parameter has a valid combination of method flags. " alt="" coords="828,338,1004,364"/>
+<area shape="rect" id="node36" href="$methods_8h.html#a50e4408e126b27fef952d2e1fc1b044e" title="Releases attributes used by the method_info struct. " alt="" coords="581,1047,724,1074"/>
+<area shape="rect" id="node37" href="$attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="860,1148,972,1175"/>
+<area shape="rect" id="node38" href="$fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="Releases attributes used by the field_info struct. " alt="" coords="589,1148,716,1175"/>
+<area shape="rect" id="node40" href="$jvm_8c.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="Initializes a class. " alt="" coords="372,1452,444,1479"/>
+<area shape="rect" id="node41" href="$attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5" title="getAttributeByType" alt="" coords="1090,1554,1223,1580"/>
+<area shape="rect" id="node42" href="$methods_8h.html#a35dc2cb5c4d0d8834d78711b207096a9" title="getMethodMatching" alt="" coords="1089,1300,1225,1327"/>
+<area shape="rect" id="node43" href="$jvm_8c.html#a84bbfdfb213d48f48d7252c5264c229b" title="Executes the bytecode of a given method. " alt="" coords="611,1478,694,1504"/>
+<area shape="rect" id="node44" href="$framestack_8c.html#a38bb1bda9e43d71c8472936c0ee14d72" title="A new frame is created each time a method is invoked. " alt="" coords="875,1503,957,1530"/>
+<area shape="rect" id="node45" href="$framestack_8c.html#a173f487de2e018f4d63d576edccb4c3d" title="Push the Frame into the FrameStack passed as parameter by reference. " alt="" coords="873,1402,959,1428"/>
+<area shape="rect" id="node46" href="$operandstack_8h.html#a56590c037c3d7582d3b3c99037c336c1" title="Pop the operand out of the top of OperandStack passed as parameter by reference. " alt="" coords="870,1452,962,1479"/>
+<area shape="rect" id="node47" href="$natives_8h.html#a1f310d5e1692606d76298f438c0ed4b2" title="getNative" alt="" coords="879,1351,953,1378"/>
+<area shape="rect" id="node48" href="$instructions_8c.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="843,1706,989,1732"/>
+<area shape="rect" id="node49" href="$opcodes_8h.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="The instruction&#39;s mnemonic is its name. Its opcode is its numeric representation which specifies the ..." alt="" coords="843,1554,989,1580"/>
+</map>

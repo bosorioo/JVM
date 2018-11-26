@@ -1,0 +1,51 @@
+<map id="instfunc_getstatic" name="instfunc_getstatic">
+<area shape="rect" id="node2" href="$utf8_8h.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="1370,485,1455,512"/>
+<area shape="rect" id="node3" href="$operandstack_8h.html#a6f7339310c50b11f4cbf123170b995aa" title="Push the operand on the top of OperandStack passed as parameter by reference. " alt="" coords="932,689,1031,716"/>
+<area shape="rect" id="node4" href="$jvm_8c.html#af83bb4c4db933c767e72a02d65a1b197" title="Resolves a field. " alt="" coords="369,309,460,336"/>
+<area shape="rect" id="node23" href="$jvm_8c.html#ae702b2c5a05e0f39c5edcaf78bcb4c95" title="Initializes a class. " alt="" coords="202,816,274,843"/>
+<area shape="rect" id="node50" href="$fields_8c.html#a6209a5680d645908bcbb43a0d9072ff9" title="getFieldMatching" alt="" coords="177,1069,299,1096"/>
+<area shape="rect" id="node5" href="$jvm_8c.html#afc01abbd34a25316bb3e806471ebdbeb" title="Loads a .class file without initializing it. " alt="" coords="934,407,1029,433"/>
+<area shape="rect" id="node6" href="$jvm_8c.html#a10f44f11aaec2c3e616c61d127a1df67" title="Checks if a class has already been loaded by its name. " alt="" coords="1115,351,1221,377"/>
+<area shape="rect" id="node7" href="$javaclass_8c.html#ae447cd0966dc3beb54467b9097e08f2c" title="Opens a class file and parse it, storing the class information in the JavaClass structure. " alt="" coords="1116,208,1220,235"/>
+<area shape="rect" id="node17" href="$javaclass_8c.html#a38efa2c89d8bc742293cdc1c6e0f3250" title="Decodes JavaClassStatus enumeration elements. " alt="" coords="1088,401,1248,428"/>
+<area shape="rect" id="node18" href="$jvm_8c.html#a734afa606cdeb650a38586176bf7d5ef" title="Adds a class to the list of all loaded classes by the JVM. " alt="" coords="1079,452,1257,479"/>
+<area shape="rect" id="node19" href="$javaclass_8c.html#afc621448c86d015f1f284e3e0bc3f276" title="Closes the .class file and releases resources used by the JavaClass struct. " alt="" coords="1115,1221,1221,1248"/>
+<area shape="rect" id="node8" href="$readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1772,233,1833,260"/>
+<area shape="rect" id="node9" href="$readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="1772,107,1833,133"/>
+<area shape="rect" id="node10" href="$constantpool_8c.html#a62504539fde83f5183d20f262d4b1943" title="Reads a cp_info from the file. " alt="" coords="1568,5,1724,32"/>
+<area shape="rect" id="node11" href="$validity_8c.html#aa0977a766bc0cd47a49ca0e00e706310" title="Iterates over the constant pool looking for inconsistencies in it. " alt="" coords="1323,309,1502,336"/>
+<area shape="rect" id="node12" href="$validity_8c.html#a3f8d1665f8c40afb0bf126a9ca693b00" title="Verifies the class indexes and access flags. " alt="" coords="1319,361,1507,402"/>
+<area shape="rect" id="node13" href="$validity_8c.html#af6d2b7c857a46255df3afb4283c5e5bb" title="Checks whether the name of the class pointed by &quot;thisClass&quot; is the same name as the class file..." alt="" coords="1305,427,1520,453"/>
+<area shape="rect" id="node14" href="$fields_8c.html#a5f94d9f571277dfd4d401b69ee8ce0f1" title="Reads a field_info from the file. " alt="" coords="1375,107,1450,133"/>
+<area shape="rect" id="node15" href="$attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="1598,208,1694,235"/>
+<area shape="rect" id="node16" href="$methods_8h.html#a0ee1df02a4ba0b51f9e6db74bef74ac9" title="Reads a method_info from the file. " alt="" coords="1367,157,1458,184"/>
+<area shape="rect" id="node20" href="$methods_8h.html#a50e4408e126b27fef952d2e1fc1b044e" title="Releases attributes used by the method_info struct. " alt="" coords="1341,1171,1484,1197"/>
+<area shape="rect" id="node21" href="$attributes_8c.html#a136bdfadd787ebd62f1c721f99270cc9" title="freeAttributeInfo" alt="" coords="1590,1221,1702,1248"/>
+<area shape="rect" id="node22" href="$fields_8c.html#aeaafced8bc17d76aa18f38a005e01f99" title="Releases attributes used by the field_info struct. " alt="" coords="1349,1221,1476,1248"/>
+<area shape="rect" id="node24" href="$attributes_8c.html#ae3ce1b33741046741c90a6f5592911a5" title="getAttributeByType" alt="" coords="737,1019,871,1045"/>
+<area shape="rect" id="node25" href="$jvm_8c.html#a8a0f79bec7b4a76d2ca09ab27342f639" title="newString" alt="" coords="942,457,1021,484"/>
+<area shape="rect" id="node26" href="$methods_8h.html#a35dc2cb5c4d0d8834d78711b207096a9" title="getMethodMatching" alt="" coords="347,1145,483,1172"/>
+<area shape="rect" id="node29" href="$jvm_8c.html#a84bbfdfb213d48f48d7252c5264c229b" title="Executes the bytecode of a given method. " alt="" coords="373,993,456,1020"/>
+<area shape="rect" id="node27" href="$utf8_8h.html#a317c1d4f6b0e4b61b5f99baf9d673a8e" title="Function to compare two strings, one in UTF&#45;8 and other in ASCII. " alt="" coords="543,1272,664,1299"/>
+<area shape="rect" id="node28" href="$utf8_8c.html#aa27c74e3b232110e625a4286efbc6102" title="Function to iterate over the bytes of a UTF&#45;8. " alt="" coords="737,1272,871,1299"/>
+<area shape="rect" id="node30" href="$framestack_8c.html#a38bb1bda9e43d71c8472936c0ee14d72" title="A new frame is created each time a method is invoked. " alt="" coords="562,1069,645,1096"/>
+<area shape="rect" id="node31" href="$framestack_8c.html#a173f487de2e018f4d63d576edccb4c3d" title="Push the Frame into the FrameStack passed as parameter by reference. " alt="" coords="560,917,647,944"/>
+<area shape="rect" id="node32" href="$operandstack_8h.html#a56590c037c3d7582d3b3c99037c336c1" title="Pop the operand out of the top of OperandStack passed as parameter by reference. " alt="" coords="935,917,1027,944"/>
+<area shape="rect" id="node33" href="$natives_8h.html#a1f310d5e1692606d76298f438c0ed4b2" title="getNative" alt="" coords="566,1120,641,1147"/>
+<area shape="rect" id="node36" href="$instructions_8c.html#a036f840d5a734d71a7807c8d4fc203c6" title="Retrieves the instruction function for a given instruction opcode. " alt="" coords="531,689,676,716"/>
+<area shape="rect" id="node47" href="$opcodes_8h.html#a7a0d335043d2fcc1028dcb2e4d1b1ba8" title="The instruction&#39;s mnemonic is its name. Its opcode is its numeric representation which specifies the ..." alt="" coords="531,968,676,995"/>
+<area shape="rect" id="node48" href="$framestack_8c.html#ab279becc7f4fe166543e43d12e45ef56" title="Pop the Frame passed as parameter by reference. " alt="" coords="563,1019,643,1045"/>
+<area shape="rect" id="node49" href="$framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="Free the Frame passed as parameter. " alt="" coords="563,1171,643,1197"/>
+<area shape="rect" id="node34" href="$natives_8c.html#a481ac99c2facb29e37dbba52e692b6e5" title="native_println" alt="" coords="755,1120,853,1147"/>
+<area shape="rect" id="node35" href="$natives_8c.html#af0d8cada4a1bfe281476a1234d46f88d" title="native_currentTimeMillis" alt="" coords="724,1069,884,1096"/>
+<area shape="rect" id="node37" href="$instructions_8c.html#a66a6ac26513b757e08d88b0ed26213a2" title="instfunc_nop" alt="" coords="757,563,851,589"/>
+<area shape="rect" id="node38" href="$instructions_8c.html#a5e1a4beb32fc362c93f19b3f0e67969f" title="instfunc_aconst_null" alt="" coords="734,765,874,792"/>
+<area shape="rect" id="node39" href="$instructions_8c.html#ab86139cde5e7ae97fc241a89339fe2e8" title="instfunc_bipush" alt="" coords="748,613,860,640"/>
+<area shape="rect" id="node40" href="$instructions_8c.html#a6d7c00376121a423c38eeccc0a3091b4" title="instfunc_sipush" alt="" coords="748,664,860,691"/>
+<area shape="rect" id="node41" href="$instructions_8c.html#a92d8f13080440d3079f1e5407b2f5f10" title="instfunc_ldc" alt="" coords="759,461,849,488"/>
+<area shape="rect" id="node42" href="$instructions_8c.html#a25b6b831a827b32f6afc0ad1961ba248" title="instfunc_ldc_w" alt="" coords="751,411,857,437"/>
+<area shape="rect" id="node43" href="$instructions_8c.html#a9f86456cc432b6c908ec3ded390791da" title="instfunc_ldc2_w" alt="" coords="747,715,861,741"/>
+<area shape="rect" id="node44" href="$instructions_8c.html#a74f07f9cf2355bb2f2a41e17d5ee7080" title="instfunc_aaload" alt="" coords="748,816,860,843"/>
+<area shape="rect" id="node45" href="$instructions_8c.html#a648f161b9b150e189a4f533036ba889a" title="instfunc_aastore" alt="" coords="745,867,863,893"/>
+<area shape="rect" id="node46" href="$instructions_8c.html#a69a5411d259a08519f379ee9cb76386b" title="instfunc_pop" alt="" coords="757,917,851,944"/>
+</map>

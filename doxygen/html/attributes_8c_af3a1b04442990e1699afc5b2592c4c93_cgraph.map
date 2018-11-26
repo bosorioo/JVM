@@ -1,0 +1,5 @@
+<map id="readAttributeCode" name="readAttributeCode">
+<area shape="rect" id="node2" href="$readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="324,5,385,32"/>
+<area shape="rect" id="node3" href="$readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="324,68,385,95"/>
+<area shape="rect" id="node4" href="$attributes_8c.html#a0aab7731ade76c16c2ff8b3bef1111d1" title="readAttribute" alt="" coords="180,31,276,57"/>
+</map>

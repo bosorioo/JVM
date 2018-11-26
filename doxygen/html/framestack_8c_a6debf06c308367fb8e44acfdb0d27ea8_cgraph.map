@@ -1,0 +1,4 @@
+<map id="freeFrameStack" name="freeFrameStack">
+<area shape="rect" id="node2" href="$framestack_8c.html#ac6d7106961bbc47fa0f024aae9ab12f2" title="Free the Frame passed as parameter. " alt="" coords="168,5,248,32"/>
+<area shape="rect" id="node3" href="$operandstack_8h.html#a0e5f73651cf63f65cd5c30437070e5dd" title="Free all the elements of the OperandStack passed as parameter by reference. " alt="" coords="296,5,423,32"/>
+</map>

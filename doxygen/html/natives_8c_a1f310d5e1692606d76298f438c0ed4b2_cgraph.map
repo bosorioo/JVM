@@ -1,0 +1,9 @@
+<map id="getNative" name="getNative">
+<area shape="rect" id="node2" href="$natives_8c.html#a481ac99c2facb29e37dbba52e692b6e5" title="native_println" alt="" coords="159,81,257,108"/>
+<area shape="rect" id="node6" href="$natives_8c.html#af0d8cada4a1bfe281476a1234d46f88d" title="native_currentTimeMillis" alt="" coords="128,144,288,171"/>
+<area shape="rect" id="node8" href="$utf8_8h.html#a22e876bf276422ed9e58e74feb81576f" title="Function to compare two strings, both in UTF&#45;8. " alt="" coords="165,195,251,221"/>
+<area shape="rect" id="node3" href="$operandstack_8h.html#a56590c037c3d7582d3b3c99037c336c1" title="Pop the operand out of the top of OperandStack passed as parameter by reference. " alt="" coords="367,5,459,32"/>
+<area shape="rect" id="node4" href="$readfunctions_8h.html#a0fa05fbe8344d5742b19ab75fbe47ec9" title="readDoubleFromUint64" alt="" coords="336,56,491,83"/>
+<area shape="rect" id="node5" href="$readfunctions_8h.html#a054b53103c0c81cea2d60d63128ebc20" title="readFloatFromUint32" alt="" coords="342,107,485,133"/>
+<area shape="rect" id="node7" href="$operandstack_8h.html#a6f7339310c50b11f4cbf123170b995aa" title="Push the operand on the top of OperandStack passed as parameter by reference. " alt="" coords="364,157,463,184"/>
+</map>

@@ -22,6 +22,8 @@ enum JVMStatus {
     JVM_STATUS_INVALID_INSTRUCTION_PARAMETERS
 };
 
+const char* getJvmStatusMessage(enum JVMStatus status);
+
 typedef struct ClassInstance
 {
     JavaClass* c;

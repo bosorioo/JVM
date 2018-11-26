@@ -1,0 +1,12 @@
+<map id="operandstack.h" name="operandstack.h">
+<area shape="rect" id="node2" href="$framestack_8h.html" title="framestack.h" alt="" coords="92,80,189,107"/>
+<area shape="rect" id="node11" href="$operandstack_8c.html" title="operandstack.c" alt="" coords="213,80,324,107"/>
+<area shape="rect" id="node3" href="$framestack_8c.html" title="framestack.c" alt="" coords="5,155,103,181"/>
+<area shape="rect" id="node4" href="$jvm_8h.html" title="jvm.h" alt="" coords="224,155,276,181"/>
+<area shape="rect" id="node5" href="$instructions_8h.html" title="instructions.h" alt="" coords="44,229,144,256"/>
+<area shape="rect" id="node6" href="$instructions_8c.html" title="instructions.c" alt="" coords="292,304,392,331"/>
+<area shape="rect" id="node7" href="$jvm_8c.html" title="jvm.c" alt="" coords="156,304,208,331"/>
+<area shape="rect" id="node8" href="$natives_8h.html" title="natives.h" alt="" coords="305,229,379,256"/>
+<area shape="rect" id="node9" href="$natives_8c.html" title="natives.c" alt="" coords="423,304,496,331"/>
+<area shape="rect" id="node10" href="$main_8c.html" title="main.c" alt="" coords="219,229,281,256"/>
+</map>

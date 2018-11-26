@@ -1,0 +1,9 @@
+<map id="readConstantPoolEntry" name="readConstantPoolEntry">
+<area shape="rect" id="node2" href="$constantpool_8c.html#afea5409b47477cdbdb590472022c45f9" title="Reads a cp_info of type CONSTANT_Class from the file. " alt="" coords="214,5,379,32"/>
+<area shape="rect" id="node3" href="$readfunctions_8h.html#ac361664a5daa1d90860f61ebe6d5f938" title="Reads a two&#45;byte unsigned integer from the JavaClass file. " alt="" coords="432,81,493,108"/>
+<area shape="rect" id="node4" href="$constantpool_8c.html#a730bf0dfa0b00508ed8ed3b6119853c3" title="Reads a cp_info of type CONSTANT_Utf8 from the file. " alt="" coords="219,107,374,133"/>
+<area shape="rect" id="node5" href="$constantpool_8c.html#ab3d1d9a9bdb1b7162d341ce9c8fd8784" title="Reads a cp_info of type CONSTANT_Fieldref from the file. " alt="" coords="209,157,384,184"/>
+<area shape="rect" id="node6" href="$constantpool_8c.html#a73f94285fc7c4790ca2900b6fc78b0f3" title="Reads a cp_info of type CONSTANT_Integer from the file. " alt="" coords="211,208,382,235"/>
+<area shape="rect" id="node8" href="$constantpool_8c.html#a1f4a6c4da0269e609a18f2d8174a2c39" title="Reads a cp_info of type CONSTANT_Long from the file. " alt="" coords="217,259,377,285"/>
+<area shape="rect" id="node7" href="$readfunctions_8h.html#a102d7158b65626e3002c9665fddbb874" title="Reads a four&#45;byte unsigned integer from the JavaClass file. " alt="" coords="432,233,493,260"/>
+</map>

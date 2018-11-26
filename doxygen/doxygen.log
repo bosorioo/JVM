@@ -1,0 +1,624 @@
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:427: warning: Conditional section does not have a corresponding \endcond command within this file.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/debugging.c:264: warning: the name `memoryinspect.c' supplied as the second argument in the \file statement is not an input file
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:284: warning: argument 'uint8_t' of command @param is not found in the argument list of decodeTag(uint8_t tag)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:290: warning: The following parameters of decodeTag(uint8_t tag) are not documented:
+  parameter 'tag'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:422: warning: argument 'JavaClass' of command @param is not found in the argument list of printConstantPool(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:427: warning: The following parameters of printConstantPool(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:312: warning: argument 'JavaClass' of command @param is not found in the argument list of printConstantPoolEntry(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:318: warning: The following parameters of printConstantPoolEntry(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:8: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPool_Class(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:8: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPool_Class(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:21: warning: The following parameters of readConstantPool_Class(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:49: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPool_Fieldref(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:49: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPool_Fieldref(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:61: warning: The following parameters of readConstantPool_Fieldref(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:101: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPool_Integer(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:101: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPool_Integer(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:112: warning: The following parameters of readConstantPool_Integer(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:123: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPool_Long(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:123: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPool_Long(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:134: warning: The following parameters of readConstantPool_Long(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:151: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPool_Utf8(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:151: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPool_Utf8(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:159: warning: The following parameters of readConstantPool_Utf8(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:210: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPoolEntry(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:210: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPoolEntry(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:221: warning: The following parameters of readConstantPoolEntry(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:284: warning: argument 'uint8_t' of command @param is not found in the argument list of decodeTag(uint8_t tag)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.h:89: warning: The following parameters of decodeTag(uint8_t tag) are not documented:
+  parameter 'tag'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:422: warning: argument 'JavaClass' of command @param is not found in the argument list of printConstantPool(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.h:91: warning: The following parameters of printConstantPool(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:210: warning: argument 'JavaClass' of command @param is not found in the argument list of readConstantPoolEntry(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.c:210: warning: argument 'cp_info' of command @param is not found in the argument list of readConstantPoolEntry(JavaClass *jc, cp_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/constantpool.h:90: warning: The following parameters of readConstantPoolEntry(JavaClass *jc, cp_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:83: warning: argument 'field_info' of command @param is not found in the argument list of freeFieldAttributes(field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:90: warning: The following parameters of freeFieldAttributes(field_info *entry) are not documented:
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:106: warning: argument 'JavaClass' of command @param is not found in the argument list of printAllFields(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:110: warning: The following parameters of printAllFields(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:7: warning: argument 'JavaClass' of command @param is not found in the argument list of readField(JavaClass *jc, field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:7: warning: argument 'field_info' of command @param is not found in the argument list of readField(JavaClass *jc, field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:15: warning: The following parameters of readField(JavaClass *jc, field_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:83: warning: argument 'field_info' of command @param is not found in the argument list of freeFieldAttributes(field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.h:25: warning: The following parameters of freeFieldAttributes(field_info *entry) are not documented:
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:106: warning: argument 'JavaClass' of command @param is not found in the argument list of printAllFields(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.h:26: warning: The following parameters of printAllFields(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:7: warning: argument 'JavaClass' of command @param is not found in the argument list of readField(JavaClass *jc, field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.c:7: warning: argument 'field_info' of command @param is not found in the argument list of readField(JavaClass *jc, field_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/fields.h:24: warning: The following parameters of readField(JavaClass *jc, field_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:51: warning: argument 'Frame' of command @param is not found in the argument list of freeFrame(Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:54: warning: The following parameters of freeFrame(Frame *frame) are not documented:
+  parameter 'frame'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:107: warning: argument 'FrameStack' of command @param is not found in the argument list of freeFrameStack(FrameStack **fs)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:110: warning: The following parameters of freeFrameStack(FrameStack **fs) are not documented:
+  parameter 'fs'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:4: warning: argument 'JavaClass' of command @param is not found in the argument list of newFrame(JavaClass *jc, method_info *method)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:4: warning: argument 'method_info' of command @param is not found in the argument list of newFrame(JavaClass *jc, method_info *method)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:10: warning: The following parameters of newFrame(JavaClass *jc, method_info *method) are not documented:
+  parameter 'jc'
+  parameter 'method'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:85: warning: argument 'FrameStack' of command @param is not found in the argument list of popFrame(FrameStack **fs, Frame *outPtr)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:85: warning: argument 'Frame' of command @param is not found in the argument list of popFrame(FrameStack **fs, Frame *outPtr)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:91: warning: The following parameters of popFrame(FrameStack **fs, Frame *outPtr) are not documented:
+  parameter 'fs'
+  parameter 'outPtr'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:65: warning: argument 'FrameStack' of command @param is not found in the argument list of pushFrame(FrameStack **fs, Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:65: warning: argument 'Frame' of command @param is not found in the argument list of pushFrame(FrameStack **fs, Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:71: warning: The following parameters of pushFrame(FrameStack **fs, Frame *frame) are not documented:
+  parameter 'fs'
+  parameter 'frame'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:51: warning: argument 'Frame' of command @param is not found in the argument list of freeFrame(Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.h:54: warning: The following parameters of freeFrame(Frame *frame) are not documented:
+  parameter 'frame'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:107: warning: argument 'FrameStack' of command @param is not found in the argument list of freeFrameStack(FrameStack **fs)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.h:57: warning: The following parameters of freeFrameStack(FrameStack **fs) are not documented:
+  parameter 'fs'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:4: warning: argument 'JavaClass' of command @param is not found in the argument list of newFrame(JavaClass *jc, method_info *method)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:4: warning: argument 'method_info' of command @param is not found in the argument list of newFrame(JavaClass *jc, method_info *method)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.h:53: warning: The following parameters of newFrame(JavaClass *jc, method_info *method) are not documented:
+  parameter 'jc'
+  parameter 'method'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:85: warning: argument 'FrameStack' of command @param is not found in the argument list of popFrame(FrameStack **fs, Frame *outPtr)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:85: warning: argument 'Frame' of command @param is not found in the argument list of popFrame(FrameStack **fs, Frame *outPtr)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.h:56: warning: The following parameters of popFrame(FrameStack **fs, Frame *outPtr) are not documented:
+  parameter 'fs'
+  parameter 'outPtr'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:65: warning: argument 'FrameStack' of command @param is not found in the argument list of pushFrame(FrameStack **fs, Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.c:65: warning: argument 'Frame' of command @param is not found in the argument list of pushFrame(FrameStack **fs, Frame *frame)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/framestack.h:55: warning: The following parameters of pushFrame(FrameStack **fs, Frame *frame) are not documented:
+  parameter 'fs'
+  parameter 'frame'
+warning: Call graph for 'fetchOpcodeFunction' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+warning: Call graph for 'fetchOpcodeFunction' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:284: warning: argument 'JavaClass' of command @param is not found in the argument list of closeClassFile(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:290: warning: The following parameters of closeClassFile(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'uint16_t' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'char' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'int32_t' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'enum' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:420: warning: The following parameters of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype) are not documented:
+  parameter 'flags'
+  parameter 'buffer'
+  parameter 'buffer_len'
+  parameter 'acctype'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:351: warning: argument 'enum' of command @param is not found in the argument list of decodeJavaClassStatus(enum JavaClassStatus status)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:357: warning: The following parameters of decodeJavaClassStatus(enum JavaClassStatus status) are not documented:
+  parameter 'status'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:8: warning: argument 'JavaClass' of command @param is not found in the argument list of openClassFile(JavaClass *jc, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:8: warning: argument 'const' of command @param is not found in the argument list of openClassFile(JavaClass *jc, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:23: warning: The following parameters of openClassFile(JavaClass *jc, const char *path) are not documented:
+  parameter 'jc'
+  parameter 'path'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:284: warning: argument 'JavaClass' of command @param is not found in the argument list of closeClassFile(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.h:135: warning: The following parameters of closeClassFile(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'uint16_t' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'char' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'int32_t' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:408: warning: argument 'enum' of command @param is not found in the argument list of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.h:137: warning: The following parameters of decodeAccessFlags(uint16_t flags, char *buffer, int32_t buffer_len, enum AccessFlagsType acctype) are not documented:
+  parameter 'flags'
+  parameter 'buffer'
+  parameter 'buffer_len'
+  parameter 'acctype'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:351: warning: argument 'enum' of command @param is not found in the argument list of decodeJavaClassStatus(enum JavaClassStatus status)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.h:136: warning: The following parameters of decodeJavaClassStatus(enum JavaClassStatus status) are not documented:
+  parameter 'status'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:8: warning: argument 'JavaClass' of command @param is not found in the argument list of openClassFile(JavaClass *jc, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.c:8: warning: argument 'const' of command @param is not found in the argument list of openClassFile(JavaClass *jc, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/javaclass.h:134: warning: The following parameters of openClassFile(JavaClass *jc, const char *path) are not documented:
+  parameter 'jc'
+  parameter 'path'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:661: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:661: warning: argument 'JavaClass' of command @param is not found in the argument list of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:666: warning: The following parameters of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:33: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of deinitJVM(JavaVirtualMachine *jvm)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:42: warning: The following parameters of deinitJVM(JavaVirtualMachine *jvm) are not documented:
+  parameter 'jvm'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:77: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:77: warning: argument 'LoadedClasses' of command @param is not found in the argument list of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:94: warning: The following parameters of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass) are not documented:
+  parameter 'jvm'
+  parameter 'mainClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:580: warning: argument 'const' of command @param is not found in the argument list of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:580: warning: argument 'int32_t' of command @param is not found in the argument list of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:596: warning: The following parameters of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len) are not documented:
+  parameter 'descriptor_utf8'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:712: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:712: warning: argument 'JavaClass' of command @param is not found in the argument list of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:717: warning: The following parameters of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:769: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:769: warning: argument 'LoadedClasses' of command @param is not found in the argument list of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:777: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:782: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:784: warning: The following parameters of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc) are not documented:
+  parameter 'jvm'
+  parameter 'lc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:9: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of initJVM(JavaVirtualMachine *jvm)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:17: warning: The following parameters of initJVM(JavaVirtualMachine *jvm) are not documented:
+  parameter 'jvm'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'const' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'int32_t' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:691: warning: The following parameters of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'jvm'
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaClass' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaClass' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:741: warning: The following parameters of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'super'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'const' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'int32_t' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:162: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:174: warning: The following parameters of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'className_utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'JavaClass' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'cp_info' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:406: warning: The following parameters of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'cp_field'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'JavaClass' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'cp_info' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:326: warning: The following parameters of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'cp_method'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'JavaClass' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'method_info' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'uint8_t' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:469: warning: The following parameters of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'method'
+  parameter 'numberOfParameters'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:127: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of setClassPath(JavaVirtualMachine *jvm, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:127: warning: argument 'const' of command @param is not found in the argument list of setClassPath(JavaVirtualMachine *jvm, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:133: warning: The following parameters of setClassPath(JavaVirtualMachine *jvm, const char *path) are not documented:
+  parameter 'jvm'
+  parameter 'path'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:661: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:661: warning: argument 'JavaClass' of command @param is not found in the argument list of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:147: warning: The following parameters of addClassToLoadedClasses(JavaVirtualMachine *jvm, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:33: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of deinitJVM(JavaVirtualMachine *jvm)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:138: warning: The following parameters of deinitJVM(JavaVirtualMachine *jvm) are not documented:
+  parameter 'jvm'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:77: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:77: warning: argument 'LoadedClasses' of command @param is not found in the argument list of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:139: warning: The following parameters of executeJVM(JavaVirtualMachine *jvm, LoadedClasses *mainClass) are not documented:
+  parameter 'jvm'
+  parameter 'mainClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:580: warning: argument 'const' of command @param is not found in the argument list of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:580: warning: argument 'int32_t' of command @param is not found in the argument list of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:145: warning: The following parameters of getMethodDescriptorParameterCount(const uint8_t *descriptor_utf8, int32_t utf8_len) are not documented:
+  parameter 'descriptor_utf8'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:712: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:712: warning: argument 'JavaClass' of command @param is not found in the argument list of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:149: warning: The following parameters of getSuperClass(JavaVirtualMachine *jvm, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:769: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:769: warning: argument 'LoadedClasses' of command @param is not found in the argument list of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:777: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:782: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:151: warning: The following parameters of initClass(JavaVirtualMachine *jvm, LoadedClasses *lc) are not documented:
+  parameter 'jvm'
+  parameter 'lc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:9: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of initJVM(JavaVirtualMachine *jvm)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:137: warning: The following parameters of initJVM(JavaVirtualMachine *jvm) are not documented:
+  parameter 'jvm'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'const' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:683: warning: argument 'int32_t' of command @param is not found in the argument list of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:148: warning: The following parameters of isClassLoaded(JavaVirtualMachine *jvm, const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'jvm'
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaClass' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:730: warning: argument 'JavaClass' of command @param is not found in the argument list of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:150: warning: The following parameters of isClassSuperOf(JavaVirtualMachine *jvm, JavaClass *super, JavaClass *jc) are not documented:
+  parameter 'jvm'
+  parameter 'super'
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'const' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'int32_t' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:150: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:162: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:141: warning: The following parameters of resolveClass(JavaVirtualMachine *jvm, const uint8_t *className_utf8_bytes, int32_t utf8_len, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'className_utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'JavaClass' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'cp_info' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:386: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:143: warning: The following parameters of resolveField(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_field, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'cp_field'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'JavaClass' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'cp_info' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:307: warning: argument 'LoadedClasses' of command @param is not found in the argument list of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:142: warning: The following parameters of resolveMethod(JavaVirtualMachine *jvm, JavaClass *jc, cp_info *cp_method, LoadedClasses **outClass) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'cp_method'
+  parameter 'outClass'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'JavaClass' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'method_info' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:449: warning: argument 'uint8_t' of command @param is not found in the argument list of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:144: warning: The following parameters of runMethod(JavaVirtualMachine *jvm, JavaClass *jc, method_info *method, uint8_t numberOfParameters) are not documented:
+  parameter 'jvm'
+  parameter 'jc'
+  parameter 'method'
+  parameter 'numberOfParameters'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:127: warning: argument 'JavaVirtualMachine' of command @param is not found in the argument list of setClassPath(JavaVirtualMachine *jvm, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.c:127: warning: argument 'const' of command @param is not found in the argument list of setClassPath(JavaVirtualMachine *jvm, const char *path)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:140: warning: The following parameters of setClassPath(JavaVirtualMachine *jvm, const char *path) are not documented:
+  parameter 'jvm'
+  parameter 'path'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:84: warning: argument 'method_info' of command @param is not found in the argument list of freeMethodAttributes(method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:91: warning: The following parameters of freeMethodAttributes(method_info *entry) are not documented:
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:107: warning: argument 'JavaClass' of command @param is not found in the argument list of printMethods(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:111: warning: The following parameters of printMethods(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:8: warning: argument 'JavaClass' of command @param is not found in the argument list of readMethod(JavaClass *jc, method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:8: warning: argument 'method_info' of command @param is not found in the argument list of readMethod(JavaClass *jc, method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:16: warning: The following parameters of readMethod(JavaClass *jc, method_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:84: warning: argument 'method_info' of command @param is not found in the argument list of freeMethodAttributes(method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.h:19: warning: The following parameters of freeMethodAttributes(method_info *entry) are not documented:
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:107: warning: argument 'JavaClass' of command @param is not found in the argument list of printMethods(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.h:20: warning: The following parameters of printMethods(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:8: warning: argument 'JavaClass' of command @param is not found in the argument list of readMethod(JavaClass *jc, method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.c:8: warning: argument 'method_info' of command @param is not found in the argument list of readMethod(JavaClass *jc, method_info *entry)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/methods.h:18: warning: The following parameters of readMethod(JavaClass *jc, method_info *entry) are not documented:
+  parameter 'jc'
+  parameter 'entry'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:4: warning: argument 'uint8_t' of command @param is not found in the argument list of decodeOpcodeNewarrayType(uint8_t type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:11: warning: The following parameters of decodeOpcodeNewarrayType(uint8_t type) are not documented:
+  parameter 'type'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:24: warning: argument 'uint8_t' of command @param is not found in the argument list of getOpcodeMnemonic(uint8_t opcode)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:30: warning: The following parameters of getOpcodeMnemonic(uint8_t opcode) are not documented:
+  parameter 'opcode'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:4: warning: argument 'uint8_t' of command @param is not found in the argument list of decodeOpcodeNewarrayType(uint8_t type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.h:91: warning: The following parameters of decodeOpcodeNewarrayType(uint8_t type) are not documented:
+  parameter 'type'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.c:24: warning: argument 'uint8_t' of command @param is not found in the argument list of getOpcodeMnemonic(uint8_t opcode)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/opcodes.h:92: warning: The following parameters of getOpcodeMnemonic(uint8_t opcode) are not documented:
+  parameter 'opcode'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:51: warning: argument 'OperandStack' of command @param is not found in the argument list of freeOperandStack(OperandStack **os)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:54: warning: The following parameters of freeOperandStack(OperandStack **os) are not documented:
+  parameter 'os'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'OperandStack' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'int32_t' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'OperandType' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:32: warning: The following parameters of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType) are not documented:
+  parameter 'os'
+  parameter 'outPtr'
+  parameter 'outType'
+warning: Caller graph for 'popOperand' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'OperandStack' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'int32_t' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'OperandType' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:11: warning: The following parameters of pushOperand(OperandStack **os, int32_t value, enum OperandType type) are not documented:
+  parameter 'os'
+  parameter 'value'
+  parameter 'type'
+warning: Caller graph for 'pushOperand' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:51: warning: argument 'OperandStack' of command @param is not found in the argument list of freeOperandStack(OperandStack **os)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.h:22: warning: The following parameters of freeOperandStack(OperandStack **os) are not documented:
+  parameter 'os'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'OperandStack' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'int32_t' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:25: warning: argument 'OperandType' of command @param is not found in the argument list of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.h:21: warning: The following parameters of popOperand(OperandStack **os, int32_t *outPtr, enum OperandType *outType) are not documented:
+  parameter 'os'
+  parameter 'outPtr'
+  parameter 'outType'
+warning: Caller graph for 'popOperand' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'OperandStack' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'int32_t' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.c:4: warning: argument 'OperandType' of command @param is not found in the argument list of pushOperand(OperandStack **os, int32_t value, enum OperandType type)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/operandstack.h:20: warning: The following parameters of pushOperand(OperandStack **os, int32_t value, enum OperandType type) are not documented:
+  parameter 'os'
+  parameter 'value'
+  parameter 'type'
+warning: Caller graph for 'pushOperand' not generated, too many nodes. Consider increasing DOT_GRAPH_MAX_NODES.
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:37: warning: argument 'JavaClass' of command @param is not found in the argument list of readu2(JavaClass *jc, uint16_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:37: warning: argument 'uint16_t' of command @param is not found in the argument list of readu2(JavaClass *jc, uint16_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:42: warning: The following parameters of readu2(JavaClass *jc, uint16_t *out) are not documented:
+  parameter 'jc'
+  parameter 'out'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:14: warning: argument 'JavaClass' of command @param is not found in the argument list of readu4(JavaClass *jc, uint32_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:14: warning: argument 'uint32_t' of command @param is not found in the argument list of readu4(JavaClass *jc, uint32_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:19: warning: The following parameters of readu4(JavaClass *jc, uint32_t *out) are not documented:
+  parameter 'jc'
+  parameter 'out'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:37: warning: argument 'JavaClass' of command @param is not found in the argument list of readu2(JavaClass *jc, uint16_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:37: warning: argument 'uint16_t' of command @param is not found in the argument list of readu2(JavaClass *jc, uint16_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.h:10: warning: The following parameters of readu2(JavaClass *jc, uint16_t *out) are not documented:
+  parameter 'jc'
+  parameter 'out'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:14: warning: argument 'JavaClass' of command @param is not found in the argument list of readu4(JavaClass *jc, uint32_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.c:14: warning: argument 'uint32_t' of command @param is not found in the argument list of readu4(JavaClass *jc, uint32_t *out)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/readfunctions.h:9: warning: The following parameters of readu4(JavaClass *jc, uint32_t *out) are not documented:
+  parameter 'jc'
+  parameter 'out'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:108: warning: The following parameters of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len) are not documented:
+  parameter 'utf8A_bytes'
+  parameter 'utf8A_len'
+  parameter 'utf8B_bytes'
+  parameter 'utf8B_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:76: warning: The following parameters of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'ascii_bytes'
+  parameter 'ascii_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:144: warning: The following parameters of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len) are not documented:
+  parameter 'utf8A_bytes'
+  parameter 'utf8A_len'
+  parameter 'utf8B_bytes'
+  parameter 'utf8B_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'const' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'int32_t' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'uint32_t' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:24: warning: The following parameters of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'outCharacter'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'const' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'int32_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'uint8_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'int32_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:230: warning: The following parameters of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'out_buffer'
+  parameter 'buffer_len'
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:256: warning: argument 'const' of command @param is not found in the argument list of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:256: warning: argument 'length' of command @param is not found in the argument list of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:262: warning: The following parameters of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:97: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:24: warning: The following parameters of cmp_UTF8(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len) are not documented:
+  parameter 'utf8A_bytes'
+  parameter 'utf8A_len'
+  parameter 'utf8B_bytes'
+  parameter 'utf8B_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:64: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:23: warning: The following parameters of cmp_UTF8_Ascii(const uint8_t *utf8_bytes, int32_t utf8_len, const uint8_t *ascii_bytes, int32_t ascii_len) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'ascii_bytes'
+  parameter 'ascii_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'const' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:124: warning: argument 'int32_t' of command @param is not found in the argument list of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:25: warning: The following parameters of cmp_UTF8_FilePath(const uint8_t *utf8A_bytes, int32_t utf8A_len, const uint8_t *utf8B_bytes, int32_t utf8B_len) are not documented:
+  parameter 'utf8A_bytes'
+  parameter 'utf8A_len'
+  parameter 'utf8B_bytes'
+  parameter 'utf8B_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'const' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'int32_t' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:12: warning: argument 'uint32_t' of command @param is not found in the argument list of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:22: warning: The following parameters of nextUTF8Character(const uint8_t *utf8_bytes, int32_t utf8_len, uint32_t *outCharacter) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'outCharacter'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'const' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'int32_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'uint8_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:222: warning: argument 'int32_t' of command @param is not found in the argument list of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:26: warning: The following parameters of UTF8_to_Ascii(uint8_t *out_buffer, int32_t buffer_len, const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'out_buffer'
+  parameter 'buffer_len'
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:256: warning: argument 'const' of command @param is not found in the argument list of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.c:256: warning: argument 'length' of command @param is not found in the argument list of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/utf8.h:27: warning: The following parameters of UTF8StringLength(const uint8_t *utf8_bytes, int32_t utf8_len) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:326: warning: argument 'JavaClass' of command @param is not found in the argument list of checkClassIndex(JavaClass *jc, uint16_t class_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:326: warning: argument 'uint16_t' of command @param is not found in the argument list of checkClassIndex(JavaClass *jc, uint16_t class_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:334: warning: The following parameters of checkClassIndex(JavaClass *jc, uint16_t class_index) are not documented:
+  parameter 'jc'
+  parameter 'class_index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:119: warning: argument 'JavaClass' of command @param is not found in the argument list of checkClassIndexAndAccessFlags(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:130: warning: The following parameters of checkClassIndexAndAccessFlags(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:172: warning: argument 'JavaClass' of command @param is not found in the argument list of checkClassNameFileNameMatch(JavaClass *jc, const char *classFilePath)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:181: warning: The following parameters of checkClassNameFileNameMatch(JavaClass *jc, const char *classFilePath) are not documented:
+  parameter 'jc'
+  parameter 'classFilePath'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:418: warning: argument 'JavaClass' of command @param is not found in the argument list of checkConstantPoolValidity(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:424: warning: The following parameters of checkConstantPoolValidity(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:59: warning: argument 'JavaClass' of command @param is not found in the argument list of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:59: warning: argument 'uint16_t' of command @param is not found in the argument list of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:72: warning: The following parameters of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags) are not documented:
+  parameter 'jc'
+  parameter 'accessFlags'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:347: warning: argument 'JavaClass' of command @param is not found in the argument list of checkFieldNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:347: warning: argument 'uint16_t' of command @param is not found in the argument list of checkFieldNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:355: warning: The following parameters of checkFieldNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index) are not documented:
+  parameter 'jc'
+  parameter 'name_and_type_index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:9: warning: argument 'JavaClass' of command @param is not found in the argument list of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:9: warning: argument 'uint16_t' of command @param is not found in the argument list of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:22: warning: The following parameters of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags) are not documented:
+  parameter 'jc'
+  parameter 'accessFlags'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:382: warning: argument 'JavaClass' of command @param is not found in the argument list of checkMethodNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:382: warning: argument 'uint16_t' of command @param is not found in the argument list of checkMethodNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:390: warning: The following parameters of checkMethodNameAndTypeIndex(JavaClass *jc, uint16_t name_and_type_index) are not documented:
+  parameter 'jc'
+  parameter 'name_and_type_index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'int32_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:228: warning: The following parameters of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'isClassIdentifier'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:299: warning: argument 'JavaClass' of command @param is not found in the argument list of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:299: warning: argument 'uint16_t' of command @param is not found in the argument list of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:312: warning: The following parameters of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index) are not documented:
+  parameter 'jc'
+  parameter 'name_index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'JavaClass' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'uint16_t' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:293: warning: The following parameters of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier) are not documented:
+  parameter 'jc'
+  parameter 'name_index'
+  parameter 'isClassIdentifier'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:266: warning: argument 'JavaClass' of command @param is not found in the argument list of isValidUTF8Index(JavaClass *jc, uint16_t index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:266: warning: argument 'uint16_t' of command @param is not found in the argument list of isValidUTF8Index(JavaClass *jc, uint16_t index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:276: warning: The following parameters of isValidUTF8Index(JavaClass *jc, uint16_t index) are not documented:
+  parameter 'jc'
+  parameter 'index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:119: warning: argument 'JavaClass' of command @param is not found in the argument list of checkClassIndexAndAccessFlags(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:8: warning: The following parameters of checkClassIndexAndAccessFlags(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:172: warning: argument 'JavaClass' of command @param is not found in the argument list of checkClassNameFileNameMatch(JavaClass *jc, const char *classFilePath)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:9: warning: The following parameters of checkClassNameFileNameMatch(JavaClass *jc, const char *classFilePath) are not documented:
+  parameter 'jc'
+  parameter 'classFilePath'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:418: warning: argument 'JavaClass' of command @param is not found in the argument list of checkConstantPoolValidity(JavaClass *jc)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:13: warning: The following parameters of checkConstantPoolValidity(JavaClass *jc) are not documented:
+  parameter 'jc'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:59: warning: argument 'JavaClass' of command @param is not found in the argument list of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:59: warning: argument 'uint16_t' of command @param is not found in the argument list of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:7: warning: The following parameters of checkFieldAccessFlags(JavaClass *jc, uint16_t accessFlags) are not documented:
+  parameter 'jc'
+  parameter 'accessFlags'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:9: warning: argument 'JavaClass' of command @param is not found in the argument list of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:9: warning: argument 'uint16_t' of command @param is not found in the argument list of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:6: warning: The following parameters of checkMethodAccessFlags(JavaClass *jc, uint16_t accessFlags) are not documented:
+  parameter 'jc'
+  parameter 'accessFlags'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'int32_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:215: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:10: warning: The following parameters of isValidJavaIdentifier(uint8_t *utf8_bytes, int32_t utf8_len, uint8_t isClassIdentifier) are not documented:
+  parameter 'utf8_bytes'
+  parameter 'utf8_len'
+  parameter 'isClassIdentifier'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:299: warning: argument 'JavaClass' of command @param is not found in the argument list of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:299: warning: argument 'uint16_t' of command @param is not found in the argument list of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:12: warning: The following parameters of isValidMethodNameIndex(JavaClass *jc, uint16_t name_index) are not documented:
+  parameter 'jc'
+  parameter 'name_index'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'JavaClass' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'uint8_t' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.c:291: warning: argument 'uint16_t' of command @param is not found in the argument list of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier)
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/validity.h:11: warning: The following parameters of isValidNameIndex(JavaClass *jc, uint16_t name_index, uint8_t isClassIdentifier) are not documented:
+  parameter 'jc'
+  parameter 'name_index'
+  parameter 'isClassIdentifier'
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/jvm.h:84: warning: Unsupported xml/html tag <clinit> found
+C:/Users/Bruno/Desktop/UnB/Software Basico/JVM/src/main.c:188: warning: Unsupported xml/html tag <clinit> found

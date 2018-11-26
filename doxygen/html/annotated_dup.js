@@ -1,0 +1,28 @@
+var annotated_dup =
+[
+    [ "Array", "struct_array.html", "struct_array" ],
+    [ "att_Code_info", "structatt___code__info.html", "structatt___code__info" ],
+    [ "att_ConstantValue_info", "structatt___constant_value__info.html", "structatt___constant_value__info" ],
+    [ "att_Exceptions_info", "structatt___exceptions__info.html", "structatt___exceptions__info" ],
+    [ "att_InnerClasses_info", "structatt___inner_classes__info.html", "structatt___inner_classes__info" ],
+    [ "att_LineNumberTable_info", "structatt___line_number_table__info.html", "structatt___line_number_table__info" ],
+    [ "att_SourceFile_info", "structatt___source_file__info.html", "structatt___source_file__info" ],
+    [ "attribute_info", "structattribute__info.html", "structattribute__info" ],
+    [ "ClassInstance", "struct_class_instance.html", "struct_class_instance" ],
+    [ "cp_info", "structcp__info.html", "structcp__info" ],
+    [ "ExceptionTableEntry", "struct_exception_table_entry.html", "struct_exception_table_entry" ],
+    [ "field_info", "structfield__info.html", "structfield__info" ],
+    [ "Frame", "struct_frame.html", "struct_frame" ],
+    [ "FrameStack", "struct_frame_stack.html", "struct_frame_stack" ],
+    [ "InnerClassInfo", "struct_inner_class_info.html", "struct_inner_class_info" ],
+    [ "JavaClass", "struct_java_class.html", "struct_java_class" ],
+    [ "JavaVirtualMachine", "struct_java_virtual_machine.html", "struct_java_virtual_machine" ],
+    [ "LineNumberTableEntry", "struct_line_number_table_entry.html", "struct_line_number_table_entry" ],
+    [ "LoadedClasses", "struct_loaded_classes.html", "struct_loaded_classes" ],
+    [ "method_info", "structmethod__info.html", "structmethod__info" ],
+    [ "ObjectArray", "struct_object_array.html", "struct_object_array" ],
+    [ "OperandStack", "struct_operand_stack.html", "struct_operand_stack" ],
+    [ "Reference", "struct_reference.html", "struct_reference" ],
+    [ "ReferenceTable", "struct_reference_table.html", "struct_reference_table" ],
+    [ "String", "struct_string.html", "struct_string" ]
+];

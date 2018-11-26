@@ -1,0 +1,12 @@
+<map id="ReferenceTable" name="ReferenceTable">
+<area shape="rect" id="node2" href="$struct_reference.html" title="Reference" alt="" coords="111,363,191,389"/>
+<area shape="rect" id="node5" href="$struct_object_array.html" title="ObjectArray" alt="" coords="194,452,285,479"/>
+<area shape="rect" id="node3" href="$struct_string.html" title="String" alt="" coords="45,273,101,300"/>
+<area shape="rect" id="node4" href="$struct_array.html" title="Array" alt="" coords="125,273,178,300"/>
+<area shape="rect" id="node6" href="$struct_class_instance.html" title="ClassInstance" alt="" coords="202,273,306,300"/>
+<area shape="rect" id="node7" href="$struct_java_class.html" title="JavaClass" alt="" coords="214,184,294,211"/>
+<area shape="rect" id="node8" href="$structfield__info.html" title="field_info" alt="" coords="165,95,237,121"/>
+<area shape="rect" id="node9" href="$structattribute__info.html" title="attribute_info" alt="" coords="153,5,249,32"/>
+<area shape="rect" id="node10" href="$structmethod__info.html" title="method_info" alt="" coords="261,95,353,121"/>
+<area shape="rect" id="node11" href="$structcp__info.html" title="cp_info" alt="" coords="377,95,440,121"/>
+</map>
