@@ -6,10 +6,10 @@ ehthumbs.db
 Desktop.ini
 
 # Oracle JDK .class files (java/lang/String.class, java/lang/Object.class etc)
-java/*
+# java/*
 
 # Doxygen generated documentation
-doxygen/*
+# doxygen/*
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
