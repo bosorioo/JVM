@@ -1,4 +1,6 @@
 doxygen/* linguist-documentation
+examples/* linguist-detectable=false
+"test files/*" linguist-detectable=false
 
 # Auto detect text files and perform LF normalization
 * text=auto
