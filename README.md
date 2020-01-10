@@ -21,7 +21,7 @@ The generated binary for the debug version is named "jvmdebug".
 
 Most of the source code includes Doxygen documentation.  
 The auto generated doc files are located in the ```doxygen``` folder.  
-The documentation can be viewed in this link: https://bosorioo.github.io/JVM
+The documentation can be viewed in this link: https://bosorioo.github.io/JVM/
 
 # Execution
 
